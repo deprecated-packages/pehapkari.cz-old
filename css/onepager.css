@@ -196,6 +196,14 @@ img::selection {
 
 img::-moz-selection {
   background: 0 0; }
+  
+h2::-moz-selection {
+  background: #373a3c;
+}
+
+h2::selection {
+  background: #373a3c;
+}
 
 .text-center .img-responsive {
   margin: 0 auto; }
