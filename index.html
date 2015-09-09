@@ -10,88 +10,103 @@
 
         <title>Česká Symfony komunita</title>
 
-        <link href="http://fonts.googleapis.com/css?family=Exo+2:400,300,100,700&subset=latin,latin-ext" rel="stylesheet"
-              type="text/css">
-        <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
-        <!--<link href="css/bootstrap-4.min.css" rel="stylesheet">-->
-        <link href="css/onepager.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-        <link rel="shortcut icon" href="sources/favicon.ico">
+        <link href="http://fonts.googleapis.com/css?family=Exo+2:400,300,100,700&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="sources/favicon.ico" rel="shortcut icon">
     </head>
 
     <body class="index">
         <header>
             <div class="container">
                 <div class="intro-text">
-                    <div class="intro-lead-in">Vítejte na oficiálním webu</div>
-                    <div class="intro-heading">české Symfony komunity</div>
+                    <div class="intro-lead-in">Tak je to tady!</div>
+                    <div class="intro-heading">Česká Symfony komunita</div>
+
+                    <p>
+                        Zjistli jsme, že je nás tu spousta, ale že o sobě nazvájem nevíme. Jak firmy, tak programátoři.
+                        ... zájem o sebe
+                        ... zaplnit díru
+                        ... jednotné místo potkávání
+                    </p>
                 </div>
             </div>
         </header>
 
-        <!--<section>-->
-            <!--<div class="container">-->
-                <!--<div class="row">-->
-                    <!--<div class="col-lg-12 text-center">-->
-                        <!--<h2 class="section-heading">Sleduj Symfony u nás</h2>-->
-                        <!--<ul class="socials">-->
-                            <!--<li>-->
-                                <!--<a href="https://www.facebook.com/groups/1459095537717938/" target="_blank">-->
-                                    <!--<i class="fa fa-facebook"></i>-->
-                                <!--</a>-->
-                            <!--</li>-->
-                        <!--</ul>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</section>-->
+        <div class="container section">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Začni se vzdělávat</h2>
 
-        <section>
-            <div class="container">
+
+                    Sem ty ikony!
+                    facebook
+                    gitter
+                    stackverflwo
+                    twitter
+
+                    <p>
+                        <strong>Zeptej se</strong> na <a href="https://www.facebook.com/groups/1459095537717938/">Facebooku</a>, <a href="https://gitter.im/webuni/symfony">Gitteru</a>,
+                        nebo Stackoverflow s tagem <a href="http://stackoverflow.com/questions/tagged/symfony">#symfony</a> (anglicky).
+                    </p>
+
+                    <p>
+                        <strong>Zažij rychlý start díky školení</strong> - <a href="http://www.naucmese.cz/course/?courseId=2199">individuální</a> i <a href="https://www.webuni.cz/skoleni">firemní </a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="container" id="meetups">
                 <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2 text-center">
-                        <h2 class="section-heading">Přijd na pokec</h2>
-                        <div class="row" id="meetups">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading">Přijď na pokec</h2>
+                        <div class="row">
+                            <p>
+                                Každý měsíc pořádáme pravidelné srazy v Praze a Brně.
+                                Přijď si poslechnout zkušené lidi nebo pořešit, co tě pálí.
+                            </p>
+
+                            <br>
+                            <br>
+
                             <div class="col-lg-6 text-center">
                                 <p>
-                                    <a href="http://srazy.info/symfony-praha/">V Praze <strong>24. 9.</strong></a>
-                                    -
-                                    Úvodní 0. setkání
+                                    <a href="http://srazy.info/symfony-praha/" class="city">Praha</a>
+                                    <br>
+                                    <span class="date">24. 9.</span>
                                 </p>
                             </div>
                             <div class="col-lg-6 text-center">
                                 <p>
-                                    <a href="http://srazy.info/symfony-brno">V Brně <strong>1. 9.</strong></a>
-                                    -
-                                    6. setkání
+                                    <a href="http://srazy.info/symfony-brno" class="city">Brno</a>
+                                    <br>
+                                    <span class="date">1. 9.</span>
                                 </p>
                             </div>
                         </div>
 
-                        <p>Nenech si ujít další sraz a sleduj nás <a href="http://twitter.com/symfonisti">@symfonisti</a></p>
+                        <br>
+                        <br>
+
+                        <p>Nenech si ujít další sraz a sleduj <a href="http://twitter.com/symfonisti">@symfonisti</a></p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <section>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <h2 class="section-heading">Přijd na školení</h2>
-                        <p>
-                            Chcete-li rychle a správně začít, využijte <a href="https://www.webuni.cz/skoleni">firemní </a> nebo <a href="http://www.naucmese.cz/kurz/na-rande-se-symfony">individuální školení</a>.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section>
+        <div class="section">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2 text-center">
                         <h2>Kdo tvoří v Symfony</h2>
+
+                        <p>
+                            Ve světě...
+                        </p>
+
                         <p class="bigger">
                             <a href="http://www.aquadigital.cz/">Aquadigital</a>,
                             <a href="http://www.bandzone.cz/">Bandzone</a>,
@@ -99,16 +114,27 @@
                             <a href="http://www.cambit.cz/">Cambit</a>,
                             <a href="http://www.cognito.cz/">Cognito</a>,
                             <a href="http://www.collabim.cz/">Collabim</a>,
-                            <a href="https://www.designeo.cz/">Designeo</a>,
+                            <a href="http://www.designeo.cz/">Designeo</a>,
                             <a href="http://www.etnetera.cz/">Etnetera</a>,
+                            <a href="http://www.edgedesign.cz/">Edgedesign</a>,
+                            <a href="http://expensa.cz/">Expensa</a>,
+                            <a href="http://www.gods.cz/">Gods</a>,
+                            <a href="http://www.imatic.cz/">Imatic</a>,
+                            <a href="http://www.itstudio.cz/">ITStudio</a>,
                             <a href="http://www.jobs.cz/">Jobs</a>,
+                            <a href="https://www.keboola.com/">Keboola</a>,
+                            <a href="http://www.lmc.eu/">Lmc</a>,
                             <a href="https://www.neternity.cz">Neternity</a>,
                             <a href="http://netmagnet.cz/">Net Magnet</a>,
                             <a href="http://www.proofreason.com/">Proof&Reason</a>,
                             <a href="http://www.skrz.cz/">Skrz</a>,
+                            <a href="http://www.skrz.cz/">Skrz</a>,
                             <a href="http://www.shipito.com/">Shipito</a>,
                             <a href="http://www.shopio.cz/">Shopio</a>,
+                            <a href="http://www.symbiodigital.com/">Symbiodigital</a>,
                             <a href="http://tomatom.cz/">TomAtom</a>,
+                            <a href="http://usetreno.cz/">Ušetřeno</a>
+                            a mnoho dalších...
                         </p>
 
                         <p class="smaller">
@@ -117,7 +143,27 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 text-center">
+                        <h2>Napište nám</h2>
+
+                        <p>
+                            Chcete něco doplnit, sponzorovat a následně sehnat programátory?
+                            <br>
+                            Pište na <a href="mailto:info@symfony.cz">info@symfony.cz</a>
+                        </p>
+
+                        <p>
+                            Tweetujte na <a href="https://twitter.com/symfonisti">@symfonisti</a> nebo s tagem <a href="https://twitter.com/#symfonycz">#symfonycz</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <footer>
             <div class="container">

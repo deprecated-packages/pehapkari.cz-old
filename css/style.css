@@ -20,27 +20,21 @@ a, a:hover, a:focus, a:active, a.active {
 }
 
 a {
-    color: #0af;
+    color: #08c;
     text-decoration: none;
 }
 
 a:hover, a:focus, a:active, a.active {
-    color: #08c;
+    color: #0af;
     text-decoration: underline;
 }
 
 h1,
 h2,
-h3,
-h4,
-h5,
-h6 {
-  /*text-transform: uppercase;*/
+h3 ,
+{
   font-family: 'Exo 2', sans-serif;
   font-weight: 700; }
-
-.img-centered {
-  margin: 0 auto; }
 
 header {
   text-align: center;
@@ -52,17 +46,9 @@ header {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
-  -o-background-size: cover; }
-
-header .intro-text {
-  padding-top: 100px;
-  padding-bottom: 50px; }
-
-header .intro-text .intro-lead-in {
-  margin-bottom: 25px;
-  font-family: 'Exo 2', sans-serif;
-  font-size: 22px;
-  line-height: 22px; }
+  -o-background-size: cover;
+    height: 40em;
+}
 
 header .intro-text .intro-heading {
   margin-bottom: 25px;
@@ -74,7 +60,7 @@ header .intro-text .intro-heading {
 
 @media (min-width: 768px) {
   header .intro-text {
-    padding-top: 300px;
+    padding-top: 10em;
     padding-bottom: 200px; }
 
   header .intro-text .intro-lead-in {
@@ -90,53 +76,23 @@ header .intro-text .intro-heading {
     font-size: 75px;
     font-weight: 700;
     line-height: 75px; } }
-section {
-  padding: 50px 0; }
-  section:nth-child(odd) {
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d3d3d3+0,ffffff+63,ffffff+100 */
-    background: #d3d3d3;
-    /* Old browsers */
-    background: -moz-linear-gradient(-45deg, #d3d3d3 0%, #ffffff 63%, #ffffff 100%);
-    /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #d3d3d3), color-stop(63%, #ffffff), color-stop(100%, #ffffff));
-    /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(-45deg, #d3d3d3 0%, #ffffff 63%, #ffffff 100%);
-    /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(-45deg, #d3d3d3 0%, #ffffff 63%, #ffffff 100%);
-    /* Opera 11.10+ */
-    background: -ms-linear-gradient(-45deg, #d3d3d3 0%, #ffffff 63%, #ffffff 100%);
-    /* IE10+ */
-    background: linear-gradient(135deg, #d3d3d3 0%, #ffffff 63%, #ffffff 100%);
-    /* W3C */ }
-  section:nth-child(even) {
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+37,d3d3d3+100 */
-    background: #ffffff;
-    /* Old browsers */
-    background: -moz-linear-gradient(45deg, #ffffff 0%, #ffffff 37%, #d3d3d3 100%);
-    /* FF3.6+ */
-    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #ffffff), color-stop(37%, #ffffff), color-stop(100%, #d3d3d3));
-    /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(45deg, #ffffff 0%, #ffffff 37%, #d3d3d3 100%);
-    /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(45deg, #ffffff 0%, #ffffff 37%, #d3d3d3 100%);
-    /* Opera 11.10+ */
-    background: -ms-linear-gradient(45deg, #ffffff 0%, #ffffff 37%, #d3d3d3 100%);
-    /* IE10+ */
-    background: linear-gradient(45deg, #ffffff 0%, #ffffff 37%, #d3d3d3 100%);
-    /* W3C */ }
 
-section h2 {
+.section {
+    padding: 3em 0;
+}
+
+.section:nth-child(odd) {
+    background: #f5f5f5;
+}
+
+.section:nth-child(even) {
+    background: #ffffff;
+}
+
+.section  h2 {
   margin-bottom: .5em;
   font-size: 3em;
   color: #8CD02C; }
-
-section h3.section-subheading {
-  margin-bottom: 75px;
-  text-transform: none;
-  font-family: 'Exo 2', sans-serif;
-  font-size: 2em;
-  font-weight: 400;
-}
 
 
 footer {
@@ -179,8 +135,14 @@ footer ul.quicklinks {
   /*background-color: #059B33; }*/
 
 
-#meetups p {
+#meetups .city {
     font-size: 1.3em;
+    padding: 1em;
+}
+
+#meetups .date {
+    font-size: 1.6em;
+    font-weight: 600;
 }
 
 ::-moz-selection {
