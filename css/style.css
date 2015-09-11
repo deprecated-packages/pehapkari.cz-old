@@ -2,6 +2,11 @@ body {
   font-family: 'Exo 2', sans-serif;
 }
 
+#companies {
+    font-size: 1.7em;
+    margin-bottom: 0.9em;
+}
+
 p {
   font-size: 18px;
   line-height: 1.75;
@@ -16,7 +21,7 @@ p {
 }
 
 a, a:hover, a:focus, a:active, a.active {
-  outline: 0;
+	outline: 0;
 }
 
 a {
@@ -29,6 +34,18 @@ a:hover, a:focus, a:active, a.active {
     text-decoration: underline;
 }
 
+header a,
+header a:focus,
+header a:active {
+	color: #fff;
+	text-decoration: underline;
+}
+
+header p {
+	font-size: 1.4em;
+	line-height: 2.1em;
+}
+
 h1,
 h2,
 h3 ,
@@ -37,31 +54,24 @@ h3 ,
   font-weight: 700; }
 
 header {
-  text-align: center;
-  color: #fff;
-  background-attachment: scroll;
-  background-image: url("../img/header-bg.jpg");
-  background-position: center center;
-  background-repeat: none;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
-    height: 40em;
+    text-align: center;
+    color: #fff;
+    background-attachment: scroll;
+    background-image: url("../img/header-bg.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    /*height: 40em;*/
 }
-
-header .intro-text .intro-heading {
-  margin-bottom: 25px;
-  text-transform: uppercase;
-  font-family: 'Exo 2', sans-serif;
-  font-size: 50px;
-  font-weight: 700;
-  line-height: 50px; }
 
 @media (min-width: 768px) {
   header .intro-text {
-    padding-top: 10em;
-    padding-bottom: 200px; }
+    padding-top: 5em;
+    padding-bottom: 5em;
+  }
 
   header .intro-text .intro-lead-in {
     margin-bottom: 25px;
@@ -112,31 +122,8 @@ footer ul.quicklinks {
   font-family: 'Exo 2', sans-serif;
   line-height: 40px; }
 
-/*ul.social-buttons {*/
-  /*margin-bottom: 0; }*/
-
-/*ul.social-buttons li a {*/
-  /*display: block;*/
-  /*width: 40px;*/
-  /*height: 40px;*/
-  /*border-radius: 100%;*/
-  /*font-size: 20px;*/
-  /*line-height: 40px;*/
-  /*outline: 0;*/
-  /*color: #fff;*/
-  /*background-color: #222;*/
-  /*-webkit-transition: all .3s;*/
-  /*-moz-transition: all .3s;*/
-  /*transition: all .3s; }*/
-
-/*ul.social-buttons li a:hover,*/
-/*ul.social-buttons li a:focus,*/
-/*ul.social-buttons li a:active {*/
-  /*background-color: #059B33; }*/
-
-
 #meetups .city {
-    font-size: 1.3em;
+    font-size: 1.7em;
     padding: 1em;
 }
 
@@ -177,8 +164,8 @@ a.black:hover {
     text-align: center !important; }
   footer div {
     margin-bottom: 15px; } }
-.intro-text a {
-  color: black !important;
-  text-decoration: none !important; }
 
-/*# sourceMappingURL=onepager.css.map */
+
+#icons a {
+	line-height: 3em;
+}
