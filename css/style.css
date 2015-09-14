@@ -46,6 +46,11 @@ header p {
 	line-height: 2.1em;
 }
 
+#headline-logo {
+    width: 100px;
+    margin-bottom: 2em;
+}
+
 h1,
 h2,
 h3 ,
@@ -85,7 +90,7 @@ header {
     font-family: 'Exo 2', sans-serif;
     font-size: 75px;
     font-weight: 700;
-    line-height: 75px; } }
+    line-height: .8em; } }
 
 .section {
     padding: 3em 0;
