@@ -51,6 +51,46 @@ header p {
     margin-bottom: 2em;
 }
 
+#map {
+    background: center center url('../img/czech-republic-blind-map.png') no-repeat;
+    width: 100%;
+    height: 342px;
+    margin-bottom: .5em;
+}
+
+#map .city {
+    position: absolute;
+    text-align: center;
+    font-size: 1.4em;
+}
+
+#map .city a {
+    line-height: 1em;
+    font-size: 1.5em;
+}
+
+#map .prague {
+    margin: 3em 0 0 20.7em;
+}
+
+#map .brno {
+    margin: 6.1em 0 0 28em;
+}
+
+#map .date {
+    line-height: 1em;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+#map .spot {
+
+    width: 24px;
+    height: 24px;
+    background: center center url("../img/symfony-square-small.png") no-repeat;
+    margin: .3em auto 0 auto;
+}
+
 h1,
 h2,
 h3 ,
@@ -61,15 +101,11 @@ h3 ,
 header {
     text-align: center;
     color: #fff;
-    background-attachment: scroll;
-    background-image: url("../img/header-bg.jpg");
-    background-position: center center;
-    background-repeat: no-repeat;
+    background: center center url("../img/header-bg.jpg") no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    /*height: 40em;*/
 }
 
 @media (min-width: 768px) {
@@ -126,16 +162,6 @@ footer ul.quicklinks {
   /*text-transform: none;*/
   font-family: 'Exo 2', sans-serif;
   line-height: 40px; }
-
-#meetups .city {
-    font-size: 1.7em;
-    padding: 1em;
-}
-
-#meetups .date {
-    font-size: 1.6em;
-    font-weight: 600;
-}
 
 ::-moz-selection {
   text-shadow: none;
