@@ -85,13 +85,6 @@ header p {
     margin: .3em auto 0 auto;
 }
 
-h1,
-h2,
-h3 ,
-{
-  font-family: 'Exo 2', sans-serif;
-  font-weight: 700; }
-
 header {
     text-align: center;
     color: #fff;
@@ -107,11 +100,11 @@ header .intro-text {
     padding: 5em 0;
 }
 
-header .intro-text .intro-heading {
-    margin-bottom: 50px;
+h1 {
+    margin-bottom: 1.3em;
     text-transform: uppercase;
-    font-size: 3.5em;
-    line-height: 1.3em;
+    font-size: 3.6em;
+    line-height: 0;
 }
 
 .section {
@@ -126,7 +119,7 @@ header .intro-text .intro-heading {
     background: #ffffff;
 }
 
-.section  h2 {
+h2 {
     margin-bottom: .8em;
     font-size: 3em;
     color: #8CD02C;
@@ -185,4 +178,14 @@ footer div {
 #icons {
     text-align: left;
     line-height: 2.3em;
+}
+
+@media (max-width: 992px) {
+    h1 {
+        font-size: 3em;
+    }
+
+    h2 {
+        font-size: 2.3em;
+    }
 }
