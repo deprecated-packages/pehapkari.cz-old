@@ -1,5 +1,6 @@
 body {
-  font-family: 'Exo 2', sans-serif;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 18px;
 }
 
 #companies {
@@ -8,8 +9,7 @@ body {
 }
 
 p {
-  font-size: 18px;
-  line-height: 1.75;
+    line-height: 1.75;
 }
 
 ul li {
@@ -54,7 +54,7 @@ header p {
 
 #headline-logo {
     width: 100px;
-    margin-top: -1.8em;
+    margin-top: -1em;
     margin-bottom: 2em;
 }
 
@@ -64,6 +64,7 @@ header p {
 
 #dates div {
     font-size: 1.4em;
+    margin-bottom: 1em;
 }
 
 #dates div a {
@@ -102,22 +103,14 @@ header {
 }
 
 header .intro-text {
-    padding-top: 5em;
-    padding-bottom: 5em;
-}
-
-header .intro-text .intro-lead-in {
-    margin-bottom: 25px;
-    font-family: 'Exo 2', sans-serif;
-    font-size: 40px;
-    line-height: 40px;
+    font-size: 1em;
+    padding: 5em 0;
 }
 
 header .intro-text .intro-heading {
     margin-bottom: 50px;
     text-transform: uppercase;
-    font-family: 'Exo 2', sans-serif;
-    font-size: 75px;
+    font-size: 3.5em;
     line-height: 1.3em;
 }
 
@@ -134,62 +127,62 @@ header .intro-text .intro-heading {
 }
 
 .section  h2 {
-  margin-bottom: .5em;
-  font-size: 3em;
-  color: #8CD02C; }
-
+    margin-bottom: .8em;
+    font-size: 3em;
+    color: #8CD02C;
+}
 
 footer {
     color: beige;
-    padding: 25px 0;
-    text-align: center;
+    padding: 1em 0;
     background: #18171b;
+    font-size: .8em;
 }
 
-footer span.copyright {
-  font-family: 'Exo 2', sans-serif; }
-
-footer ul.quicklinks {
-  margin-bottom: 0;
-  /*text-transform: uppercase;*/
-  /*text-transform: none;*/
-  font-family: 'Exo 2', sans-serif;
-  line-height: 40px; }
-
 ::-moz-selection {
-  text-shadow: none;
-  background: #8CD02C; }
+    text-shadow: none;
+    background: #8CD02C;
+}
 
 ::selection {
-  text-shadow: none;
-  background: #8CD02C; }
+    text-shadow: none;
+    background: #8CD02C;
+}
 
 img::selection {
-  background: 0 0; }
+    background: 0 0;
+}
 
 img::-moz-selection {
-  background: 0 0; }
+    background: 0 0;
+}
 
 .text-center .img-responsive {
-  margin: 0 auto; }
+    margin: 0 auto;
+}
 
 .mw-300 {
-  max-width: 300px; }
+    max-width: 300px;
+}
 
 .black {
-  color: black; }
+    color: black;
+}
 
 a.black:hover {
-  color: black;
-  text-decoration: underline; }
+    color: black;
+    text-decoration: underline;
+}
 
-@media (max-width: 992px) {
-  footer * {
-    text-align: center !important; }
-  footer div {
-    margin-bottom: 15px; } }
+footer * {
+    text-align: center !important;
+}
 
+footer div {
+    margin-bottom: 15px;
+}
 
-#icons a {
-	line-height: 3em;
+#icons {
+    text-align: left;
+    line-height: 2.3em;
 }
