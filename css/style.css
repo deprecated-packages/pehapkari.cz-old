@@ -58,79 +58,26 @@ header p {
     margin-bottom: 2em;
 }
 
-ul#map {
-    background: center center url('../img/czech-republic-blind-map.png') no-repeat;
-    height: 342px;
-    margin-bottom: .5em;
-    position: relative;
+#dates {
+    margin: 2em 0 2.5em;
 }
 
-ul#map li {
-    display: block;
-    position: absolute;
-    text-align: center;
+#dates div {
     font-size: 1.4em;
 }
 
-#map li a {
+#dates div a {
     line-height: 1em;
     font-size: 1.5em;
 }
 
-ul#map li.prague {
-    right: 600px;
-    bottom: 170px;
-}
-
-ul#map li.brno {
-    right: 455px;
-    bottom: 100px;
-}
-
-@media (max-width: 1200px) {
-    ul#map li.prague {
-        right: 500px;
-        bottom: 170px;
-    }
-
-    ul#map li.brno {
-        right: 355px;
-        bottom: 100px;
-    }
-}
-
-@media (max-width: 992px) {
-    ul#map li.prague {
-        right: 380px;
-        bottom: 170px;
-    }
-
-    ul#map li.brno {
-        right: 235px;
-        bottom: 100px;
-    }
-}
-
-@media (max-width: 768px) {
-    ul#map li.prague {
-        right: 290px;
-        bottom: 170px;
-    }
-
-    ul#map li.brno {
-        right: 145px;
-        bottom: 100px;
-    }
-}
-
-#map .date {
-    line-height: 1em;
+#dates div .date {
+    line-height: 2em;
     font-size: 1.2em;
     font-weight: 600;
 }
 
-#map .spot {
-
+#dates div .spot {
     width: 24px;
     height: 24px;
     background: center center url("../img/symfony-square-small.png") no-repeat;

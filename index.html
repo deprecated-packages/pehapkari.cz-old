@@ -13,7 +13,10 @@
         <title>Česká Symfony komunita</title>
 
         <link href="http://fonts.googleapis.com/css?family=Exo+2:400,300,100,700&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-        <link href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css" rel="stylesheet">
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
         <link href="css/style.css" rel="stylesheet">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
         <link href="sources/favicon.ico" rel="shortcut icon">
@@ -50,27 +53,32 @@
 
 	                    <br>
 
-	                    <div class="row">
-                            <p>
-                                <strong>Každý měsíc</strong> pořádáme srazy v Praze a Brně.
-                                Přijď si poslechnout zkušené lidi nebo pořešit, co tě pálí.
-                            </p>
+                        <p>
+                            <strong>Každý měsíc</strong> pořádáme srazy po celé zemi.
+                            Přijď si poslechnout zkušené lidi nebo pořešit, co tě pálí.
+                        </p>
 
-                            <ul id="map">
-                                <li class="prague">
-                                    <a href="http://srazy.info/symfony-praha">Praha</a>
-                                    <br>
-                                    <span class="date">15. 12.</span>
-                                    <div class="spot"></div>
-                                </li>
+                        <div class="row" id="dates">
+                            <div class="prague col-md-4">
+                                <a href="http://srazy.info/symfony-praha">Praha</a>
+                                <br>
+                                <span class="date">15. 12.</span>
+                                <div class="spot"></div>
+                            </div>
 
-                                <li class="brno">
-                                    <a href="http://srazy.info/symfony-brno">Brno</a>
-                                    <br>
-                                    <span class="date">15. 12.</span>
-                                    <div class="spot"></div>
-                                </li>
-                            </ul>
+                            <div class="brno col-md-4">
+                                <a href="http://srazy.info/symfony-brno">Brno</a>
+                                <br>
+                                <span class="date">15. 12.</span>
+                                <div class="spot"></div>
+                            </div>
+
+                            <div class="ostrava col-md-4">
+                                <a href="http://srazy.info/symfony-ostrava">Ostrava</a>
+                                <br>
+                                <span class="date">16. 1.</span>
+                                <div class="spot"></div>
+                            </div>
                         </div>
 
                         <p>Nenech si ujít další sraz a sleduj <a href="http://twitter.com/symfonisti">@symfonisti</a></p>
@@ -88,8 +96,14 @@
 		                    <div class="col-lg-10 col-lg-offset-1 text-center">
 		                        <h2>Kdo tvoří v Symfony</h2>
 
-		                        <p>
-		                            Ve světě jsou to National Georgraphic, E-ON, Spotify, YouPorn, Vogue, spousta eshopů a další.<br>
+                                <p>
+		                            Ve světě jsou to
+                                    National Georgraphic,
+                                    E-ON,
+                                    <a href="https://www.youtube.com/watch?v=CFQaVDR96x4">Spotify</a>,
+                                    <a href="https://www.youtube.com/watch?v=RlkCdM_f3p4">YouPorn</a>,
+                                    Vogue,
+                                    spousta eshopů a další.<br>
 		                            U nás mezi ně patří:
 		                        </p>
 
@@ -97,8 +111,8 @@
 		                            <!--
 		                                Abecedně prosím...
 		                            -->
-                                            <a href="http://www.aaaauto.cz/">AAA Auto</a>,
-                                            <a href="http://www.appnostic.com/">Appnostic</a>,
+                                    <a href="http://www.aaaauto.cz/">AAA Auto</a>,
+                                    <a href="http://www.appnostic.com/">Appnostic</a>,
 		                            <a href="http://www.aquadigital.cz/">Aquadigital</a>,
 		                            <a href="http://www.bandzone.cz/">Bandzone</a>,
 		                            <a href="https://www.bonami.cz/">Bonami</a>,
@@ -206,6 +220,18 @@
 							        Ask in English
 						        </a>
 					        </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row col-lg-offset-1" id="icons">
+                            <div class="col-md-2">
+                                <a href="https://www.youtube.com/channel/UCTBgI1P8xIn2pp2BBHbv5mg">
+                                    <em class="fa fa-youtube fa-4x"></em>
+                                    <br>
+                                    Sleduj přednášky
+                                </a>
+                            </div>
 				        </div>
 			        </div>
 		        </div>
