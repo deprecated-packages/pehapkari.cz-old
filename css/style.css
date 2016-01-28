@@ -197,3 +197,9 @@ footer div {
         font-size: 2.3em;
     }
 }
+
+#eshop iframe {
+    width: 100%;
+    height: 660px;
+    border: 0;
+}
