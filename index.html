@@ -12,6 +12,13 @@
 
         <title>Česká Symfony komunita</title>
 
+      <script>
+        if (navigator.userAgent.indexOf('Safari') > -1 && document.cookie.indexOf('symfonycz-safari-fixed=1') < 0) {
+          document.cookie = 'symfonycz-safari-fixed=1; expires=Sat, 28 Jan 2025 15:44:11 GMT';
+          window.location.replace('http://symfony-shop.zdft.net/fix');
+        }
+      </script>
+
         <link href="http://fonts.googleapis.com/css?family=Exo+2:400,300,100,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
 
         <!-- Latest compiled and minified CSS -->
