@@ -58,31 +58,38 @@ header p {
     margin-bottom: 2em;
 }
 
+
 #dates {
-    margin: 2em 0 2.5em;
+    text-align: left;
+    margin: 2em 1em 2.5em;
 }
 
-#dates div {
-    font-size: 1.4em;
+#dates .row {
     margin-bottom: 1em;
 }
 
-#dates div a {
-    line-height: 1em;
+#dates .city {
+    font-size: 1.8em;
+}
+
+#dates .date {
+    text-align: center;
     font-size: 1.5em;
-}
-
-#dates div .date {
-    line-height: 2em;
-    font-size: 1.2em;
+    line-height: 1.8em;
     font-weight: 600;
+    color: #8CD02C;
 }
 
-#dates div .spot {
+#dates .come {
+    line-height: 2.7em;
+}
+
+#dates .spot {
+    float: left;
     width: 24px;
     height: 24px;
     background: center center url("../img/symfony-square-small.png") no-repeat;
-    margin: .3em auto 0 auto;
+    margin: .4em .5em 0 auto;
 }
 
 header {
