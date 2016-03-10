@@ -1,4 +1,4 @@
-# Tomas Votruba - Sculpin Blog
+# Symfony.cz - Sculpin based web
 
 ## How to run it?
 
