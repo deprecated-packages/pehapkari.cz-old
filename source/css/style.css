@@ -86,14 +86,14 @@ header p {
     float: left;
     width: 24px;
     height: 24px;
-    background: center center url("../img/symfony-square-small.png") no-repeat;
+    background: center center url("../images/symfony-square-small.png") no-repeat;
     margin: .4em .5em 0 auto;
 }
 
 header {
     text-align: center;
     color: #fff;
-    background: center center url("../img/header-bg.jpg") no-repeat;
+    background: center center url("../images/header-bg.jpg") no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;

@@ -1,0 +1,15 @@
+language: php
+
+php: 5.6
+
+env:
+    global:
+        - secure: uB2LNGTgU6fjjfpLVOXN2kgdJ4lcFirg9KqytJkSeTxIYTRaysmsEaPZzO+I/CqTr5FcKwMVXAHM63zqD7etIyaNHkTHqYkjZIz/vbgsqPOEZtrNNvCh8mmbEHi3bhYAIDy+zh/IeWKvfyAqwT/nGHFxAh9kqh40RaAXA3QUbQJa0p0Vy1PKkMW0KyfSoHSCZ+ASiYDRa2JhVQuSYmzDaA45KMq8MVsKYvn46wiyPWHtERTjvc7Np0q5nxUpPb0qBFMYlcPmhfa3bb/+Mw5+PpWg3QpBA9lBV5kHOcbM3Jwbp+WCFiNDz9imF1rWPmzMfGyYaRVtiPMRNExDytaS0mxvzbHUaLkFynWKX4V84ULIOMUiUeWSaAY9ehk74LIt79szBjMKLLcqFJyjeeBLDzxY1jQjoBM79C4pjJzIYOcTh6tQc53t1EMJUCQWtUmIldAPmb7s6FoOsR4Kw6V7a5qYeuab6tu/Y7Uosgssm17FyW+bFvQMMzsoYM5zzSoa7PMizE1caVDUh6gUx2l7HvNSTZk3sdW3lgju8Ey44t34RIPMD1jH3eYFi2kK7aesm+dgEYkVmZloDJ3Fyrhg8sHyY+meRZ0/85V1NsUpC41Gk36ajGi27w33zUwGLrj2Mp/+0PRsVt8uEKeDPgmFgdnTtURPTykCqxpa8jOUjp4=
+
+before_script:
+    - phpenv config-rm xdebug.ini
+    - composer self-update
+    - composer update --prefer-source
+
+script:
+    - if [[ "$TRAVIS_PULL_REQUEST" = "false" ]]; then ./bin/deploy-gh-pages.sh; fi
