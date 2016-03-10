@@ -9,5 +9,6 @@ class SculpinKernel extends AbstractKernel
      */
     protected function getAdditionalSculpinBundles()
     {
+        return [];
     }
 }
