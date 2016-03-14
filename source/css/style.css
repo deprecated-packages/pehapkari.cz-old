@@ -4,8 +4,15 @@ body {
 }
 
 #companies {
-    font-size: 1.7em;
     margin-bottom: 0.9em;
+}
+
+#companies .city {
+    font-size: 2em;
+    line-height: 2.3em;
+    color: #8CD02C;
+    font-weight: bold;
+    margin-top: .6em;
 }
 
 p {
