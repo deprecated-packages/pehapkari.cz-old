@@ -2,5 +2,5 @@
 # via `site.*`. So for example, {{ site.title }} can be used
 # in a template to get the contents of the `title` key.
 title: Česká Symfony komunita
-
+url: "http://www.symfony.cz"
 google_analytics_tracking_id: "UA-46082345-1"
