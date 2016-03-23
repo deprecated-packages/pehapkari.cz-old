@@ -4,8 +4,15 @@ body {
 }
 
 #companies {
-    font-size: 1.7em;
     margin-bottom: 0.9em;
+}
+
+#companies .city {
+    font-size: 2em;
+    line-height: 2.3em;
+    color: #8CD02C;
+    font-weight: bold;
+    margin-top: .6em;
 }
 
 p {
@@ -116,11 +123,11 @@ h1 {
     padding: 3em 0;
 }
 
-.section:nth-child(odd) {
+.section:nth-child(even) {
     background: #f5f5f5;
 }
 
-.section:nth-child(even) {
+.section:nth-child(odd) {
     background: #ffffff;
 }
 
@@ -203,8 +210,7 @@ footer div {
     }
 }
 
-#eshop iframe {
-    width: 100%;
-    height: 660px;
-    border: 0;
+#sponsor-logos img {
+    padding: 1.3em;
 }
+

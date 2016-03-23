@@ -1,0 +1,193 @@
+---
+layout: default
+---
+
+{% block content %}
+
+<div class="section">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <h2>
+                    <em class="fa fa-map-o fa-fw"></em>
+                    &nbsp;
+                    Přehled českých firem
+                </h2>
+
+                <div id="companies">
+                    <p>
+                        I když nejsou všechny vidět, v českých vodách <strong>roste spousta solidních Symfony firem</strong>.<br>
+                        A to nejen v Praze a Brně.
+                    </p>
+
+                    {%  block addButton %}
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <em class="fa fa-fw fa-code-fork"></em>
+                            Ještě tu nejste?
+                            <a href="https://github.com/Symfonisti/symfonycz.github.io/edit/master/prehled-cesky-firem.twig">Přidejte se</a>
+                        </div>
+                    </div>
+                    {% endblock %}
+
+                    <!--
+                        Nejdřív podle města
+                        a pak abecedně prosím ...
+                    -->
+
+                    <div class="city">
+                        <em class="fa fa-fw fa-map-marker"></em>
+                        Praha
+                    </div>
+
+                    <p>
+                        <a href="http://www.aaaauto.cz/">AAA Auto</a>,
+                        <a href="http://www.aquadigital.cz/">Aqua Digital</a>,
+                        <a href="https://www.bonami.cz/">Bonami</a>,
+                        <a href="http://www.cdn77.com/">Cdn77.com</a>,
+                        <a href="http://www.certicon.cz/">Certicon</a> + pobočka v Plzni a Ostravě,
+                        <a href="http://www.dalten.cz/">DALTEN media</a>,
+                        <a href="http://www.designeo.cz/">Designeo</a>,
+                        <a href="http://www.etnetera.cz/">Etnetera</a>,
+                        <a href="https://www.erudio.cz/">Erudio</a>,
+                        <a href="http://expensa.cz/">Expensa</a>,
+                        <a href="http://www.gods.cz/">Gods</a>,
+                        <a href="http://hps-ww.com/">HPS Prague</a>,
+                        <a href="http://www.collabim.cz/">Collabim</a>,
+                        <a href="http://www.blueghost.cz/">BlueGhost</a>,
+                        <a href="http://www.imatic.cz/">Imatic</a>,
+                        <a href="http://www.itlab.cz/">IT lab</a>,
+                        <a href="http://www.jobs.cz/">Jobs</a>,
+                        <a href="https://www.keboola.com/">Keboola</a>,
+                        <a href="http://www.keenswh.com/">Keen Software House</a>,
+                        <a href="https://www.lavito.cz/">Lavito</a>,
+                        <a href="http://www.lmc.eu/">LMC</a>,
+                        <a href="http://www.myps.cz/">MYPS</a>,
+                        <a href="https://www.neternity.cz">Neternity</a>,
+                        <a href="http://www.prace.cz/">Práce</a>,
+                        <a href="http://www.proholding.cz/">Pro Holding CZ</a>,
+                        <a href="http://www.seduo.cz/">Seduo</a>,
+                        <a href="http://www.sepiasoft.cz/">SEPIA SOFT</a>,
+                        <a href="http://www.sevendesign.cz/">sevendesign</a>,
+                        <a href="http://www.shipito.com/">Shipito</a>,
+                        <a href="http://www.shopio.cz/">Shopio</a>,
+                        <a href="http://www.sii.cz/">SII</a>,
+                        <a href="http://www.skrz.cz/">Skrz</a>,
+                        <a href="https://www.sourcefabric.org/">Sourcefabric</a>,
+                        <a href="http://www.symbiodigital.com/">Symbiodigital</a> + pobočka v Pardubicích,
+                        <a href="http://tomatom.cz/">TomAtom</a>,
+                        <a href="http://usertechnologies.com/">Usertech</a>,
+                        <a href="http://usetreno.cz/">Ušetřeno</a>,
+                        <a href="http://muj.vodafone.cz/">Vodafone</a>,
+                        <a href="http://www.zoot.cz/">Zoot</a>,
+                    </p>
+
+                    <div class="city">
+                        <em class="fa fa-fw fa-map-marker"></em>
+                        Brno
+                    </div>
+                    <p>
+                        <a href="http://www.appnostic.com/">Appnostic</a>,
+                        <a href="http://dixonsretailssc.cz/">Dixons Retail</a>,
+                        <a href="http://www.cleverlance.cz/">Cleverlance</a>,
+                        <a href="http://www.cognito.cz/">Cognito</a>,
+                        <a href="http://www.itstudio.cz/">ITStudio</a>,
+                        <a href="http://www.proofreason.com/">Proof&amp;Reason</a> + pobočka v Praze,
+                        <a href="http://www.rasoftware.cz/">RA software</a>,
+                        <a href="http://techfides.cz">TechFides Solutions</a>,
+                        <a href="http://vanio.cz/">Vanio.cz</a>,
+                        <a href="http://www.vasenaroky.cz/">VašeNároky.cz</a>
+                    </p>
+
+                    <div class="city">
+                        <em class="fa fa-fw fa-map-marker"></em>
+                        Ostrava
+                    </div>
+                    <p>
+                        <a href="http://www.netnotes.cz/">NET.Notes</a>,
+                        <a href="https://www.shopsys.cz/">ShopSys</a> + pobočka v Praze
+                    </p>
+
+                    <div class="city">
+                        <em class="fa fa-fw fa-map-marker"></em>
+                        Plzeň
+                    </div>
+                    <p>
+                        <a href="http://www.bartonstudio.cz/">Barton Studio</a> + pobočka v Praze
+                    </p>
+
+                    <div class="city">
+                        <em class="fa fa-fw fa-map-marker"></em>
+                        Hradec Králové
+                    </div>
+                    <p>
+                        <a href="http://www.hanaboso.com/">Hanaboso</a>
+                    </p>
+
+                    <div class="city">
+                        <em class="fa fa-fw fa-map-marker"></em>
+                        České Budějovice
+                    </div>
+                    <p>
+                        <a href="http://www.edgedesign.cz/">Edgedesign</a>,
+                        <a href="http://www.nexgen.cz/">NexGen IT</a>
+                    </p>
+
+                    <div class="city">
+                        <em class="fa fa-fw fa-map-marker"></em>
+                        Pardubice
+                    </div>
+                    <p>
+                        <a href="http://www.digitalsolutions.cz/">Digital Solutions</a>
+                    </p>
+
+                    <div class="city">
+                        <em class="fa fa-fw fa-map-marker"></em>
+                        Zlín
+                    </div>
+                    <p>
+                        <a href="http://www.madeo.cz/">madeo interactive</a> + pobočka v Bratislavě,
+                        <a href="http://www.pria.cz/">Pria</a>
+                    </p>
+
+                    <div class="city">
+                        <em class="fa fa-fw fa-map-marker"></em>
+                        Český Krumlov
+                    </div>
+                    <p>
+                        <a href="http://netmagnet.cz/">Net Magnet</a> (možná přidat k ČB)
+                    </p>
+
+                    <div class="city">
+                        <em class="fa fa-fw fa-map-marker"></em>
+                        Jindřichův Hradec
+                    </div>
+                    <p>
+                        <a href="http://www.viso.cz/">VISO TRADE</a>
+                    </p>
+
+                    <div class="city">
+                        <em class="fa fa-fw fa-map-marker"></em>
+                        Staré Hradiště
+                    </div>
+                    <p>
+                        <a href="http://supportbox.cz/">SupportBox</a>
+                    </p>
+
+                    <div class="city">
+                        <em class="fa fa-fw fa-map-marker"></em>
+                        Hranice
+                    </div>
+                    <p>
+                        <a href="http://www.cambit.cz/">Cambit</a>
+                    </p>
+                </div>
+
+                <br>
+                {{ block('addButton') }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
