@@ -213,6 +213,10 @@ footer div {
     padding: 1.3em;
 }
 
+#sponsor-logos a:hover {
+    text-decoration: none;
+}
+
 a img {
     opacity: 1;
     transition: opacity .2s;
