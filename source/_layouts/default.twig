@@ -49,15 +49,17 @@
                         <a href="/">Česká Symfony komunita</a>
                     </h1>
 
-                    <p>
-                        Programuješ se Symfony nebo po něm zvědavě pokujuješ?
-                        <br>
-                        Chceš vědět, kdy a kde bude další <strong>sraz přátel Symfony </strong>?
-                        <br>
-                        Nebo chceš najít práci, zeptat se nebo nás sponzorovat?
-                    </p>
+                    {% if page.subpage == false %}
+                        <p>
+                            Programuješ se Symfony nebo po něm zvědavě pokujuješ?
+                            <br>
+                            Chceš vědět, kdy a kde bude další <strong>sraz přátel Symfony </strong>?
+                            <br>
+                            Nebo chceš najít práci, zeptat se nebo nás sponzorovat?
+                        </p>
 
-                    <p>Tak to jsi tu správně!</p>
+                        <p>Tak to jsi tu správně!</p>
+                    {% endif %}
                 </div>
             </div>
         </header>
@@ -68,13 +70,13 @@
 
         <footer>
             <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-left">
-                        <small>
-                            <a href="http://www.symfony.com">Symfony</a> is a trademark of Fabien Potencier. All rights reserved.
-                        </small>
-                    </div>
-                </div>
+                <p>
+                    Našel jsi nám chybku? Díky! <a href="https://github.com/Symfonisti/symfony.cz/edit/master/source{{  page.subpage ? page.url : '/index' }}.twig">Oprav nám ji</a>, prosím.
+                </p>
+
+                <p>
+                    <a href="http://www.symfony.com">Symfony</a> is a trademark of Fabien Potencier. All rights reserved.
+                </p>
             </div>
         </footer>
 
