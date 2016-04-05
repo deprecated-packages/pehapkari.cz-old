@@ -9,10 +9,10 @@ body {
 
 #companies .city, #sponsors h3 {
     font-size: 2em;
-    line-height: 2.3em;
+    line-height: 1.3em;
     color: #8CD02C;
     font-weight: bold;
-    margin-top: .6em;
+    margin: .9em auto .7em;
 }
 
 p {
