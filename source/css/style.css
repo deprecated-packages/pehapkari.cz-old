@@ -231,3 +231,7 @@ a:hover img {
     margin: 2em 0;
     font-size: 1.3em;
 }
+
+.btn {
+    font-size: 1em;
+}
