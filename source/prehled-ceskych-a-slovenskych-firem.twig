@@ -3,6 +3,16 @@ layout: default
 subpage: true
 ---
 
+{% block addButton %}
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <em class="fa fa-fw fa-code-fork"></em>
+            Ještě tu nejste?
+            <a href="https://github.com/Symfonisti/symfony.cz/edit/master/source/prehled-ceskych-firem.twig">Přidejte se</a>
+        </div>
+    </div>
+{% endblock %}
+
 {% block content %}
 
 <div class="section">
@@ -15,21 +25,13 @@ subpage: true
                     Přehled českých firem
                 </h2>
 
-                <div id="companies">
+                <div class="companies">
                     <p>
                         I když nejsou všechny vidět, v českých vodách <strong>roste spousta solidních Symfony firem</strong>.<br>
                         A to nejen v Praze a Brně.
                     </p>
 
-                    {%  block addButton %}
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <em class="fa fa-fw fa-code-fork"></em>
-                            Ještě tu nejste?
-                            <a href="https://github.com/Symfonisti/symfony.cz/edit/master/source/prehled-ceskych-firem.twig">Přidejte se</a>
-                        </div>
-                    </div>
-                    {% endblock %}
+                    {{ block('addButton') }}
 
                     <!--
                         Nejdřív podle města
@@ -191,6 +193,53 @@ subpage: true
                         <a href="http://www.cambit.cz/">Cambit</a>
                     </p>
                 </div>
+
+                <h2>
+                    <em class="fa fa-map-o fa-fw"></em>
+                    &nbsp;
+                    Přehled slovenských firem
+                </h2>
+
+                <div class="companies">
+
+                    {{ block('addButton') }}
+
+                    <div class="city">
+                        <em class="fa fa-fw fa-map-marker"></em>
+                        Bardejov
+                    </div>
+                    <p>
+                        <a href="http://www.netecco.com/">NETECCO</a>
+                    </p>
+
+                    <div class="city">
+                        <em class="fa fa-fw fa-map-marker"></em>
+                        Bratislava
+                    </div>
+                    <p>
+                        <a href="http://www.bait.sk/">BAIT</a>,
+                        <a href="http://www.exprestlac.sk/">exprestlac.sk</a>,
+                        <a href="http://www.touch4it.sk/">Touch4IT</a>
+                    </p>
+
+                    <div class="city">
+                        <em class="fa fa-fw fa-map-marker"></em>
+                        Košice
+                    </div>
+                    <p>
+                        <a href="https://www.wirecard.com/">wirecard</a>
+                    </p>
+
+                    <div class="city">
+                        <em class="fa fa-fw fa-map-marker"></em>
+                        Nitra
+                    </div>
+                    <p>
+                        <a href="http://hackergeist.sk/">Hackergeist</a>
+                    </p>
+
+                </div>
+
 
                 <br>
                 {{ block('addButton') }}
