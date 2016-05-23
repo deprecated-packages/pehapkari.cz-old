@@ -3,11 +3,11 @@ body {
     font-size: 18px;
 }
 
-#companies {
+.companies {
     margin-bottom: 0.9em;
 }
 
-#companies .city, #sponsors h3 {
+.companies .city, #sponsors h3 {
     font-size: 2em;
     line-height: 1.3em;
     color: #8CD02C;
