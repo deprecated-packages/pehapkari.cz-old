@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <title>{{ site.title }}</title>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Oficiální stránky Symfony komunity">
+        <meta name="keywords" content="Symfony, PHP, komunita, programování">
+        <meta name="author" content="http://www.symfony.cz">
+        <meta name="robots" content="index, follow">
+        <meta property="og:image" content="images/symfony-square.png">
+
+        {# fonts #}
+        <link href="http://fonts.googleapis.com/css?family=Exo+2:400,300,100,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+        {# css #}
+        <link href="{{ site.url }}/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ site.url }}/css/style.css" rel="stylesheet">
+
+        <link href="{{ site.url }}/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="{{ site.url }}/favicon.ico" rel="shortcut icon">
+
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+
+        <!-- Facebook Pixel Code -->
+        <script>
+            !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+                n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+                t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+                    document,'script','//connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '201338863559186');
+            fbq('track', "PageView");</script>
+        <noscript><img height="1" width="1" style="display:none"
+                       src="https://www.facebook.com/tr?id=201338863559186&ev=PageView&noscript=1"
+            /></noscript>
+        <!-- End Facebook Pixel Code -->
+    </head>
+
+    <body class="index">
+        <header>
+            <div class="container">
+                <div class="intro-text">
+                    <h1>
+                        <img src="{{ site.url }}/images/symfony-square-image-white.png" id="headline-logo" class="hidden-xs" alt="Symfony">
+                        <a href="/">Symfony komunita</a>
+                    </h1>
+
+                    {% if page.subpage == false %}
+                        <p>
+                            Programuješ se Symfony nebo po něm zvědavě pokujuješ?
+                            <br>
+                            Chceš vědět, kdy a kde bude další <strong>sraz přátel Symfony</strong>?
+                            <br>
+                            Chceš najít práci, programátory nebo se chceš Symfony naučit?
+                        </p>
+
+                        <p>Tak to jsi tu správně!</p>
+                    {% endif %}
+                </div>
+            </div>
+        </header>
+
+        {% block content_wrapper %}
+            {% block content %}{% endblock %}
+        {% endblock %}
+
+        <footer>
+            <div class="container">
+                <p>
+                    Našel jsi nám chybku? Díky! <a href="https://github.com/Symfonisti/symfony.cz/edit/master/source{{  page.subpage ? page.url : '/index' }}.twig">Oprav nám ji</a>, prosím.
+                </p>
+
+                <p>
+                    <a href="http://www.symfony.com">Symfony</a> is a trademark of Fabien Potencier. All rights reserved.
+                </p>
+            </div>
+        </footer>
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-66556646-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </body>
+</html>

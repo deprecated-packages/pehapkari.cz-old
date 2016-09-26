@@ -1,0 +1,201 @@
+body {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 18px;
+}
+
+#companies {
+    font-size: 1.7em;
+    margin-bottom: 0.9em;
+}
+
+p {
+    line-height: 1.75;
+}
+
+ul li {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.bigger {
+    font-size: 1.2em;
+}
+
+.smaller {
+    font-size: 0.8em;
+}
+
+a, a:hover, a:focus, a:active, a.active {
+    outline: 0;
+}
+
+a {
+    color: #08c;
+    text-decoration: none;
+}
+
+a:hover, a:focus, a:active, a.active {
+    color: #0af;
+    text-decoration: underline;
+}
+
+header a,
+header a:focus,
+header a:active {
+    color: #fff;
+    text-decoration: underline;
+}
+
+header p {
+    font-size: 1.4em;
+    line-height: 2.1em;
+}
+
+#headline-logo {
+    width: 350px;
+    margin-top: -1em;
+    margin-bottom: 2em;
+}
+
+
+#dates {
+    margin: 2em 0 2.5em;
+}
+
+#dates div {
+    font-size: 1.4em;
+    margin-bottom: 1em;
+}
+
+#dates div a {
+    line-height: 1em;
+    font-size: 1.5em;
+}
+
+#dates div .date {
+    line-height: 2em;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+#dates div .spot {
+    width: 24px;
+    height: 24px;
+    background: center center url("../img/symfony-square-small.png") no-repeat;
+    margin: .3em auto 0 auto;
+}
+
+header {
+    text-align: center;
+    color: #fff;
+    background: center center url("../img/header-pivo-bg.jpg") no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+header .intro-text {
+    font-size: 1em;
+    padding: 5em 0;
+}
+
+h1 {
+    margin-bottom: 1em;
+    text-transform: uppercase;
+    font-size: 3.6em;
+    line-height: 1em;
+}
+
+.section {
+    padding: 3em 0;
+}
+
+.section:nth-child(odd) {
+    background: #f5f5f5;
+}
+
+.section:nth-child(even) {
+    background: #ffffff;
+}
+
+h2 {
+    margin-bottom: .8em;
+    font-size: 3em;
+    color: #8CD02C;
+}
+
+footer {
+    color: beige;
+    padding: 1em 0;
+    background: #18171b;
+    font-size: .8em;
+}
+
+::-moz-selection {
+    text-shadow: none;
+    background: #8CD02C;
+}
+
+::selection {
+    text-shadow: none;
+    background: #8CD02C;
+}
+
+img::selection {
+    background: 0 0;
+}
+
+img::-moz-selection {
+    background: 0 0;
+}
+
+h2::-moz-selection {
+    background: #373a3c;
+}
+
+h2::selection {
+    background: #373a3c;
+}
+
+.text-center .img-responsive {
+    margin: 0 auto;
+}
+
+.mw-300 {
+    max-width: 300px;
+}
+
+.black {
+    color: black;
+}
+
+a.black:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+footer * {
+    text-align: center !important;
+}
+
+footer div {
+    margin-bottom: 15px;
+}
+
+#icons {
+    text-align: left;
+    line-height: 2.3em;
+}
+
+@media (max-width: 992px) {
+    h1 {
+        font-size: 3em;
+    }
+
+    h2 {
+        font-size: 2.3em;
+    }
+}
+
