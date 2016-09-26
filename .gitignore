@@ -1,8 +1,3 @@
-/.sculpin
-/output_dev
-/output_prod
-/var/cache
-/var/log
+/output
 /vendor
 composer.lock
-sculpin.lock
