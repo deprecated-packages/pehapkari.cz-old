@@ -6,21 +6,21 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Oficiální stránky Symfony komunity">
-        <meta name="keywords" content="Symfony, PHP, komunita, programování">
-        <meta name="author" content="http://www.symfony.cz">
+        <meta name="description" content="Oficiální stránky PHP komunity">
+        <meta name="keywords" content="PHP, komunita, programování">
+        <meta name="author" content="http://pehapkari.cz">
         <meta name="robots" content="index, follow">
-        <meta property="og:image" content="images/symfony-square.png">
+        <meta property="og:image" content="images/php-square.png">
 
-        {# fonts #}
-        <link href="http://fonts.googleapis.com/css?family=Exo+2:400,300,100,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        {# verify html #}
+        <meta name="google-site-verification" content="Ud43Nzds0JtHAlgRzCyt5J3o45ad_KTMC6jgjePrx7U" />
 
         {# css #}
-        <link href="{{ site.url }}/css/bootstrap.min.css" rel="stylesheet">
-        <link href="{{ site.url }}/css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="/assets/css/style.css" rel="stylesheet">
 
-        <link href="{{ site.url }}/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <link href="{{ site.url }}/favicon.ico" rel="shortcut icon">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+        <link href="/favicon.ico" rel="shortcut icon">
 
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
@@ -45,24 +45,17 @@
             <div class="container">
                 <div class="intro-text">
                     <h1>
-                        <img src="{{ site.url }}/images/symfony-square-image-white.png" id="headline-logo" class="hidden-xs" alt="Symfony">
-                        <a href="/">Symfony komunita</a>
+                        <a href="/">PéHáPkaři</a>
                     </h1>
 
-                    {% if page.subpage == false %}
-                        <p>
-                            Programuješ se Symfony nebo po něm zvědavě pokujuješ?
-                            <br>
-                            Chceš vědět, kdy a kde bude další <strong>sraz přátel Symfony</strong>?
-                            <br>
-                            Chceš najít práci, programátory nebo se chceš Symfony naučit?
-                        </p>
-
-                        <p>Tak to jsi tu správně!</p>
-                    {% endif %}
+                    <p>
+                        Děláš v PHP? Jsi jedním z nás!
+                    </p>
                 </div>
             </div>
         </header>
+
+        <a href="/blog">BLOG</a>
 
         {% block content_wrapper %}
             {% block content %}{% endblock %}
@@ -70,13 +63,31 @@
 
         <footer>
             <div class="container">
-                <p>
-                    Našel jsi nám chybku? Díky! <a href="https://github.com/Symfonisti/symfony.cz/edit/master/source{{  page.subpage ? page.url : '/index' }}.twig">Oprav nám ji</a>, prosím.
-                </p>
+                <h3>Nejsme v tom sami</h3>
+
+                <p>S rozvojem nám pomáhají</p>
+
+                <div id="sponsor-logos">
+                    <a href="http://www.shopsys.cz">
+                        <img src="/assets/images/sponsors/shopsys.png">
+                    </a>
+                    <a href="http://www.jebrains.cz">
+                        <img src="/assets/images/sponsors/jetbrains.png">
+                    </a>
+                    <a href="http://www.rosti.cz">
+                        <img src="/assets/images/sponsors/rosti.png">
+                    </a>
+                </div>
 
                 <p>
-                    <a href="http://www.symfony.com">Symfony</a> is a trademark of Fabien Potencier. All rights reserved.
+                    Chcete si s námi něco začít? Napište nám na <a href="mailto:tomas@pehapkari.cz">tomas@pehpkari.cz</a>
                 </p>
+
+                {# turn to slider on top right? #}
+                {#<p>#}
+                    {#Našel jsi nám chybku? Díky! <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source{{#}
+                    {#page.subpage ? page.url : '/index' }}.twig">Oprav nám ji</a>, prosím.#}
+                {#</p>#}
             </div>
         </footer>
 

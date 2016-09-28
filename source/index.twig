@@ -5,7 +5,41 @@ layout: default
 {% block content %}
 
 <div class="section">
-    <div class="container" id="meetups">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <h3>Nette</h3>
+
+                garant? Tomáš Votruba
+
+                <ul>
+                    <li>gitter</li>
+                    <li>nette forum</li>
+                </ul>
+            </div>
+            <div class="col-md-4 text-center">
+                <h3>Symfony</h3>
+
+                <ul>
+                    <li>gitter</li>
+                    <li>stack overflow</li>
+                </ul>
+
+                garant? Honza Černý
+            </div>
+            <div class="col-md-4 text-center">
+                čisté PHP
+
+                Tomáš ...?
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="section">
+    <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2>
@@ -19,8 +53,63 @@ layout: default
                 <p>
                     Na každém srazu zazní 2-3 přednášky z praxe. Během večera tak poznáš hned několik nových technologií.
                     <br>
-                    Uniklo ti něco? <a href="https://www.youtube.com/symfonisti">Mrkni na záznamy na Youtube</a>.
+                    Uniklo ti něco? <a href="https://www.youtube.com/pehapkari">Mrkni na záznamy na Youtube</a>.
                 </p>
+
+                <div class="row">
+                    <div class="col-md-2">
+                        <h3>Praha</h3>
+
+                        <ul>
+                            <li>prostory a program řeší Tomáš Votruba</li>
+                            <li>moderuje Ondra Machulda</li>
+                            <li>natáčí a stříha Martin Zeman</li>
+                            <li>nálepky a rollupy vozí Dennis Fridrich</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2">
+                        <h3>Ostrava</h3>
+
+                        <ul>
+                            <li>Matěj Kapošváry</li>
+                            <li>Shopsys.cz</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2">
+                        <h3>Brno</h3>
+
+                        <ul>
+                            <li>Martin Mayer</li>
+                            <li>Pavel Rozehnal</li>
+                            <li>Martin Hasoň</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2">
+                        <h3>Hradek Králové</h3>
+
+                        <ul>
+                 i           <li>Milan Šulc</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2">
+                        <h3>Pardubice</h3>
+
+                        <ul>
+                            <li>Filip...</li>
+                            <li>Digital Solutions.cz</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2">
+                        <h3>České Budějovice</h3>
+
+                        <ul>
+                            <li>Nikol Ježková</li>
+                        </ul>
+                    </div>
+                </div>
+
+                Cheš založit ve vlastním městě, napiš tomas
+                Chceš se přidat, napiš organizátorovi :)
 
                 <br>
 
@@ -31,42 +120,6 @@ layout: default
                 <p>
                     To se včas dozvíš na <a href="https://www.facebook.com/symfonisti/">Facebooku</a> nebo <a href="http://twitter.com/symfonisti">@symfonisti</a>
                 </p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h2>
-                    <em class="fa fa-fw fa-heart"></em>
-                    Rosteme díky našim partnerům
-                </h2>
-
-                <div id="sponsor-logos">
-                    <a href="http://lmc.eu">
-                        <img src="{{ site.url }}/images/sponsors/lmc.png">
-                    </a>
-                    <a href="http://skrz.cz">
-                        <img src="{{ site.url }}/images/sponsors/skrz.png">
-                    </a>
-                    <a href="http://www.shopsys.cz">
-                        <img src="{{ site.url }}/images/sponsors/shopsys.png">
-                    </a>
-                </div>
-
-                <br>
-
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <em class="fa fa-thumbs-o-up fa-fw"></em>
-                        Máte taky zájem o partnerství?
-                        Máme pro vás <a href="{{ site.url }}/stante-se-partnerem">několik možností</a>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
@@ -120,17 +173,6 @@ layout: default
 </div>
 
 <div class="section">
-    <div class="container">
-        <div class="row text-center">
-            <h2>
-                <em class="fa fa-fw fa-train"></em>
-                <a href="{{ site.url }}/prehled-firem-podle-mest">Které firmy už jedou na Symfony</a>
-            </h2>
-        </div>
-    </div>
-</div>
-
-<div class="section">
     <a name="newsletter"></a>
     <div class="container">
         <div class="row">
@@ -143,7 +185,7 @@ layout: default
                 <div class="row text-center">
                     <div class="col-md-8 col-md-offset-2">
                         <p>
-                            <a href="http://bit.ly/mesicnik-pro-symfonisty" class="btn btn-success">
+                            <a href="http://bit.ly/mesicnik-pro-pehapkare" class="btn btn-success">
                                 Odebírej newsletter
                                 <em class="fa fa-fw fa-angle-double-right"></em>
                             </a>
@@ -152,42 +194,21 @@ layout: default
                         <br>
 
                         <p>
-                            Dozvíš se, co se děje u nás kolem PHP a kam komunita směřuje.
+                            Dozvíš se, co se děje u nás kolem PHP a srhneme ti přednášky, které jsi nestihl.
                             <br>
-                            Nudit se nebudeš: už jsme soutěžili o <a href="https://twitter.com/vaclavpavek/status/757616431727017984">Symfony slona</a> a PHPStorm licenci.
+                            Nudit se nebudeš: už jsme <strong>soutěžili</strong> o
+                            <a href="https://twitter.com/vaclavpavek/status/757616431727017984">Symfony slona</a>,
+                            knížku <a href="https://leanpub.com/principles-of-package-design">Priciples of Package</a>
+                            a PHPStorm licence.
                         </p>
 
                         <h3>
                             Posuď sám &ndash; mrkni na starší čísla
                         </h3>
 
-                        {#<div class="text-center">#}
-                            <script language="javascript" src="//tomasvotruba.us8.list-manage.com/generate-js/?u=dcf4beafc191796bf6c47321f&fid=14029&show=10" type="text/javascript"></script>
-                        {#</div>#}
+                        <script language="javascript" src="//tomasvotruba.us8.list-manage.com/generate-js/?u=dcf4beafc191796bf6c47321f&fid=14029&show=10" type="text/javascript"></script>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h2>
-                    <em class="fa fa-fw fa-keyboard-o"></em>
-                    Napiš nám
-                </h2>
-
-                <p>
-                    Chceš se taky přidat nebo nás podpořit?
-                </p>
-
-                <p>
-                    <a href="https://www.facebook.com/symfonisti">Napiš nám na FB</a>
-                    nebo pošli <a href="mailto:info@symfony.cz">email na info@symfony.cz</a>.
-                </p>
             </div>
         </div>
     </div>
