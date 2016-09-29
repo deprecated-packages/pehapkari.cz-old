@@ -1,18 +1,18 @@
 language: php
 
-php: 7.0
-
-branches:
-    only:
-        - master
+php: 7.1
 
 env:
+    # go to: Gitub User => Settings => Personal Access Token => Generate New Token
+    # select "Repo" scope
+    # run in shell in git root: travis encrypt GH_TOKEN=<code>
+
+    # if repo is not recognized by travis api, go to https://travis-ci.org/<repository-slug>, like githu.com/<repository-slug>
+    # and add it there; like you do when you want to run tests on some repository
     global:
-        - secure: uB2LNGTgU6fjjfpLVOXN2kgdJ4lcFirg9KqytJkSeTxIYTRaysmsEaPZzO+I/CqTr5FcKwMVXAHM63zqD7etIyaNHkTHqYkjZIz/vbgsqPOEZtrNNvCh8mmbEHi3bhYAIDy+zh/IeWKvfyAqwT/nGHFxAh9kqh40RaAXA3QUbQJa0p0Vy1PKkMW0KyfSoHSCZ+ASiYDRa2JhVQuSYmzDaA45KMq8MVsKYvn46wiyPWHtERTjvc7Np0q5nxUpPb0qBFMYlcPmhfa3bb/+Mw5+PpWg3QpBA9lBV5kHOcbM3Jwbp+WCFiNDz9imF1rWPmzMfGyYaRVtiPMRNExDytaS0mxvzbHUaLkFynWKX4V84ULIOMUiUeWSaAY9ehk74LIt79szBjMKLLcqFJyjeeBLDzxY1jQjoBM79C4pjJzIYOcTh6tQc53t1EMJUCQWtUmIldAPmb7s6FoOsR4Kw6V7a5qYeuab6tu/Y7Uosgssm17FyW+bFvQMMzsoYM5zzSoa7PMizE1caVDUh6gUx2l7HvNSTZk3sdW3lgju8Ey44t34RIPMD1jH3eYFi2kK7aesm+dgEYkVmZloDJ3Fyrhg8sHyY+meRZ0/85V1NsUpC41Gk36ajGi27w33zUwGLrj2Mp/+0PRsVt8uEKeDPgmFgdnTtURPTykCqxpa8jOUjp4=
+        - secure: XlpJL/8eke9LX831DFKDi2CHomqxZxXM1+Z4QY6AoPmiq0CHpBSYk62GbNooSjDHwsTjEeDBHEextZPWtMhXbTJG71V7eYXY2p3NfSuYVjUTBPy1sfiJX2anYv1uV8WU8tmQqF3aIQ/tYLLRiBIYdkskewpFYdcdvht5E3baajcVneGqKXAIXrYMg7zkpBoNvDG2X0ex2LyFjDiqIdBZM8CUioCVt6IxovhtsyiQicuAovghCN7lmCWh/Klj8lDKi1FzjZ6xYZoWzrzbguLJRqxxrJXbx1f2JZAYixiRE3vOIyJLWnDgv2/GRlFbsCuuWGF55P4oSeXGArButYHJz3GDWCX+CAlgsBvGcFAdwrK5T3hNo7jRTzjnCSaXHiN/dUUFTAyFvqvAJQSBg7OoUpw5yJSOO9Yu1IMMyoUkzfWr5ZwcznMRPUtWvlo80CDAgDb1Vm9a6gY+qvIR2Aju5mg9e0tFEd8kSVT9Q634dPHtD/KEy/bu1RIoM4eHKc+9VKGWtaL0md0bk62ULsn/X97l5dMQvkURWTgicWaMhgW4BX4IKMOrGmGCb20ssOOAJf3eFvdwf0k78sUF8YGVAXSqDeuBuEaf3SB87FQd7ZGsnEJTWRdVAuRwGhduC7+QiR3d7kjk95YLcpNDdZUbE8dq5JvAUX5FIN/N9GdMF4A=
 
 before_script:
-    - phpenv config-rm xdebug.ini
-    - composer self-update
     - composer update --prefer-source
 
 script:

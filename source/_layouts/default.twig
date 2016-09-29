@@ -6,21 +6,21 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Oficiální stránky Symfony komunity">
-        <meta name="keywords" content="Symfony, PHP, komunita, programování">
-        <meta name="author" content="http://www.symfony.cz">
+        <meta name="description" content="Oficiální stránky PHP komunity">
+        <meta name="keywords" content="PHP, komunita, programování">
+        <meta name="author" content="http://pehapkari.cz">
         <meta name="robots" content="index, follow">
-        <meta property="og:image" content="images/symfony-square.png">
+        <meta property="og:image" content="images/php-square.png">
 
-        {# fonts #}
-        <link href="http://fonts.googleapis.com/css?family=Exo+2:400,300,100,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        {# verify html #}
+        <meta name="google-site-verification" content="Ud43Nzds0JtHAlgRzCyt5J3o45ad_KTMC6jgjePrx7U" />
 
         {# css #}
-        <link href="{{ site.url }}/css/bootstrap.min.css" rel="stylesheet">
-        <link href="{{ site.url }}/css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css">
+        <link href="/assets/css/style.css" rel="stylesheet">
 
-        <link href="{{ site.url }}/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <link href="{{ site.url }}/favicon.ico" rel="shortcut icon">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+        <link href="/favicon.ico" rel="shortcut icon">
 
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
@@ -40,44 +40,51 @@
         <!-- End Facebook Pixel Code -->
     </head>
 
-    <body class="index">
+    <body>
         <header>
-            <div class="container">
-                <div class="intro-text">
-                    <h1>
-                        <img src="{{ site.url }}/images/symfony-square-image-white.png" id="headline-logo" class="hidden-xs" alt="Symfony">
-                        <a href="/">Symfony komunita</a>
-                    </h1>
-
-                    {% if page.subpage == false %}
-                        <p>
-                            Programuješ se Symfony nebo po něm zvědavě pokujuješ?
-                            <br>
-                            Chceš vědět, kdy a kde bude další <strong>sraz přátel Symfony</strong>?
-                            <br>
-                            Chceš najít práci, programátory nebo se chceš Symfony naučit?
-                        </p>
-
-                        <p>Tak to jsi tu správně!</p>
-                    {% endif %}
-                </div>
-            </div>
+            <h1>
+                <a href="/">Děláš v PHP?<br>Jsi jedním z nás</a>
+            </h1>
         </header>
 
         {% block content_wrapper %}
             {% block content %}{% endblock %}
         {% endblock %}
 
+        <div class="section intermezzo">
+            <div class="container">
+                <div class="row">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+
         <footer>
             <div class="container">
-                <p>
-                    Našel jsi nám chybku? Díky! <a href="https://github.com/Symfonisti/symfony.cz/edit/master/source{{  page.subpage ? page.url : '/index' }}.twig">Oprav nám ji</a>, prosím.
-                </p>
+                <h2 class="text-center">
+                    <em class="fa fa-hand-peace-o fa-fw"></em>
+                    Děkujeme za podporu
+                </h2>
 
-                <p>
-                    <a href="http://www.symfony.com">Symfony</a> is a trademark of Fabien Potencier. All rights reserved.
-                </p>
-            </div>
+                <div id="sponsor-logos" class="text-center row">
+                    <a href="http://www.shopsys.cz">
+                        <img src="/assets/images/sponsors/shopsys.png">
+                    </a>
+                    <a href="http://www.jebrains.cz">
+                        <img src="/assets/images/sponsors/jetbrains.png">
+                    </a>
+                    <a href="http://www.rosti.cz">
+                        <img src="/assets/images/sponsors/rosti.png">
+                    </a>
+
+                    <br>
+
+                    <p>
+                        Chceš se přidat k našim sponzorům? Napiš nám na <a href="mailto:tomas@pehapkari.cz">tomas@pehpkari.cz</a>
+                    </p>
+                </div>
+
+           </div>
         </footer>
 
         <script>

@@ -1,0 +1,178 @@
+body {
+    font-family: 'Arial', sans-serif;
+    font-size: 17px;
+}
+
+h1, h2, h3 {
+    font-family: Verdana, Tahoma, Helvetica, sans-serif;
+}
+
+p {
+    line-height: 1.45em;
+}
+
+ul {
+    padding-left: 1.1em;
+}
+
+ul li {
+    padding: 0;
+    margin: 0;
+    line-height: 1.7em;
+}
+
+a, a:hover, a:focus, a:active, a.active {
+	outline: 0;
+}
+
+a {
+    color: #00A8C6;
+    text-decoration: none;
+}
+
+a:hover, a:focus, a:active, a.active {
+    color: #40C0CB;
+    text-decoration: underline;
+}
+
+header {
+    text-align: center;
+    background: #00A8C6;
+}
+
+header a, header a:focus, header a:active {
+	color: #F9F2E7;
+}
+
+header a:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+h1 {
+    font-size: 3.4em;
+    line-height: 1.5em;
+    padding: 1em 0;
+}
+
+
+.section {
+    padding: 3em 0;
+}
+
+.section.intermezzo {
+    padding: 1.5em 0;
+    background: #F9F2E7;
+    font-size: 1.2em;
+}
+
+h2 {
+    margin-bottom: .8em;
+    font-size: 2.7em;
+    color: #8FBE00;
+}
+
+h3 {
+    color: #8FBE00;
+}
+
+footer {
+    padding: 1em 0;
+}
+
+footer h3 {
+    /*color: beige;*/
+}
+
+::-moz-selection {
+    text-shadow: none;
+    background: #8FBE00;
+}
+
+::selection {
+    text-shadow: none;
+    background: #8FBE00;
+}
+
+img::selection {
+    background: 0 0;
+}
+
+img::-moz-selection {
+    background: 0 0;
+}
+
+h2::-moz-selection {
+    background: #373a3c;
+}
+
+h2::selection {
+    background: #373a3c;
+}
+
+.text-center .img-responsive {
+    margin: 0 auto;
+}
+
+a.black:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+@media (max-width: 992px) {
+    h1 {
+        font-size: 3em;
+    }
+
+    h2 {
+        font-size: 2.3em;
+    }
+}
+
+#sponsor-logos img {
+    padding: 1.3em;
+}
+
+#sponsor-logos a:hover {
+    text-decoration: none;
+}
+
+a {
+    transition: .2s;
+}
+
+a:hover {
+    transition: .3s;
+}
+
+a img {
+    opacity: 1;
+    transition: opacity .2s;
+}
+
+a:hover img {
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity .3s;
+}
+
+#sponsors #stats {
+    margin: 2em 0;
+    font-size: 1.3em;
+}
+
+.btn {
+    font-size: 1em;
+}
+
+.panel-heading {
+    font-size: 1.4em;
+}
+
+.panel-body {
+    padding: 1.5em;
+}
+
+#meetup-inivite img {
+    max-width: 100%;
+}
