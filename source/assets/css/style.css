@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    font-size: 18px;
+    font-size: 17px;
 }
 
 h1, h2, h3 {
@@ -8,20 +8,17 @@ h1, h2, h3 {
 }
 
 p {
-    line-height: 1.75;
+    line-height: 1.45em;
+}
+
+ul {
+    padding-left: 1.1em;
 }
 
 ul li {
     padding: 0;
     margin: 0;
-}
-
-.bigger {
-    font-size: 1.2em;
-}
-
-.smaller {
-    font-size: 0.8em;
+    line-height: 1.7em;
 }
 
 a, a:hover, a:focus, a:active, a.active {
@@ -38,57 +35,40 @@ a:hover, a:focus, a:active, a.active {
     text-decoration: underline;
 }
 
-header a,
-header a:focus,
-header a:active {
-	color: #fff;
-	text-decoration: underline;
-}
-
-header p {
-	font-size: 1.4em;
-	line-height: 2.1em;
-}
-
-#headline-logo {
-    width: 100px;
-    margin-right: .6em;
-}
-
 header {
     text-align: center;
-    color: #fff;
-    background: center center url("../images/header-bg.jpg") no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
+    background: #00A8C6;
 }
 
-header .intro-text {
-    font-size: 1em;
-    padding: 5em 0;
+header a, header a:focus, header a:active {
+	color: #F9F2E7;
+}
+
+header a:hover {
+    text-decoration: none;
+    color: #fff;
 }
 
 h1 {
-    margin-bottom: 1em;
-    text-transform: uppercase;
-    font-size: 3.6em;
-    line-height: 1em;
+    font-size: 3.4em;
+    line-height: 1.5em;
+    padding: 1em 0;
 }
+
 
 .section {
     padding: 3em 0;
-    border-bottom: 1em solid #F9F2E7;
 }
 
-.section:nth-child(odd), .section.white {
-    background: #ffffff;
+.section.intermezzo {
+    padding: 1.5em 0;
+    background: #F9F2E7;
+    font-size: 1.2em;
 }
 
 h2 {
     margin-bottom: .8em;
-    font-size: 3em;
+    font-size: 2.7em;
     color: #8FBE00;
 }
 
@@ -138,11 +118,6 @@ a.black:hover {
     text-decoration: underline;
 }
 
-#icons {
-    text-align: left;
-    line-height: 2.3em;
-}
-
 @media (max-width: 992px) {
     h1 {
         font-size: 3em;
@@ -179,4 +154,12 @@ a:hover img {
 
 .btn {
     font-size: 1em;
+}
+
+.panel-heading {
+    font-size: 1.4em;
+}
+
+.panel-body {
+    padding: 1.5em;
 }

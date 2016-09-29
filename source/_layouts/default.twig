@@ -16,7 +16,7 @@
         <meta name="google-site-verification" content="Ud43Nzds0JtHAlgRzCyt5J3o45ad_KTMC6jgjePrx7U" />
 
         {# css #}
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css">
         <link href="/assets/css/style.css" rel="stylesheet">
 
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
@@ -42,21 +42,10 @@
 
     <body class="index">
         <header>
-            <div class="container">
-                <div class="intro-text">
-                    <h1>
-                        <a href="/">PéHáPkaři</a>
-                    </h1>
-
-                    <p>
-                        Děláš v PHP? Jsi jedním z nás!
-                    </p>
-                </div>
-            </div>
+            <h1>
+                <a href="/">Děláš v PHP?<br>Jsi jedním z nás</a>
+            </h1>
         </header>
-
-        <a href="/blog">BLOG</a>
-
         {% block content_wrapper %}
             {% block content %}{% endblock %}
         {% endblock %}
