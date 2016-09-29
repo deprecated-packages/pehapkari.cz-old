@@ -8,7 +8,7 @@ git config --global user.email "travis@travis-ci.org"
 git config --global user.name "Travis"
 
 # Generate API
-./vendor/bin/sculpin generate --env=prod
+./vendor/bin/sculpin generate
 
 # Commit & push
 cd output
