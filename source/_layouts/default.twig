@@ -40,23 +40,33 @@
         <!-- End Facebook Pixel Code -->
     </head>
 
-    <body class="index">
+    <body>
         <header>
             <h1>
                 <a href="/">Děláš v PHP?<br>Jsi jedním z nás</a>
             </h1>
         </header>
+
         {% block content_wrapper %}
             {% block content %}{% endblock %}
         {% endblock %}
 
+        <div class="section intermezzo">
+            <div class="container">
+                <div class="row">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+
         <footer>
             <div class="container">
-                <h3>Nejsme v tom sami</h3>
+                <h2 class="text-center">
+                    <em class="fa fa-hand-peace-o fa-fw"></em>
+                    Děkujeme za podporu
+                </h2>
 
-                <p>S rozvojem nám pomáhají</p>
-
-                <div id="sponsor-logos">
+                <div id="sponsor-logos" class="text-center row">
                     <a href="http://www.shopsys.cz">
                         <img src="/assets/images/sponsors/shopsys.png">
                     </a>
@@ -66,18 +76,15 @@
                     <a href="http://www.rosti.cz">
                         <img src="/assets/images/sponsors/rosti.png">
                     </a>
+
+                    <br>
+
+                    <p>
+                        Chceš se přidat k našim sponzorům? Napiš nám na <a href="mailto:tomas@pehapkari.cz">tomas@pehpkari.cz</a>
+                    </p>
                 </div>
 
-                <p>
-                    Chcete si s námi něco začít? Napište nám na <a href="mailto:tomas@pehapkari.cz">tomas@pehpkari.cz</a>
-                </p>
-
-                {# turn to slider on top right? #}
-                {#<p>#}
-                    {#Našel jsi nám chybku? Díky! <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source{{#}
-                    {#page.subpage ? page.url : '/index' }}.twig">Oprav nám ji</a>, prosím.#}
-                {#</p>#}
-            </div>
+           </div>
         </footer>
 
         <script>

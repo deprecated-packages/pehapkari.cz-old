@@ -72,15 +72,16 @@ h2 {
     color: #8FBE00;
 }
 
+h3 {
+    color: #8FBE00;
+}
+
 footer {
-    color: beige;
     padding: 1em 0;
-    background: #18171b;
-    font-size: .8em;
 }
 
 footer h3 {
-    color: beige;
+    /*color: beige;*/
 }
 
 ::-moz-selection {
@@ -136,6 +137,14 @@ a.black:hover {
     text-decoration: none;
 }
 
+a {
+    transition: .2s;
+}
+
+a:hover {
+    transition: .3s;
+}
+
 a img {
     opacity: 1;
     transition: opacity .2s;
@@ -162,4 +171,8 @@ a:hover img {
 
 .panel-body {
     padding: 1.5em;
+}
+
+#meetup-inivite img {
+    max-width: 100%;
 }
