@@ -1,0 +1,246 @@
+---
+layout: default
+subpage: true
+hideMainPartners: true
+youtube:
+    embed_url: https://www.youtube.com/embed/r3dr_DnaTG4
+
+items:
+    1:
+        time: 9:29
+        time_in_seconds: 569
+        title: Automate All The Things!
+        speaker_name: Jan Klat
+        speaker_url: https://twitter.com/klatys
+    2:
+        time: 21:49
+        time_in_seconds: 1309
+        title: Coding standard
+        speaker_name: Ondřej Mirtes
+        speaker_url: https://twitter.com/OndrejMirtes
+    3:
+        time: 1:03:55
+        time_in_seconds: 3835
+        title: Framework-less code?
+        speaker_name: Martin Hujer
+        speaker_url: https://twitter.com/MartinHujer
+    4:
+        time: 1:20:27
+        time_in_seconds: 4827
+        title: PSR-7
+        speaker_name: Marek Gach
+        speaker_url: https://twitter.com/marekgach
+    5:
+        time: 1:50:28
+        time_in_seconds: 6628
+        title: Proč by sakra někdo měl chtít dělat eshop
+        speaker_name: Tomáš Strejček
+        speaker_url: https://twitter.com/TomasStrejcek
+    6:
+        time: 2:29:57
+        time_in_seconds: 8997
+        title: PHPStorm
+        speaker_name: Tomáš Fejfar
+        speaker_url: https://twitter.com/tomasfejfar
+    7:
+        time: 2:44:57
+        time_in_seconds: 9897
+        title: PHP WTF﻿
+        speaker_name: Michal Špaček
+        speaker_url: https://twitter.com/spazef0rze
+---
+{% block content %}
+
+<a name="content"></a>
+
+<div class="section">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <img src="/assets/images/conferences/prague-2016/logo.png" style="width:100%" alt="PHP Prague 2016">
+                <hr>
+                <br>
+                <h2>
+                    <em class="fa fa-group fa-fw"></em>
+                    Jaké to bylo?
+                </h2>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <img src="/assets/images/conferences/prague-2016/fun.jpg" style="width: 100%">
+            </div>
+            <div class="col-md-6">
+                <ul class="highlights-list">
+                    <li>2 dny</li>
+                    <li><strong>7 speakrů</strong> = 3 hodiny přednášek</li>
+                    <li>2 přestávky na občerstvení</li>
+                    <li>live stream a z něj okamžitý záznam</li>
+                    <li>nabouchaný Paper Hub v <a href="https://www.paralelnipolis.cz/">Paralelním Polis</a></li>
+                    <li><strong>přes 120 návštěvníků</strong> z ČR i Slovenska</li>
+                </ul>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="highlights-list">
+                    <li><strong>9 soutěžních projektů</strong> v hackatonu</li>
+                    <li>1 vítězný projekt - <em>Eventigo a machine learning</em></li>
+                    <li><strong>20+ cen</strong> pro všechny účastníky hackatonu</li>
+                    <li><strong>8 stědrých sponzorů</strong> z oboru</li>
+                </ul>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="/assets/images/conferences/prague-2016/hackaton.jpg" style="width: 100%">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section intermezzo">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <em class="fa fa-photo fa-fw"></em>
+                <strong>Jak to tam vypadalo?</strong> Mrkni <a href="https://www.facebook.com/events/1540335572937782/permalink/1595769000727772/">na akci na Facebooku</a>
+            </div>
+            <div class="col-md-6 text-center">
+                <em class="fa fa-newspaper-o fa-fw"></em>
+                <strong>Chceš vědět o dalším ročníku?</strong>
+                Sleduj <a href="https://twitter.com/phpprague">@phpPrague</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>
+                    <em class="fa fa-play fa-fw"></em>
+                    Přehraj si záznam z konference
+                </h2>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-md-7">
+                {% for item in page.items %}
+                    <div>
+                        <a href="{{ page.youtube.embed_url }}?&start={{ item.time_in_seconds }}&autoplay=true"
+                           target="video" class="btn btn-success">
+                            <em class="fa fa-play fa-fw"></em>
+                            {{ item.time }}
+                        </a> &nbsp; <strong>{{ item.title }}</strong>
+
+                        - <a href="{{ item.speaker_url }}"><em class="fa fa-twitter fa-fw"></em>{{ item.speaker_name }}</a>
+                    </div>
+                    <hr>
+                {% endfor %}
+            </div>
+            <div class="col-md-5">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/r3dr_DnaTG4" frameborder="0" allowfullscreen name="video"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section intermezzo">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <em class="fa fa-heart fa-fw"></em>
+                Děkujeme našim partnerům, kteří se <strong>postarali o příjemný prostor, dobré jídlo i pití, ceny pro nejlepší hackery a přidali sociální ruku k dílu při propagaci konference</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <p><strong>Gold partner</strong></p>
+                <p>
+                    <a href="http://lmc.eu">
+                        <img src="/assets/images/conferences/prague-2016/partners/lmc.png">
+                    </a>
+                </p>
+            </div>
+            <div class="col-md-4 text-center">
+                <p>Silver partner</p>
+                <p>
+                    <a href="https://www.rockawaycapital.com/cs/">
+                        <img src="/assets/images/conferences/prague-2016/partners/rockaway.png">
+                    </a>
+                </p>
+            </div>
+            <div class="col-md-4 text-center">
+                <p>Silver partner</p>
+                <p>
+                    <a href="http://www.kurzor.net/">
+                        <img height="70px" src="/assets/images/conferences/prague-2016/partners/kurzor.gif">
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <img src="/assets/images/conferences/prague-2016/beer.jpg" style="width: 100%">
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="/assets/images/conferences/prague-2016/hackaton-prices.jpg" style="width: 100%">
+            </div>
+        </div>
+
+        <hr>
+
+
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p>Bronze partners</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 text-center vcenter">
+                <a href="https://www.jetbrains.com/phpstorm">
+                    <img height="100px" src="/assets/images/conferences/prague-2016/partners/jetbrains.png">
+                </a>
+            </div>
+            <div class="col-md-2 text-center vcenter">
+                <a href="https://www.skrz.cz">
+                    <img src="/assets/images/conferences/prague-2016/partners/skrz.png">
+                </a>
+            </div>
+            <div class="col-md-3 text-right vcenter">
+                <a href="https://rosti.cz/">
+                    <img src="/assets/images/conferences/prague-2016/partners/rosti.png">
+                </a>
+            </div>
+            <div class="col-md-2 text-center vcenter">
+                <a href="http://codecamp.cz/">
+                    <img src="/assets/images/conferences/prague-2016/partners/code_camp.png">
+                </a>
+            </div>
+            <div class="col-md-2 vcenter">
+                <a href="https://www.sevendesign.cz/">
+                    <img src="/assets/images/conferences/prague-2016/partners/sevendesign.png">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

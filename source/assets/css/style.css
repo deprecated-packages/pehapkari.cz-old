@@ -162,7 +162,7 @@ a:hover img {
 }
 
 .btn {
-    font-size: 1em;
+    font-size: .9em;
 }
 
 .panel-heading {
@@ -175,4 +175,14 @@ a:hover img {
 
 #meetup-inivite img {
     max-width: 100%;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.highlights-list {
+    font-size: 1.6em;
 }

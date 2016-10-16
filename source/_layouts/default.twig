@@ -51,41 +51,35 @@
             {% block content %}{% endblock %}
         {% endblock %}
 
-        <div class="section intermezzo">
-            <div class="container">
-                <div class="row">
-                    &nbsp;
-                </div>
-            </div>
-        </div>
+        {% if page.hideMainPartners is empty %}
+            <footer>
+                <div class="container">
+                    <h2 class="text-center">
+                        <em class="fa fa-hand-peace-o fa-fw"></em>
+                        Děkujeme za podporu
+                    </h2>
 
-        <footer>
-            <div class="container">
-                <h2 class="text-center">
-                    <em class="fa fa-hand-peace-o fa-fw"></em>
-                    Děkujeme za podporu
-                </h2>
+                    <div id="sponsor-logos" class="text-center row">
+                        <a href="http://www.shopsys.cz">
+                            <img src="/assets/images/sponsors/shopsys.png">
+                        </a>
+                        <a href="http://www.jebrains.cz">
+                            <img src="/assets/images/sponsors/jetbrains.png">
+                        </a>
+                        <a href="http://www.rosti.cz">
+                            <img src="/assets/images/sponsors/rosti.png">
+                        </a>
 
-                <div id="sponsor-logos" class="text-center row">
-                    <a href="http://www.shopsys.cz">
-                        <img src="/assets/images/sponsors/shopsys.png">
-                    </a>
-                    <a href="http://www.jebrains.cz">
-                        <img src="/assets/images/sponsors/jetbrains.png">
-                    </a>
-                    <a href="http://www.rosti.cz">
-                        <img src="/assets/images/sponsors/rosti.png">
-                    </a>
+                        <br>
 
-                    <br>
+                        <p>
+                            Chceš se přidat k našim sponzorům? Napiš nám na <a href="mailto:tomas@pehapkari.cz">tomas@pehapkari.cz</a>
+                        </p>
+                    </div>
 
-                    <p>
-                        Chceš se přidat k našim sponzorům? Napiš nám na <a href="mailto:tomas@pehapkari.cz">tomas@pehapkari.cz</a>
-                    </p>
-                </div>
-
-           </div>
-        </footer>
+               </div>
+            </footer>
+        {% endif %}
 
         <script>
             (function (i, s, o, g, r, a, m) {
