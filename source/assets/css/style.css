@@ -169,6 +169,10 @@ a:hover img {
     font-size: 1.4em;
 }
 
+.panel-heading img {
+    width: 120px;
+}
+
 .panel-body {
     padding: 1.5em;
 }
