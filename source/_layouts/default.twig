@@ -41,11 +41,13 @@
     </head>
 
     <body>
+        {% if page.hideHeader is empty %}
         <header>
             <h1>
                 <a href="/">Děláš v PHP?<br>Jsi jedním z nás</a>
             </h1>
         </header>
+        {% endif %}
 
         {% block content_wrapper %}
             {% block content %}{% endblock %}
