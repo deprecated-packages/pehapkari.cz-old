@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="cs">
     <head>
-        <title>{{ site.title }}</title>
+        <title>{% if page.title is empty %}{{ site.title }}{% else %}{{ page.title }}{% endif %}</title>
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
