@@ -190,3 +190,16 @@ a:hover img {
 .highlights-list {
     font-size: 1.6em;
 }
+
+.panel-tirkis {
+    border-color: #00A8C6;
+}
+
+.panel-tirkis .panel-heading {
+    color: #ffffff;
+    background-color: #00A8C6;
+}
+
+.grey-bg {
+    background-color: #f5f5f5;
+}
