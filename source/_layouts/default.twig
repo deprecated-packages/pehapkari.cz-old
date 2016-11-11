@@ -42,11 +42,32 @@
 
     <body>
         {% if page.hideHeader is empty %}
-        <header>
-            <h1>
-                <a href="/">Děláš v PHP?<br>Jsi jedním z nás</a>
-            </h1>
-        </header>
+            <nav class="navbar">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" id="navbar-toggle">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/" title="PEHAPKARI.CZ">PEHAPKARI.CZ</a>
+                </div>
+                <div class="collapse navbar-collapse" id="collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="/#komunita" title="Tvoříme komunitu">komunita</a>
+                        </li>
+                        <li>
+                            <a href="/#poradime" title="Poradíme a pomůžeme">poradíme</a>
+                        </li>
+                        <li>
+                            <a href="/#slack" title="Jsme na slacku">slack</a>
+                        </li>
+                        <li>
+                            <a href="/potkavame-se" title="Potkáváme se">potkáváme se</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         {% endif %}
 
         {% block content_wrapper %}
@@ -90,6 +111,26 @@
         {% endif %}
 
         <script>
+
+            window.document.onload = function() {
+
+                document.getElementById('navbar-toggle').addEventListener('click', function() {
+                    var elem = document.getElementById('collapse');
+                    var elemNodes = elem.children[0].children.length;
+                    var show = (" " + elem.className + " " ).indexOf( "in" ) > -1;
+                    var firstDiv = document.body.children[1];
+
+                    if(show) {
+                        elem.className = "collapse navbar-collapse";
+                        firstDiv.style.marginTop = 0;
+                    } else {
+                        elem.className += " in";
+                        firstDiv.style.marginTop = (elemNodes * 70) + 'px';
+                    }
+
+                });
+            }
+
             (function (i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r;
                 i[r] = i[r] || function () {
