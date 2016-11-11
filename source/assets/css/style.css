@@ -89,6 +89,12 @@ h2 {
     color: #8FBE00;
 }
 
+h2 small {
+    color: inherit;
+    font-size: .5em;
+    opacity: .5;
+}
+
 h3 {
     color: #8FBE00;
 }
@@ -232,4 +238,10 @@ a:hover img {
 #formMap {
     height: 400px;
     margin-top: 5px;
+}
+
+#vocabulary > dd {
+    border-bottom: 1px #eee solid;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
 }
