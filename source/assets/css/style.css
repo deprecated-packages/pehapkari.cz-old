@@ -245,3 +245,7 @@ a:hover img {
     margin-bottom: 1em;
     padding-bottom: 1em;
 }
+
+#vocabulary sup {
+    white-space: nowrap;
+}
