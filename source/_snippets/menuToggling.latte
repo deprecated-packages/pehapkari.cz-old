@@ -1,0 +1,18 @@
+{* part of bootstrap.js *}
+<script>
+    window.document.onload = function() {
+        document.getElementById('navbar-toggle').addEventListener('click', function() {
+            var elem = document.getElementById('collapse');
+            var elemNodes = elem.children[0].children.length;
+            var show = (" " + elem.className + " " ).indexOf( "in" ) > -1;
+            var firstDiv = document.body.children[1];
+            if(show) {
+                elem.className = "collapse navbar-collapse";
+                firstDiv.style.marginTop = 0;
+            } else {
+                elem.className += " in";
+                firstDiv.style.marginTop = (elemNodes * 70) + 'px';
+            }
+        });
+    }
+</script>

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Kde najdeš PHP kámoše
-isMap: true
 ---
 
 {block content}
@@ -76,4 +75,11 @@ isMap: true
     </div>
 </div>
 
+{/block}
+
+
+{block additionalJavascripts}
+    <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
+    <script src="/assets/js/fireMap.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZnH6oy2-TO9VhtzUvZirtIlAwuOVGXP4&callback=initMaps"></script>
 {/block}

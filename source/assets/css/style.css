@@ -245,3 +245,40 @@ a:hover img {
     margin-bottom: 1em;
     padding-bottom: 1em;
 }
+
+/* menu */
+.navbar {
+    background: #00A8C6;
+    border-radius: 0;
+    height: 70px;
+}
+
+.navbar-collapse.in {
+    background: #00A8C6;
+}
+
+.navbar a {
+    color: rgba(255,255,255,.7);
+    padding: 22px !important;
+}
+
+.navbar-toggle {
+    margin-top: 15px;
+}
+
+.navbar-toggle:hover span.icon-bar {
+    color: rgba(255,255,255,1);
+}
+
+span.icon-bar {
+    background-color: rgba(255,255,255,.7) !important;
+}
+
+.navbar-brand {
+    color: rgba(255,255,255,1) !important;
+}
+
+.navbar a:hover {
+    color: rgba(255,255,255,1);
+    background-color: transparent !important;
+}
