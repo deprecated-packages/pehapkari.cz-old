@@ -10,3 +10,16 @@ vendor/bin/sculpin generate --watch --server
 ```
 
 And open `http://localhost:8000`.
+
+### Develop in [Docker](https://www.docker.com/) container
+
+Make sure that you have this tools installed:
+
+- [Docker](https://www.docker.com/products/overview#/install_the_platform)
+- [Docker compose](https://docs.docker.com/compose/install/)
+
+Just run:  
+
+```sh
+$ docker-compose up app
+```

@@ -1,0 +1,9 @@
+version: "2"
+services:
+  app:
+    build:
+      context: .docker
+    volumes:
+      - .:/src
+    ports:
+      - 8000:8000
