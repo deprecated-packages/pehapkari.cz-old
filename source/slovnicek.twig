@@ -25,11 +25,21 @@ hideMainPartners: true
                                     <sup>[<a href="https://www.apache.org/">Apache homepage</a>]</sup>
                                 </dd>
 
+                                <dt>Autoloader&nbsp;<sup><a id="autoloader" href="#autoloader">&hearts;</a></sup></dt>
+                                <dd>
+                                    Takto se označuje skript, který umožňuje <strong>automatické načítání tříd</strong>.
+                                    Nemusím tak ručně vkládat odkazy na soubory s definicí tříd které v kódu používám (náhrada za <code>include</code> či <code>require</code>).
+                                    To ušetří čas, zjednoduší údržbu aplikace a <strong>pohodlněji se programuje</strong>.
+                                    Autoloader můžete vytvářet sami, využít generovaný <a href="#composer">Composerem</a> nebo obojí.
+                                    <sup>[<a href="http://php.net/manual/en/language.oop5.autoload.php">PHP Autoloading Classes</a>]</sup>
+                                    <sup>[<a href="http://www.php-fig.org/psr/psr-4/">PSR-4 Autoloader</a>]</sup>
+                                </dd>
+
                                 <dt>Composer&nbsp;<sup><a id="composer" href="#composer">&hearts;</a></sup></dt>
                                 <dd>
                                     Composer je <strong>správce závislostí pro PHP</strong>.
                                     Umožňuje snadno instalovat různé knihovny v požadovaných verzích a jejich aktualizaci.
-                                    Také vytváří autoloader (nejen) nainstalovaných knihoven.
+                                    Také vytváří <a href="#autoloader">autoloader</a> (nejen) nainstalovaných knihoven.
                                     <sup>[<a href="https://getcomposer.org/">Composer homepage</a>]</sup>
                                 </dd>
 
