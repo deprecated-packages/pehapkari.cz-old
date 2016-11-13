@@ -102,6 +102,23 @@ hideMainPartners: true
                                     <sup>[<a href="https://en.wikipedia.org/wiki/PHP">wiki</a>]</sup>
                                 </dd>
 
+                                <dt>Rekurze&nbsp;<sup><a id="rekurze" href="#rekurze">&hearts;</a></sup></dt>
+                                <dd>
+                                    Rekurze v programování představuje opakované vnořené volání stejné funkce do sama sebe.
+                                    Obvykle má v sobě rekurzivní funkce uvedenu podmínku, kdy se má vnořování zastavit,
+                                    aby nedošlo k nekonečné smyčce.
+                                    <pre><code>function factorial(int $x) {
+  if ($x < 0) return 'invalid argument';
+  if ($x === 0) return 1; // zastavovací podmínka
+
+  return factorial($x - 1) * $x; // volání sama sebe
+}
+
+echo factorial(5); // 120
+</code></pre>
+                                    <sup>[<a href="https://cs.wikipedia.org/wiki/Rekurze_(programov%C3%A1n%C3%AD)">wiki</a>]</sup>
+                                </dd>
+
                                 <dt>Webserver&nbsp;<sup><a id="webserver" href="#webserver">&hearts;</a></sup></dt>
                                 <dd>
                                     Ke spuštění webové stránky je zapotřebí server, který přijme požadavek od návštěvníka
