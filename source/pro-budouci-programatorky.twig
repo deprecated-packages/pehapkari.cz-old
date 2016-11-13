@@ -54,6 +54,26 @@ hideMainPartners: true
                                 pokud ti XAMPP nefunguje, zkusíme to vyřešit na <a href="#slack">Slacku</a>
                             </div>
                         </div>
+                        <div class="col-md-8 col-md-offset-2">
+                        <h4><em class="fa fa-fw fa-windows"></em> Nastavení odesílání emailů na Windows</h4>
+                        </div>
+                        <div class="col-md-8 col-md-offset-2 text-left">
+
+                            <p>Pokud používáš Windows, tak nebude odesílání emailů z PHP fungovat. Vyřešíme to tak, že emaily budeme jen ukládat do souboru. </p>
+                            <ul>
+                                <li>vytvoř soubor <code>c:\xampp\sendmail.bat</code></li>
+                                <li>vlož do něj skript z <a href="https://gist.github.com/tomasfejfar/0f73e9b5443960b79e55588b38a9ad31">Gistu</a>
+                                </li>
+                                <li>v souboru <code>c:\xampp\php\php.ini</code>
+                                    <ul>
+                                        <li>najdi řádku <code>;sendmail_path =</code></li>
+                                        <li>odstraň středník na začátku</li>
+                                        <li>nastav to takto <code>sendmail_path = "c:\xampp\sendmail.bat"</code></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p>Kdyby se ti to nedařilo, tak si z toho nic nedělej. Tuhle chybu jsme odhalili na poslední chvíli a případně ji opravíme přímo na kurzu. </p>
+                        </div>
                     </div>
 
                     <hr>
