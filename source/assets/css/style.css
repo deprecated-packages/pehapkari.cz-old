@@ -246,6 +246,10 @@ a:hover img {
     padding-bottom: 1em;
 }
 
+#vocabulary > dd:last-of-type {
+    border-bottom: none;
+}
+
 #vocabulary sup {
     white-space: nowrap;
 }
