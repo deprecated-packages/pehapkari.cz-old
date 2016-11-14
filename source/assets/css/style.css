@@ -256,6 +256,10 @@ a:hover img {
     white-space: nowrap;
 }
 
+.text-greater {
+    font-size: 1.3em;
+}
+
 @media screen and (max-width: 500px) {
 
     #map, #formMap {

@@ -53,7 +53,16 @@ hideMainPartners: true
                                         <li><strong>D</strong>elete pro smazání záznamu</li>
                                     </ul>
                                 </dd>
-                                
+
+                                <dt>Databáze&nbsp;<sup><a id="databaze" href="#databaze">&hearts;</a></sup></dt>
+                                <dd>
+                                    Data aplikace je často potřeba někam ukládat. K tomu nám nejlépe poslouží databáze.
+                                    Nejpoužívanější databáze pro PHP jsou <a href="#mysql">MySQL</a> a <a href="#postgresql">PostgreSQL</a>.
+                                    Tyto databáze jsou relační <sup>[<a href="https://cs.wikipedia.org/wiki/Rela%C4%8Dn%C3%AD_datab%C3%A1ze">wiki</a>]</sup>.
+                                    Existují také tzv. NoSQL databáze <sup>[<a href="https://cs.wikipedia.org/wiki/">wiki</a>]</sup>, jejichž
+                                    zástupcem je např. <a href="#redis">Redis</a>.
+                                </dd>
+
                                 <dt>DI&nbsp;<sup><a id="di" href="#di">&hearts;</a></sup></dt>
                                 <dd>
                                     Vkládání závislostí (anglicky Dependency Injection - DI) je v objektově orientovaném programování technika pro vkládání
@@ -61,11 +70,11 @@ hideMainPartners: true
                                     <sup>[<a href="https://cs.wikipedia.org/wiki/Vkl%C3%A1d%C3%A1n%C3%AD_z%C3%A1vislost%C3%AD">wiki</a>]</sup>
                                     <sup>[<a href="https://doc.nette.org/cs/2.4/dependency-injection">Příklad použití</a>]</sup>
                                 </dd>
-                                
+
                                 <dt>Framework&nbsp;<sup><a id="framework" href="#framework">&hearts;</a></sup></dt>
                                 <dd>
-                                    Framework (aplikační rámec) je softwarová struktura, která slouží jako podpora při programování a vývoji 
-                                    jiných softwarových projektů. Cílem frameworku je převzetí typických problémů dané oblasti, čímž se usnadní vývoj tak, 
+                                    Framework (aplikační rámec) je softwarová struktura, která slouží jako podpora při programování a vývoji
+                                    jiných softwarových projektů. Cílem frameworku je převzetí typických problémů dané oblasti, čímž se usnadní vývoj tak,
                                     aby se návrháři a vývojáři mohli soustředit pouze na své zadání. Jinými slovy Vám framework zefektivní Vaší práci.
                                     <sup>[<a href="https://cs.wikipedia.org/wiki/Framework">wiki</a>]</sup>
                                 </dd>
@@ -88,6 +97,23 @@ hideMainPartners: true
                                     <sup>[<a href="http://graphql.org/">GraphQL homepage</a>]</sup>
                                 </dd>
 
+                                <dt>Knihovna<sup><a id="knihovna" href="#knihovna">&hearts;</a></sup></dt>
+                                <dd>
+                                    Kód (často třetí strany) využívaný uvnitř aplikace pro různorodé úkony.
+                                    Knihovnou může být např. kód poskytující rozhraní pro sestavení PDF dokumentu,
+                                    funkce pro práci s databází, souborovým systémem, zpracování obrázků apod.
+                                    Jedna knihovna se zpravidla úzce specializuje na jednu konkrétní oblast.
+                                    Ve světě PHP se mohou spravovat skrze <a href="#composer">Composer</a>
+                                    (ty psané v PHP) nebo se instalovat přímo jako rozšíření PHP (psané v C).
+                                </dd>
+
+                                <dt>MySQL<sup><a id="mysql" href="#mysql">&hearts;</a></sup></dt>
+                                <dd>
+                                    MySQL je zřejmě nejrozšířenější relační databáze v open source světě. Práce s ní je velmi
+                                    jednoduchá a intuitivní. Pro dotazování používá jazyk SQL. <sup>[<a href="https://en.wikipedia.org/wiki/MySQL">wiki</a>]</sup>
+                                    <sup>[<a href="https://www.mysql.com/">MySQL homepage</a>]</sup>
+                                </dd>
+
                                 <dt>Nginx&nbsp;<sup><a id="nginx" href="#nginx">&hearts;</a></sup></dt>
                                 <dd>
                                     Stejně tak jako <a href="#apache">Apache</a>, tak i Nginx je jedna z možností při výběru <a href="#webserver">webserveru</a>.
@@ -101,10 +127,18 @@ hideMainPartners: true
                                     <em>"PHP: Hypertext Preprocessor"</em> kde PHP je zkratka pro <em>"PHP: Hypertext Preprocessor"</em>&hellip;
                                     <sup>[<a href="https://en.wikipedia.org/wiki/PHP">wiki</a>]</sup>
                                 </dd>
-                                
+
+                                <dt>PostgreSQL<sup><a id="postgresql" href="#postgresql">&hearts;</a></sup></dt>
+                                <dd>
+                                    PostgreSQL nebo také Postgres je kvalitní relační databáze, která implementuje většinu
+                                    standardu SQL92. Je proto vyhledávanou alternativou k <a href="#mysql">MySQL</a>, obzvláště
+                                    u zkušenějších vývojářů. <sup>[<a href="https://en.wikipedia.org/wiki/PostgreSQL">wiki</a>]</sup>
+                                    <sup>[<a href="https://www.postgresql.org/">PostgreSQL homepage</a>]</sup>
+                                </dd>
+
                                 <dt>Redis&nbsp;<sup><a id="redis" href="#redis">&hearts;</a></sup></dt>
                                 <dd>
-                                    Redis je open source NoSQL key-value databáze. Údaje v databázi jsou uloženy jako unikátní klíč a 
+                                    Redis je open source NoSQL key-value databáze. Údaje v databázi jsou uloženy jako unikátní klíč a
                                     jeho hodnota. Primárně jsou data uloženy v paměti, proto je Redis velmi rychlý.
                                     <sup>[<a href="http://redis.io/">Redis homepage</a>]</sup>
                                 </dd>
