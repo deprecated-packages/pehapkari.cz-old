@@ -43,6 +43,13 @@ hideMainPartners: true
                                     <sup>[<a href="https://getcomposer.org/">Composer homepage</a>]</sup>
                                 </dd>
 
+                                <dt>Cookies<sup><a id="cookie" href="#cookie">&hearts;</a></sup></dt>
+                                <dd>
+                                    Cookies jsou kousky dat uložené u klienta (v prohlížeči) přenášená při každém HTTP požadavku.
+                                    Cookies umožňují stavovost komunikace, což zahrnuje přihlašování, personalizaci, cílení reklam, nákupní košík, ...
+                                    <sup>[<a href="https://en.wikipedia.org/wiki/HTTP_cookie">wiki</a>]</sup>
+                                </dd>
+
                                 <dt>CRUD&nbsp;<sup><a id="crud" href="#crud">&hearts;</a></sup></dt>
                                 <dd>
                                     Jedná se o návrh který využívá 4 základní operace s daty:
@@ -61,6 +68,22 @@ hideMainPartners: true
                                     Tyto databáze jsou relační <sup>[<a href="https://cs.wikipedia.org/wiki/Rela%C4%8Dn%C3%AD_datab%C3%A1ze">wiki</a>]</sup>.
                                     Existují také tzv. NoSQL databáze <sup>[<a href="https://cs.wikipedia.org/wiki/">wiki</a>]</sup>, jejichž
                                     zástupcem je např. <a href="#redis">Redis</a>.
+                                </dd>
+
+                                <dt>Datový typ<sup><a id="data-type" href="#data-type">&hearts;</a></sup></dt>
+                                <dd>
+                                    Datový typ je v podstatě rozdělení - celé číslo, float, string, objekt, ...
+                                    Datový typ má definovány operace - u celých čísel je to například sčítání, odečítání, celočíselné dělení.
+                                    Reálná čísla kupříkladu nelze celočíselně dělit a přestože lze striny sčítat, určitě nepůjde podělit
+                                    jeden string druhým. Stejně tak lze na třídy pohlížet jako na datové typy - s objekty jedné třídy
+                                    lze dělat stejné operace (volat stejné metody).
+                                    <sup>[<a href="https://en.wikipedia.org/wiki/Data_type">wiki</a>]</sup>
+                                </dd>
+
+                                <dt>DRY<sup><a id="dry" href="#dry">&hearts;</a></sup></dt>
+                                <dd>
+                                    Don't repeat yourself. Každý kousek logiky, dat, znalosti musí mít v systému pouze jednu jednoznačnou reprezentaci.
+                                    <sup>[<a href="https://pragprog.com/the-pragmatic-programmer/extracts/tips">Andy a Dave</a>]</sup>
                                 </dd>
 
                                 <dt>DI&nbsp;<sup><a id="di" href="#di">&hearts;</a></sup></dt>
@@ -97,6 +120,13 @@ hideMainPartners: true
                                     <sup>[<a href="http://graphql.org/">GraphQL homepage</a>]</sup>
                                 </dd>
 
+                                <dt>KISS<sup><a id="kiss" href="#kiss">&hearts;</a></sup></dt>
+                                <dd>
+                                    Keep it simple, stupid. Jednoduchost by měla být naším cílem,
+                                    protože pouze jednoduché lze pochopit a udržovat.
+                                    <sup>[<a href="https://en.wikipedia.org/wiki/KISS_principle">wiki</a>]</sup>
+                                </dd>
+
                                 <dt>Knihovna<sup><a id="knihovna" href="#knihovna">&hearts;</a></sup></dt>
                                 <dd>
                                     Kód (často třetí strany) využívaný uvnitř aplikace pro různorodé úkony.
@@ -105,6 +135,39 @@ hideMainPartners: true
                                     Jedna knihovna se zpravidla úzce specializuje na jednu konkrétní oblast.
                                     Ve světě PHP se mohou spravovat skrze <a href="#composer">Composer</a>
                                     (ty psané v PHP) nebo se instalovat přímo jako rozšíření PHP (psané v C).
+                                </dd>
+
+                                <dt>Monolit<sup><a id="monolit" href="#monolit">&hearts;</a></sup></dt>
+                                <dd>
+                                    Monolitem rozumíme obvykle velký nerozdělitelný systém. Monolit funguje sám o sobě
+                                    bez návaznosti na jiné systémy, s čímž souvisí jeho vysoká komplexita. Monolit není
+                                    obvykle jednoduché pochopit jako celek a může obsahovat velké množství skrytých závislostí.
+                                    Skryté závislosti mohou být jak funkční, tak výkonnostní.
+                                    <sup>[<a href="https://en.wikipedia.org/wiki/Monolithic_application">wiki</a>]</sup>
+                                    <sup>[<a href="http://martinfowler.com/bliki/MonolithFirst.html">Fowler</a>]</sup>
+                                </dd>
+
+                                <dt>Microservice<sup><a id="microservice" href="#microservice">&hearts;</a></sup></dt>
+                                <dd>
+                                    Architektura mikroslužeb je rozdělení jedné velké aplikace do vzájemně komunikujících
+                                    jednoúčelových služeb. Každou mikroslužbu je možné nezávisle udržovat a nasazovat.
+                                    Mikroslužby musí ale vzájemně komunikovat, komunikaci je nezbytné dokumentovat a udržovat.
+                                    Aplikace jako celek funguje pouze pokud fungují a komunikují všechny mikroslužby.
+                                    <sup>[<a href="http://www.martinfowler.com/articles/microservices.html">Fowler</a>]</sup>
+                                </dd>
+
+                                <dt>Microservice vs. monolit<sup><a id="microservice-monolit" href="#microservice-monolit">&hearts;</a></sup></dt>
+                                <dd>
+                                    Mikroslužby mají oproti monolitu zásadní výhody - malé funkční aplikace s jasným API,
+                                    které je jednodužší vyvíjet, udržovat, dokumentovat, znovupoužívat. Dobře navrhnout
+                                    mikroslužby je ovšem při neznalosti problémové domény velice obtížné. Refaktorovat
+                                    funkcionalitu z jedné mikroslužby do jiné je obtížnější, než refaktorovat monolit.
+                                    Pokud neznáme dostatečně problémovou doménu, může být výhodou začít monolitem
+                                    s oddělenými kontexty, který postupně rozdělíme do mikroslužeb.
+                                    <sup>[<a href="http://martinfowler.com/bliki/MonolithFirst.html">Fowler</a>]</sup>
+                                    <sup>[<a href="http://www.martinfowler.com/articles/microservices.html">Fowler</a>]</sup>
+                                    <sup>[<a href="http://martinfowler.com/bliki/BoundedContext.html">Fowler</a>]</sup>
+                                    <sup>[<a href="http://martinfowler.com/articles/dont-start-monolith.html">Tilkov</a>]</sup>
                                 </dd>
 
                                 <dt>MySQL<sup><a id="mysql" href="#mysql">&hearts;</a></sup></dt>
@@ -119,6 +182,15 @@ hideMainPartners: true
                                     Stejně tak jako <a href="#apache">Apache</a>, tak i Nginx je jedna z možností při výběru <a href="#webserver">webserveru</a>.
                                     Pokročilejší uživatelé většinou volí právě Nginx.
                                     <sup>[<a href="https://www.nginx.com/">Nginx homepage</a>]</sup>
+                                </dd>
+
+                                <dt>Objekt<sup><a id="objekt" href="#objekt">&hearts;</a></sup></dt>
+                                <dd>
+                                    Objekt je zjednodušená preprezentace něčeho s čím potřebujeme pracovat. Objekt zapouzdřuje
+                                    svá data chováním, tím je chrání a umožňuje se sebou pracovat
+                                    pouze voláním veřejných metod. Obecné chování objektu popisuje rozhraní a konkrétní
+                                    předpis vytvoření a chování objektu popisuje třída.
+                                    <sup>[<a href="https://en.wikipedia.org/wiki/Object_(computer_science)#Object-oriented_programming">wiki</a>]</sup>
                                 </dd>
 
                                 <dt>PHP&nbsp;<sup><a id="php" href="#php">&hearts;</a></sup></dt>
@@ -143,6 +215,15 @@ hideMainPartners: true
                                     <sup>[<a href="http://redis.io/">Redis homepage</a>]</sup>
                                 </dd>
 
+                                <dt>Regulární výrazy<sup><a id="regexp" href="#regexp">&hearts;</a></sup></dt>
+                                <dd>
+                                    Regulární výrazy jsou vzory umožňující vyhledávání a nahrazování textu.
+                                    <pre><code>@[A-Za-z][A-Za-z0-9_]{0,14}</code></pre>
+                                    Tento regulár nalezne uživatelské jméno na Twitteru - musí začínat zavináčem,
+                                    následuje písmenko (velké nebo malé) a pak 0-14 znaků zahrnující písmena, čísla a podtržítko.
+                                    <sup>[<a href="https://en.wikipedia.org/wiki/Regular_expression">wiki</a>]</sup>
+                                </dd>
+
                                 <dt>Rekurze&nbsp;<sup><a id="rekurze" href="#rekurze">&hearts;</a></sup></dt>
                                 <dd>
                                     Rekurze v programování představuje opakované vnořené volání stejné funkce do sama sebe.
@@ -158,6 +239,43 @@ hideMainPartners: true
 echo factorial(5); // 120
 </code></pre>
                                     <sup>[<a href="https://cs.wikipedia.org/wiki/Rekurze_(programov%C3%A1n%C3%AD)">wiki</a>]</sup>
+                                </dd>
+
+                                <dt>Rozhraní<sup><a id="rozhrani" href="#rozhrani">&hearts;</a></sup></dt>
+                                <dd>
+                                    Rozhraní je společná hranice mezi částmi systému. Jako rozhraní si můžeme představit
+                                    jack konektor pro výstup - víme jak vypadá, víme, že slouží pro vysílání zvukového signálu.
+                                    Ale už nevíme, co přesně se za ním skrývá - jestli reproduktor nebo sluchátka.<br>
+                                    V OOP používáme rozhraní pro popis objektů, konkrétní implementaci řeší třída.
+                                    <sup>[<a href="https://en.wikipedia.org/wiki/Interface_(computing)">wiki</a>]</sup>
+                                </dd>
+
+                                <dt>SOLID<sup><a id="solid" href="#solid">&hearts;</a></sup></dt>
+                                <dd>
+                                    SOLID zahrnuje pět základních principů objektově orientovaného programování
+                                    <ul>
+                                        <li><b>S</b>RP - třída má pouze jednu zodpovědnost, jeden důvod ke změně</li>
+                                        <li><b>O</b>CP - třídy jsou otevřené ke změnám, ale uzavřené k úpravám</li>
+                                        <li><b>L</b>SP - objekty jsou v systému nahraditelné svýmy podtypy</li>
+                                        <li><b>I</b>SP - více specifických rozhraní je lepších, než jedno obecné</li>
+                                        <li><b>D</b>IP - třída je závislá na abstrakci, ne na konkrétním typu</li>
+                                    </ul>
+                                    <sup>[<a href="https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)">wiki</a>]</sup>
+                                </dd>
+
+                                <dt>Služba<sup><a id="sluzba" href="#sluzba">&hearts;</a></sup></dt>
+                                <dd>
+                                    Služba je bezstavový objekt zajišťující složitější logiku, která ke své úplnosti využívá více objektů.
+                                    <sup>[<a href="https://en.wikipedia.org/wiki/Service-oriented_programming">wiki</a>]</sup>
+                                </dd>
+
+                                <dt>Třída<sup><a id="trida" href="#trida">&hearts;</a></sup></dt>
+                                <dd>
+                                    Třída je předpis pro tvorbu objektů. S třídou samotnou nemůžu moc pracovat, jak taky pracovat
+                                    s návodem na výrobu hrnku? Když si ale vytvořím objekt podle daného předpisu (vytvořím instanci
+                                    třídy), tak to už je jiná - daný konkrétní hrnek můžu naplnit, vypít, rozbít. To s třídou
+                                    udělat nemůžu, třída je pouze předpis.
+                                    <sup>[<a href="https://en.wikipedia.org/wiki/Class_(computer_programming)">wiki</a>]</sup>
                                 </dd>
 
                                 <dt>Webserver&nbsp;<sup><a id="webserver" href="#webserver">&hearts;</a></sup></dt>
