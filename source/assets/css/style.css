@@ -253,3 +253,30 @@ a:hover img {
 #vocabulary sup {
     white-space: nowrap;
 }
+
+article.blog-post {
+    margin-bottom: 3em;
+}
+
+.blog-post img {
+    border-radius: 2px;
+}
+
+.blog-post img.post-thumbnail, .post-thumbnail {
+    margin: 0 .9em .2em 0;
+}
+
+.blog-post header {
+    background: transparent;
+    margin-bottom: 0.4em;
+    text-align: left;
+}
+
+.blog-post header h2 {
+    font-size: 1.7em;
+    margin-bottom: .4em;
+}
+
+.blog-post ul li a:active, .blog-post ul li a {
+    color: #8FBE00;
+}
