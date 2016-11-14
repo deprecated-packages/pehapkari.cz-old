@@ -17,10 +17,11 @@
 
         {# css #}
         <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css">
-        <link href="/assets/css/style.css" rel="stylesheet">
+        <link href="/assets/css/style.css?v=newheader" rel="stylesheet">
 
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
         <link href="/favicon.ico" rel="shortcut icon">
+        <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
@@ -43,9 +44,13 @@
     <body>
         {% if page.hideHeader is empty %}
         <header>
-            <h1>
-                <a href="/">Děláš v PHP?<br>Jsi jedním z nás</a>
-            </h1>
+            <a href="/"><img src="/assets/images/logo-header.svg" alt=""></a>
+
+            <nav class="top-navigation">
+                {#<a href="/slack">slack</a>#}
+                <a href="/potkavame-se">srazy</a>
+                <a href="/slovnicek">slovník</a>
+            </nav>
         </header>
         {% endif %}
 

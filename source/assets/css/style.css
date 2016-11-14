@@ -36,18 +36,35 @@ a:hover, a:focus, a:active, a.active {
 }
 
 header {
-    text-align: center;
-    background: #00A8C6;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 1.4em;
+    background: #8791C1;
+    border-bottom: 5px solid #4E5A95;
 }
 
-header a, header a:focus, header a:active {
-	color: #F9F2E7;
+header nav a, header nav a:focus, header nav a:active {
+	color: #F5F5FA;
+    font-family: 'Varela Round', sans-serif;
+    display: inline-block;
+    padding: 9px 10px;
 }
 
 header a:hover {
     text-decoration: none;
     color: #fff;
 }
+
+header a:hover img {
+    opacity: 1;
+}
+
+.top-navigation {
+    float: right;
+}
+
+
 
 h1 {
     font-size: 3.4em;
@@ -70,6 +87,12 @@ h2 {
     margin-bottom: .8em;
     font-size: 2.7em;
     color: #8FBE00;
+}
+
+h2 small {
+    color: inherit;
+    font-size: .5em;
+    opacity: .5;
 }
 
 h3 {
@@ -215,4 +238,18 @@ a:hover img {
 #formMap {
     height: 400px;
     margin-top: 5px;
+}
+
+#vocabulary > dd {
+    border-bottom: 1px #eee solid;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+}
+
+#vocabulary > dd:last-of-type {
+    border-bottom: none;
+}
+
+#vocabulary sup {
+    white-space: nowrap;
 }

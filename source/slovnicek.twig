@@ -1,0 +1,144 @@
+---
+layout: default
+subpage: true
+title: Slo(v)níček
+hideMainPartners: true
+---
+
+{% block content %}
+
+    <div class="section">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <h2>Slo<small>(v)</small>níček</h2>
+
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 text-left">
+                            <dl id="vocabulary" class="dl-horizontal">
+                                {# Please keep alphabetical order. #}
+
+                                <dt>Apache&nbsp;<sup><a id="apache" href="#apache">&hearts;</a></sup></dt>
+                                <dd>
+                                    Apache je zřejmě nejpopulárnější <a href="#webserver">webserver</a>, který běží téměř na každém hostingu.
+                                    Tento webserver lze považovat za alternativu k <a href="#nginx">Nginx</a>.
+                                    <sup>[<a href="https://www.apache.org/">Apache homepage</a>]</sup>
+                                </dd>
+
+                                <dt>Autoloader&nbsp;<sup><a id="autoloader" href="#autoloader">&hearts;</a></sup></dt>
+                                <dd>
+                                    Takto se označuje skript, který umožňuje <strong>automatické načítání tříd</strong>.
+                                    Nemusím tak ručně vkládat odkazy na soubory s definicí tříd které v kódu používám (náhrada za <code>include</code> či <code>require</code>).
+                                    To ušetří čas, zjednoduší údržbu aplikace a <strong>pohodlněji se programuje</strong>.
+                                    Autoloader můžete vytvářet sami, využít generovaný <a href="#composer">Composerem</a> nebo obojí.
+                                    <sup>[<a href="http://php.net/manual/en/language.oop5.autoload.php">PHP Autoloading Classes</a>]</sup>
+                                    <sup>[<a href="http://www.php-fig.org/psr/psr-4/">PSR-4 Autoloader</a>]</sup>
+                                </dd>
+
+                                <dt>Composer&nbsp;<sup><a id="composer" href="#composer">&hearts;</a></sup></dt>
+                                <dd>
+                                    Composer je <strong>správce závislostí pro PHP</strong>.
+                                    Umožňuje snadno instalovat různé knihovny v požadovaných verzích a jejich aktualizaci.
+                                    Také vytváří <a href="#autoloader">autoloader</a> (nejen) nainstalovaných knihoven.
+                                    <sup>[<a href="https://getcomposer.org/">Composer homepage</a>]</sup>
+                                </dd>
+
+                                <dt>CRUD&nbsp;<sup><a id="crud" href="#crud">&hearts;</a></sup></dt>
+                                <dd>
+                                    Jedná se o návrh který využívá 4 základní operace s daty:
+                                    <ul>
+                                        <li><strong>C</strong>reate pro vytvoření záznamu</li>
+                                        <li><strong>R</strong>ead pro přečtení záznamu</li>
+                                        <li><strong>U</strong>pdate pro aktualizaci záznamu a konečně</li>
+                                        <li><strong>D</strong>elete pro smazání záznamu</li>
+                                    </ul>
+                                </dd>
+                                
+                                <dt>DI&nbsp;<sup><a id="di" href="#di">&hearts;</a></sup></dt>
+                                <dd>
+                                    Vkládání závislostí (anglicky Dependency Injection - DI) je v objektově orientovaném programování technika pro vkládání
+                                    závislostí mezi jednotlivými komponentami programu tak, aby jedna komponenta mohla používat druhou.
+                                    <sup>[<a href="https://cs.wikipedia.org/wiki/Vkl%C3%A1d%C3%A1n%C3%AD_z%C3%A1vislost%C3%AD">wiki</a>]</sup>
+                                    <sup>[<a href="https://doc.nette.org/cs/2.4/dependency-injection">Příklad použití</a>]</sup>
+                                </dd>
+                                
+                                <dt>Framework&nbsp;<sup><a id="framework" href="#framework">&hearts;</a></sup></dt>
+                                <dd>
+                                    Framework (aplikační rámec) je softwarová struktura, která slouží jako podpora při programování a vývoji 
+                                    jiných softwarových projektů. Cílem frameworku je převzetí typických problémů dané oblasti, čímž se usnadní vývoj tak, 
+                                    aby se návrháři a vývojáři mohli soustředit pouze na své zadání. Jinými slovy Vám framework zefektivní Vaší práci.
+                                    <sup>[<a href="https://cs.wikipedia.org/wiki/Framework">wiki</a>]</sup>
+                                </dd>
+
+                                <dt>GraphQL&nbsp;<sup><a id="graphql" href="#graphql">&hearts;</a></sup></dt>
+                                <dd>
+                                    Facebookem vytvořené GraphQL je zajímavou alternativou k REST API. Programátor se zde
+                                    API zeptá přesně na to, co v danou chvíli potřebuje. To vše v jednom dotazu, který může
+                                    vypadat třeba takto:
+                                    <pre><code>{
+  user {
+    id
+    name
+    friends {
+      name
+    }
+  }
+}
+</code></pre>
+                                    <sup>[<a href="http://graphql.org/">GraphQL homepage</a>]</sup>
+                                </dd>
+
+                                <dt>Nginx&nbsp;<sup><a id="nginx" href="#nginx">&hearts;</a></sup></dt>
+                                <dd>
+                                    Stejně tak jako <a href="#apache">Apache</a>, tak i Nginx je jedna z možností při výběru <a href="#webserver">webserveru</a>.
+                                    Pokročilejší uživatelé většinou volí právě Nginx.
+                                    <sup>[<a href="https://www.nginx.com/">Nginx homepage</a>]</sup>
+                                </dd>
+
+                                <dt>PHP&nbsp;<sup><a id="php" href="#php">&hearts;</a></sup></dt>
+                                <dd>
+                                    PHP je rekurzivní zkratka pro <em>"PHP: Hypertext Preprocessor"</em> kde PHP je zkratka pro
+                                    <em>"PHP: Hypertext Preprocessor"</em> kde PHP je zkratka pro <em>"PHP: Hypertext Preprocessor"</em>&hellip;
+                                    <sup>[<a href="https://en.wikipedia.org/wiki/PHP">wiki</a>]</sup>
+                                </dd>
+                                
+                                <dt>Redis&nbsp;<sup><a id="redis" href="#redis">&hearts;</a></sup></dt>
+                                <dd>
+                                    Redis je open source NoSQL key-value databáze. Údaje v databázi jsou uloženy jako unikátní klíč a 
+                                    jeho hodnota. Primárně jsou data uloženy v paměti, proto je Redis velmi rychlý.
+                                    <sup>[<a href="http://redis.io/">Redis homepage</a>]</sup>
+                                </dd>
+
+                                <dt>Rekurze&nbsp;<sup><a id="rekurze" href="#rekurze">&hearts;</a></sup></dt>
+                                <dd>
+                                    Rekurze v programování představuje opakované vnořené volání stejné funkce do sama sebe.
+                                    Obvykle má v sobě rekurzivní funkce uvedenu podmínku, kdy se má vnořování zastavit,
+                                    aby nedošlo k nekonečné smyčce.
+                                    <pre><code>function factorial(int $x) {
+  if ($x < 0) return 'invalid argument';
+  if ($x === 0) return 1; // zastavovací podmínka
+
+  return factorial($x - 1) * $x; // volání sama sebe
+}
+
+echo factorial(5); // 120
+</code></pre>
+                                    <sup>[<a href="https://cs.wikipedia.org/wiki/Rekurze_(programov%C3%A1n%C3%AD)">wiki</a>]</sup>
+                                </dd>
+
+                                <dt>Webserver&nbsp;<sup><a id="webserver" href="#webserver">&hearts;</a></sup></dt>
+                                <dd>
+                                    Ke spuštění webové stránky je zapotřebí server, který přijme požadavek od návštěvníka
+                                    a po zpracování je pošle zpět k uživateli. K tomu dobře poslouží třeba
+                                    <a href="#apache">Apache</a> nebo <a href="#nginx">Nginx</a>.
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
