@@ -253,3 +253,7 @@ a:hover img {
 #vocabulary sup {
     white-space: nowrap;
 }
+
+.text-greater {
+    font-size: 1.3em;
+}
