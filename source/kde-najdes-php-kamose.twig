@@ -1,0 +1,34 @@
+---
+layout: default
+title: Kde najdeš PHP kámoše / mapa
+isMap: true
+---
+
+{% block content %}
+
+    <div class="section">
+        <div class="container">
+            <div class="row text-center">
+                <h2>
+                    <em class="fa fa-map-o fa-fw"></em>
+                    Mapka PHP programátorů
+                </h2>
+                <a href="/kde-najdes-php-kamose/pridej-se" title="Přidej se" class="btn btn-lg btn-info" role="button">
+                    <em class="fa fa-user-plus fa-fw"></em>
+                    Přidej se
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section grey-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock  %}
