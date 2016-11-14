@@ -1,0 +1,5 @@
+Jak jsem začal s PHP?
+
+V roce 2005 jsem hrál online hru https://www.webgame.cz/ a měl k ní pomocné XLS tabulky, které mi pomáhali zjistit slabiny nepřítele. Chtěl jsem to sdílet se spoluhráčema jinak než přes mail. Pak jsem objevil PHP, formuláře a pomocí seriálu http://programujte.com/ přepsal celý XLS hodil na ty internety v PHP :)
+
+https://twitter.com/votrubat
