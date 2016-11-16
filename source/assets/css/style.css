@@ -22,7 +22,7 @@ ul li {
 }
 
 a, a:hover, a:focus, a:active, a.active {
-	outline: 0;
+    outline: 0;
 }
 
 a {
@@ -45,7 +45,7 @@ header {
 }
 
 header nav a, header nav a:focus, header nav a:active {
-	color: #F5F5FA;
+    color: #F5F5FA;
     font-family: 'Varela Round', sans-serif;
     display: inline-block;
     padding: 9px 10px;
@@ -64,14 +64,11 @@ header a:hover img {
     float: right;
 }
 
-
-
 h1 {
     font-size: 3.4em;
     line-height: 1.5em;
     padding: 1em 0;
 }
-
 
 .section {
     padding: 3em 0;
@@ -256,4 +253,12 @@ a:hover img {
 
 .text-greater {
     font-size: 1.3em;
+}
+
+.meetings .cities ul li {
+    list-style-type: none;
+}
+
+.meetings .cities:last-of-type {
+    margin-bottom: 50px;
 }

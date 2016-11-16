@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html lang="cs">
     <head>
-        <title>{% if page.title is empty %}{{ site.title }}{% else %}{{ page.title }}{% endif %}</title>
-
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <link href="/favicon.ico" rel="shortcut icon">
+
         <meta name="description" content="Oficiální stránky PHP komunity">
         <meta name="keywords" content="PHP, komunita, programování">
         <meta name="author" content="http://pehapkari.cz">
         <meta name="robots" content="index, follow">
         <meta property="og:image" content="images/php-square.png">
 
+        <title>{% if page.title is empty %}{{ site.title }}{% else %}{{ page.title }}{% endif %}</title>
+
         {# verify html #}
         <meta name="google-site-verification" content="Ud43Nzds0JtHAlgRzCyt5J3o45ad_KTMC6jgjePrx7U" />
 
-        {# css #}
-        <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css">
-        <link href="/assets/css/style.css?v=newheader" rel="stylesheet">
-
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-        <link href="/favicon.ico" rel="shortcut icon">
-        <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
+
+        {# css #}
+        <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css?v={{ site.build }}">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+        <link href="/assets/css/style.css?v={{ site.build }}" rel="stylesheet">
 
         <!-- Facebook Pixel Code -->
         <script>
@@ -35,9 +36,7 @@
                     document,'script','//connect.facebook.net/en_US/fbevents.js');
             fbq('init', '201338863559186');
             fbq('track', "PageView");</script>
-        <noscript><img height="1" width="1" style="display:none"
-                       src="https://www.facebook.com/tr?id=201338863559186&ev=PageView&noscript=1"
-            /></noscript>
+        <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=201338863559186&ev=PageView&noscript=1"/></noscript>
         <!-- End Facebook Pixel Code -->
     </head>
 
@@ -90,7 +89,7 @@
 
         {% if page.isMap %}
             <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
-            <script src="/assets/js/fireMap.js"></script>
+            <script src="/assets/js/fireMap.js?v={{ site.build }}"></script>
             <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZnH6oy2-TO9VhtzUvZirtIlAwuOVGXP4&callback=initMaps"></script>
         {% endif %}
 
