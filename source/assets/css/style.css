@@ -233,11 +233,13 @@ a:hover img {
 
 #map {
     height: 500px;
+    padding: 0 !important;
 }
 
 #formMap {
-    height: 400px;
-    margin-top: 5px;
+    margin: 5px auto 20px auto;
+    height: 420px;
+    padding: 0 !important;
 }
 
 #vocabulary > dd {
@@ -256,4 +258,12 @@ a:hover img {
 
 .text-greater {
     font-size: 1.3em;
+}
+
+@media screen and (max-width: 500px) {
+
+    #map, #formMap {
+        height: 250px;
+    }
+
 }

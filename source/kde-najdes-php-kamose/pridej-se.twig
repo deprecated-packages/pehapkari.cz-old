@@ -1,0 +1,97 @@
+---
+layout: default
+title: Kde najdeš PHP kámoše / přidej se
+isMap: true
+---
+
+{% block content %}
+
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <h2 class="text-center">
+                    <em class="fa fa-user-plus fa-fw"></em>
+                    Přidej se
+                </h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="section  grey-bg">
+        <div class="container">
+            <div class="row" id="formRem">
+                <div class="col-sm-5 col-sm-offset-1 col-xs-12">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="city">Ulice, Město <sup class="text-danger">*</sup></label>
+                            <div class="input-group">
+                                <input type="text" name="city" placeholder="Ulice, Město" id="city" class="form-control" required />
+                                <span class="input-group-btn">
+                                <button class="btn btn-info" type="button" id="search">Najdi!</button>
+                            </span>
+                            </div>
+                            <span class="help-block">Uložím si jen souřadnice, vážně <em class="fa fa-smile-o"></em></span>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div id="formMap"></div>
+                    </div>
+                </div>
+                <div class="col-sm-5 col-xs-12">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="name">Jméno <sup class="text-danger">*</sup></label>
+                            <input type="text" name="name" placeholder="Evelín" id="name" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="surname">Příjmení <sup class="text-danger">*</sup></label>
+                            <input type="text" name="surname" placeholder="Pehapkář" id="surname" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="email">Email <sup class="text-danger">*</sup></label>
+                            <input type="email" name="email" placeholder="evelin@pehapkar.cz" id="email" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="nickname">Přezdívka</label>
+                            <input type="text" name="nickname" placeholder="Evelindon" id="nickname" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="web">Web</label>
+                            <input type="url" name="web" placeholder="http://evelindon.cz" id="web" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="twitter">Twitter</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">http://twitter.com/</div>
+                                <input type="text" name="twitter" placeholder="evelindon" id="twitter" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="github">Github</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">http://github.com/</div>
+                                <input type="text" name="github" placeholder="evelindon" id="github" class="form-control" required />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 text-center">
+                    <button type="button" id="fire" class="btn btn-lg btn-warning">Pushni mě tam</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
