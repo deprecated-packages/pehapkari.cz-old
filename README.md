@@ -1,4 +1,4 @@
-# Pehapkari.cz - Sculpin based web
+# Pehapkari.cz - [Statie](https://github.com/Symplify/Statie) based web
 
 [![Build Status](https://img.shields.io/travis/pehapkari/pehapkari.cz.svg?style=flat-square)](https://travis-ci.org/pehapkari/pehapkari.cz)
 
@@ -6,9 +6,10 @@
 
 ```sh
 composer update
-vendor/bin/sculpin generate --watch --server
+vendor/bin/statie generate --server
 ```
 
 And open `http://localhost:8000`.
 
-If you are using [Docker](https://docker.com) for developing or contributing, you can use it for this project. More details about it can find [here](docs/docker.md).
+
+*Are you using Docker? [Here is how to run this project](docs/docker.md) in it.*  
