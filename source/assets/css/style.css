@@ -200,7 +200,7 @@ a:hover img {
     padding: 1.5em;
 }
 
-#meetup-inivite img {
+* img {
     max-width: 100%;
 }
 
@@ -256,4 +256,28 @@ a:hover img {
 
 .text-greater {
     font-size: 1.3em;
+}
+
+/* index page */
+#slack-logo {
+    padding: 4em 0;
+}
+
+.manual-list {
+    margin-left: -.8em;
+    line-height: 1.7em;
+    font-size: 1.2em;
+}
+
+/* nicer, less-wide container */
+@media (min-width: 768px) {
+    .container {
+        width: 100%;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 980px;
+    }
 }

@@ -1,5 +1,5 @@
 {
     "require": {
-        "symplify/php7_sculpin": "^0.1"
+        "symplify/statie": "^1.2"
     }
 }
