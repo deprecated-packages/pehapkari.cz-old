@@ -257,3 +257,13 @@ a:hover img {
 .text-greater {
     font-size: 1.3em;
 }
+
+/* inde page */
+#slack-logo {
+    padding: 4em 0;
+}
+#slack-manual {
+    margin-left: -.8em;
+    line-height: 1.7em;
+    font-size: 1.2em;
+}
