@@ -54,30 +54,24 @@ header a:hover {
     color: #fff;
 }
 
-header a:hover img {
-    opacity: 1;
-}
-
 .top-navigation {
     float: right;
-}
-
-
-
-h1 {
-    font-size: 3.4em;
-    line-height: 1.5em;
-    padding: 1em 0;
 }
 
 .section {
     padding: 3em 0;
 }
 
-.section.intermezzo {
+.intermezzo {
     padding: 1.5em 0;
     background: #F9F2E7;
     font-size: 1.2em;
+}
+
+h1 {
+    font-size: 3.4em;
+    line-height: 1.5em;
+    padding: 1em 0;
 }
 
 h2 {
@@ -88,20 +82,10 @@ h2 {
 
 h2 small {
     color: inherit;
-    font-size: .5em;
-    opacity: .5;
 }
 
 h3 {
     color: #8FBE00;
-}
-
-footer {
-    padding: 1em 0;
-}
-
-footer h3 {
-    /*color: beige;*/
 }
 
 ::-moz-selection {
@@ -157,44 +141,8 @@ a.black:hover {
     text-decoration: none;
 }
 
-a {
-    transition: .2s;
-}
-
-a:hover {
-    transition: .3s;
-}
-
-a img {
-    opacity: 1;
-    transition: opacity .2s;
-}
-
-a:hover img {
-    text-decoration: none;
-    opacity: 0.7;
-    transition: opacity .3s;
-}
-
-#sponsors #stats {
-    margin: 2em 0;
-    font-size: 1.3em;
-}
-
 .btn {
     font-size: .9em;
-}
-
-.panel-heading {
-    font-size: 1.4em;
-}
-
-.panel-heading img {
-    width: 120px;
-}
-
-.panel-body {
-    padding: 1.5em;
 }
 
 * img {
@@ -211,15 +159,7 @@ a:hover img {
     font-size: 1.6em;
 }
 
-.panel-tirkis {
-    border-color: #00A8C6;
-}
-
-.panel-tirkis .panel-heading {
-    color: #ffffff;
-    background-color: #00A8C6;
-}
-
+/* for kde-najdes-kamose.latte */
 .grey-bg {
     background-color: #f5f5f5;
 }
@@ -237,6 +177,7 @@ a:hover img {
     margin-top: 5px;
 }
 
+/* for slovnicek.latte */
 #vocabulary > dd {
     border-bottom: 1px #eee solid;
     margin-bottom: 1em;
@@ -261,6 +202,7 @@ a:hover img {
 }
 
 .manual-list {
+    margin-top: 1em;
     margin-left: -.8em;
     line-height: 1.7em;
     font-size: 1.2em;
@@ -275,6 +217,38 @@ a:hover img {
 
 @media (min-width: 992px) {
     .container {
-        width: 980px;
+        max-width: 980px;
     }
+}
+
+/* for blog.latte */
+article.blog-post {
+    margin-bottom: 3em;
+}
+
+.blog-post img {
+    border-radius: 2px;
+}
+
+.blog-post img.post-thumbnail, .post-thumbnail {
+    margin: 0 .9em .2em 0;
+}
+
+.blog-post header {
+    background: transparent;
+    margin-bottom: 1em;
+    text-align: left;
+}
+
+.blog-post header h2 {
+    font-size: 1.7em;
+    margin-bottom: .4em;
+}
+
+.blog-post ul li a:active, .blog-post ul li a {
+    color: #8FBE00;
+}
+
+.less-relevant {
+    color: #666;
 }
