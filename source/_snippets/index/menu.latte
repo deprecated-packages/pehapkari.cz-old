@@ -3,8 +3,14 @@
         <a href="/"><img src="/assets/images/logo-header.svg" alt=""></a>
 
         <nav class="top-navigation">
-            <a href="/blog">Píšeme blog</a>
-            <a href="/slovnicek">Slovník</a>
+            <a href="/blog" n:class="(isset($id) && $id === blog) ? active">
+                <em class="fa fa-book fa-fw"></em>
+                Píšeme blog
+            </a>
+            <a href="/slovnicek" n:class="(isset($id) && $id === dictionary) ? active">
+                <em class="fa fa-language fa-fw"></em>
+                Slovníček
+            </a>
         </nav>
     </div>
 </header>
