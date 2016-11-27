@@ -43,10 +43,15 @@ header {
 }
 
 header nav a, header nav a:focus, header nav a:active {
-	color: #F5F5FA;
-    font-family: 'Varela Round', sans-serif;
+	/*color: #F9F2E7;*/
+	color: #4bf4ff;
     display: inline-block;
     padding: .6em 1em;
+}
+
+header a.active {
+    color: white;
+    text-decoration: none;
 }
 
 header a:hover {
