@@ -35,20 +35,18 @@ a:hover, a:focus, a:active, a.active {
     text-decoration: underline;
 }
 
+/* menu */
 header {
-    padding-top: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: 1.4em;
-    background: #8791C1;
-    border-bottom: 5px solid #4E5A95;
+    padding: .2em;
+    font-size: 1.2em;
+    background: #00A8C6;
 }
 
 header nav a, header nav a:focus, header nav a:active {
 	color: #F5F5FA;
     font-family: 'Varela Round', sans-serif;
     display: inline-block;
-    padding: 9px 10px;
+    padding: .6em 1em;
 }
 
 header a:hover {
@@ -71,7 +69,6 @@ h1 {
     line-height: 1.5em;
     padding: 1em 0;
 }
-
 
 .section {
     padding: 3em 0;
