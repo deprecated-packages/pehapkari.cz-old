@@ -23,7 +23,7 @@ ul li {
 }
 
 
-* a:hover, * a:focus, * a:active, * a.active {
+a:hover, a:focus, a:active, a.active {
     color: #40C0CB;
     text-decoration: underline;
 }
@@ -44,13 +44,13 @@ header {
     background: #00A8C6;
 }
 
-header nav a, header nav a:focus, header nav a:active {
+header nav a {
 	color: #4bf4ff;
     display: inline-block;
     padding: .6em 1em;
 }
 
-header a.active {
+header a.active, header nav a:focus, header nav a:active, header nav a:link {
     color: white;
     text-decoration: none;
 }
@@ -80,50 +80,25 @@ header a:hover {
     font-size: 1em;
 }
 
-
 h1 {
     font-size: 3.4em;
     line-height: 1.5em;
     padding: 1em 0;
 }
 
-h2 {
-    margin-bottom: .8em;
+h2, .h2 {
+    margin: .8em 0;
     font-size: 2.7em;
+    line-height: 1.1em;
+    padding: 0;
 }
 
 h2 small {
     color: inherit;
 }
 
-h2, h3 {
+h1, h2, .h2, h3 {
     color: #8FBE00;
-}
-
-::-moz-selection {
-    text-shadow: none;
-    background: #8FBE00;
-}
-
-::selection {
-    text-shadow: none;
-    background: #8FBE00;
-}
-
-img::selection {
-    background: 0 0;
-}
-
-img::-moz-selection {
-    background: 0 0;
-}
-
-h2::-moz-selection {
-    background: #373a3c;
-}
-
-h2::selection {
-    background: #373a3c;
 }
 
 @media (max-width: 992px) {

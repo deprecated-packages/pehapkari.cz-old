@@ -4,7 +4,7 @@
 {block content_wrapper}
     <div id="article">
         <div class="container">
-            <h2 class="text-center">{$post['title']}</h2>
+            <h1 class="h2 text-center">{$post['title']}</h1>
             <p class="perex">{$post['perex']|noescape}</p>
         </div>
 
@@ -16,6 +16,10 @@
 
         <div class="container">
             {$post['content']|noescape}
+
+            <br>
+
+            <hr>
 
             <br>
 
