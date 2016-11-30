@@ -1,3 +1,4 @@
+/* color palette: http://www.colourlovers.com/palette/46688/fresh_cut_day */
 body {
     font-family: 'Arial', sans-serif;
     font-size: 17px;
@@ -21,16 +22,17 @@ ul li {
     line-height: 1.7em;
 }
 
-a, a:hover, a:focus, a:active, a.active {
-	outline: 0;
+
+* a:hover, * a:focus, * a:active, * a.active {
+    color: #40C0CB;
+    text-decoration: underline;
 }
 
 a {
     color: #00A8C6;
-    text-decoration: none;
 }
 
-a:hover, a:focus, a:active, a.active {
+a:hover, a:focus, a:active {
     color: #40C0CB;
     text-decoration: underline;
 }
@@ -43,7 +45,6 @@ header {
 }
 
 header nav a, header nav a:focus, header nav a:active {
-	/*color: #F9F2E7;*/
 	color: #4bf4ff;
     display: inline-block;
     padding: .6em 1em;
@@ -73,6 +74,13 @@ header a:hover {
     font-size: 1.2em;
 }
 
+.intermezzo-smaller {
+    padding: 1em 0;
+    background: #F9F2E7;
+    font-size: 1em;
+}
+
+
 h1 {
     font-size: 3.4em;
     line-height: 1.5em;
@@ -82,14 +90,13 @@ h1 {
 h2 {
     margin-bottom: .8em;
     font-size: 2.7em;
-    color: #8FBE00;
 }
 
 h2 small {
     color: inherit;
 }
 
-h3 {
+h2, h3 {
     color: #8FBE00;
 }
 
@@ -117,15 +124,6 @@ h2::-moz-selection {
 
 h2::selection {
     background: #373a3c;
-}
-
-.text-center .img-responsive {
-    margin: 0 auto;
-}
-
-a.black:hover {
-    color: black;
-    text-decoration: underline;
 }
 
 @media (max-width: 992px) {
@@ -227,31 +225,17 @@ a.black:hover {
 }
 
 /* for blog.latte */
-article.blog-post {
-    margin-bottom: 3em;
+#blog {
+    padding-top: 3em;
 }
 
-.blog-post img {
-    border-radius: 2px;
+#blog .perex {
+    line-height: 1.5em;
+    color: #666;
 }
 
-.blog-post img.post-thumbnail, .post-thumbnail {
-    margin: 0 .9em .2em 0;
-}
-
-.blog-post header {
-    background: transparent;
-    margin-bottom: 1em;
-    text-align: left;
-}
-
-.blog-post header h2 {
-    font-size: 1.7em;
-    margin-bottom: .4em;
-}
-
-.blog-post ul li a:active, .blog-post ul li a {
-    color: #8FBE00;
+#blog .intermezzo-smaller {
+    margin: 1em 0 3em;
 }
 
 .less-relevant {

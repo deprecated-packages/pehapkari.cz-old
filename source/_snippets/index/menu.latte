@@ -3,7 +3,7 @@
         <a href="/"><img src="/assets/images/logo-header.svg" alt=""></a>
 
         <nav class="top-navigation">
-            <a href="/blog" n:class="(isset($id) && $id === blog) ? active">
+            <a href="/blog" n:class="(isset($id) && $id === blog) || ($layout === post) ? active">
                 <em class="fa fa-book fa-fw"></em>
                 Píšeme blog
             </a>

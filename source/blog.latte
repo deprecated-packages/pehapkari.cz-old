@@ -5,77 +5,52 @@ id: blog
 ---
 
 {block content}
-    <div class="section">
-        <div class="container">
-            <div class="row">
-                <article class="blog-post">
-                    <header>
-                        <img src="http://placekitten.com/200/200" class="pull-left post-thumbnail hidden-xs">
+    <div id="blog">
+        {foreach $posts as $post}
+            <div class="container article">
+                <h2 class="text-center">
+                    <a href="{$post['relativeUrl']}">
+                        {$post['title']}
+                    </a>
+                </h2>
 
-                        <a href="">
-                            <h2>How to Use Symfony Bundles in Nette Without Rewriting DI Logic</h2>
-                        </a>
-
-                        <ul class="list-inline list-inline-box">
-                            <li>
-                                <em class="fa fa-calendar fa-fw"></em>
-                                <time datetime="2016-10-Wed">
-                                    5. 10
-                                </time>
-                            </li>
-
-                            <li>
-                                <em class="fa fa-clock-o fa-fw"></em>
-                                <strong>2 minutes of reading</strong>
-                            </li>
-
-                            <li>
-                                <em class="fa fa-fw fa-comments"></em>
-                                <a href="">2</a>
-                            </li>
-                        </ul>
-
-                    </header>
-
-                    <p>Every framework has its own unique Dependency Injection Container (DIC), where you register your services. <strong>Imagine a set of special glues that are required to add the same paper on different surfaces.</strong> Today I will show you how to use universal glue for Nette surface.
-
-                    </p>
-                    <div class="clearfix"></div>
-                </article>
-
-                <article class="blog-post">
-                    <header>
-                        <a href="">
-                            <h2>How to Use Symfony Bundles in Nette Without Rewriting DI Logic</h2>
-                        </a>
-
-                        <ul class="list-inline list-inline-box">
-                            <li>
-                                <em class="fa fa-calendar fa-fw"></em>
-                                <time datetime="2016-10-Wed">
-                                    5. 10
-                                </time>
-                            </li>
-
-                            <li>
-                                <em class="fa fa-clock-o fa-fw"></em>
-                                <strong>2 minutes of reading</strong>
-                            </li>
-
-                            <li>
-                                <em class="fa fa-fw fa-comments"></em>
-                                <a href="">2</a>
-                            </li>
-                        </ul>
-
-                    </header>
-
-                    <p>Every framework has its own unique Dependency Injection Container (DIC), where you register your services. <strong>Imagine a set of special glues that are required to add the same paper on different surfaces.</strong> Today I will show you how to use universal glue for Nette surface.
-
-                    </p>
-                    <div class="clearfix"></div>
-                </article>
+                <p class="perex">{$post['perex']|noescape}</p>
             </div>
-        </div>
+
+            <div class="intermezzo-smaller text-center">
+                <div class="container">
+                    {include metadataLine, "post" => $post}
+                </div>
+            </div>
+        {/foreach}
     </div>
 {/block}
+
+
+{define metadataLine}
+    <div class="row">
+        <div class="col-md-3">
+            <em class="fa fa-clock-o fa-fw"></em>
+            <strong>{$post->getReadingTimeInMinutes()} {="post.min_of_reading"|translate: $post['lang'] ?? 'cs'}</strong>
+        </div>
+
+        <div class="col-md-3">
+            <em class="fa fa-user fa-fw"></em>
+
+            <strong>{$authors[$post['author']]['name']}</strong>
+        </div>
+
+        <div class="col-md-3">
+            <em class="fa fa-calendar fa-fw"></em>
+            <time datetime="{$post->getDateInFormat('Y-m-D')}">
+                {$post->getDateInFormat('j. n. Y')}
+            </time>
+        </div>
+
+        <div class="col-md-3">
+            <em class="fa fa-fw fa-comments"></em>
+            <a href="{$siteUrl}/{$post['relativeUrl']}/#disqus_thread">X</a>
+            {="post.comment_count"|translate: $post['lang'] ?? 'cs'}
+        </div>
+    </div>
+{/define}
