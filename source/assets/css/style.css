@@ -208,6 +208,17 @@ h1, h2, .h2, h3 {
     padding-top: 3em;
 }
 
+#article h2 {
+    margin-top: 1em;
+    font-size: 1.8em;
+}
+
+#article h3 {
+    margin-top: 1em;
+    font-size: 1.4em;
+}
+
+
 .perex {
     line-height: 1.5em;
     color: #666;

@@ -1,15 +1,53 @@
 ---
 layout: post
 title: "Chceš psát o PHP? Pošli Pull Request!"
-perex: "Pokud ti v psaní brání to, že nemáš funkční blog, krásný design, velké sociální kruhy pro šíření článků, copy-cítění, máme pro tebe řešení - komunitní blog o PHP. Rutinu nech na nás a v klidu se věnuj se psaní."
+perex: "Pokud ti v psaní brání to, <strong>že nemáš funkční blog, krásný design, velké sociální kruhy pro šíření článků nebo copy-cítění</strong>, máme pro tebe řešení - komunitní blog o PHP. <strong>Nudnou rutinu nech na nás a v klidu se věnuj psaní</strong>."
 author: 1
 ---
 
-## Jak psát?
-
-
-## V čem psát?
-
-
 ## Jaké články sem patří?
+
+O PHP a jeho ekosystému - git, Github, PHPStorm, Doctrine, Latte, Symfony, Laravel, Nette, Coding Standard, Docker, Composer, Elastica, Redis, PHPUnit, Selenium, Mysql, Postgres, AWS, Blackfire, jak bylo na konferenci, co umí tenhle (můj) balíček...  
+
+
+## Jak napsat článek?
+
+
+> "Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away." 
+>
+> – *Antoine de Saint Exupery*
+
+
+### 1. Tvoje práce
+
+- [forkni si repositář tohoto webu](https://github.com/pehapkari/pehapkari.cz/)
+- klidně zkopíruj tento článek, najdeš ho v [_posts](https://github.com/pehapkari/pehapkari.cz/tree/blog/source/_posts)
+- [přidej se mezi autory](https://github.com/pehapkari/pehapkari.cz/tree/blog/source/_data/authors.neon)
+- napiš text
+- pošli PR ke schválení
+
+### 2. Naše práce
+
+- mrkneme na článek v PR
+- přidáme připomínky a copy tipy (aby se to četlo stejně dobře jako skenovalo)
+- po zpracování připomínek článek vydáme
+- hodíme ho na sociální sítě nebo retweetneme tvé sdílení
+
+## V čem můžeš psát?
+
+Máš tu k dispozici:
+
+- [Markdown](https://guides.github.com/features/mastering-markdown/#examples) (třeba tento článek je napsaný jen v něm)
+- [Latte](https://latte.nette.org/)
+- [neon](https://ne-on.org/) pro definování dat v hlavičce článku 
+
+
+Proces psaní a přijmání článků se může časem vyvíjet. **Tohle je start, kterým začneme, a uvidíme, kam budeme směřovat.**
+
+### Není něco jasné? Nefunguje to? Máme tam chybu?
+
+Napiš nám to, ať ostatní té bolesti můžeme ušetřit.
+
+Těšíme se na tvůj příspěvek!
+
 
