@@ -1,3 +1,4 @@
+/* color palette: http://www.colourlovers.com/palette/46688/fresh_cut_day */
 body {
     font-family: 'Arial', sans-serif;
     font-size: 17px;
@@ -21,34 +22,37 @@ ul li {
     line-height: 1.7em;
 }
 
-a, a:hover, a:focus, a:active, a.active {
-	outline: 0;
-}
-
-a {
-    color: #00A8C6;
-    text-decoration: none;
-}
 
 a:hover, a:focus, a:active, a.active {
     color: #40C0CB;
     text-decoration: underline;
 }
 
-header {
-    padding-top: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: 1.4em;
-    background: #8791C1;
-    border-bottom: 5px solid #4E5A95;
+a {
+    color: #00A8C6;
 }
 
-header nav a, header nav a:focus, header nav a:active {
-	color: #F5F5FA;
-    font-family: 'Varela Round', sans-serif;
+a:hover, a:focus, a:active {
+    color: #40C0CB;
+    text-decoration: underline;
+}
+
+/* menu */
+header {
+    padding: .2em;
+    font-size: 1.2em;
+    background: #00A8C6;
+}
+
+header nav a {
+	color: #4bf4ff;
     display: inline-block;
-    padding: 9px 10px;
+    padding: .6em 1em;
+}
+
+header a.active, header nav a:focus, header nav a:active, header nav a:link {
+    color: white;
+    text-decoration: none;
 }
 
 header a:hover {
@@ -56,15 +60,25 @@ header a:hover {
     color: #fff;
 }
 
-header a:hover img {
-    opacity: 1;
-}
-
 .top-navigation {
     float: right;
 }
 
+.section {
+    padding: 3em 0;
+}
 
+.intermezzo {
+    padding: 1.5em 0;
+    background: #F9F2E7;
+    font-size: 1.2em;
+}
+
+.intermezzo-smaller {
+    padding: 1em 0;
+    background: #F9F2E7;
+    font-size: 1em;
+}
 
 h1 {
     font-size: 3.4em;
@@ -72,74 +86,19 @@ h1 {
     padding: 1em 0;
 }
 
-
-.section {
-    padding: 3em 0;
-}
-
-.section.intermezzo {
-    padding: 1.5em 0;
-    background: #F9F2E7;
-    font-size: 1.2em;
-}
-
-h2 {
-    margin-bottom: .8em;
+h2, .h2 {
+    margin: .8em 0;
     font-size: 2.7em;
-    color: #8FBE00;
+    line-height: 1.1em;
+    padding: 0;
 }
 
 h2 small {
     color: inherit;
-    font-size: .5em;
-    opacity: .5;
 }
 
-h3 {
+h1, h2, .h2, h3 {
     color: #8FBE00;
-}
-
-footer {
-    padding: 1em 0;
-}
-
-footer h3 {
-    /*color: beige;*/
-}
-
-::-moz-selection {
-    text-shadow: none;
-    background: #8FBE00;
-}
-
-::selection {
-    text-shadow: none;
-    background: #8FBE00;
-}
-
-img::selection {
-    background: 0 0;
-}
-
-img::-moz-selection {
-    background: 0 0;
-}
-
-h2::-moz-selection {
-    background: #373a3c;
-}
-
-h2::selection {
-    background: #373a3c;
-}
-
-.text-center .img-responsive {
-    margin: 0 auto;
-}
-
-a.black:hover {
-    color: black;
-    text-decoration: underline;
 }
 
 @media (max-width: 992px) {
@@ -160,44 +119,8 @@ a.black:hover {
     text-decoration: none;
 }
 
-a {
-    transition: .2s;
-}
-
-a:hover {
-    transition: .3s;
-}
-
-a img {
-    opacity: 1;
-    transition: opacity .2s;
-}
-
-a:hover img {
-    text-decoration: none;
-    opacity: 0.7;
-    transition: opacity .3s;
-}
-
-#sponsors #stats {
-    margin: 2em 0;
-    font-size: 1.3em;
-}
-
 .btn {
     font-size: .9em;
-}
-
-.panel-heading {
-    font-size: 1.4em;
-}
-
-.panel-heading img {
-    width: 120px;
-}
-
-.panel-body {
-    padding: 1.5em;
 }
 
 * img {
@@ -214,15 +137,7 @@ a:hover img {
     font-size: 1.6em;
 }
 
-.panel-tirkis {
-    border-color: #00A8C6;
-}
-
-.panel-tirkis .panel-heading {
-    color: #ffffff;
-    background-color: #00A8C6;
-}
-
+/* for kde-najdes-kamose.latte */
 .grey-bg {
     background-color: #f5f5f5;
 }
@@ -240,6 +155,7 @@ a:hover img {
     margin-top: 5px;
 }
 
+/* for slovnicek.latte */
 #vocabulary > dd {
     border-bottom: 1px #eee solid;
     margin-bottom: 1em;
@@ -264,6 +180,7 @@ a:hover img {
 }
 
 .manual-list {
+    margin-top: 1em;
     margin-left: -.8em;
     line-height: 1.7em;
     font-size: 1.2em;
@@ -278,6 +195,39 @@ a:hover img {
 
 @media (min-width: 992px) {
     .container {
-        width: 980px;
+        max-width: 980px;
     }
+}
+
+/* for blog.latte, _layout/post.latte */
+#blog {
+    padding-top: 3em;
+}
+
+#article {
+    padding-top: 3em;
+}
+
+#article h2 {
+    margin-top: 1em;
+    font-size: 1.8em;
+}
+
+#article h3 {
+    margin-top: 1em;
+    font-size: 1.4em;
+}
+
+
+.perex {
+    line-height: 1.5em;
+    color: #666;
+}
+
+.intermezzo-smaller {
+    margin: 1em 0 3em;
+}
+
+.less-relevant {
+    color: #666;
 }

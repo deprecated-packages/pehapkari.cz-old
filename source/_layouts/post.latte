@@ -1,0 +1,85 @@
+{extends "default"}
+
+
+{block content_wrapper}
+    <div id="article">
+        <div class="container">
+            <h1 class="h2 text-center">{$post['title']}</h1>
+            <p class="perex">{$post['perex']|noescape}</p>
+        </div>
+
+        <div class="intermezzo-smaller text-center">
+            <div class="container">
+                {include metadataLine, "post" => $post}
+            </div>
+        </div>
+
+        <div class="container">
+            {$post['content']|noescape}
+
+            <br>
+
+            <hr>
+
+            <br>
+
+            <h3>{="post.i_want_your_opinion"|translate: $post['lang'] ?? 'cs'}</h3>
+
+            {include "disqusComments", 'post' => $post}
+        </div>
+    </div>
+{/block}
+
+
+{block socialTags}
+    {* Facebook sharing *}
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="{$post['title']}" />
+    <meta property="og:description" content="{$post['perex']}" />
+    <meta property="og:url" content="{$siteUrl}/{$post['relativeUrl']}" />
+
+    {* Twitter sharing *}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="{$post['title']}" />
+    <meta name="twitter:description" content="{$post['perex']}" />
+{/block}
+
+
+{block additionalJavascript}
+    <script src="/assets/prism/prism.js"></script>
+    <script id="dsq-count-scr" src="http://{$disqusName}.disqus.com/count.js" async defer></script>
+{/block}
+
+
+{block additionalCss}
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+{/block}
+
+
+{define metadataLine}
+    <div class="row">
+        <div class="col-md-3">
+            <em class="fa fa-clock-o fa-fw"></em>
+            <strong>{$post->getReadingTimeInMinutes()} {="post.min_of_reading"|translate: $post['lang'] ?? 'cs'}</strong>
+        </div>
+
+        <div class="col-md-3">
+            <em class="fa fa-user fa-fw"></em>
+
+            <strong>{$authors[$post['author']]['name']}</strong>
+        </div>
+
+        <div class="col-md-3">
+            <em class="fa fa-calendar fa-fw"></em>
+            <time datetime="{$post->getDateInFormat('Y-m-D')}">
+                {$post->getDateInFormat('j. n. Y')}
+            </time>
+        </div>
+
+        <div class="col-md-3">
+            <em class="fa fa-fw fa-comments"></em>
+            <a href="{$siteUrl}/{$post['relativeUrl']}/#disqus_thread">X</a>
+            {="post.comment_count"|translate: $post['lang'] ?? 'cs'}
+        </div>
+    </div>
+{/define}

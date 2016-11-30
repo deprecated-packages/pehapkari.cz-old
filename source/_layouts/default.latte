@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="cs">
     <head>
-        <title>{= $title ?? $pageTitle}</title>
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -10,6 +8,11 @@
         <meta name="keywords" content="PHP, komunita, programování">
         <meta name="author" content="http://pehapkari.cz">
         <meta name="robots" content="index, follow">
+
+        {* socials *}
+        <meta property="og:image" content="/images/php-square.png">
+        {block socialTags}
+        {/block}
 
         {* mobile *}
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,24 +26,15 @@
         <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
         {* css *}
-        <link href="/assets/css/style.css?v=newheader" rel="stylesheet">
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
 
         <link href="/favicon.ico" rel="shortcut icon">
 
-        {* facebook *}
-        <meta property="og:image" content="images/php-square.png">
+        <title>{= $title ?? $pageTitle}</title>
     </head>
 
     <body>
-        <header>
-            <div class="container">
-                <a href="/"><img src="/assets/images/logo-header.svg" alt=""></a>
-
-                <nav class="top-navigation">
-                    <a href="/slovnicek">slovník</a>
-                </nav>
-            </div>
-        </header>
+        {include "menu"}
 
         {block content_wrapper}
             {block content}{/block}
@@ -50,5 +44,6 @@
         {/block}
 
         {include "googleAnalytics"}
+        {include "facebookPixel"}
     </body>
 </html>
