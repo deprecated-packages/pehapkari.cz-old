@@ -224,17 +224,21 @@ h2::selection {
     }
 }
 
-/* for blog.latte */
+/* for blog.latte, _layout/post.latte */
 #blog {
     padding-top: 3em;
 }
 
-#blog .perex {
+#article {
+    padding-top: 3em;
+}
+
+.perex {
     line-height: 1.5em;
     color: #666;
 }
 
-#blog .intermezzo-smaller {
+.intermezzo-smaller {
     margin: 1em 0 3em;
 }
 
