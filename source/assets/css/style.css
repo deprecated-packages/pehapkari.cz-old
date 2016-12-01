@@ -50,7 +50,7 @@ header nav a {
     padding: .6em 1em;
 }
 
-header a.active, header nav a:focus, header nav a:active, header nav a:link {
+header a.active, header nav a:focus, header nav a:active {
     color: white;
     text-decoration: none;
 }
