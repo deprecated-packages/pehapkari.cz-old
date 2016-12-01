@@ -21,8 +21,8 @@ O PHP a jeho ekosystému - git, Github, PHPStorm, Doctrine, Latte, Symfony, Lara
 ### 1. Tvoje práce
 
 - [forkni si repositář tohoto webu](https://github.com/pehapkari/pehapkari.cz/)
-- klidně zkopíruj tento článek, najdeš ho v [_posts](https://github.com/pehapkari/pehapkari.cz/tree/blog/source/_posts)
-- [přidej se mezi autory](https://github.com/pehapkari/pehapkari.cz/tree/blog/source/_data/authors.neon)
+- klidně zkopíruj tento článek, najdeš ho ve složce [/source/_posts](https://github.com/pehapkari/pehapkari.cz/tree/master/source/_posts)
+- [přidej se mezi autory do `authors.neon`](https://github.com/pehapkari/pehapkari.cz/tree/master/source/_data/authors.neon)
 - napiš text
 - pošli PR ke schválení
 
