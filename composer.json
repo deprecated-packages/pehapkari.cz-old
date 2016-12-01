@@ -1,5 +1,26 @@
 {
     "require": {
-        "symplify/statie": "^1.2"
+        "symplify/statie": "^1.2",
+        "symfony/event-dispatcher": "^3.1",
+        "mekras/php-speller": "^1.4",
+        "hunspell-php/hunspell-php": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.6",
+        "symplify/coding-standard": "^1.2"
+    },
+    "autoload": {
+    },
+    "autoload-dev": {
+    },
+    "scripts": {
+        "check-cs": [
+            "vendor/symplify/coding-standard/bin/symplify-cs check src",
+            "vendor/symplify/coding-standard/bin/symplify-cs check tests"
+        ],
+        "fix-cs": [
+            "vendor/symplify/coding-standard/bin/symplify-cs fix src",
+            "vendor/symplify/coding-standard/bin/symplify-cs fix tests"
+        ]
     }
 }
