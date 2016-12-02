@@ -201,8 +201,16 @@ h1, h2, .h2, h3 {
 }
 
 /* for blog.latte, _layout/post.latte */
+#blog .perex {
+    line-height: 1.5em;
+}
+
 #blog {
     padding-top: 3em;
+}
+
+#blog h3 {
+    line-height: 3em;
 }
 
 #article {
@@ -216,22 +224,28 @@ h1, h2, .h2, h3 {
 
 #article h2 {
     margin-top: 1em;
-    font-size: 1.7em;
+    font-size: 1.5em;
 }
 
 #article h3 {
     margin-top: 1em;
-    font-size: 1.4em;
+    font-size: 1.25em;
 }
 
 #article-content {
-    margin-top: -2em;
     padding-top: 0;
 }
 
-.perex {
+#article #metadata-line {
+    text-align: center;
+    font-size: .8em;
+    color: #a2a2a2;
+    margin: 2em 0;
+}
+
+#article .perex {
     line-height: 1.5em;
-    color: #666;
+    font-size: 1.2em;
 }
 
 .intermezzo-smaller {
@@ -251,4 +265,9 @@ pre {
     word-wrap: normal;
     white-space: pre;
     border-radius: 6px;
+    padding-top: .3em;
+}
+
+pre[class*="language-"] {
+    margin: 1em 0;
 }

@@ -1,4 +1,5 @@
-i_want_your_opinion: "We Care about Your Opinion"
+i_want_your_opinion: "What do you think about this?"
 comment_count: "comments"
 send_pr: "Send PR"
-min_of_reading: "min of Reading"
+min_of_reading: "min read"
+by: "by"

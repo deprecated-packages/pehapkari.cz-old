@@ -1,16 +1,24 @@
 ---
 layout: post
-title: "Event Dispatche"
+title: "Event Dispatcher from the Scratch"
 perex: "Dnes se spolu podíváme na EventDispatcher. Jde o komponentu, která dodá tvému kódu flexibilitu. Zároveň je jednou z nejdůležitějších součástek životního cyklu Symfony. Když pochopíš EventDispatcher, budeš zase o kousek blíž k tomu stát se opravdovým mistrem Symfony."
 author: 1
 series: 1 
 tested: true
 id: 2
+lang: en
 ---
+
+## Co ti EventDispatcher umožní?
+
+Dostat se na určité místo v kódu bez nutnosti jeho změny
+Zvýšit flexibilitu a použitelnost tvé aplikace
+
 
 ## Hlavní pojmy
 
 ### Event
+
 …neboli událost. Jde o něco, co může nastat při běhu aplikace. Typickým příkladem je objednávka. Když dojde k odeslání objednávky, tak se zavolá Event. Na Event odeslání objednávky pak může slyšet několik EventSubscriberů.
 
 ### EventSubscriber
@@ -20,16 +28,6 @@ id: 2
 …ten se stará o zavolání EventSubscriberů, když nastane určitý Event.
 
 
-## Kde můžeš EventDispatcher najít?
-
-- Symfony\HttpKernel – Controller event
-- Symfony\Console – Command event
-- Zenify\DoctrineMigrations – SetConsoleOutputEventSubscriber – Doctrine\Migrations pro Nette
-
-## Co ti EventDispatcher umožní?
-
-Dostat se na určité místo v kódu bez nutnosti jeho změny
-Zvýšit flexibilitu a použitelnost tvé aplikace
 
 
 ## Jak to aplikovat v kódu?
@@ -42,8 +40,6 @@ composer require symfony/event-dispatcher
 Vytvoříš si soubor `index.php`:
 
 ```language-php
-<?php
-
 require_once __DIR__ . '/vendor/autoload.php';
 
 $eventDispatcher = new Symfony\Component\EventDispatcher\EventDispatcher;
@@ -53,7 +49,7 @@ $eventDispatcher->dispatch('order.finish');
 
 A spustíš:
 
-```
+```language-bash
 php index.php
 ```
 
@@ -62,32 +58,33 @@ Dispatchneš Event, ale nic se nestane. Aby se něco stalo, bude potřeba ješt�
 Přidáš tedy EventSubscriber:
 
 ```language-php
-<?php
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class SendEmailToAdminEventSubscriber implements Symfony\Component\EventDispatcher\EventSubscriberInterface
+final class SendEmailToAdminEventSubscriber implements EventSubscriberInterface
 {
-   public $signal = 0;
+    /**
+     * @var int
+     */
+    public $signal = 0;
 
-   public static function getSubscribedEvents()
-   {
-      // tady budeme poslouchat "order.finish" event
-      // a pokud nastane, použijeme metodu sendEmailToAdmin()
-       return ['order.finish' => 'sendEmailToAdmin'];
-   }
+    public static function getSubscribedEvents()
+    {
+        // tady budeme poslouchat "order.finish" event
+        // a pokud nastane, použijeme metodu sendEmailToAdmin()
+        return ['order.finish' => 'sendEmailToAdmin'];
+    }
 
-   public function sendEmailToAdmin()
-   {
-      // náš kód, který pošle e-mail adminovi
-       $this->signal = 1;
-   }
+    public function sendEmailToAdmin()
+    {
+        // náš kód, který pošle e-mail adminovi
+        $this->signal = 1;
+    }
 }
 ```
 
 Nakonec přidáš `EventSubscriber` do `EventDispatcheru`:
 
 ```language-php
-<?php
-
 $sendEmailToAdminEventSubscriber = new SendEmailToAdminEventSubscriber;
 
 $eventDispatcher = new Symfony\Component\EventDispatcher\EventDispatcher;
@@ -114,34 +111,36 @@ Pro tip: Metoda getSubscribedEvents() může naslouchat více Eventům, více me
 
 Nyní už rozumíš Symfony komponentě EventDispatcher.
 
+
 ### Event s argumenty
 
 Při volání události obvykle potřebuješ předat i nějaká data. Například číslo objednávky. Taková třída Event je vlastně pouhý Value object – schránka na data.
 
 ```language-php
-<?php
+use Symfony\Component\EventDispatcher\Event;
 
-class OrderEvent extends Symfony\Component\EventDispatcher\Event
+final class OrderEvent extends Event
 {
-   private $orderId;
+    /**
+     * @var int
+     */
+    private $orderId;
 
-   public function __construct($orderId)
-   {
-       $this->orderId = $orderId;
-   }
+    public function __construct(int $orderId)
+    {
+        $this->orderId = $orderId;
+    }
 
-   public function getOrderId()
-   {
-       return $this->orderId;
-   }
+    public function getOrderId() : int
+    {
+        return $this->orderId;
+    }
 }
 ```
 
 Dispatchneš event i s potřebnými daty.
 
 ```language-php
-<?php
-
 $orderEvent = new OrderEvent(123);
 $eventDispatcher->dispatch('order.finish', $orderEvent);
 ```
@@ -149,28 +148,29 @@ $eventDispatcher->dispatch('order.finish', $orderEvent);
 Rozšíříš EventSubscriber o OrderEvent:
 
 ```language-php
-<?php
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class SendEmailToAdminEventSubscriber
-    implements Symfony\Component\EventDispatcher\EventSubscriberInterface
+final class SendEmailToAdminEventSubscriber implements EventSubscriberInterface
 {
-   public $signal = 0;
+    /**
+     * @var int
+     */
+    public $signal = 0;
 
-   public static function getSubscribedEvents()
-   {
-       return ['order.finish' => 'sendEmailToAdmin'];
-   }
+    public static function getSubscribedEvents() : array
+    {
+        return ['order.finish' => 'sendEmailToAdmin'];
+    }
 
-   public function sendEmailToAdmin(OrderEvent $orderEvent)
-   {
-       $this->signal = $orderEvent->getOrderId();
-   }
+    public function sendEmailToAdmin(OrderEvent $orderEvent)
+    {
+        $this->signal = $orderEvent->getOrderId();
+    }
 }
 ```
 
 
 A doplníš svůj výsledný kód:
-
 
 ```language-php
 $eventDispatcher = new Symfony\Component\EventDispatcher\EventDispatcher;
@@ -187,8 +187,8 @@ var_dump($sendEmailToAdminEventSubscriber->signal);
 
 Výstup pak vypadá takto:
 
-```
-$  event-dispatcher  php index.php
+```language-bash
+$  php index.php
 int(0)
 int(123)
 ``` 
@@ -196,6 +196,7 @@ int(123)
 ## Jsi zase o krok dál
 
 Teď už:
+
 - rozumíš základním workflow událostí
 - znáš pojmy Event, EventSubscriber a EventDispatcher
 - víš, k čemu využít vlastní Event objekt

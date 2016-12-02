@@ -5,28 +5,27 @@
     <div id="article">
         <div class="container">
             <h1 class="h2 text-center">{$post['title']}</h1>
-            <p class="perex">{$post['perex']|noescape}</p>
-        </div>
 
-        <div class="intermezzo-smaller text-center">
-            <div class="container">
-                {include metadataLine, "post" => $post}
+            {include metadataLine, "post" => $post}
+
+            <div id="article-content">
+                <p class="perex">{$post['perex']|noescape}</p>
+
+                {$post['content']|noescape}
             </div>
         </div>
 
-        <div class="container" id="article-content">
-            {$post['content']|noescape}
+        <div class="intermezzo-smaller">
+            <div class="container">
+                <h2>{="post.i_want_your_opinion"|translate: $post['lang'] ?? 'cs'}</h2>
+            </div>
+        </div>
 
-            <br>
-
-            <hr>
-
-            <br>
-
-            <h3>{="post.i_want_your_opinion"|translate: $post['lang'] ?? 'cs'}</h3>
-
+        <div class="container">
             {include "disqusComments", 'post' => $post}
         </div>
+
+        <br>
     </div>
 {/block}
 
@@ -47,7 +46,6 @@
 
 {block additionalJavascript}
     <script src="/assets/prism/prism.js"></script>
-    <script id="dsq-count-scr" src="http://{$disqusName}.disqus.com/count.js" async defer></script>
 {/block}
 
 
@@ -57,28 +55,17 @@
 
 
 {define metadataLine}
-    <div class="row">
-        <div class="col-md-3">
+    <div class="row" id="metadata-line">
+        <div class="col-md-12">
             <em class="fa fa-clock-o fa-fw"></em>
-            <strong>{$post->getReadingTimeInMinutes()} {="post.min_of_reading"|translate: $post['lang'] ?? 'cs'}</strong>
-        </div>
-
-        <div class="col-md-3">
-            <em class="fa fa-user fa-fw"></em>
-            <strong>{$authors[$post['author']]['name']}</strong>
-        </div>
-
-        <div class="col-md-3">
-            <em class="fa fa-calendar fa-fw"></em>
+            {$post->getReadingTimeInMinutes()}
+            {="post.min_of_reading"|translate: $post['lang'] ?? 'cs'}
+            |
             <time datetime="{$post->getDateInFormat('Y-m-D')}">
                 {$post->getDateInFormat('j. n. Y')}
             </time>
-        </div>
-
-        <div class="col-md-3">
-            <em class="fa fa-fw fa-comments"></em>
-            <a href="{$siteUrl}/{$post['relativeUrl']}/#disqus_thread">X</a>
-            <a href="/{$post['relativeUrl']}/#disqus">{="post.comment_count"|translate: $post['lang'] ?? 'cs'}</a>
+            {="post.by"|translate: $post['lang'] ?? 'cs'}
+            <strong>{$authors[$post['author']]['name']}</strong>
         </div>
     </div>
 {/define}
