@@ -8,7 +8,7 @@ use Pehapkari\Website\Posts\Year2016\Post2\SomeCode;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers SomeCode
+ * @covers \Pehapkari\Website\Posts\Year2016\Post2\SomeCode
  */
 final class SomeCodeTest extends TestCase
 {
