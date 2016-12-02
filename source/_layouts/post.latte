@@ -65,7 +65,6 @@
 
         <div class="col-md-3">
             <em class="fa fa-user fa-fw"></em>
-
             <strong>{$authors[$post['author']]['name']}</strong>
         </div>
 
@@ -79,7 +78,7 @@
         <div class="col-md-3">
             <em class="fa fa-fw fa-comments"></em>
             <a href="{$siteUrl}/{$post['relativeUrl']}/#disqus_thread">X</a>
-            {="post.comment_count"|translate: $post['lang'] ?? 'cs'}
+            <a href="/{$post['relativeUrl']}/#disqus">{="post.comment_count"|translate: $post['lang'] ?? 'cs'}</a>
         </div>
     </div>
 {/define}
