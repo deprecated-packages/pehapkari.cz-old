@@ -1,17 +1,21 @@
 {
     "require": {
         "symplify/statie": "^1.2",
-        "symfony/event-dispatcher": "^3.1",
-        "mekras/php-speller": "^1.4",
-        "hunspell-php/hunspell-php": "^1.0"
+        "symfony/event-dispatcher": "^3.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.6",
         "symplify/coding-standard": "^1.2"
     },
     "autoload": {
+        "psr-4": {
+            "Pehapkari\\Website\\": "src"
+        }
     },
     "autoload-dev": {
+        "psr-4": {
+            "Pehapkari\\Website\\Tests\\": "tests"
+        }
     },
     "scripts": {
         "check-cs": [
