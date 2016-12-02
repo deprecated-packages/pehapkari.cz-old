@@ -69,6 +69,10 @@ header a:hover {
     padding: 3em 0;
 }
 
+.bordered-img {
+    border: 1px solid #DDD;
+}
+
 .intermezzo {
     padding: 1.5em 0;
     background: #F9F2E7;
@@ -250,10 +254,6 @@ h1, h2, .h2, h3 {
 
 .intermezzo-smaller {
     margin: 1em 0 3em;
-}
-
-.less-relevant {
-    color: #666;
 }
 
 pre {
