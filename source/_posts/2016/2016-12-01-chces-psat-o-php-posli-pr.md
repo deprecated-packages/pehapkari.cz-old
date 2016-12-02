@@ -21,17 +21,18 @@ O PHP a jeho ekosystému - git, Github, PHPStorm, Doctrine, Latte, Symfony, Lara
 ### 1. Tvoje práce
 
 - [forkni si repositář tohoto webu](https://github.com/pehapkari/pehapkari.cz/)
-- klidně zkopíruj tento článek, najdeš ho ve složce [/source/_posts](https://github.com/pehapkari/pehapkari.cz/tree/master/source/_posts)
 - [přidej se mezi autory do `authors.neon`](https://github.com/pehapkari/pehapkari.cz/tree/master/source/_data/authors.neon)
-- napiš text
-- pošli PR ke schválení
+- klidně zkopíruj tento článek, najdeš ho ve složce [/source/_posts](https://github.com/pehapkari/pehapkari.cz/tree/master/source/_posts)
+- **napiš text**
+- a pošli PR ke schválení
 
 ### 2. Naše práce
 
-- mrkneme na článek v PR
-- přidáme připomínky a copy tipy (aby se to četlo stejně dobře jako skenovalo)
-- po zpracování připomínek článek vydáme
-- hodíme ho na sociální sítě nebo retweetneme tvé sdílení
+- **přidáme připomínky a copy tipy** - aby tvůj článek zaujal a nepustil do konce
+- **po zpracování připomínek článek vydáme**
+- **hodíme ho na sociální sítě nebo retweetneme tvé sdílení**
+
+Ty si pak můžeš hodit nohy na stůl a slíznout smetanu slávy. Ke smetatně ti pomůže a svoje sociální kruhy.  
 
 ## V čem můžeš psát?
 

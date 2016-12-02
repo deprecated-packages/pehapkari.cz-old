@@ -8,6 +8,6 @@ tested: true
 id: 2
 ---
 
-## RAW COPY FROM ZDROJAK
+
 
 

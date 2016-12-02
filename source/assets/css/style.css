@@ -2,6 +2,7 @@
 body {
     font-family: 'Arial', sans-serif;
     font-size: 17px;
+    color: #222;
 }
 
 h1, h2, h3 {
@@ -9,7 +10,7 @@ h1, h2, h3 {
 }
 
 p {
-    line-height: 1.45em;
+    line-height: 1.3em;
 }
 
 ul {
@@ -19,7 +20,7 @@ ul {
 ul li {
     padding: 0;
     margin: 0;
-    line-height: 1.7em;
+    line-height: 1.5em;
 }
 
 
@@ -208,16 +209,24 @@ h1, h2, .h2, h3 {
     padding-top: 3em;
 }
 
+#article h2, h3 {
+    color: #111;
+}
+
 #article h2 {
     margin-top: 1em;
-    font-size: 1.8em;
+    font-size: 1.6em;
 }
 
 #article h3 {
     margin-top: 1em;
-    font-size: 1.4em;
+    font-size: 1.3em;
 }
 
+#article-content {
+    margin-top: -2em;
+    padding-top: 0;
+}
 
 .perex {
     line-height: 1.5em;
