@@ -211,16 +211,17 @@ h1, h2, .h2, h3 {
 
 #article h2, h3 {
     color: #111;
+    font-weight: 600;
 }
 
 #article h2 {
     margin-top: 1em;
-    font-size: 1.6em;
+    font-size: 1.7em;
 }
 
 #article h3 {
     margin-top: 1em;
-    font-size: 1.3em;
+    font-size: 1.4em;
 }
 
 #article-content {
@@ -239,4 +240,15 @@ h1, h2, .h2, h3 {
 
 .less-relevant {
     color: #666;
+}
+
+pre {
+    font-size: 1em;
+    background-color: #fdf6e3;
+    padding-bottom: 1em;
+    padding-left: 1em;
+    overflow: auto;
+    word-wrap: normal;
+    white-space: pre;
+    border-radius: 6px;
 }
