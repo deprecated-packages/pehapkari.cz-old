@@ -1,6 +1,7 @@
 language: php
 
-php: 7.0
+php:
+  - 7.1
 
 matrix:
   include:
@@ -9,7 +10,7 @@ matrix:
 
 env:
   # go to: Gitub User => Settings => Personal Access Token => Generate New Token
-  # select "Repo" scopeeui
+  # select "Repo" scope
   # run in shell in git root: travis encrypt GH_TOKEN=<code>
 
   # if repo is not recognized by travis api, go to https://travis-ci.org/<repository-slug>, like githu.com/<repository-slug>
@@ -42,7 +43,7 @@ deploy:
   provider: script
   script:
     - vendor/bin/statie generate
-    - vendor/bin/stati  e push-to-github pehapkari/pehapkari.cz --token=${GH_TOKEN}
+    - vendor/bin/statie push-to-github pehapkari/pehapkari.cz --token=${GH_TOKEN}
   # deploy only on changes in master branch and merged PRs
   on:
     branch: master

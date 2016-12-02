@@ -1,6 +1,6 @@
 <phpunit
-        bootstrap="vendor/autoload.php"
-        colors="true"
+    bootstrap="vendor/autoload.php"
+    colors="true"
 >
     <!-- tests directories to run -->
     <testsuites>
