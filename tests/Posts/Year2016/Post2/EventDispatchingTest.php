@@ -12,7 +12,7 @@ final class EventDispatchingTest extends TestCase
 {
     public function test()
     {
-        $eventDispatcher = new EventDispatcher;
+        $eventDispatcher = new EventDispatcher();
         $notifyMeOnVideoPublishedEventSubscriber = new NotifyMeOnVideoPublishedEventSubscriber();
         $eventDispatcher->addSubscriber($notifyMeOnVideoPublishedEventSubscriber);
 
