@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Event Dispatcher from the Scratch"
-perex: "Dnes se spolu podíváme na EventDispatcher. Jde o komponentu, která dodá tvému kódu flexibilitu. Zároveň je jednou z nejdůležitějších součástek životního cyklu Symfony. Když pochopíš EventDispatcher, budeš zase o kousek blíž k tomu stát se opravdovým mistrem Symfony."
+perex: "Today we look at first Symfony component - Event Dispatcher. Why start with it? It gives you flexibility, it is easy to understand and it helps you to write decoupled code."
 author: 1
 series: 1 
 tested: true
@@ -9,95 +9,107 @@ id: 2
 lang: en
 ---
 
-## Co ti EventDispatcher umožní?
 
-Dostat se na určité místo v kódu bez nutnosti jeho změny
-Zvýšit flexibilitu a použitelnost tvé aplikace
+## 2 main Features of Event Dispatcher 
 
+- **Get to some place** in complex application without putting any code there.
+- **Add endpoint to your application**, where others can easily extend it without modification.
+ 
 
-## Hlavní pojmy
+### Event Dispatcher
+
+**This is the brain**. It stores all subscribers and calls events when you need to. 
+
 
 ### Event
 
-…neboli událost. Jde o něco, co může nastat při běhu aplikace. Typickým příkladem je objednávka. Když dojde k odeslání objednávky, tak se zavolá Event. Na Event odeslání objednávky pak může slyšet několik EventSubscriberů.
-
-### EventSubscriber
-…může poslat e-mail adminovi, přičíst kredity za úspěšný nákup, nebo poslat informační sms do skladu s pokynem k zabalení tvých vánočních dárků.
-
-### EventDispatcher
-…ten se stará o zavolání EventSubscriberů, když nastane určitý Event.
+**This is name of a place**. When something has happened in application: *order is sent*, 
+or *user is deleted*.     
 
 
+### Event Subscriber
+
+This **the action that happens** when we come to some place. When order is sent, *send me a confirmation sms*. And check storage they have all the ordered products we need. This means, that 1 event can invoke MANY different Event Subscribers.
 
 
-## Jak to aplikovat v kódu?
-Symfony\EventDispatcher nainstaluješ pomocí Composeru:
+## Create First Subscriber in 3 Steps 
+
+
+### 1. Install via Composer
 
 ```language-bash
 composer require symfony/event-dispatcher
 ```
 
-Vytvoříš si soubor `index.php`:
+
+### 2. Create Event Dispatcher
 
 ```language-php
+// index.php
 require_once __DIR__ . '/vendor/autoload.php';
 
+// 1. create the Dispatcher
 $eventDispatcher = new Symfony\Component\EventDispatcher\EventDispatcher;
-// dispatchneme event někde v kódu na konci objednávky 
-$eventDispatcher->dispatch('order.finish');
+
+// 2. some event happend, we dispatch it 
+$eventDispatcher->dispatch('youtube.newVideoPublished'); // oh: event is just a string
 ```
 
-A spustíš:
+Try it:
 
 ```language-bash
 php index.php
 ```
 
-Dispatchneš Event, ale nic se nestane. Aby se něco stalo, bude potřeba ještě EventSubscriber – ten bude naslouchat na order.finish.
+Wow! Nothing happened...
 
-Přidáš tedy EventSubscriber:
+That's ok, because there is no Subscriber. So let's...
+ 
+
+### 3. Create and Register Subscriber
 
 ```language-php
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-final class SendEmailToAdminEventSubscriber implements EventSubscriberInterface
+final class NotifyMeOnVideoPublishedEventSubscriber implements EventSubscriberInterface
 {
     /**
-     * @var int
+     * @var bool
      */
-    public $signal = 0;
+    public $isUserNotified = false;
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents() : array
     {
-        // tady budeme poslouchat "order.finish" event
-        // a pokud nastane, použijeme metodu sendEmailToAdmin()
-        return ['order.finish' => 'sendEmailToAdmin'];
+        // in format ['event.name' => 'public function name that will be called']
+        return ['youtube.newVideoPublished' => 'notifyUserAboutVideo'];
     }
 
-    public function sendEmailToAdmin()
+    public function notifyUserAboutVideo()
     {
-        // náš kód, který pošle e-mail adminovi
-        $this->signal = 1;
+        // some logic to send notification
+        $this->isUserNotified = true;
     }
 }
 ```
 
-Nakonec přidáš `EventSubscriber` do `EventDispatcheru`:
+And add Subscriber to Dispatcher. Without that, he doesn't know about it.
 
 ```language-php
-$sendEmailToAdminEventSubscriber = new SendEmailToAdminEventSubscriber;
-
 $eventDispatcher = new Symfony\Component\EventDispatcher\EventDispatcher;
-$eventDispatcher->addSubscriber($sendEmailToAdminEventSubscriber);
+$notifyMeOnVideoPublishedEventSubscriber = new NotifyMeOnVideoPublishedEventSubscriber;
+$eventDispatcher->addSubscriber($notifyMeOnVideoPublishedEventSubscriber);
 
-var_dump($sendEmailToAdminEventSubscriber->signal);
+// nothing happened, default value
+var_dump($notifyMeOnVideoPublishedEventSubscriber->isUserNotified);
 
-$eventDispatcher->dispatch('order.finish');
+// this calls our Subscriber
+$eventDispatcher->dispatch('youtube.newVideoPublished');
 
-var_dump($sendEmailToAdminEventSubscriber->signal);
+// now it's changed
+var_dump($notifyMeOnVideoPublishedEventSubscriber->isUserNotified);
 ```
 
-A opět spustíš:
+Run the code again from command line:
 
 ```language-php
 $ php index.php
@@ -105,104 +117,91 @@ int(0)
 int(1)
 ```
 
-Teď, když se ti dispatchne `order.finish` Event, zavolá se každý EventSubcriber, který se k němu zapsal. V něm se zavolá metoda, která je k němu přiřazena. Dojde tak ke změně `$signal` z `0` na `1`.
+And now you understand EventDispatcher. At least for ~60 % cases. 
 
-Pro tip: Metoda getSubscribedEvents() může naslouchat více Eventům, více metodami. Může také určovat jejich pořadí.
+---
 
-Nyní už rozumíš Symfony komponentě EventDispatcher.
+Still on? Let's get advanced.
+
+What if we need to get the name of the Youtuber into the Subscriber?
 
 
-### Event s argumenty
+## Event Objects to the Rescue!
 
-Při volání události obvykle potřebuješ předat i nějaká data. Například číslo objednávky. Taková třída Event je vlastně pouhý Value object – schránka na data.
+The Event objects are basically Value Objects. Pass a value in constructor a get with getter.
+
+
+### 1. Create an Event Object
 
 ```language-php
 use Symfony\Component\EventDispatcher\Event;
 
-final class OrderEvent extends Event
+final class YoutuberNameEvent extends Event
 {
     /**
-     * @var int
+     * @var string
      */
-    private $orderId;
+    private $youtubeName;
 
-    public function __construct(int $orderId)
+    public function __construct(string $youtubeName)
     {
-        $this->orderId = $orderId;
+        $this->youtubeName = $youtubeName;
     }
 
-    public function getOrderId() : int
+    public function getYoutubeName() : string
     {
-        return $this->orderId;
+        return $this->youtubeName;
     }
 }
 ```
 
-Dispatchneš event i s potřebnými daty.
 
-```language-php
-$orderEvent = new OrderEvent(123);
-$eventDispatcher->dispatch('order.finish', $orderEvent);
-```
-
-Rozšíříš EventSubscriber o OrderEvent:
+### 2. Use Event Object in Event Subscriber
 
 ```language-php
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-final class SendEmailToAdminEventSubscriber implements EventSubscriberInterface
+final class NotifyMeOnVideoPublishedEventSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @var int
-     */
-    public $signal = 0;
-
     public static function getSubscribedEvents() : array
     {
-        return ['order.finish' => 'sendEmailToAdmin'];
+        return ['youtube.newVideoPublished' => 'notifyUserAboutVideo'];
     }
 
-    public function sendEmailToAdmin(OrderEvent $orderEvent)
+    // Event Object is passed as method argument
+    public function notifyUserAboutVideo(YoutuberNameEvent $youtuberNameEvent)
     {
-        $this->signal = $orderEvent->getOrderId();
+        var_dump($youtuberNameEvent->getYoutubeName());    
     }
 }
 ```
 
 
-A doplníš svůj výsledný kód:
+### 3. Create and Object and Dispatch With It
 
 ```language-php
-$eventDispatcher = new Symfony\Component\EventDispatcher\EventDispatcher;
-$sendEmailToAdminEventSubscriber = new SendEmailToAdminEventSubscriber;
-$eventDispatcher->addSubscriber($sendEmailToAdminEventSubscriber);
-
-var_dump($sendEmailToAdminEventSubscriber->signal);
-
-$orderEvent = new OrderEvent(123);
-$eventDispatcher->dispatch('order.finish', $orderEvent);
-
-var_dump($sendEmailToAdminEventSubscriber->signal);
+$youtuberNameEvent = new YoutuberNameEvent('Jirka Král');
+$eventDispatcher->dispatch('youtube.newVideoPublished', $youtuberNameEvent);
 ```
 
-Výstup pak vypadá takto:
+And Results Like That:
 
-```language-bash
-$  php index.php
-int(0)
-int(123)
+```language-php
+$ php index.php
+string('Jirka Král')
 ``` 
 
-## Jsi zase o krok dál
 
-Teď už:
+## Now Are 1 Step Further
 
-- rozumíš základním workflow událostí
-- znáš pojmy Event, EventSubscriber a EventDispatcher
-- víš, k čemu využít vlastní Event objekt
-- …a umíš použít EventDispatcher prakticky ve svém kódu
- 
+Now you:
 
-### Potřebuješ víc?
+- understand basic Event workflow
+- know what EventDispatcher and EventSubscriber are for
+- and know how to pass parameters via Event object
 
-Pokud bys potřeboval jít ve vysvětlování do větší hloubky, mrkni na oficiální dokumentaci EventDispatcheru.
+### Where to go next?
+
+Still hungry for knowledge? Go check [Symfony documentation](http://symfony.com/doc/current/components/event_dispatcher.html) then. 
+
+But remember: **practise is the best teacher**.
