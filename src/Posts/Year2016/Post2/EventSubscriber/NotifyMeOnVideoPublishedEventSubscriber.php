@@ -2,24 +2,29 @@
 
 declare(strict_types=1);
 
-namespace Pehapkari\Website\Posts\Year2016\Post2\Event;
+namespace Pehapkari\Website\Posts\Year2016\Post2\EventSubscriber;
 
-use Symfony\Component\EventDispatcher\Event;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-final class YoutuberNameEvent extends Event
+final class NotifyMeOnVideoPublishedEventSubscriber implements EventSubscriberInterface
 {
     /**
-     * @var string
+     * @var bool
      */
-    private $youtubeName;
+    private $isUserNotified = false;
 
-    public function __construct(string $youtubeName)
+    public static function getSubscribedEvents() : array
     {
-        $this->youtubeName = $youtubeName;
+        return ['youtube.newVideoPublished' => 'notifyUserAboutVideo'];
     }
 
-    public function getYoutubeName() : string
+    public function notifyUserAboutVideo()
     {
-        return $this->youtubeName;
+        $this->isUserNotified = true;
+    }
+
+    public function isUserNotified() : bool
+    {
+        return $this->isUserNotified;
     }
 }
