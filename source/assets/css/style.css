@@ -2,6 +2,7 @@
 body {
     font-family: 'Arial', sans-serif;
     font-size: 17px;
+    color: #222;
 }
 
 h1, h2, h3 {
@@ -9,7 +10,7 @@ h1, h2, h3 {
 }
 
 p {
-    line-height: 1.45em;
+    line-height: 1.3em;
 }
 
 ul {
@@ -19,7 +20,7 @@ ul {
 ul li {
     padding: 0;
     margin: 0;
-    line-height: 1.7em;
+    line-height: 1.5em;
 }
 
 
@@ -67,6 +68,10 @@ header a:hover {
 .section {
     padding-top: 3em;
     padding-bottom: 3em;
+}
+
+.bordered-img {
+    border: 1px solid #DDD;
 }
 
 .intermezzo {
@@ -201,34 +206,69 @@ h1, h2, .h2, h3 {
 }
 
 /* for blog.latte, _layout/post.latte */
+#blog .perex {
+    line-height: 1.5em;
+}
+
 #blog {
     padding-top: 3em;
+}
+
+#blog h3 {
+    line-height: 3em;
 }
 
 #article {
     padding-top: 3em;
 }
 
+#article h2, h3 {
+    color: #111;
+    font-weight: 600;
+}
+
 #article h2 {
     margin-top: 1em;
-    font-size: 1.8em;
+    font-size: 1.5em;
 }
 
 #article h3 {
     margin-top: 1em;
-    font-size: 1.4em;
+    font-size: 1.25em;
 }
 
+#article-content {
+    padding-top: 0;
+}
 
-.perex {
+#article #metadata-line {
+    text-align: center;
+    font-size: .8em;
+    color: #a2a2a2;
+    margin: 2em 0;
+}
+
+#article .perex {
     line-height: 1.5em;
-    color: #666;
+    font-size: 1.2em;
 }
 
 .intermezzo-smaller {
     margin: 1em 0 3em;
 }
 
-.less-relevant {
-    color: #666;
+pre {
+    font-size: 1em;
+    background-color: #fdf6e3;
+    padding-bottom: 1em;
+    padding-left: 1em;
+    overflow: auto;
+    word-wrap: normal;
+    white-space: pre;
+    border-radius: 6px;
+    padding-top: .3em;
+}
+
+pre[class*="language-"] {
+    margin: 1em 0;
 }

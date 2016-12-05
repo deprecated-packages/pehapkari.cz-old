@@ -6,13 +6,20 @@ id: blog
 
 {block content}
     <div id="blog">
+        <div class="container text-center">
+            <h2>
+                <em class="fa fa-book fa-fw"></em>
+                Komunitní PHP blog &ndash; psaný vámi pro vás
+            </h2>
+        </div>
+
         {foreach $posts as $post}
             <div class="container article">
-                <h2 class="text-center">
+                <h3 class="text-center">
                     <a href="/{$post['relativeUrl']}">
                         {$post['title']}
                     </a>
-                </h2>
+                </h3>
 
                 <p class="perex">{$post['perex']|noescape}</p>
             </div>
@@ -28,29 +35,29 @@ id: blog
 
 
 {define metadataLine}
-    <div class="row">
-        <div class="col-md-3">
+    <div class="row text-center">
+        <div class="col-md-4">
             <em class="fa fa-clock-o fa-fw"></em>
             <strong>{$post->getReadingTimeInMinutes()} {="post.min_of_reading"|translate: $post['lang'] ?? 'cs'}</strong>
         </div>
 
-        <div class="col-md-3">
-            <em class="fa fa-user fa-fw"></em>
-
-            <strong>{$authors[$post['author']]['name']}</strong>
-        </div>
-
-        <div class="col-md-3">
-            <em class="fa fa-calendar fa-fw"></em>
+        <div class="col-md-4">
             <time datetime="{$post->getDateInFormat('Y-m-D')}">
                 {$post->getDateInFormat('j. n. Y')}
             </time>
+            {="post.by"|translate: $post['lang'] ?? 'cs'}
+            <strong>{$authors[$post['author']]['name']}</strong>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <em class="fa fa-fw fa-comments"></em>
             <a href="{$siteUrl}/{$post['relativeUrl']}/#disqus_thread">X</a>
             {="post.comment_count"|translate: $post['lang'] ?? 'cs'}
         </div>
     </div>
 {/define}
+
+
+{block additionalJavascript}
+    <script id="dsq-count-scr" src="http://{$disqusName}.disqus.com/count.js" async defer></script>
+{/block}

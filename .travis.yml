@@ -1,24 +1,54 @@
 language: php
 
-php: 7.0
+php:
+  - 7.1
 
-branches:
-  only:
-    - master
+matrix:
+  include:
+    - php: 7.0
+      env: PHPUNIT_FLAGS="--coverage-clover coverage.xml" CHECK_CS=true
 
 env:
-    # go to: Gitub User => Settings => Personal Access Token => Generate New Token
-    # select "Repo" scope
-    # run in shell in git root: travis encrypt GH_TOKEN=<code>
+  # go to: Gitub User => Settings => Personal Access Token => Generate New Token
+  # select "Repo" scope
+  # run in shell in git root: travis encrypt GH_TOKEN=<code>
 
-    # if repo is not recognized by travis api, go to https://travis-ci.org/<repository-slug>, like githu.com/<repository-slug>
-    # and add it there; like you do when you want to run tests on some repository
-    global:
-        - secure: XlpJL/8eke9LX831DFKDi2CHomqxZxXM1+Z4QY6AoPmiq0CHpBSYk62GbNooSjDHwsTjEeDBHEextZPWtMhXbTJG71V7eYXY2p3NfSuYVjUTBPy1sfiJX2anYv1uV8WU8tmQqF3aIQ/tYLLRiBIYdkskewpFYdcdvht5E3baajcVneGqKXAIXrYMg7zkpBoNvDG2X0ex2LyFjDiqIdBZM8CUioCVt6IxovhtsyiQicuAovghCN7lmCWh/Klj8lDKi1FzjZ6xYZoWzrzbguLJRqxxrJXbx1f2JZAYixiRE3vOIyJLWnDgv2/GRlFbsCuuWGF55P4oSeXGArButYHJz3GDWCX+CAlgsBvGcFAdwrK5T3hNo7jRTzjnCSaXHiN/dUUFTAyFvqvAJQSBg7OoUpw5yJSOO9Yu1IMMyoUkzfWr5ZwcznMRPUtWvlo80CDAgDb1Vm9a6gY+qvIR2Aju5mg9e0tFEd8kSVT9Q634dPHtD/KEy/bu1RIoM4eHKc+9VKGWtaL0md0bk62ULsn/X97l5dMQvkURWTgicWaMhgW4BX4IKMOrGmGCb20ssOOAJf3eFvdwf0k78sUF8YGVAXSqDeuBuEaf3SB87FQd7ZGsnEJTWRdVAuRwGhduC7+QiR3d7kjk95YLcpNDdZUbE8dq5JvAUX5FIN/N9GdMF4A=
+  # if repo is not recognized by travis api, go to https://travis-ci.org/<repository-slug>, like githu.com/<repository-slug>
+  # and add it there; like you do when you want to run tests on some repository
+  global:
+    - secure: XlpJL/8eke9LX831DFKDi2CHomqxZxXM1+Z4QY6AoPmiq0CHpBSYk62GbNooSjDHwsTjEeDBHEextZPWtMhXbTJG71V7eYXY2p3NfSuYVjUTBPy1sfiJX2anYv1uV8WU8tmQqF3aIQ/tYLLRiBIYdkskewpFYdcdvht5E3baajcVneGqKXAIXrYMg7zkpBoNvDG2X0ex2LyFjDiqIdBZM8CUioCVt6IxovhtsyiQicuAovghCN7lmCWh/Klj8lDKi1FzjZ6xYZoWzrzbguLJRqxxrJXbx1f2JZAYixiRE3vOIyJLWnDgv2/GRlFbsCuuWGF55P4oSeXGArButYHJz3GDWCX+CAlgsBvGcFAdwrK5T3hNo7jRTzjnCSaXHiN/dUUFTAyFvqvAJQSBg7OoUpw5yJSOO9Yu1IMMyoUkzfWr5ZwcznMRPUtWvlo80CDAgDb1Vm9a6gY+qvIR2Aju5mg9e0tFEd8kSVT9Q634dPHtD/KEy/bu1RIoM4eHKc+9VKGWtaL0md0bk62ULsn/X97l5dMQvkURWTgicWaMhgW4BX4IKMOrGmGCb20ssOOAJf3eFvdwf0k78sUF8YGVAXSqDeuBuEaf3SB87FQd7ZGsnEJTWRdVAuRwGhduC7+QiR3d7kjk95YLcpNDdZUbE8dq5JvAUX5FIN/N9GdMF4A=
 
 before_script:
-    - composer update
+  # install composer dependencies
+  - composer update
 
 script:
+  # run tests for tested posts (with "tested: true" in header configuration)
+  - vendor/bin/phpunit $PHPUNIT_FLAGS
+  # check coding standard (defined in composer.json "scripts" section)
+  - if [[ "$CHECK_CS" != "" ]]; then composer check-cs; fi
+
+after_script:
+  # upload coverage.xml file to Scrutinizer to analyze it
+  - |
+    if [[ "$PHPUNIT_FLAGS" != "" ]]; then
+      wget https://scrutinizer-ci.com/ocular.phar
+      php ocular.phar code-coverage:upload --format=php-clover coverage.xml
+    fi
+
+# for section info see: https://docs.travis-ci.com/user/deployment
+# run everywhere excepts PRs
+deploy:
+  # we do it manually
+  provider: script
+  script:
     - vendor/bin/statie generate
     - vendor/bin/statie push-to-github pehapkari/pehapkari.cz --token=${GH_TOKEN}
+  # deploy only on changes in master branch and merged PRs
+  on:
+    branch: master
+
+# do not send success notifications, they have no value
+notifications:
+  email:
+    on_success: never
