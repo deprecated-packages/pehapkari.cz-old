@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Event Dispatcher from the Scratch"
-perex: "Today we look at first Symfony component - Event Dispatcher. Why start with it? It gives you flexibility, it is easy to understand and it helps you to write decoupled code."
+perex: "Today we will look at first Symfony component - Event Dispatcher. Why should you start with it? It gives you flexibility, it is easy to understand and it helps you to write decoupled code."
 author: 1
 series: 1 
 tested: true
@@ -10,11 +10,14 @@ lang: en
 ---
 
 
-## 2 main Features of Event Dispatcher 
+## Main feature of Event Dispatcher 
 
-- **Get to some place** in complex application without putting any code there.
-- **Add endpoint to your application**, where others can easily extend it without modification.
- 
+- **Extend application** in some place **without putting any code right there**.
+
+This way you can extend 3rd party packages without rewriting them. And also allow other users to extends your code without event touching it.
+
+Not sure how that looks? You will in the end of this article.
+
 
 ### Event Dispatcher
 
@@ -29,7 +32,7 @@ or *user is deleted*.
 
 ### Event Subscriber
 
-This **the action that happens** when we come to some place. When order is sent, *send me a confirmation sms*. And check storage they have all the ordered products we need. This means, that 1 event can invoke MANY different Event Subscribers.
+This is **the action that happens when** we come to some place. When order is sent (= Event), *send me a confirmation sms* (= Event Subscriber). And *check storage they have all the ordered products we need*. This means, that **1 event can invoke MORE Event Subscribers**.
 
 
 ## Create First Subscriber in 3 Steps 
@@ -80,7 +83,7 @@ final class NotifyMeOnVideoPublishedEventSubscriber implements EventSubscriberIn
 
     public static function getSubscribedEvents() : array
     {
-        // in format ['event.name' => 'public function name that will be called']
+        // in format ['event name' => 'public function name that will be called']
         return ['youtube.newVideoPublished' => 'notifyUserAboutVideo'];
     }
 
@@ -92,21 +95,21 @@ final class NotifyMeOnVideoPublishedEventSubscriber implements EventSubscriberIn
 }
 ```
 
-And add Subscriber to Dispatcher. Without that, he doesn't know about it.
+Let the Dispatcher know about the Subscriber.
 
 ```language-php
 $eventDispatcher = new Symfony\Component\EventDispatcher\EventDispatcher;
-$notifyMeOnVideoPublishedEventSubscriber = new NotifyMeOnVideoPublishedEventSubscriber;
-$eventDispatcher->addSubscriber($notifyMeOnVideoPublishedEventSubscriber);
+$eventSubscriber = new NotifyMeOnVideoPublishedEventSubscriber;
+$eventDispatcher->addSubscriber($eventSubscriber);
 
 // nothing happened, default value
-var_dump($notifyMeOnVideoPublishedEventSubscriber->isUserNotified);
+var_dump($eventSubscriber->isUserNotified);
 
 // this calls our Subscriber
 $eventDispatcher->dispatch('youtube.newVideoPublished');
 
 // now it's changed
-var_dump($notifyMeOnVideoPublishedEventSubscriber->isUserNotified);
+var_dump($eventSubscriber->isUserNotified);
 ```
 
 Run the code again from command line:
@@ -128,7 +131,7 @@ What if we need to get the name of the Youtuber into the Subscriber?
 
 ## Event Objects to the Rescue!
 
-The Event objects are basically Value Objects. Pass a value in constructor a get with getter.
+The Event objects are basically [Value Objects](http://richardmiller.co.uk/2014/11/06/value-objects/). Pass a value in constructor and get it with getter.
 
 
 ### 1. Create an Event Object
@@ -177,7 +180,7 @@ final class NotifyMeOnVideoPublishedEventSubscriber implements EventSubscriberIn
 ```
 
 
-### 3. Create and Object and Dispatch With It
+### 3. Create an Object and Dispatch With It
 
 ```language-php
 $youtuberNameEvent = new YoutuberNameEvent('Jirka Král');
