@@ -5,7 +5,7 @@ perex: "Today we will look at first Symfony component - Event Dispatcher. Why sh
 author: 1
 series: 1 
 tested: true
-id: 2
+test_slug: EventDispatcher
 lang: en
 ---
 

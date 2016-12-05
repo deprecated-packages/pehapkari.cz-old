@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Pehapkari\Website\Posts\Year2016\Post2\EventSubscriber;
+namespace Pehapkari\Website\Posts\Year2016\EventDispatcher\EventSubscriber;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 

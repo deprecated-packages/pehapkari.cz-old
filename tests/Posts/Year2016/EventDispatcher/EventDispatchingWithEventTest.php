@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Pehapkari\Website\Tests\Posts\Year2016\Post2;
+namespace Pehapkari\Website\Tests\Posts\Year2016\EventDispatcher;
 
-use Pehapkari\Website\Posts\Year2016\Post2\Event\YoutuberNameEvent;
-use Pehapkari\Website\Posts\Year2016\Post2\EventSubscriber\EventAwareNotifyMeOnVideoPublishedEventSubscriber;
+use Pehapkari\Website\Posts\Year2016\EventDispatcher\Event\YoutuberNameEvent;
+use Pehapkari\Website\Posts\Year2016\EventDispatcher\EventSubscriber\EventAwareNotifyMeOnVideoPublishedEventSubscriber;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
