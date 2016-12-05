@@ -27,26 +27,20 @@ script:
   - vendor/bin/phpunit $PHPUNIT_FLAGS
   # check coding standard (defined in composer.json "scripts" section)
   - if [[ "$CHECK_CS" != "" ]]; then composer check-cs; fi
+  # build website, when on master only
+  - |
+    if [ "$TRAVIS_PULL_REQUEST" != "" ]; then
+      vendor/bin/statie generate
+      vendor/bin/statie push-to-github pehapkari/pehapkari.cz --token=${GH_TOKEN}
+    fi
 
 after_script:
   # upload coverage.xml file to Scrutinizer to analyze it
   - |
-    if [[ "$PHPUNIT_FLAGS" != "" ]]; then
+    if [ "$PHPUNIT_FLAGS" != "" ]; then
       wget https://scrutinizer-ci.com/ocular.phar
       php ocular.phar code-coverage:upload --format=php-clover coverage.xml
     fi
-
-# for section info see: https://docs.travis-ci.com/user/deployment
-# run everywhere excepts PRs
-deploy:
-  # we do it manually
-  provider: script
-  script:
-    - vendor/bin/statie generate
-    - vendor/bin/statie push-to-github pehapkari/pehapkari.cz --token=${GH_TOKEN}
-  # deploy only on changes in master branch and merged PRs
-  on:
-    branch: master
 
 # do not send success notifications, they have no value
 notifications:
