@@ -42,22 +42,15 @@ V druhé polovině upozornil na nedostatky PHP při běhu v tomto režimu (memor
 
 ![Restart as a web server](/assets/images/conferences/synfonycon-2016/dont-kill-chef.jpg)
 
-[Soup up Symfony - Keep PHP Alive Between Requests - slide](http://andrewcarteruk.github.io/slides/soup-up-symfony/)
+[Soup up Symfony - Keep PHP Alive Between Requests - slides](http://andrewcarteruk.github.io/slides/soup-up-symfony/)
 
 
-## Cache komponenta (new in Symfony 3.1)
+## Cache komponenta (od Symfony 3.1)
 [Nicolas Grekas](https://github.com/nicolas-grekas) povídal o "nové" Cache komponentně, která odpovídá [PSR-6: Caching Interface](http://www.php-fig.org/psr/psr-6/) standardu.
 Krom samotné funkcionality se zaměřil také na perfomance testy, kde si komponenta vede docela obstojně - hlavním konkurentem byla Doctrine Cache,
 která byla v některých ohledech dokonce pomalejší než představený driver. Lepší performence měla převážně, v bulk operacích při použití Redis Adaptéru.
 
-
 <script async class="speakerdeck-embed" data-id="1962ed627f414eb28a70f2fbfd714f45" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
-
-## Adventures in Symfony - Building an MMO-RPG
-[Margaret Staples](https://github.com/mstaples) nám ukázala že i nad Symfony lze postavit RPGcko a s jakými výzvami se při tom potýkala.
-
-[Adventures in Symfony - slides](http://slides.com/margaretstaples/gamedev#/)
-
 
 ## Knowing your state machines
 [Tobias Nyholm](https://github.com/Nyholm) nás uvedl do nové [Workflow komponenty](https://github.com/symfony/workflow), představil principy a 
@@ -75,7 +68,8 @@ jako typické příklady použití...
 ## A mnoho dalšího ...
 Zajímavé byly všechny přednášky, ale nebudu se zde (kvůli rozsahu) rozepisovat o všem - pouze z těch nejzajímavějších vypíchnu jen - [When To Abstract](https://qafoo.com/resources/presentations/symfonycon_berlin_2016/when_to_abstract.html),
 [Profiling PHP](https://speakerdeck.com/sgrodzicki/profiling-php-at-symfonycon-berlin-2016), [Modernizing with Symfony](https://slidr.io/derrabus/modernizing-with-symfony#1),
-[HTTP Security: headers as a shield over your application](https://speakerdeck.com/romain/http-security-headers-as-a-shield-over-your-application), ...
+[HTTP Security: headers as a shield over your application](https://speakerdeck.com/romain/http-security-headers-as-a-shield-over-your-application), 
+[Adventures in Symfony - Building an MMO-RPG](http://slides.com/margaretstaples/gamedev#/), ...
 
 Prozatím nejsou [zveřejněna videa](https://www.youtube.com/user/SensioLabs/videos), ale dle jejich slov projdou editací a obratem budou. Můžete je tedy očekávat
 v nejbližších týdnech. 
@@ -95,7 +89,7 @@ Jako dostatečně socializovaní se cítíme až v okamžiku, kdy se dopíjí po
 Na sobotu je plánovaný hackday, což je výborná přiležitost k libovolnému pull-requestu. Lidi ze SesnsioLabs poskytnou libovolnou podporu a ochotně pomůžou.
 Celé dopoledne působí velmi nenásilně a každý můžeme čas využít jak uzná za vhodné.
 
-Kolem 14h se praktický celá česká komunita a odchází na vlak v 15h. Ve vlaku zkoumáme čerstvý update php 7.1 a v Praze se definitivně rozcházíme.
+Kolem 14h se praktický celá česká komunita zvedá a odchází na vlak v 15h. Ve vlaku zkoumáme čerstvý update [PHP 7.1](http://php.net/index.php#id2016-12-01-3) a v Praze se definitivně rozcházíme.
 
 Díky všem co se konference zůčastnili za skvělou náladu po celou dobu akce.
 
@@ -108,7 +102,7 @@ Díky všem co se konference zůčastnili za skvělou náladu po celou dobu akce
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Let&#39;s start a circus! <a href="https://twitter.com/hashtag/SymfonyCon?src=hash">#SymfonyCon</a> <a href="https://t.co/fxYWQVcHnX">pic.twitter.com/fxYWQVcHnX</a></p>&mdash; Filip Procházka (@ProchazkaFilip) <a href="https://twitter.com/ProchazkaFilip/status/804600972941131776">December 2, 2016</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-<style>
+<style type="text/css">
 img {
     display: block;
     width: 50%;
