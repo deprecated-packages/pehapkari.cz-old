@@ -29,7 +29,7 @@ script:
   - if [[ "$CHECK_CS" != "" ]]; then composer check-cs; fi
   # build website, when on master only
   - |
-    if [ "$TRAVIS_PULL_REQUEST" != "" ]; then
+    if [[ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]]; then
       vendor/bin/statie generate
       vendor/bin/statie push-to-github pehapkari/pehapkari.cz --token=${GH_TOKEN}
     fi
