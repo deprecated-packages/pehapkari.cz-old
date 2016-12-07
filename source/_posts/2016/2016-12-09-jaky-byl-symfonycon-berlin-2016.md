@@ -19,7 +19,7 @@ author: 2
 
 ## SensioCloud
 
-V úvodní keynote [Fabien Potencier](https://github.com/fabpot) představil službu [SensioCloud](https://sensio.cloud/) - [PaaS](https://en.wikipedia.org/wiki/Platform_as_a_service) optimalizovany pro Symfony.  
+V úvodní keynote [Fabien Potencier](https://github.com/fabpot) představil službu [SensioCloud](https://sensio.cloud/) - [PaaS](https://en.wikipedia.org/wiki/Platform_as_a_service) optimalizovaný pro Symfony.  
 
 Jde o nadstavbu nad [Heroku](https://www.heroku.com). Celá platforma má být velmi jednodušše použitelná, s dobrou podporou škálování a optimalizací na vývoj: možnost branchování (testovací prostředí, staging...) nebo synchronizace DB mezi nimi.
 
@@ -37,7 +37,7 @@ Problém byl v komponěntě Cache, která kvůli absolutním cestám znemožňov
 
 Ve další přednášce Fabien popsal nedostatky v Symfony distribučním systému. Jako řešení představil **Symfony Flex**. Tím chce nahradit dosavadní balíčky jako [Symfony Demo Application](https://github.com/symfony/symfony-demo), [Symfony Standard Edition](https://github.com/symfony/symfony-standard) nebo  [Symfony CMF](http://cmf.symfony.com/). 
 
-Řešením je použití kompozice místo dědičnost a **rozpadení konfiguračních souborů/úkonů do samostatných souborů**, aby bylo možné "balíčky" jednoduše odebírat či přidávat. 
+Řešením je použití kompozice místo dědičnosti a **rozpadení konfiguračních souborů/úkonů do samostatných souborů**, aby bylo možné "balíčky" jednoduše odebírat či přidávat. 
 
 *Termín spuštění?*
 Konec ledna 2017. 
@@ -95,6 +95,7 @@ Co mě zaujalo?
 
 **Všechny zveřejněné slajdy najdeš na [joind.in](https://joind.in/event/symfonycon-berlin-2016).** Z nich bych 
 ještě rád vypíchnnul:
+
 
 - [When To Abstract](https://qafoo.com/resources/presentations/symfonycon_berlin_2016/when_to_abstract.html)
 - [Profiling PHP](https://speakerdeck.com/sgrodzicki/profiling-php-at-symfonycon-berlin-2016)
