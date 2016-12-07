@@ -215,7 +215,8 @@ h1, h2, .h2, h3 {
 }
 
 #blog h3 {
-    line-height: 3em;
+    line-height: 1.5em;
+    margin-bottom: 1em;
 }
 
 #article {
