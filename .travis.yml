@@ -29,10 +29,11 @@ script:
   - vendor/bin/phpunit $PHPUNIT_FLAGS
   # check coding standard (defined in composer.json "scripts" section)
   - if [[ "$CHECK_CS" != "" ]]; then composer check-cs; fi
-  # build website, when on master only
+  # test that website is generated
+  - vendor/bin/statie generate
+  # re-build website when on master only
   - |
     if [[ "$TRAVIS_BRANCH" == "master" && "$TRAVIS_PULL_REQUEST" == "false" ]]; then
-      vendor/bin/statie generate
       vendor/bin/statie push-to-github pehapkari/pehapkari.cz --token=${GH_TOKEN}
     fi
 
