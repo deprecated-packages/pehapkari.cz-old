@@ -6,21 +6,21 @@
 >
     <channel>
         <title>PéHáPkaři Blog</title>
-        <link>http://pehapkari.cz/blog/</link>
+        <link>{$siteUrl}/blog/</link>
         <description>Most recent posts published on the PéHáPkaři blog</description>
         <pubDate>{'now'|date('r')}</pubDate>
-        <lastBuildDate>{$posts[0]['publishedAt']|date('r')}</lastBuildDate>
+        <lastBuildDate>{$posts[0]->getDateInFormat('r')}</lastBuildDate>
         <language>cz</language>
 
         {foreach $posts as $post}
         <item>
             <title><![CDATA[ {$post['title']} ]]></title>
-            <link>http://pehapkari.cz/blog/{$post['relativeUrl']}</link>
+            <link>{$siteUrl}/blog/{$post['relativeUrl']}</link>
             <description><![CDATA[ {$post['perex']} ]]></description>
-            <guid isPermaLink="false">http://pehapkari.cz/blog/{$post['relativeUrl']}</guid>
-            <dc:creator><![CDATA[ {$post['author']} ]]></dc:creator>
-            <pubDate>{$post['pubDate']|date('r')}</pubDate>
-            <comments>http://pehapkari.cz/blog/{$post['relativeUrl']}#disqus_thread</comments>
+            <guid isPermaLink="false">{$siteUrl}/blog/{$post['relativeUrl']}</guid>
+            <dc:creator><![CDATA[ {$authors[$post['author']]['name']} ]]></dc:creator>
+            <pubDate>{$post->getDateInFormat('r')}</pubDate>
+            <comments>{$siteUrl}/blog/{$post['relativeUrl']}#disqus_thread</comments>
         </item>
         {/foreach}
     </channel>
