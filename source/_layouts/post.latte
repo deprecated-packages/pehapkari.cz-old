@@ -34,13 +34,13 @@
     {* Facebook sharing *}
     <meta property="og:type" content="article" />
     <meta property="og:title" content="{$post['title']}" />
-    <meta property="og:description" content="{$post['perex']}" />
+    <meta property="og:description" content="{$post['perex']|striptags}" />
     <meta property="og:url" content="{$siteUrl}/{$post['relativeUrl']}" />
 
     {* Twitter sharing *}
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="{$post['title']}" />
-    <meta name="twitter:description" content="{$post['perex']}" />
+    <meta name="twitter:description" content="{$post['perex']|striptags}" />
 {/block}
 
 
