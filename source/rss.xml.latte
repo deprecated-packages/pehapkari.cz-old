@@ -23,7 +23,7 @@
                 <guid isPermaLink="false">{$siteUrl}/blog/{$post['relativeUrl']}</guid>
                 <dc:creator><![CDATA[ {$authors[$post['author']]['name']} ]]></dc:creator>
                 <pubDate>{$post->getDateInFormat('r')}</pubDate>
-                <comments>{$siteUrl}/blog/{$post['relativeUrl']}#disqus_thread</comments>
+                <comments>{$siteUrl}/blog/{$post['relativeUrl']}#comments</comments>
             </item>
         {/foreach}
     </channel>
