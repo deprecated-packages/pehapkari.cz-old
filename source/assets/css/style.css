@@ -23,6 +23,14 @@ ul li {
     line-height: 1.5em;
 }
 
+ul.manual-list {
+    margin-left: -.8em;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 20px;
+}
 
 a:hover, a:focus, a:active, a.active {
     color: #40C0CB;
@@ -126,7 +134,7 @@ h1, h2, .h2, h3 {
 }
 
 .btn {
-    font-size: .9em;
+    font-size: 1em;
 }
 
 * img {
