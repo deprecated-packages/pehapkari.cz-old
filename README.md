@@ -7,12 +7,20 @@
 
 ## How to run it?
 
+Install project with dependencies
+
 ```sh
-composer update
+composer create-project pehapkari/website pehapkari.cz @dev
+```
+
+Generate website to static HTML with live reload
+
+```sh
+cd pehapkari.cz
 vendor/bin/statie generate --server
 ```
 
-And open `http://localhost:8000`.
+And open `http://localhost:8000` in your browser
 
 
 *Are you using Docker? [Here is how to run this project](docs/docker.md) in it.*  
