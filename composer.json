@@ -1,4 +1,6 @@
 {
+    "name": "pehapkari/website",
+    "license": "MIT",
     "require": {
         "symplify/statie": "^1.2",
         "symfony/event-dispatcher": "^3.1"
