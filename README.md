@@ -20,7 +20,7 @@ cd pehapkari.cz
 vendor/bin/statie generate --server
 ```
 
-And open `http://localhost:8000` in your browser
+And open [http://localhost:8000](http://localhost:8000) in your browser
 
 
 *Are you using Docker? [Here is how to run this project](docs/docker.md) in it.*  
