@@ -53,6 +53,7 @@ A pre MySQL:
 
 Samozrejme, pracuje sa aj na editácii a vytváraní záznamov / tabuliek / databáz atď.
 
-Adminer NG si môžete [stiahnuť ako jeden súbor](http://midatech.sk/adminerng/download.php) a hneď používať a pokiaľ vám niečo bude chýbať (čo je v tejto fáze vývoja viac ako isté), môžete spraviť issue alebo ideálne rovno pull request na [GitHube](https://github.com/lulco/adminerng). Vopred za všetky ďakujem :)
+Adminer NG si môžete [stiahnuť ako jeden súbor](http://midatech.sk/adminerng/download.php) a hneď používať alebo si môžete stiahnuť aktuálnu verziu z [GitHub-u](https://github.com/lulco/adminerng) a spustiť `sh scripts/init.sh`, ktorý za vás spustí `composer install` a vytvorí priečinky `log` a `temp` v roote aplikácie.
+Pokiaľ vám niečo bude chýbať (čo je v tejto fáze vývoja viac ako isté), môžete spraviť issue alebo ideálne rovno pull request. Vopred za všetky ďakujem :)
 
 Ak sa chcete čokoľvek opýtať alebo konštruktívne skritizovať, napíšte do diskusie :)
