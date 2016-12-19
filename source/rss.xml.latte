@@ -20,10 +20,10 @@
                 <title><![CDATA[ {$post['title']} ]]></title>
                 <link>{$siteUrl}/{$post['relativeUrl']}</link>
                 <description><![CDATA[ {$post['perex']|striptags} ]]></description>
-                <guid isPermaLink="false">{$siteUrl}/blog/{$post['relativeUrl']}</guid>
+                <guid isPermaLink="false">{$siteUrl}/{$post['relativeUrl']}</guid>
                 <dc:creator><![CDATA[ {$authors[$post['author']]['name']} ]]></dc:creator>
                 <pubDate>{$post->getDateInFormat('r')}</pubDate>
-                <comments>{$siteUrl}/blog/{$post['relativeUrl']}#disqus_thread</comments>
+                <comments>{$siteUrl}/{$post['relativeUrl']}#disqus_thread</comments>
             </item>
         {/foreach}
     </channel>
