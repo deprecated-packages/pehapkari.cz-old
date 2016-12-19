@@ -29,7 +29,7 @@ A vlastné spracovanie požiadaviek. Aktuálna verzia slúži len na vypisovanie
 Obr. 2 Výpis položiek pre Redis databázu
 
 ![Adminer NG Redis hash with filter](http://midatech.sk/adminerng/screenshots/redis_hash_filter.png)
-Obr. 2 Filtrovanie kľúčov v Redis Hash-i
+Obr. 3 Filtrovanie kľúčov v Redis Hash-i
 
 V Redise si takto môžete prezerať:
 - databázy
