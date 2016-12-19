@@ -1,5 +1,9 @@
 pageTitle: "Děláš v PHP? Jsi jedním z nás"
+siteUrl: "http://pehapkari.cz"
+
+lang: "cs" # default language
+
+# services ID
 googleAnalyticsTrackingId: "UA-46082345-1"
 fbTrackingId: "201338863559186"
 disqusName: "pehapkari"
-siteUrl: "http://pehapkari.cz"
