@@ -5,47 +5,75 @@ perex: "Pred nejakým časom som potreboval vyhľadávať a zoraďovať dáta v 
 author: 3
 ---
 
-Rozhodol som sa preto, že napíšem rozšírenie do [Adminera](https://www.adminer.org). Iste ho väčšina pozná a používa.
+Rozhodol som sa preto, že napíšem rozšírenie do [Adminera](https://www.adminer.org).
 
-Nevyhovoval mi však úplne štýl, akým je Adminer napísaný. Hlavne spôsob pridávania nových rozšírení v podobe nových typov systémov je až príliš orientovaný na SQL. Napr. pri zmene typu systému sa nezmení ani prihlasovací formulár (vždy sú tam len políčka server, username, password a database). Rozhodol som sa, že skúsim vytvoriť aplikáciu, v ktorej by sa na takéto možnosti rozšírenia myslelo hneď od začiatku (na kopec iných vecí sa určite nemyslelo :) ale tak to chodí).
+Nevyhovoval mi však úplne štýl, akým je Adminer napísaný. Hlavne **spôsob pridávania nových rozšírení v podobe nových typov systémov je až príliš orientovaný na SQL**. Napr. pri zmene typu systému sa nezmení ani prihlasovací formulár (vždy sú tam len políčka server, username, password a database).
 
-A tak vznikla aplikácia, ktorej pracovný názov je Adminer next generation (alebo skrátene Adminer NG - poznáte to, vymýšľanie názvov je jedna z najkomplikovanejších vecí v informatike, tak som to zbytočne nekomplikoval a radšej som sa venoval programovaniu).
+Rozhodol som sa, že skúsim vytvoriť aplikáciu, **v ktorej by sa na takéto možnosti rozšírenia myslelo hneď od začiatku** (na kopec iných vecí sa určite nemyslelo :) ale tak to chodí).
 
-[Adminer NG](https://github.com/lulco/adminerng) je napísaná ako jednoduchá [Nette aplikácia](https://nette.org) s využitím [Bootstrapu](http://getbootstrap.com). V súčasnosti umožňuje pripojenie k:
-- [Redis-u](https://redis.io)
-- [Memcache-i](http://php.net/manual/en/book.memcache.php)
+A tak vznikla aplikácia, ktorej pracovný názov je *Adminer Next Generation* (skrátene *Adminer NG* - poznáte to, vymýšľanie názvov je jedna z najkomplikovanejších vecí v informatike, tak som to zbytočne nekomplikoval a radšej som sa venoval programovaniu).
+
+## V čom je napísaný a čo podporuje   
+
+[Adminer NG](https://github.com/lulco/adminerng) je napísaná ako jednoduchá [Nette aplikácia](https://nette.org) s využitím [Twitter Bootstrapu](http://getbootstrap.com).
+
+### V súčasnosti umožňuje pripojenie k
+
+- [Redis](https://redis.io)
+- [Memcache](http://php.net/manual/en/book.memcache.php)
 - [RabbitMQ](https://www.rabbitmq.com)
 - [MySQL](https://www.mysql.com)
 
 Pracuje sa na možnosti pripojenia k [Elasticsearch-u](https://www.elastic.co/products/elasticsearch) a [PostgreSQL](https://www.postgresql.org).
 
-Všetky typy pripojení majú vlastný prihlasovací formulár (obr. 1)
-![Adminer NG Login](http://midatech.sk/adminerng/screenshots/login.png)
-Obr. 1 Login screen
 
-A vlastné spracovanie požiadaviek. Aktuálna verzia slúži len na vypisovanie, filtrovanie a zoraďovanie dát z jednotlivých systémov (obr. 2 a obr. 3).
+## Ako vyzerá
 
-![Adminer NG Redis lists](http://midatech.sk/adminerng/screenshots/redis_lists.png)
-Obr. 2 Výpis položiek pre Redis databázu
+Všetky typy pripojení majú vlastný prihlasovací formulár:
 
-![Adminer NG Redis hash with filter](http://midatech.sk/adminerng/screenshots/redis_hash_filter.png)
-Obr. 3 Filtrovanie kľúčov v Redis Hash-i
+<div class="text-center">
+    <img src="http://midatech.sk/adminerng/screenshots/login.png" alt="Adminer NG Login">
+    <br>
+    <em>Login screen</em>
+</div>
 
-V Redise si takto môžete prezerať:
+<br>
+
+A vlastné spracovanie požiadaviek. Aktuálna verzia slúži len na vypisovanie, filtrovanie a zoraďovanie dát z jednotlivých systémov:
+
+<div class="text-center">
+    <img src="http://midatech.sk/adminerng/screenshots/redis_lists.png" alt="Adminer NG Redis lists">
+    <br>
+    <em>Výpis položiek pre Redis databázu</em>
+</div>
+
+<br>
+
+<div class="text-center">
+    <img src="http://midatech.sk/adminerng/screenshots/redis_hash_filter.png" alt="Adminer NG Redis hash with filter">
+    <br>
+    <em>Filtrovanie kľúčov v Redis Hash-i</em>
+</div>
+
+### V Redise si takto môžete prezerať
+
 - databázy
 - kľúče
 - hash-e
-- set-y.
+- set-y
 
-Pre memcache sú to
+### Pre memcache sú to
+
 - kľúče a hodnoty
 
-V RabbitMQ sú k dispozícii:
+### V RabbitMQ sú k dispozícii
+
 - virtual hosty
 - fronty
 - jednotlivé správy v nich
 
-A pre MySQL:
+### A pre MySQL
+
 - databázy
 - tabuľky
 - view-y
@@ -53,7 +81,12 @@ A pre MySQL:
 
 Samozrejme, pracuje sa aj na editácii a vytváraní záznamov / tabuliek / databáz atď.
 
-Adminer NG si môžete [stiahnuť ako jeden súbor](http://midatech.sk/adminerng/download.php) a hneď používať alebo si môžete stiahnuť aktuálnu verziu z [GitHub-u](https://github.com/lulco/adminerng) a spustiť `sh scripts/init.sh`, ktorý za vás spustí `composer install` a vytvorí priečinky `log` a `temp` v roote aplikácie.
-Pokiaľ vám niečo bude chýbať (čo je v tejto fáze vývoja viac ako isté), môžete spraviť issue alebo ideálne rovno pull request. Vopred za všetky ďakujem :)
+## Chceš si ho vyskúšať?
+
+Adminer NG si môžete [stiahnuť ako 1 súbor](http://midatech.sk/adminerng/download.php) a hneď používať.
+ 
+Alebo si **môžete stiahnuť aktuálnu verziu** z [GitHubu](https://github.com/lulco/adminerng) a spustiť `sh scripts/init.sh`, ktorý za vás spustí `composer install` a vytvorí priečinky `/log` a `/temp` v roote aplikácie.
+
+Pokiaľ vám niečo bude chýbať (čo je v tejto fáze vývoja viac ako isté), môžete [spraviť issue](https://github.com/lulco/adminerng/issues) alebo ideálne rovno pull request. Vopred za všetky ďakujem :)
 
 Ak sa chcete čokoľvek opýtať alebo konštruktívne skritizovať, napíšte do diskusie :)
