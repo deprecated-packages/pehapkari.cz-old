@@ -226,9 +226,17 @@ h1, h2, .h2, h3 {
     padding-top: 1em;
 }
 
-#blog h3 {
-    line-height: 1.5em;
-    margin-bottom: 1em;
+#blog hr {
+    margin-top: 2em;
+    padding-bottom: 2em;
+}
+
+#blog .metadataLine {
+    font-size: .8em;
+    color: #9d9d9d;
+    margin-top: 1.4em;
+    margin-bottom: .6em;
+    line-height: 2.5em;
 }
 
 #article {
@@ -292,8 +300,6 @@ pre[class*="language-"] {
     margin: 1em 0;
 }
 
-/* post detail */
-.twitter-tweet {
-    display: block;
-    margin: 0 auto 0 auto;
+.success {
+    color: #8FBE00;
 }

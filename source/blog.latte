@@ -5,60 +5,64 @@ id: blog
 ---
 
 {block content}
-    <div id="blog">
-        <div class="container text-center">
-            <h2>
-                <em class="fa fa-book fa-fw"></em>
-                Komunitní PHP blog &ndash; psaný vámi pro vás
-            </h2>
-        </div>
+    <div class="container" id="blog">
+        <h2 class="text-center">
+            <em class="fa fa-book fa-fw"></em>
+            Komunitní PHP blog
+        </h2>
+
+        <p class="text-center">Chceš taky přidat článek? <a href="/blog/2016/12/01/chces-psat-o-php-posli-pr">Tady si přeči jak</a></p>
+
+        <hr>
 
         {foreach $posts as $post}
-            <div class="container article">
-                <h3 class="text-left">
-                    <a href="/{$post['relativeUrl']}">
-                        {$post['title']}
-                    </a>
+            <div class="article">
+                <h3>
+                    <a href="/{$post['relativeUrl']}">{$post['title']}</a>
                 </h3>
+
+                {include metadataLine, "post" => $post}
 
                 <p class="perex">{$post['perex']|noescape}</p>
             </div>
-
-            <div class="intermezzo-smaller text-center">
-                <div class="container">
-                    {include metadataLine, "post" => $post}
-                </div>
-            </div>
+            {sep}<hr>{/sep}
         {/foreach}
     </div>
 {/block}
 
 
 {define metadataLine}
-    <div class="row text-center">
-        <div class="col-md-4">
-            <em class="fa fa-clock-o fa-fw"></em>
-            <strong>{$post->getReadingTimeInMinutes()} min</strong>
-        </div>
-
-        <div class="col-md-4">
-            <em class="fa fa-calendar fa-fw"></em>
-            <time datetime="{$post->getDateInFormat('Y-m-D')}">
-                {$post->getDateInFormat('j. n. Y')}
-            </time>
-            {="post.by"|translate: $post['lang'] ?? $lang}
-            <strong>{$authors[$post['author']]['name']}</strong>
-        </div>
-
-        <div class="col-md-4">
-            <em class="fa fa-fw fa-comments"></em>
-            <a href="{$siteUrl}/{$post['relativeUrl']}/#disqus_thread">X</a>
-            {="post.comment_count"|translate: $post['lang'] ?? $lang}
-
+    <div class="row metadataLine">
+        <div class="col-md-12">
             {ifset $post['tested']}
-                <em class="fa fa-fw fa-check-square-o"></em>
-                {="post.covered_by_test"|translate: $post['lang'] ?? $lang}
+                <p class="success">
+                    <strong><em class="fa fa-fw fa-check-square-o"></em>
+                        {="post.covered_by_test"|translate: $post['lang'] ?? $lang}
+                    </strong>
+                </p>
             {/ifset}
+
+            <p>
+                <em class="fa fa-clock-o fa-fw"></em>
+                {$post->getReadingTimeInMinutes()} min
+
+                |
+
+                {="post.by"|translate: $post['lang'] ?? $lang}
+                <strong>{$authors[$post['author']]['name']}</strong>
+
+                &ndash;
+
+                <time datetime="{$post->getDateInFormat('Y-m-D')}">
+                    {$post->getDateInFormat('j. n. Y')}
+                </time>
+
+                |
+
+                <em class="fa fa-fw fa-comments"></em>
+                <a href="{$siteUrl}/{$post['relativeUrl']}/#disqus_thread">X</a>
+                {="post.comment_count"|translate: $post['lang'] ?? $lang}
+            </p>
         </div>
     </div>
 {/define}
