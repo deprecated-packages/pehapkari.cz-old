@@ -57,26 +57,3 @@
 {block additionalCss}
     <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
 {/block}
-
-
-{*{define metadataLine}*}
-    {*<div class="row" id="metadata-line">*}
-        {*<div class="col-md-12">*}
-            {*<em class="fa fa-clock-o fa-fw"></em>*}
-            {*{$post->getReadingTimeInMinutes()} min*}
-            {*|*}
-            {*<time datetime="{$post->getDateInFormat('Y-m-D')}">*}
-                {*{$post->getDateInFormat('j. n. Y')}*}
-            {*</time>*}
-            {*{="post.by"|translate: $post['lang'] ?? $lang}*}
-            {*<strong>{$authors[$post['author']]['name']}</strong>*}
-
-            {*{ifset $post['tested']}*}
-                {*<p>*}
-                    {*<em class="fa fa-fw fa-check-square-o"></em>*}
-                    {*{="post.covered_by_test"|translate: $post['lang'] ?? $lang}*}
-                {*</p>*}
-            {*{/ifset}*}
-        {*</div>*}
-    {*</div>*}
-{*{/define}*}
