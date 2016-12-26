@@ -1,16 +1,64 @@
 <header>
     <div class="container">
-        <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+        {* normal menu *}
+        <div class="hidden-xs">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
 
-        <nav class="top-navigation">
-            <a href="/blog" n:class="(isset($id) && $id === blog) || ($layout === post) ? active">
-                <em class="fa fa-book fa-fw"></em>
-                Píšeme blog
+            <nav class="top-navigation">
+                <a href="/blog" n:class="(isset($id) && $id === blog) || ($layout === post) ? active">
+                    <em class="fa fa-book fa-fw"></em>
+                    Píšeme blog
+                </a>
+                <a href="/slovnicek" n:class="(isset($id) && $id === slovnicek) ? active">
+                    <em class="fa fa-language fa-fw"></em>
+                    Slovníček
+                </a>
+                {ifset $post}
+                    {capture $githubEditLink}{$post|githubEditPostUrl}{/capture}
+                {elseifset $id}
+                    {capture $githubEditLink}{$githubEditUrlStart}{$githubLink =  $id . '.latte'}{/capture}
+                {/ifset}
+
+                {ifset $githubEditLink}
+                    <a href="{$githubEditLink}">
+                        <em class="fa fa-fw fa-github"></em>
+                        {="layout.edit_page"|translate: $post['lang'] ?? $lang}
+                    </a>
+                {/ifset}
+            </nav>
+        </div>
+
+        {* mobile menu *}
+        <div id="mobile-menu" class="row text-center hidden-md hidden-sm hidden-lg">
+            <a href="/" n:class="col-xs-3, isset($id) && $id === index ? active">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
             </a>
-            <a href="/slovnicek" n:class="(isset($id) && $id === dictionary) ? active">
+            <a href="/blog" n:class="col-xs-3, (isset($id) && $id === blog) || ($layout === post) ? active">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/slovnicek" n:class="col-xs-3, (isset($id) && $id === slovnicek) ? active">
                 <em class="fa fa-language fa-fw"></em>
+                <br>
                 Slovníček
             </a>
-        </nav>
+
+            {ifset $post}
+                {capture $githubEditLink}{$post|githubEditPostUrl}{/capture}
+            {elseifset $id}
+                {capture $githubEditLink}{$githubEditUrlStart}{$githubLink =  $id . '.latte'}{/capture}
+            {/ifset}
+
+            {ifset $githubEditLink}
+                <a href="{$githubEditLink}" class="col-xs-3">
+                    <em class="fa fa-fw fa-github"></em>
+                    <br>
+                    {="layout.edit_page"|translate: $post['lang'] ?? $lang}
+                </a>
+            {/ifset}
+        </div>
     </div>
 </header>

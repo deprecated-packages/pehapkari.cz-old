@@ -49,7 +49,7 @@ a:hover, a:focus, a:active {
 /* menu */
 header {
     padding: .2em;
-    font-size: 1.2em;
+    font-size: 1.1em;
     background: #00A8C6;
 }
 
@@ -74,8 +74,12 @@ header a:hover {
 }
 
 .section {
-    padding-top: 3em;
+    padding-top: 1.3em;
     padding-bottom: 3em;
+}
+
+.section.first-section {
+    padding-top: 1em;
 }
 
 .bordered-img {
@@ -95,14 +99,14 @@ header a:hover {
 }
 
 h1 {
-    font-size: 3.4em;
+    font-size: 3em;
     line-height: 1.5em;
     padding: 1em 0;
 }
 
 h2, .h2 {
     margin: .8em 0;
-    font-size: 2.7em;
+    font-size: 2.5em;
     line-height: 1.1em;
     padding: 0;
 }
@@ -209,7 +213,7 @@ h1, h2, .h2, h3 {
 
 @media (min-width: 992px) {
     .container {
-        max-width: 980px;
+        max-width: 940px;
     }
 }
 
@@ -219,16 +223,25 @@ h1, h2, .h2, h3 {
 }
 
 #blog {
-    padding-top: 3em;
+    padding-top: 1em;
+    padding-bottom: 3em;
 }
 
-#blog h3 {
-    line-height: 1.5em;
-    margin-bottom: 1em;
+#blog hr {
+    margin-top: 2em;
+    padding-bottom: 2em;
+}
+
+.metadataLine {
+    font-size: .8em;
+    color: #9d9d9d;
+    margin-top: .4em;
+    margin-bottom: .6em;
+    line-height: 2.5em;
 }
 
 #article {
-    padding-top: 3em;
+    padding-top: 1em;
 }
 
 #article h2, h3 {
@@ -288,8 +301,23 @@ pre[class*="language-"] {
     margin: 1em 0;
 }
 
-/* post detail */
-.twitter-tweet {
-    display: block;
-    margin: 0 auto 0 auto;
+.success, .success a {
+    color: #8FBE00;
+}
+
+nav a:hover, nav ul li.active a, nav a.active, nav a:active
+{
+    color: #FFF;
+    text-decoration: none;
+    background: #00A8C6;
+}
+
+#mobile-menu a {
+    color: #4bf4ff;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#mobile-menu a.active, #mobile-menu a:hover {
+    color: #FFF;
 }
