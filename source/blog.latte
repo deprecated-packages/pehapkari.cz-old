@@ -42,17 +42,23 @@ id: blog
         </div>
 
         <div class="col-md-4">
+            <em class="fa fa-calendar fa-fw"></em>
             <time datetime="{$post->getDateInFormat('Y-m-D')}">
                 {$post->getDateInFormat('j. n. Y')}
             </time>
-            {="post.by"|translate: $post['lang'] ?? 'cs'}
+            {="post.by"|translate: $post['lang'] ?? $lang}
             <strong>{$authors[$post['author']]['name']}</strong>
         </div>
 
         <div class="col-md-4">
             <em class="fa fa-fw fa-comments"></em>
             <a href="{$siteUrl}/{$post['relativeUrl']}/#disqus_thread">X</a>
-            {="post.comment_count"|translate: $post['lang'] ?? 'cs'}
+            {="post.comment_count"|translate: $post['lang'] ?? $lang}
+
+            {ifset $post['tested']}
+                <em class="fa fa-fw fa-check-square-o"></em>
+                {="post.covered_by_test"|translate: $post['lang'] ?? $lang}
+            {/ifset}
         </div>
     </div>
 {/define}

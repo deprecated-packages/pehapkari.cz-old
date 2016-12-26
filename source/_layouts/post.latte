@@ -1,6 +1,5 @@
 {extends "default"}
 
-
 {block content_wrapper}
     <div id="article">
         <div class="container">
@@ -17,7 +16,7 @@
 
         <div class="intermezzo-smaller">
             <div class="container">
-                <h2>{="post.i_want_your_opinion"|translate: $post['lang'] ?? 'cs'}</h2>
+                <h2>{="post.i_want_your_opinion"|translate: $post['lang'] ?? $lang}</h2>
             </div>
         </div>
 
@@ -63,8 +62,15 @@
             <time datetime="{$post->getDateInFormat('Y-m-D')}">
                 {$post->getDateInFormat('j. n. Y')}
             </time>
-            {="post.by"|translate: $post['lang'] ?? 'cs'}
+            {="post.by"|translate: $post['lang'] ?? $lang}
             <strong>{$authors[$post['author']]['name']}</strong>
+
+            {ifset $post['tested']}
+                <p>
+                    <em class="fa fa-fw fa-check-square-o"></em>
+                    {="post.covered_by_test"|translate: $post['lang'] ?? $lang}
+                </p>
+            {/ifset}
         </div>
     </div>
 {/define}
