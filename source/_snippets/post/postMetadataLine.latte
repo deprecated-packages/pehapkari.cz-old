@@ -1,8 +1,11 @@
 <div class="metadataLine">
     {ifset $post['tested']}
+        {capture $testDirectoryOnGithub}{$githubShowUrlStart}tests/Posts/Year{$post->getDateInFormat('Y')}/{$post['test_slug']}{/capture}
         <p class="success">
             <strong><em class="fa fa-fw fa-check-square-o"></em>
-                {="post.covered_by_test"|translate: $post['lang'] ?? $lang}
+                <a href="{$testDirectoryOnGithub}">
+                    {="post.covered_by_test"|translate: $post['lang'] ?? $lang}
+                </a>
             </strong>
         </p>
     {/ifset}

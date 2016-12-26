@@ -301,6 +301,6 @@ pre[class*="language-"] {
     margin: 1em 0;
 }
 
-.success {
+.success, .success a {
     color: #8FBE00;
 }
