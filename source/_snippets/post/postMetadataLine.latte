@@ -1,12 +1,11 @@
 <div class="row">
     <div class="col-md-3">
         <em class="fa fa-clock-o fa-fw"></em>
-        <strong>{$post->getReadingTimeInMinutes()} {="post.min_of_reading"|translate: $post['lang'] ?? 'cs'}</strong>
+        <strong>{$post->getReadingTimeInMinutes()} min</strong>
     </div>
 
     <div class="col-md-3">
         <em class="fa fa-user fa-fw"></em>
-
         <strong>{$authors[$post['author']]['name']}</strong>
     </div>
 
@@ -22,11 +21,4 @@
         <a href="{$siteUrl}/{$post['relativeUrl']}/#disqus_thread">X</a>
         {="post.comment_count"|translate: $post['lang'] ?? 'cs'}
     </div>
-
-    {*<li n:ifset="$showPullRequestLink">*}
-        {*<a href="{$post|githubEditPostUrl}">*}
-            {*<em class="fa fa-fw fa-github"></em>*}
-            {*{="post.send_pr"|translate: $post['lang'] ?? 'cs'}*}
-        {*</a>*}
-    {*</li>*}
 </div>

@@ -58,8 +58,7 @@
     <div class="row" id="metadata-line">
         <div class="col-md-12">
             <em class="fa fa-clock-o fa-fw"></em>
-            {$post->getReadingTimeInMinutes()}
-            {="post.min_of_reading"|translate: $post['lang'] ?? 'cs'}
+            {$post->getReadingTimeInMinutes()} min
             |
             <time datetime="{$post->getDateInFormat('Y-m-D')}">
                 {$post->getDateInFormat('j. n. Y')}

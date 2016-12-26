@@ -1,5 +1,6 @@
 pageTitle: "Děláš v PHP? Jsi jedním z nás"
 siteUrl: "http://pehapkari.cz"
+githubEditUrlStart: "https://github.com/pehapkari/pehapkari.cz/edit/master/source/"
 
 lang: "cs" # default language
 
@@ -7,3 +8,7 @@ lang: "cs" # default language
 googleAnalyticsTrackingId: "UA-46082345-1"
 fbTrackingId: "201338863559186"
 disqusName: "pehapkari"
+
+# Statie configuration
+configuration:
+    githubRepositorySlug: pehapkari/pehapkari.cz

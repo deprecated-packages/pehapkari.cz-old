@@ -74,8 +74,12 @@ header a:hover {
 }
 
 .section {
-    padding-top: 3em;
+    padding-top: 1.3em;
     padding-bottom: 3em;
+}
+
+.section.first-section {
+    padding-top: 1em;
 }
 
 .bordered-img {
@@ -95,14 +99,14 @@ header a:hover {
 }
 
 h1 {
-    font-size: 3.4em;
+    font-size: 3em;
     line-height: 1.5em;
     padding: 1em 0;
 }
 
 h2, .h2 {
     margin: .8em 0;
-    font-size: 2.7em;
+    font-size: 2.5em;
     line-height: 1.1em;
     padding: 0;
 }
@@ -209,7 +213,7 @@ h1, h2, .h2, h3 {
 
 @media (min-width: 992px) {
     .container {
-        max-width: 980px;
+        max-width: 940px;
     }
 }
 
@@ -219,7 +223,7 @@ h1, h2, .h2, h3 {
 }
 
 #blog {
-    padding-top: 3em;
+    padding-top: 1em;
 }
 
 #blog h3 {

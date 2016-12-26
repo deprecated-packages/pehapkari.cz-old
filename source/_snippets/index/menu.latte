@@ -7,10 +7,22 @@
                 <em class="fa fa-book fa-fw"></em>
                 Píšeme blog
             </a>
-            <a href="/slovnicek" n:class="(isset($id) && $id === dictionary) ? active">
+            <a href="/slovnicek" n:class="(isset($id) && $id === slovnicek) ? active">
                 <em class="fa fa-language fa-fw"></em>
                 Slovníček
             </a>
+            {ifset $post}
+                {capture $githubEditLink}{$post|githubEditPostUrl}{/capture}
+            {elseifset $id}
+                {capture $githubEditLink}{$githubEditUrlStart}{$githubLink =  $id . '.latte'}{/capture}
+            {/ifset}
+
+            {ifset $githubEditLink}
+                <a href="{$githubEditLink}">
+                    <em class="fa fa-fw fa-github"></em>
+                    {="layout.edit_page"|translate: $post['lang'] ?? 'cs'}
+                </a>
+            {/ifset}
         </nav>
     </div>
 </header>

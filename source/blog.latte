@@ -15,7 +15,7 @@ id: blog
 
         {foreach $posts as $post}
             <div class="container article">
-                <h3 class="text-center">
+                <h3 class="text-left">
                     <a href="/{$post['relativeUrl']}">
                         {$post['title']}
                     </a>
@@ -38,7 +38,7 @@ id: blog
     <div class="row text-center">
         <div class="col-md-4">
             <em class="fa fa-clock-o fa-fw"></em>
-            <strong>{$post->getReadingTimeInMinutes()} {="post.min_of_reading"|translate: $post['lang'] ?? 'cs'}</strong>
+            <strong>{$post->getReadingTimeInMinutes()} min</strong>
         </div>
 
         <div class="col-md-4">
