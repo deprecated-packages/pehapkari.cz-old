@@ -31,10 +31,11 @@ Nepíši žádné `$this->someObject` s&nbsp;nějakými daty, mocky nebo testova
 metod. Přidává to na přehlednosti a&nbsp;čitelnosti, a&nbsp;tak to usnadňuje pozdější rozšiřování testu.
 
 **Správně**:
+
 * Pro rozšíření testu jen přidám `@dataProvider`, extrahuji parametr `5` a očekávanou hodnotu `xyz`.
 * Vše co test obsahuje, je na jednom místě. Detaily jsou skryté za voláním metod.
 
-```php
+```language-php
 public function testFoo()  : void
 {
 	$bar = $this->createMockBar(5);
@@ -47,12 +48,13 @@ public function testFoo()  : void
 
 ```
 **Špatně**:
+
 * Pro rozšíření testu musím udělat novou třídní proměnnou a zduplikovat kód testu. 
 * V&nbsp;testu není na první pohled patrné, jak je definován počátečná stav.
 * Motivací bývá většinou snaha o znovupoužitelnost objektu (mocku, služby, *value-objectu*), avšak není 
   pro ni žádný důvod. V&nbsp;praxi vůbec ničemu nevadí si pro každý běh testu objekty vytvářet.
  
-```php
+```language-php
 public function setUp(): void
 {
 	$this->mockBar = $this->createMockBar(5);
@@ -90,7 +92,7 @@ Proto:
 * Samotný přechod stavu redukuji ideálně jen na volání jediné metody. 
 * Asserty oddělím vizuálně od zbytku prázdným řádkem.
 
-```php
+```language-php
 /**
  * @dataProvider getDataForFooTest
  */
@@ -113,7 +115,7 @@ Při sestavování závislostí dbám na to, abych praktikoval *Dependency Injec
 a&nbsp;aby každá factory metoda vytvářela jen jednu věc.
 
 **Správně:**
-```php
+```language-php
 public function testXyz(string $expected, int $valueForBar): void
 {
      // Když budu chtít přidat $valueForBar2, upravím jen jedno místo.
@@ -135,7 +137,7 @@ public function mockFoo(Bar $bar): Foo
 }
 ```
 **Špatně:**
-```php
+```language-php
 public function testXyz(string $expected, int $valueForBar) 
 {
      // Předává se pouze hodnota a factory metoda pak dělá dvě věci, 
@@ -164,11 +166,13 @@ public function mockFoo(int $valueForBar): Foo
 </p></blockquote>
 
 ## Kdy mockuji a&nbsp;kdy ne
-Mockovat je drahé. Je drahé mocky psát a&nbsp;je drahé je pak udržovat. Proto většinou nemockuji: 
+Mockovat je drahé. Je drahé mocky psát a&nbsp;je drahé je pak udržovat. Proto většinou nemockuji:
+ 
 * value objecty,
 * *stateless* služby – jejich metody tudíž vždy vracejí pro konkrétní vstup stejný výstup.
 
 Naopak mockuji:
+
 * služby, které sahají na nějaký stav nebo komunikují mimo aplikaci (disk, databáze, api, …),
 * jakékoliv objekty, které mají složitý strom závislostí a&nbsp;je jednodušší je vymockovat, než sestavit jejich závislosti.  
 
@@ -181,6 +185,7 @@ Ideální by bylo, kdyby všechny testy dědily přímo od `TestCase`, který je
 si pro testovanou aplikaci udělat `abstract MyTestCase` a&nbsp;všechno dědit od něj. 
  
 Důvody pro toto porušení jsou:
+
 * Zapsání `Mockery::close()` do `tearDown()` ve společném předkovi jen jednou, aby se neopakoval v&nbsp;každém testu, 
   kde se na to navíc snadno zapomene.
 * Možnost clearovat globální stav na jednom místě, když pracuji s&nbsp;nějakou *legacy* codebase. 
@@ -192,7 +197,7 @@ A pak už být nekompromisní, žádná další vrstva dědičnosti. Takže test
 Zvyšuje čitelnost a&nbsp;zrychluje orientaci v&nbsp;kódu.
 
 **Špatně:**
-```
+```language-php
 public function getDataForXyzTest(): array 
 {
      return [
@@ -201,8 +206,9 @@ public function getDataForXyzTest(): array
      ];
 }
 ```
+
 **Správně:**
-```
+```language-php
 private const USER_ONLINE = true;
 private const USER_OFFLINE = false;
 
@@ -223,6 +229,7 @@ public function getDataForXyzTest(): array
 
 ## Dependency Injection Container vždy vytvářím čerstvý pro každý běh scriptu
 Když test potřebuje container:
+
 * každý jeden běh testu **musí** mít svou vlastní instanci containeru,
 * metoda `createContainer()` musí v&nbsp;testu vždy vrátit nově sestavený container,
 * container není nikdy v&nbsp;`$this->container` v&nbsp;`TestCase` třídě. 
@@ -232,7 +239,7 @@ Když test potřebuje container:
 V aplikačním kódu nepíši `new DateTime()`, `time()`, `NOW()`, `rand()`. 
 Získávání nějakého „globálního“ stavu vždy obstarává služba. 
 Příkladem může být [DateTimeFactory](https://github.com/damejidlo/datetime-factory) nebo: 
-```
+```language-php
 class RandomProvider
 {
     public function rand(int $min, int $max): int
@@ -243,7 +250,7 @@ class RandomProvider
 ```
 
 V testech si pak tuto závislost namockuji a&nbsp;předám. V&nbsp;integračních testech upravím službu v&nbsp;DI Containeru:
-```
+```language-php
 /**
  * @dataProvider getDataForXyzTest
  */
@@ -289,6 +296,7 @@ Ale jinak je to bolest.
   
 ## Držím strukturu testů tak, aby kopírovala kód aplikace
 Většinou se držím toho, aby:
+
 * `TestCase` třídy kopírovaly třídy v aplikaci (`src/A/B/Service.php` + `tests/A/B/ServiceTest.php`), 
 * `testXyz` metody kopírovaly metody v testované třídě,
 * adresářová struktura ve složce `tests` kopírovala strukturu aplikace,
@@ -305,4 +313,6 @@ Většinou se držím toho, aby:
  
 ## Závěrem
 Napadá vás nějaký dobrý practice, který jsem nezmínil? [Tweetněte](https://twitter.com/Achse_) mi ho. ;)
+
+<div class="text-right"><em>Článek vyšel také na <a href="https://petrhejna.org/">blogu</a> autora.</em></div>
   
