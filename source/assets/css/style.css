@@ -224,6 +224,7 @@ h1, h2, .h2, h3 {
 
 #blog {
     padding-top: 1em;
+    padding-bottom: 3em;
 }
 
 #blog hr {
@@ -231,10 +232,10 @@ h1, h2, .h2, h3 {
     padding-bottom: 2em;
 }
 
-#blog .metadataLine {
+.metadataLine {
     font-size: .8em;
     color: #9d9d9d;
-    margin-top: 1.4em;
+    margin-top: .4em;
     margin-bottom: .6em;
     line-height: 2.5em;
 }

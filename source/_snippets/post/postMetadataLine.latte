@@ -1,24 +1,31 @@
-<div class="row">
-    <div class="col-md-3">
+<div class="metadataLine">
+    {ifset $post['tested']}
+        <p class="success">
+            <strong><em class="fa fa-fw fa-check-square-o"></em>
+                {="post.covered_by_test"|translate: $post['lang'] ?? $lang}
+            </strong>
+        </p>
+    {/ifset}
+
+    <p>
         <em class="fa fa-clock-o fa-fw"></em>
-        <strong>{$post->getReadingTimeInMinutes()} min</strong>
-    </div>
+        {$post->getReadingTimeInMinutes()} min
 
-    <div class="col-md-3">
-        <em class="fa fa-user fa-fw"></em>
+        |
+
+        {="post.by"|translate: $post['lang'] ?? $lang}
         <strong>{$authors[$post['author']]['name']}</strong>
-    </div>
 
-    <div class="col-md-3">
-        <em class="fa fa-calendar fa-fw"></em>
+        &ndash;
+
         <time datetime="{$post->getDateInFormat('Y-m-D')}">
             {$post->getDateInFormat('j. n. Y')}
         </time>
-    </div>
 
-    <div class="col-md-3">
+        |
+
         <em class="fa fa-fw fa-comments"></em>
         <a href="{$siteUrl}/{$post['relativeUrl']}/#disqus_thread">X</a>
         {="post.comment_count"|translate: $post['lang'] ?? $lang}
-    </div>
+    </p>
 </div>

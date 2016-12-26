@@ -21,7 +21,11 @@ id: blog
                     <a href="/{$post['relativeUrl']}">{$post['title']}</a>
                 </h3>
 
-                {include metadataLine, "post" => $post}
+                <div class="row">
+                    <div class="col-md-12">
+                        {include "postMetadataLine", "post" => $post}
+                    </div>
+                </div>
 
                 <p class="perex">{$post['perex']|noescape}</p>
             </div>
@@ -29,43 +33,6 @@ id: blog
         {/foreach}
     </div>
 {/block}
-
-
-{define metadataLine}
-    <div class="row metadataLine">
-        <div class="col-md-12">
-            {ifset $post['tested']}
-                <p class="success">
-                    <strong><em class="fa fa-fw fa-check-square-o"></em>
-                        {="post.covered_by_test"|translate: $post['lang'] ?? $lang}
-                    </strong>
-                </p>
-            {/ifset}
-
-            <p>
-                <em class="fa fa-clock-o fa-fw"></em>
-                {$post->getReadingTimeInMinutes()} min
-
-                |
-
-                {="post.by"|translate: $post['lang'] ?? $lang}
-                <strong>{$authors[$post['author']]['name']}</strong>
-
-                &ndash;
-
-                <time datetime="{$post->getDateInFormat('Y-m-D')}">
-                    {$post->getDateInFormat('j. n. Y')}
-                </time>
-
-                |
-
-                <em class="fa fa-fw fa-comments"></em>
-                <a href="{$siteUrl}/{$post['relativeUrl']}/#disqus_thread">X</a>
-                {="post.comment_count"|translate: $post['lang'] ?? $lang}
-            </p>
-        </div>
-    </div>
-{/define}
 
 
 {block additionalJavascript}
