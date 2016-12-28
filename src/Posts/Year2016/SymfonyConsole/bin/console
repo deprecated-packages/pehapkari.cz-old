@@ -1,0 +1,11 @@
+<?php
+#!/usr/bin/env php
+
+// this file is only for manual testing purposes
+// try e.g.: php src/Posts/Year2016/SymfonyConsole/bin/console hash-password heslo123
+
+require_once __DIR__ . '/../../../../../vendor/autoload.php';
+
+$application = new Symfony\Component\Console\Application;
+$application->add(new Pehapkari\Website\Posts\Year2016\SymfonyConsole\Command\HashPasswordCommand());
+$application->run();
