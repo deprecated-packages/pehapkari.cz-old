@@ -6,16 +6,20 @@ author: 4
 ---
 
 ## Pár definic, kterých se držím
-1. K&nbsp;testu **nepřistupuji jako ke třídě**, k&nbsp;testu **nepřistupuji jako k&nbsp;fukci**. 
-  K&nbsp;testu přistupuji jako k&nbsp;bloku kódu – **jako ke scriptu**. Následováním tohoto přístupu:
- * redukuji objem kódu v&nbsp;jednom testovacím scénáři (jsem veden vyčlenit si helpery mimo samotný test), 
- * snižuji komplexitu testovacího stacku (jsem veden řešit závislosti správným směrem – jak na to, 
+
+### 1. K&nbsp;testu **nepřistupuji jako ke třídě**, k&nbsp;testu **nepřistupuji jako k&nbsp;fukci** 
+
+K&nbsp;testu přistupuji jako k&nbsp;bloku kódu – **jako ke scriptu**. Následováním tohoto přístupu:
+
+* redukuji objem kódu v&nbsp;jednom testovacím scénáři (jsem veden vyčlenit si helpery mimo samotný test), 
+* snižuji komplexitu testovacího stacku (jsem veden řešit závislosti správným směrem – jak na to, 
    se rozepíši později v článku).
-<br /><br />
-2. Neustále si uvědomuji, že test se skládá z:
- * **definice výchozího stavu**, 
- * **přechodu do jiného stavu**,
- * následně **validace konečného stavu**.
+
+### 2. Neustále si uvědomuji, že test se skládá z
+ 
+* **definice výchozího stavu**
+* **přechodu do jiného stavu**
+* následně **validace konečného stavu**
 
 <blockquote class="alert alert-warning">
     <p>
@@ -26,16 +30,18 @@ author: 4
 
 Z&nbsp;těchto základů jsem si pak vyvodil několik zásad.
 
+
 ## Píši `TestCase` třídy bezstavově
+
 Nepíši žádné `$this->someObject` s&nbsp;nějakými daty, mocky nebo testovanými subjekty. Vše předávám přes parametry 
 metod. Přidává to na přehlednosti a&nbsp;čitelnosti, a&nbsp;tak to usnadňuje pozdější rozšiřování testu.
 
-**Správně**:
+**Správně**
 
 * Pro rozšíření testu jen přidám `@dataProvider`, extrahuji parametr `5` a očekávanou hodnotu `xyz`.
 * Vše co test obsahuje, je na jednom místě. Detaily jsou skryté za voláním metod.
 
-```language-php
+```php
 public function testFoo()  : void
 {
 	$bar = $this->createMockBar(5);
@@ -45,16 +51,16 @@ public function testFoo()  : void
 	
 	Assert::equals('xyz', $result);
 }
-
 ```
-**Špatně**:
+
+**Špatně**
 
 * Pro rozšíření testu musím udělat novou třídní proměnnou a zduplikovat kód testu. 
 * V&nbsp;testu není na první pohled patrné, jak je definován počátečná stav.
 * Motivací bývá většinou snaha o znovupoužitelnost objektu (mocku, služby, *value-objectu*), avšak není 
   pro ni žádný důvod. V&nbsp;praxi vůbec ničemu nevadí si pro každý běh testu objekty vytvářet.
  
-```language-php
+```php
 public function setUp(): void
 {
 	$this->mockBar = $this->createMockBar(5);
@@ -68,20 +74,20 @@ public function testFoo(): void
     
     Assert::equals('xyz', $result);
 }
-
 ```
 
 Do `setUp()` dávám věci, které připravují prostředí pro test, například strukturu databáze. Nedávám tam ale už
 insert testovacích dat, která jsou specifická pro daný scénář testu. Skryl bych tím totiž definici výchozího 
 stavu konkrétního scénáře.
 
-<br>
 <blockquote class="alert alert-info"><p>
 	Z&nbsp;těchto principů také přímo vyplývá, že <code>TestCase</code> třída je <em>immutable</em>. 
 	Protože není co měnit. ;)
 </p></blockquote>
 
+
 ## Pečlivě oděluji části testu 
+
 Čím výrazněji jsou od sebe části testu odděleny a&nbsp;čím menší a&nbsp;jednodušší jsou, tím rychleji při čtení 
 kódu pochopím, co test testuje.
 
@@ -92,7 +98,7 @@ Proto:
 * Samotný přechod stavu redukuji ideálně jen na volání jediné metody. 
 * Asserty oddělím vizuálně od zbytku prázdným řádkem.
 
-```language-php
+```php
 /**
  * @dataProvider getDataForFooTest
  */
@@ -107,15 +113,18 @@ public function testFoo(string $expectdResult, string $valueForFoo, string $valu
     Assert::equals('xyz', $result); // Assertace výsledného stavu
 }
 ```
+
   
 ## Závislosti testovaného kódu a&nbsp;jejich skládání
+
 Když musím kódu, který testuji, dodat nějaké závislosti (často namockované), vždy vytvářím **factory metody**. 
 
 Při sestavování závislostí dbám na to, abych praktikoval *Dependency Injection* skrze parametry factory metody 
 a&nbsp;aby každá factory metoda vytvářela jen jednu věc.
 
-**Správně:**
-```language-php
+**Správně**
+
+```php
 public function testXyz(string $expected, int $valueForBar): void
 {
      // Když budu chtít přidat $valueForBar2, upravím jen jedno místo.
@@ -136,8 +145,10 @@ public function mockFoo(Bar $bar): Foo
   return Mockery::mock(Foo::class)->shouldRecieve('getBar')->andReturn($bar)->getMock();
 }
 ```
-**Špatně:**
-```language-php
+
+**Špatně**
+
+```php
 public function testXyz(string $expected, int $valueForBar) 
 {
      // Předává se pouze hodnota a factory metoda pak dělá dvě věci, 
@@ -165,7 +176,9 @@ public function mockFoo(int $valueForBar): Foo
     extrahuji je do helperů (v PHPUnit do traitů).
 </p></blockquote>
 
+
 ## Kdy mockuji a&nbsp;kdy ne
+
 Mockovat je drahé. Je drahé mocky psát a&nbsp;je drahé je pak udržovat. Proto většinou nemockuji:
  
 * value objecty,
@@ -176,7 +189,9 @@ Naopak mockuji:
 * služby, které sahají na nějaký stav nebo komunikují mimo aplikaci (disk, databáze, api, …),
 * jakékoliv objekty, které mají složitý strom závislostí a&nbsp;je jednodušší je vymockovat, než sestavit jejich závislosti.  
 
+
 ## Nedědím od sebe testy
+
 Hlavní zásadu kterou dodržuji je, že testy od sebe nedědím. Mít `DatabaseTestCase`, `ApiTestCase` a&nbsp;podobně,
 je zneužití dědičnosti a&nbsp;cesta k obrovské třídě plné kódu, z&nbsp;kterého každý potomek využívá jen nějaký (a vždy jiný) 
 subset. 
@@ -193,11 +208,14 @@ Důvody pro toto porušení jsou:
  
 A pak už být nekompromisní, žádná další vrstva dědičnosti. Takže test-třídy píši `final`.
 
+
 ## Pojmenovávám hodnoty v&nbsp;Data Providerech
+
 Zvyšuje čitelnost a&nbsp;zrychluje orientaci v&nbsp;kódu.
 
-**Špatně:**
-```language-php
+**Špatně**
+
+```php
 public function getDataForXyzTest(): array 
 {
      return [
@@ -207,8 +225,9 @@ public function getDataForXyzTest(): array
 }
 ```
 
-**Správně:**
-```language-php
+**Správně**
+
+```php
 private const USER_ONLINE = true;
 private const USER_OFFLINE = false;
 
@@ -227,7 +246,9 @@ public function getDataForXyzTest(): array
 }
 ```
 
+
 ## Dependency Injection Container vždy vytvářím čerstvý pro každý běh scriptu
+
 Když test potřebuje container:
 
 * každý jeden běh testu **musí** mít svou vlastní instanci containeru,
@@ -239,7 +260,8 @@ Když test potřebuje container:
 V aplikačním kódu nepíši `new DateTime()`, `time()`, `NOW()`, `rand()`. 
 Získávání nějakého „globálního“ stavu vždy obstarává služba. 
 Příkladem může být [DateTimeFactory](https://github.com/damejidlo/datetime-factory) nebo: 
-```language-php
+
+```php
 class RandomProvider
 {
     public function rand(int $min, int $max): int
@@ -250,7 +272,7 @@ class RandomProvider
 ```
 
 V testech si pak tuto závislost namockuji a&nbsp;předám. V&nbsp;integračních testech upravím službu v&nbsp;DI Containeru:
-```language-php
+```php
 /**
  * @dataProvider getDataForXyzTest
  */
@@ -266,7 +288,9 @@ public function testXyz(..., \DateTimeImmutable $subjectTime): void
 
 Ušetří to pár vrásek, letní-zimní čas a&nbsp;další magické chyby v&nbsp;testech.
 
+
 ## Nepoužívám PHPUnit, když nemusím
+
 [PHPUnit](https://phpunit.de/) má jednu výhodu: super integraci s&nbsp;[PHPStorm](https://www.jetbrains.com/phpstorm/) IDE.
 Ale jinak je to bolest.
 
@@ -279,13 +303,17 @@ Ale jinak je to bolest.
 * Samotný framework je hrozně složitý – když potřebuji zdebugovat nějaké divné chování, utápím se v&nbsp;tom.
 * Neumí paralelizaci out-of-the-box. Doporučuji podívat se na [tento článek](http://engineering.wayfair.com/2015/02/sweet-parallel-phpunit/).
 
+
 ## Když musím používat PHPUnit
+
 * Helpery si píši jako traity. Jsou *context-aware* a&nbsp;je **mnohem** lepší traitit než dědit. 
   Doporučuji přečíst si na toto téma <a href="https://qafoo.com/blog/092_using_traits_with_phpunit.html">článek</a> 
   od Kora Nordmanna.
 * Snažím se alespoň o to, abych mohl používat jiný mockovací framework (osobně fandím [Mockery](http://docs.mockery.io)).
 
+
 ## Separuji testy podle typu a paralelizuji 
+
 * **Každý jeden test spouštím ve vlastním procesu**. Legacy kód často obsahuje špinavosti, které ovlivňují 
   globální stav aplikace, a&nbsp;zajistit 100% vyčištení kontextu po každém testu v&nbsp;`tearDown` za tu práci nestojí.
 * Snažím se **paralelizovat už od prvního testu**. I&nbsp;když v&nbsp;případě legacy kódu to bývá težké. 
@@ -294,25 +322,32 @@ Ale jinak je to bolest.
 * Spouštím **unit testy odděleně od *těch ostatních***, které používají databázi a&nbsp;podobně. 
   Když failnou některé z&nbsp;unitových testů, tak ty *ostatní* už ani nespouštím.
   
+
 ## Držím strukturu testů tak, aby kopírovala kód aplikace
+
 Většinou se držím toho, aby:
 
-* `TestCase` třídy kopírovaly třídy v aplikaci (`src/A/B/Service.php` + `tests/A/B/ServiceTest.php`), 
-* `testXyz` metody kopírovaly metody v testované třídě,
-* adresářová struktura ve složce `tests` kopírovala strukturu aplikace,
-* stejně tak namespacy, ty však začínají root namespacem `Tests`.
+- `TestCase` třídy kopírovaly třídy v aplikaci (`src/A/B/Service.php` + `tests/A/B/ServiceTest.php`), 
+- `testXyz` metody kopírovaly metody v testované třídě,
+- adresářová struktura ve složce `tests` kopírovala strukturu aplikace,
+- stejně tak namespacy, ty však začínají root namespacem `Tests`.
+
 
 ## Používám PHPStorm IDE
-* PHPStorm má klávesovou zkraktu `[Ctrl]` + `[Shift]` + `[T]` 
+
+- PHPStorm má klávesovou zkraktu `[Ctrl]` + `[Shift]` + `[T]` 
   pro: [Navigating Between Test and Test Subject](https://www.jetbrains.com/help/phpstorm/2016.2/navigating-between-test-and-test-subject.html).
   
+
 ## V čem nemám jasno / kacířské myšlenky
-* Kdy používat pro assert konečného stavu snapshoty a&nbsp;kdy nikoliv? Jsou snapshoty vůbec dobrý nápad?
-* Pohrávám si s myšlenkou, že pro větší monolitické aplikace by každý modul aplikace měl mít svou vlastní 
+
+- Kdy používat pro assert konečného stavu snapshoty a&nbsp;kdy nikoliv? Jsou snapshoty vůbec dobrý nápad?
+- Pohrávám si s myšlenkou, že pro větší monolitické aplikace by každý modul aplikace měl mít svou vlastní 
   `tests` složku. V extrémním případě by každá třída měla test třídu hned vedle sebe.
  
+
 ## Závěrem
-Napadá vás nějaký dobrý practice, který jsem nezmínil? [Tweetněte](https://twitter.com/Achse_) mi ho. ;)
+
+Napadá vás nějaký dobrý practice, který jsem nezmínil? Napište mi sem do komentářů nebo mi ho [tweetněte](https://twitter.com/Achse_). Díky!
 
 <div class="text-right"><em>Článek vyšel také na <a href="https://petrhejna.org/">blogu</a> autora.</em></div>
-  

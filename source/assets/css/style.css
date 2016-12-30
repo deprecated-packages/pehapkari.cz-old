@@ -281,6 +281,11 @@ h1, h2, .h2, h3 {
     font-size: 1.2em;
 }
 
+#article blockquote {
+    margin: 2em 0;
+    font-size: 1em;
+}
+
 .intermezzo-smaller {
     margin: 1em 0 3em;
 }
