@@ -5,17 +5,19 @@ perex: "Testování aplikací není vždy tak snadné, jak se na papíře jeví.
 author: 4
 ---
 
-## Pár definic, kterých se držím
+## 2 definice, kterých se držím
 
-### 1. K&nbsp;testu **nepřistupuji jako ke třídě**, k&nbsp;testu **nepřistupuji jako k&nbsp;fukci** 
+### Test je blok kódu
 
-K&nbsp;testu přistupuji jako k&nbsp;bloku kódu – **jako ke scriptu**. Následováním tohoto přístupu:
+K&nbsp;testu **nepřistupuji jako ke třídě**, k&nbsp;testu **nepřistupuji jako k&nbsp;fukci** K&nbsp;testu přistupuji jako k&nbsp;bloku kódu – **jako ke scriptu**. Následováním tohoto přístupu:
 
 * redukuji objem kódu v&nbsp;jednom testovacím scénáři (jsem veden vyčlenit si helpery mimo samotný test), 
 * snižuji komplexitu testovacího stacku (jsem veden řešit závislosti správným směrem – jak na to, 
    se rozepíši později v článku).
 
-### 2. Neustále si uvědomuji, že test se skládá z
+### Test má 3 složky 
+
+Neustále si uvědomuji, že test se skládá z
  
 * **definice výchozího stavu**
 * **přechodu do jiného stavu**
