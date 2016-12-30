@@ -7,7 +7,7 @@ author: 4
 
 ## Pár definic, kterých se držím
 
-1. K&nbsp;testu **nepřistupuji jako ke třídě**, k&nbsp;testu **nepřistupuji jako k&nbsp;fukci** K&nbsp;testu přistupuji jako k&nbsp;bloku kódu – **jako ke scriptu**. Následováním tohoto přístupu:
+1. K&nbsp;testu **nepřistupuji jako ke třídě**, k&nbsp;testu **nepřistupuji jako k&nbsp;fukci**. K&nbsp;testu přistupuji jako k&nbsp;bloku kódu – **jako ke scriptu**. Následováním tohoto přístupu:
 
 * redukuji objem kódu v&nbsp;jednom testovacím scénáři (jsem veden vyčlenit si helpery mimo samotný test), 
 * snižuji komplexitu testovacího stacku (jsem veden řešit závislosti správným směrem – jak na to, 
