@@ -7,6 +7,7 @@ series: 1
 tested: true
 test_slug: SymfonyConsole
 lang: en
+reviewed_by: [4, 5, 6]
 ---
 
 ## Main feature of Symfony Console 
@@ -33,7 +34,7 @@ Before diving into our first command, there is important rule that I want to sha
 
 When I wrote *commands is something like Presenter or Controller*, I was talking about *Delegator Pattern*. Like Controller, **it should only delegate arguments to other services and return result to the output**. 
 
-You will be great Command developer using this rule, who will easily avoid:
+This rule will help you to easily avoid:
  
 - using command to run another command
 - using command in controller
@@ -48,16 +49,16 @@ Very common, very coupled. You would never use controller inside another control
 
 ### 1. Install via Composer
 
-```language-bash
+```bash
 composer require symfony/console
 ```
 
 ### 2. Create Console Application
 
 Conventional location is `bin/console` (having `.php` suffix is also fine):
-
-```language-php
+```php
 #!/usr/bin/env php
+<?php
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -70,7 +71,7 @@ $application->run();
 
 Now we can run app and see that it's ready:
 
-```language-bash
+```bash
 php bin/console
 ```
 
@@ -80,7 +81,7 @@ All good?
 
 Let's create command, that will safely hash any password you enter.
 
-```language-php
+```php
 // src/Command/HashPasswordCommand.php
 
 namespace App\Command;
@@ -118,7 +119,7 @@ final class HashPasswordCommand extends Command
 
         // return value is important when using CI
         // to fail the build when the command fails
-        // 0 = success, sth else = fail
+        // 0 = success, other values = fail
         return 0;
     }
 }
@@ -127,7 +128,7 @@ final class HashPasswordCommand extends Command
 
 And update our `bin/console` file:
 
-```language-php
+```php
 #!/usr/bin/env php
 
 require_once __DIR__ . '/vendor/autoload.php';
@@ -136,7 +137,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 $application = new Symfony\Component\Console\Application;
 
 // Register all Commands
-$application->add(new App\Command\HashPasswordCommand());
+$application->add(new App\Command\HashPasswordCommand);
 
 // Run it
 $application->run();
@@ -144,19 +145,19 @@ $application->run();
 
 Now you can run it from CLI with your password as argument:
 
-```language-bash
+```bash
 $ bin/console hash-password heslo123
 Your hashed password is: $2y$10$NZVuDpvFbqhsBhR1AZZzX.xUHKhr5qtP1qGKjqRM4S9Xakxn1Xgy2
 ```
 
 
 
-## Now Are 1 Step Further
+## You Are One Step Further
 
-Now you:
+Now you should:
 
 - understand that you need **only 1 class to create simple Command**
-- that **Command is like Controller** and should only delegate to business logic, not contain it 
+- see **Command like a Controller** and should only delegate business logic, not contain it 
 - know how to **pass argument**, process it and **return result to the output**
 
 
@@ -168,4 +169,4 @@ Still hungry for knowledge? Go check [Symfony documentation](http://symfony.com/
  
 - Do you want to **inform user about progress of slow process**? You are looking for [Progress Bar Helper](http://symfony.com/doc/current/components/console/helpers/progressbar.html).
 
-- Do you want to use united and pretty Symfony output style (like PHP-CS-Fixer does)? Look at [Console Style Guide](https://symfony.com/blog/new-in-symfony-2-8-console-style-guide).
+- Do you want to use well-known and pretty Symfony output style (like PHP-CS-Fixer does)? Look at [Console Style Guide](https://symfony.com/blog/new-in-symfony-2-8-console-style-guide).
