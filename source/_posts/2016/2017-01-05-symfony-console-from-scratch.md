@@ -130,6 +130,7 @@ And update our `bin/console` file:
 
 ```php
 #!/usr/bin/env php
+<?php
 
 require_once __DIR__ . '/vendor/autoload.php';
 
