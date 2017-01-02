@@ -13,3 +13,9 @@ mentors:
         email: "tomas.vot@gmail.com"
         intro_messsage: "Chceš psát články? Tvořit open-source? Školit? Napiš mi, rozjedem to."
         link: "https://tomasvotruba.cz/"
+    3:
+        name: "Tomáš Fejfar"
+        location: "Praha, Skype"
+        email: "tomas.fejfar@gmail.com"
+        intro_messsage: "Git, PhpStorm, vývoj v týmu"
+        link: "https://www.tomasfejfar.cz/"
