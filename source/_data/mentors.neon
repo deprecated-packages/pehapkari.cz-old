@@ -1,0 +1,10 @@
+mentors:
+    1:
+        name: "Milan Šulc"
+        location: "Hradec Králové"
+        # email, phone, Twitter, FB..., what you prefer the best
+        contact: "ulcmil@gmail.com"
+        # web, Twitter, FB..., what you prefer the best
+        link: "https://jfx.cz/"
+        # self-promo, co chceš mentorovat, max. 140 znaků
+        intro_messsage: "Pomůžu ti s Nette, Dockerem a přesahem do frontendu."

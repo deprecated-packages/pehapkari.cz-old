@@ -1,0 +1,64 @@
+---
+layout: default
+title: "Najdi si svého mentora"
+id: mentors
+---
+
+{block content}
+    <div class="container section">
+        <h2 class="text-center">
+            <em class="fa fa-handshake-o fa-fw"></em>
+            Mentoři
+        </h2>
+
+        <br>
+
+        <p>
+            Chceš se posunout v PHP dopředu a hledáš zkušeného programátora, který by ti pomohl s těmi největšími překážkami?
+        </p>
+        <p>
+            <strong>Tady najdeš mentory, kteří nabízejí své know-how a chtějí ho sdílet dál</strong>.
+        </p>
+
+        <br>
+
+        <table class="table table-responsive table-bordered table-striped">
+            <tr>
+                <th>Kdo</th>
+                <th>Kde</th>
+                <th>Co nejradši mentoruje</th>
+                <th>Kontakt</th>
+            </tr>
+            <tr n:foreach="$mentors as $mentor">
+                <td>
+                    <nobr><a n:tag-ifset="$mentor['link']" href="{$mentor['link']}">{$mentor['name']}</a></nobr>
+                </td>
+                <td>
+                    <nobr>{$mentor['location']}</nobr>
+                </td>
+                <td>
+                    <strong n:tag-if="strlen($mentor['intro_messsage']) < 140">{$mentor['intro_messsage']}</strong>
+                </td>
+                <td>{$mentor['contact']}</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <br>
+
+        <h3>
+            <em class="fa fa-graduation-cap fa-fw"></em>
+            Staň se taky mentorem
+        </h3>
+
+        <p>
+            Děláš s PHP déle jak 3 roky?
+            <strong>Cítíš se na pozici mentora</strong>, který umí druhým doplnit potřebné znalosti a správně nasměrovat?
+        </p>
+        <p>
+            Přidej se k ostatním mentorům <a href="{$githubEditUrlStart}/_data/mentors.neon">do seznamu</a>
+        </p>
+
+    </div>
+{/block}

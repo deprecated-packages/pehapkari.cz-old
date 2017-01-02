@@ -17,6 +17,7 @@
                     <em class="fa fa-language fa-fw"></em>
                     Slovníček
                 </a>
+
                 {ifset $post}
                     {capture $githubEditLink}{$post|githubEditPostUrl}{/capture}
                 {elseifset $id}
