@@ -22,26 +22,28 @@ id: mentori
 
         <br>
 
-        <table class="table table-responsive table-bordered table-striped">
-            <tr>
-                <th>Kdo</th>
-                <th>Kde</th>
-                <th>Co nejradši mentoruje</th>
-                <th>Kontakt</th>
-            </tr>
-            <tr n:foreach="$mentors as $mentor">
-                <td>
-                    <nobr><a n:tag-ifset="$mentor['link']" href="{$mentor['link']}">{$mentor['name']}</a></nobr>
-                </td>
-                <td>
-                    <nobr>{$mentor['location']}</nobr>
-                </td>
-                <td>
-                    <strong n:tag-if="strlen($mentor['intro_messsage']) < 140">{$mentor['intro_messsage']}</strong>
-                </td>
-                <td><a href="mailto:{$mentor['email']}">{$mentor['email']}</td>
-            </tr>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>Kdo</th>
+                    <th>Kde</th>
+                    <th>Co nejradši mentoruje</th>
+                    <th>Kontakt</th>
+                </tr>
+                <tr n:foreach="$mentors as $mentor">
+                    <td>
+                        <nobr><a n:tag-ifset="$mentor['link']" href="{$mentor['link']}">{$mentor['name']}</a></nobr>
+                    </td>
+                    <td>
+                        <nobr>{$mentor['location']}</nobr>
+                    </td>
+                    <td>
+                        <strong n:tag-if="strlen($mentor['intro_messsage']) < 140">{$mentor['intro_messsage']}</strong>
+                    </td>
+                    <td><a href="mailto:{$mentor['email']}">{$mentor['email']}</td>
+                </tr>
+            </table>
+        </div>
 
         <hr>
 
