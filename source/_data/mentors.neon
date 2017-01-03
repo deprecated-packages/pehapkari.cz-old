@@ -4,24 +4,36 @@ mentors:
         location: "Hradec Králové"
         email: "sulcmil@gmail.com"
         # self-promo, co chceš mentorovat, max. 140 znaků
-        intro_messsage: "Pomůžu ti s Nette, Dockerem a přesahem do frontendu."
+        intro_message: "Pomůžu ti s Nette, Dockerem a přesahem do frontendu."
         # nepovinné: web, Twitter, FB..., stránka, kterou udržuješ a kde se něco dozvím
         link: "https://jfx.cz/"
     2:
         name: "Tomáš Votruba"
         location: "Praha"
         email: "tomas.vot@gmail.com"
-        intro_messsage: "Chceš psát články? Tvořit open-source? Školit? Napiš mi, rozjedem to."
+        intro_message: "Chceš psát články? Tvořit open-source? Školit? Napiš mi, rozjedem to."
         link: "https://tomasvotruba.cz/"
     3:
         name: "Tomáš Fejfar"
         location: "Praha, Skype"
         email: "tomas.fejfar@gmail.com"
-        intro_messsage: "Git, PhpStorm, vývoj v týmu"
+        intro_message: "Git, PhpStorm, vývoj v týmu"
         link: "https://www.tomasfejfar.cz/"
     4:
         name: "Jan Mikeš"
         location: "Ostrava, Online"
         email: "j.mikes@me.com"
-        intro_messsage: "Full stack s primárním zaměřením na backend (Nette) a čistý kód."
+        intro_message: "Full stack s primárním zaměřením na backend (Nette) a čistý kód."
         link: "https://www.linkedin.com/in/jan-mikeš-0405996b"
+    5:
+        name: "Tom Klíma"
+        location: "offline Praha, online Internet"
+        email: "tom@jakpsatphp.cz"
+        intro_message: "clean PHP, biomedicine hacking & bitcoin are my favourite playgrounds"
+        link: "https://twitter.com/tomtomklima"
+    6:
+        name: "Tomáš Kazatel"
+        location: "Praha"
+        email: "kazatel@jiktogroup.cz"
+        intro_message: "Laravel, JS, Frontend. Tam všude ti rád pomůžu a poradím."
+        link: "https://twitter.com/tomaskazatel"
