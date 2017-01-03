@@ -25,3 +25,9 @@ mentors:
         email: "j.mikes@me.com"
         intro_messsage: "Full stack s primárním zaměřením na backend (Nette) a čistý kód."
         link: "https://www.linkedin.com/in/jan-mikeš-0405996b"
+    5:
+        name: "Tom Klíma"
+        location: "offline Praha, online Internet"
+        email: "tom@jakpsatphp.cz"
+        intro_messsage: "clean PHP, biomedicine hacking & bitcoin are my favourite playgrounds"
+        link: "https://twitter.com/tomtomklima"
