@@ -31,3 +31,9 @@ mentors:
         email: "tom@jakpsatphp.cz"
         intro_messsage: "clean PHP, biomedicine hacking & bitcoin are my favourite playgrounds"
         link: "https://twitter.com/tomtomklima"
+    6:
+        name: "Tomáš Kazatel"
+        location: "Praha"
+        email: "kazatel@jiktogroup.cz"
+        intro_message: "Laravel, JS, Frontend. Tam všude ti rád pomůžu a poradím."
+        link: "https://twitter.com/tomaskazatel"
