@@ -19,3 +19,9 @@ mentors:
         email: "tomas.fejfar@gmail.com"
         intro_messsage: "Git, PhpStorm, vývoj v týmu"
         link: "https://www.tomasfejfar.cz/"
+    4:
+        name: "Jan Mikeš"
+        location: "Ostrava, Online"
+        email: "j.mikes@me.com"
+        intro_messsage: "Full stack s primárním zaměřením na backend (Nette) a čistý kód."
+        link: "https://www.linkedin.com/in/jan-mikeš-0405996b"
