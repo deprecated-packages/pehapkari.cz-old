@@ -1,0 +1,21 @@
+mentors:
+    1:
+        name: "Milan Šulc"
+        location: "Hradec Králové"
+        email: "sulcmil@gmail.com"
+        # self-promo, co chceš mentorovat, max. 140 znaků
+        intro_messsage: "Pomůžu ti s Nette, Dockerem a přesahem do frontendu."
+        # nepovinné: web, Twitter, FB..., stránka, kterou udržuješ a kde se něco dozvím
+        link: "https://jfx.cz/"
+    2:
+        name: "Tomáš Votruba"
+        location: "Praha"
+        email: "tomas.vot@gmail.com"
+        intro_messsage: "Chceš psát články? Tvořit open-source? Školit? Napiš mi, rozjedem to."
+        link: "https://tomasvotruba.cz/"
+    3:
+        name: "Tomáš Fejfar"
+        location: "Praha, Skype"
+        email: "tomas.fejfar@gmail.com"
+        intro_messsage: "Git, PhpStorm, vývoj v týmu"
+        link: "https://www.tomasfejfar.cz/"

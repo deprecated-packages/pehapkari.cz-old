@@ -5,18 +5,16 @@ id: index
 
 {block content}
     <div class="container section first-section">
-        <div class="row">
-            <h2 class="text-center">
-                <em class="fa fa-line-chart fa-fw"></em>
-                Komunita ti pomůže růst
-            </h2>
-        </div>
+        <h2 class="text-center">
+            <em class="fa fa-life-ring fa-fw"></em>
+            Pomáháme si
+        </h2>
+
+        <br>
 
         <div class="row">
             <div class="col-md-8">
-                <br>
-
-                <p>Vytváříme přirozené prostředí, ve kterém můžeš snadněji než jinde:</p>
+                <p>Vytváříme příjemné prostředí, kde můžeš:</p>
                 <ul>
                     <li><strong>najít přátele</strong> s podobnými zájmy</li>
                     <li><strong>ochutnat nové technologie</strong>, které ti usnadní práci</li>
@@ -24,7 +22,7 @@ id: index
                     <li><strong>zviditelnit se v komunitě</strong> - přednášením nebo prací na projektu</li>
                 </ul>
             </div>
-            <div class="col-md-4 text-right">
+            <div class="col-md-4 text-right hidden-xs">
                 <img src="/assets/images/slon/basic.png" alt="Slon">
             </div>
         </div>
@@ -33,17 +31,15 @@ id: index
     {include socialsLine}
 
     <div class="container section" id="slack">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h2>
-                    <em class="fa fa-slack fa-fw"></em>
-                    Přidej se k 420 dalším na Slacku
-                </h2>
-            </div>
-</div>
+        <h2 class="text-center">
+            <em class="fa fa-slack fa-fw"></em>
+            Přidej se k 450 dalším na Slacku
+        </h2>
+
+        <br>
 
         <div class="row">
-            <div class="col-md-6 text-center">
+            <div class="col-md-6 text-center hidden-xs">
                 <a href="https://pehapkari.slack.com">
                     <img src="/assets/images/slack-real.png" alt="Přijď na sraz" class="bordered-img">
                 </a>
@@ -51,12 +47,10 @@ id: index
 
             <div class="col-md-6">
                 <p>
-                    Zajímá tě <a href="https://pehapkari.slack.com/messages/laravel">Laravel</a>,
-                    <a href="https://pehapkari.slack.com/messages/git">git</a>
-                    nebo chceš jít na oběd s někým z <a href="https://pehapkari.slack.com/messages/mesto-pardubice">Pardubic</a>?
+                    Zajímá tě Laravel, git nebo chceš jít na oběd s někým z Pardubic?
                 </p>
                 <p>
-                    Vyber tématický <em>#kanál</em> a <strong>žádná tvoje otázka už nebude offtopic</strong>.
+                    Vyber tématický #kanál a <strong>žádná tvoje otázka už nebude offtopic</strong>.
                 </p>
 
                 <br>
@@ -75,32 +69,33 @@ id: index
     {include youtubeLine}
 
     <div class="container section">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h2>
-                    <em class="fa fa-fw fa-beer"></em>
-                    Kdy a kde se potkáváme?
-                </h2>
-            </div>
-        </div>
+        <h2 class="text-center">
+            <em class="fa fa-fw fa-beer"></em>
+            Kdy a kde se potkáváme?
+        </h2>
 
         <br>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 text-center hidden-xs">
                 <img src="/assets/images/meetup.jpg" alt="Přijď na sraz">
             </div>
             <div class="col-md-6">
-                <p>Srazy pořádají různé skupiny v 6 městech po celé zemi.</p>
+                <p>
+                    Srazy pořádají různé skupiny v 6 městech po celé zemi.
+                </p>
 
-                <br>
+                <p>
+                    Typický sraz začíná v 18 hod. Pak promluví 2-3 speakři a nakonec jdeme diskutovat nad pivem.
+                </p>
+
                 <br>
 
                 <h3>Kde se o nich dozvíš?</h3>
+
                 <ol class="manual-list">
-                    <li><a href="https://eventigo.cz/">Odebírej Eventigo newsletter</a></strong> s PHP akcemi</li>
-                    <li><a href="https://twitter.com/pehapkari">Sleduj @pehapkari</a> na Twitteru</li>
-                    <li>Nebo odebírej <a href="https://www.facebook.com/pehapkari/events">akce na Facebook stránce</a></li>
+                    <li>Odebírej <a href="https://www.facebook.com/pehapkari/events">akce na Facebook stránce</a></li>
+                    <li>nebo <a href="https://eventigo.cz/">Eventigo newsletter</a> s PHP akcemi</li>
                 </ol>
             </div>
         </div>
@@ -143,18 +138,9 @@ id: index
 
 {define socialsLine}
     <div class="intermezzo">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 text-center">
-                    <em class="fa fa-twitter fa-fw"></em>
-                    <strong>Sleduj novinky</strong> na <a href="http://twitter.com/pehapkari">@pehapkari</a>
-                </div>
-                <div class="col-md-6 text-center">
-                    <em class="fa fa-facebook fa-fw"></em>
-                    A <strong>srazy a konference</strong> na <a href="https://www.facebook.com/pehapkari/events">FB
-                        stránce</a>
-                </div>
-            </div>
+        <div class="container text-center">
+            <em class="fa fa-twitter fa-fw"></em>
+            <strong>Sleduj novinky</strong> v PHP na <a href="http://twitter.com/pehapkari">@pehapkari</a>
         </div>
     </div>
 {/define}
@@ -162,27 +148,19 @@ id: index
 
 {define youtubeLine}
     <div class="intermezzo">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <em class="fa fa-youtube fa-fw"></em>
-                    Podívej se na <a href="http://youtube.com/pehapkari/videos">přednášky na Youtube</a>
-                </div>
-            </div>
+        <div class="container text-center">
+            <em class="fa fa-youtube fa-fw"></em>
+            Podívej se na <a href="http://youtube.com/pehapkari/videos">přednášky na Youtube</a>
         </div>
     </div>
 {/define}
 
 
 {define newsletterLine}
-    <div class="section intermezzo">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <em class="fa fa-envelope fa-fw"></em>
-                    Odebírej <a href="http://bit.ly/mesicnik-pro-pehapkare">měsíční newsletter</a> (mrkni na <a href="http://us8.campaign-archive2.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">starší čísla</a>)
-                </div>
-            </div>
+    <div class="intermezzo" id="newsletter">
+        <div class="container text-center">
+            <em class="fa fa-envelope fa-fw"></em>
+            Odebírej <a href="http://bit.ly/mesicnik-pro-pehapkare">měsíční newsletter</a> (mrkni na <a href="http://us8.campaign-archive2.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">starší čísla</a>)
         </div>
     </div>
 {/define}
