@@ -37,3 +37,9 @@ mentors:
         email: "kazatel@jiktogroup.cz"
         intro_message: "Laravel, JS, Frontend. Tam všude ti rád pomůžu a poradím."
         link: "https://twitter.com/tomaskazatel"
+    7:
+        name: "Petr Fidler"
+        location: "Praha"
+        email: "petr@petrfidler.cz"
+        intro_message: "Nette, Symfony, čistý kód, strategie a uživatelský výzkum"
+        link: "http://www.petrfidler.cz/"
