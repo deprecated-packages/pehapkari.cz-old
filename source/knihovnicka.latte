@@ -24,8 +24,8 @@ id: knihovnicka
         <table class="table table-bordered table-striped">
             <tr>
                 <th>Knížka</th>
-                <th>Popis</th>
-                <th>Kdo teď</th>
+                <th>O čem je</th>
+                <th>Kdo ji má</th>
             </tr>
             <tr n:foreach="$books as $book">
             	<td class="vertical-align">
@@ -45,14 +45,17 @@ id: knihovnicka
         </table>
     </div>
 
-    <hr />
+    <hr>
 
-    <br />
+    <br>
 
-    <h3>Přidej knihu</h3>
+    <h3>
+        <em class="fa fa-heart-o fa-fw"></em>
+        Přidej knihu &ndash; uděláš radost
+    </h3>
 
-    <p>Práší se ti doma zbytečně na knížky? To je trochu škoda, přidej je do seznamu ať můžou udělat radost víckrát než jednou.</p>
-    <p><a href="{$githubEditUrlStart}/_data/books.neon" title="Přidej svoji knihu">Přidej svoji knihu</a> ať se naplní její poslání udivovat a učit.</p>
+    <p>Práší se ti doma zbytečně na knížky? Ne to škoda? Přidej je do seznamu, <strong>ať můžou udělat radost víckrát než jednou</strong>.</p>
+    <p><a href="{$githubEditUrlStart}_data/books.neon" title="Přidej svoji knihu">Přidej svoji knihu</a>, ať se naplní její poslání udivovat a učit.</p>
 
 </div>
 
