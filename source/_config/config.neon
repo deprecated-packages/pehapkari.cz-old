@@ -6,7 +6,7 @@ githubShowUrlStart: "https://github.com/pehapkari/pehapkari.cz/tree/master/"
 lang: "cs" # default language
 
 # services ID
-googleAnalyticsTrackingId: "UA-46082345-1"
+googleAnalyticsTrackingId: "UA-89860072-1"
 fbTrackingId: "201338863559186"
 disqusName: "pehapkari"
 
