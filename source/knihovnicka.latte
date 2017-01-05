@@ -1,0 +1,57 @@
+---
+layout: default
+title: "Knihovnička"
+---
+
+{block content}
+
+<div class="container section">
+	<div  class="text-center">
+	    <h2>
+	        <em class="fa fa-book fa-fw"></em>
+	        Knihovnička
+	    </h2>
+
+	    <p>Chceš si přečíst některou z následujících knih ale <b>ušetřit jak peníze tak životní prostředí.</b></p>
+	    <p>Stačí napsat aktuálnímu čtenáři a zjistit, kdy si jí můžeš přečíst taky.</p>
+
+	    <br />
+
+	</div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>Název</th>
+                <th>Popis</th>
+                <th>Odkud</th>
+                <th>Kdo teď</th>
+            </tr>
+            <tr n:foreach="$books as $book">
+            	<td class="vertical-align">
+            		<nobr><b>{$book['name']}</b></nobr>
+            	</td>
+            	<td class="text-justify">{$book['description']}</td>
+            	<td class="vertical-align text-center">
+            		<a href="{$book['publish_link']}" title="{$book['publish_name']}">{$book['publish_name']}</a>
+            	</td>
+            	<td class="vertical-align text-center">
+            		<nobr><a href="{$book['actual_owner_link']}" title="{$book['actual_owner_name']}">{$book['actual_owner_name']}</a></nobr>
+            		<br />
+            		<small>({$book['last_switch']})</small>
+            	</td>
+            </tr>
+        </table>
+    </div>
+
+    <hr />
+
+    <br />
+
+    <h3>Přidej knihu</h3>
+
+    <p>Práší se ti doma zbytečně na knížky? To je trochu škoda, přidej je do seznamu ať můžou udělat radost víckrát než jednou.</p>
+    <p><a href="{$githubEditUrlStart}/_data/books.neon" title="Přidej svoji knihu">Přidej svoji knihu</a> ať se naplní její poslání udivovat a učit.</p>
+
+</div>
+
