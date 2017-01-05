@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Pehapkari\Website\Posts\Year2016\SymfonyConsole\Command;
+namespace Pehapkari\Website\Posts\Year2017\SymfonyConsole\Command;
 
 use Nette\Security\Passwords;
 use Symfony\Component\Console\Command\Command;
