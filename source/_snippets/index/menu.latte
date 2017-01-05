@@ -17,6 +17,10 @@
                     <em class="fa fa-language fa-fw"></em>
                     Slovníček
                 </a>
+                <a href="/knihovnicka" n:class="(isset($id) && $id === knihovnicka) ? active">
+                    <em class="fa fa-book fa-fw"></em>
+                    Knihovnička
+                </a>
 
                 {ifset $post}
                     {capture $githubEditLink}{$post|githubEditPostUrl}{/capture}
