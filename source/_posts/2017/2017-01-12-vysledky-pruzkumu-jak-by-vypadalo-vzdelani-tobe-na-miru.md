@@ -7,10 +7,10 @@ author: 1
 
 ## Neznáme potřeby programátorů
 
-Jak tento dotazník vůbec vznikl? Minulý rok se dostaly do pozornosti vzdělávací projekty, které cílily na PHP programátory. Kolem léta 2016 vzniknul projekt [Symfony škola](http://www.symfony-skola.cz/) a na podzim pokračoval [CodeCamp](http://codecamp.cz/). **Témata byla jasně daná, ale plynula zejména z potřeb zadavatelů.** To je pochopitelné, protože pokud firma dělá v Laravelu, tak pro  mě nemá smysl někoho učit Zend. 
+Jak tento dotazník vůbec vznikl? Minulý rok se dostaly do pozornosti vzdělávací projekty, které cílily na PHP programátory. Kolem léta 2016 vzniknul projekt [Symfony škola](http://www.symfony-skola.cz/) a na podzim pokračoval [CodeCamp](http://codecamp.cz/). **Témata byla jasně daná, ale plynula zejména z potřeb zadavatelů.** To je pochopitelné, protože pokud firma dělá v Laravelu, tak pro ni nemá smysl učit někoho Zend. 
 
 Nás ale zajímalo, jak to mají programátoři samotní. **Co je zajímá, s čím zápasí a po čem nejvíc touží.**
- 
+
 ### Chtěli jsme mít data, o která se můžeme opřít o něco lépe než o vlastní představu či přání
 
 Proto vzniknul dotazník, jehož výsledky se dnes dovíš.
