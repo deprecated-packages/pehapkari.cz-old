@@ -40,14 +40,14 @@ This is **the action that happens when** we come to some place. When order is se
 
 ### 1. Install via Composer
 
-```language-bash
+```bash
 composer require symfony/event-dispatcher
 ```
 
 
 ### 2. Create Event Dispatcher
 
-```language-php
+```php
 // index.php
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -60,7 +60,7 @@ $eventDispatcher->dispatch('youtube.newVideoPublished'); // oh: event is just a 
 
 Try it:
 
-```language-bash
+```bash
 php index.php
 ```
 
@@ -71,7 +71,7 @@ That's ok, because there is no Subscriber. So let's...
 
 ### 3. Create and Register Subscriber
 
-```language-php
+```php
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 final class NotifyMeOnVideoPublishedEventSubscriber implements EventSubscriberInterface
@@ -97,7 +97,7 @@ final class NotifyMeOnVideoPublishedEventSubscriber implements EventSubscriberIn
 
 Let the Dispatcher know about the Subscriber.
 
-```language-php
+```php
 $eventDispatcher = new Symfony\Component\EventDispatcher\EventDispatcher;
 $eventSubscriber = new NotifyMeOnVideoPublishedEventSubscriber;
 $eventDispatcher->addSubscriber($eventSubscriber);
@@ -114,7 +114,7 @@ var_dump($eventSubscriber->isUserNotified);
 
 Run the code again from command line:
 
-```language-php
+```php
 $ php index.php
 int(0)
 int(1)
@@ -136,7 +136,7 @@ The Event objects are basically [Value Objects](http://richardmiller.co.uk/2014/
 
 ### 1. Create an Event Object
 
-```language-php
+```php
 use Symfony\Component\EventDispatcher\Event;
 
 final class YoutuberNameEvent extends Event
@@ -161,7 +161,7 @@ final class YoutuberNameEvent extends Event
 
 ### 2. Use Event Object in Event Subscriber
 
-```language-php
+```php
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 final class NotifyMeOnVideoPublishedEventSubscriber implements EventSubscriberInterface
@@ -182,14 +182,14 @@ final class NotifyMeOnVideoPublishedEventSubscriber implements EventSubscriberIn
 
 ### 3. Create an Object and Dispatch With It
 
-```language-php
+```php
 $youtuberNameEvent = new YoutuberNameEvent('Jirka Král');
 $eventDispatcher->dispatch('youtube.newVideoPublished', $youtuberNameEvent);
 ```
 
 And Results Like That:
 
-```language-php
+```php
 $ php index.php
 string('Jirka Král')
 ``` 

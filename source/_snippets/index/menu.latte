@@ -7,12 +7,17 @@
             <nav class="top-navigation">
                 <a href="/blog" n:class="(isset($id) && $id === blog) || ($layout === post) ? active">
                     <em class="fa fa-book fa-fw"></em>
-                    Píšeme blog
+                    Blog
+                </a>
+                <a href="/mentori" n:class="(isset($id) && $id === mentori) ? active">
+                    <em class="fa fa-handshake-o fa-fw"></em>
+                    Mentoři
                 </a>
                 <a href="/slovnicek" n:class="(isset($id) && $id === slovnicek) ? active">
                     <em class="fa fa-language fa-fw"></em>
                     Slovníček
                 </a>
+
                 {ifset $post}
                     {capture $githubEditLink}{$post|githubEditPostUrl}{/capture}
                 {elseifset $id}
@@ -40,25 +45,16 @@
                 <br>
                 Blog
             </a>
+            <a href="/mentori" n:class="col-xs-3, (isset($id) && $id === mentori) ? active">
+                <em class="fa fa-handshake-o fa-fw"></em>
+                <br>
+                Mentoři
+            </a>
             <a href="/slovnicek" n:class="col-xs-3, (isset($id) && $id === slovnicek) ? active">
                 <em class="fa fa-language fa-fw"></em>
                 <br>
                 Slovníček
             </a>
-
-            {ifset $post}
-                {capture $githubEditLink}{$post|githubEditPostUrl}{/capture}
-            {elseifset $id}
-                {capture $githubEditLink}{$githubEditUrlStart}{$githubLink =  $id . '.latte'}{/capture}
-            {/ifset}
-
-            {ifset $githubEditLink}
-                <a href="{$githubEditLink}" class="col-xs-3">
-                    <em class="fa fa-fw fa-github"></em>
-                    <br>
-                    {="layout.edit_page"|translate: $post['lang'] ?? $lang}
-                </a>
-            {/ifset}
         </div>
     </div>
 </header>
