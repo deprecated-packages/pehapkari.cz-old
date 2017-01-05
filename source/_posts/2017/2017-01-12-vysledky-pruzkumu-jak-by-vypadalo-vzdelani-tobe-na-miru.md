@@ -7,13 +7,13 @@ author: 1
 
 ## Neznáme potřeby programátorů
 
-Jak tento dotazník vůbec vznikl? Minulý rok zase dostali do pozornosti vzdělávací projekty, které cílily na PHP programátory. Kolem léta 2016 vzniknul projekt [Symfony škola](http://www.symfony-skola.cz/) a na podzim pokračoval [CodeCamp](http://codecamp.cz/). **Témata byla jasně daná, ale plynula zejména z potřeb zadavatelů.** To je pochopitelné, protože když děláme v Laravelu, tak pro mě nemá smysl někoho učit Zend. 
+Jak tento dotazník vůbec vznikl? Minulý rok se dostaly do pozornosti vzdělávací projekty, které cílily na PHP programátory. Kolem léta 2016 vzniknul projekt [Symfony škola](http://www.symfony-skola.cz/) a na podzim pokračoval [CodeCamp](http://codecamp.cz/). **Témata byla jasně daná, ale plynula zejména z potřeb zadavatelů.** To je pochopitelné, protože pokud firma dělá v Laravelu, tak pro  mě nemá smysl někoho učit Zend. 
 
 Nás ale zajímalo, jak to mají programátoři samotní. **Co je zajímá, s čím zápasí a po čem nejvíc touží.**
  
-### Chtěli jsme mít data, o která se můžeme opřít o něco lépe než o vlastí představu či přání
+### Chtěli jsme mít data, o která se můžeme opřít o něco lépe než o vlastní představu či přání
 
-Proto vzniknul dotazník, jehož výsledky se dneš dovíš.
+Proto vzniknul dotazník, jehož výsledky se dnes dovíš.
 
 Věříme, že je to cesta ke zlepšení spokojenosti programátorů &ndash; ať už formou kurzů na míru nebo psaní článků o dané tématice.
 
@@ -22,7 +22,9 @@ Věříme, že je to cesta ke zlepšení spokojenosti programátorů &ndash; ať
 
 Dotazník se ptal na 4 body: **kdy** (doba v týdnu + jak dlouho), **jak často**, **kde** a **co se chceš naučit**. První 3 otázky byly uzavřené, poslední otevřená.
 
-Vyplnilo jej **76 respondentů** a dotazováním proběhlo v období podzim-zima 2016.
+Vyplnilo jej **76 respondentů** a dotazování proběhlo v období podzim-zima 2016.
+
+Dotazník byl šířen na sociálních sítích zejména v rámci tehdejší Symfony komunity.
 
 Cílová skupina byli PHP programátoři. Ti byli osloveni [přes Twitter](https://twitter.com/Pehapkari/status/789454946965987328) a soutěž v newsletteru.
 
@@ -31,7 +33,7 @@ Kompletní znění dotazníku najdeš na [Google Forms](https://docs.google.com/
 
 ## „Dojedu někam jednou týdně, po práci na 2-3 hodiny.“
 
-To by podle výsledků s největší pravědpodobností vypadal říkal ideální student.   
+To by podle výsledků s největší pravědpodobností říkal ideální student.   
  
 Mrkni na jednotlivé poměry voleb a další časté možnosti.
 
@@ -46,7 +48,7 @@ Mrkni na jednotlivé poměry voleb a další časté možnosti.
 
 ### Počkej, tipni si!
 
-Než budeš číst dál, na chvilku se zastav a zamysli se. Představ si 3 témata, která si myslíš, že PHP programátoři chtějí nejvíce. I jejich úroveň. 
+Než budeš číst dál, na chvilku se zastav a zamysli se. Představ si 3 témata, která si myslíš, že PHP programátoři chtějí nejvíce. 
 
 Pak můžeš srovnat, jak moc je tvůj tip přesný. 
 
@@ -55,13 +57,13 @@ Pak můžeš srovnat, jak moc je tvůj tip přesný.
 
 Teď to nejzajímavější &ndash; otevřená otázka. Odpovědi jsme analyzovali podle zmíněných témat a vytvořili kategorie s podobnou tématikou. Vybrali jsme top 5 kategorií a jako bonus 2 výrazná samostatná témata.
 
-### Continuous * (13 b.)
+### Continuous delivery/integration/deployment (13 b.)
    
 - CI (6)
 - deployment (4)
 - cloud/AWS	(3)
 
-*„Nasazení app do cloudu - ideálně asi AWS - od nulu (vč. výběru služeb, nastavení app pro vývoj / ostré prostředí po ukládání dat a balancingu. Nasazení CI - instalace, pouštění testů, deploy.“*
+*„Nasazení app do cloudu - ideálně asi AWS - od nuly (vč. výběru služeb, nastavení app pro vývoj / ostré prostředí po ukládání dat a balancingu. Nasazení CI - instalace, pouštění testů, deploy.“*
 
 
 ### Git pro začátečníky i pokročilé (17 b.)
@@ -92,8 +94,6 @@ Teď to nejzajímavější &ndash; otevřená otázka. Odpovědi jsme analyzoval
 
 ### Symfony, Nette a jejich vztah (26 b.) 
 
-*Pozn.: Tento bod může být ovlivněn tým, že dotazník byl šířen zejména v rámce tehdejší Symfony komunity.*
-
 - Symfony (16)
 - Nette	(7)
 - rozdíly mezi nimi, jak přejít z jednoho na druhý (3)
@@ -105,7 +105,7 @@ Teď to nejzajímavější &ndash; otevřená otázka. Odpovědi jsme analyzoval
 
 **Jak vytvořit a udržovat open-source projekt** (7)
 
-*„Chci se naučit udržovat části naší aplikace jako open-srouce.“*
+*„Chci se naučit udržovat části naší aplikace jako open-source.“*
 
 **Návrhové vzory** (7)
 
@@ -114,14 +114,14 @@ Teď to nejzajímavější &ndash; otevřená otázka. Odpovědi jsme analyzoval
 
 ## Co si z toho odnést?
 
-Až budeš dělat školení nebo psát článek a budeš vymýšlet téma, mrkni sem pro inspiraci. Je velká šance, že nemineš.  
+Až budeš vymýšlet téma pro svoje školení či svůj článek, tak tady můžeš najít inspiraci. Je velká šance, že nemineš.  
 
-Co bylo pro nás zajímavé je požadovaná úroveň. Často padali odpovědi jako **intro do...**, **jak začít s...**.
+Nejzajímavější byly požadované úrovně. Často padaly odpovědi jako **intro do...**, **jak začít s...**.
 
-Na srazech se potkává ze ~80 % ustálená skupina lidí, která je velmi blíže technickému vrcholu. Tedy testování, PHP 7, git, automatický deployment nebo framework v poslední verzi na produkci je **něco běžného**. Řeší se složitější technologie a postupy - jako GraphQL, Git rebase, RabbitMQ, Elastic, PostgreSQL, Doctrine nebo ReactJS.
+Na srazech se potkává z ~80 % ustálená skupina lidí, která je velmi blízko technickému vrcholu. Tedy testování, PHP 7, Git, automatický deployment nebo framework v poslední verzi na produkci je **něco běžného**. Řeší se složitější technologie a postupy - jako GraphQL, Git rebase, RabbitMQ, Elastic, PostgreSQL, Doctrine či ReactJS.
 
- **Tím, že se začátečnická úroveň není zahrnuta do srazu, začne chybět ve článcích a jiných vzdělávacích zdrojích**. A tak  **se nůžky** mezi věčným začátečníkem, který nemá podklady pro rozvoj, a zkušeným seniorem, který hltá zdroje v ančlitině jeden za druhým, **stále rozevírají**.
+ **Tím, že začátečnická úroveň není zahrnuta do srazu, začne chybět ve článcích a jiných vzdělávacích zdrojích**. A tak  **se nůžky mezi věčným začátečníkem**, který nemá podklady pro rozvoj, **a zkušeným seniorem**, který hltá zdroje v ančlitině jeden za druhým, **stále rozevírají**.
   
-**Nezapomeňme na začáteníky, taky jsme jimi jednou byli.**
+**Nezapomeňme na začátečníky, taky jsme jimi jednou byli.**
 
-Je to taky největší a nejvděčnější cílová skupina.
+Je to největší a nejvděčnější cílová skupina.
