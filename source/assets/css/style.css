@@ -56,7 +56,7 @@ header {
 header nav a {
 	color: #4bf4ff;
     display: inline-block;
-    padding: .6em 1em;
+    padding: .6em .7em;
 }
 
 header a.active, header nav a:focus, header nav a:active {
