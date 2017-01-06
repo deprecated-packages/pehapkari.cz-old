@@ -43,3 +43,10 @@ mentors:
         email: "petr@petrfidler.cz"
         intro_message: "Nette, Symfony, čistý kód, strategie a uživatelský výzkum"
         link: "http://www.petrfidler.cz/"
+    8:
+        name: "Honza Novák"
+        location: "Plzeň"
+        email: "jan.novak@id-sign.com"
+        intro_message: "PHP, Symfony, čistý kód, zkušenosti z projektů www.id-sign.com"
+        link: "https://cz.linkedin.com/in/novakhonza"
+        
