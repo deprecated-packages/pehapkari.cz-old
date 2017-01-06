@@ -23,13 +23,13 @@ ul li, ol li {
     line-height: 1.5em;
 }
 
-ul.manual-list {
+ul.manual-list, ol.manual-list {
     margin-left: -.8em;
-    -webkit-margin-before: 1em;
-    -webkit-margin-after: 1em;
+    -webkit-margin-before: 1.1em;
+    -webkit-margin-after: 1.1em;
     -webkit-margin-start: 0px;
     -webkit-margin-end: 0px;
-    -webkit-padding-start: 20px;
+    -webkit-padding-start: 22px;
 }
 
 a:hover, a:focus, a:active, a.active {
