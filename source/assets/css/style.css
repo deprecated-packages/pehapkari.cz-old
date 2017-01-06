@@ -56,7 +56,7 @@ header {
 header nav a {
 	color: #4bf4ff;
     display: inline-block;
-    padding: .6em 1em;
+    padding: .6em .7em;
 }
 
 header a.active, header nav a:focus, header nav a:active {
@@ -265,6 +265,12 @@ h1, h2, .h2, h3 {
     font-size: 1.25em;
 }
 
+#article #reviewed_by {
+    font-size: .8em;
+    color: #c1c1c1;
+    margin: .3em 0;
+}
+
 #article-content {
     padding-top: 0;
 }
@@ -348,4 +354,8 @@ h1:hover .anchor-icon, h2:hover .anchor-icon, h3:hover .anchor-icon {
 
 .anchor-icon {
     display: inline-block;
+}
+
+.vertical-align {
+    vertical-align: middle !important;
 }

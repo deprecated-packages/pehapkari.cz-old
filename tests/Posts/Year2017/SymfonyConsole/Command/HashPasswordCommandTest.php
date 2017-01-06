@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Pehapkari\Website\Tests\Posts\Year2016\SymfonyConsole\Command;
+namespace Pehapkari\Website\Tests\Posts\Year2017\SymfonyConsole\Command;
 
-use Pehapkari\Website\Posts\Year2016\SymfonyConsole\Command\HashPasswordCommand;
+use Pehapkari\Website\Posts\Year2017\SymfonyConsole\Command\HashPasswordCommand;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\StringInput;
