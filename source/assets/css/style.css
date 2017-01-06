@@ -13,11 +13,11 @@ p {
     line-height: 1.3em;
 }
 
-ul {
+ul, ol {
     padding-left: 1.1em;
 }
 
-ul li {
+ul li, ol li {
     padding: 0;
     margin: 0;
     line-height: 1.5em;
@@ -358,4 +358,8 @@ h1:hover .anchor-icon, h2:hover .anchor-icon, h3:hover .anchor-icon {
 
 .vertical-align {
     vertical-align: middle !important;
+}
+
+#article ol, #article ul {
+    margin-bottom: .7em;
 }

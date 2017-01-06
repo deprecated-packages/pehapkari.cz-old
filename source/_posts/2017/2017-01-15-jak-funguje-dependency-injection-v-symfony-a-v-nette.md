@@ -14,14 +14,14 @@ DI a container už bude asi většina čtenářů znát, takže jen rychlovka pr
 
 Spojením DI a containeru získáme tyto výhody:
 
-- závislosti se kontrolují již při sestavení containeru
-- hned při pohledu na konstruktor je jasné, na čem třída závisí
-- eliminace skrytých závislostí
+- **Závislosti se kontrolují již při sestavení containeru**
+- **Hned při pohledu na konstruktor je jasné, na čem třída závisí**
+- **Eliminace skrytých závislostí**
 	
 
 ```php
-// presenter/controller
-class ...
+// Presenter/Controller
+final class ...
 {
     public function actionDefault()
     {
@@ -42,14 +42,14 @@ class MyClass
     public function send()
     {
         $this->mailer->send()
-    };
+    }
 }
 ```
 
 
 ## Jak to funguje v Nette?
 
-Presenter je v Nette registrovaný jako služba. Takže i on je sestavovaný containerem a mohou mu být vloženy závislosti do konstruktoru. Pak by řetězec závislostí **Presenter > MyClass > Mailer** mohl vypadat nějak takhle:
+**Presenter je v Nette registrovaný jako služba**. Takže i on je sestavovaný containerem a mohou mu být vloženy závislosti do konstruktoru. Pak by řetězec závislostí **Presenter > MyClass > Mailer** mohl vypadat nějak takhle:
 
 ```php
 // Presenter
@@ -91,14 +91,14 @@ Každá třída má svou závislost a nepůjde získat z containeru aniž by svo
 
 ### Výsledek
 
-1. Závislosti se kontrolují již při sestavení containeru - **ANO**
-2. Hned při pohledu na konstruktor je jasné, na čem třída závisí - **ANO**
-3. Eliminace skrytých závislostí - **ANO**
+- Závislosti se kontrolují již při sestavení containeru - **ANO**
+- Hned při pohledu na konstruktor je jasné, na čem třída závisí - **ANO**
+- Eliminace skrytých závislostí - **ANO**
 
 
 ## Jak to funguje v Symfony
 
-Controller v Symfony jako služba registrovaný není, a tak mu není možné vložit jinou závislost konstruktorem. Místo toho 
+**Controller v Symfony jako služba registrovaný není**, a tak mu není možné vložit jinou závislost konstruktorem. Místo toho 
 existuje traita `ContainerAwareTrait`, která předává controlleru celý container. Pokud bychom měli stejnou situaci jako v předchozí části, pak by vypadala následovně:
 
 ```php
@@ -132,31 +132,37 @@ class MyClass
 }
 ```
 
-Základní rozdíl je tento řádek: `$this->myClass = $this->container->get('myClass');`.
+Základní rozdíl je tento řádek: 
 
-Na začátku jsme si definovali 3 úkoly, které chceme po spojení DI a containeru. Podívejme se co jsme splnili:
+```php
+$this->myClass = $this->container->get('myClass');
+```
+
+Na začátku jsme si definovali 3 úkoly, které chceme po spojení DI a containeru. Podívejme se, co jsme splnili:
 
 
 ### Výsledek
 
-1. Závislosti se kontrolují již při sestavení containeru - **NE**
+- Závislosti se kontrolují již při sestavení containeru - **NE**
   * controller není službou v containeru, takže se jeho závislosti nekontrolují. 
-2. Hned při pohledu na konstruktor je jasné, na čem třída závisí - **NE**
+- Hned při pohledu na konstruktor je jasné, na čem třída závisí - **NE**
   * Musíme prohledat celou třídu a najít všechny řádky s `$this->get('whatevver');` abychom našli všechny závislosti.
-3. Eliminace skrytých závislostí - **NE**
+- Eliminace skrytých závislostí - **NE**
   * Existují závislosti na něčem co je potřeba, ale při vytvoření instance to ještě potřeba není.
 
 
 ## Controller jako služba
 
-Naštěstí existuje řešení! Bundle [Symplify/ControllerAutowire](https://github.com/Symplify/ControllerAutowire), který automaticky registruje controller jako službu do containeru. Po instalaci se bude controller chovat stejně jako presenter v předchozí ukázce. Bude mu možné předat závislost konstruktorem a získáme tím všechny přednosti, které jsme chtěli po spojení DI a containeru. Navíc při použití traity [ControllerAwareTrait](https://github.com/Symplify/ControllerAutowire#used-to-frameworkbundles-controller-use-helpers-traits) fungují i všechny pomocné metody z FrameworkBundle.
+Naštěstí existuje řešení! Bundle [Symplify/ControllerAutowire](https://github.com/Symplify/ControllerAutowire), který automaticky **registruje controller jako službu do containeru**. Po instalaci se bude controller chovat stejně jako presenter v předchozí ukázce. 
+
+Bude mu možné předat závislost konstruktorem a získáme tím všechny přednosti, které jsme chtěli po spojení DI a containeru. Navíc při použití traity [ControllerAwareTrait](https://github.com/Symplify/ControllerAutowire#used-to-frameworkbundles-controller-use-helpers-traits) fungují i všechny pomocné metody z FrameworkBundle.
 
 
 ```php
 // Controller
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class TestController extends Controller
+final class TestController extends Controller
 {
     public funciton __construct(MyClass $myClass)
     {
@@ -189,12 +195,12 @@ class MyClass
 
 ### Výsledek
 
-1. Závislosti se kontrolují již při sestavení containeru - **ANO**
-2. Hned při pohledu na konstruktor je jasné, na čem třída závisí - **ANO**
-3. Eliminace skrytých závislostí - **ANO**
+- Závislosti se kontrolují již při sestavení containeru - **ANO**
+- Hned při pohledu na konstruktor je jasné, na čem třída závisí - **ANO**
+- Eliminace skrytých závislostí - **ANO**
 
 
-Zdroje:
+### Zdroje
 
 - [Nette - Dependency injection](https://doc.nette.org/cs/2.4/dependency-injection)
 - [Symfony - Service container](http://symfony.com/doc/current/service_container.html)
