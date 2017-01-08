@@ -49,4 +49,9 @@ mentors:
         email: "jan.novak@id-sign.com"
         intro_message: "PHP, Symfony, čistý kód, zkušenosti z projektů www.id-sign.com"
         link: "https://cz.linkedin.com/in/novakhonza"
-        
+    9:
+        name: "Václav Makeš"
+        location: "Praha, Most, Mladá Boleslav"
+        email: "vaclav@makes.cz"
+        intro_message: "struktura kódu, Git, PhpStorm"
+        link: "http://www.makes.cz"
