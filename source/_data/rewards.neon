@@ -1,0 +1,56 @@
+rewards:
+    4:
+        title: "Principles of Package Design"
+        count: 3
+        image: "principles.jpg"
+        sponsor_note: 'Darovalo <a href="http://www.jobsdev.cz/">JobsDev</a>'
+        value_in_points: 5
+        winners: []
+    1:
+        title: "roční licence na PHPStorm"
+        count: 5
+        image: "phpstorm.png"
+        value_in_points: 10
+        winners: []
+    2:
+        title: "Návrhové vzory v PHP"
+        count: 2
+        image: "navrhove-vzory.jpg"
+        sponsor_note: 'Darovalo <a href="http://www.jobsdev.cz/">JobsDev</a>'
+        value_in_points: 5
+        winners: []
+    8:
+        title: "Nette kemp triko"
+        count: 5
+        image: "nette-triko.jpg"
+        sponsor_note: 'Daroval Honza Černý a David Grudl z <a href="http://nette.org">Nette</a>'
+        custom_note: "Máme: S, XL, XL, XL, XXL"
+        value_in_points: 5
+        winners: []
+    3:
+        title: "1001 tipů a triků pro PHP"
+        count: 2
+        image: "1001-php.jpg"
+        sponsor_note: 'Darovalo <a href="http://www.jobsdev.cz/">JobsDev</a>'
+        value_in_points: 5
+        winners: []
+    7:
+        title: "Černý Symfony sloník k 10. výročí"
+        count: 5
+        image: "slonik.jpg"
+        value_in_points: 7
+        winners: []
+    5:
+        title: "Web Security 2016"
+        count: 4
+        image: "security.png"
+        sponsor_note: 'Mile a nečekaně daroval <a href="https://www.michalspacek.cz">Michal Špaček</a>'
+        value_in_points: 5
+        winners: []
+    6:
+        title: "Persistence in PHP with Doctrine ORM"
+        count: 1
+        image: "doctrine.jpg"
+        sponsor_note: 'Darovalo <a href="http://www.jobsdev.cz/">JobsDev</a>'
+        value_in_points: 5
+        winners: []
