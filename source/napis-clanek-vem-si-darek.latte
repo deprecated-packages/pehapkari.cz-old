@@ -1,0 +1,122 @@
+---
+layout: default
+title: "Sdílíme knížky, pujč si taky jednu zdarma"
+id: knihovnicka
+---
+
+{block content}
+
+<div class="container section" id="contest-rewards">
+    <h2 class="text-center">
+        <em class="fa fa-newspaper-o"></em>
+        Napiš článek &dash; vem si dárek
+        <em class="fa fa-gift fa-fw"></em>
+    </h2>
+
+    <p>
+        Řekli jsme si, že uděláme soutěž, ve které nemusíš doufat v štěstí, tedy <code>rand()</code> funkci, ale <strong>kde úspěch závisí na tvých schopnostech</strong>.
+    </p>
+
+    <h3>Ve zkratce</h3>
+
+    <ul>
+        <li>mrkni na ceny a jednu si vyber</li>
+        <li>abys ji vyhrál, <strong>potřebuješ nasbírat body</strong></li>
+        <li>pod cenami mrkni, jak je nasbírat</li>
+        <li><strong>splň úkol, nasbírej body a vyber si cenu</strong></li>
+        <li>předáme ti ji na srazu nebo pošleme</li>
+    </ul>
+
+    <p>Celý proces opakuj, dokud nejsi spokojený :).</p>
+
+    <br>
+
+    <p>
+        <strong>Všechny knížky jsou z papíru</strong>! Sloni a trička z opravové látky!
+    </p>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+
+            <tr>
+                <th colspan="2" class="text-center text-uppercase">Co můžeš vyhrát</th>
+                <th class="text-uppercase">
+                    <nobr>
+                        <em class="fa fa-flag-checkered fa-fw"></em>
+                        Potřebuješ
+                    </nobr>
+                </th>
+                <th class="text-uppercase">
+                    <nobr>
+                        <em class="fa fa-trophy fa-fw"></em>
+                        Už vyhráli
+                    </nobr>
+                </th>
+            </tr>
+            <tr n:foreach="$rewards as $reward">
+                <td class="col-md-2">
+                    <img src="/assets/images/contest/{$reward['image']}">
+                </td>
+                <td>
+                    <h3>{=$reward['count'] - count($reward['winners'])}× {$reward['title']}</h3>
+                    <p n:ifset="$reward['sponsor_note']">
+                        {$reward['sponsor_note']|noescape}
+                    </p>
+                </td>
+                <td class="col-md-2">
+                    {$reward['value_in_points']} bodů
+                </td>
+                <td>
+                    <ul n:ifcontent="$reward['winners']">
+                        {foreach $reward['winners'] as $name => $link}
+                            <li><a href="{$link}">{$name}</a></li>
+                        {/foreach}
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="contest-description">
+        <h2>
+            <em class="fa fa-fw fa-plus"></em>
+            Jak získat body?
+        </h2>
+
+        <h3>0,5 bodu za pojem do slovníčku</h3>
+
+        <p>Jednoduché na rozjezd. Stačí doplni 1 slovo do našeho <a href="/slovnicek">slovníčku</a>. Jaké pojmy nám chybí najdeš <a href="https://github.com/pehapkari/pehapkari.cz/issues/98#issue-188938879">tady</a>. Za 10 pojmů máš 5 bodů a je to.</p>
+
+        <h3>5 bodů za článek</h3>
+
+        <p>
+            Napiš nám článek - <strong>stačí ti téma a Markdown</strong>. Je to tvůj první článek? Neboj, jsme tu pro tebe &ndash; <strong>dáme ti feedback, revidujeme a článek oblíkneme do stylového a čtivého copy</strong>. <a href="/blog/2016/12/01/chces-psat-o-php-posli-pr/">Tady mrkni jak na to</a>.
+        </p>
+
+        <p>Podmínkou je, že musí být exkluzivně u nás, ne re-post z jiného zdroje.</p>
+
+        <h3>10 bodů za otestovaný článek</h3>
+
+        <p>
+            Články, které jsou pokryté testy, <strong>dokáži obstát i vydání nových major verzí</strong>. Má větší hodnotu, a proto za něj dostaneš dvojnásobek.
+        </p>
+
+        <p>
+            {* todo: dolnit odkaz na čerstvý článek o testovaných článcích *}
+            Jak takový článek vypadá? <a href="https://github.com/pehapkari/pehapkari.cz/commit/85b69950b32c39b9e972582720a23a18a1adc4be">Mrkni na tento commit</a>.
+        </p>
+
+        <hr>
+
+        <h2>Podrobnější pravidla</h2>
+
+        <p>Soutěž potrvá <strong>2 měsíce</strong> do 9. března 2017 nebo vysoutěžení zásob.</p>
+        <p>Nemusíš čekat na vydání. Stačí když tvůj článek přijmeme a hned máš body.</p>
+        <p>Kdo dřív získá body, může si dřív vybrat.</p>
+
+        <br>
+
+        <p>Další dotazy ti pohodově odpovíme na <a href="https://www.facebook.com/pehapkari/">naší Facebook stránce</a>.
+        </p>
+    </div>
+</div>
