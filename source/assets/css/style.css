@@ -252,7 +252,7 @@ h1, h2, .h2, h3 {
 #article img {
     border: 1px solid #DDD;
     margin-top: .5em;
-    margin-bottom: .5em;
+    margin-bottom: 1em;
 }
 
 #article h2 {
