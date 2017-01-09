@@ -1,19 +1,19 @@
 ---
 layout: post
 title: "Why articles with code examples should be CI tested"
-perex: "I know many great articles, that go right to the point and when I use code examples, they work. But when I recommend these article to people I mentor, I realize they are 2 years old and probably not working any more. From hero to zero. Today I will show how to keep them alive lot longer with minimal effort."
+perex: "I know many great articles that go right to the poin. I use their code examples and they work. But when I recommend these articles to people I mentor, I realize the articles are already 2 years old and their code samples probably do not work any more. From hero to zero. Today I will show you how to keep them alive lot longer with a minimal effort."
 author: 1
 lang: en
 reviewed_by: [5]
 ---
 
-Do you know [Awesome lists](https://github.com/sindresorhus/awesome/)? If not, got check them. They collect best sources about certain topic. When I try to learn something new, I start on Github looking for "awesome <technology>". I recommend at least briefly checking them.
+Do you know [Awesome lists](https://github.com/sindresorhus/awesome/)? If not, go to check them. They collect best sources about a certain topic. When I try to learn something new, I usually start on Github looking for "awesome <technology>". I recommend at least briefly to check them.
  
-The idea behind Awesome list is to have sources that:
+The idea behind Awesome list is to have resources that:
 
-- **are up-to-date with modern technology**
-- **are the best in the field**
-- **are easy to learn by beginners**
+- **are up-to-date with modern technologies**,
+- **are the best in the field**,
+- **are easy to learn by beginners**.
 
 
 ## How "Awesome Doctrine" was Born
