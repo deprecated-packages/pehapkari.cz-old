@@ -1,6 +1,7 @@
 rewards:
     4:
         title: "Principles of Package Design"
+        product_link: "https://leanpub.com/principles-of-package-design"
         count: 3
         image: "principles.jpg"
         sponsor_note: 'Darovalo <a href="http://www.jobsdev.cz/">JobsDev</a>'
@@ -8,15 +9,16 @@ rewards:
         winners: []
     1:
         title: "roční licence na PHPStorm"
+        product_link: "https://www.jetbrains.com/phpstorm/buy/#edition=personal"
         count: 5
         image: "phpstorm.png"
         value_in_points: 10
         winners: []
     2:
         title: "Návrhové vzory v PHP"
+        product_link: "http://knihy.cpress.cz/navrhove-vzory-v-php.html"
         count: 2
         image: "navrhove-vzory.jpg"
-        sponsor_note: 'Darovalo <a href="http://www.jobsdev.cz/">JobsDev</a>'
         value_in_points: 5
         winners: []
     8:
@@ -29,6 +31,7 @@ rewards:
         winners: []
     3:
         title: "1001 tipů a triků pro PHP"
+        product_link: "https://phpfashion.com/recenze-knihy-1001-tipu-a-triku-pro-php"
         count: 2
         image: "1001-php.jpg"
         sponsor_note: 'Darovalo <a href="http://www.jobsdev.cz/">JobsDev</a>'
@@ -42,6 +45,7 @@ rewards:
         winners: []
     5:
         title: "Web Security 2016"
+        product_link: "https://www.phparch.com/books/web-security-2016/"
         count: 4
         image: "security.png"
         sponsor_note: 'Mile a nečekaně daroval <a href="https://www.michalspacek.cz">Michal Špaček</a>'
@@ -49,6 +53,7 @@ rewards:
         winners: []
     6:
         title: "Persistence in PHP with Doctrine ORM"
+        product_link: "https://filip-prochazka.com/blog/kniha-persistence-in-php-with-doctrine-orm"
         count: 1
         image: "doctrine.jpg"
         sponsor_note: 'Darovalo <a href="http://www.jobsdev.cz/">JobsDev</a>'

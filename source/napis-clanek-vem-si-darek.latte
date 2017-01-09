@@ -56,7 +56,9 @@ title: "Velká psací soutěž o PHPStorm licence, Symfony sloníky, Nette trika
             </tr>
             <tr n:foreach="$rewards as $reward">
                 <td class="col-md-2">
-                    <img src="/assets/images/contest/{$reward['image']}">
+                    <a n:tag-ifset="$reward['product_link']" href="{$reward['product_link']}">
+                        <img src="/assets/images/contest/{$reward['image']}">
+                    </a>
                 </td>
                 <td>
                     <h3>{=$reward['count'] - count($reward['winners'])}× {$reward['title']}</h3>
