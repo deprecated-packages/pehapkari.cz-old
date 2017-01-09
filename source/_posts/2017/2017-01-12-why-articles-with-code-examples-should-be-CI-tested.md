@@ -11,9 +11,9 @@ Do you know [Awesome lists](https://github.com/sindresorhus/awesome/)? If not, g
  
 The idea behind Awesome list is to have resources that:
 
-- **are up-to-date with modern technologies**,
-- **are the best in the field**,
-- **are easy to learn by beginners**.
+- **are up-to-date with modern technologies**
+- **are the best in the field**
+- **are easy to learn by beginners**
 
 
 ## How "Awesome Doctrine" was Born
