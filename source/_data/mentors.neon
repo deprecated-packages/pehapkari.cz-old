@@ -55,3 +55,10 @@ mentors:
         email: "vaclav@makes.cz"
         intro_message: "struktura kódu, Git, PhpStorm"
         link: "http://www.makes.cz"
+   10:
+        name: "Jan Šmíd"
+        location: "Brno, online(skype-chat)"
+        email: "smid@fv.cz"
+        intro_message: "13 let php aktivně/denní báze (vesměs cokoliv: {front|back}End architektura, údržba/cleaning legacy kódu, atp)"
+        link: "http://jan.smid.sk"
+        
