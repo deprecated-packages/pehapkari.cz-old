@@ -61,7 +61,10 @@ title: "Velká psací soutěž o PHPStorm licence, Symfony sloníky, Nette trika
                     </a>
                 </td>
                 <td>
-                    <h3>{=$reward['count'] - count($reward['winners'])}× {$reward['title']}</h3>
+                    <h3>
+                        {var $leftCount = $reward['count'] - count($reward['winners'])}
+                        {if $leftCount !== 1}{$leftCount}× {/if}{$reward['title']}
+                    </h3>
                     <p n:ifset="$reward['sponsor_note']">
                         {$reward['sponsor_note']|noescape}
                     </p>

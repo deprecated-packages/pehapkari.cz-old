@@ -59,3 +59,19 @@ rewards:
         sponsor_note: 'Darovalo <a href="http://www.jobsdev.cz/">JobsDev</a>'
         value_in_points: 5
         winners: []
+#    9:
+#        title: "Úplně nová mysl"
+#        product_link: "http://neoluxor.cz/odborne-knihy/uplne-nova-mysl--29453/"
+#        count: 1
+#        image: "uplne-nova-mysl.jpg"
+#        value_in_points: 5
+#        winners: []
+#        # donated by Tomas Votruba
+#    10:
+#        title: "Půlstoletí s Cimrmanem"
+#        product_link: "https://www.kosmas.cz/knihy/213159/pulstoleti-s-cimrmanem/"
+#        count: 1
+#        image: "cimrman.jpg"
+#        value_in_points: 5
+#        winners: []
+#        # donated by Tomas Votruba
