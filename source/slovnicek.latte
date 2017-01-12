@@ -171,6 +171,15 @@ friends {
                                 (ty psané v PHP) nebo se instalovat přímo jako rozšíření PHP (psané v C).
                             </dd>
 
+							<dt>Konstruktor&nbsp;<sup><a id="konstruktor" href="#konstruktor">&hearts;</a></sup></dt>
+                            <dd>
+                                Konstruktor (v PHP <code>__construct()</code>) je speciální metodou <a href="#trida">třídy</a>, která se volá vždy při vytváření
+                                nové <a href="#instance">instance</a>. Opakem konstruktoru je destruktor (<code>__destruct()</code>). Ten se volá ve chvíli, kdy na objekt
+                                neexistuje žádna reference nebo při ukončování běhu PHP skriptu.
+                                <sup>[<a href="https://en.wikipedia.org/wiki/Constructor_(object-oriented_programming)">wiki</a>]</sup>
+                                <sup>[<a href="http://php.net/manual/en/language.oop5.decon.php">doc</a>]</sup>
+                            </dd>
+
                             <dt>Monolit&nbsp;<sup><a id="monolit" href="#monolit">&hearts;</a></sup></dt>
                             <dd>
                                 Monolitem rozumíme obvykle velký nerozdělitelný systém. Monolit funguje sám o sobě
@@ -308,6 +317,16 @@ echo factorial(5); // 120
                                 V objektově orientovaném programování používáme rozhraní pro popis objektů, konkrétní implementaci řeší třída.
                                 <sup>[<a href="https://en.wikipedia.org/wiki/Interface_(computing)">wiki</a>]</sup>
                             </dd>
+
+                            <dt>Singleton&nbsp;<sup><a id="singleton" href="#singleton">&hearts;</a></sup></dt>
+                            <dd>
+                                Singleton je návrhový vzor, který umožňuje vytvořit pouze jednu <a href="#instance">instaci</a> <a href="#trida">třídy</a>
+                                přes statickou metodu <code>getInstance()</code>. Klasické vytvoření instance je znemožněno označením
+                                <a href="#konstruktor">konstruktoru</a> jako private. Použit lze na globální objekty jako např. logger, mailer apod.
+                                V dnešní době je považován za anti-pattern, protože jde proti principům testovatelnosti a <a href="#di">dependency injection</a>. 
+
+                                <sup>[<a href="https://en.wikipedia.org/wiki/Singleton_pattern">wiki</a>]</sup>
+                            </dd>	
 
                             <dt>SOLID&nbsp;<sup><a id="solid" href="#solid">&hearts;</a></sup></dt>
                             <dd>
