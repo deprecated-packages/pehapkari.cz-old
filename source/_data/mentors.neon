@@ -67,3 +67,9 @@ mentors:
         email: "michal.lulco@gmail.com"
         intro_message: "Potrebuješ niekoho na code review tvojich open source projektov v PHP? Rád ti s tým pomôžem."
         link: "https://github.com/lulco"
+    12:
+        name: "Jan Voráček"
+        location: "Pardubice, email"
+        email: "jan@voracek.net"
+        intro_message: "PHP, TypeScript + NodeJS, čistý kód, architektura, Git, WordPress – zkušenosti z vývoje VersionPressu"
+        link: "http://voracek.net"
