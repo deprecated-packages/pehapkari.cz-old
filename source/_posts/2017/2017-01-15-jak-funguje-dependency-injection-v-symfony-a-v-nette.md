@@ -57,7 +57,7 @@ use Nette\Application\UI\Presenter;
 
 final class TestPresenter Extends Presenter
 {
-    public funciton __construct(MyClass $myClass)
+    public function __construct(MyClass $myClass)
     {
         $this->myClass = $myClass;
     }
@@ -164,7 +164,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 final class TestController extends Controller
 {
-    public funciton __construct(MyClass $myClass)
+    public function __construct(MyClass $myClass)
     {
         $this->myClass = $myClass;
     }
