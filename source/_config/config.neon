@@ -13,3 +13,4 @@ disqusName: "pehapkari"
 # Statie configuration
 configuration:
     githubRepositorySlug: pehapkari/pehapkari.cz
+    markdownHeadlineAnchors: TRUE
