@@ -61,4 +61,9 @@ mentors:
         email: "smid@fv.cz"
         intro_message: "13 let php aktivně/denní báze (vesměs cokoliv: {front|back}End architektura, údržba/cleaning legacy kódu, atp)"
         link: "http://jan.smid.sk"
-        
+    11:
+        name: "Michal Lulčo"
+        location: "Bratislava, online"
+        email: "michal.lulco@gmail.com"
+        intro_message: "Potrebuješ niekoho na code review tvojich open source projektov v PHP? Rád ti s tým pomôžem."
+        link: "https://github.com/lulco"
