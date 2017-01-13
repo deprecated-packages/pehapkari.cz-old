@@ -1,0 +1,14 @@
+application:
+	scanDirs: FALSE
+	mapping:
+		*: Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Presenter\*Presenter
+
+extensions:
+	- Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\DI\ListeningNetteComponentsExtension
+
+services:
+	routing.router: Nette\Application\Routers\SimpleRouter('Category:default')
+
+	# component factories
+	- Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Component\AddToBasketControl\AddToBasketControlFactoryInterface
+	- Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Component\BasketContentControl\BasketContentControlFactoryInterface
