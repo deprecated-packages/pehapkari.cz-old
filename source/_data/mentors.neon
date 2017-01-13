@@ -73,3 +73,10 @@ mentors:
         email: "jan@voracek.net"
         intro_message: "PHP, TypeScript + NodeJS, čistý kód, architektura, Git, WordPress – zkušenosti z vývoje VersionPressu"
         link: "http://voracek.net"
+
+    13:
+        name: "Tomáš Pilař"
+        location: "Chrudim"
+        email: "email@tomaspilar.cz"
+        intro_message: "PHP, Nette, Doctrine, Elasticsearch, čistý kód, architektura"
+        link: "https://www.tomaspilar.cz"
