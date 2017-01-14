@@ -42,7 +42,8 @@ rewards:
         count: 5
         image: "slonik.jpg"
         value_in_points: 7
-        winners: []
+        winners:
+            @kbarborak: https://github.com/pehapkari/pehapkari.cz/pull/172
     5:
         title: "Web Security 2016"
         product_link: "https://www.phparch.com/books/web-security-2016/"
