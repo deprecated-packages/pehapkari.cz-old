@@ -85,3 +85,9 @@ mentors:
         email: "tomas.kavalek@gmail.com"
         intro_message: "S PHP jsem začínal ještě v minulém století :-) Nette, Symfony, Doctrine, Wordpress aj."
         link: "https://www.tomaskavalek.cz"
+    15:
+        name: "Michal Kovarčík"
+        location: "Bratislava"
+        email: "whedro@gmail.com"
+        intro_message: "PHP, Symfony, code review"
+        link: "https://www.linkedin.com/in/michal-kovarcik-40884021/"
