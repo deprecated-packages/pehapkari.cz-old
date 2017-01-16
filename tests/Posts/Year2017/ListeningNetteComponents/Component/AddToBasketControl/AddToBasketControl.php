@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Component\AddToBasketControl;
 
 use Nette\Application\UI\Control;
@@ -45,8 +47,7 @@ final class AddToBasketControl extends Control
 
 	public function render()
 	{
-		$this->template->setFile(__DIR__ . '/templates/default.latte');
-		$this->template->render();
+		$this->template->render(__DIR__ . '/templates/default.latte');
 	}
 
 }

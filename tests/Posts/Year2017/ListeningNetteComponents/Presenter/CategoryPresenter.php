@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Presenter;
 
 use Nette\Application\UI\Multiplier;
@@ -81,10 +83,7 @@ final class CategoryPresenter extends Presenter
 	}
 
 
-	/**
-	 * @return AddToBasketControl
-	 */
-	protected function createComponentAddToBasket()
+	protected function createComponentAddToBasket(): Multiplier
 	{
 		// We must use Multiplier because we need separate instance for every product
 		// What is Multiplier? Read article at https://pla.nette.org/cs/multiplier.
@@ -103,10 +102,7 @@ final class CategoryPresenter extends Presenter
 	}
 
 
-	/**
-	 * @return BasketContentControl
-	 */
-	protected function createComponentBasketContent()
+	protected function createComponentBasketContent(): BasketContentControl
 	{
 		return $this->basketContentControlFactory->create();
 	}

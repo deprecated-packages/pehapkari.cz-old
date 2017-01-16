@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Event;
 
 use Symfony\Component\EventDispatcher\Event;
@@ -9,7 +11,7 @@ final class ProductAddedToBasketEvent extends Event
 {
 
 	/**
-	 * @var string
+	 * @var int
 	 */
 	private $id;
 
@@ -19,17 +21,12 @@ final class ProductAddedToBasketEvent extends Event
 	private $name;
 
 	/**
-	 * @var string
+	 * @var int
 	 */
 	private $price;
 
 
-	/**
-	 * @param string $id
-	 * @param string $name
-	 * @param string $price
-	 */
-	public function __construct($id, $name, $price)
+	public function __construct(int $id, string $name, int $price)
 	{
 		$this->id = $id;
 		$this->name = $name;
@@ -37,28 +34,19 @@ final class ProductAddedToBasketEvent extends Event
 	}
 
 
-	/**
-	 * @return string
-	 */
-	public function getId()
+	public function getId(): int
 	{
 		return $this->id;
 	}
 
 
-	/**
-	 * @return string
-	 */
-	public function getName()
+	public function getName(): string
 	{
 		return $this->name;
 	}
 
 
-	/**
-	 * @return string
-	 */
-	public function getPrice()
+	public function getPrice(): int
 	{
 		return $this->price;
 	}

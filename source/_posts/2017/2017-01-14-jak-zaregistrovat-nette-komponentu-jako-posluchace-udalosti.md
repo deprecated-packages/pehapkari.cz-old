@@ -10,7 +10,37 @@ test_slug: ListeningNetteComponents
 
 ## Úvod do problému
 
-U složitějších aplikací může dojit k tomu, že v jednom presenteru máte vloženo více komponent, které mají mezi sebou pomyslnou vazbu. Pokud se stane něco v jedné komponentě, tak je potřeba překreslit (ajaxově snippetem) komponentu druhou apod. Typicky u eshopů se jedná o ten use-case, že při přidání položky do košíku potřebuji překreslit ten malý košík s cenou umístěný většinou v pravo nahoře.
+U složitějších aplikací může dojit k tomu, že v jednom presenteru máte vloženo více komponent, které mají mezi sebou pomyslnou vazbu. Pokud se stane něco v jedné komponentě, tak je potřeba překreslit (ajaxově snippetem) komponentu druhou apod. Typicky u eshopů se jedná o ten use-case, že při přidání položky do košíku potřebuji překreslit ten malý košík s cenou umístěný většinou v pravo nahoře a má mi vyskočit nějaký popup s podobnými produkty. Jak elegantně komponenty překreslovat v závislosti na ajaxových požadavcích? Řešením je použití událostí a jejich posluchačů.
+
+
+### Existuje i jiné řešení bez událostí?
+
+Samozřejmě! Stačí upravit metodu `handleAdd` v `AddToBasketControl` například takto:
+
+```php
+public function handleAdd()
+{
+	$this->presenter->getComponent('basketContent')->onProductAddedToBasket($this->product);
+}
+```
+
+U tohoto řešení je problém v tom, že komponenta `addToBasketControl` zná implementaci presenteru, ve kterém je připojena a spoléhá na to, že je v něm zaregistrovaná componenta s názvem `basketContent`. Pokud bych tedy chtěl komponentu `addToBasketControl` použít v jiném presenteru, musel bych v něm zaregistrovat i komponentu `BasketContentControl`, což je nehezké provázání závislostí. Co pak, když by bylo potřeba, aby na událost `ProductAddedToBasket` poslouchala i jiná komponenta? OK - upravíme metodu na:
+
+
+```php
+public function handleAdd()
+{
+	$this->presenter->getComponent('basketContent')->onProductAddedToBasket($this->product);
+	$this->presenter->getComponent('anotherComponent')->onProductAddedToBasket($this->product);
+}
+```
+
+a už tu vzniká programming hell a programátorský dluh do budoucnosti.
+ 
+Druhý mnohem složitější problém by nastal v momentě, kdy se událost nevyhazuje v komponentě, ale v nějaké službě. Typicky můžeme mít `BasketFacade`, která před přidáním produktu do košíku musí zvalidovat např. to, zda může být produkt přidán do košíku a pokud ano, tak produkt přidá a vyvolá událost. Pak nám nezbývá  nic jiného než použití `return` pokud bychom chtěli událost přeci jen vyvolávat v komponentě. Problém může být, ale pokud `BasketFacade` deleguje požadavek na přidání produktu jiné službě apod. Pak musíme `return`ovat `return`y z celého řetezce volaných metod a to je pěkný oser. :)
+
+
+## Náš CategoryPresenter
 
 Mějmě například takovýto presenter:
 
@@ -46,7 +76,7 @@ final class CategoryPresenter extends Presenter
 			'price' => 99
 		]
 	];
-    	
+
 	/**
 	 * @var AddToBasketControlFactoryInterface
 	 */
@@ -67,7 +97,7 @@ final class CategoryPresenter extends Presenter
 	}
 
 
-	public function render()
+	public function renderDefault()
 	{
 		$this->template->setParameters([
 			'products' => self::PRODUCTS
@@ -75,11 +105,11 @@ final class CategoryPresenter extends Presenter
 	}
 
 
-	/**
-	 * @return AddToBasketControl
-	 */
-	protected function createComponentAddToBasket()
+	protected function createComponentAddToBasket(): Multiplier
 	{
+		// We must use Multiplier because we need separate instance for every product
+		// What is Multiplier? Read article at https://pla.nette.org/cs/multiplier.
+
 		return new Multiplier(function($productId) {
 			$product = [];
 			foreach (self::PRODUCTS as $productData) {
@@ -88,22 +118,18 @@ final class CategoryPresenter extends Presenter
 					break;
 				}
 			}
-			
+
 			return $this->addToBasketControlFactory->create($product);
 		});
 	}
 
 
-	/**
-	 * @return BasketContentControl
-	 */
-	protected function createComponentBasketContent()
+	protected function createComponentBasketContent(): BasketContentControl
 	{
 		return $this->basketContentControlFactory->create();
 	}
 
 }
-
 ```
 
 V presenteru `CategoryPresenter` máme zaregistrované komponenty `AddToBasketControl` a `BasketContentControl`. Komponenta `AddToBasketControl` bude sloužit pro přidání produktu do košíku a komponenta `BasketContentControl` nám bude vypisovat produkty v košíku. naším cílem bude po přidání produktu do košíku v komponentě `AddToBasketControl` překreslit komponentu `BasketContentControl` pomocí událostí.
@@ -118,38 +144,13 @@ Budeme potřebovat [Symfony\EventDispatcher](http://symfony.com/doc/current/comp
 
 Při práci s [Nette/DI](https://github.com/nette/di) jsem měl k němu vždy respekt a měl jsem za složité propojit Symfony a Nette. No - složité to není, takže s chutí do toho!
 
-Spustíme příkaz `composer require symfony/event-dispatcher` a následně si vytvoříme jednoduché rozšíření pro Nette/DI.
-
-```php
-// DI/ListeningNetteComponentsExtension.php
-
-use Nette\DI\CompilerExtension;
-use Symfony\Component\EventDispatcher\EventDispatcher;
-
-
-final class ListeningNetteComponentsExtension extends CompilerExtension
-{
-
-	/**
-	 * {@inheritdoc}
-	 */
-	public function loadConfiguration()
-	{
-		$builder = $this->getContainerBuilder();
-
-		$builder->addDefinition($this->prefix('eventDispatcher'))
-			->setClass(EventDispatcher::class);
-	}
-}
-```
-
-a rozšíření následně zaregistrujeme do Nette:
+Spustíme příkaz `composer require symfony/event-dispatcher` a následně zaregistrujeme `EventDispatcher` do Nette/DI.
 
 ```yaml
 // config.neon
 
-extensions:
-	- DI\ListeningNetteComponentsExtension
+services:
+	- Symfony\Component\EventDispatcher\EventDispatcher
 ```
 
 Propojení Nette a Symfony máme hotové. Tak co jsem říkal, je to složité? :)
@@ -207,7 +208,7 @@ final class ProductAddedToBasketEvent extends Event
 {
 
 	/**
-	 * @var string
+	 * @var int
 	 */
 	private $id;
 
@@ -217,17 +218,12 @@ final class ProductAddedToBasketEvent extends Event
 	private $name;
 
 	/**
-	 * @var string
+	 * @var int
 	 */
 	private $price;
 
 
-	/**
-	 * @param string $id
-	 * @param string $name
-	 * @param string $price
-	 */
-	public function __construct($id, $name, $price)
+	public function __construct(int $id, string $name, int $price)
 	{
 		$this->id = $id;
 		$this->name = $name;
@@ -235,28 +231,19 @@ final class ProductAddedToBasketEvent extends Event
 	}
 
 
-	/**
-	 * @return string
-	 */
-	public function getId()
+	public function getId(): int
 	{
 		return $this->id;
 	}
 
 
-	/**
-	 * @return string
-	 */
-	public function getName()
+	public function getName(): string
 	{
 		return $this->name;
 	}
 
 
-	/**
-	 * @return string
-	 */
-	public function getPrice()
+	public function getPrice(): int
 	{
 		return $this->price;
 	}
@@ -339,8 +326,7 @@ final class AddToBasketControl extends Control
 
 	public function render()
 	{
-		$this->template->setFile(__DIR__ . '/templates/default.latte');
-		$this->template->render();
+		$this->template->render(__DIR__ . '/templates/default.latte');
 	}
 
 }
@@ -362,8 +348,9 @@ final class BasketContentControl extends Control
 	 * @var array
 	 */
 	private $products = [];
-	
 
+
+	// This method is called by EventSubscriber because is set as listener callback in CategoryPresenter::startup()
 	public function onProductAddedToBasketEvent(ProductAddedToBasketEvent $productAddedToBasketEvent)
 	{
 		$product = [
@@ -371,9 +358,9 @@ final class BasketContentControl extends Control
 			'name' => $productAddedToBasketEvent->getName(),
 			'price' => $productAddedToBasketEvent->getPrice(),
 		];
-		
+
 		$this->products[] = $product;
-		
+
 		$this->redrawControl('content');
 	}
 
@@ -383,9 +370,8 @@ final class BasketContentControl extends Control
 		$this->template->setParameters([
 			'products' => $this->products
 		]);
-		
-		$this->template->setFile(__DIR__ . '/templates/default.latte');
-		$this->template->render();
+
+		$this->template->render(__DIR__ . '/templates/default.latte');
 	}
 
 }
@@ -446,32 +432,6 @@ Ukázali jsme si jak jednoduše se dá propojit Symfony s Nette a jak přimět k
 
 Jaký to dobrý pocit z nově nabytých znalostí! :)
 
-
-### Existuje i jiné řešení bez událostí?
-
-Samozřejmě! Stačí upravit metodu `handleAdd` v `AddToBasketControl` například takto:
-
-```php
-public function handleAdd()
-{
-	$this->presenter->getComponent('basketContent')->onProductAddedToBasket($this->product);
-}
-```
-
-U tohoto řešení je problém v tom, že komponenta `addToBasketControl` zná implementaci presenteru, ve kterém je připojena a spoléhá na to, že je v něm zaregistrovaná componenta s názvem `basketContent`. Pokud bych tedy chtěl komponentu `addToBasketControl` použít v jiném presenteru, musel bych v něm zaregistrovat i komponentu `BasketContentControl`, což je nehezké provázání závislostí. Co pak, když by bylo potřeba, aby na událost `ProductAddedToBasket` poslouchala i jiná komponenta? OK - upravíme metodu na:
-
-
-```php
-public function handleAdd()
-{
-	$this->presenter->getComponent('basketContent')->onProductAddedToBasket($this->product);
-	$this->presenter->getComponent('anotherComponent')->onProductAddedToBasket($this->product);
-}
-```
-
-a už tu vzniká programming hell a programátorský dluh do budoucnosti.
- 
-Druhý mnohem složitější problém by nastal v momentě, kdy se událost nevyhazuje v komponentě, ale v nějaké službě. Typicky můžeme mít `BasketFacade`, která před přidáním produktu do košíku musí zvalidovat např. to, zda může být produkt přidán do košíku a pokud ano, tak produkt přidá a vyvolá událost. Pak nám nezbývá  nic jiného než použití `return` pokud bychom chtěli událost přeci jen vyvolávat v komponentě. Problém může být, ale pokud `BasketFacade` deleguje požadavek na přidání produktu jiné službě apod. Pak musíme `return`ovat `return`y z celého řetezce volaných metod a to je pěkný oser. :)
 
 ## Chceš znát více?
 

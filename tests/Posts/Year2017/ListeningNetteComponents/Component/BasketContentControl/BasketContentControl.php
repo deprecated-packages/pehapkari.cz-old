@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Component\BasketContentControl;
 
 use Nette\Application\UI\Control;
@@ -15,6 +17,7 @@ final class BasketContentControl extends Control
 	private $products = [];
 
 
+	// This method is called by EventSubscriber because is set as listener callback in CategoryPresenter::startup()
 	public function onProductAddedToBasketEvent(ProductAddedToBasketEvent $productAddedToBasketEvent)
 	{
 		$product = [
@@ -35,8 +38,7 @@ final class BasketContentControl extends Control
 			'products' => $this->products
 		]);
 
-		$this->template->setFile(__DIR__ . '/templates/default.latte');
-		$this->template->render();
+		$this->template->render(__DIR__ . '/templates/default.latte');
 	}
 
 }

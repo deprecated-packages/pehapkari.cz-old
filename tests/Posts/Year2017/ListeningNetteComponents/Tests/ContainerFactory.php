@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Tests;
 
 use Nette\Configurator;
@@ -13,10 +15,7 @@ final class ContainerFactory
 	const TEMP_DIR = __DIR__ . '/temp';
 
 
-	/**
-	 * @return Container
-	 */
-	public function create()
+	public function create(): Container
 	{
 		FileSystem::delete(self::TEMP_DIR);
 		mkdir(self::TEMP_DIR, 0777);

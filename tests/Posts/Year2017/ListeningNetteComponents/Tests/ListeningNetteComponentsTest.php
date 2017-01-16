@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Tests;
 
 use Nette\Application\IPresenter;
@@ -85,10 +87,7 @@ final class ListeningNetteComponentsTest extends TestCase
 	}
 
 
-	/**
-	 * @return IPresenter
-	 */
-	protected function createPresenter()
+	protected function createPresenter(): IPresenter
 	{
 		$categoryPresenter = $this->presenterFactory->createPresenter(self::PRESENTER_NAME);
 		$categoryPresenter->autoCanonicalize = FALSE;
