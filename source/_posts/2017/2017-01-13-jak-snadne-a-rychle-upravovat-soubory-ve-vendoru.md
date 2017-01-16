@@ -59,7 +59,7 @@ Ve vendor složce si najdeš zabugovaný soubor a zkopíruješ ho do toho saméh
 # diff -u ./vendor/package-name/path/to/bugged/file/BuggedFile.php ./vendor/path/to/bugged/file/BuggedFile-fixed.php > patches/bugged-file.patch
 ```
 
-Pokud ti CLI napíše, že příkaz `diff` nebyl nalezen, tak ho bude potřeba doinstalovat viz. postupy níže. A pokud ho máš, můžeš [přeskočit sem](#nastavení-cesty-k-patch-souboru-pro-cweaganscomposer-patches).
+Pokud ti CLI napíše, že příkaz `diff` nebyl nalezen, tak ho bude potřeba doinstalovat viz. postupy níže. A pokud ho máš, můžeš [přeskočit sem](#3-Úprava-patch-souboru-pro-cweaganscomposer-patches).
 
 #### Linux
 
@@ -90,8 +90,8 @@ Otevři si vygenerovaný patch soubor a uprav hlavičku.
 Před:
 
 ```text
---- path/to/bugged/file/BuggedFile.php 2016-12-16 18:50:47.642172308 +0100
-+++ path/to/bugged/file/BuggedFile-fixed.php 2017-01-13 11:42:07.000000000 +0100
+--- ./vendor/package-name/path/to/bugged/file/BuggedFile.php 2016-12-16 18:50:47.642172308 +0100
++++ ./vendor/package-name/path/to/bugged/file/BuggedFile-fixed.php 2017-01-13 11:42:07.000000000 +0100
 ```
 
 Po:
@@ -145,13 +145,13 @@ V tomto článku jsi našel nástroj, kterým snadně a rychle řešit buggy ve 
 
 Zde je shrnutí v bodech, jak postupovat:
  
- 1) `composer require cweagans/composer-patches`
- 2) Zkopírovat soubor s buggem a opravit ho
- 3) Vytvořit patch soubor (příkaz `diff`)
- 4) Upravit vygenerovaný soubor (opravit hlavičku)
- 5) Přidat cestu k patch souboru do composer.json
- 6) Spustit `composer install` nebo `composer update`
- 7) Profit!
+1. `composer require cweagans/composer-patches`
+2. Zkopírovat soubor s buggem a opravit ho
+3. Vytvořit patch soubor (příkaz `diff`)
+4. Upravit vygenerovaný soubor (opravit hlavičku)
+5. Přidat cestu k patch souboru do composer.json
+6. Spustit `composer install` nebo `composer update`
+7. Profit!
  
 ## Chci se dozvědět více!
 
