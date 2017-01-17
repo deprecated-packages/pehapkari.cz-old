@@ -20,7 +20,7 @@ Samozřejmě! Stačí upravit metodu `handleAdd` v `AddToBasketControl` napřík
 ```php
 public function handleAdd()
 {
-	$this->presenter->getComponent('basketContent')->onProductAddedToBasket($this->product);
+    $this->presenter->getComponent('basketContent')->onProductAddedToBasket($this->product);
 }
 ```
 
@@ -30,8 +30,8 @@ U tohoto řešení je problém v tom, že komponenta `addToBasketControl` zná i
 ```php
 public function handleAdd()
 {
-	$this->presenter->getComponent('basketContent')->onProductAddedToBasket($this->product);
-	$this->presenter->getComponent('anotherComponent')->onProductAddedToBasket($this->product);
+    $this->presenter->getComponent('basketContent')->onProductAddedToBasket($this->product);
+    $this->presenter->getComponent('anotherComponent')->onProductAddedToBasket($this->product);
 }
 ```
 
@@ -59,75 +59,75 @@ use Component\BasketContentControl\BasketContentControlFactoryInterface;
 final class CategoryPresenter extends Presenter
 {
 
-	const PRODUCTS = [
-		[
-			'id' => 1,
-			'name' => 'T-Shirt',
-			'price' => 100
-		],
-		[
-			'id' => 2,
-			'name' => 'Red socks',
-			'price' => 29
-		],
-		[
-			'id' => 3,
-			'name' => 'Green hat',
-			'price' => 99
-		]
-	];
+    const PRODUCTS = [
+        [
+            'id' => 1,
+            'name' => 'T-Shirt',
+            'price' => 100
+        ],
+        [
+            'id' => 2,
+            'name' => 'Red socks',
+            'price' => 29
+        ],
+        [
+            'id' => 3,
+            'name' => 'Green hat',
+            'price' => 99
+        ]
+    ];
 
-	/**
-	 * @var AddToBasketControlFactoryInterface
-	 */
-	private $addToBasketControlFactory;
+    /**
+     * @var AddToBasketControlFactoryInterface
+     */
+    private $addToBasketControlFactory;
 
-	/**
-	 * @var BasketContentControlFactoryInterface
-	 */
-	private $basketContentControlFactory;
-
-
-	public function __construct(
-		AddToBasketControlFactoryInterface $addToBasketControlFactory,
-		BasketContentControlFactoryInterface $basketContentControlFactory
-	) {
-		$this->addToBasketControlFactory = $addToBasketControlFactory;
-		$this->basketContentControlFactory = $basketContentControlFactory;
-	}
+    /**
+     * @var BasketContentControlFactoryInterface
+     */
+    private $basketContentControlFactory;
 
 
-	public function renderDefault()
-	{
-		$this->template->setParameters([
-			'products' => self::PRODUCTS
-		]);
-	}
+    public function __construct(
+        AddToBasketControlFactoryInterface $addToBasketControlFactory,
+        BasketContentControlFactoryInterface $basketContentControlFactory
+    ) {
+        $this->addToBasketControlFactory = $addToBasketControlFactory;
+        $this->basketContentControlFactory = $basketContentControlFactory;
+    }
 
 
-	protected function createComponentAddToBasket(): Multiplier
-	{
-		// We must use Multiplier because we need separate instance for every product
-		// What is Multiplier? Read article at https://pla.nette.org/cs/multiplier.
-
-		return new Multiplier(function($productId) {
-			$product = [];
-			foreach (self::PRODUCTS as $productData) {
-				if ($productData['id'] === (int) $productId) {
-					$product = $productData;
-					break;
-				}
-			}
-
-			return $this->addToBasketControlFactory->create($product);
-		});
-	}
+    public function renderDefault()
+    {
+        $this->template->setParameters([
+            'products' => self::PRODUCTS
+        ]);
+    }
 
 
-	protected function createComponentBasketContent(): BasketContentControl
-	{
-		return $this->basketContentControlFactory->create();
-	}
+    protected function createComponentAddToBasket(): Multiplier
+    {
+        // We must use Multiplier because we need separate instance for every product
+        // What is Multiplier? Read article at https://pla.nette.org/cs/multiplier.
+
+        return new Multiplier(function($productId) {
+            $product = [];
+            foreach (self::PRODUCTS as $productData) {
+                if ($productData['id'] === (int) $productId) {
+                    $product = $productData;
+                    break;
+                }
+            }
+
+            return $this->addToBasketControlFactory->create($product);
+        });
+    }
+
+
+    protected function createComponentBasketContent(): BasketContentControl
+    {
+        return $this->basketContentControlFactory->create();
+    }
 
 }
 ```
@@ -150,7 +150,7 @@ Spustíme příkaz `composer require symfony/event-dispatcher` a následně zare
 // config.neon
 
 services:
-	- Symfony\Component\EventDispatcher\EventDispatcher
+    - Symfony\Component\EventDispatcher\EventDispatcher
 ```
 
 Propojení Nette a Symfony máme hotové. Tak co jsem říkal, je to složité? :)
@@ -176,21 +176,21 @@ private $eventDispatcher;
 
 
 public function __construct(
-	AddToBasketControlFactoryInterface $addToBasketControlFactory,
-	BasketContentControlFactoryInterface $basketContentControlFactory,
-	EventDispatcherInterface $eventDispatcher
+    AddToBasketControlFactoryInterface $addToBasketControlFactory,
+    BasketContentControlFactoryInterface $basketContentControlFactory,
+    EventDispatcherInterface $eventDispatcher
 ) {
-	$this->addToBasketControlFactory = $addToBasketControlFactory;
-	$this->basketContentControlFactory = $basketContentControlFactory;
-	$this->eventDispatcher = $eventDispatcher;
+    $this->addToBasketControlFactory = $addToBasketControlFactory;
+    $this->basketContentControlFactory = $basketContentControlFactory;
+    $this->eventDispatcher = $eventDispatcher;
 }
 
 
 public function startup()
 {
-	parent::startup();
+    parent::startup();
 
-	// Magic goes here!
+    // Magic goes here!
 }
 
 ...
@@ -207,46 +207,46 @@ use Symfony\Component\EventDispatcher\Event;
 final class ProductAddedToBasketEvent extends Event
 {
 
-	/**
-	 * @var int
-	 */
-	private $id;
+    /**
+     * @var int
+     */
+    private $id;
 
-	/**
-	 * @var string
-	 */
-	private $name;
+    /**
+     * @var string
+     */
+    private $name;
 
-	/**
-	 * @var int
-	 */
-	private $price;
-
-
-	public function __construct(int $id, string $name, int $price)
-	{
-		$this->id = $id;
-		$this->name = $name;
-		$this->price = $price;
-	}
+    /**
+     * @var int
+     */
+    private $price;
 
 
-	public function getId(): int
-	{
-		return $this->id;
-	}
+    public function __construct(int $id, string $name, int $price)
+    {
+        $this->id = $id;
+        $this->name = $name;
+        $this->price = $price;
+    }
 
 
-	public function getName(): string
-	{
-		return $this->name;
-	}
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
 
-	public function getPrice(): int
-	{
-		return $this->price;
-	}
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+
+    public function getPrice(): int
+    {
+        return $this->price;
+    }
 
 }
 ```
@@ -260,14 +260,14 @@ use Event\ProductAddedToBasketEvent;
 
 public function startup()
 {
-	parent::startup();
+    parent::startup();
 
-	$basketContentControl = $this->getComponent('basketContent');
+    $basketContentControl = $this->getComponent('basketContent');
 
-	$this->eventDispatcher->addListener(
-		ProductAddedToBasketEvent::class, 
-		[$basketContentControl, 'onProductAddedToBasketEvent']
-	);
+    $this->eventDispatcher->addListener(
+        ProductAddedToBasketEvent::class, 
+        [$basketContentControl, 'onProductAddedToBasketEvent']
+    );
 }
 ...
 ```
@@ -291,43 +291,43 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 final class AddToBasketControl extends Control
 {
 
-	/**
-	 * @var array
-	 */
-	private $product;
+    /**
+     * @var array
+     */
+    private $product;
 
-	/**
-	 * @var EventDispatcherInterface
-	 */
-	private $eventDispatcher;
-
-
-	public function __construct(array $product, EventDispatcherInterface $eventDispatcher)
-	{
-		$this->product = $product;
-		$this->eventDispatcher = $eventDispatcher;
-	}
+    /**
+     * @var EventDispatcherInterface
+     */
+    private $eventDispatcher;
 
 
-	public function handleAdd()
-	{
-		// There will be some logic with basket.
-		// e.g.: $this->basketFacade->addProduct($this->product);
-
-		// construct event object
-		$productAddedToBasketEvent = new ProductAddedToBasketEvent(
-			$this->product['id'],
-			$this->product['name'],
-			$this->product['price']
-		);
-		$this->eventDispatcher->dispatch(ProductAddedToBasketEvent::class, $productAddedToBasketEvent); // dispatch it!
-	}
+    public function __construct(array $product, EventDispatcherInterface $eventDispatcher)
+    {
+        $this->product = $product;
+        $this->eventDispatcher = $eventDispatcher;
+    }
 
 
-	public function render()
-	{
-		$this->template->render(__DIR__ . '/templates/default.latte');
-	}
+    public function handleAdd()
+    {
+        // There will be some logic with basket.
+        // e.g.: $this->basketFacade->addProduct($this->product);
+
+        // construct event object
+        $productAddedToBasketEvent = new ProductAddedToBasketEvent(
+            $this->product['id'],
+            $this->product['name'],
+            $this->product['price']
+        );
+        $this->eventDispatcher->dispatch(ProductAddedToBasketEvent::class, $productAddedToBasketEvent); // dispatch it!
+    }
+
+
+    public function render()
+    {
+        $this->template->render(__DIR__ . '/templates/default.latte');
+    }
 
 }
 ```
@@ -344,35 +344,35 @@ use Event\ProductAddedToBasketEvent;
 final class BasketContentControl extends Control
 {
 
-	/**
-	 * @var array
-	 */
-	private $products = [];
+    /**
+     * @var array
+     */
+    private $products = [];
 
 
-	// This method is called by EventSubscriber because is set as listener callback in CategoryPresenter::startup()
-	public function onProductAddedToBasketEvent(ProductAddedToBasketEvent $productAddedToBasketEvent)
-	{
-		$product = [
-			'id' => $productAddedToBasketEvent->getId(),
-			'name' => $productAddedToBasketEvent->getName(),
-			'price' => $productAddedToBasketEvent->getPrice(),
-		];
+    // This method is called by EventSubscriber because is set as listener callback in CategoryPresenter::startup()
+    public function onProductAddedToBasketEvent(ProductAddedToBasketEvent $productAddedToBasketEvent)
+    {
+        $product = [
+            'id' => $productAddedToBasketEvent->getId(),
+            'name' => $productAddedToBasketEvent->getName(),
+            'price' => $productAddedToBasketEvent->getPrice(),
+        ];
 
-		$this->products[] = $product;
+        $this->products[] = $product;
 
-		$this->redrawControl('content');
-	}
+        $this->redrawControl('content');
+    }
 
 
-	public function render()
-	{
-		$this->template->setParameters([
-			'products' => $this->products
-		]);
+    public function render()
+    {
+        $this->template->setParameters([
+            'products' => $this->products
+        ]);
 
-		$this->template->render(__DIR__ . '/templates/default.latte');
-	}
+        $this->template->render(__DIR__ . '/templates/default.latte');
+    }
 
 }
 ```
@@ -389,12 +389,12 @@ V šabloně presenteru si vykreslíme komponentu `BasketContentControl` a vypí�
 {control basketContent}
 
 <table>
-	<tr n:foreach="$products as $product">
-		<td>{$product['id']}</td>
-		<td>{$product['name']}</td>
-		<td>{$product['price']}</td>
-		<td>{control 'addToBasket-' . $product['id']}</td>
-	</tr>
+    <tr n:foreach="$products as $product">
+        <td>{$product['id']}</td>
+        <td>{$product['name']}</td>
+        <td>{$product['price']}</td>
+        <td>{control 'addToBasket-' . $product['id']}</td>
+    </tr>
 </table>
 ```
 
@@ -414,13 +414,13 @@ A do třetice je tu šablona pro vykreslení obsahu košíku.
 // Component/BasketContentControl/templates/default.latte
 
 {snippet content}
-	<table>
-		<tr n:foreach="$products as $product">
-			<td>{$product['id']}</td>
-			<td>{$product['name']}</td>
-			<td>{$product['price']}</td>
-		</tr>
-	</table>
+    <table>
+        <tr n:foreach="$products as $product">
+            <td>{$product['id']}</td>
+            <td>{$product['name']}</td>
+            <td>{$product['price']}</td>
+        </tr>
+    </table>
 {/snippet}
 ```
 
