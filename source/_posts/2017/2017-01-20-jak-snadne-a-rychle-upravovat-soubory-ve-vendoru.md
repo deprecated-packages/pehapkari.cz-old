@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Jak snadně a rychle upravovat soubory ve vendoru?"
+title: "Jak snadno a rychle upravovat soubory ve vendoru?"
 perex: "Už si se někdy dostal do situace, kdy jsi potřeboval opravit chybu nějaké závislosti ve složce vendor? Jak takovou úpravu sdílet v týmu s ostatními programátory a jak ji udržet v souboru i po spuštění composeru? V tomto článku se dovíš, jak snadně a elegantně se tento problém dá vyřešit během 1 minuty."
 author: 11
 ---
