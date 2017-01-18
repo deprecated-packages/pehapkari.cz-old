@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Jak snadně a rychle upravovat soubory ve vendoru?"
-perex: "Už si se někdy dostal do situace, kdy jsi potřeboval opravit chybu nějaké závislosti ve složce vendor? Jak takovou úpravu sdílet v týmu s ostatními programátory a jak ji udržet v souboru i po spuštění příkazu `composer update`? V tomto článku se dovíš, jak snadně a elegantně se tento problém dá vyřešit během 1 minuty."
+perex: "Už si se někdy dostal do situace, kdy jsi potřeboval opravit chybu nějaké závislosti ve složce vendor? Jak takovou úpravu sdílet v týmu s ostatními programátory a jak ji udržet v souboru i po spuštění composeru? V tomto článku se dovíš, jak snadně a elegantně se tento problém dá vyřešit během 1 minuty."
 author: 11
 ---
 
@@ -17,7 +17,9 @@ Mně se například po přechodu na PHP7 stalo to, že [Doctrine\DBAL](https://g
 ## Jak chybu opravit?
 
 ### Udělám vlastní fork
-Tak to je přeci jednoduché! Pošlu **pull-request s opravou** a počkám až to autor spojí. To ale může trvat dny i měsíce a tag v nedohlednu. Mezitím moje **aplikace nepojede**? Dobře, půjdu na to chytřeji... Pošlu pull-request a ve své aplikaci nasměruju composer na **svoji forknutou verzi** balíčku a je hotovo. OK, ale než se můj pull-request spojí, tak si musím fork udržovat aktuální... 
+Tak to je přeci jednoduché! Pošlu **pull-request s opravou** a počkám až to autor spojí. To ale může trvat dny i měsíce a tag v nedohlednu. Mezitím moje **aplikace nepojede**? Dobře, půjdu na to chytřeji... 
+
+Pošlu pull-request a ve své aplikaci nasměruju composer na **svoji forknutou verzi** balíčku a je hotovo. OK, ale než se můj pull-request spojí, tak si musím fork udržovat aktuální... 
 
 ### Upravím si soubor lokálně
 Co to tedy udělat trochu na prasáčka? Otevřu si soubor ve vendoru a **opravím si to sám** a bude - ehm počkat... Složku vendor si automaticky vytváří a spravuje [Composer](https://getcomposer.org/) nepřepíše se mi tedy upravený soubor? Přepíše, ale pouze při vydání nové verze balíčku - bezva! Nové verze balíčku nevychází tak často a až vyjde, tak už to bude třeba opravené. 
@@ -36,7 +38,7 @@ Pokud si alespoň na jednu otázku odpovím ano, tak mám opět problém. Spole�
 
 ## cweagans/composer-patches
 
-Naštěstí existuje balíček, který za tebe **vyřeší všechny problémy**, na které jsi zde narazil! [cweagans/composer-patches](https://github.com/cweagans/composer-patches) je balíček, který obsahuje nástroje pro patchování souborů (co je to [patch](https://cs.wikipedia.org/wiki/Patch)?). Zároveň je na tolik chytrý, že poslouchá Composer a při instalaci/aktualizaci balíčku dokáže určit zda pro daný balíček existuje patch a zda ho má aplikovat nebo ho už aplikoval. 
+Naštěstí existuje balíček, který za tebe **vyřeší všechny problémy**, na které jsi zde narazil! [cweagans/composer-patches](https://github.com/cweagans/composer-patches) je balíček, který obsahuje nástroje pro patchování souborů (co je to [patch](https://cs.wikipedia.org/wiki/Patch)?). Zároveň je natolik chytrý, že poslouchá Composer a při instalaci/aktualizaci balíčku dokáže určit, zda pro daný balíček existuje patch a zda ho má aplikovat nebo ho už aplikoval. 
 
 Jak je to možné? Composer při instalaci balíčků vyvolává události, na které `cweagans/composer-patches` poslouchá a podle toho reaguje (jak fungují [události](http://pehapkari.cz/blog/2016/12/05/symfony-event-dispatcher/)?). 
 
