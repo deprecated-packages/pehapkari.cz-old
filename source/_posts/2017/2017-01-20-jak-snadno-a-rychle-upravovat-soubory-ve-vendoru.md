@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Jak snadno a rychle upravovat soubory ve vendoru?"
-perex: "Už si se někdy dostal do situace, kdy jsi potřeboval opravit chybu nějaké závislosti ve složce vendor? Jak takovou úpravu sdílet v týmu s ostatními programátory a jak ji udržet v souboru i po spuštění composeru? V tomto článku se dovíš, jak snadně a elegantně se tento problém dá vyřešit během 1 minuty."
+perex: "Už si se někdy dostal do situace, kdy jsi potřeboval opravit chybu nějaké závislosti ve složce vendor? Jak takovou úpravu sdílet v týmu s ostatními programátory a jak ji udržet v souboru i po spuštění composeru? V tomto článku se dovíš, jak snadno a elegantně se tento problém dá vyřešit během 1 minuty."
 author: 11
 ---
 
@@ -125,7 +125,8 @@ zbytek nech tak jak je. Všimni si, že cesta k souboru **musí být uvedena rel
  - `patches/bugged-file.patch` je relativní cesta k patch souboru.
  
 Toto je základní konfigurace pro lokální patch soubory, ale `cweagans/composer-patches` podporuje celou řadu dalších možností, které najdeš v [readme](https://github.com/cweagans/composer-patches/blob/master/README.md).
- 
+
+
 ### Test
 
 Spustíš příkaz `composer install` nebo `composer update` a ve výpisu z composeru uvidíš text:
@@ -143,7 +144,7 @@ V tuto chvíli máš upravený soubor ve vendor složce. `cweagans/composer-patc
 
 ## Shrnutí
 
-V tomto článku jsi našel nástroj, kterým snadně a rychle řešit buggy ve vendoru a zároveň cestu, kterou můžeš opravy sdílet dál (mezi kolegy, na server apod.). 
+V tomto článku jsi našel nástroj, kterým snadno a rychle řešit buggy ve vendoru a zároveň cestu, kterou můžeš opravy sdílet dál (mezi kolegy, na server apod.). 
 
 Zde je shrnutí v bodech, jak postupovat:
  
