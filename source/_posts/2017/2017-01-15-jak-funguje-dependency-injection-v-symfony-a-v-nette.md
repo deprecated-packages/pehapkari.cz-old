@@ -146,7 +146,7 @@ Na začátku jsme si definovali 3 úkoly, které chceme po spojení DI a contain
 - Závislosti se kontrolují již při sestavení containeru - **NE**
   * Controller není službou v containeru, takže se jeho závislosti nekontrolují.
 - Hned při pohledu na konstruktor je jasné, na čem třída závisí - **NE**
-  * Musíme prohledat celou třídu a najít všechny řádky s `$this->get('whatever');` abychom našli všechny závislosti.
+  * Musíme prohledat celou třídu a najít všechny řádky s `$this->container->get('whatever');` abychom našli všechny závislosti.
 - Eliminace skrytých závislostí - **NE**
   * Existují závislosti na něčem co je potřeba, ale při vytvoření instance to ještě potřeba není.
 
