@@ -3,11 +3,12 @@ layout: post
 title: "Inteligentní debug mode v Nette"
 perex: "Jak se poprat se zapínáním debug módu při vývoji a jeho vypnutím na produkci? A co debug mód v konzoli? Pojďme se podívat, jak to řešit lépe."
 author: 12
+reviewed_by: [1]
 ---
 
 ## Jak se to běžně dělává?
 
-#### 1. Dočasná úprava bootstrap.php
+### 1. Dočasná úprava bootstrap.php
 
 Často jsem se setkal, že programátoři při vývoji zapínají debug mód přímo
 v `bootstrap.php` prostým zavoláním:
@@ -19,7 +20,7 @@ $configurator->setDebugMode(TRUE);
 
 **Nevýhody:** Snadno se omylem commitne zapnutý debug do produkce.
 
-#### 2. Výčet IP adres
+### 2. Výčet IP adres
 
 Do metody `setDebugMode()` jde také předat seznam IP adres, pro které se debug mód zapne:
 
@@ -41,7 +42,7 @@ v něm přehled. Může se také často měnit a tak se stále dokola upravuje k
 použít, pokud máte sdílenou IP adresu. Musíte udržovat výčet hostname vývojových strojů, aby fungoval
 debug i v konzoli.
 
-#### 3. Prázdný výčet
+### 3. Prázdný výčet
 
 Debug lze povolit i s prázným výčtem:
 
@@ -56,7 +57,7 @@ Nette pak do něj automaticky přidá IP adresy `127.0.0.1` a `::1`
 **Nevýhody:** Musíte mít vývojové prostředí nastaveno tak, že se hostname aplikace vždy přeloží na jednu
 z daných IP.
 
-#### 4. Nastavení cokie
+### 4. Nastavení cokie
 
 Debug mód Nette zapne i při přítomnosti určité cookie:
 
@@ -89,7 +90,7 @@ Tím zajistíme, že při přítomnosti proměnné prostředí `NETTE_DEVEL` a j
 debug mód zapne vždy. Aby to fungovalo však musíme tuto proměnnou někde nastavit. Jak to udělat se
 liší podle toho, jak máme PHP nainstalované.
 
-#### PHP jako FPM
+### PHP jako FPM
 
 Pro PHP-FPM proměnnou nejlépe nastavíme v konfiguraci poolu. V mém případě mám konfiguraci hlavního poolu
 v souboru `/etc/php/7.0/fpm/pool.d/www.conf`. Nastavení proměnné pak vypadá takto:
@@ -100,11 +101,11 @@ env[NETTE_DEVEL] = 1
 
 Po nastavení nezapomeňte PHP-FPM restartovat.
 
-#### PHP jako modul Apache
+### PHP jako modul Apache
 
 Pokud máte PHP jako modul webserveru Apache, nejlépe proměnnou nastavíte ve VirtualHostu aplikace:
 
-```
+```bash
 <VirtualHost *:80>
 
     # ...
