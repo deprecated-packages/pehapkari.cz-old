@@ -1,0 +1,10 @@
+{control basketContent}
+
+<table>
+    <tr n:foreach="$products as $product">
+        <td>{$product['id']}</td>
+        <td>{$product['name']}</td>
+        <td>{$product['price']}</td>
+        <td>{control 'addToBasket-' . $product['id']}</td>
+    </tr>
+</table>
