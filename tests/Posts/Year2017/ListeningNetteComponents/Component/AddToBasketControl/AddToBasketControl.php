@@ -32,16 +32,16 @@ final class AddToBasketControl extends Control
 
     public function handleAdd()
     {
-        // There will be some logic with basket.
-        // e.g.: $this->basketFacade->addProduct($this->product);
+	    // Zde může být nějaká složitější logika
+	    // např.: $this->basketFacade->addProduct($this->product);
 
-        // construct event object
-        $productAddedToBasketEvent = new ProductAddedToBasketEvent(
-            $this->product['id'],
-            $this->product['name'],
-            $this->product['price']
-        );
-        $this->eventDispatcher->dispatch(ProductAddedToBasketEvent::class, $productAddedToBasketEvent); // dispatch it!
+	    // vytvoříme instanci události
+	    $productAddedToBasketEvent = new ProductAddedToBasketEvent(
+		    $this->product['id'],
+		    $this->product['name'],
+		    $this->product['price']
+	    );
+	    $this->eventDispatcher->dispatch(ProductAddedToBasketEvent::class, $productAddedToBasketEvent); // vyvoláme událost!
     }
 
 

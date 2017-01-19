@@ -10,7 +10,9 @@ test_slug: ListeningNetteComponents
 
 ## Úvod do problému
 
-U složitějších aplikací může dojit k tomu, že v jednom presenteru máte vloženo více komponent, které mají mezi sebou pomyslnou vazbu. Pokud se stane něco v jedné komponentě, tak je potřeba překreslit (ajaxově snippetem) komponentu druhou apod. Typicky u eshopů se jedná o ten use-case, že při přidání položky do košíku potřebuji překreslit ten malý košík s cenou umístěný většinou v pravo nahoře a má mi vyskočit nějaký popup s podobnými produkty. **Jak elegantně překreslovat komponenty** v závislosti na ajaxových požadavcích? Řešením je použití událostí a jejich posluchačů.
+U složitějších aplikací může dojit k tomu, že v jednom presenteru máte vloženo více komponent, které mají mezi sebou pomyslnou vazbu. Pokud se stane něco v jedné komponentě, tak je potřeba překreslit (ajaxově snippetem) komponentu druhou apod. Typicky u eshopů se jedná o ten use-case, že při přidání položky do košíku potřebuji překreslit ten malý košík s cenou umístěný většinou v pravo nahoře a má mi vyskočit nějaký popup s podobnými produkty. 
+
+**Jak elegantně překreslovat komponenty** v závislosti na ajaxových požadavcích? Řešením je použití událostí a jejich posluchačů.
 
 
 ## Náš CategoryPresenter
@@ -105,7 +107,7 @@ final class CategoryPresenter extends Presenter
 }
 ```
 
-V presenteru `CategoryPresenter` máme zaregistrované komponenty `AddToBasketControl` a `BasketContentControl`. Komponenta `AddToBasketControl` bude sloužit pro přidání produktu do košíku a komponenta `BasketContentControl` nám bude vypisovat produkty v košíku. naším cílem bude po přidání produktu do košíku v komponentě `AddToBasketControl` překreslit komponentu `BasketContentControl` pomocí událostí.
+V presenteru `CategoryPresenter` máme zaregistrované komponenty `AddToBasketControl` a `BasketContentControl`. Komponenta `AddToBasketControl` bude sloužit pro přidání produktu do košíku a komponenta `BasketContentControl` nám bude vypisovat produkty v košíku. Naším cílem bude po přidání produktu do košíku v komponentě `AddToBasketControl` překreslit komponentu `BasketContentControl` pomocí událostí.
 
 
 ## Nástroje
@@ -117,7 +119,7 @@ Budeme potřebovat [Symfony\EventDispatcher](http://symfony.com/doc/current/comp
 
 Vždy jsem si myslel, že **propojit Symfony a Nette** nejde nebo je to velmi složité. No - složité to není, takže s chutí do toho!
 
-Spustíme příkaz `composer require symfony/event-dispatcher` a následně zaregistrujeme `EventDispatcher` do Nette/DI.
+Spustíme příkaz `composer require symfony/event-dispatcher` a následně zaregistrujeme `EventDispatcher` do `Nette/DI`.
 
 ```yaml
 // config.neon
@@ -169,7 +171,9 @@ public function startup()
 ...
 ```
 
-`EventDispatcher` pro přidání nových posluchačů na události používá metodu [addListener](http://symfony.com/doc/current/components/event_dispatcher.html#connecting-listeners), která má dva parametry. První parametrem je název události, na kterou posluchač poslouchá a druhým parametrem je callback, který se zavolá při vyvolání události. Docela jednoduché API, že? :) Přes nově nabyté znalosti tedy **vytvoříme událost**, kterou bude vyvolávat komponenta `AddTobasketControl` a zaregistrujeme komponentu `BasketContentControl` do `EventDispatcher`u jako posluchače této události.
+`EventDispatcher` pro přidání nových posluchačů na události používá metodu [addListener](http://symfony.com/doc/current/components/event_dispatcher.html#connecting-listeners), která má dva parametry. První parametrem je název události, na kterou posluchač poslouchá a druhým parametrem je callback, který se zavolá při vyvolání události. Docela jednoduché API, že? :) 
+
+Přes nově nabyté znalosti tedy **vytvoříme událost**, kterou bude vyvolávat komponenta `AddTobasketControl` a zaregistrujeme komponentu `BasketContentControl` do `EventDispatcher`u jako posluchače této události.
 
 ```php
 // Event/ProductAddedToBasketEvent.php
@@ -284,16 +288,16 @@ final class AddToBasketControl extends Control
 
     public function handleAdd()
     {
-        // There will be some logic with basket.
-        // e.g.: $this->basketFacade->addProduct($this->product);
+        // Zde může být nějaká složitější logika
+        // např.: $this->basketFacade->addProduct($this->product);
 
-        // construct event object
+        // vytvoříme instanci události
         $productAddedToBasketEvent = new ProductAddedToBasketEvent(
             $this->product['id'],
             $this->product['name'],
             $this->product['price']
         );
-        $this->eventDispatcher->dispatch(ProductAddedToBasketEvent::class, $productAddedToBasketEvent); // dispatch it!
+        $this->eventDispatcher->dispatch(ProductAddedToBasketEvent::class, $productAddedToBasketEvent); // vyvoláme událost!
     }
 
 
@@ -323,7 +327,7 @@ final class BasketContentControl extends Control
     private $products = [];
 
 
-	// Tato metoda je zavolána EventSubscriberem, protože je nastavena jako listener callback v CategoryPresenter::startup()
+    // Tuto metodu zavolá EventSubscriber, protože je nastavena jako listener callback v CategoryPresenter::startup()
     public function onProductAddedToBasketEvent(ProductAddedToBasketEvent $productAddedToBasketEvent)
     {
         $product = [
@@ -411,7 +415,9 @@ public function handleAdd()
 }
 ```
 
-U tohoto řešení je problém v tom, že **komponenta** `addToBasketControl` **zná implementaci presenteru**, ve kterém je připojena a spoléhá na to, že je v něm zaregistrovaná componenta s názvem `basketContent`. Pokud bych tedy chtěl komponentu `addToBasketControl` použít v jiném presenteru, musel bych v něm zaregistrovat i komponentu `BasketContentControl`, což je nehezké provázání závislostí. Co pak, když by bylo potřeba, aby na událost `ProductAddedToBasket` poslouchala i jiná komponenta? OK - upravíme metodu na:
+U tohoto řešení je problém v tom, že **komponenta** `addToBasketControl` **zná implementaci presenteru**, ve kterém je připojena a spoléhá na to, že je v něm zaregistrovaná componenta s názvem `basketContent`. Pokud bych tedy chtěl komponentu `addToBasketControl` použít v jiném presenteru, musel bych v něm zaregistrovat i komponentu `BasketContentControl`, což je nehezké provázání závislostí. 
+
+Co pak, když by bylo potřeba, aby na událost `ProductAddedToBasket` poslouchala i jiná komponenta? OK - upravíme metodu na:
 
 
 ```php

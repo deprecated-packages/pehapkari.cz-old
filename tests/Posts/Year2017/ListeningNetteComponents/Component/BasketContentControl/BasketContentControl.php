@@ -17,7 +17,7 @@ final class BasketContentControl extends Control
     private $products = [];
 
 
-    // Tato metoda je zavolána EventSubscriberem, protože je nastavena jako listener callback v CategoryPresenter::startup()
+    // Tuto metodu zavolá EventSubscriber, protože je nastavena jako listener callback v CategoryPresenter::startup()
     public function onProductAddedToBasketEvent(ProductAddedToBasketEvent $productAddedToBasketEvent)
     {
         $product = [
