@@ -25,7 +25,7 @@ Mějmě například takovýto presenter:
 
 use Nette\Application\UI\Multiplier;
 use Nette\Application\UI\Presenter;
-use Component\AddTocontrolBasketControl\AddToBasketControl;
+use Component\AddToBasketControl\AddToBasketControl;
 use Component\AddToBasketControl\AddToBasketControlFactoryInterface;
 use Component\BasketContentControl\BasketContentControl;
 use Component\BasketContentControl\BasketContentControlFactoryInterface;
@@ -253,7 +253,7 @@ public function startup()
 
 Tak už máme `EventDispatcher` napojený do Nette. Také máme komponentu `BasketContentControl` zaregistrovanou jako posluchače události `ProductAddedToBasketEvent`. Takže je na řadě **samotné vyvolání události**. 
 
-To se udělá opět velmi snadno - konkrétně přes metodu [dispatch](http://symfony.com/doc/current/components/event_dispatcher`````.html#dispatch-the-event), která je nečekaně součástí `EventDispatcher`u. Metoda má opět dva parametry. První parametr je název události, která se bude vyvolávat (na tento název jsou zaregistrováni posluchači). Druhý parametr je samotná instance události, přes kterou můžete předávat data do posluchačů. 
+To se udělá opět velmi snadno - konkrétně přes metodu [dispatch](http://symfony.com/doc/current/components/event_dispatcher.html#dispatch-the-event), která je nečekaně součástí `EventDispatcher`u. Metoda má opět dva parametry. První parametr je název události, která se bude vyvolávat (na tento název jsou zaregistrováni posluchači). Druhý parametr je samotná instance události, přes kterou můžete předávat data do posluchačů. 
 
 Dost teorie - **chci vyvolat svoji událost**!
 
