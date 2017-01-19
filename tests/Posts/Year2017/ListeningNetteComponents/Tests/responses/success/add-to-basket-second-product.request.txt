@@ -1,31 +1,31 @@
-<div id="snippet-basketContent-content">	<table>
-		<tr>
-			<td>2</td>
-			<td>Red socks</td>
-			<td>29</td>
-		</tr>
-	</table>
+<div id="snippet-basketContent-content">    <table>
+        <tr>
+            <td>2</td>
+            <td>Red socks</td>
+            <td>29</td>
+        </tr>
+    </table>
 </div>
 <table>
-	<tr>
-		<td>1</td>
-		<td>T-Shirt</td>
-		<td>100</td>
-		<td><a href="/?do=addToBasket-1-add">Přidat do košíku</a>
+    <tr>
+        <td>1</td>
+        <td>T-Shirt</td>
+        <td>100</td>
+        <td><a href="/?do=addToBasket-1-add">Přidat do košíku</a>
 </td>
-	</tr>
-	<tr>
-		<td>2</td>
-		<td>Red socks</td>
-		<td>29</td>
-		<td><a href="/?do=addToBasket-2-add">Přidat do košíku</a>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Red socks</td>
+        <td>29</td>
+        <td><a href="/?do=addToBasket-2-add">Přidat do košíku</a>
 </td>
-	</tr>
-	<tr>
-		<td>3</td>
-		<td>Green hat</td>
-		<td>99</td>
-		<td><a href="/?do=addToBasket-3-add">Přidat do košíku</a>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Green hat</td>
+        <td>99</td>
+        <td><a href="/?do=addToBasket-3-add">Přidat do košíku</a>
 </td>
-	</tr>
+    </tr>
 </table>
