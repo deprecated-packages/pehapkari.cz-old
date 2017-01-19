@@ -6,7 +6,6 @@ namespace Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Event;
 
 use Symfony\Component\EventDispatcher\Event;
 
-
 final class ProductAddedToBasketEvent extends Event
 {
 
@@ -50,5 +49,4 @@ final class ProductAddedToBasketEvent extends Event
     {
         return $this->price;
     }
-
 }

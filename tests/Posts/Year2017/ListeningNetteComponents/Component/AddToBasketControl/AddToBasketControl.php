@@ -8,10 +8,8 @@ use Nette\Application\UI\Control;
 use Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Event\ProductAddedToBasketEvent;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-
 final class AddToBasketControl extends Control
 {
-
     /**
      * @var array
      */
@@ -32,16 +30,19 @@ final class AddToBasketControl extends Control
 
     public function handleAdd()
     {
-	    // Zde může být nějaká složitější logika
-	    // např.: $this->basketFacade->addProduct($this->product);
+        // Zde může být nějaká složitější logika
+        // např.: $this->basketFacade->addProduct($this->product);
 
-	    // vytvoříme instanci události
-	    $productAddedToBasketEvent = new ProductAddedToBasketEvent(
-		    $this->product['id'],
-		    $this->product['name'],
-		    $this->product['price']
-	    );
-	    $this->eventDispatcher->dispatch(ProductAddedToBasketEvent::class, $productAddedToBasketEvent); // vyvoláme událost!
+        // vytvoříme instanci události
+        $productAddedToBasketEvent = new ProductAddedToBasketEvent(
+            $this->product['id'],
+            $this->product['name'],
+            $this->product['price']
+        );
+        $this->eventDispatcher->dispatch(
+            ProductAddedToBasketEvent::class,
+            $productAddedToBasketEvent
+        ); // vyvoláme událost!
     }
 
 
@@ -49,5 +50,4 @@ final class AddToBasketControl extends Control
     {
         $this->template->render(__DIR__ . '/templates/default.latte');
     }
-
 }

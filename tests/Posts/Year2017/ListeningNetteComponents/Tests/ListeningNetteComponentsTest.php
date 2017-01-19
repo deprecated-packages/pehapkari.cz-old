@@ -12,7 +12,6 @@ use Nette\Bridges\ApplicationLatte\Template;
 use Nette\DI\Container;
 use PHPUnit\Framework\TestCase;
 
-
 final class ListeningNetteComponentsTest extends TestCase
 {
 
@@ -47,7 +46,10 @@ final class ListeningNetteComponentsTest extends TestCase
 
         $this->assertInstanceOf(TextResponse::class, $response);
         $this->assertInstanceOf(Template::class, $response->getSource());
-        $this->assertSame(file_get_contents(__DIR__ . '/responses/success/basic.request.txt'), (string) $response->getSource());
+        $this->assertSame(
+            file_get_contents(__DIR__ . '/responses/success/basic.request.txt'),
+            (string) $response->getSource()
+        );
     }
 
 
@@ -59,7 +61,10 @@ final class ListeningNetteComponentsTest extends TestCase
 
         $this->assertInstanceOf(TextResponse::class, $response);
         $this->assertInstanceOf(Template::class, $response->getSource());
-        $this->assertSame(file_get_contents(__DIR__ . '/responses/success/add-to-basket-first-product.request.txt'), (string) $response->getSource());
+        $this->assertSame(
+            file_get_contents(__DIR__ . '/responses/success/add-to-basket-first-product.request.txt'),
+            (string) $response->getSource()
+        );
     }
 
 
@@ -71,7 +76,10 @@ final class ListeningNetteComponentsTest extends TestCase
 
         $this->assertInstanceOf(TextResponse::class, $response);
         $this->assertInstanceOf(Template::class, $response->getSource());
-        $this->assertSame(file_get_contents(__DIR__ . '/responses/success/add-to-basket-second-product.request.txt'), (string) $response->getSource());
+        $this->assertSame(
+            file_get_contents(__DIR__ . '/responses/success/add-to-basket-second-product.request.txt'),
+            (string) $response->getSource()
+        );
     }
 
 
@@ -83,16 +91,18 @@ final class ListeningNetteComponentsTest extends TestCase
 
         $this->assertInstanceOf(TextResponse::class, $response);
         $this->assertInstanceOf(Template::class, $response->getSource());
-        $this->assertSame(file_get_contents(__DIR__ . '/responses/success/add-to-basket-third-product.request.txt'), (string) $response->getSource());
+        $this->assertSame(
+            file_get_contents(__DIR__ . '/responses/success/add-to-basket-third-product.request.txt'),
+            (string) $response->getSource()
+        );
     }
 
 
     protected function createPresenter(): IPresenter
     {
         $categoryPresenter = $this->presenterFactory->createPresenter(self::PRESENTER_NAME);
-        $categoryPresenter->autoCanonicalize = FALSE;
+        $categoryPresenter->autoCanonicalize = false;
 
         return $categoryPresenter;
     }
-
 }

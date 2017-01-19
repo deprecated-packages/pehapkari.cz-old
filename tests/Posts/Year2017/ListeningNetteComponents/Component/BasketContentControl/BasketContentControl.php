@@ -7,7 +7,6 @@ namespace Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Compon
 use Nette\Application\UI\Control;
 use Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Event\ProductAddedToBasketEvent;
 
-
 final class BasketContentControl extends Control
 {
 
@@ -40,5 +39,4 @@ final class BasketContentControl extends Control
 
         $this->template->render(__DIR__ . '/templates/default.latte');
     }
-
 }

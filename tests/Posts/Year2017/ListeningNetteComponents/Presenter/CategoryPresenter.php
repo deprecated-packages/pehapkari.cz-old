@@ -6,13 +6,14 @@ namespace Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Presen
 
 use Nette\Application\UI\Multiplier;
 use Nette\Application\UI\Presenter;
-use Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Component\AddToBasketControl\AddToBasketControl;
-use Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Component\AddToBasketControl\AddToBasketControlFactoryInterface;
-use Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Component\BasketContentControl\BasketContentControl;
-use Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Component\BasketContentControl\BasketContentControlFactoryInterface;
+use Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Component\AddToBasketControl\
+    AddToBasketControlFactoryInterface;
+use Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Component\BasketContentControl\
+    BasketContentControl;
+use Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Component\BasketContentControl\
+    BasketContentControlFactoryInterface;
 use Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Event\ProductAddedToBasketEvent;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-
 
 final class CategoryPresenter extends Presenter
 {
@@ -88,7 +89,7 @@ final class CategoryPresenter extends Presenter
         // Musíme použít Multiplier, protože potřebujeme samostatnou instanci pro každý produkt.
         // Co je to Multiplier? Více informací najdeš ve článku https://pla.nette.org/cs/multiplier.
 
-        return new Multiplier(function($productId) {
+        return new Multiplier(function ($productId) {
             $product = [];
             foreach (self::PRODUCTS as $productData) {
                 if ($productData['id'] === (int) $productId) {
@@ -106,5 +107,4 @@ final class CategoryPresenter extends Presenter
     {
         return $this->basketContentControlFactory->create();
     }
-
 }
