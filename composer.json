@@ -2,15 +2,16 @@
     "name": "pehapkari/website",
     "license": "MIT",
     "require": {
-        "symplify/statie": "^1.3",
-        "symfony/console": "^3.1",
-        "symfony/event-dispatcher": "^3.1"
+        "symplify/statie": "^1.3"
     },
     "require-dev": {
         "nette/application": "^2.4",
-        "phpunit/phpunit": "^5.6",
-        "symplify/coding-standard": "^1.2",
-        "nette/security": "^2.4"
+        "nette/security": "^2.4",
+        "latte/latte": "^2.4",
+        "symfony/console": "^3.1",
+        "symfony/event-dispatcher": "^3.1",
+        "phpunit/phpunit": "^5.7",
+        "symplify/coding-standard": "^1.3"
     },
     "autoload": {
         "psr-4": {
