@@ -35,6 +35,15 @@ id: slovnicek
                                 <sup>[<a href="https://cs.wikipedia.org/wiki/Bublinkov%C3%A9_%C5%99azen%C3%AD">BubbleSort</a>]</sup>
                             </dd>
 
+                            <dt>AMQP&nbsp;<sup><a id="amqp" href="#amqp">&hearts;</a></sup></dt>
+                            <dd>
+                                <a href="https://www.amqp.org/">AMQP</a> (Advanced Message Queuing Protocol) je otevřený standard protokolu
+                                pro <a href="#messaging">messaging</a>. Pro posílání těchto zpráv se používá SW nazývaný broker, jako např.
+                                <a href="#rabbitmq">RabbitMQ</a>. V PHP tento protokol implementuje např. knihovna
+                                <a href="https://github.com/php-amqplib/php-amqplib">php-amqplib</a>.
+                                <sup>[<a href="https://en.wikipedia.org/wiki/Advanced_Message_Queuing_Protocol">wiki</a>]</sup>
+                            </dd>
+
                             <dt>Apache&nbsp;<sup><a id="apache" href="#apache">&hearts;</a></sup></dt>
                             <dd>
                                 Apache je zřejmě nejpopulárnější <a href="#webserver">webserver</a>, který běží téměř na každém hostingu.
@@ -107,8 +116,27 @@ id: slovnicek
                             <dd>
                                 Vkládání závislostí (anglicky Dependency Injection - DI) je v objektově orientovaném programování technika pro vkládání
                                 závislostí mezi jednotlivými komponentami programu tak, aby jedna komponenta mohla používat druhou.
+                                Podstatou Dependency Injection je odebrat třídám zodpovědnost za získávání objektů, které potřebují
+                                ke své činnosti (tzv. <a href="#service">služeb</a>) a místo toho jim služby předávat při vytváření.
                                 <sup>[<a href="https://cs.wikipedia.org/wiki/Vkl%C3%A1d%C3%A1n%C3%AD_z%C3%A1vislost%C3%AD">wiki</a>]</sup>
                                 <sup>[<a href="https://doc.nette.org/cs/2.4/dependency-injection">Příklad použití</a>]</sup>
+                            </dd>
+
+                            <dt>DI container&nbsp;<sup><a id="di-container" href="#di-container">&hearts;</a></sup></dt>
+                            <dd>
+                                DI kontejner nebo také systémový kontejner je v podstatě <a href="#factory">tovární třída</a>
+                                pro <a href="#service">služby</a> aplikace. DI kontejner za nás také řeší závislosti
+                                služeb mezi sebou.
+                            </dd>
+
+                            <dt>Factory&nbsp;<sup><a id="factory" href="#factory">&hearts;</a></sup></dt>
+                            <dd>
+                                Vytváření objektů často vyžaduje komplexní procesy nevhodné pro umístění do třídy vyždující
+                                danou instanci. Vytvoření objektu může vést k významné duplikaci kódu, může vyžadovat informace,
+                                které nejsou dostupné v aktuálním kontextu, nemusí poskytovat dostatečnou úroveň abstrakce
+                                nebo nemusí být součástí zopovědnosti daného objektu. <a href="#design-pattern">Návrhový vzor</a>
+                                factory řeší tyto problémy.
+                                <sup>[<a href="https://en.wikipedia.org/wiki/Factory_method_pattern">wiki</a>]</sup>
                             </dd>
 
                             <dt>Framework&nbsp;<sup><a id="framework" href="#framework">&hearts;</a></sup></dt>
@@ -179,14 +207,11 @@ id: slovnicek
                                 <sup>[<a href="http://php.net/manual/en/language.oop5.decon.php">doc</a>]</sup>
                             </dd>
 
-                            <dt>Monolit&nbsp;<sup><a id="monolit" href="#monolit">&hearts;</a></sup></dt>
+                            <dt>Messaging&nbsp;<sup><a id="messaging" href="#messaging">&hearts;</a></sup></dt>
                             <dd>
-                                Monolitem rozumíme obvykle velký nerozdělitelný systém. Monolit funguje sám o sobě
-                                bez návaznosti na jiné systémy, s čímž souvisí jeho vysoká komplexita. Monolit není
-                                obvykle jednoduché pochopit jako celek a může obsahovat velké množství skrytých závislostí.
-                                Skryté závislosti mohou být jak funkční, tak výkonnostní.
-                                <sup>[<a href="https://en.wikipedia.org/wiki/Monolithic_application">wiki</a>]</sup>
-                                <sup>[<a href="http://martinfowler.com/bliki/MonolithFirst.html">Fowler</a>]</sup>
+                                Messaging umožňuje aplikacím se propojovat a škálovat pomocí odesílání asynchronních zpráv.
+                                Aplikace se pomocí něj mohou spojit jedna s druhou jako komponenty větší aplikace. Jako
+                                prostředník mezi odesláním a příjmem těchto zpráv slouží tzv. broker, např. <a href="#rabbitmq">RabbitMQ</a>.
                             </dd>
 
                             <dt>Microservice&nbsp;<sup><a id="microservice" href="#microservice">&hearts;</a></sup></dt>
@@ -198,9 +223,19 @@ id: slovnicek
                                 <sup>[<a href="http://www.martinfowler.com/articles/microservices.html">Fowler</a>]</sup>
                             </dd>
 
+                            <dt>Monolit&nbsp;<sup><a id="monolit" href="#monolit">&hearts;</a></sup></dt>
+                            <dd>
+                                Monolitem rozumíme obvykle velký nerozdělitelný systém. Monolit funguje sám o sobě
+                                bez návaznosti na jiné systémy, s čímž souvisí jeho vysoká komplexita. Monolit není
+                                obvykle jednoduché pochopit jako celek a může obsahovat velké množství skrytých závislostí.
+                                Skryté závislosti mohou být jak funkční, tak výkonnostní.
+                                <sup>[<a href="https://en.wikipedia.org/wiki/Monolithic_application">wiki</a>]</sup>
+                                <sup>[<a href="http://martinfowler.com/bliki/MonolithFirst.html">Fowler</a>]</sup>
+                            </dd>
+
                             <dt>MVC&nbsp;<sup><a id="mvc" href="#mvc">&hearts;</a></sup></dt>
                             <dd>
-                                MVC je návrhový vzor, který odděluje aplikační logiku od zbytku <a href="#ui">uživatelského rozhraní</a>, rozdělením aplikace do tří navzájem spolupracujících částí:
+                                MVC je <a href="#design-pattern">návrhový vzor</a>, který odděluje aplikační logiku od zbytku <a href="#ui">uživatelského rozhraní</a>, rozdělením aplikace do tří navzájem spolupracujících částí:
 								<ul>
                                     <li><b>Controller</b> - zpracovává uživatelské příkazy a manipuluje s modelem</li>
                                     <li><b>Model</b> - modelem aplikace je myšlena veškerá aplikační logika včetně persistence dat do databáze</li>
@@ -223,6 +258,16 @@ id: slovnicek
                                 namespace se v PHP od verze 5.3 používají klíčová slova <code>namespace</code> a <code>use</code>.
                                 <sup>[<a href="http://php.net/manual/en/language.namespaces.rationale.php">doc</a>]</sup>
                                 <sup>[<a href="https://en.wikipedia.org/wiki/Namespace">wiki</a>]</sup>
+                            </dd>
+
+                            <dt>Návrhový vzor&nbsp;<sup><a id="design-pattern" href="#design-pattern">&hearts;</a></sup></dt>
+                            <dd>
+                                Návrhový vzor (anglicky design pattern) v softwarovém inženýrství představuje obecné řešení problému,
+                                které se využívá při návrhu počítačových programů. Návrhový vzor není knihovnou nebo částí zdrojového
+                                kódu, která by se dala přímo vložit do našeho programu. Jedná se o popis řešení problému nebo šablonu,
+                                která může být použita v různých situacích. Objektově orientované návrhové vzory typicky ukazují vztahy
+                                a interakce mezi třídami a objekty, aniž by určovaly implementaci konkrétní třídy.
+                                <sup>[<a href="https://cs.wikipedia.org/wiki/N%C3%A1vrhov%C3%BD_vzor">wiki</a>]</sup>
                             </dd>
 
                             <dt>Nginx&nbsp;<sup><a id="nginx" href="#nginx">&hearts;</a></sup></dt>
@@ -264,6 +309,14 @@ id: slovnicek
                                 <sup>[<a href="https://cs.wikipedia.org/wiki/Prom%C4%9Bnn%C3%A1_(programov%C3%A1n%C3%AD)">wiki</a>]</sup>
                                 <br><br>
                                 <pre><code>$test = 5; // promenna s nazvem $test</code></pre>
+                            </dd>
+
+                            <dt>RabbitMQ&nbsp;<sup><a id="rabbitmq" href="#rabbitmq">&hearts;</a></sup></dt>
+                            <dd>
+                                <a href="https://www.rabbitmq.com/">RabbitMQ</a> je open source implementací tzv. messaging
+                                brokeru - zprostředkovatele pro <a href="#messaging">messaging</a>. Poskytuje aplikacím
+                                společnou platformu pro posílání a příjem zpráv a zprávám bezpečné místo k životu, dokud
+                                nejsou přijmuty.
                             </dd>
 
                             <dt>Redis&nbsp;<sup><a id="redis" href="#redis">&hearts;</a></sup></dt>
@@ -317,9 +370,15 @@ echo factorial(5); // 120
                                 <sup>[<a href="https://en.wikipedia.org/wiki/Interface_(computing)">wiki</a>]</sup>
                             </dd>
 
+                            <dt>Service&nbsp;<sup><a id="service" href="#service">&hearts;</a></sup></dt>
+                            <dd>
+                                Service, neboli služba je obyčejná třída, jako třeba instance databázové třídy Connection.
+                                Jen v souvislosti s <a href="#di-container">DI kontejnerem</a> jí říkáme služba.
+                            </dd>
+
                             <dt>Singleton&nbsp;<sup><a id="singleton" href="#singleton">&hearts;</a></sup></dt>
                             <dd>
-                                Singleton je návrhový vzor, který umožňuje vytvořit pouze jednu <a href="#instance">instaci</a> <a href="#trida">třídy</a>
+                                Singleton je <a href="#design-pattern">návrhový vzor</a>, který umožňuje vytvořit pouze jednu <a href="#instance">instaci</a> <a href="#trida">třídy</a>
                                 např. přes statickou metodu <code>getInstance()</code>. Klasické vytvoření instance je znemožněno označením
                                 <a href="#konstruktor">konstruktoru</a> jako private. Použit lze na globální objekty jako např. logger, mailer apod.
                                 V dnešní době je považován za anti-pattern, protože jde proti principům testovatelnosti a <a href="#di">dependency injection</a>.
