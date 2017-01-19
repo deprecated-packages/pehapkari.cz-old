@@ -25,7 +25,7 @@ Mějmě například takovýto presenter:
 
 use Nette\Application\UI\Multiplier;
 use Nette\Application\UI\Presenter;
-use Component\AddToBasketControl\AddToBasketControl;
+use Component\AddTocontrolBasketControl\AddToBasketControl;
 use Component\AddToBasketControl\AddToBasketControlFactoryInterface;
 use Component\BasketContentControl\BasketContentControl;
 use Component\BasketContentControl\BasketContentControlFactoryInterface;
@@ -253,7 +253,7 @@ public function startup()
 
 Tak už máme `EventDispatcher` napojený do Nette. Také máme komponentu `BasketContentControl` zaregistrovanou jako posluchače události `ProductAddedToBasketEvent`. Takže je na řadě **samotné vyvolání události**. 
 
-To se udělá opět velmi snadno - konkrétně přes metodu [dispatch](http://symfony.com/doc/current/components/event_dispatcher.html#dispatch-the-event), která je nečekaně součástí `EventDispatcher`u. Metoda má opět dva parametry. První parametr je název události, která se bude vyvolávat (na tento název jsou zaregistrováni posluchači). Druhý parametr je samotná instance události, přes kterou můžete předávat data do posluchačů. 
+To se udělá opět velmi snadno - konkrétně přes metodu [dispatch](http://symfony.com/doc/current/components/event_dispatcher`````.html#dispatch-the-event), která je nečekaně součástí `EventDispatcher`u. Metoda má opět dva parametry. První parametr je název události, která se bude vyvolávat (na tento název jsou zaregistrováni posluchači). Druhý parametr je samotná instance události, přes kterou můžete předávat data do posluchačů. 
 
 Dost teorie - **chci vyvolat svoji událost**!
 
@@ -360,25 +360,25 @@ final class BasketContentControl extends Control
 
 V šabloně presenteru si vykreslíme komponentu `BasketContentControl` a vypíšeme seznam produktů.
 
-```smarty
-// /templates/Category/default.latte
 
-{control basketContent}
+```html
+<!-- /templates/Category/default.latte -->
 
+❴control basketContent❵
 <table>
     <tr n:foreach="$products as $product">
-        <td>{$product['id']}</td>
-        <td>{$product['name']}</td>
-        <td>{$product['price']}</td>
-        <td>{control 'addToBasket-' . $product['id']}</td>
+        <td>❴$product['id']❵</td>
+        <td>❴$product['name']❵</td>
+        <td>❴$product['price']❵</td>
+        <td>❴control 'addToBasket-' . $product['id']❵</td>
     </tr>
 </table>
 ```
 
 Následuje šablona pro vykreslení odkazu pro přidání produktu do košíku.
 
-```smarty
-// Component/AddToBasketControl/templates/default.latte
+```html
+<!--Component/AddToBasketControl/templates/default.latte -->
 
 <a n:href="add!" class="ajax">Přidat do košíku</a>
 ```
@@ -387,18 +387,19 @@ Následuje šablona pro vykreslení odkazu pro přidání produktu do košíku.
 
 A do třetice je tu šablona pro vykreslení obsahu košíku.
 
-```smarty
-// Component/BasketContentControl/templates/default.latte
 
-{snippet content}
+```html
+<!-- Component/BasketContentControl/templates/default.latte -->
+
+❴snippet content❵
     <table>
         <tr n:foreach="$products as $product">
-            <td>{$product['id']}</td>
-            <td>{$product['name']}</td>
-            <td>{$product['price']}</td>
+            <td>❴$product['id']❵</td>
+            <td>❴$product['name']❵</td>
+            <td>❴$product['price']❵</td>
         </tr>
     </table>
-{/snippet}
+❴/snippet❵
 ```
 
 Nyní máme vše hotové a **můžeme spustit aplikaci**!
