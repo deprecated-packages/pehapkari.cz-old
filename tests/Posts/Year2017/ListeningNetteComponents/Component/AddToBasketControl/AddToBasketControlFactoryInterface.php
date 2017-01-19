@@ -8,6 +8,6 @@ namespace Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Compon
 interface AddToBasketControlFactoryInterface
 {
 
-	function create(array $product): AddToBasketControl;
+    function create(array $product): AddToBasketControl;
 
 }

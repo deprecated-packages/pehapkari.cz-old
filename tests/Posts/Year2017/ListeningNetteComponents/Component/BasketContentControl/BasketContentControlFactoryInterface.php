@@ -8,6 +8,6 @@ namespace Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Compon
 interface BasketContentControlFactoryInterface
 {
 
-	function create(): BasketContentControl;
+    function create(): BasketContentControl;
 
 }
