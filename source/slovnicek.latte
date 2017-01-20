@@ -6,132 +6,159 @@ id: slovnicek
 
 {block content}
     <div class="container section">
-        <div class="row text-center">
-            <div class="col-md-12">
-                <h2>
-                    <em class="fa fa-language fa-fw"></em>
-                    Slo<small>(v)</small>níček
-                </h2>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 text-left">
+                <div class="text-center">
+                    <h2>
+	                    <em class="fa fa-language fa-fw"></em>
+	                    Slo<small>(v)</small>níček
+                    </h2>
+                </div>
 
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-1 text-left">
-                        <dl id="vocabulary" class="dl-horizontal">
-                            {* Please keep alphabetical order *}
+                <dl id="vocabulary" class="dl-horizontal">
+                    {* Please keep alphabetical order *}
 
-                            <dt>Agile&nbsp;<sup><a id="agile" href="#agile">&hearts;</a></sup></dt>
-                            <dd>
-                                Agile je způsob myšlení a přístupu k práci, který upřednosťnuje pružnost a rychlou reakci na měnící se prostředí, před zdlouhavými procesy,
-                                přípravami na vše a fixními plány s odhady budoucnosti. Ve vývoji softwaru se o agile mluví od vzniku agilního manifestu, který
-                                definuje základní stavební kameny pro agilní kulturu.
-                                <sup>[<a href="http://agilemanifesto.org/">Manifest</a>]</sup>
-                                <sup>[<a href="https://en.wikipedia.org/wiki/Agile_software_development">wiki</a>]</sup>
-                            </dd>
+                    <dt>Agile&nbsp;<sup><a id="agile" href="#agile">&hearts;</a></sup></dt>
+                    <dd>
+                        Agile je způsob myšlení a přístupu k práci, který upřednosťnuje pružnost a rychlou reakci na měnící se prostředí, před zdlouhavými procesy,
+                        přípravami na vše a fixními plány s odhady budoucnosti. Ve vývoji softwaru se o agile mluví od vzniku agilního manifestu, který
+                        definuje základní stavební kameny pro agilní kulturu.
+                        <sup>[<a href="http://agilemanifesto.org/">Manifest</a>]</sup>
+                        <sup>[<a href="https://en.wikipedia.org/wiki/Agile_software_development">wiki</a>]</sup>
+                    </dd>
 
-                            <dt>Algoritmus&nbsp;<sup><a id="algoritmus" href="#algoritmus">&hearts;</a></sup></dt>
-                            <dd>
-                                Algoritmem při programování je myšlen teoretický popis po sobě jdoucích kroků, které vedou k vyřešení určité úlohy. K popisu algoritmu se dá
-                                použít vývojový diagram nebo i obyčejná tužka a papír. Typickým akademickým zástupcem počítačového algoritmu je např. třídící algoritmus BubbleSort.
-                                <sup>[<a href="https://cs.wikipedia.org/wiki/Algoritmus">wiki</a>]</sup>
-                                <sup>[<a href="https://cs.wikipedia.org/wiki/Bublinkov%C3%A9_%C5%99azen%C3%AD">BubbleSort</a>]</sup>
-                            </dd>
+                    <dt>Algoritmus&nbsp;<sup><a id="algoritmus" href="#algoritmus">&hearts;</a></sup></dt>
+                    <dd>
+                        Algoritmem při programování je myšlen teoretický popis po sobě jdoucích kroků, které vedou k vyřešení určité úlohy. K popisu algoritmu se dá
+                        použít vývojový diagram nebo i obyčejná tužka a papír. Typickým akademickým zástupcem počítačového algoritmu je např. třídící algoritmus BubbleSort.
+                        <sup>[<a href="https://cs.wikipedia.org/wiki/Algoritmus">wiki</a>]</sup>
+                        <sup>[<a href="https://cs.wikipedia.org/wiki/Bublinkov%C3%A9_%C5%99azen%C3%AD">BubbleSort</a>]</sup>
+                    </dd>
 
-                            <dt>Apache&nbsp;<sup><a id="apache" href="#apache">&hearts;</a></sup></dt>
-                            <dd>
-                                Apache je zřejmě nejpopulárnější <a href="#webserver">webserver</a>, který běží téměř na každém hostingu.
-                                Tento webserver lze považovat za alternativu k <a href="#nginx">Nginx</a>.
-                                <sup>[<a href="https://www.apache.org/">Apache homepage</a>]</sup>
-                            </dd>
+                    <dt>AMQP&nbsp;<sup><a id="amqp" href="#amqp">&hearts;</a></sup></dt>
+                    <dd>
+                        <a href="https://www.amqp.org/">AMQP</a> (Advanced Message Queuing Protocol) je otevřený standard protokolu
+                        pro <a href="#messaging">messaging</a>. Pro posílání těchto zpráv se používá SW nazývaný broker, jako např.
+                        <a href="#rabbitmq">RabbitMQ</a>. V PHP tento protokol implementuje např. knihovna
+                        <a href="https://github.com/php-amqplib/php-amqplib">php-amqplib</a>.
+                        <sup>[<a href="https://en.wikipedia.org/wiki/Advanced_Message_Queuing_Protocol">wiki</a>]</sup>
+                    </dd>
 
-                            <dt>Autoloader&nbsp;<sup><a id="autoloader" href="#autoloader">&hearts;</a></sup></dt>
-                            <dd>
-                                Takto se označuje skript, který umožňuje <strong>automatické načítání tříd</strong>.
-                                Nemusím tak ručně vkládat odkazy na soubory s definicí tříd které v kódu používám (náhrada za <code>include</code> či <code>require</code>).
-                                To ušetří čas, zjednoduší údržbu aplikace a <strong>pohodlněji se programuje</strong>.
-                                Autoloader můžete vytvářet sami, využít generovaný <a href="#composer">Composerem</a> nebo obojí.
-                                <sup>[<a href="http://php.net/manual/en/language.oop5.autoload.php">PHP Autoloading Classes</a>]</sup>
-                                <sup>[<a href="http://www.php-fig.org/psr/psr-4/">PSR-4 Autoloader</a>]</sup>
-                            </dd>
+                    <dt>Apache&nbsp;<sup><a id="apache" href="#apache">&hearts;</a></sup></dt>
+                    <dd>
+                        Apache je zřejmě nejpopulárnější <a href="#webserver">webserver</a>, který běží téměř na každém hostingu.
+                        Tento webserver lze považovat za alternativu k <a href="#nginx">Nginx</a>.
+                        <sup>[<a href="https://www.apache.org/">Apache homepage</a>]</sup>
+                    </dd>
 
-                            <dt>Composer&nbsp;<sup><a id="composer" href="#composer">&hearts;</a></sup></dt>
-                            <dd>
-                                Composer je <strong>správce závislostí pro PHP</strong>.
-                                Umožňuje snadno instalovat různé knihovny v požadovaných verzích a jejich aktualizaci.
-                                Také vytváří <a href="#autoloader">autoloader</a> (nejen) nainstalovaných knihoven.
-                                <sup>[<a href="https://getcomposer.org/">Composer homepage</a>]</sup>
-                            </dd>
+                    <dt>Autoloader&nbsp;<sup><a id="autoloader" href="#autoloader">&hearts;</a></sup></dt>
+                    <dd>
+                        Takto se označuje skript, který umožňuje <strong>automatické načítání tříd</strong>.
+                        Nemusím tak ručně vkládat odkazy na soubory s definicí tříd které v kódu používám (náhrada za <code>include</code> či <code>require</code>).
+                        To ušetří čas, zjednoduší údržbu aplikace a <strong>pohodlněji se programuje</strong>.
+                        Autoloader můžete vytvářet sami, využít generovaný <a href="#composer">Composerem</a> nebo obojí.
+                        <sup>[<a href="http://php.net/manual/en/language.oop5.autoload.php">PHP Autoloading Classes</a>]</sup>
+                        <sup>[<a href="http://www.php-fig.org/psr/psr-4/">PSR-4 Autoloader</a>]</sup>
+                    </dd>
 
-                            <dt>Cookies&nbsp;<sup><a id="cookies" href="#cookies">&hearts;</a></sup></dt>
-                            <dd>
-                                Cookies jsou kousky dat uložené u klienta (v prohlížeči) přenášená při každém HTTP požadavku.
-                                Cookies umožňují stavovost komunikace, což zahrnuje přihlašování, personalizaci, cílení reklam, nákupní košík, atd.
-                                <sup>[<a href="https://en.wikipedia.org/wiki/HTTP_cookie">wiki</a>]</sup>
-                            </dd>
+                    <dt>Composer&nbsp;<sup><a id="composer" href="#composer">&hearts;</a></sup></dt>
+                    <dd>
+                        Composer je <strong>správce závislostí pro PHP</strong>.
+                        Umožňuje snadno instalovat různé knihovny v požadovaných verzích a jejich aktualizaci.
+                        Také vytváří <a href="#autoloader">autoloader</a> (nejen) nainstalovaných knihoven.
+                        <sup>[<a href="https://getcomposer.org/">Composer homepage</a>]</sup>
+                    </dd>
 
-                            <dt>CRUD&nbsp;<sup><a id="crud" href="#crud">&hearts;</a></sup></dt>
-                            <dd>
-                                Jedná se o návrh který využívá 4 základní operace s daty:
-                                <ul>
-                                    <li><strong>C</strong>reate pro vytvoření záznamu</li>
-                                    <li><strong>R</strong>ead pro přečtení záznamu</li>
-                                    <li><strong>U</strong>pdate pro aktualizaci záznamu a konečně</li>
-                                    <li><strong>D</strong>elete pro smazání záznamu</li>
-                                </ul>
-                            </dd>
+                    <dt>Cookies&nbsp;<sup><a id="cookies" href="#cookies">&hearts;</a></sup></dt>
+                    <dd>
+                        Cookies jsou kousky dat uložené u klienta (v prohlížeči) přenášená při každém HTTP požadavku.
+                        Cookies umožňují stavovost komunikace, což zahrnuje přihlašování, personalizaci, cílení reklam, nákupní košík, atd.
+                        <sup>[<a href="https://en.wikipedia.org/wiki/HTTP_cookie">wiki</a>]</sup>
+                    </dd>
 
-                            <dt>Databáze&nbsp;<sup><a id="databaze" href="#databaze">&hearts;</a></sup></dt>
-                            <dd>
-                                Data aplikace je často potřeba někam ukládat. K tomu nám nejlépe poslouží databáze.
-                                Nejpoužívanější databáze pro PHP jsou <a href="#mysql">MySQL</a> a <a href="#postgresql">PostgreSQL</a>.
-                                Tyto databáze jsou relační <sup>[<a href="https://cs.wikipedia.org/wiki/Rela%C4%8Dn%C3%AD_datab%C3%A1ze">wiki</a>]</sup>.
-                                Existují také tzv. NoSQL databáze <sup>[<a href="https://cs.wikipedia.org/wiki/">wiki</a>]</sup>, jejichž
-                                zástupcem je např. <a href="#redis">Redis</a>.
-                            </dd>
+                    <dt>CRUD&nbsp;<sup><a id="crud" href="#crud">&hearts;</a></sup></dt>
+                    <dd>
+                        Jedná se o návrh který využívá 4 základní operace s daty:
+                        <ul>
+                            <li><strong>C</strong>reate pro vytvoření záznamu</li>
+                            <li><strong>R</strong>ead pro přečtení záznamu</li>
+                            <li><strong>U</strong>pdate pro aktualizaci záznamu a konečně</li>
+                            <li><strong>D</strong>elete pro smazání záznamu</li>
+                        </ul>
+                    </dd>
 
-                            <dt>Datový typ&nbsp;<sup><a id="data-type" href="#data-type">&hearts;</a></sup></dt>
-                            <dd>
-                                Datový typ je v podstatě rozdělení - celé číslo, float, string, objekt, atd.
-                                Datový typ má definovány operace - u celých čísel je to například sčítání, odečítání, celočíselné dělení.
-                                Reálná čísla kupříkladu nelze celočíselně dělit a přestože lze stringy sčítat, určitě nepůjde podělit
-                                jeden string druhým. Stejně tak lze na třídy pohlížet jako na datové typy - s objekty jedné třídy
-                                lze dělat stejné operace (volat stejné metody).
-                                <sup>[<a href="https://en.wikipedia.org/wiki/Data_type">wiki</a>]</sup>
-                            </dd>
+                    <dt>Databáze&nbsp;<sup><a id="databaze" href="#databaze">&hearts;</a></sup></dt>
+                    <dd>
+                        Data aplikace je často potřeba někam ukládat. K tomu nám nejlépe poslouží databáze.
+                        Nejpoužívanější databáze pro PHP jsou <a href="#mysql">MySQL</a> a <a href="#postgresql">PostgreSQL</a>.
+                        Tyto databáze jsou relační <sup>[<a href="https://cs.wikipedia.org/wiki/Rela%C4%8Dn%C3%AD_datab%C3%A1ze">wiki</a>]</sup>.
+                        Existují také tzv. NoSQL databáze <sup>[<a href="https://cs.wikipedia.org/wiki/">wiki</a>]</sup>, jejichž
+                        zástupcem je např. <a href="#redis">Redis</a>.
+                    </dd>
 
-                            <dt>DRY&nbsp;<sup><a id="dry" href="#dry">&hearts;</a></sup></dt>
-                            <dd>
-                                Don't repeat yourself. Každý kousek logiky, dat, znalosti, musí mít v systému pouze jednu jednoznačnou reprezentaci.
-                                <sup>[<a href="https://pragprog.com/the-pragmatic-programmer/extracts/tips">Andy a Dave</a>]</sup>
-                            </dd>
+                    <dt>Datový typ&nbsp;<sup><a id="data-type" href="#data-type">&hearts;</a></sup></dt>
+                    <dd>
+                        Datový typ je v podstatě rozdělení - celé číslo, float, string, objekt, atd.
+                        Datový typ má definovány operace - u celých čísel je to například sčítání, odečítání, celočíselné dělení.
+                        Reálná čísla kupříkladu nelze celočíselně dělit a přestože lze stringy sčítat, určitě nepůjde podělit
+                        jeden string druhým. Stejně tak lze na třídy pohlížet jako na datové typy - s objekty jedné třídy
+                        lze dělat stejné operace (volat stejné metody).
+                        <sup>[<a href="https://en.wikipedia.org/wiki/Data_type">wiki</a>]</sup>
+                    </dd>
 
-                            <dt>DI&nbsp;<sup><a id="di" href="#di">&hearts;</a></sup></dt>
-                            <dd>
-                                Vkládání závislostí (anglicky Dependency Injection - DI) je v objektově orientovaném programování technika pro vkládání
-                                závislostí mezi jednotlivými komponentami programu tak, aby jedna komponenta mohla používat druhou.
-                                <sup>[<a href="https://cs.wikipedia.org/wiki/Vkl%C3%A1d%C3%A1n%C3%AD_z%C3%A1vislost%C3%AD">wiki</a>]</sup>
-                                <sup>[<a href="https://doc.nette.org/cs/2.4/dependency-injection">Příklad použití</a>]</sup>
-                            </dd>
+                    <dt>DRY&nbsp;<sup><a id="dry" href="#dry">&hearts;</a></sup></dt>
+                    <dd>
+                        Don't repeat yourself. Každý kousek logiky, dat, znalosti, musí mít v systému pouze jednu jednoznačnou reprezentaci.
+                        <sup>[<a href="https://pragprog.com/the-pragmatic-programmer/extracts/tips">Andy a Dave</a>]</sup>
+                    </dd>
 
-                            <dt>Framework&nbsp;<sup><a id="framework" href="#framework">&hearts;</a></sup></dt>
-                            <dd>
-                                Framework (aplikační rámec) je softwarová struktura, která slouží jako podpora při programování a vývoji
-                                jiných softwarových projektů. Cílem frameworku je převzetí typických problémů dané oblasti, čímž se usnadní vývoj tak,
-                                aby se návrháři a vývojáři mohli soustředit pouze na své zadání. Jinými slovy Vám framework zefektivní Vaší práci.
-                                <sup>[<a href="https://cs.wikipedia.org/wiki/Framework">wiki</a>]</sup>
-                            </dd>
+                    <dt>DI&nbsp;<sup><a id="di" href="#di">&hearts;</a></sup></dt>
+                    <dd>
+                        Vkládání závislostí (anglicky Dependency Injection - DI) je v objektově orientovaném programování technika pro vkládání
+                        závislostí mezi jednotlivými komponentami programu tak, aby jedna komponenta mohla používat druhou.
+                        Podstatou Dependency Injection je odebrat třídám zodpovědnost za získávání objektů, které potřebují
+                        ke své činnosti (tzv. <a href="#service">služeb</a>) a místo toho jim služby předávat při vytváření.
+                        <sup>[<a href="https://cs.wikipedia.org/wiki/Vkl%C3%A1d%C3%A1n%C3%AD_z%C3%A1vislost%C3%AD">wiki</a>]</sup>
+                        <sup>[<a href="https://doc.nette.org/cs/2.4/dependency-injection">Příklad použití</a>]</sup>
+                    </dd>
 
-                            <dt>GD/Imagick&nbsp;<sup><a id="gd" href="#gd">&hearts;</a></sup></dt>
-                            <dd>
-                                PHP rozšíření pro práci s obrázky (generování, úpravy, konverze mezi formáty).
-                                <sup>[<a href="http://php.net/manual/en/book.image.php">gd</a>]</sup>
-                                <sup>[<a href="http://php.net/manual/en/book.imagick.php">imagick</a>]</sup>
-                            </dd>
+                    <dt>DI kontejner&nbsp;<sup><a id="di-container" href="#di-container">&hearts;</a></sup></dt>
+                    <dd>
+                        DI kontejner nebo také systémový kontejner je v podstatě <a href="#factory">tovární třída</a>
+                        pro <a href="#service">služby</a> aplikace. DI kontejner za nás také řeší závislosti
+                        služeb mezi sebou.
+                    </dd>
 
-                            <dt>GraphQL&nbsp;<sup><a id="graphql" href="#graphql">&hearts;</a></sup></dt>
-                            <dd>
-                                Facebookem vytvořené GraphQL je zajímavou alternativou k REST API. Programátor se zde
-                                API zeptá přesně na to, co v danou chvíli potřebuje. To vše v jednom dotazu, který může
-                                vypadat třeba takto:
-                                <pre><code>{
+                    <dt>Factory&nbsp;<sup><a id="factory" href="#factory">&hearts;</a></sup></dt>
+                    <dd>
+                        Vytváření objektů často vyžaduje komplexní procesy nevhodné pro umístění do třídy vyžadující
+                        danou instanci. Vytvoření objektu může vést k významné duplikaci kódu nebo může vyžadovat informace,
+                        které nejsou dostupné v aktuálním kontextu. Úkolem <a href="#design-pattern">návrhového vzoru</a>
+                        factory je starat se o vytváření objektů a řešit tyto problémy návrhu.
+                        <sup>[<a href="https://en.wikipedia.org/wiki/Factory_method_pattern">wiki</a>]</sup>
+                    </dd>
+
+                    <dt>Framework&nbsp;<sup><a id="framework" href="#framework">&hearts;</a></sup></dt>
+                    <dd>
+                        Framework (aplikační rámec) je softwarová struktura, která slouží jako podpora při programování a vývoji
+                        jiných softwarových projektů. Cílem frameworku je převzetí typických problémů dané oblasti, čímž se usnadní vývoj tak,
+                        aby se návrháři a vývojáři mohli soustředit pouze na své zadání. Jinými slovy Vám framework zefektivní Vaší práci.
+                        <sup>[<a href="https://cs.wikipedia.org/wiki/Framework">wiki</a>]</sup>
+                    </dd>
+
+                    <dt>GD/Imagick&nbsp;<sup><a id="gd" href="#gd">&hearts;</a></sup></dt>
+                    <dd>
+                        PHP rozšíření pro práci s obrázky (generování, úpravy, konverze mezi formáty).
+                        <sup>[<a href="http://php.net/manual/en/book.image.php">gd</a>]</sup>
+                        <sup>[<a href="http://php.net/manual/en/book.imagick.php">imagick</a>]</sup>
+                    </dd>
+
+                    <dt>GraphQL&nbsp;<sup><a id="graphql" href="#graphql">&hearts;</a></sup></dt>
+                    <dd>
+                        Facebookem vytvořené GraphQL je zajímavou alternativou k REST API. Programátor se zde
+                        API zeptá přesně na to, co v danou chvíli potřebuje. To vše v jednom dotazu, který může
+                        vypadat třeba takto:
+                        <pre><code>{
   user {
     id
     name
@@ -140,163 +167,186 @@ id: slovnicek
     }
   }
 }</code></pre>
-                                <sup>[<a href="http://graphql.org/">GraphQL homepage</a>]</sup>
-                            </dd>
+                        <sup>[<a href="http://graphql.org/">GraphQL homepage</a>]</sup>
+                    </dd>
 
-                            <dt>Instance&nbsp;<sup><a id="instance" href="#instance">&hearts;</a></sup></dt>
-                            <dd>
-                                Instance třídy je konkrétní datový <a href="#objekt">objekt</a> v paměti odvozený z definice <a href="#trida">třídy</a>, který
-                                existuje od jeho vytvoření po ukončení běhu skriptu. Nová instance se vytváří použitím klíčového slova <code>new</code>.
-                                <sup>[<a href="https://en.wikipedia.org/wiki/Instance_(computer_science)">wiki</a>]</sup>
+                    <dt>Instance&nbsp;<sup><a id="instance" href="#instance">&hearts;</a></sup></dt>
+                    <dd>
+                        Instance třídy je konkrétní datový <a href="#objekt">objekt</a> v paměti odvozený z definice <a href="#trida">třídy</a>, který
+                        existuje od jeho vytvoření po ukončení běhu skriptu. Nová instance se vytváří použitím klíčového slova <code>new</code>.
+                        <sup>[<a href="https://en.wikipedia.org/wiki/Instance_(computer_science)">wiki</a>]</sup>
 
-                                <br><br>
-                                <pre><code>$some_instance = new \SplStack;</code></pre>
-                            </dd>
+                        <br><br>
+                        <pre><code>$some_instance = new \SplStack;</code></pre>
+                    </dd>
 
-                            <dt>KISS&nbsp;<sup><a id="kiss" href="#kiss">&hearts;</a></sup></dt>
-                            <dd>
-                                Keep it simple, stupid. Jednoduchost by měla být naším cílem,
-                                protože pouze jednoduché lze pochopit a udržovat.
-                                <sup>[<a href="https://en.wikipedia.org/wiki/KISS_principle">wiki</a>]</sup>
-                            </dd>
+                    <dt>KISS&nbsp;<sup><a id="kiss" href="#kiss">&hearts;</a></sup></dt>
+                    <dd>
+                        Keep it simple, stupid. Jednoduchost by měla být naším cílem,
+                        protože pouze jednoduché lze pochopit a udržovat.
+                        <sup>[<a href="https://en.wikipedia.org/wiki/KISS_principle">wiki</a>]</sup>
+                    </dd>
 
-                            <dt>Knihovna&nbsp;<sup><a id="knihovna" href="#knihovna">&hearts;</a></sup></dt>
-                            <dd>
-                                Kód (často třetí strany) využívaný uvnitř aplikace pro různorodé úkony.
-                                Knihovnou může být např. kód poskytující rozhraní pro sestavení PDF dokumentu,
-                                funkce pro práci s databází, souborovým systémem, zpracování obrázků apod.
-                                Jedna knihovna se zpravidla úzce specializuje na jednu konkrétní oblast.
-                                Ve světě PHP se mohou spravovat skrze <a href="#composer">Composer</a>
-                                (ty psané v PHP) nebo se instalovat přímo jako rozšíření PHP (psané v C).
-                            </dd>
+                    <dt>Knihovna&nbsp;<sup><a id="knihovna" href="#knihovna">&hearts;</a></sup></dt>
+                    <dd>
+                        Kód (často třetí strany) využívaný uvnitř aplikace pro různorodé úkony.
+                        Knihovnou může být např. kód poskytující rozhraní pro sestavení PDF dokumentu,
+                        funkce pro práci s databází, souborovým systémem, zpracování obrázků apod.
+                        Jedna knihovna se zpravidla úzce specializuje na jednu konkrétní oblast.
+                        Ve světě PHP se mohou spravovat skrze <a href="#composer">Composer</a>
+                        (ty psané v PHP) nebo se instalovat přímo jako rozšíření PHP (psané v C).
+                    </dd>
 
-							<dt>Konstruktor&nbsp;<sup><a id="konstruktor" href="#konstruktor">&hearts;</a></sup></dt>
-                            <dd>
-                                Konstruktor (v PHP <code>__construct()</code>) je speciální metodou <a href="#trida">třídy</a>, která se volá vždy při vytváření
-                                nové <a href="#instance">instance</a>. Opakem konstruktoru je destruktor (<code>__destruct()</code>). Ten se volá ve chvíli, kdy na objekt
-                                neexistuje žádná reference nebo při ukončování běhu PHP skriptu.
-                                <sup>[<a href="https://en.wikipedia.org/wiki/Constructor_(object-oriented_programming)">wiki</a>]</sup>
-                                <sup>[<a href="http://php.net/manual/en/language.oop5.decon.php">doc</a>]</sup>
-                            </dd>
+					<dt>Konstruktor&nbsp;<sup><a id="konstruktor" href="#konstruktor">&hearts;</a></sup></dt>
+                    <dd>
+                        Konstruktor (v PHP <code>__construct()</code>) je speciální metodou <a href="#trida">třídy</a>, která se volá vždy při vytváření
+                        nové <a href="#instance">instance</a>. Opakem konstruktoru je destruktor (<code>__destruct()</code>). Ten se volá ve chvíli, kdy na objekt
+                        neexistuje žádná reference nebo při ukončování běhu PHP skriptu.
+                        <sup>[<a href="https://en.wikipedia.org/wiki/Constructor_(object-oriented_programming)">wiki</a>]</sup>
+                        <sup>[<a href="http://php.net/manual/en/language.oop5.decon.php">doc</a>]</sup>
+                    </dd>
 
-                            <dt>Monolit&nbsp;<sup><a id="monolit" href="#monolit">&hearts;</a></sup></dt>
-                            <dd>
-                                Monolitem rozumíme obvykle velký nerozdělitelný systém. Monolit funguje sám o sobě
-                                bez návaznosti na jiné systémy, s čímž souvisí jeho vysoká komplexita. Monolit není
-                                obvykle jednoduché pochopit jako celek a může obsahovat velké množství skrytých závislostí.
-                                Skryté závislosti mohou být jak funkční, tak výkonnostní.
-                                <sup>[<a href="https://en.wikipedia.org/wiki/Monolithic_application">wiki</a>]</sup>
-                                <sup>[<a href="http://martinfowler.com/bliki/MonolithFirst.html">Fowler</a>]</sup>
-                            </dd>
+                    <dt>Messaging&nbsp;<sup><a id="messaging" href="#messaging">&hearts;</a></sup></dt>
+                    <dd>
+                        Messaging umožňuje aplikacím se propojovat a škálovat pomocí odesílání asynchronních zpráv.
+                        Aplikace se pomocí něj mohou spojit jedna s druhou jako komponenty větší aplikace. Jako
+                        prostředník mezi odesláním a příjmem těchto zpráv slouží tzv. broker, např. <a href="#rabbitmq">RabbitMQ</a>.
+                    </dd>
 
-                            <dt>Microservice&nbsp;<sup><a id="microservice" href="#microservice">&hearts;</a></sup></dt>
-                            <dd>
-                                Architektura mikroslužeb je rozdělení jedné velké aplikace do vzájemně komunikujících
-                                jednoúčelových služeb. Každou mikroslužbu je možné nezávisle udržovat a nasazovat.
-                                Mikroslužby musí ale vzájemně komunikovat, komunikaci je nezbytné dokumentovat a udržovat.
-                                Aplikace jako celek funguje pouze pokud fungují a komunikují všechny mikroslužby.
-                                <sup>[<a href="http://www.martinfowler.com/articles/microservices.html">Fowler</a>]</sup>
-                            </dd>
+                    <dt>Microservice&nbsp;<sup><a id="microservice" href="#microservice">&hearts;</a></sup></dt>
+                    <dd>
+                        Architektura mikroslužeb je rozdělení jedné velké aplikace do vzájemně komunikujících
+                        jednoúčelových služeb. Každou mikroslužbu je možné nezávisle udržovat a nasazovat.
+                        Mikroslužby musí ale vzájemně komunikovat, komunikaci je nezbytné dokumentovat a udržovat.
+                        Aplikace jako celek funguje pouze pokud fungují a komunikují všechny mikroslužby.
+                        <sup>[<a href="http://www.martinfowler.com/articles/microservices.html">Fowler</a>]</sup>
+                    </dd>
 
-                            <dt>MVC&nbsp;<sup><a id="mvc" href="#mvc">&hearts;</a></sup></dt>
-                            <dd>
-                                MVC je návrhový vzor, který odděluje aplikační logiku od zbytku <a href="#ui">uživatelského rozhraní</a>, rozdělením aplikace do tří navzájem spolupracujících částí:
-								<ul>
-                                    <li><b>Controller</b> - zpracovává uživatelské příkazy a manipuluje s modelem</li>
-                                    <li><b>Model</b> - modelem aplikace je myšlena veškerá aplikační logika včetně persistence dat do databáze</li>
-                                    <li><b>View</b> - view představuje <a href="#ui">uživatelské rozhraní</a> (v PHP frameworcích je tato vrstva reprezentováná šablonovacím systémem)</li>
-                                </ul>
-								Většina moderních frameworků pro vývoj webových aplikací se pyšní přívlastkem MVC.
-                                <sup>[<a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">wiki</a>]</sup>
-                            </dd>
+                    <dt>Monolit&nbsp;<sup><a id="monolit" href="#monolit">&hearts;</a></sup></dt>
+                    <dd>
+                        Monolitem rozumíme obvykle velký nerozdělitelný systém. Monolit funguje sám o sobě
+                        bez návaznosti na jiné systémy, s čímž souvisí jeho vysoká komplexita. Monolit není
+                        obvykle jednoduché pochopit jako celek a může obsahovat velké množství skrytých závislostí.
+                        <sup>[<a href="https://en.wikipedia.org/wiki/Monolithic_application">wiki</a>]</sup>
+                        <sup>[<a href="http://martinfowler.com/bliki/MonolithFirst.html">Fowler</a>]</sup>
+                    </dd>
 
-                            <dt>MySQL&nbsp;<sup><a id="mysql" href="#mysql">&hearts;</a></sup></dt>
-                            <dd>
-                                MySQL je zřejmě nejrozšířenější relační databáze v open source světě. Práce s ní je velmi
-                                jednoduchá a intuitivní. Pro dotazování používá jazyk SQL. <sup>[<a href="https://en.wikipedia.org/wiki/MySQL">wiki</a>]</sup>
-                                <sup>[<a href="https://www.mysql.com/">MySQL homepage</a>]</sup>
-                            </dd>
+                    <dt>MVC&nbsp;<sup><a id="mvc" href="#mvc">&hearts;</a></sup></dt>
+                    <dd>
+                        MVC je <a href="#design-pattern">návrhový vzor</a>, který odděluje aplikační logiku od zbytku <a href="#ui">uživatelského rozhraní</a>, rozdělením aplikace do tří navzájem spolupracujících částí:
+						<ul>
+                            <li><b>Controller</b> - zpracovává uživatelské příkazy a manipuluje s modelem</li>
+                            <li><b>Model</b> - modelem aplikace je myšlena veškerá aplikační logika včetně persistence dat do databáze</li>
+                            <li><b>View</b> - view představuje <a href="#ui">uživatelské rozhraní</a> (v PHP frameworcích je tato vrstva reprezentováná šablonovacím systémem)</li>
+                        </ul>
+						Většina moderních frameworků pro vývoj webových aplikací se pyšní přívlastkem MVC.
+                        <sup>[<a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">wiki</a>]</sup>
+                    </dd>
 
-                            <dt>Namespace&nbsp;<sup><a id="namespace" href="#namespace">&hearts;</a></sup></dt>
-                            <dd>
-                                Namespace (jmenný prostor) slouží k organizaci tříd/funkcí do logických celků (balíčků) a zabraňuje kolizím v pojmenování. Pro práci s
-                                namespace se v PHP od verze 5.3 používají klíčová slova <code>namespace</code> a <code>use</code>.
-                                <sup>[<a href="http://php.net/manual/en/language.namespaces.rationale.php">doc</a>]</sup>
-                                <sup>[<a href="https://en.wikipedia.org/wiki/Namespace">wiki</a>]</sup>
-                            </dd>
+                    <dt>MySQL&nbsp;<sup><a id="mysql" href="#mysql">&hearts;</a></sup></dt>
+                    <dd>
+                        MySQL je zřejmě nejrozšířenější relační databáze v open source světě. Práce s ní je velmi
+                        jednoduchá a intuitivní. Pro dotazování používá jazyk SQL. <sup>[<a href="https://en.wikipedia.org/wiki/MySQL">wiki</a>]</sup>
+                        <sup>[<a href="https://www.mysql.com/">MySQL homepage</a>]</sup>
+                    </dd>
 
-                            <dt>Nginx&nbsp;<sup><a id="nginx" href="#nginx">&hearts;</a></sup></dt>
-                            <dd>
-                                Stejně tak jako <a href="#apache">Apache</a>, tak i Nginx je jedna z možností při výběru <a href="#webserver">webserveru</a>.
-                                Pokročilejší uživatelé většinou volí právě Nginx.
-                                <sup>[<a href="https://www.nginx.com/">Nginx homepage</a>]</sup>
-                            </dd>
+                    <dt>Namespace&nbsp;<sup><a id="namespace" href="#namespace">&hearts;</a></sup></dt>
+                    <dd>
+                        Namespace (jmenný prostor) slouží k organizaci tříd/funkcí do logických celků (balíčků) a zabraňuje kolizím v pojmenování. Pro práci s
+                        namespace se v PHP od verze 5.3 používají klíčová slova <code>namespace</code> a <code>use</code>.
+                        <sup>[<a href="http://php.net/manual/en/language.namespaces.rationale.php">doc</a>]</sup>
+                        <sup>[<a href="https://en.wikipedia.org/wiki/Namespace">wiki</a>]</sup>
+                    </dd>
 
-                            <dt>Objekt&nbsp;<sup><a id="objekt" href="#objekt">&hearts;</a></sup></dt>
-                            <dd>
-                                Objekt je zjednodušená preprezentace něčeho s čím potřebujeme pracovat. Objekt zapouzdřuje
-                                svá data chováním, tím je chrání a umožňuje se sebou pracovat
-                                pouze voláním veřejných metod. Obecné chování objektu popisuje rozhraní a konkrétní
-                                předpis vytvoření a chování objektu popisuje třída.
-                                <sup>[<a href="https://en.wikipedia.org/wiki/Object_(computer_science)#Object-oriented_programming">wiki</a>]</sup>
-                            </dd>
+                    <dt>Návrhový vzor&nbsp;<sup><a id="design-pattern" href="#design-pattern">&hearts;</a></sup></dt>
+                    <dd>
+                        Návrhový vzor (anglicky design pattern) v softwarovém inženýrství představuje obecné řešení problému,
+                        které se využívá při návrhu počítačových programů. Návrhový vzor není knihovnou nebo částí zdrojového
+                        kódu, která by se dala přímo vložit do našeho programu. Jedná se o popis řešení problému nebo šablonu,
+                        která může být použita v různých situacích.
+                        <sup>[<a href="https://cs.wikipedia.org/wiki/N%C3%A1vrhov%C3%BD_vzor">wiki</a>]</sup>
+                    </dd>
 
-                            <dt>PHP&nbsp;<sup><a id="php" href="#php">&hearts;</a></sup></dt>
-                            <dd>
-                                PHP je rekurzivní zkratka pro <em>"PHP: Hypertext Preprocessor"</em> kde PHP je zkratka pro
-                                <em>"PHP: Hypertext Preprocessor"</em> kde PHP je zkratka pro <em>"PHP: Hypertext Preprocessor"</em>&hellip;
-                                <sup>[<a href="https://en.wikipedia.org/wiki/PHP">wiki</a>]</sup>
-                            </dd>
+                    <dt>Nginx&nbsp;<sup><a id="nginx" href="#nginx">&hearts;</a></sup></dt>
+                    <dd>
+                        Stejně tak jako <a href="#apache">Apache</a>, tak i Nginx je jedna z možností při výběru <a href="#webserver">webserveru</a>.
+                        Pokročilejší uživatelé většinou volí právě Nginx.
+                        <sup>[<a href="https://www.nginx.com/">Nginx homepage</a>]</sup>
+                    </dd>
 
-                            <dt>PostgreSQL&nbsp;<sup><a id="postgresql" href="#postgresql">&hearts;</a></sup></dt>
-                            <dd>
-                                PostgreSQL nebo také Postgres je kvalitní relační databáze, která implementuje většinu
-                                standardu SQL92. Je proto vyhledávanou alternativou k <a href="#mysql">MySQL</a>, obzvláště
-                                u zkušenějších vývojářů. <sup>[<a href="https://en.wikipedia.org/wiki/PostgreSQL">wiki</a>]</sup>
-                                <sup>[<a href="https://www.postgresql.org/">PostgreSQL homepage</a>]</sup>
-                            </dd>
+                    <dt>Objekt&nbsp;<sup><a id="objekt" href="#objekt">&hearts;</a></sup></dt>
+                    <dd>
+                        Objekt je zjednodušená preprezentace něčeho s čím potřebujeme pracovat. Objekt zapouzdřuje
+                        svá data chováním, tím je chrání a umožňuje se sebou pracovat
+                        pouze voláním veřejných metod. Obecné chování objektu popisuje rozhraní a konkrétní
+                        předpis vytvoření a chování objektu popisuje třída.
+                        <sup>[<a href="https://en.wikipedia.org/wiki/Object_(computer_science)#Object-oriented_programming">wiki</a>]</sup>
+                    </dd>
 
-                            <dt>Proměnná&nbsp;<sup><a id="promenna" href="#promenna">&hearts;</a></sup></dt>
-                            <dd>
-                                Proměnná je v programování označení pro identifikátor (symbolické jméno), které uchovává určitou informaci při běhu programu.
-                                Tato informace může být reference na <a href="#instance">instanci třídy</a>, resource, pole, primitivní datový typ jako např. řetězec, číslo.
-                                V PHP jsou proměnné vždy prefixovány znakem <code>$</code>.
-                                <sup>[<a href="https://cs.wikipedia.org/wiki/Prom%C4%9Bnn%C3%A1_(programov%C3%A1n%C3%AD)">wiki</a>]</sup>
-                                <br><br>
-                                <pre><code>$test = 5; // promenna s nazvem $test</code></pre>
-                            </dd>
+                    <dt>PHP&nbsp;<sup><a id="php" href="#php">&hearts;</a></sup></dt>
+                    <dd>
+                        PHP je rekurzivní zkratka pro <em>"PHP: Hypertext Preprocessor"</em> kde PHP je zkratka pro
+                        <em>"PHP: Hypertext Preprocessor"</em> kde PHP je zkratka pro <em>"PHP: Hypertext Preprocessor"</em>&hellip;
+                        <sup>[<a href="https://en.wikipedia.org/wiki/PHP">wiki</a>]</sup>
+                    </dd>
 
-                            <dt>Redis&nbsp;<sup><a id="redis" href="#redis">&hearts;</a></sup></dt>
-                            <dd>
-                                Redis je open source NoSQL key-value databáze. Údaje v databázi jsou uloženy jako unikátní klíč a
-                                jeho hodnota. Primárně jsou data uloženy v paměti, proto je Redis velmi rychlý.
-                                <sup>[<a href="http://redis.io/">Redis homepage</a>]</sup>
-                            </dd>
+                    <dt>PostgreSQL&nbsp;<sup><a id="postgresql" href="#postgresql">&hearts;</a></sup></dt>
+                    <dd>
+                        PostgreSQL nebo také Postgres je kvalitní relační databáze, která implementuje většinu
+                        standardu SQL92. Je proto vyhledávanou alternativou k <a href="#mysql">MySQL</a>, obzvláště
+                        u zkušenějších vývojářů. <sup>[<a href="https://en.wikipedia.org/wiki/PostgreSQL">wiki</a>]</sup>
+                        <sup>[<a href="https://www.postgresql.org/">PostgreSQL homepage</a>]</sup>
+                    </dd>
 
-                            <dt>Refaktoring&nbsp;<sup><a id="refaktoring" href="#refaktoring">&hearts;</a></sup></dt>
-                            <dd>
-                                Refaktoring je proces provádění změn v aplikaci, které nemají vliv na její funkčnost z pohledu uživatele.
-                                Může se jednat o přepisování nevyhovujícího kódu nebo vylepšování stávajícího. Hlavním cílem refaktoringu
-                                je udělat aplikaci hezčí, jednodušší, lépe udržovatelnou.
+                    <dt>Proměnná&nbsp;<sup><a id="promenna" href="#promenna">&hearts;</a></sup></dt>
+                    <dd>
+                        Proměnná je v programování označení pro identifikátor (symbolické jméno), které uchovává určitou informaci při běhu programu.
+                        Tato informace může být reference na <a href="#instance">instanci třídy</a>, resource, pole, primitivní datový typ jako např. řetězec, číslo.
+                        V PHP jsou proměnné vždy prefixovány znakem <code>$</code>.
+                        <sup>[<a href="https://cs.wikipedia.org/wiki/Prom%C4%9Bnn%C3%A1_(programov%C3%A1n%C3%AD)">wiki</a>]</sup>
+                        <br><br>
+                        <pre><code>$test = 5; // promenna s nazvem $test</code></pre>
+                    </dd>
 
-                                <sup>[<a href="https://en.wikipedia.org/wiki/Code_refactoring">wiki</a>]</sup>
-                            </dd>
+                    <dt>RabbitMQ&nbsp;<sup><a id="rabbitmq" href="#rabbitmq">&hearts;</a></sup></dt>
+                    <dd>
+                        <a href="https://www.rabbitmq.com/">RabbitMQ</a> je open source implementací tzv. messaging
+                        brokeru - zprostředkovatele pro <a href="#messaging">messaging</a>. Poskytuje aplikacím
+                        společnou platformu pro posílání a příjem zpráv a zprávám bezpečné místo k životu, dokud
+                        nejsou přijmuty a zpracovány.
+                    </dd>
 
-                            <dt>Regulární výrazy&nbsp;<sup><a id="regexp" href="#regexp">&hearts;</a></sup></dt>
-                            <dd>
-                                Regulární výrazy jsou vzory umožňující vyhledávání a nahrazování textu.
-                                <pre><code n:syntax="off">@[A-Za-z][A-Za-z0-9_]{0,14}</code></pre>
-                                Tento regulár nalezne uživatelské jméno na Twitteru - musí začínat zavináčem,
-                                následuje písmenko (velké nebo malé) a pak 0-14 znaků zahrnující písmena, čísla a podtržítko.
-                                <sup>[<a href="https://en.wikipedia.org/wiki/Regular_expression">wiki</a>]</sup>
-                            </dd>
+                    <dt>Redis&nbsp;<sup><a id="redis" href="#redis">&hearts;</a></sup></dt>
+                    <dd>
+                        Redis je open source NoSQL key-value databáze. Údaje v databázi jsou uloženy jako unikátní klíč a
+                        jeho hodnota. Primárně jsou data uloženy v paměti, proto je Redis velmi rychlý.
+                        <sup>[<a href="http://redis.io/">Redis homepage</a>]</sup>
+                    </dd>
 
-                            <dt>Rekurze&nbsp;<sup><a id="rekurze" href="#rekurze">&hearts;</a></sup></dt>
-                            <dd>
-                                Rekurze v programování představuje opakované vnořené volání stejné funkce do sama sebe.
-                                Obvykle má v sobě rekurzivní funkce uvedenu podmínku, kdy se má vnořování zastavit,
-                                aby nedošlo k nekonečné smyčce.
-                                <pre><code>function factorial(int $x) {
+                    <dt>Refaktoring&nbsp;<sup><a id="refaktoring" href="#refaktoring">&hearts;</a></sup></dt>
+                    <dd>
+                        Refaktoring je proces provádění změn v aplikaci, které nemají vliv na její funkčnost z pohledu uživatele.
+                        Může se jednat o přepisování nevyhovujícího kódu nebo vylepšování stávajícího. Hlavním cílem refaktoringu
+                        je udělat aplikaci hezčí, jednodušší, lépe udržovatelnou.
+
+                        <sup>[<a href="https://en.wikipedia.org/wiki/Code_refactoring">wiki</a>]</sup>
+                    </dd>
+
+                    <dt>Regulární výrazy&nbsp;<sup><a id="regexp" href="#regexp">&hearts;</a></sup></dt>
+                    <dd>
+                        Regulární výrazy jsou vzory umožňující vyhledávání a nahrazování textu.
+                        <pre><code n:syntax="off">@[A-Za-z][A-Za-z0-9_]{0,14}</code></pre>
+                        Tento regulár nalezne uživatelské jméno na Twitteru - musí začínat zavináčem,
+                        následuje písmenko (velké nebo malé) a pak 0-14 znaků zahrnující písmena, čísla a podtržítko.
+                        <sup>[<a href="https://en.wikipedia.org/wiki/Regular_expression">wiki</a>]</sup>
+                    </dd>
+
+                    <dt>Rekurze&nbsp;<sup><a id="rekurze" href="#rekurze">&hearts;</a></sup></dt>
+                    <dd>
+                        Rekurze v programování představuje opakované vnořené volání stejné funkce do sama sebe.
+                        Obvykle má v sobě rekurzivní funkce uvedenu podmínku, kdy se má vnořování zastavit,
+                        aby nedošlo k nekonečné smyčce.
+                        <pre><code>function factorial(int $x) {
   if ($x < 0) return 'invalid argument';
   if ($x === 0) return 1; // zastavovací podmínka
 
@@ -305,90 +355,93 @@ id: slovnicek
 
 echo factorial(5); // 120
 </code></pre>
-                                <sup>[<a href="https://cs.wikipedia.org/wiki/Rekurze_(programov%C3%A1n%C3%AD)">wiki</a>]</sup>
-                            </dd>
+                        <sup>[<a href="https://cs.wikipedia.org/wiki/Rekurze_(programov%C3%A1n%C3%AD)">wiki</a>]</sup>
+                    </dd>
 
-                            <dt>Rozhraní&nbsp;<sup><a id="rozhrani" href="#rozhrani">&hearts;</a></sup></dt>
-                            <dd>
-                                Rozhraní je společná hranice mezi částmi systému. Jako rozhraní si můžeme představit
-                                jack konektor pro výstup - víme jak vypadá, víme, že slouží pro vysílání zvukového signálu.
-                                Ale už nevíme, co přesně se za ním skrývá - jestli reproduktor nebo sluchátka.<br>
-                                V objektově orientovaném programování používáme rozhraní pro popis objektů, konkrétní implementaci řeší třída.
-                                <sup>[<a href="https://en.wikipedia.org/wiki/Interface_(computing)">wiki</a>]</sup>
-                            </dd>
+                    <dt>Rozhraní&nbsp;<sup><a id="rozhrani" href="#rozhrani">&hearts;</a></sup></dt>
+                    <dd>
+                        Rozhraní je společná hranice mezi částmi systému. Jako rozhraní si můžeme představit
+                        jack konektor pro výstup - víme jak vypadá, víme, že slouží pro vysílání zvukového signálu.
+                        Ale už nevíme, co přesně se za ním skrývá - jestli reproduktor nebo sluchátka.<br>
+                        V objektově orientovaném programování používáme rozhraní pro popis objektů, konkrétní implementaci řeší třída.
+                        <sup>[<a href="https://en.wikipedia.org/wiki/Interface_(computing)">wiki</a>]</sup>
+                    </dd>
 
-                            <dt>Singleton&nbsp;<sup><a id="singleton" href="#singleton">&hearts;</a></sup></dt>
-                            <dd>
-                                Singleton je návrhový vzor, který umožňuje vytvořit pouze jednu <a href="#instance">instaci</a> <a href="#trida">třídy</a>
-                                např. přes statickou metodu <code>getInstance()</code>. Klasické vytvoření instance je znemožněno označením
-                                <a href="#konstruktor">konstruktoru</a> jako private. Použit lze na globální objekty jako např. logger, mailer apod.
-                                V dnešní době je považován za anti-pattern, protože jde proti principům testovatelnosti a <a href="#di">dependency injection</a>.
+                    <dt>Service&nbsp;<sup><a id="service" href="#service">&hearts;</a></sup></dt>
+                    <dd>
+                        Service, neboli služba je obyčejná třída, jako třeba instance databázové třídy Connection.
+                        Jen v souvislosti s <a href="#di-container">DI kontejnerem</a> jí říkáme služba.
+                    </dd>
 
-                                <sup>[<a href="https://en.wikipedia.org/wiki/Singleton_pattern">wiki</a>]</sup>
-                            </dd>
+                    <dt>Singleton&nbsp;<sup><a id="singleton" href="#singleton">&hearts;</a></sup></dt>
+                    <dd>
+                        Singleton je <a href="#design-pattern">návrhový vzor</a>, který umožňuje vytvořit pouze jednu <a href="#instance">instaci</a> <a href="#trida">třídy</a>
+                        např. přes statickou metodu <code>getInstance()</code>. Klasické vytvoření instance je znemožněno označením
+                        <a href="#konstruktor">konstruktoru</a> jako private. Použit lze na globální objekty jako např. logger, mailer apod.
+                        V dnešní době je považován za anti-pattern, protože jde proti principům testovatelnosti a <a href="#di">dependency injection</a>.
 
-                            <dt>SOLID&nbsp;<sup><a id="solid" href="#solid">&hearts;</a></sup></dt>
-                            <dd>
-                                SOLID zahrnuje pět základních principů objektově orientovaného programování
-                                <ul>
-                                    <li><b>S</b>RP - třída má pouze jednu zodpovědnost, jeden důvod ke změně</li>
-                                    <li><b>O</b>CP - třídy jsou otevřené ke změnám, ale uzavřené k úpravám</li>
-                                    <li><b>L</b>SP - objekty jsou v systému nahraditelné svýmy podtypy</li>
-                                    <li><b>I</b>SP - více specifických rozhraní je lepších, než jedno obecné</li>
-                                    <li><b>D</b>IP - třída je závislá na abstrakci, ne na konkrétním typu</li>
-                                </ul>
-                                <sup>[<a href="https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)">wiki</a>]</sup>
-                            </dd>
+                        <sup>[<a href="https://en.wikipedia.org/wiki/Singleton_pattern">wiki</a>]</sup>
+                    </dd>
 
-                            <dt>Třída&nbsp;<sup><a id="trida" href="#trida">&hearts;</a></sup></dt>
-                            <dd>
-                                Třída je předpis pro tvorbu objektů. S třídou samotnou nemůžu moc pracovat, jak taky pracovat
-                                s návodem na výrobu hrnku? Když si ale vytvořím objekt podle daného předpisu (vytvořím instanci
-                                třídy), tak to už je jiná - daný konkrétní hrnek můžu naplnit, vypít, rozbít. To s třídou
-                                udělat nemůžu, třída je pouze předpis.
-                                <sup>[<a href="https://en.wikipedia.org/wiki/Class_(computer_programming)">wiki</a>]</sup>
-                            </dd>
+                    <dt>SOLID&nbsp;<sup><a id="solid" href="#solid">&hearts;</a></sup></dt>
+                    <dd>
+                        SOLID zahrnuje pět základních principů objektově orientovaného programování
+                        <ul>
+                            <li><b>S</b>RP - třída má pouze jednu zodpovědnost, jeden důvod ke změně</li>
+                            <li><b>O</b>CP - třídy jsou otevřené ke změnám, ale uzavřené k úpravám</li>
+                            <li><b>L</b>SP - objekty jsou v systému nahraditelné svýmy podtypy</li>
+                            <li><b>I</b>SP - více specifických rozhraní je lepších, než jedno obecné</li>
+                            <li><b>D</b>IP - třída je závislá na abstrakci, ne na konkrétním typu</li>
+                        </ul>
+                        <sup>[<a href="https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)">wiki</a>]</sup>
+                    </dd>
 
-                            <dt>UI&nbsp;<sup><a id="ui" href="#ui">&hearts;</a></sup></dt>
-                            <dd>
-                                UI (User Interface) neboli uživatelské rozhraní, označuje způsob, jakým mohou lidé ovlivňovat chování strojů, zařízení nebo počítačových
-                                programů. U webových aplikací tvoří uživatelské rozhraní odezva webového serveru s HTML kódem (včetně stylů, skriptů, obrázků &hellip;), který uživateli interpretuje
-                                webový prohližeč.
-                                <sup>[<a href="https://en.wikipedia.org/wiki/User_interface">wiki</a>]</sup>
-                            </dd>
+                    <dt>Třída&nbsp;<sup><a id="trida" href="#trida">&hearts;</a></sup></dt>
+                    <dd>
+                        Třída je předpis pro tvorbu objektů. S třídou samotnou nemůžu moc pracovat, jak taky pracovat
+                        s návodem na výrobu hrnku? Když si ale vytvořím objekt podle daného předpisu (vytvořím instanci
+                        třídy), tak to už je jiná - daný konkrétní hrnek můžu naplnit, vypít, rozbít. To s třídou
+                        udělat nemůžu, třída je pouze předpis.
+                        <sup>[<a href="https://en.wikipedia.org/wiki/Class_(computer_programming)">wiki</a>]</sup>
+                    </dd>
 
-                            <dt>UX&nbsp;<sup><a id="ux" href="#ux">&hearts;</a></sup></dt>
-                            <dd>
-                                UX (User Experience) označuje tématiku, která se zabývá uživatelským prožitkem při použivání <a href="#ui">uživatelského rozhrání</a>. UI je zkoumáno z
-                                pohledu ergonomie, jednoduchosti, použitelnosti, intuitivnosti a celkového dojmu na uživatele.
-                                <sup>[<a href="https://en.wikipedia.org/wiki/User_experience">wiki</a>]</sup>
-                            </dd>
+                    <dt>UI&nbsp;<sup><a id="ui" href="#ui">&hearts;</a></sup></dt>
+                    <dd>
+                        UI (User Interface) neboli uživatelské rozhraní, označuje způsob, jakým mohou lidé ovlivňovat chování strojů, zařízení nebo počítačových
+                        programů. U webových aplikací tvoří uživatelské rozhraní odezva webového serveru s HTML kódem (včetně stylů, skriptů, obrázků &hellip;), který uživateli interpretuje
+                        webový prohližeč.
+                        <sup>[<a href="https://en.wikipedia.org/wiki/User_interface">wiki</a>]</sup>
+                    </dd>
 
-							<dt>Vendor&nbsp;<sup><a id="vendor" href="#vendor">&hearts;</a></sup></dt>
-                            <dd>
-                                Vendor je anglické slovo pro dodavatele služeb nebo zboží. V PHP se s tímto označením lze setkat u
-                                správce závislostí <a href="#composer">Composer</a>. Název každého balíčku je prefixovaný názvem vendora
-                                (dodavatele). Např. <code>symfony/symfony-demo</code> je balíček <code>symfony-demo</code> od vendora <code>symfony</code>.
-                                Názvem vendor je pojmenován i adresář, do kterého instaluje <a href="#composer">Composer</a> veškeré závislosti (kód třetích stran).
-                                <sup>[<a href="https://getcomposer.org/doc/01-basic-usage.md">getcomposer.org</a>]</sup>
-                            </dd>
+                    <dt>UX&nbsp;<sup><a id="ux" href="#ux">&hearts;</a></sup></dt>
+                    <dd>
+                        UX (User Experience) označuje tématiku, která se zabývá uživatelským prožitkem při použivání <a href="#ui">uživatelského rozhrání</a>. UI je zkoumáno z
+                        pohledu ergonomie, jednoduchosti, použitelnosti, intuitivnosti a celkového dojmu na uživatele.
+                        <sup>[<a href="https://en.wikipedia.org/wiki/User_experience">wiki</a>]</sup>
+                    </dd>
 
-                            <dt>Webhosting&nbsp;<sup><a id="webhosting" href="#webhosting">&hearts;</a></sup></dt>
-                            <dd>
-                                Webhosting je služba, kterou si lze pronajmout "místo na internetu", pro provoz webových stránek. Na internetu působí řada poskytovatelů webhostingu,
-                                kteří poskytují celou škálu služeb, od jednoduchého sdíleného hostingu, přes vlastní virtuální servery až po cloudové služby.
-                            </dd>
+					<dt>Vendor&nbsp;<sup><a id="vendor" href="#vendor">&hearts;</a></sup></dt>
+                    <dd>
+                        Vendor je anglické slovo pro dodavatele služeb nebo zboží. V PHP se s tímto označením lze setkat u
+                        správce závislostí <a href="#composer">Composer</a>. Název každého balíčku je prefixovaný názvem vendora
+                        (dodavatele). Např. <code>symfony/symfony-demo</code> je balíček <code>symfony-demo</code> od vendora <code>symfony</code>.
+                        Názvem vendor je pojmenován i adresář, do kterého instaluje <a href="#composer">Composer</a> veškeré závislosti (kód třetích stran).
+                        <sup>[<a href="https://getcomposer.org/doc/01-basic-usage.md">getcomposer.org</a>]</sup>
+                    </dd>
 
-                            <dt>Webserver&nbsp;<sup><a id="webserver" href="#webserver">&hearts;</a></sup></dt>
-                            <dd>
-                                Ke spuštění webové stránky je zapotřebí server, který přijme požadavek od návštěvníka
-                                a po zpracování je pošle zpět k uživateli. K tomu dobře poslouží třeba
-                                <a href="#apache">Apache</a> nebo <a href="#nginx">Nginx</a>.
-                            </dd>
-                        </dl>
-                    </div>
-                </div>
+                    <dt>Webhosting&nbsp;<sup><a id="webhosting" href="#webhosting">&hearts;</a></sup></dt>
+                    <dd>
+                        Webhosting je služba, kterou si lze pronajmout "místo na internetu", pro provoz webových stránek. Na internetu působí řada poskytovatelů webhostingu,
+                        kteří poskytují celou škálu služeb, od jednoduchého sdíleného hostingu, přes vlastní virtuální servery až po cloudové služby.
+                    </dd>
 
+                    <dt>Webserver&nbsp;<sup><a id="webserver" href="#webserver">&hearts;</a></sup></dt>
+                    <dd>
+                        Ke spuštění webové stránky je zapotřebí server, který přijme požadavek od návštěvníka
+                        a po zpracování je pošle zpět k uživateli. K tomu dobře poslouží třeba
+                        <a href="#apache">Apache</a> nebo <a href="#nginx">Nginx</a>.
+                    </dd>
+                </dl>
             </div>
         </div>
     </div>
