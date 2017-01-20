@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Jak snadno a rychle upravovat soubory ve vendoru?"
-perex: "Už si se někdy dostal do situace, kdy jsi potřeboval opravit chybu nějaké závislosti ve složce vendor? Jak takovou úpravu sdílet v týmu s ostatními programátory a jak ji udržet v souboru i po spuštění composeru? V tomto článku se dovíš, jak snadno a elegantně se tento problém dá vyřešit během 1 minuty."
+perex: "Už ses někdy dostal do situace, kdy jsi potřeboval opravit chybu nějaké závislosti ve složce vendor? Jak takovou úpravu sdílet v týmu s ostatními programátory a jak ji udržet v souboru i po spuštění composeru? V tomto článku se dovíš, jak snadno a elegantně se tento problém dá vyřešit během 1 minuty."
 author: 11
 reviewed_by: [1]
 ---
@@ -62,7 +62,7 @@ Ve vendor složce si najdeš zabugovaný soubor a zkopíruješ ho do toho saméh
 # diff -u ./vendor/package-name/path/to/bugged/file/BuggedFile.php ./vendor/path/to/bugged/file/BuggedFile-fixed.php > patches/bugged-file.patch
 ```
 
-Pokud ti CLI napíše, že příkaz `diff` nebyl nalezen, tak ho bude potřeba doinstalovat viz. postupy níže. A pokud ho máš, můžeš [přeskočit sem](#3-Úprava-patch-souboru-pro-cweaganscomposer-patches).
+Pokud ti CLI napíše, že příkaz `diff` nebyl nalezen, tak ho bude potřeba doinstalovat viz postupy níže. A pokud ho máš, můžeš [přeskočit sem](#3-Úprava-patch-souboru-pro-cweaganscomposer-patches).
 
 #### Linux
 
@@ -78,12 +78,12 @@ Zde budeš potřebovat nainstalovat příkazy `diff` a `patch` (dočteš se dál
  - vyber "Devel", "Perl", "Text" a "Utils" a zaškrtni jednotlivé subpoložky
  - dokonči instalaci 
 
-Nyní je třeba zaregistrovat cestu k cygwinu do Path. V promměnném prostředí tedy přidáš do Path cestu k bin složce ("C:\cygwin\bin" - výchozí nastavení).
+Nyní je třeba zaregistrovat cestu k cygwinu do Path. V proměnném prostředí tedy přidáš do Path cestu k bin složce ("C:\cygwin\bin" - výchozí nastavení).
 
 
 #### Mac
 
-I zde budeš potřebovat příkazy `diff` a `patch` (dočteš se dál). Podle google by jsi měl mít příkazy již součástí systému, pokud ne, tak trochu pogůgli a doinstaluj si je podle své verze.
+I zde budeš potřebovat příkazy `diff` a `patch` (dočteš se dál). Podle google bys měl mít příkazy již součástí systému, pokud ne, tak trochu pogůgli a doinstaluj si je podle své verze.
 
 
 ### 3. Úprava patch souboru pro cweagans/composer-patches
