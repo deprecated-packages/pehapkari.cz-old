@@ -46,6 +46,8 @@ rewards:
         value_in_points: 7
         winners:
             @kbarborak: https://github.com/pehapkari/pehapkari.cz/pull/172
+            @foxycode: https://github.com/pehapkari/pehapkari.cz/pull/187
+            # + https://github.com/pehapkari/pehapkari.cz/pull/193
     5:
         title: "Web Security 2016"
         product_link: "https://www.phparch.com/books/web-security-2016/"
