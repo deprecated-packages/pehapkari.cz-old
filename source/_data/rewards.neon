@@ -69,7 +69,15 @@ rewards:
 #        title: "Úplně nová mysl"
 #        product_link: "http://neoluxor.cz/odborne-knihy/uplne-nova-mysl--29453/"
 #        count: 1
-#        image: "uplne-nova-mysl.jpg"
+#        image: "uplne-nova-mysl.jpg" # todo
+#        value_in_points: 5
+#        winners: []
+#        # donated by Tomas Votruba
+#    10:
+#        title: "Zázračný úklid"
+#        product_link: "https://www.kosmas.cz/knihy/208226/zazracny-uklid/"
+#        count: 1
+#        image: "zazracyn-uklid.jpg" # todo
 #        value_in_points: 5
 #        winners: []
 #        # donated by Tomas Votruba
