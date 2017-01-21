@@ -6,7 +6,8 @@ rewards:
         image: "principles.jpg"
         sponsor_note: 'Darovalo <a href="http://www.jobsdev.cz/">JobsDev</a>'
         value_in_points: 5
-        winners: []
+        winners:
+            @TomasPilar: https://github.com/pehapkari/pehapkari.cz/pull/174
     1:
         title: "roční licence na PHPStorm"
         product_link: "https://www.jetbrains.com/phpstorm/buy/#edition=personal"
@@ -20,7 +21,8 @@ rewards:
         count: 2
         image: "navrhove-vzory.jpg"
         value_in_points: 5
-        winners: []
+        winners:
+            @TomasPilar: https://github.com/pehapkari/pehapkari.cz/pull/176
     8:
         title: "Nette kemp triko"
         count: 5
@@ -51,7 +53,8 @@ rewards:
         image: "security.png"
         sponsor_note: 'Mile a nečekaně daroval <a href="https://www.michalspacek.cz">Michal Špaček</a>'
         value_in_points: 5
-        winners: []
+        winners:
+            @TomasPilar: https://github.com/pehapkari/pehapkari.cz/pull/176
     6:
         title: "Persistence in PHP with Doctrine ORM"
         product_link: "https://filip-prochazka.com/blog/kniha-persistence-in-php-with-doctrine-orm"
