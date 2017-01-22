@@ -47,7 +47,7 @@ final class ListeningNetteComponentsTest extends TestCase
         $this->assertInstanceOf(TextResponse::class, $response);
         $this->assertInstanceOf(Template::class, $response->getSource());
         $this->assertSame(
-            file_get_contents(__DIR__ . '/responses/success/basic.request.txt'),
+            $this->readFile(__DIR__ . '/responses/success/basic.request.txt'),
             (string) $response->getSource()
         );
     }
@@ -62,7 +62,7 @@ final class ListeningNetteComponentsTest extends TestCase
         $this->assertInstanceOf(TextResponse::class, $response);
         $this->assertInstanceOf(Template::class, $response->getSource());
         $this->assertSame(
-            file_get_contents(__DIR__ . '/responses/success/add-to-basket-first-product.request.txt'),
+            $this->readFile(__DIR__ . '/responses/success/add-to-basket-first-product.request.txt'),
             (string) $response->getSource()
         );
     }
@@ -77,7 +77,7 @@ final class ListeningNetteComponentsTest extends TestCase
         $this->assertInstanceOf(TextResponse::class, $response);
         $this->assertInstanceOf(Template::class, $response->getSource());
         $this->assertSame(
-            file_get_contents(__DIR__ . '/responses/success/add-to-basket-second-product.request.txt'),
+            $this->readFile(__DIR__ . '/responses/success/add-to-basket-second-product.request.txt'),
             (string) $response->getSource()
         );
     }
@@ -92,7 +92,7 @@ final class ListeningNetteComponentsTest extends TestCase
         $this->assertInstanceOf(TextResponse::class, $response);
         $this->assertInstanceOf(Template::class, $response->getSource());
         $this->assertSame(
-            file_get_contents(__DIR__ . '/responses/success/add-to-basket-third-product.request.txt'),
+            $this->readFile(__DIR__ . '/responses/success/add-to-basket-third-product.request.txt'),
             (string) $response->getSource()
         );
     }
@@ -104,5 +104,11 @@ final class ListeningNetteComponentsTest extends TestCase
         $categoryPresenter->autoCanonicalize = false;
 
         return $categoryPresenter;
+    }
+
+
+    private function readFile(string $file): string
+    {
+        return str_replace("\r\n", "\n", file_get_contents($file));
     }
 }
