@@ -140,8 +140,8 @@ class PasswordUpdateManager implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            'app._user_legacy' => 'rehashPassword',
-            SecurityEvents::INTERACTIVE_LOGIN => ['interactiveLogin'],
+            'app._user_legacy' => 'storePasswordForRehash',
+            SecurityEvents::INTERACTIVE_LOGIN => 'rehashPassword',
         ];
     }
 
