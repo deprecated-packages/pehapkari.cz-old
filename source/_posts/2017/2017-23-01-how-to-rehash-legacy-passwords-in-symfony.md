@@ -1,0 +1,195 @@
+---
+layout: post
+title: "How to rehash legacy passwords in Symfony"
+perex: "You need to import users from an old project, but but don't want to bother them with resetting their passwords just because you want to use bcrypt. Fortunately, there is a solution."
+author: 13
+lang: en
+---
+
+So you've decided to send a legacy project to his well-deserved retirement and write a nice, clean code instead. But there is an asset you cannot throw away. **Users**.
+
+If you care about web security at least a bit and you haven't lived in a cave for the last couple of years, you might have heard of a fact that **storing users passwords in plaintext is a bad thing**. So even your legacy project did hopefully use a hashing algorithm. But since you care about the security, you would like [to use bcrypt](http://security.stackexchange.com/questions/4781/do-any-security-experts-recommend-bcrypt-for-password-storage) for all users. Right now.
+
+Well, **you might reset all passwords** and send users an e-mail requesting for resetting their passwords. Or do so automatically when they log in.
+
+Wrong.
+
+Users don't care and you should not bother them with requests to change their password unless really necessary (read: you've been hacked). Moreover, you don't need them to change the password. **You just need to rehash it.**
+
+## Check the password twice
+Unless you hashed your legacy passwords by a really bad algorithm (say [md5](https://en.wikipedia.org/wiki/MD5#Security)), you can just keep them in use until users log in into a new application and **rehash them to bcrypt on-the-fly**.
+
+Therefore, we need to first check all passwords by bcrypt. If the check fails, try a legacy algorithm. If that works, logs the user in and rehash his password to bcrypt, so next time he will log in after the first check. Otherwise, login just fails normally.
+
+First things first - you definitely need to **rewrite (or copy-paste) your legacy algorithm** as a service:
+
+```
+app.legacy_encoder:
+    class: AppBundle\Security\Encoder\LegacyEncoder
+    lazy: true
+```
+
+I put [the lazy flag](https://symfony.com/doc/current/service_container/lazy_services.html) so the encoder is initialized only when really used. BCrypt algorithm is implemented as a standard encoder in Symfony. Let's **extend it** in our own service:
+
+```
+app.password_encoder:
+    class: AppBundle\Security\PasswordEncoder
+    arguments: ['@event_dispatcher', '@app.legacy_encoder']
+```
+
+Now the extended encoder itself. Of course, we need to inject those services in our encoder and call the parent constructor.
+
+```
+namespace AppBundle\Security;
+
+use Symfony\Component\EventDispatcher\GenericEvent;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder;
+
+class PasswordEncoder extends BCryptPasswordEncoder
+{
+
+    private $dispatcher;
+
+    private $legacyEncoder;
+
+    public function __construct(EventDispatcherInterface $dispatcher, LegacyEncoder $legacyEncoder, $cost = 13)
+    {
+        parent::__construct($cost);
+        $this->dispatcher = $dispatcher;
+        $this->legacyEncoder = $legacyEncoder;
+    }
+ 
+    // ... 
+ 
+}
+```
+
+**And now the fun part.** Let's rewrite the *isPasswordValid* method so it does what we want.
+
+```
+public function isPasswordValid($encoded, $raw, $salt)
+    {
+
+        // check using the bcrypt algorithm first
+        if (parent::isPasswordValid($encoded, $raw, $salt)) {
+            return true;
+        }
+        
+        // prevent legacy fallback when it's obvious that the password
+        // has been hashed using bcrypt (hash starts with '$2y$')
+        if (substr($encoded, 0, 4) === '$2y$') {
+            return false;
+        }
+
+        // legacy algorithm check
+        $result = $this->legacyEncoder->isPasswordValid($encoded, $raw, $salt);
+
+        return $result;
+    }
+```
+
+**Simple as that.** Oh wait. But we still need to take care of rehashing!
+
+## Rehashing passwords dynamically
+
+If we are sure that a password has been hashed using the legacy algorithm, just **notify another custom service that will rehash it.** First, add these lines into the *isPasswordValid* method:
+
+```
+public function isPasswordValid($encoded, $raw, $salt)
+        // ...
+        
+        // If password is encoded using the legacy algorithm, rehash it to bcrypt
+        if ($result) {
+            $this->dispatcher->dispatch('app.legacy_user', new GenericEvent($raw));
+        }
+        
+        return $result;
+}
+```
+
+**Now you can subscribe** to the *app.legacy_user* event and save the password temporarily into a service property. When the login is finished successfully, **take that password and save it into the *User* entity.**
+
+Here's an example how to achieve that:
+
+```
+namespace AppBundle\Security;
+
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\EventDispatcher\GenericEvent;
+use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
+use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
+use Symfony\Component\Security\Http\SecurityEvents;
+
+class PasswordUpdateManager implements EventSubscriberInterface
+{
+
+    private $entityManager;
+
+    private $encoderFactory;
+
+    private $passwordForRehash;
+
+    public function __construct(EntityManagerInterface $entityManager, EncoderFactoryInterface $encoderFactory)
+    {
+        $this->entityManager = $entityManager;
+        $this->encoderFactory = $encoderFactory;
+    }
+
+    public static function getSubscribedEvents()
+    {
+        return [
+            'app._user_legacy' => 'rehashPassword',
+            SecurityEvents::INTERACTIVE_LOGIN => ['interactiveLogin'],
+        ];
+    }
+
+    public function storePasswordForRehash(GenericEvent $event)
+    {
+        // just store the password for later use
+        $this->passwordForRehash = $event->getSubject();
+    }
+
+    public function rehashPassword(InteractiveLoginEvent $event)
+    {
+        // this method will be triggered after each login, continue only if there is a legacy password
+        if (!$this->passwordForRehash) {
+            return;
+        }
+
+        // get the logged in user
+        $user = $event->getAuthenticationToken()->getUser();
+
+        // load a correct password encoder
+        $encoder = $this->encoderFactory->getEncoder($user);
+        
+        // rehashing happens here
+        $newPassword = $encoder->encodePassword($this->passwordForRehash, $user->getSalt());
+        
+        // now save the new password into the database
+        $user->setPassword($newPassword);
+        $this->entityManager->persist($user);
+        $this->entityManager->flush();
+    }
+
+}
+```
+
+And as always, don't forget to add the service definition into the *services.yml* file with its dependencies and *kernel.event_subscriber* tag.
+
+```
+app.password_update_manager:
+    class: AppBundle\Security\PasswordUpdateManager
+    tags:    
+      - { name: kernel.event_subscriber }
+    arguments: ['@doctrine.orm.default_entity_manager', '@security.encoder_factory']
+```
+
+## Let's improve it
+Depending on your system, this might be just a beginning.
+
+Maybe you use **different kind of logins**, not just the interactive login. Then you need to extend the solution so the password rehashing will not be skipped. Also, you can make rehashing **completely automatic** using [Doctrine listeners](http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/events.html), so the rehashing is done each time a user changes his password.
+
+Do you have any suggestion for an improvement? Feel free to drop a comment below! 
+And check out [my blog focused on Symfony and PHP development](http://blog.ikvasnica.com).
