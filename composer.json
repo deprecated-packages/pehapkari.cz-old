@@ -7,6 +7,7 @@
     "require-dev": {
         "nette/application": "^2.4",
         "nette/security": "^2.4",
+        "nette/forms": "^2.4",
         "latte/latte": "^2.4",
         "symfony/console": "^3.1",
         "symfony/event-dispatcher": "^3.1",
