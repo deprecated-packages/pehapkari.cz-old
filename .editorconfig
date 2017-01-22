@@ -1,9 +1,15 @@
 root = true
 
-[*.{css,html,js,json,latte,neon,php,twig,xml,yaml,yml}]
+[*]
 charset = utf-8
 end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
+
+[*.{css,html,js,json,latte,neon,twig,xml,yaml,yml}]
 indent_style = space
 indent_size = 4
+
+[*.{php}]
+indent_style = tab
+indent_size = 1
