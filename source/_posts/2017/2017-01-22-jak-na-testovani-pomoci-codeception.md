@@ -26,23 +26,24 @@ Jeho zpovoznění je popsané níže.
 ## Jak začít, co potřebuji?
 
 Nejdříve si k projektu, který chceme testovat, nainstalujeme přes composer knihovnu Codeception, takto:
-`composer require "codeception/codeception"`.
+`composer require codeception/codeception --dev`.
 Nyní máme nainstalovaný codeception. 
 Nyní si stahneme a zprovozníme Selenium server. Pro spuštění selenium serveru musíme mít nainstalovanou 
 [javu](https://java.com/en/download/). 
 Stahnout selenium server lze na stránce http://docs.seleniumhq.org/download/ v sekci "Selenium Standalone Server".
 Přímý link na stažení je [zde](https://goo.gl/Lyo36k).
-Stažený .jar soubor umístíme kamkoli, kde na něj nezapomeneme (ale je lepší jej držet v projektu, 
-kde Codeception používáme).
+Stažený .jar soubor umístíme kamkoli, kde na něj nezapomeneme.
 Selenium WebDriver umožňuje používat různé prohlížece, my nyní budeme používat google chrome. 
 Stahneme si chromedriver [zde](https://sites.google.com/a/chromium.org/chromedriver/downloads).
 Stahneme si archiv pro náš konkrétní počítač. 
 Archiv extrahujeme na stejné místo, kde máme selenium server. 
-Vytvoříme si soubor `run-selenium.sh` s obsahem
+Vytvoříme si soubor `selenium.sh` s obsahem
 ```
 java -jar -Dwebdriver.chrome.driver=chromedriver.exe selenium-server-standalone-3.0.1.jar
 ```
-Pokud používáme windows, vytvoříme místo toho analogicky `run-selenium.bat` s obsahem
+a přidáme jej do PATH, abychom jej měli odkudkoli snadno dostupný.
+
+Pokud používáme windows, vytvoříme místo toho analogicky `selenium.bat` s obsahem
 ```
 java -jar -Dwebdriver.chrome.driver=chromedriver.exe selenium-server-standalone-3.0.1.jar
 ```
