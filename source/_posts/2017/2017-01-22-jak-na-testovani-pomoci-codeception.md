@@ -39,7 +39,7 @@ Stahneme si archiv pro náš konkrétní počítač.
 Archiv extrahujeme na stejné místo, kde máme selenium server. 
 Vytvoříme si soubor `selenium.sh` s obsahem
 ```
-java -jar -Dwebdriver.chrome.driver=chromedriver.exe selenium-server-standalone-3.0.1.jar
+java -jar -Dwebdriver.chrome.driver=chromedriver selenium-server-standalone-3.0.1.jar
 ```
 a přidáme jej do PATH, abychom jej měli odkudkoli snadno dostupný.
 
