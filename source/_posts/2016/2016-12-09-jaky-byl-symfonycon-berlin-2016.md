@@ -35,7 +35,7 @@ Problém byl v komponěntě Cache, která kvůli absolutním cestám znemožňov
 
 ## Symfony Flex
 
-Ve další přednášce Fabien popsal nedostatky v Symfony distribučním systému. Jako řešení představil **Symfony Flex**. Tím chce nahradit dosavadní balíčky jako [Symfony Demo Application](https://github.com/symfony/symfony-demo), [Symfony Standard Edition](https://github.com/symfony/symfony-standard) nebo  [Symfony CMF](http://cmf.symfony.com/). 
+V další přednášce Fabien popsal nedostatky v Symfony distribučním systému. Jako řešení představil **Symfony Flex**. Tím chce nahradit dosavadní balíčky jako [Symfony Demo Application](https://github.com/symfony/symfony-demo), [Symfony Standard Edition](https://github.com/symfony/symfony-standard) nebo  [Symfony CMF](http://cmf.symfony.com/). 
 
 Řešením je použití kompozice místo dědičnosti a **rozpadení konfiguračních souborů/úkonů do samostatných souborů**, aby bylo možné "balíčky" jednoduše odebírat či přidávat. 
 
