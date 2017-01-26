@@ -97,3 +97,9 @@ mentors:
         email: "petr.pavel@pepa.info"
         intro_message: "programuji a školím PHP (Nette), SQL/HTML/CSS/JS, 15 let zkušeností, fluent English"
         link: "https://www.naucmese.cz/kurz/programovani-pro-web-php-js"
+    17:
+        name: "Eduard Štůla"
+        location: "Plzeň"
+        email: "eduard.stula@b-m.cz"
+        intro_message: "PHP, PhpStorm, bezpečnost, GIT. Vedu vývoj v benes-michl.cz :)"
+        link: "https://www.linkedin.com/in/eduardstula/"
