@@ -14,4 +14,4 @@ RUN curl https://getcomposer.org/composer.phar -o "/usr/local/bin/composer" &&\
 
 WORKDIR /src
 CMD composer install &&\
-  vendor/bin/sculpin generate --server
+  vendor/bin/statie generate --server
