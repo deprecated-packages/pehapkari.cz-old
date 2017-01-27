@@ -5,6 +5,7 @@ perex: "Jak se poprat s předáním konfigurace službě z config.neon? A jak k 
 author: 12
 tested: true
 test_slug: NetteConfigObjects
+reviewed_by: [1, 5, 13]
 ---
 
 ## Jak se to běžně dělává?
@@ -88,7 +89,7 @@ final class InvoiceFormFactory
 **Šablona**
 ```smarty
 <form n:name="invoiceForm">
-    {* naše vlastní vykreslení formuláře *}
+    ❴* naše vlastní vykreslení formuláře *❵
 </form>
 ```
 
