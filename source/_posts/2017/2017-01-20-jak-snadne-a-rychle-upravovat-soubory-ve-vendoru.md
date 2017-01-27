@@ -2,6 +2,7 @@
 layout: post
 title: "Jak snadně a rychle upravovat soubory ve vendoru?"
 perex: ""
+author: 11
 ---
 
 <!-- redirect to new page -->

@@ -11,6 +11,7 @@
         "latte/latte": "^2.4",
         "symfony/console": "^3.1",
         "symfony/event-dispatcher": "^3.1",
+
         "phpunit/phpunit": "^5.7",
         "symplify/coding-standard": "^1.3"
     },
