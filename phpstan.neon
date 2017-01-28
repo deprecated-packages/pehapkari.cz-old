@@ -1,0 +1,4 @@
+parameters:
+    ignoreErrors:
+        - '#^Method Nette\\Application\\UI\\ITemplate::render\(\) invoked with [0-9]++ parameters?, 0 required#'
+        - '#^[a-zA-Z0-9\\]++::__construct\(\) does not call parent constructor from (?:Nette\\ComponentModel\\Component|Nette\\Application\\UI\\Presenter)#'

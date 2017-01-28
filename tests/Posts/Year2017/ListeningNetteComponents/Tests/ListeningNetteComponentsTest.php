@@ -8,6 +8,7 @@ use Nette\Application\IPresenter;
 use Nette\Application\IPresenterFactory;
 use Nette\Application\Request;
 use Nette\Application\Responses\TextResponse;
+use Nette\Application\UI\Presenter;
 use Nette\Bridges\ApplicationLatte\Template;
 use Nette\DI\Container;
 use PHPUnit\Framework\TestCase;
@@ -42,12 +43,13 @@ final class ListeningNetteComponentsTest extends TestCase
     {
         $request = new Request(self::PRESENTER_NAME, 'GET');
         $presenter = $this->createPresenter();
+        /** @var TextResponse $response */
         $response = $presenter->run($request);
 
         $this->assertInstanceOf(TextResponse::class, $response);
         $this->assertInstanceOf(Template::class, $response->getSource());
         $this->assertSame(
-            file_get_contents(__DIR__ . '/responses/success/basic.request.txt'),
+            $this->loadFileWithUnixLineEndings(__DIR__ . '/responses/success/basic.request.txt'),
             (string) $response->getSource()
         );
     }
@@ -57,12 +59,13 @@ final class ListeningNetteComponentsTest extends TestCase
     {
         $request = new Request(self::PRESENTER_NAME, 'GET', ['do' => 'addToBasket-1-add']);
         $presenter = $this->createPresenter();
+        /** @var TextResponse $response */
         $response = $presenter->run($request);
 
         $this->assertInstanceOf(TextResponse::class, $response);
         $this->assertInstanceOf(Template::class, $response->getSource());
         $this->assertSame(
-            file_get_contents(__DIR__ . '/responses/success/add-to-basket-first-product.request.txt'),
+            $this->loadFileWithUnixLineEndings(__DIR__ . '/responses/success/add-to-basket-first-product.request.txt'),
             (string) $response->getSource()
         );
     }
@@ -72,12 +75,13 @@ final class ListeningNetteComponentsTest extends TestCase
     {
         $request = new Request(self::PRESENTER_NAME, 'GET', ['do' => 'addToBasket-2-add']);
         $presenter = $this->createPresenter();
+        /** @var TextResponse $response */
         $response = $presenter->run($request);
 
         $this->assertInstanceOf(TextResponse::class, $response);
         $this->assertInstanceOf(Template::class, $response->getSource());
         $this->assertSame(
-            file_get_contents(__DIR__ . '/responses/success/add-to-basket-second-product.request.txt'),
+            $this->loadFileWithUnixLineEndings(__DIR__ . '/responses/success/add-to-basket-second-product.request.txt'),
             (string) $response->getSource()
         );
     }
@@ -87,12 +91,13 @@ final class ListeningNetteComponentsTest extends TestCase
     {
         $request = new Request(self::PRESENTER_NAME, 'GET', ['do' => 'addToBasket-3-add']);
         $presenter = $this->createPresenter();
+        /** @var TextResponse $response */
         $response = $presenter->run($request);
 
         $this->assertInstanceOf(TextResponse::class, $response);
         $this->assertInstanceOf(Template::class, $response->getSource());
         $this->assertSame(
-            file_get_contents(__DIR__ . '/responses/success/add-to-basket-third-product.request.txt'),
+            $this->loadFileWithUnixLineEndings(__DIR__ . '/responses/success/add-to-basket-third-product.request.txt'),
             (string) $response->getSource()
         );
     }
@@ -100,9 +105,16 @@ final class ListeningNetteComponentsTest extends TestCase
 
     protected function createPresenter(): IPresenter
     {
+        /** @var Presenter $categoryPresenter */
         $categoryPresenter = $this->presenterFactory->createPresenter(self::PRESENTER_NAME);
         $categoryPresenter->autoCanonicalize = false;
 
         return $categoryPresenter;
+    }
+
+
+    private function loadFileWithUnixLineEndings(string $file): string
+    {
+        return str_replace("\r\n", "\n", file_get_contents($file));
     }
 }

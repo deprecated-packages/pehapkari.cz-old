@@ -6,6 +6,7 @@ namespace Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Presen
 
 use Nette\Application\UI\Multiplier;
 use Nette\Application\UI\Presenter;
+use Nette\Bridges\ApplicationLatte\Template;
 use Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Component\AddToBasketControl\
     AddToBasketControlFactoryInterface;
 use Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Component\BasketContentControl\
@@ -78,7 +79,9 @@ final class CategoryPresenter extends Presenter
 
     public function renderDefault()
     {
-        $this->template->setParameters([
+        /** @var Template $template */
+        $template = $this->getTemplate();
+        $template->setParameters([
             'products' => self::PRODUCTS
         ]);
     }

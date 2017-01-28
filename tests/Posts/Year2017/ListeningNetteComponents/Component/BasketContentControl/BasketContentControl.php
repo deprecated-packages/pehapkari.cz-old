@@ -33,10 +33,11 @@ final class BasketContentControl extends Control
 
     public function render()
     {
-        $this->template->setParameters([
-            'products' => $this->products
-        ]);
-
-        $this->template->render(__DIR__ . '/templates/default.latte');
+        $this->getTemplate()->render(
+            __DIR__ . '/templates/default.latte',
+            [
+                'products' => $this->products
+            ]
+        );
     }
 }
