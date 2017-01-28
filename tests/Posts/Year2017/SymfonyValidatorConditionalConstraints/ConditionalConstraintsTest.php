@@ -11,7 +11,7 @@ use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Validator\ValidatorBuilder;
 
-class ConditionalConstraintsTest extends TestCase
+final class ConditionalConstraintsTest extends TestCase
 {
     /**
      * @var ValidatorInterface
