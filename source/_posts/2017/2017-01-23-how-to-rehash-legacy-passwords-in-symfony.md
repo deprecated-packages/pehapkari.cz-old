@@ -19,45 +19,62 @@ Users don't care and you should not bother them with requests to change their pa
 ## Check the password twice
 Unless you hashed your legacy passwords by a really bad algorithm (say [md5](https://en.wikipedia.org/wiki/MD5#Security)), you can just keep them in use until users log in into a new application and **rehash them to bcrypt on-the-fly**.
 
-Therefore, we need to first check all passwords by bcrypt. If the check fails, try a legacy algorithm. If that works, logs the user in and rehash his password to bcrypt, so next time he will log in after the first check. Otherwise, login just fails normally.
+1. First, check all passwords by bcrypt.
+2. If the check fails, try a legacy algorithm.
+3. If that works, logs the user in and rehash his password to bcrypt, so next time he will log in after the first check.
+4. Otherwise, login just fails normally.
 
 First things first - you definitely need to **rewrite (or copy-paste) your legacy algorithm** as a service:
 
-```
+### app/config/services.yml
+```yaml
 app.legacy_encoder:
     class: AppBundle\Security\Encoder\LegacyEncoder
-    lazy: true
+    autowire: true
 ```
 
-I put [the lazy flag](https://symfony.com/doc/current/service_container/lazy_services.html) so the encoder is initialized only when really used. BCrypt algorithm is implemented as a standard encoder in Symfony. Let's **extend it** in our own service:
+You might want to handle this service as a lazy one, so the encoder is initialized only when really used. [Read more on lazy services](https://symfony.com/doc/current/service_container/lazy_services.html) and how to define them in the official documentation.
 
-```
+BCrypt algorithm is implemented as a standard encoder in Symfony. Let's **extend it** in our own service:
+
+### app/config/services.yml
+```yaml
 app.password_encoder:
     class: AppBundle\Security\PasswordEncoder
-    arguments: ['@event_dispatcher', '@app.legacy_encoder']
+    autowire: true
 ```
 
-Now the extended encoder itself. Of course, we need to inject those services in our encoder and call the parent constructor.
+Now create a skeleton of the custom encoder. Of course, we need to inject services as well as bcrypt and legacy encoders in ours so we can use their methods we need.
 
-```
+### src/AppBundle/Security/PasswordEncoder.php
+```php
 namespace AppBundle\Security;
 
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder;
+use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
 
-class PasswordEncoder extends BCryptPasswordEncoder
+class PasswordEncoder implements PasswordEncoderInterface
 {
 
+    /** @var \Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder $bcrypt */
+    private $bcrypt;
+    
+    /** @var \Symfony\Component\EventDispatcher\EventDispatcherInterface $dispatcher */
     private $dispatcher;
 
     private $legacyEncoder;
 
-    public function __construct(EventDispatcherInterface $dispatcher, LegacyEncoder $legacyEncoder, $cost = 13)
+    public function __construct(BCryptPasswordEncoder $bcrypt, EventDispatcherInterface $dispatcher, LegacyEncoder $legacyEncoder)
     {
-        parent::__construct($cost);
+        $this->bcrypt = $bcrypt;
         $this->dispatcher = $dispatcher;
         $this->legacyEncoder = $legacyEncoder;
+    }
+    
+    public function encodePassword($raw, $salt) {
+        return $this->bcrypt->encodePassword($raw, $salt);
     }
  
     // ... 
@@ -67,26 +84,25 @@ class PasswordEncoder extends BCryptPasswordEncoder
 
 **And now the fun part.** Let's rewrite the *isPasswordValid* method so it does what we want.
 
-```
+### src/AppBundle/Security/PasswordEncoder.php
+```php
 public function isPasswordValid($encoded, $raw, $salt)
-    {
+{
 
-        // check using the bcrypt algorithm first
-        if (parent::isPasswordValid($encoded, $raw, $salt)) {
-            return true;
-        }
-        
-        // prevent legacy fallback when it's obvious that the password
-        // has been hashed using bcrypt (hash starts with '$2y$')
-        if (substr($encoded, 0, 4) === '$2y$') {
-            return false;
-        }
-
-        // legacy algorithm check
-        $result = $this->legacyEncoder->isPasswordValid($encoded, $raw, $salt);
-
-        return $result;
+    // check using the bcrypt algorithm first
+    if ($this->bcrypt->isPasswordValid($encoded, $raw, $salt)) {
+        return true;
     }
+
+    // prevent legacy fallback when it's obvious that the password
+    // has been hashed using bcrypt (hash starts with '$2y$')
+    if (substr($encoded, 0, 4) === '$2y$') {
+        return false;
+    }
+
+    // legacy algorithm check
+    return $this->legacyEncoder->isPasswordValid($encoded, $raw, $salt);
+}
 ```
 
 **Simple as that.** Oh wait. But we still need to take care of rehashing!
@@ -95,16 +111,18 @@ public function isPasswordValid($encoded, $raw, $salt)
 
 If we are sure that a password has been hashed using the legacy algorithm, just **notify another custom service that will rehash it.** First, add these lines into the *isPasswordValid* method:
 
-```
+### src/AppBundle/Security/PasswordEncoder.php
+```php
 public function isPasswordValid($encoded, $raw, $salt)
-        // ...
-        
-        // If password is encoded using the legacy algorithm, rehash it to bcrypt
-        if ($result) {
-            $this->dispatcher->dispatch('app.legacy_user', new GenericEvent($raw));
-        }
-        
-        return $result;
+{
+    // ...
+
+    // If password is encoded using the legacy algorithm, rehash it to bcrypt
+    if ($result) {
+        $this->dispatcher->dispatch('app.legacy_user', new GenericEvent($raw));
+    }
+
+    return $result;
 }
 ```
 
@@ -112,7 +130,9 @@ public function isPasswordValid($encoded, $raw, $salt)
 
 Here's an example how to achieve that:
 
-```
+### src/AppBundle/Security/PasswordUpdateManager.php
+
+```php
 namespace AppBundle\Security;
 
 use Doctrine\ORM\EntityManagerInterface;
@@ -178,12 +198,13 @@ class PasswordUpdateManager implements EventSubscriberInterface
 
 And as always, don't forget to add the service definition into the *services.yml* file with its dependencies and *kernel.event_subscriber* tag.
 
-```
+### app/config/services.yml
+```yaml
 app.password_update_manager:
     class: AppBundle\Security\PasswordUpdateManager
     tags:    
       - { name: kernel.event_subscriber }
-    arguments: ['@doctrine.orm.default_entity_manager', '@security.encoder_factory']
+    autowire: true
 ```
 
 ## Let's improve it
