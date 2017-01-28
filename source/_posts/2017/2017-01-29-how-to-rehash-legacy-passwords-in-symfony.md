@@ -2,7 +2,7 @@
 layout: post
 title: "How to rehash legacy passwords in Symfony"
 perex: "You need to import users from an old project, but but don't want to bother them with resetting their passwords just because you want to use bcrypt. Fortunately, there is a solution."
-author: 13
+author: 14
 lang: en
 ---
 
