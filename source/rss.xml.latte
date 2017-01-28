@@ -16,6 +16,8 @@
                 <lastBuildDate>{$post->getDateInFormat('r')}</lastBuildDate>
             {/first}
 
+            {continueIf $post->getDateInFormat('Y-m-d') > date('Y-m-d')}
+
             <item>
                 <title><![CDATA[ {$post['title']} ]]></title>
                 <link>{$siteUrl}/{$post['relativeUrl']}</link>
