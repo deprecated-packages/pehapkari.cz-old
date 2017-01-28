@@ -36,33 +36,21 @@ final class Address
             ->validate($this->zipcode, $constraint);
     }
 
-    /**
-     * @return string
-     */
     public function getCountry(): string
     {
         return $this->country;
     }
 
-    /**
-     * @param string $country
-     */
     public function setCountry(string $country)
     {
         $this->country = $country;
     }
 
-    /**
-     * @return string
-     */
     public function getZipcode(): string
     {
         return $this->zipcode;
     }
 
-    /**
-     * @param string $zipcode
-     */
     public function setZipcode(string $zipcode)
     {
         $this->zipcode = $zipcode;

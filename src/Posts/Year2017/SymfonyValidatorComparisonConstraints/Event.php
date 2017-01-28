@@ -21,33 +21,21 @@ final class Event
      */
     protected $endDate;
 
-    /**
-     * @return \DateTime
-     */
     public function getStartDate(): \DateTime
     {
         return $this->startDate;
     }
 
-    /**
-     * @param \DateTime $startDate
-     */
     public function setStartDate(\DateTime $startDate)
     {
         $this->startDate = $startDate;
     }
 
-    /**
-     * @return \DateTime
-     */
     public function getEndDate(): \DateTime
     {
         return $this->endDate;
     }
 
-    /**
-     * @param \DateTime $endDate
-     */
     public function setEndDate(\DateTime $endDate)
     {
         $this->endDate = $endDate;

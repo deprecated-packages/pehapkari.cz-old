@@ -41,7 +41,7 @@ final class Client implements GroupSequenceProviderInterface
     private $lastname;
 
     /**
-     * @return array
+     * {@inheritdoc}
      */
     public function getGroupSequence()
     {
@@ -53,65 +53,41 @@ final class Client implements GroupSequenceProviderInterface
         ];
     }
 
-    /**
-     * @return int
-     */
     public function getType(): int
     {
         return $this->type;
     }
 
-    /**
-     * @param int $type
-     */
     public function setType(int $type)
     {
         $this->type = $type;
     }
 
-    /**
-     * @return string
-     */
     public function getCompany(): string
     {
         return $this->company;
     }
 
-    /**
-     * @param string $company
-     */
     public function setCompany(string $company)
     {
         $this->company = $company;
     }
 
-    /**
-     * @return string
-     */
     public function getFirstname(): string
     {
         return $this->firstname;
     }
 
-    /**
-     * @param string $firstname
-     */
     public function setFirstname(string $firstname)
     {
         $this->firstname = $firstname;
     }
 
-    /**
-     * @return string
-     */
     public function getLastname(): string
     {
         return $this->lastname;
     }
 
-    /**
-     * @param string $lastname
-     */
     public function setLastname(string $lastname)
     {
         $this->lastname = $lastname;
