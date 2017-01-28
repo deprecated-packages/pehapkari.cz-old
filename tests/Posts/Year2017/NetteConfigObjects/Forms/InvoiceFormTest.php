@@ -35,6 +35,7 @@ final class InvoiceFormTest extends TestCase
         /** @var InvoiceFormOldFactory $factory */
         $factory = $this->container->getByType(InvoiceFormOldFactory::class);
         $control = $factory->create();
+        /** @var Form $form */
         $form = $control->getComponent('invoiceForm');
         /** @var SelectBox $maturity */
         $maturity = $form->getComponent('maturity');
@@ -49,6 +50,7 @@ final class InvoiceFormTest extends TestCase
         /** @var InvoiceFormNewFactoryInterface $factory */
         $factory = $this->container->getByType(InvoiceFormNewFactoryInterface::class);
         $control = $factory->create();
+        /** @var Form $form */
         $form = $control->getComponent('invoiceForm');
         /** @var SelectBox $maturity */
         $maturity = $form->getComponent('maturity');

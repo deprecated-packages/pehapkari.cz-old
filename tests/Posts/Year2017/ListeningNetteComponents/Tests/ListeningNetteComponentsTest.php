@@ -8,6 +8,7 @@ use Nette\Application\IPresenter;
 use Nette\Application\IPresenterFactory;
 use Nette\Application\Request;
 use Nette\Application\Responses\TextResponse;
+use Nette\Application\UI\Presenter;
 use Nette\Bridges\ApplicationLatte\Template;
 use Nette\DI\Container;
 use PHPUnit\Framework\TestCase;
@@ -42,6 +43,7 @@ final class ListeningNetteComponentsTest extends TestCase
     {
         $request = new Request(self::PRESENTER_NAME, 'GET');
         $presenter = $this->createPresenter();
+        /** @var TextResponse $response */
         $response = $presenter->run($request);
 
         $this->assertInstanceOf(TextResponse::class, $response);
@@ -57,6 +59,7 @@ final class ListeningNetteComponentsTest extends TestCase
     {
         $request = new Request(self::PRESENTER_NAME, 'GET', ['do' => 'addToBasket-1-add']);
         $presenter = $this->createPresenter();
+        /** @var TextResponse $response */
         $response = $presenter->run($request);
 
         $this->assertInstanceOf(TextResponse::class, $response);
@@ -72,6 +75,7 @@ final class ListeningNetteComponentsTest extends TestCase
     {
         $request = new Request(self::PRESENTER_NAME, 'GET', ['do' => 'addToBasket-2-add']);
         $presenter = $this->createPresenter();
+        /** @var TextResponse $response */
         $response = $presenter->run($request);
 
         $this->assertInstanceOf(TextResponse::class, $response);
@@ -87,6 +91,7 @@ final class ListeningNetteComponentsTest extends TestCase
     {
         $request = new Request(self::PRESENTER_NAME, 'GET', ['do' => 'addToBasket-3-add']);
         $presenter = $this->createPresenter();
+        /** @var TextResponse $response */
         $response = $presenter->run($request);
 
         $this->assertInstanceOf(TextResponse::class, $response);
@@ -100,6 +105,7 @@ final class ListeningNetteComponentsTest extends TestCase
 
     protected function createPresenter(): IPresenter
     {
+        /** @var Presenter $categoryPresenter */
         $categoryPresenter = $this->presenterFactory->createPresenter(self::PRESENTER_NAME);
         $categoryPresenter->autoCanonicalize = false;
 
