@@ -373,3 +373,17 @@ h1:hover .anchor-icon, h2:hover .anchor-icon, h3:hover .anchor-icon, h4:hover .a
     font-weight: 600;
     font-size: 1.5em;
 }
+
+.main-logo {
+    padding: 3em 0 2em;
+    max-width: 100%;
+}
+
+.lead {
+    margin: 1em 0;
+    font-size: 1.3em;
+}
+
+.lead p {
+    line-height: 1.5em;
+}
