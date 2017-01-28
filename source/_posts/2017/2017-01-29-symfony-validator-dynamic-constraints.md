@@ -9,8 +9,7 @@ test_slug: SymfonyValidatorDynamicConstraints
 ---
 
 
-Use case
-----
+### Example use case
 
 You have an Address entity with a country and zipcode. There is a [ZipCode constraint](https://github.com/Soullivaneuh/IsoCodesValidator/blob/master/src/Constraints/ZipCode.php) available but requires you to specify the country in options which you cannot do in annotation because country is another field of Address entity.
 
@@ -42,10 +41,9 @@ class Address
 ```
 
 
-Solution
-----
+### Creating the constraint dynamically
 
-Well it's of course impossible to simply fix the code above by replacing the question marks with something. So we need another approach. The way to go in this case is the Callback constraint.
+Well it's of course impossible to simply fix the code above by replacing the question marks with something. So we need another approach. **The way to go in this case is the Callback constraint.**
 
 ```php
 use SLLH\IsoCodesValidator\Constraints\ZipCode;
@@ -71,7 +69,10 @@ class Address
 }
 ```
 
-Now this is almost correct except for one flaw. If the zipcode is not valid the violation is not attached to the zipcode field but to the Address class instead. Fortunately there is a way to solve this problem as well using ContextualValidator.
+
+### Correct violation context
+
+Now this is almost correct except for one flaw. If the zipcode is not valid the violation is not attached to the zipcode field but to the Address class instead. **Fortunately there is a way to solve this problem as well using ContextualValidator.**
 
 ```php
 use SLLH\IsoCodesValidator\Constraints\ZipCode;
@@ -97,12 +98,11 @@ class Address
 }
 ```
 
-And that's it! The violation will be added to the field directly in the intended context too so there is no need to duplicate it.
+And that's it! **The violation will be added to the field directly in the intended context** so there is no need to duplicate it.
 
 This approach should solve most of the advanced use-cases you might have. Along with the tips from my previous articles it makes Symfony/Validator a really powerful validation tool.
 
 
-Usage with Nette Framework
-----
+### Usage with Nette Framework
 
 If you want to use the Symfony/Validator component in your Nette application you will need [Kdyby/Validator](https://github.com/Kdyby/Validator).
