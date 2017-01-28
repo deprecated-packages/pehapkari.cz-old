@@ -4,6 +4,7 @@ title: "How to rehash legacy passwords in Symfony"
 perex: "You need to import users from an old project, but but don't want to bother them with resetting their passwords just because you want to use bcrypt. Fortunately, there is a solution."
 author: 14
 lang: en
+reviwed_by: [1, 5]
 ---
 
 So you've decided to send a legacy project to his well-deserved retirement and write a nice, clean code instead. But there is an asset you cannot throw away. **Users**.
@@ -26,8 +27,9 @@ Unless you hashed your legacy passwords by a really bad algorithm (say [md5](htt
 
 First things first - you definitely need to **rewrite (or copy-paste) your legacy algorithm** as a service:
 
-### app/config/services.yml
 ```yaml
+# app/config/services.yml
+
 app.legacy_encoder:
     class: AppBundle\Security\Encoder\LegacyEncoder
     autowire: true
@@ -37,8 +39,9 @@ You might want to handle this service as a lazy one, so the encoder is initializ
 
 BCrypt algorithm is implemented as a standard encoder in Symfony. Let's **extend it** in our own service:
 
-### app/config/services.yml
 ```yaml
+# app/config/services.yml
+
 app.password_encoder:
     class: AppBundle\Security\PasswordEncoder
     autowire: true
@@ -46,8 +49,9 @@ app.password_encoder:
 
 Now create a skeleton of the custom encoder. Of course, we need to inject services as well as bcrypt and legacy encoders in ours so we can use their methods we need.
 
-### src/AppBundle/Security/PasswordEncoder.php
 ```php
+// src/AppBundle/Security/PasswordEncoder.php
+
 namespace AppBundle\Security;
 
 use Symfony\Component\EventDispatcher\GenericEvent;
@@ -55,15 +59,22 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder;
 use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
 
-class PasswordEncoder implements PasswordEncoderInterface
+final class PasswordEncoder implements PasswordEncoderInterface
 {
 
-    /** @var \Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder $bcrypt */
+    /**
+     * @var BCryptPasswordEncoder
+     */
     private $bcrypt;
     
-    /** @var \Symfony\Component\EventDispatcher\EventDispatcherInterface $dispatcher */
+    /**
+     * @var EventDispatcherInterface
+     */
     private $dispatcher;
 
+    /**
+     * @var LegacyEncoder
+     */
     private $legacyEncoder;
 
     public function __construct(BCryptPasswordEncoder $bcrypt, EventDispatcherInterface $dispatcher, LegacyEncoder $legacyEncoder)
@@ -84,11 +95,13 @@ class PasswordEncoder implements PasswordEncoderInterface
 
 **And now the fun part.** Let's rewrite the *isPasswordValid* method so it does what we want.
 
-### src/AppBundle/Security/PasswordEncoder.php
 ```php
-public function isPasswordValid($encoded, $raw, $salt)
-{
+// src/AppBundle/Security/PasswordEncoder.php
 
+// ...
+
+public function isPasswordValid(string $encoded, string $raw, string $salt) : bool
+{
     // check using the bcrypt algorithm first
     if ($this->bcrypt->isPasswordValid($encoded, $raw, $salt)) {
         return true;
@@ -107,13 +120,15 @@ public function isPasswordValid($encoded, $raw, $salt)
 
 **Simple as that.** Oh wait. But we still need to take care of rehashing!
 
+
 ## Rehashing passwords dynamically
 
 If we are sure that a password has been hashed using the legacy algorithm, just **notify another custom service that will rehash it.** First, add these lines into the *isPasswordValid* method:
 
-### src/AppBundle/Security/PasswordEncoder.php
 ```php
-public function isPasswordValid($encoded, $raw, $salt)
+// src/AppBundle/Security/PasswordEncoder.php
+
+public function isPasswordValid(string $encoded, string $raw, string $salt) : bool
 {
     // ...
 
@@ -130,9 +145,9 @@ public function isPasswordValid($encoded, $raw, $salt)
 
 Here's an example how to achieve that:
 
-### src/AppBundle/Security/PasswordUpdateManager.php
-
 ```php
+// src/AppBundle/Security/PasswordUpdateManager.php
+
 namespace AppBundle\Security;
 
 use Doctrine\ORM\EntityManagerInterface;
@@ -142,22 +157,32 @@ use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use Symfony\Component\Security\Http\SecurityEvents;
 
-class PasswordUpdateManager implements EventSubscriberInterface
+final class PasswordUpdateManager implements EventSubscriberInterface
 {
-
+    /**
+     * @var EntityManagerInterface
+     */
     private $entityManager;
 
+    /**
+     * @var EncoderFactoryInterface
+     */
     private $encoderFactory;
 
+    /**
+     * @var string
+     */
     private $passwordForRehash;
 
-    public function __construct(EntityManagerInterface $entityManager, EncoderFactoryInterface $encoderFactory)
-    {
+    public function __construct(
+        EntityManagerInterface $entityManager,
+        EncoderFactoryInterface $encoderFactory
+    ) {
         $this->entityManager = $entityManager;
         $this->encoderFactory = $encoderFactory;
     }
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents() : array
     {
         return [
             'app._user_legacy' => 'storePasswordForRehash',
@@ -192,14 +217,14 @@ class PasswordUpdateManager implements EventSubscriberInterface
         $this->entityManager->persist($user);
         $this->entityManager->flush();
     }
-
 }
 ```
 
 And as always, don't forget to add the service definition into the *services.yml* file with its dependencies and *kernel.event_subscriber* tag.
 
-### app/config/services.yml
 ```yaml
+# app/config/services.yml
+
 app.password_update_manager:
     class: AppBundle\Security\PasswordUpdateManager
     tags:    
