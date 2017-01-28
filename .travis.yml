@@ -28,7 +28,11 @@ script:
     # run tests for tested posts (with "tested: true" in header configuration)
     - vendor/bin/phpunit $PHPUNIT_FLAGS
     # check coding standard (defined in composer.json "scripts" section)
-    - if [[ "$CHECK_CS" != "" ]]; then composer check-cs; fi
+    - |
+        if [[ "$CHECK_CS" != "" ]]; then
+            composer check-cs
+            composer phpstan
+        fi
     # test that website is generated
     - vendor/bin/statie generate
     # re-build website when on master only

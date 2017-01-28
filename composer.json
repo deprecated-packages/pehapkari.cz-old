@@ -18,6 +18,7 @@
         "symfony/intl": "^3.1",
         "symfony/validator": "^3.2",
 
+        "phpstan/phpstan": "^0.6",
         "phpunit/phpunit": "^5.7",
         "symplify/coding-standard": "^1.3"
     },
@@ -33,12 +34,16 @@
     },
     "scripts": {
         "check-cs": [
-            "vendor/symplify/coding-standard/bin/symplify-cs check src",
-            "vendor/symplify/coding-standard/bin/symplify-cs check tests"
+            "vendor/bin/symplify-cs check src",
+            "vendor/bin/symplify-cs check tests"
         ],
         "fix-cs": [
-            "vendor/symplify/coding-standard/bin/symplify-cs fix src",
-            "vendor/symplify/coding-standard/bin/symplify-cs fix tests"
+            "vendor/bin/symplify-cs fix src",
+            "vendor/bin/symplify-cs fix tests"
+        ],
+        "phpstan": [
+            "vendor/bin/phpstan analyse --level=4 src",
+            "vendor/bin/phpstan analyse --level=4 tests"
         ]
     }
 }
