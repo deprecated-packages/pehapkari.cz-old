@@ -58,8 +58,6 @@ final class CategoryPresenter extends Presenter
         BasketContentControlFactoryInterface $basketContentControlFactory,
         EventDispatcherInterface $eventDispatcher
     ) {
-        parent::__construct();
-
         $this->addToBasketControlFactory = $addToBasketControlFactory;
         $this->basketContentControlFactory = $basketContentControlFactory;
         $this->eventDispatcher = $eventDispatcher;
