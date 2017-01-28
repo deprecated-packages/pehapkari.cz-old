@@ -1,0 +1,12 @@
+application:
+    scanDirs: FALSE
+
+parameters:
+    invoicing:
+        defaultMaturity: 7
+        pdfDirectory: %appDir%/../invoices
+
+services:
+    - Pehapkari\Website\Posts\Year2017\NetteConfigObjects\Config\InvoicingConfig( %invoicing% )
+    - Pehapkari\Website\Posts\Year2017\NetteConfigObjects\Forms\InvoiceFormOldFactory( %invoicing% )
+    - Pehapkari\Website\Posts\Year2017\NetteConfigObjects\Forms\InvoiceFormNewFactoryInterface
