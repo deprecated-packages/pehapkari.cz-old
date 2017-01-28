@@ -16,6 +16,8 @@ id: blog
         <hr>
 
         {foreach $posts as $post}
+            {continueIf isset($post['redirect'])}
+
             <div class="article">
                 <h3>
                     <a href="/{$post['relativeUrl']}/">{$post['title']}</a>
