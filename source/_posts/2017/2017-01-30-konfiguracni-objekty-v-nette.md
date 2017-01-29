@@ -17,8 +17,6 @@ kód vypadal?
 
 **Formulář**
 ```php
-<?php
-
 declare(strict_types = 1);
 
 namespace App\Forms;
@@ -59,8 +57,6 @@ final class InvoiceForm extends Control
 
 **Továrna**
 ```php
-<?php
-
 declare(strict_types = 1);
 
 namespace App\Forms;
@@ -111,8 +107,6 @@ Místo běžného pole si na konfiguraci vytvoříme objekt, který bude konfigu
 našemu formuláři zprostředkovávat.
 
 ```php
-<?php
-
 declare(strict_types = 1);
 
 namespace App\Config;
@@ -141,8 +135,6 @@ kterou později využijeme v třídě na generování PDF. Konfigurační tříd
 jen jednorázová, předáme její pomocí fakturační konfiguraci více službám.
 
 ```php
-<?php
-
 declare(strict_types = 1);
 
 namespace App\Config;
@@ -166,8 +158,6 @@ využila. Všimněte si také metody `setDefaultValue()`. Díky `ArrayHash` nyn�
 můžeme ke konfiguraci přistupovat jako k objektu.
 
 ```php
-<?php
-
 declare(strict_types = 1);
 
 namespace App\Forms;
@@ -211,8 +201,6 @@ Můžeme se také zbavit vlastní implementace továrny a nahradit ji interfacem
 Nette nám pak továrnu vygeneruje samo.
 
 ```php
-<?php
-
 declare(strict_types = 1);
 
 namespace App\Forms;
