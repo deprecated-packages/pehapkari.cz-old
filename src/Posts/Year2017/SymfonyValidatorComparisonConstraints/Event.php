@@ -21,7 +21,7 @@ final class Event
      */
     protected $endDate;
 
-    public function getStartDate(): \DateTime
+    public function getStartDate() : \DateTime
     {
         return $this->startDate;
     }
@@ -31,7 +31,7 @@ final class Event
         $this->startDate = $startDate;
     }
 
-    public function getEndDate(): \DateTime
+    public function getEndDate() : \DateTime
     {
         return $this->endDate;
     }

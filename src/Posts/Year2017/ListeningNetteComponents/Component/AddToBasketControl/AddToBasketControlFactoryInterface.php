@@ -4,5 +4,5 @@ namespace Pehapkari\Website\Posts\Year2017\ListeningNetteComponents\Component\Ad
 
 interface AddToBasketControlFactoryInterface
 {
-    public function create(array $product): AddToBasketControl;
+    public function create(array $product) : AddToBasketControl;
 }

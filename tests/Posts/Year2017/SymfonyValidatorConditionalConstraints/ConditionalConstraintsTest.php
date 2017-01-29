@@ -18,7 +18,7 @@ final class ConditionalConstraintsTest extends TestCase
      */
     private $validator;
 
-    public function setUp()
+    protected function setUp()
     {
         $builder = new ValidatorBuilder();
         $builder->enableAnnotationMapping();

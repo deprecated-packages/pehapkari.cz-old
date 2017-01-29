@@ -8,19 +8,20 @@ use Nette\Utils\FileSystem;
 
 final class ContainerFactory
 {
-    const TEMP_DIR = __DIR__ . '/temp';
-
-
-    public function create(): Container
+    public function create() : Container
     {
-        FileSystem::delete(self::TEMP_DIR);
-        mkdir(self::TEMP_DIR, 0777);
-
         $configurator = new Configurator;
-        $configurator->setDebugMode(false);
-        $configurator->setTempDirectory(self::TEMP_DIR);
+        $configurator->setTempDirectory($this->createAndReturnTempDir());
         $configurator->addConfig(__DIR__ . '/config.neon');
 
         return $configurator->createContainer();
+    }
+
+    private function createAndReturnTempDir() : string
+    {
+        $tempDir = sys_get_temp_dir() . '/pehapkari-nette-config-objects';
+        FileSystem::delete($tempDir);
+        FileSystem::createDir($tempDir);
+        return $tempDir;
     }
 }

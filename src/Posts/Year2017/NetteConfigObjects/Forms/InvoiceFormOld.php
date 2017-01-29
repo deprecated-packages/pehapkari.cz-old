@@ -20,7 +20,7 @@ final class InvoiceFormOld extends Control
         $this->config = $config;
     }
 
-    protected function createComponentInvoiceForm(): Form
+    protected function createComponentInvoiceForm() : Form
     {
         $form = new Form;
 

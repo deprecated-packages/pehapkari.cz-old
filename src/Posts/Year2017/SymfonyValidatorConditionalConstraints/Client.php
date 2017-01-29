@@ -53,7 +53,7 @@ final class Client implements GroupSequenceProviderInterface
         ];
     }
 
-    public function getType(): int
+    public function getType() : int
     {
         return $this->type;
     }
@@ -63,7 +63,7 @@ final class Client implements GroupSequenceProviderInterface
         $this->type = $type;
     }
 
-    public function getCompany(): string
+    public function getCompany() : string
     {
         return $this->company;
     }
@@ -73,7 +73,7 @@ final class Client implements GroupSequenceProviderInterface
         $this->company = $company;
     }
 
-    public function getFirstname(): string
+    public function getFirstname() : string
     {
         return $this->firstname;
     }
@@ -83,7 +83,7 @@ final class Client implements GroupSequenceProviderInterface
         $this->firstname = $firstname;
     }
 
-    public function getLastname(): string
+    public function getLastname() : string
     {
         return $this->lastname;
     }
