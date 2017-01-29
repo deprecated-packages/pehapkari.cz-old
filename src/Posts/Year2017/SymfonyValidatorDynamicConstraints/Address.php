@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace Pehapkari\Website\Posts\Year2017\SymfonyValidatorDynamicConstraints;
 
-use SLLH\IsoCodesValidator\Constraints\ZipCode;
+use Pehapkari\Website\Posts\Year2017\SymfonyValidatorDynamicConstraints\Constraints\ZipCode;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
@@ -36,7 +36,7 @@ final class Address
             ->validate($this->zipcode, $constraint);
     }
 
-    public function getCountry(): string
+    public function getCountry() : string
     {
         return $this->country;
     }
@@ -46,7 +46,7 @@ final class Address
         $this->country = $country;
     }
 
-    public function getZipcode(): string
+    public function getZipcode() : string
     {
         return $this->zipcode;
     }
