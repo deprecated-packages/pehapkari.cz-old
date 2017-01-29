@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace Pehapkari\Website\Posts\Year2017\SymfonyValidatorDynamicConstraints\IsoCodes;
 
@@ -21,8 +22,11 @@ final class ZipCode
     {
         $country = strtoupper($country);
 
-        if (!isset(self::$patterns[$country])) {
-            throw new InvalidArgumentException("ERROR: The zipcode validator for $country does not exists yet: feel free to add it.");
+        if (! isset(self::$patterns[$country])) {
+            throw new InvalidArgumentException(sprintf(
+                'The zipcode validator for "%s" does not exists yet: feel free to add it.',
+                $country
+            ));
         }
 
         return (bool) preg_match(

@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace Pehapkari\Website\Posts\Year2017\SymfonyValidatorDynamicConstraints\Constraints;
 
@@ -16,11 +17,11 @@ final class ZipCodeValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        if (!$value) {
+        if (! $value) {
             return;
         }
 
-        if (!ZipCode::validate($value, $constraint->country)) {
+        if (! ZipCode::validate($value, $constraint->country)) {
             $this->createViolation($constraint->message);
         }
     }

@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace Pehapkari\Website\Posts\Year2017\SymfonyValidatorDynamicConstraints\Constraints;
 
@@ -25,7 +26,7 @@ final class ZipCode extends Constraint
     {
         parent::__construct($options);
 
-        if (!in_array($this->country, IsoCodesZipCode::getAvailableCountries())) {
+        if (! in_array($this->country, IsoCodesZipCode::getAvailableCountries())) {
             throw new ConstraintDefinitionException(sprintf(
                 'The option "country" must be one of "%s" or "all"',
                 implode('", "', IsoCodesZipCode::getAvailableCountries())

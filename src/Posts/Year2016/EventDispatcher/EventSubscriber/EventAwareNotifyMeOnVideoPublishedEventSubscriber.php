@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace Pehapkari\Website\Posts\Year2016\EventDispatcher\EventSubscriber;
 
