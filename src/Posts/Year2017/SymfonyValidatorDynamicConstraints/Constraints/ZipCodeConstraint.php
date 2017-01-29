@@ -7,7 +7,7 @@ use Pehapkari\Website\Posts\Year2017\SymfonyValidatorDynamicConstraints\IsoCodes
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Exception\ConstraintDefinitionException;
 
-final class ZipCode extends Constraint
+final class ZipCodeConstraint extends Constraint
 {
     /**
      * @var string

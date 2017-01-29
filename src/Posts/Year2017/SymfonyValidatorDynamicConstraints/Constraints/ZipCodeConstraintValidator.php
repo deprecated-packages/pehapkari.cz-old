@@ -7,13 +7,13 @@ use Pehapkari\Website\Posts\Year2017\SymfonyValidatorDynamicConstraints\IsoCodes
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
-final class ZipCodeValidator extends ConstraintValidator
+final class ZipCodeConstraintValidator extends ConstraintValidator
 {
     /**
      * Checks if the passed value is valid.
      *
      * @param mixed $value
-     * @param Constraint $constraint
+     * @param \Pehapkari\Website\Posts\Year2017\SymfonyValidatorDynamicConstraints\Constraints\ZipCodeConstraint $constraint
      */
     public function validate($value, Constraint $constraint)
     {

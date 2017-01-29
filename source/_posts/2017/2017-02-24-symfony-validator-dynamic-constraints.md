@@ -11,10 +11,10 @@ test_slug: SymfonyValidatorDynamicConstraints
 
 ### Example use case
 
-You have an Address entity with a country and zipcode. There is a [ZipCode constraint](https://github.com/Soullivaneuh/IsoCodesValidator/blob/master/src/Constraints/ZipCode.php) available but requires you to specify the country in options which you cannot do in annotation because country is another field of Address entity.
+You have an Address entity with a country and zipcode. There is a [ZipCodeConstraint constraint](https://github.com/Soullivaneuh/IsoCodesValidator/blob/master/src/Constraints/ZipCode.php) available but requires you to specify the country in options which you cannot do in annotation because country is another field of Address entity.
 
 ```php
-use SLLH\IsoCodesValidator\Constraints\ZipCode;
+use SLLH\IsoCodesValidator\Constraints\ZipCodeConstraint;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class Address
@@ -32,7 +32,7 @@ class Address
      * @todo Validate this field based on the country specified in $this->country.
      * @var string
      * @Assert\NotBlank()
-     * @ZipCode(country = "???")
+     * @ZipCodeConstraint(country = "???")
      */
     protected $zipcode;
 
@@ -46,7 +46,7 @@ class Address
 Well it's of course impossible to simply fix the code above by replacing the question marks with something. So we need another approach. **The way to go in this case is the Callback constraint.**
 
 ```php
-use SLLH\IsoCodesValidator\Constraints\ZipCode;
+use SLLH\IsoCodesValidator\Constraints\ZipCodeConstraint;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
@@ -59,7 +59,7 @@ class Address
      */
     public function validateZipcode(ExecutionContextInterface $context)
     {
-        $constraint = new ZipCode(['country' => $this->country]);
+        $constraint = new ZipCodeConstraint(['country' => $this->country]);
         $violations = $context->getValidator()->validate($this->zipcode, $constraint);
 
         foreach ($violations as $violation) {
@@ -75,7 +75,7 @@ class Address
 Now this is almost correct except for one flaw. If the zipcode is not valid the violation is not attached to the zipcode field but to the Address class instead. **Fortunately there is a way to solve this problem as well using ContextualValidator.**
 
 ```php
-use SLLH\IsoCodesValidator\Constraints\ZipCode;
+use SLLH\IsoCodesValidator\Constraints\ZipCodeConstraint;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
@@ -88,7 +88,7 @@ class Address
      */
     public function validateZipcode(ExecutionContextInterface $context)
     {
-        $constraint = new ZipCode(['country' => $this->country]);
+        $constraint = new ZipCodeConstraint(['country' => $this->country]);
         $context
             ->getValidator()
             ->inContext($context)

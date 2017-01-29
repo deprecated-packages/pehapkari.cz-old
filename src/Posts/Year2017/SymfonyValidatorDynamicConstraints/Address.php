@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace Pehapkari\Website\Posts\Year2017\SymfonyValidatorDynamicConstraints;
 
-use Pehapkari\Website\Posts\Year2017\SymfonyValidatorDynamicConstraints\Constraints\ZipCode;
+use Pehapkari\Website\Posts\Year2017\SymfonyValidatorDynamicConstraints\Constraints\ZipCodeConstraint;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
@@ -28,7 +28,7 @@ final class Address
      */
     public function validateZipcode(ExecutionContextInterface $context)
     {
-        $constraint = new ZipCode(['country' => $this->country]);
+        $constraint = new ZipCodeConstraint(['country' => $this->country]);
         $context
             ->getValidator()
             ->inContext($context)
