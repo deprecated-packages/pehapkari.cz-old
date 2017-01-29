@@ -1,8 +1,6 @@
-<?php
+<?php declare(strict_types=1);
 
-declare(strict_types=1);
-
-namespace Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Tests;
+namespace Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents;
 
 use Nette\Application\IPresenter;
 use Nette\Application\IPresenterFactory;
@@ -10,34 +8,25 @@ use Nette\Application\Request;
 use Nette\Application\Responses\TextResponse;
 use Nette\Application\UI\Presenter;
 use Nette\Bridges\ApplicationLatte\Template;
-use Nette\DI\Container;
 use PHPUnit\Framework\TestCase;
 
 final class ListeningNetteComponentsTest extends TestCase
 {
-
-    const PRESENTER_NAME = 'Category';
-
     /**
-     * @var Container
+     * @var string
      */
-    private $container;
+    const PRESENTER_NAME = 'Category';
 
     /**
      * @var IPresenterFactory
      */
     private $presenterFactory;
 
-
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp()
     {
-        $this->container = (new ContainerFactory)->create();
-        $this->presenterFactory = $this->container->getByType(IPresenterFactory::class);
+        $container = (new ContainerFactory)->create();
+        $this->presenterFactory = $container->getByType(IPresenterFactory::class);
     }
-
 
     public function testBasicRequest()
     {
@@ -54,7 +43,6 @@ final class ListeningNetteComponentsTest extends TestCase
         );
     }
 
-
     public function testAddToBasketFirstProductRequest()
     {
         $request = new Request(self::PRESENTER_NAME, 'GET', ['do' => 'addToBasket-1-add']);
@@ -69,7 +57,6 @@ final class ListeningNetteComponentsTest extends TestCase
             (string) $response->getSource()
         );
     }
-
 
     public function testAddToBasketSecondProductRequest()
     {
@@ -86,7 +73,6 @@ final class ListeningNetteComponentsTest extends TestCase
         );
     }
 
-
     public function testAddToBasketThirdProductRequest()
     {
         $request = new Request(self::PRESENTER_NAME, 'GET', ['do' => 'addToBasket-3-add']);
@@ -102,8 +88,7 @@ final class ListeningNetteComponentsTest extends TestCase
         );
     }
 
-
-    protected function createPresenter(): IPresenter
+    private function createPresenter() : IPresenter
     {
         /** @var Presenter $categoryPresenter */
         $categoryPresenter = $this->presenterFactory->createPresenter(self::PRESENTER_NAME);
@@ -112,8 +97,7 @@ final class ListeningNetteComponentsTest extends TestCase
         return $categoryPresenter;
     }
 
-
-    private function loadFileWithUnixLineEndings(string $file): string
+    private function loadFileWithUnixLineEndings(string $file) : string
     {
         return str_replace("\r\n", "\n", file_get_contents($file));
     }

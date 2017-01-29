@@ -1,24 +1,27 @@
-<?php
+<?php declare(strict_types=1);
 
-declare(strict_types=1);
-
-namespace Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Presenter;
+namespace Pehapkari\Website\Posts\Year2017\ListeningNetteComponents\Presenter;
 
 use Nette\Application\UI\Multiplier;
 use Nette\Application\UI\Presenter;
 use Nette\Bridges\ApplicationLatte\Template;
-use Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Component\AddToBasketControl\
+use Pehapkari\Website\Posts\Year2017\ListeningNetteComponents\Component\AddToBasketControl\
     AddToBasketControlFactoryInterface;
-use Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Component\BasketContentControl\
+use Pehapkari\Website\Posts\Year2017\ListeningNetteComponents\Component\BasketContentControl\
     BasketContentControl;
-use Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Component\BasketContentControl\
+use Pehapkari\Website\Posts\Year2017\ListeningNetteComponents\Component\BasketContentControl\
     BasketContentControlFactoryInterface;
-use Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Event\ProductAddedToBasketEvent;
+use Pehapkari\Website\Posts\Year2017\ListeningNetteComponents\Event\ProductAddedToBasketEvent;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
+/**
+ * @method Template getTemplate()
+ */
 final class CategoryPresenter extends Presenter
 {
-
+    /**
+     * @var array
+     */
     const PRODUCTS = [
         [
             'id' => 1,
@@ -52,7 +55,6 @@ final class CategoryPresenter extends Presenter
      */
     private $eventDispatcher;
 
-
     public function __construct(
         AddToBasketControlFactoryInterface $addToBasketControlFactory,
         BasketContentControlFactoryInterface $basketContentControlFactory,
@@ -62,7 +64,6 @@ final class CategoryPresenter extends Presenter
         $this->basketContentControlFactory = $basketContentControlFactory;
         $this->eventDispatcher = $eventDispatcher;
     }
-
 
     public function startup()
     {
@@ -76,18 +77,14 @@ final class CategoryPresenter extends Presenter
         );
     }
 
-
     public function renderDefault()
     {
-        /** @var Template $template */
-        $template = $this->getTemplate();
-        $template->setParameters([
+        $this->getTemplate()->setParameters([
             'products' => self::PRODUCTS
         ]);
     }
 
-
-    protected function createComponentAddToBasket(): Multiplier
+    protected function createComponentAddToBasket() : Multiplier
     {
         // Musíme použít Multiplier, protože potřebujeme samostatnou instanci pro každý produkt.
         // Co je to Multiplier? Více informací najdeš ve článku https://pla.nette.org/cs/multiplier.
@@ -105,8 +102,7 @@ final class CategoryPresenter extends Presenter
         });
     }
 
-
-    protected function createComponentBasketContent(): BasketContentControl
+    protected function createComponentBasketContent() : BasketContentControl
     {
         return $this->basketContentControlFactory->create();
     }

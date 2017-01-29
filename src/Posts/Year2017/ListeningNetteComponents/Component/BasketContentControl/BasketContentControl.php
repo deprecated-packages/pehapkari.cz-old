@@ -1,12 +1,14 @@
-<?php
+<?php declare(strict_types=1);
 
-declare(strict_types=1);
-
-namespace Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Component\BasketContentControl;
+namespace Pehapkari\Website\Posts\Year2017\ListeningNetteComponents\Component\BasketContentControl;
 
 use Nette\Application\UI\Control;
-use Pehapkari\Website\Tests\Posts\Year2017\ListeningNetteComponents\Event\ProductAddedToBasketEvent;
+use Nette\Bridges\ApplicationLatte\Template;
+use Pehapkari\Website\Posts\Year2017\ListeningNetteComponents\Event\ProductAddedToBasketEvent;
 
+/**
+ * @method Template getTemplate()
+ */
 final class BasketContentControl extends Control
 {
 
