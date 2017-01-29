@@ -10,7 +10,7 @@ namespace Pehapkari\Website\Posts\Year2017\NetteConfigObjects\Config;
  */
 final class InvoicingConfig extends AbstractConfig
 {
-    public function getPdfPath(int $invoiceId): string
+    public function getPdfPath(int $invoiceId) : string
     {
         return vsprintf('%s/%s.pdf', [$this->pdfDirectory, $invoiceId]);
     }

@@ -1,0 +1,13 @@
+application:
+    scanDirs: FALSE
+    mapping:
+        *: Pehapkari\Website\Posts\Year2017\ListeningNetteComponents\Presenter\*Presenter
+
+services:
+    routing.router: Nette\Application\Routers\SimpleRouter('Category:default')
+
+    - Symfony\Component\EventDispatcher\EventDispatcher
+
+    # component factories
+    - Pehapkari\Website\Posts\Year2017\ListeningNetteComponents\Component\AddToBasketControl\AddToBasketControlFactoryInterface
+    - Pehapkari\Website\Posts\Year2017\ListeningNetteComponents\Component\BasketContentControl\BasketContentControlFactoryInterface

@@ -17,7 +17,7 @@ final class InvoiceFormOldFactory
         $this->config = $config;
     }
 
-    public function create(): InvoiceFormOld
+    public function create() : InvoiceFormOld
     {
         return new InvoiceFormOld($this->config);
     }
