@@ -58,6 +58,7 @@ rewards:
         value_in_points: 5
         winners:
             @TomasPilar: https://github.com/pehapkari/pehapkari.cz/pull/176
+            @ikvasnica: https://github.com/pehapkari/pehapkari.cz/pull/200
     6:
         title: "Persistence in PHP with Doctrine ORM"
         product_link: "https://filip-prochazka.com/blog/kniha-persistence-in-php-with-doctrine-orm"
