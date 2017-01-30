@@ -1,6 +1,6 @@
 authors:
     1:
-     name: "Tomáš Votruba"
+        name: "Tomáš Votruba"
     2:
         name: "Pavel Rozehnal"
     3:
@@ -24,4 +24,8 @@ authors:
     12:
         name: "Tomáš Jacík"
     13:
+        name: "Martin Zlámal"
+    14:
+        name: "Ivan Kvasnica"
+    15:
         name: "Matěj Račinský"
