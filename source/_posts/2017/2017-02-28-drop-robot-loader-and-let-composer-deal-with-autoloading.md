@@ -10,6 +10,8 @@ author: 1
 lang: en
 ---
 
+*Martin Zlámal already [wrote about this](http://zlml.cz/psr-4-autoloader-aplikace) (Czech) a year ago and I think this needs to promote even more.*
+
 ## Where is RobotLoader Useful
 
 [RobotLoader](https://doc.nette.org/en/auto-loading#toc-nette-loaders-robotloader) is Nette Component that is used to autoload classes. Its killer feature is: **in whatever file it is and whatever the class name is, I will load it**. You can have 20 classes in 1 file or classes located in various locations.
