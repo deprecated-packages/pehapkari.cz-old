@@ -27,7 +27,7 @@ After many discussion, followed by [first standard](http://www.php-fig.org/psr/p
 
 ### Why not Anymore
 
-Have your heard about PSR-4? It is *PHP Standard Recommendation* about naming and location classes. This says you completely nothing, but in simple words is means:
+Have your heard about PSR-4? It is *PHP Standard Recommendation* about naming and location classes. This says you completely nothing, but in the simplest form it means:
 
 **1 class** (/interface/trait) = **1 file**
 
@@ -42,9 +42,9 @@ App\MyClass => App\MyClass.php
 App\Presenter\MyClass => App\Presenter\MyClass.php
 ```
 
-I know I can really on this on 99% of places `composer.json` is used.
+I know I can rely on this on 99% of places `composer.json` is used.
 
-When I see `App\Presenter\MyClass` I know it's located in `App\Presenter\MyClass.php` file.
+When I see `App\Presenter\MyClass` I  it's located in `App\Presenter\MyClass.php` file.
 
 And this is the place where **RobotLoader** (or any custom ultimate loader) **fails**. I come to many applications, where classes are located at random. And I have to use my brain to find them. But I don't want focus my mental activity to think about location, **I want to develop my application**.
 
@@ -57,8 +57,9 @@ And if not, there are 2 levels how to achieve this.
 
 ### Level 1: Change your Composer
 
-First is more simple and requires only adding few lines to `composer.json`:
+The first level requires 3 small steps.
 
+#### 1. Tune `composer.json` Autoload
 
 ```json
 {
@@ -92,6 +93,8 @@ But this won't:
 App\Presenters\HomepagePresenter => app\presenters\homepagePresenter.php
 ```
 
+#### 2. Disable RobotLoader
+
 Now you can clean up your `app/bootstrap.php`:
 
 ```php
@@ -99,6 +102,17 @@ Now you can clean up your `app/bootstrap.php`:
 //      ->addDirectory(__DIR__)
 //      ->register();
 ```
+
+But RobotLoader is still silently enabled for presenters. We don't need that either now:
+
+```yaml
+// app/config/config.neon
+application:
+    scanDirs: false
+```
+
+
+#### 3. Update Composer Autoload
 
 And tell composer, to regenerate its autoload:
 
@@ -112,10 +126,9 @@ Now try our application and it should run.
 
 **You are finished and all your classes are loaded by composer.** Congrats!
 
-There is one level I do with my applications, so my `composer.json` is nice and clear. But this is optional! Do it only if you want to write better code that has lower WTF factor!
-
-
 ### Level 2: Rename Directories to capital case, to Respect PSR-4
+
+There is one more level I do with my applications, so my `composer.json` is nice and clear. But this is optional. Do it only if you want to write better code that has lower WTF factor!
 
 Turn this:
 
