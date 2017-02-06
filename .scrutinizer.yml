@@ -1,11 +1,7 @@
 filter:
+    # fails when this is missing
     paths: ["src/*", "tests/*"]
 
 tools:
     # enabled code coverage provided by PHPUnit (x of 100 %)
     external_code_coverage: true
-
-checks:
-    # enabled code raing (x of 10)
-    php:
-        code_rating: true
