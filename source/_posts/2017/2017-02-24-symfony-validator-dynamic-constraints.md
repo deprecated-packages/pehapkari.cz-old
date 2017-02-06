@@ -9,9 +9,9 @@ test_slug: SymfonyValidatorDynamicConstraints
 ---
 
 
-### Example use case
+### Example Use Case
 
-You have an Address entity with a country and zipcode. There is a [ZipCodeConstraint constraint](https://github.com/Soullivaneuh/IsoCodesValidator/blob/master/src/Constraints/ZipCode.php) available but requires you to specify the country in options which you cannot do in annotation because country is another field of Address entity.
+You have an Address entity with a country and a zipcode. There is a [ZipCodeConstraint constraint](https://github.com/Soullivaneuh/IsoCodesValidator/blob/master/src/Constraints/ZipCode.php) available but requires you to specify the country in the options. But you cannot do that in an annotation because the country is present in another field of the Address entity.
 
 ```php
 use SLLH\IsoCodesValidator\Constraints\ZipCodeConstraint;
@@ -43,7 +43,7 @@ class Address
 
 ### Creating the constraint dynamically
 
-Well it's of course impossible to simply fix the code above by replacing the question marks with something. So we need another approach. **The way to go in this case is the Callback constraint.**
+Well, it's of course impossible to simply fix the code above by replacing the question marks with something. So we need another approach. **The way to go in this case is the Callback constraint.**
 
 ```php
 use SLLH\IsoCodesValidator\Constraints\ZipCodeConstraint;
@@ -72,7 +72,7 @@ class Address
 
 ### Correct violation context
 
-Now this is almost correct except for one flaw. If the zipcode is not valid the violation is not attached to the zipcode field but to the Address class instead. **Fortunately there is a way to solve this problem as well using ContextualValidator.**
+Now this is almost correct except for one flaw. If the zipcode is not valid, the violation is not attached to the zipcode field but to the Address class instead. **Fortunately there is a way to solve this problem as well using ContextualValidator.**
 
 ```php
 use SLLH\IsoCodesValidator\Constraints\ZipCodeConstraint;
@@ -105,4 +105,4 @@ This approach should solve most of the advanced use-cases you might have. Along 
 
 ### Usage with Nette Framework
 
-If you want to use the Symfony/Validator component in your Nette application you will need [Kdyby/Validator](https://github.com/Kdyby/Validator).
+If you want to use the Symfony/Validator component in your Nette application, you will need [Kdyby/Validator](https://github.com/Kdyby/Validator).
