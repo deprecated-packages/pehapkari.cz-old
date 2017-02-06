@@ -40,7 +40,7 @@
             "vendor/bin/symplify-cs fix src tests"
         ],
         "phpstan": [
-            "vendor/bin/phpstan analyse --level=4 --configuration=phpstan.neon src tests"
+            "vendor/bin/phpstan analyse --level=5 --configuration=phpstan.neon src tests"
         ]
     }
 }
