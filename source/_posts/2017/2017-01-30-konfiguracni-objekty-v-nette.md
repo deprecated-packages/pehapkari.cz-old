@@ -2,6 +2,7 @@
 layout: post
 title: "Konfigurační objekty v Nette"
 perex: "Jak se poprat s předáním konfigurace službě z config.neon? A jak k tomu využít Nette DI?"
+tags: [nette]
 author: 12
 tested: true
 test_slug: NetteConfigObjects

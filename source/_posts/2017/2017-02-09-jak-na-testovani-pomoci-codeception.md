@@ -2,6 +2,7 @@
 layout: post
 title: "Jak na akceptační testovaní pomocí Codeception"
 perex: "Jak automaticky testovat celé stránky a simulovat chování uživatele na webu pomocí Codeception"
+tags: [testing]
 author: 15
 ---
 

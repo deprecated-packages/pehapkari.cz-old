@@ -7,6 +7,7 @@
 
             <div class="row text-center">
                 <div class="col-md-12">
+                    {include "tags", "post" => $post}
                     {include "postMetadataLine", "post" => $post}
                     <div n:ifset="$post['reviewed_by']" id="reviewed_by">
                         <p>{="post.reviewed_by"|translate: $post['lang'] ?? $lang}:

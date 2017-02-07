@@ -1,0 +1,11 @@
+tagList:
+    nette:
+        name: Nette Framework
+    symfony:
+        name: Symfony
+    git:
+        name: Git
+    testing:
+        name: Testování
+    blog:
+        name: Blog

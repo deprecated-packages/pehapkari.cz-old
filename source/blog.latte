@@ -33,6 +33,7 @@ id: blog
 
                 <div class="row">
                     <div class="col-md-12">
+                        {include "tags", "post" => $post}
                         {include "postMetadataLine", "post" => $post}
                     </div>
                 </div>

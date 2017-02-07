@@ -240,6 +240,14 @@ h1, h2, .h2, h3 {
     line-height: 2.5em;
 }
 
+.tags .tag {
+    margin: 0 3px;
+    padding: 4px 7px;
+    border-radius: 7px;
+    background: #ddd;
+    font-size: 13px;
+}
+
 #article {
     padding-top: 1em;
 }

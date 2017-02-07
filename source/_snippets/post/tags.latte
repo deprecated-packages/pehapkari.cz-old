@@ -1,0 +1,8 @@
+<div class="tags" n:if="!empty($post['tags'])">
+    {foreach $post['tags'] as $tag}
+        <span class="tag">
+            <i class="fa fa-tag" aria-hidden="true"></i>
+            {$tagList[$tag]['name']}
+        </span>
+    {/foreach}
+</div>
