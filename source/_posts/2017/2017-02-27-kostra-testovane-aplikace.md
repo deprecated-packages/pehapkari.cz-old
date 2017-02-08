@@ -1,15 +1,15 @@
 ---
 layout: post
 title: "Kostra testované aplikace"
-perex: "Stále tápete, jak vytvořit základní kostru aplikace kde je Composer vč. autoloaderu a máte i testy? Podíváme se na to, že to je velmi jednoduché."
+perex: "Stále tápete, jak vytvořit základní kostru aplikace, kde je Composer vč. autoloaderu a máte i testy? Podíváme se na to, že to je velmi jednoduché."
 author: 16
 ---
 
 ## Co budeme dělat?
 
-Vytvoříme se primitivní kalkulačku (která umí jen sčítat). A k tomu si napíšeme test, jestli kalkulačka sčítá správně.
+Vytvoříme se primitivní kalkulačku (která umí pouze sčítat celá čísla). A k tomu si napíšeme test, jestli sčítá správně.
 
-Povedu Vás krok po kroku. Článek je určen **pro začátečníky**. Předpokládám ale, že:
+Povedu Vás krok po kroku. Článek je určen **pro začátečníky** na Windows. Předpokládám ale, že:
 
 * máte nainstalované [PHP 7](http://php.net/) (třeba s [XAMPP](https://www.apachefriends.org/download.html)), [Composer](https://getcomposer.org/), nějaké IDE (třeba [PhpStorm](https://www.jetbrains.com/phpstorm/)), [Git](https://git-scm.com/) a umíte to vše, alespoň trochu, použít.
 
@@ -19,23 +19,23 @@ Pokud s něčím budete mít problémy, podělte se v diskuzi dole pod článkem
 
 Začnu od píky. A provedu Vás po bodech.
 
-1. Vytvořte si adresář pro web. Na Linuxu třeba takto:
+1. Spusťte si Git Bash a vytvořte adresář pro web:
 
     ```
-    cd /var/www
+    cd C:\xampp\htdocs
     mkdir test-project
     cd test-project
     ```
 
-1. Uvnitř nového adresáře inicializujeme GIT:
+1. Uvnitř nového adresáře inicializujte Git:
 
     ```
     git init
     ```
 
-1. Otevřu si adresář v mém oblíbeném IDE.
+1. Otevřete si adresář ve svém oblíbeném IDE.
 
-1. Vytvořím si nový `.gitignore` soubor a zakážu verzování `vendor` (právě ten adresář si bude spravovat Composer)
+1. Vytvořte si nový `.gitignore` soubor a zakažte verzování `vendor` (právě ten adresář si bude spravovat Composer)
 
     ```
     vendor
@@ -44,7 +44,7 @@ Začnu od píky. A provedu Vás po bodech.
 
     Jestliže zastáváte názor, že se i vendor verzuje, klidně si jej zaverzujte. V tom případě tenhle krok zkrátka ignorujte.
 
-1. Přidám si `composer.json`, vyžádám si [PHPUnit](https://phpunit.de/) abych mohl psát testy a nastavím autoloader aby se mi samy načítaly používané třídy:
+1. Přidejte si `composer.json` a vyžádejte si [PHPUnit](https://phpunit.de/), abyste mohli psát testy a nastavte si autoloader tak, aby se načítaly používané třídy:
 
     ```json
     {
@@ -62,7 +62,7 @@ Začnu od píky. A provedu Vás po bodech.
             "php": ">=7.0"
         },
         "require-dev": {
-            "phpunit/phpunit": "^5.7"
+            "phpunit/phpunit": "^6.0"
         },
         "autoload": {
             "psr-4": {
@@ -73,9 +73,9 @@ Začnu od píky. A provedu Vás po bodech.
     
     ```
 
-1. Nainstaluji si závislosti spuštěním `composer install`.
+1. Nainstalujte si závislosti spuštěním `composer install`.
 
-1. Nakonec si vytvořím adresář `src` a v něm soubor `Calculator.php`. Jeho obsah bude zatím následující:
+1. Nakonec si vytvořte adresář `src` a v něm soubor `Calculator.php`. Jeho obsah bude zatím následující:
 
     ```php
     <?php
@@ -85,7 +85,7 @@ Začnu od píky. A provedu Vás po bodech.
     class Calculator
     {
     
-        public function sum(float $a, float $b): float
+        public function sum(int $a, int $b): int
         {
     
         }
@@ -94,20 +94,20 @@ Začnu od píky. A provedu Vás po bodech.
     
     ```
 
-1. Vše si commitnu:
+1. Vše si commitněte:
 
     ```
     git add -A
     git commit -m "Initial commit"
     ```
 
-Tím bych měl základní aplikaci. Zatím žádné testy. Jen naprosté minimum.
+Tímto máte základní aplikaci. Zatím žádné testy. Jen naprosté minimum.
 
 ## Přidáme tam testy
 
-V projektu již máme připravený testovací framework (PHPUnit) a kostru třídy, kterou máme implementovat (Calculator). Nyní tomu přidejme testy a naimplementujme funkci.
+V projektu již máme připravený testovací framework (PHPUnit) a kostru třídy, kterou máme implementovat (Calculator). Nyní tomu přidáme testy a naimplementujme funkci.
 
-1. Vytvořím si adresář `tests` a do něj přidám zaváděcí soubor, který mi zajistí autoloading. Pojmenuji si jej `bootstrap.php` a jeho obsah bude:
+1. Vytvořte si adresář `tests` a do něj předejte zaváděcí soubor, který zajistí autoloading. Pojmenujte jej `bootstrap.php` a jeho obsah bude:
     
     ```php
     <?php
@@ -116,7 +116,7 @@ V projektu již máme připravený testovací framework (PHPUnit) a kostru tří
     
     ```
 
-1. Pak si vytvořím uvnitř složky `tests` soubor `CalculatorTest.php`. To bude právě test naší kalkulačky. Jednoduchý testovací případ může vypadat takto:
+1. Pak si vytvořte uvnitř složky `tests` soubor `CalculatorTest.php`. To bude právě test naší kalkulačky. Jednoduchý testovací případ může vypadat takto:
     
     ```php
     <?php
@@ -131,16 +131,16 @@ V projektu již máme připravený testovací framework (PHPUnit) a kostru tří
         public function testSum()
         {
             $calculator = new Calculator();
-            $this->assertSame(0.0, $calculator->sum(0.0, 0.0));
-            $this->assertSame(99.99, $calculator->sum(50.50, 49.49));
-            $this->assertSame(-99.99, $calculator->sum(-100.99, 1.0));
+            $this->assertSame(0, $calculator->sum(0, 0));
+            $this->assertSame(99, $calculator->sum(50, 49));
+            $this->assertSame(-99, $calculator->sum(-100, 1));
         }
     
     }
     
     ```
 
-1. Spustím si testy. Lze to udělat [jednoduše v IDE](https://www.jetbrains.com/help/phpstorm/2016.3/phpunit.html) nebo přes příkazový řádek:
+1. Spusťte si testy. Lze to udělat [jednoduše v IDE](https://www.jetbrains.com/help/phpstorm/2016.3/phpunit.html) nebo přes příkazový řádek:
 
     ```
     php vendor/bin/phpunit --bootstrap tests/bootstrap.php tests
@@ -149,7 +149,7 @@ V projektu již máme připravený testovací framework (PHPUnit) a kostru tří
 
     Testy skončí chybou, jelikož funkce ještě není naimplementována.
 
-1. Naimplementujeme naší kalkulačku. Soubor `src/Calculator.php` může vypadat takto:
+1. Naimplementujte kalkulačku. Soubor `src/Calculator.php` může vypadat takto:
 
     ```php
     <?php
@@ -159,7 +159,7 @@ V projektu již máme připravený testovací framework (PHPUnit) a kostru tří
     class Calculator
     {
     
-        public function sum(float $a, float $b): float
+        public function sum(int $a, int $b): int
         {
             return $a + $b;
         }
@@ -170,6 +170,6 @@ V projektu již máme připravený testovací framework (PHPUnit) a kostru tří
 
 ## Commit
 
-A je to hotovo. Mám vytvořenou kostru aplikace kde mám Composer a prostředí pro testy.
+A je to hotovo. Mám vytvořenou kostru aplikace, kde mám Composer a prostředí pro testy.
 
-To je vše co jsem chtěl ukázat. Nyní by jste již neměli mít problém založit nový projekt a rovnou u něj psát testy.
+To je vše co jsem chtěl ukázat. Nyní byste již neměli mít problém založit nový projekt a rovnou u něj psát testy.
