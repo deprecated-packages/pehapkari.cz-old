@@ -14,9 +14,9 @@ lang: en
 
 - **Extend application** in some place **without putting any code right there**.
 
-This way you can extend 3rd party packages without rewriting them. And also allow other users to extends your code without event touching it.
+This way you can extend 3rd party packages without rewriting them. And also allow other users to extend your code without even touching it.
 
-Not sure how that looks? You will in the end of this article.
+Not sure how that looks? You will - in the end of this article.
 
 
 ### Event Dispatcher
@@ -32,7 +32,7 @@ or *user is deleted*.
 
 ### Event Subscriber
 
-This is **the action that happens when** we come to some place. When order is sent (= Event), *send me a confirmation sms* (= Event Subscriber). And *check storage they have all the ordered products we need*. This means, that **1 event can invoke MORE Event Subscribers**.
+This is **the action that happens when** we come to some place. When order is sent (= Event), *send me a confirmation sms* (= Event Subscriber). And *check that all the ordered products are on stock*. This means, that **1 event can invoke MORE Event Subscribers**.
 
 
 ## Create First Subscriber in 3 Steps 
@@ -144,16 +144,16 @@ final class YoutuberNameEvent extends Event
     /**
      * @var string
      */
-    private $youtubeName;
+    private $youtuberName;
 
-    public function __construct(string $youtubeName)
+    public function __construct(string $youtuberName)
     {
-        $this->youtubeName = $youtubeName;
+        $this->youtuberName = $youtuberName;
     }
 
-    public function getYoutubeName() : string
+    public function getYoutuberName() : string
     {
-        return $this->youtubeName;
+        return $this->youtuberName;
     }
 }
 ```
@@ -174,7 +174,7 @@ final class NotifyMeOnVideoPublishedEventSubscriber implements EventSubscriberIn
     // Event Object is passed as method argument
     public function notifyUserAboutVideo(YoutuberNameEvent $youtuberNameEvent)
     {
-        var_dump($youtuberNameEvent->getYoutubeName());    
+        var_dump($youtuberNameEvent->getYoutuberName());    
     }
 }
 ```
@@ -187,7 +187,7 @@ $youtuberNameEvent = new YoutuberNameEvent('Jirka Král');
 $eventDispatcher->dispatch('youtube.newVideoPublished', $youtuberNameEvent);
 ```
 
-And Results Like That:
+And here is the result:
 
 ```php
 $ php index.php
@@ -195,9 +195,9 @@ string('Jirka Král')
 ``` 
 
 
-## Now Are 1 Step Further
+## We Are 1 Step Further Now
 
-Now you:
+You can now:
 
 - understand basic Event workflow
 - know what EventDispatcher and EventSubscriber are for

@@ -10,15 +10,15 @@ final class YoutuberNameEvent extends Event
     /**
      * @var string
      */
-    private $youtubeName;
+    private $youtuberName;
 
-    public function __construct(string $youtubeName)
+    public function __construct(string $youtuberName)
     {
-        $this->youtubeName = $youtubeName;
+        $this->youtuberName = $youtuberName;
     }
 
-    public function getYoutubeName() : string
+    public function getYoutuberName() : string
     {
-        return $this->youtubeName;
+        return $this->youtuberName;
     }
 }
