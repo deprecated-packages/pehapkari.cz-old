@@ -76,6 +76,16 @@ id: slovnicek
                         <sup>[<a href="https://en.wikipedia.org/wiki/HTTP_cookie">wiki</a>]</sup>
                     </dd>
 
+                    <dt>Continuous Integration&nbsp;<sup><a id="ci" href="#ci">&hearts;</a></sup></dt>
+                    <dd>
+                        Zkracuje se jako CI, česky doslova <i>Průběžná integrace, začlenění</i>.
+                        Jedná se o oblast <a href="#xp">extrémního programování</a> s cílem být schopen
+                        <strong>doručovat software téměř neustále</strong>, často několikrát denně.
+                        CI servery se pak starají o sestavení aplikace, statickou analýzu kódu, spuštění testů,
+                        kontrolu coding standards a mohou obstarávat i deployment.
+                        <sup>[<a href="https://en.wikipedia.org/wiki/Continuous_integration">wiki</a>]</sup>
+                    </dd>
+
                     <dt>CRUD&nbsp;<sup><a id="crud" href="#crud">&hearts;</a></sup></dt>
                     <dd>
                         Jedná se o návrh který využívá 4 základní operace s daty:
@@ -95,6 +105,14 @@ id: slovnicek
                         Existují také tzv. NoSQL databáze <sup>[<a href="https://cs.wikipedia.org/wiki/">wiki</a>]</sup>, jejichž
                         zástupcem je např. <a href="#redis">Redis</a>.
                     </dd>
+
+					<dt>Deployment&nbsp;<sup><a id="deployment" href="#deployment">&hearts;</a></sup></dt>
+					<dd>
+						Zjednodušeně zpřístupnění software k používání. U webových projektů se zpravidla jedná
+						o nahrání aplikace na server nebo její aktualizace (zanesení změn do kódu, databáze apod.).
+						Deployment bývá součástí <a href="#ci">Continuous Integration</a>.
+						<sup>[<a href="https://en.wikipedia.org/wiki/Software_deployment">wiki</a>]</sup>
+					</dd>
 
                     <dt>Datový typ&nbsp;<sup><a id="data-type" href="#data-type">&hearts;</a></sup></dt>
                     <dd>
@@ -127,6 +145,14 @@ id: slovnicek
                         DI kontejner nebo také systémový kontejner je v podstatě <a href="#factory">tovární třída</a>
                         pro <a href="#service">služby</a> aplikace. DI kontejner za nás také řeší závislosti
                         služeb mezi sebou.
+                    </dd>
+
+                    <dt>Extrémní programování&nbsp;<sup><a id="xp" href="#xp">&hearts;</a></sup></dt>
+                    <dd>
+                        Zkracuje se jako **XP (Extreme Programming)**. Je to jedna z metod <a href="#agile">agilního vývoje</a>.
+                        Zahrnuje způsoby práce jako párové programování, vývoj řízený testy, vydávání aplikace po malých změnách,
+                        čistý kód, zapojení zákazníka do vývoje a další.
+                        <sup>[<a href="https://en.wikipedia.org/wiki/Extreme_programming">wiki</a>]</sup>
                     </dd>
 
                     <dt>Factory&nbsp;<sup><a id="factory" href="#factory">&hearts;</a></sup></dt>
@@ -308,6 +334,30 @@ id: slovnicek
                         <pre><code>$test = 5; // promenna s nazvem $test</code></pre>
                     </dd>
 
+					<dt>PSR&nbsp;<sup><a id="psr" href="#psr">&hearts;</a></sup></dt>
+					<dd>
+						PHP Standards Recommendations neboli doporučení určitých standardů ve světě PHP.
+						Vydává a spravuje je skupina PHP-FIG (PHP Framework Interop Group).
+						Každý takový standard se označuje PSR-# (kde křížek znamená číslo).
+						Tyto standardy určují například:
+						<ul>
+							<li>
+								Coding Standard pro sjednocení, jak různí programátoři zapisují kód
+								<a href="http://www.php-fig.org/psr/psr-1/">[PSR-1]</a>,
+								<a href="http://www.php-fig.org/psr/psr-2/">[PSR-2]</a>
+							</li>
+							<li>
+								Autoloading Standard pro automatické načítání tříd
+								<a href="http://www.php-fig.org/psr/psr-4/">[PSR-4]</a>
+							</li>
+							<li>
+								HTTP message interface pro abstrakci práce s HTTP požadavky
+								<a href="http://www.php-fig.org/psr/psr-7/">[PSR-7]</a>
+							</li>
+						</ul>
+						<sup>[<a href="http://www.php-fig.org/">PHP-FIG official</a>]</sup>
+					</dd>
+
                     <dt>RabbitMQ&nbsp;<sup><a id="rabbitmq" href="#rabbitmq">&hearts;</a></sup></dt>
                     <dd>
                         <a href="https://www.rabbitmq.com/">RabbitMQ</a> je open source implementací tzv. messaging
@@ -439,10 +489,10 @@ echo factorial(5); // 120
 
                     <dt>VCS&nbsp;<sup><a id="vsc" href="#vsc">&hearts;</a></sup></dt>
                     <dd>
-                        VSC je zktatka pro verzovací systém. VSC umožňuje programátorům verzovat své zdrojové kódy a také
+                        VSC je zkratka pro verzovací systém. VSC umožňuje programátorům verzovat své zdrojové kódy a také
                         je pohodlně sdílet s ostatními lidmi v týmu. Díky verzování se lze snadno vracet k předchozím verzím
                         a jednoduše se dá dohledat, kdo v týmu napsal který řádek kódu. VSC taky umožňuje řešit přípdné kolize
-                        (kdy jeden soubor najednou změní několik programátorů). Nejčastěji používané VSC je v součanosti git.
+                        (kdy jeden soubor najednou změní několik programátorů). Nejčastěji používané VSC je v součanosti Git.
                         <sup>[<a href="https://en.wikipedia.org/wiki/Version_control">wiki</a>]</sup>
                     </dd>
 
