@@ -145,6 +145,11 @@ Skriptu nemusím říkat, že má načítat soubor `phpunit.xml`, bude jej nač�
 
 Pokrytí kódu testy umí zobrazovat přímo GitLab, jen je potřeba u projektu nastavit pod možnostmi `CI/CD Pipelines` část `Test coverage parsing` na `^\s*Lines:\s*\d+.\d+\%` (pro PHPUnit - více vzorů naleznete přímo ve formuláři).
 
+## Hotový kód ke stažení
+
+Pokud byste se chtěli podívat, jestli jste postupovali správně, zde je optimální výsledek:
+https://gitlab.com/hranicka/pehapkari-test-ci
+
 ## Co lze ještě dělat s CI?
 
 My jsme CI použili jen pro spuštění PHPUnit testů.
