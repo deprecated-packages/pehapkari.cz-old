@@ -27,15 +27,15 @@ Začnu od píky. A provedu Vás po bodech.
     cd test-project
     ```
 
-1. Uvnitř nového adresáře inicializujte Git:
+2. Uvnitř nového adresáře inicializujte Git:
 
     ```bash
     git init
     ```
 
-1. Otevřete si adresář ve svém oblíbeném IDE.
+3. Otevřete si adresář ve svém oblíbeném IDE.
 
-1. Vytvořte si nový `.gitignore` soubor a zakažte verzování `vendor` (právě ten adresář si bude spravovat Composer)
+4. Vytvořte si nový `.gitignore` soubor a zakažte verzování `vendor` (právě ten adresář si bude spravovat Composer)
 
     ```bash
     vendor
@@ -43,7 +43,7 @@ Začnu od píky. A provedu Vás po bodech.
 
     Jestliže zastáváte názor, že se i vendor verzuje, klidně si jej zaverzujte. V tom případě tenhle krok zkrátka ignorujte.
 
-1. Přidejte si `composer.json` a vyžádejte si [PHPUnit](https://phpunit.de/), abyste mohli psát testy a nastavte si autoloader tak, aby se načítaly používané třídy:
+5. Přidejte si `composer.json` a vyžádejte si [PHPUnit](https://phpunit.de/), abyste mohli psát testy a nastavte si autoloader tak, aby se načítaly používané třídy:
 
     ```json
     {
@@ -72,9 +72,9 @@ Začnu od píky. A provedu Vás po bodech.
     
     ```
 
-1. Nainstalujte si závislosti spuštěním `composer install`.
+6. Nainstalujte si závislosti spuštěním `composer install`.
 
-1. Nakonec si vytvořte adresář `src` a v něm soubor `Calculator.php`. Jeho obsah bude zatím následující:
+7. Nakonec si vytvořte adresář `src` a v něm soubor `Calculator.php`. Jeho obsah bude zatím následující:
 
     ```php
     <?php
@@ -93,7 +93,7 @@ Začnu od píky. A provedu Vás po bodech.
     
     ```
 
-1. Vše si commitněte:
+8. Vše si commitněte:
 
     ```bash
     git add -A
@@ -115,7 +115,7 @@ V projektu již máme připravený testovací framework (PHPUnit) a kostru tří
     
     ```
 
-1. Pak si vytvořte uvnitř složky `tests` soubor `CalculatorTest.php`. To bude právě test naší kalkulačky. Jednoduchý testovací případ může vypadat takto:
+2. Pak si vytvořte uvnitř složky `tests` soubor `CalculatorTest.php`. To bude právě test naší kalkulačky. Jednoduchý testovací případ může vypadat takto:
     
     ```php
     <?php
@@ -139,7 +139,7 @@ V projektu již máme připravený testovací framework (PHPUnit) a kostru tří
     
     ```
 
-1. Spusťte si testy. Lze to udělat [jednoduše v IDE](https://www.jetbrains.com/help/phpstorm/2016.3/phpunit.html) nebo přes příkazový řádek:
+3. Spusťte si testy. Lze to udělat [jednoduše v IDE](https://www.jetbrains.com/help/phpstorm/2016.3/phpunit.html) nebo přes příkazový řádek:
 
     ```bash
     php vendor/bin/phpunit --bootstrap tests/bootstrap.php tests
@@ -147,7 +147,7 @@ V projektu již máme připravený testovací framework (PHPUnit) a kostru tří
 
     Testy skončí chybou, jelikož funkce ještě není naimplementována.
 
-1. Naimplementujte kalkulačku. Soubor `src/Calculator.php` může vypadat takto:
+4. Naimplementujte kalkulačku. Soubor `src/Calculator.php` může vypadat takto:
 
     ```php
     <?php

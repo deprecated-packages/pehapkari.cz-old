@@ -44,13 +44,13 @@ Nejdříve si nahrajeme již rozpracovaný Git repozitář na GitLab.com
 
 1. [Vytvořte si repozitář](https://gitlab.com/projects/new) na GitLabu. Pojmenujte jej třeba `test-ci`.
 
-1. Otevřete si adresář [s rozpracovaným projektem](https://pehapkari.cz/blog/2017/02/27/kostra-testovane-aplikace/):
+2. Otevřete si adresář [s rozpracovaným projektem](https://pehapkari.cz/blog/2017/02/27/kostra-testovane-aplikace/):
 
     ```bash
     cd C:\xampp\htdocs\test-project
     ```
 
-1. Teď si nastavte cestu k *remote* repozitáři. To bude "kopie" na GitLab.com. A rovnou *pushnětě* (nahrajte) kód:
+3. Teď si nastavte cestu k *remote* repozitáři. To bude "kopie" na GitLab.com. A rovnou *pushnětě* (nahrajte) kód:
 
     ```bash
     git remote add origin git@gitlab.com:example/test-ci.git
@@ -85,13 +85,13 @@ Co to všechno znamená?
 
 1. `build:` říká, jak se jmenuje aktuální úloha. Může jich být více. My máme na ukázku jednu.
 
-1. `image: phpdocker/phpdocker:7.0` říká, že se má test spustit v [Docker](https://www.docker.com/what-docker) image [phpdocker/phpdocker](https://hub.docker.com/r/phpdocker/phpdocker/). Abyste mohli používat CI, vystačíte si s informací, že je to jakýsi obraz Linuxu, ve kterém se budou spouštět skripty. Konkrétně tenhle obraz obsahuje většinu toho, co je potřeba pro běžné PHP aplikace.
+2. `image: phpdocker/phpdocker:7.0` říká, že se má test spustit v [Docker](https://www.docker.com/what-docker) image [phpdocker/phpdocker](https://hub.docker.com/r/phpdocker/phpdocker/). Abyste mohli používat CI, vystačíte si s informací, že je to jakýsi obraz Linuxu, ve kterém se budou spouštět skripty. Konkrétně tenhle obraz obsahuje většinu toho, co je potřeba pro běžné PHP aplikace.
 
-1. `script:` sekce obsahující jednotlivé příkazy, které se budou spouštět. Co řádek, to jeden příkaz. Jsou to vlastně stejné příkazy, které spouštíte v příkazové řádce. Jsou povědomé, že? Oba jste totiž používali.
+3. `script:` sekce obsahující jednotlivé příkazy, které se budou spouštět. Co řádek, to jeden příkaz. Jsou to vlastně stejné příkazy, které spouštíte v příkazové řádce. Jsou povědomé, že? Oba jste totiž používali.
 
-1. `composer install` říká, že se mají nainstalovat Composer závislosti.
+4. `composer install` říká, že se mají nainstalovat Composer závislosti.
 
-1. `php vendor/bin/phpunit --bootstrap tests/bootstrap.php tests` konečně spustí naše testy.
+5. `php vendor/bin/phpunit --bootstrap tests/bootstrap.php tests` konečně spustí naše testy.
 
 Jen commitnu a pushnu. GitLab sám spustí CI. **To je vážně vše!**
 
