@@ -3,6 +3,7 @@ layout: post
 title: "Kostra testované aplikace"
 perex: "Stále tápete, jak vytvořit základní kostru aplikace, kde je Composer vč. autoloaderu a máte i testy? Podíváme se na to, že to je velmi jednoduché."
 author: 16
+reviwed_by: [1, 17]
 ---
 
 ## Co budeme dělat?
@@ -69,7 +70,7 @@ Začnu od píky. A provedu Vás po bodech.
             }
         }
     }
-    
+
     ```
 
 6. Nainstalujte si závislosti spuštěním `composer install`.
@@ -78,19 +79,19 @@ Začnu od píky. A provedu Vás po bodech.
 
     ```php
     <?php
-    
+
     namespace App;
-    
+
     class Calculator
     {
-    
+
         public function sum(int $a, int $b): int
         {
-    
+
         }
-    
+
     }
-    
+
     ```
 
 8. Vše si commitněte:
@@ -107,12 +108,12 @@ Tímto máte základní aplikaci. Zatím žádné testy. Jen naprosté minimum.
 V projektu již máme připravený testovací framework (PHPUnit) a kostru třídy, kterou máme implementovat (Calculator). Nyní tomu přidáme testy a naimplementujme funkci.
 
 1. Vytvořte si adresář `tests` a do něj předejte zaváděcí soubor, který zajistí autoloading. Pojmenujte jej `bootstrap.php` a jeho obsah bude:
-    
+
     ```php
     <?php
-    
+
     require_once __DIR__ . '/../vendor/autoload.php';
-    
+
     ```
 
     Do tohoto souboru můžete později přidat další kód který by Vaše testovaná aplikace vyžadovala (třeba vypnutí cache apod.).
@@ -132,21 +133,21 @@ V projektu již máme připravený testovací framework (PHPUnit) a kostru tří
             </testsuite>
         </testsuites>
     </phpunit>
-    
+
     ```
 
 3. Pak si vytvořte uvnitř složky `tests` soubor `CalculatorTest.php`. To bude právě test naší kalkulačky. Jednoduchý testovací případ může vypadat takto:
-    
+
     ```php
     <?php
-    
+
     namespace Tests\App;
-    
+
     use PHPUnit\Framework\TestCase;
-    
+
     class CalculatorTest extends TestCase
     {
-    
+
         public function testSum()
         {
             $calculator = new Calculator();
@@ -154,11 +155,11 @@ V projektu již máme připravený testovací framework (PHPUnit) a kostru tří
             $this->assertSame(99, $calculator->sum(50, 49));
             $this->assertSame(-99, $calculator->sum(-100, 1));
         }
-    
+
     }
-    
+
     ```
-    
+
     Do této složky můžete psát další a další testy. Podmínkou je pouze to, aby názvy souborů končily na `Test.php` - jak jsme si nastavili v konfiguračním souboru.
 
 4. Spusťte si testy. Lze to udělat [jednoduše v IDE](https://www.jetbrains.com/help/phpstorm/2016.3/phpunit.html) nebo přes příkazový řádek:
@@ -166,7 +167,7 @@ V projektu již máme připravený testovací framework (PHPUnit) a kostru tří
     ```bash
     php vendor/bin/phpunit
     ```
-    
+
     Není nutné nic více nastavovat, jelikož si PHPUnit sám načte konfiguraci definovanou uvnitř `phpunit.xml` v rootu aplikace.
 
     Testy skončí chybou, jelikož funkce ještě není naimplementována.
@@ -175,19 +176,19 @@ V projektu již máme připravený testovací framework (PHPUnit) a kostru tří
 
     ```php
     <?php
-    
+
     namespace App;
-    
+
     class Calculator
     {
-    
+
         public function sum(int $a, int $b): int
         {
             return $a + $b;
         }
-    
+
     }
-    
+
     ```
 
 ## Commit

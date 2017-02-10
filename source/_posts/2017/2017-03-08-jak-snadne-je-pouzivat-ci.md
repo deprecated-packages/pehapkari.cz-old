@@ -3,6 +3,7 @@ layout: post
 title: "Jak snadné je používat CI"
 perex: "Nejspíš jste zkratku CI již někde viděli, možná tušíte, co Continuous Integration znamená. Chcete vědět, jak snadno CI používat na vašich projektech? Pak čtěte dále."
 author: 16
+reviwed_by: [1, 17]
 ---
 
 ## Co je to CI
@@ -55,7 +56,7 @@ Nejdříve si nahrajeme již rozpracovaný Git repozitář na GitLab.com
     ```bash
     git remote add origin git@gitlab.com:example/test-ci.git
     git push --set-upstream origin master
-    
+
     ```
 
     Vaší cestu k repozitáři uvidíte na stránce po vytvoření projektu na GitLab.com.
