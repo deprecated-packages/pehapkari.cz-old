@@ -11,7 +11,7 @@ lang: en
 # reviewed_by:
 ---
 
-This site now runs on HTTPS, see: [https://pehapkari.cz/](https://pehapkari.cz) thanks to [Michal Špaček](https://www.michalspacek.cz) who added [a simple how-to manual](https://github.com/pehapkari/pehapkari.cz/issues/162#issuecomment-272590505) to the GitHub issue. I will try to expand it here.
+This site now runs on HTTPS, see: [https://pehapkari.cz/](https://pehapkari.cz) thanks to [Michal Špaček](https://www.michalspacek.com) who added [a simple how-to manual](https://github.com/pehapkari/pehapkari.cz/issues/162#issuecomment-272590505) to the GitHub issue. I will try to expand it here.
 
 <h3>HTTPS is <strike>Hard</strike> Easy!</h3>
 
@@ -33,7 +33,7 @@ Pick free plan.
 
 ### 3. Change Name Servers
 
-Go to your domain administration (look for "change DNS servers" or similar) and change current name servers to those provided by Cloudflare. You can either create a new NSSET or change the current one.
+Go to your domain administration (look for "change DNS servers" or similar) and change current name servers to those provided by Cloudflare. You can either create a new NSSET or change the current one, if your registry supports NSSETs.
 
 <img src="/assets/images/posts/2017/https/change-nameservers.png">
 
@@ -44,7 +44,7 @@ Keep in mind that **the servers may be different for each domain you add to Clou
 
 The site will be served via Cloudflare once the browsers notice the change, that is when the DNS changes are propagated world-wide. That could take some time, from minutes to even days, depending on the expiration of these records in the DNS. Don't worry though, there's no downtime, the site should be accessible either via Cloudflare or not, the change we made doesn'ẗ affect the origin servers – GitHub's in this case – those are still up and running.
 
-**The changes could be verified in the browser or CLI**. Look for the `Server` response header, it should contain `cloudflare-nginx`.
+**The changes could be verified in the browser or using the command-line interface**. Look for the `Server` response header, it should contain `cloudflare-nginx`.
 
 ```bash
 curl -I http://pehapkari.cz | grep Server
@@ -78,7 +78,7 @@ to their `https://` versions.
 
 ### 3. Verify it Works
 
-Now run this diagnostics in your CLI:
+Now run this diagnostics using your command-line interface:
 
 ```bash
 curl -I http://pehapkari.cz | grep -i Location
@@ -94,9 +94,9 @@ Location: https://www.pehapkari.cz/
 Location: https://pehapkari.cz/
 ```
 
-If they do, you're done! If not, **leave us a comment bellow** and we'll try to help you and also improve this tutorial.
+If they do, you're done! If not, **leave us a comment below** and we'll try to help you and also improve this tutorial.
 
 
-If you ever get to **any security troubles**, **call [Michal](https://michalspacek.cz)** to the rescue. Thank you!
+If you ever get to **any security troubles**, **call [Michal](https://www.michalspacek.com)** to the rescue. Thank you!
 
 <img src="/assets/images/posts/2017/https/thank-you.png">
