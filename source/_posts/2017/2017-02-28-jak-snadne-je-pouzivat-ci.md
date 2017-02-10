@@ -36,7 +36,7 @@ A ukážeme si, jak velice snadno využít integrované CI GitLabu a spouštět 
 Povedu Vás krok po kroku. Předpokládám ale, že:
 
 * jste zaregistrovaní a přihlášeni na [gitlab.com](https://gitlab.com/),
-* jste prošli článek [Kostra testované aplikace](https://pehapkari.cz/blog/2017/02/27/kostra-testovane-aplikace/) a rozumíte mu.
+* jste prošli článek [Kostra testované aplikace](https://pehapkari.cz/blog/2017/02/27/kostra-testovane-aplikace/), rozumíte mu a výsledný kód máte po ruce.
 
 ## První krůčky - nahrání projektu na GitLab
 
