@@ -21,7 +21,7 @@ Začnu od píky. A provedu Vás po bodech.
 
 1. Spusťte si Git Bash a vytvořte adresář pro web:
 
-    ```
+    ```bash
     cd C:\xampp\htdocs
     mkdir test-project
     cd test-project
@@ -29,7 +29,7 @@ Začnu od píky. A provedu Vás po bodech.
 
 1. Uvnitř nového adresáře inicializujte Git:
 
-    ```
+    ```bash
     git init
     ```
 
@@ -37,9 +37,8 @@ Začnu od píky. A provedu Vás po bodech.
 
 1. Vytvořte si nový `.gitignore` soubor a zakažte verzování `vendor` (právě ten adresář si bude spravovat Composer)
 
-    ```
+    ```bash
     vendor
-    
     ```
 
     Jestliže zastáváte názor, že se i vendor verzuje, klidně si jej zaverzujte. V tom případě tenhle krok zkrátka ignorujte.
@@ -96,7 +95,7 @@ Začnu od píky. A provedu Vás po bodech.
 
 1. Vše si commitněte:
 
-    ```
+    ```bash
     git add -A
     git commit -m "Initial commit"
     ```
@@ -142,9 +141,8 @@ V projektu již máme připravený testovací framework (PHPUnit) a kostru tří
 
 1. Spusťte si testy. Lze to udělat [jednoduše v IDE](https://www.jetbrains.com/help/phpstorm/2016.3/phpunit.html) nebo přes příkazový řádek:
 
-    ```
+    ```bash
     php vendor/bin/phpunit --bootstrap tests/bootstrap.php tests
-
     ```
 
     Testy skončí chybou, jelikož funkce ještě není naimplementována.

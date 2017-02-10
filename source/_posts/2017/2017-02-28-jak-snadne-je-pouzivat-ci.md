@@ -46,13 +46,13 @@ Nejdříve si nahrajeme již rozpracovaný Git repozitář na GitLab.com
 
 1. Otevřete si adresář [s rozpracovaným projektem](https://pehapkari.cz/blog/2017/02/27/kostra-testovane-aplikace/):
 
-    ```
+    ```bash
     cd C:\xampp\htdocs\test-project
     ```
 
-1. Teď si nastavte cestu k *remote* repozitáři. To bude "kopie" na GitLab.com. A rovnou *push*nětě (nahrajte) kód:
+1. Teď si nastavte cestu k *remote* repozitáři. To bude "kopie" na GitLab.com. A rovnou *pushnětě* (nahrajte) kód:
 
-    ```
+    ```bash
     git remote add origin git@gitlab.com:example/test-ci.git
     git push --set-upstream origin master
     
@@ -103,7 +103,9 @@ Výsledky buildů uvidíte pak u commitů i v pull-requestech. Ty je možné nas
 
 Můžeme trošku zrychlit instalaci Composeru a vyhnout se případným dotazům na uživatelský vstup:
 
+	```bash
     composer install --no-interaction --prefer-dist
+    ```
 
 ### Code Coverage
 
@@ -128,7 +130,9 @@ Tam je ale potřeba ještě přidat do rootu aplikace soubor `phpunit.xml` a v n
     
 A pak ještě musíme upravit skript, aby ten coverage report generoval a aby se spouštělo PHP vč. XDebug extension (bez něj report nebude):
 
+	```bash
     php -d$XDEBUG_EXT vendor/bin/phpunit --coverage-text --colors=never --configuration phpunit.xml tests
+	```
 
 Pokrytí kódu testy umí zobrazovat přímo GitLab, jen je potřeba u projektu nastavit pod možnostmi `CI/CD Pipelines` část `Test coverage parsing` na `^\s*Lines:\s*\d+.\d+\%` (pro PHPUnit - více vzorů naleznete přímo ve formuláři).
 
