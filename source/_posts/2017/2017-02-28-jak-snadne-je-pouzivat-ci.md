@@ -77,7 +77,7 @@ build:
   image: phpdocker/phpdocker:7.0
   script:
     - composer install
-    - php vendor/bin/phpunit --bootstrap tests/bootstrap.php tests
+    - php vendor/bin/phpunit
 
 ```
 
@@ -91,7 +91,7 @@ Co to všechno znamená?
 
 4. `composer install` říká, že se mají nainstalovat Composer závislosti.
 
-5. `php vendor/bin/phpunit --bootstrap tests/bootstrap.php tests` konečně spustí naše testy.
+5. `php vendor/bin/phpunit` konečně spustí naše testy.
 
 Jen commitnu a pushnu. GitLab sám spustí CI. **To je vážně vše!**
 
@@ -111,7 +111,9 @@ composer install --no-interaction --prefer-dist
 
 Také můžeme nechat generovat Code Coverage report.
 
-Tam je ale potřeba ještě přidat do rootu aplikace soubor `phpunit.xml` a v něm nastavit, které složky se mají procházet pro generování code coverage reportu. Obsah `phpunit.xml`:
+V rootu aplikace již máme vytvořený konfigurační souboru `phpunit.xml`. Stačí v něm nastavit, které složky se mají procházet pro generování code coverage reportu.
+
+Obsah `phpunit.xml` by měl vypadat následovně:
 
 ```xml
 <?xml version="1.0"?>
@@ -134,14 +136,14 @@ Tam je ale potřeba ještě přidat do rootu aplikace soubor `phpunit.xml` a v n
 </phpunit>
 
 ```
-    
-A pak ještě musíme upravit skript, aby ten coverage report generoval. Je nutné, aby se spouštělo PHP vč. XDebug extension (bez něj report nebude):
+
+Pro generování code coverage reportu je vyžadována extenze `XDebug`.
+
+Při spouštění v CI a použití image `phpdocker/phpdocker` (viz. obsah `.gitlab-ci.yml`) je potřeba XDebug explicitně povolit, takto:
 
 ```bash
 php -d$XDEBUG_EXT vendor/bin/phpunit --coverage-text
 ```
-
-Skriptu nemusím říkat, že má načítat soubor `phpunit.xml`, bude jej načítat automaticky. A také jsem vynechal cestu k adresáři `tests`, neboť jsem jej rovnou nadefinoval v `phpunit.xml` (`<directory>`).
 
 Pokrytí kódu testy umí zobrazovat přímo GitLab, jen je potřeba u projektu nastavit pod možnostmi `CI/CD Pipelines` část `Test coverage parsing` na `^\s*Lines:\s*\d+.\d+\%` (pro PHPUnit - více vzorů naleznete přímo ve formuláři).
 

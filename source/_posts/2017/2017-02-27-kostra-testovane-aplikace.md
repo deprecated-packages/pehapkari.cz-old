@@ -115,7 +115,27 @@ V projektu již máme připravený testovací framework (PHPUnit) a kostru tří
     
     ```
 
-2. Pak si vytvořte uvnitř složky `tests` soubor `CalculatorTest.php`. To bude právě test naší kalkulačky. Jednoduchý testovací případ může vypadat takto:
+    Do tohoto souboru můžete později přidat další kód který by Vaše testovaná aplikace vyžadovala (třeba vypnutí cache apod.).
+
+2. V rootu aplikace si vytvořte soubor `phpunit.xml`. To je konfigurační soubor pro testovací framework. Zde nadefinujeme cestu k testům a našemu bootstrapu:
+
+    ```xml
+    <?xml version="1.0"?>
+    <phpunit
+            bootstrap="tests/bootstrap.php"
+            verbose="true"
+    >
+        <!-- tests directories to run -->
+        <testsuites>
+            <testsuite>
+                <directory suffix="Test.php">tests</directory>
+            </testsuite>
+        </testsuites>
+    </phpunit>
+    
+    ```
+
+3. Pak si vytvořte uvnitř složky `tests` soubor `CalculatorTest.php`. To bude právě test naší kalkulačky. Jednoduchý testovací případ může vypadat takto:
     
     ```php
     <?php
@@ -138,16 +158,20 @@ V projektu již máme připravený testovací framework (PHPUnit) a kostru tří
     }
     
     ```
+    
+    Do této složky můžete psát další a další testy. Podmínkou je pouze to, aby názvy souborů končily na `Test.php` - jak jsme si nastavili v konfiguračním souboru.
 
-3. Spusťte si testy. Lze to udělat [jednoduše v IDE](https://www.jetbrains.com/help/phpstorm/2016.3/phpunit.html) nebo přes příkazový řádek:
+4. Spusťte si testy. Lze to udělat [jednoduše v IDE](https://www.jetbrains.com/help/phpstorm/2016.3/phpunit.html) nebo přes příkazový řádek:
 
     ```bash
-    php vendor/bin/phpunit --bootstrap tests/bootstrap.php tests
+    php vendor/bin/phpunit
     ```
+    
+    Není nutné nic více nastavovat, jelikož si PHPUnit sám načte konfiguraci definovanou uvnitř `phpunit.xml` v rootu aplikace.
 
     Testy skončí chybou, jelikož funkce ještě není naimplementována.
 
-4. Naimplementujte kalkulačku. Soubor `src/Calculator.php` může vypadat takto:
+5. Naimplementujte kalkulačku. Soubor `src/Calculator.php` může vypadat takto:
 
     ```php
     <?php
