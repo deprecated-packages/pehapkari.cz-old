@@ -2,7 +2,7 @@
 layout: post
 title: "Testování PHP kódu"
 perex: "Testování aplikací není vždy tak snadné, jak se na papíře jeví. Svojí zkušeností jsem dospěl k&nbsp;několika zásadám a&nbsp;postupům, které se mi osvědčily a&nbsp;které se tu pokusím sepsat a&nbsp;částečně i&nbsp;zdůvodnit. Pomáhají mi k&nbsp;psaní čítelnějších a&nbsp;udržovatelnějších testů. Za hlavní přínos pak považuji snadnou rozšiřitelnost testů, jejíž potřeba přichází s&nbsp;rozšiřováním fukcionality projektu."
-author: 4
+author: petr.hejna
 ---
 
 ## 2 definice, kterých se držím

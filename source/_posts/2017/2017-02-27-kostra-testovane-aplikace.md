@@ -2,8 +2,8 @@
 layout: post
 title: "Kostra testované aplikace"
 perex: "Stále tápete, jak vytvořit základní kostru aplikace, kde je Composer vč. autoloaderu a máte i testy? Podíváme se na to, že to je velmi jednoduché."
-author: 16
-reviwed_by: [1, 17]
+author: jaroslav.hranicka
+reviwed_by: [tomas.votruba, michael.moravec]
 ---
 
 ## Co budeme dělat?

@@ -2,7 +2,7 @@
 layout: post
 title: "Jaký byl SymfonyCon Berlín 2016"
 perex: "Největší událost v Symfony světě je za námi. Představeny byly služby <strong>SensioCloud</strong>, nový balíčkovací systém <strong>Symfony Flex</strong> a mnoho dalšího."
-author: 2
+author: pavel.rozehnal
 ---
 
 [SymfonyCon](http://berlincon2016.symfony.com/) největší Symfony konference, která se koná každoročně na začátku prosince. Do Berlína dorazilo **přes 1200 účastníků** na 2 dny konference a jeden hackday.
