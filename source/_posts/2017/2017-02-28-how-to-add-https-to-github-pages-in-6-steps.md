@@ -91,7 +91,7 @@ These commands should show:
 ```bash
 Location: https://pehapkari.cz/
 Location: https://www.pehapkari.cz/
-location: https://pehapkari.cz/
+Location: https://pehapkari.cz/
 ```
 
 If they do, you're done! If not, **leave us a comment bellow** and we'll try to help you and also improve this tutorial.
