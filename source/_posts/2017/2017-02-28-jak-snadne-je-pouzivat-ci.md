@@ -119,6 +119,13 @@ Tam je ale potřeba ještě přidat do rootu aplikace soubor `phpunit.xml` a v n
         bootstrap="tests/bootstrap.php"
         verbose="true"
 >
+    <!-- tests directories to run -->
+    <testsuites>
+        <testsuite>
+            <directory suffix="Test.php">tests</directory>
+        </testsuite>
+    </testsuites>
+    <!-- source to check coverage for -->
     <filter>
         <whitelist>
             <directory suffix=".php">src</directory>
@@ -128,11 +135,13 @@ Tam je ale potřeba ještě přidat do rootu aplikace soubor `phpunit.xml` a v n
 
 ```
     
-A pak ještě musíme upravit skript, aby ten coverage report generoval a aby se spouštělo PHP vč. XDebug extension (bez něj report nebude):
+A pak ještě musíme upravit skript, aby ten coverage report generoval. Je nutné, aby se spouštělo PHP vč. XDebug extension (bez něj report nebude):
 
 ```bash
-php -d$XDEBUG_EXT vendor/bin/phpunit --coverage-text --colors=never --configuration phpunit.xml tests
+php -d$XDEBUG_EXT vendor/bin/phpunit --coverage-text
 ```
+
+Skriptu nemusím říkat, že má načítat soubor `phpunit.xml`, bude jej načítat automaticky. A také jsem vynechal cestu k adresáři `tests`, neboť jsem jej rovnou nadefinoval v `phpunit.xml` (`<directory>`).
 
 Pokrytí kódu testy umí zobrazovat přímo GitLab, jen je potřeba u projektu nastavit pod možnostmi `CI/CD Pipelines` část `Test coverage parsing` na `^\s*Lines:\s*\d+.\d+\%` (pro PHPUnit - více vzorů naleznete přímo ve formuláři).
 
