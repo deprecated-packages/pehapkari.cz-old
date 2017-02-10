@@ -1,66 +1,65 @@
 ---
 layout: post
-title: "How add Https to Github Pages in 6 Steps"
+title: "How to add HTTPS to GitHub Pages in 6 Steps"
 perex: '''
-    I always loved Github Pages, thanks to open-source and free hosting. Last thing, that made me feel too oldschool was "http://". That was the main argument people have to move from Github Pages to VPS. What a pity.
+    I always loved GitHub Pages, thanks to open-source and free hosting. Last thing that made me feel too oldschool was the plain "http://" protocol. That is usually the main argument why people move from GitHub Pages elsewhere, i.e. their own VPS. What a pity.
     <br>
-    Fortunately, thanks for Michal Špaček's ability to explain complex stuff in simple way we solved this over the
-weekend.
+    Fortunately, thanks for Michal Špaček's ability to explain complex stuff in a simple way, we solved this over a single weekend.
 '''
 author: 1
 lang: en
 # reviewed_by:
 ---
 
-This web now runs on https, see: [https://pehapkari.cz/](https://pehapkari.cz). [Michal](https://www.michalspacek.cz) added a [simple how-to manual](https://github.com/pehapkari/pehapkari.cz/issues/162#issuecomment-272590505) to Github issue, that I will expand here.
+This site now runs on HTTPS, see: [https://pehapkari.cz/](https://pehapkari.cz) thanks to [Michal Špaček](https://www.michalspacek.cz) who added [a simple how-to manual](https://github.com/pehapkari/pehapkari.cz/issues/162#issuecomment-272590505) to the GitHub issue. I will try to expand it here.
 
-<h3>Https is <strike>Hard</strike> Easy</h3>
+<h3>HTTPS is <strike>Hard</strike> Easy!</h3>
 
-I thought setting up https was very difficult process, that requires at least owning a VPS, extensive work via SSH, buying, paying and setting up a certificate. Which is practically impossible to do with Github Pages.
+I thought setting up HTTPS is a very difficult process that requires at least owning a VPS, extensive work via SSH and buying, paying and setting up the certificate. This is practically impossible to do with just GitHub Pages.
 
-Or isn't it?
+But is it really?
 
 
-## How to Enable https in 3 Steps
+## How to Enable HTTPS in 3 Steps
 
 ### 1. [Register on Cloudflare](https://www.cloudflare.com/a/sign-up)
 
 ### 2. [Add Your Site](https://www.cloudflare.com/a/add-site)
 
-Cloudflare will prefill he new DNS records by scanning current records. Continue.
+Cloudflare will pre-fill the DNS records by scanning your current records. Continue.
 
 Pick free plan.
 
 
 ### 3. Change Name Servers
 
-Go to your domain administration (in Wedos for my case: change DNS servers) and change current name servers to Cloudflare-provided name servers. You can create new NSSET or change the current one.
+Go to your domain administration (look for "change DNS servers" or similar) and change current name servers to those provided by Cloudflare. You can either create a new NSSET or change the current one.
 
 <img src="/assets/images/posts/2017/https/change-nameservers.png">
 
-Keep in mind that the **servers can be different for each domain you add to Cloudflare**.
+Keep in mind that **the servers may be different for each domain you add to Cloudflare**.
 
 
 ## What will happen now?
 
-The site will be served via Cloudflare once the browsers will start to query Cloudflare's DNS servers. There's no downtime, the site should be accessible either via Cloudflare, or not, the site doesn't really change and the origin servers – Github's in this case – are still up and running.
+The site will be served via Cloudflare once the browsers notice the change, that is when the DNS changes are propagated world-wide. That could take some time, from minutes to even days, depending on the expiration of these records in the DNS. Don't worry though, there's no downtime, the site should be accessible either via Cloudflare or not, the change we made doesn'ẗ affect the origin servers – GitHub's in this case – those are still up and running.
 
-It can [take up to 24 hours](https://support.cloudflare.com/hc/en-us/articles/203045244-How-long-does-it-take-for-CloudFlare-s-SSL-to-activate-).
-
-**This can be verified in the browser or CLI**. See `Server` response header, it should say `cloudflare-nginx`.
+**The changes could be verified in the browser or CLI**. Look for the `Server` response header, it should contain `cloudflare-nginx`.
 
 ```bash
 curl -I http://pehapkari.cz | grep Server
 Server: cloudflare-nginx
 ```
 
-If you can type https://pehpakari.cz and it works, we have https enabled!
+Now try https://pehapkari.cz, if there's no error, we have HTTPS enabled!
 
-**BUT!**
+Note that it can [take up to 24 hours](https://support.cloudflare.com/hc/en-us/articles/203045244-How-long-does-it-take-for-CloudFlare-s-SSL-to-activate-) for HTTPS to enable.
 
-The website http://pehapkari.cz also works, so we need to redirect all http request to https ones.
+**Not quite there yet**
 
-## How to Redirect "http" urls to "https" in 3 Steps
+Now we have a website running over HTTPS. But it is also accessible without HTTPS, through http://pehapkari.cz, so we need to redirect all HTTP requests to the HTTPS ones. This is especially important due to security, but also to avoid duplicate content (that would hurt SEO).
+
+## How to Redirect "HTTP" urls to "HTTPS" in 3 Steps
 
 ### 1. [Go to Page Rules](https://www.cloudflare.com/a/page-rules/)
 
@@ -73,18 +72,18 @@ This will redirect both
 - http://pehapkari.cz and
 - http://www.pehapkari.cz
 
-to their `https` versions.
+to their `https://` versions.
 
 <img src="/assets/images/posts/2017/https/page-rule-https-list.png">
 
 ### 3. Verify it Works
 
-Just run this diagnostics in your CLI:
+Now run this diagnostics in your CLI:
 
 ```bash
-curl -I http://pehapkari.cz | grep Location
-curl -I http://www.pehapkari.cz | grep Location
-curl -I https://www.pehapkari.cz | grep Location
+curl -I http://pehapkari.cz | grep -i Location
+curl -I http://www.pehapkari.cz | grep -i Location
+curl -I https://www.pehapkari.cz | grep -i Location
 ```
 
 These commands should show:
@@ -95,7 +94,7 @@ Location: https://www.pehapkari.cz/
 Location: https://pehapkari.cz/
 ```
 
-If it does, you're done! If not, **leave us comment bellow** and we'll try to help you and also improve this tutorial.
+If they do, you're done! If not, **leave us a comment bellow** and we'll try to help you and also improve this tutorial.
 
 
 If you ever get to **any security troubles**, **call [Michal](https://michalspacek.cz)** to the rescue. Thank you!
