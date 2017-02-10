@@ -72,14 +72,14 @@ V případě hostování na GitLabu se přímo vybízí využít [integrované C
 
 Do projektu přidejte soubor `.gitlab-ci.yml` který CI řekne, co se má dít.
 
-    ```yaml
-    build:
-      image: phpdocker/phpdocker:7.0
-      script:
-        - composer install
-        - php vendor/bin/phpunit --bootstrap tests/bootstrap.php tests
+```yaml
+build:
+  image: phpdocker/phpdocker:7.0
+  script:
+    - composer install
+    - php vendor/bin/phpunit --bootstrap tests/bootstrap.php tests
 
-    ```
+```
 
 Co to všechno znamená?
 
@@ -103,9 +103,9 @@ Výsledky buildů uvidíte pak u commitů i v pull-requestech. Ty je možné nas
 
 Můžeme trošku zrychlit instalaci Composeru a vyhnout se případným dotazům na uživatelský vstup:
 
-	```bash
-    composer install --no-interaction --prefer-dist
-    ```
+```bash
+composer install --no-interaction --prefer-dist
+```
 
 ### Code Coverage
 
@@ -113,26 +113,26 @@ Také můžeme nechat generovat Code Coverage report.
 
 Tam je ale potřeba ještě přidat do rootu aplikace soubor `phpunit.xml` a v něm nastavit, které složky se mají procházet pro generování code coverage reportu. Obsah `phpunit.xml`:
 
-    ```xml
-    <?xml version="1.0"?>
-    <phpunit
-            bootstrap="tests/bootstrap.php"
-            verbose="true"
-    >
-        <filter>
-            <whitelist>
-                <directory suffix=".php">src</directory>
-            </whitelist>
-        </filter>
-    </phpunit>
+```xml
+<?xml version="1.0"?>
+<phpunit
+        bootstrap="tests/bootstrap.php"
+        verbose="true"
+>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">src</directory>
+        </whitelist>
+    </filter>
+</phpunit>
 
-    ```
+```
     
 A pak ještě musíme upravit skript, aby ten coverage report generoval a aby se spouštělo PHP vč. XDebug extension (bez něj report nebude):
 
-	```bash
-    php -d$XDEBUG_EXT vendor/bin/phpunit --coverage-text --colors=never --configuration phpunit.xml tests
-	```
+```bash
+php -d$XDEBUG_EXT vendor/bin/phpunit --coverage-text --colors=never --configuration phpunit.xml tests
+```
 
 Pokrytí kódu testy umí zobrazovat přímo GitLab, jen je potřeba u projektu nastavit pod možnostmi `CI/CD Pipelines` část `Test coverage parsing` na `^\s*Lines:\s*\d+.\d+\%` (pro PHPUnit - více vzorů naleznete přímo ve formuláři).
 
