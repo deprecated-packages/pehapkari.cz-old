@@ -63,8 +63,7 @@ id: napis-clanek-vem-si-darek
                 </td>
                 <td>
                     <h3>
-                        {var $leftCount = $reward['count'] - count($reward['winners'])}
-                        {if $leftCount !== 1}{$leftCount}× {/if}{$reward['title']}
+                        {$reward['count']}× {/if}{$reward['title']}
                     </h3>
                     <p n:ifset="$reward['sponsor_note']">
                         {$reward['sponsor_note']|noescape}
