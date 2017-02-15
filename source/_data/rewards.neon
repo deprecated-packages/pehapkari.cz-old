@@ -15,7 +15,8 @@ rewards:
         count: 5
         image: "phpstorm.png"
         value_in_points: 10
-        winners: []
+        winners:
+            @enumag: https://github.com/pehapkari/pehapkari.cz/pull/199          
     2:
         title: "Návrhové vzory v PHP"
         product_link: "http://knihy.cpress.cz/navrhove-vzory-v-php.html"
@@ -31,7 +32,8 @@ rewards:
         sponsor_note: 'Daroval Honza Černý a David Grudl z <a href="http://nette.org">Nette</a>'
         custom_note: "Máme: S, XL, XL, XL, XXL"
         value_in_points: 5
-        winners: []
+        winners:
+            @enumag: https://github.com/pehapkari/pehapkari.cz/pull/199
     3:
         title: "1001 tipů a triků pro PHP"
         product_link: "https://phpfashion.com/recenze-knihy-1001-tipu-a-triku-pro-php"
@@ -49,6 +51,8 @@ rewards:
             @kbarborak: https://github.com/pehapkari/pehapkari.cz/pull/172
             @foxycode: https://github.com/pehapkari/pehapkari.cz/pull/187
             # + https://github.com/pehapkari/pehapkari.cz/pull/193
+            @hranicka: https://github.com/pehapkari/pehapkari.cz/pull/217
+            # + https://github.com/pehapkari/pehapkari.cz/pull/213
     5:
         title: "Web Security 2016"
         product_link: "https://www.phparch.com/books/web-security-2016/"
@@ -59,6 +63,7 @@ rewards:
         winners:
             @TomasPilar: https://github.com/pehapkari/pehapkari.cz/pull/176
             @ikvasnica: https://github.com/pehapkari/pehapkari.cz/pull/200
+            @enumag: https://github.com/pehapkari/pehapkari.cz/pull/199
     6:
         title: "Persistence in PHP with Doctrine ORM"
         product_link: "https://filip-prochazka.com/blog/kniha-persistence-in-php-with-doctrine-orm"
