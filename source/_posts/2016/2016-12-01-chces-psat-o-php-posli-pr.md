@@ -49,7 +49,7 @@ Máš tu k dispozici:
 Česky, slovensky nebo anglicky. Pro anglickou verzi přidej `lang: en` do hlavičky článku.
 
 
-Proces psaní a přijmání článků se může časem vyvíjet. **Tohle je start, kterým začneme, a uvidíme, kam budeme směřovat.**
+Proces psaní a přijímání článků se může časem vyvíjet. **Tohle je start, kterým začneme, a uvidíme, kam budeme směřovat.**
 
 ### Není něco jasné? Nefunguje to? Máme tam chybu?
 
