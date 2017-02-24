@@ -9,6 +9,8 @@ rewards:
         winners:
             @TomasPilar: https://github.com/pehapkari/pehapkari.cz/pull/174
             @foxycode: https://github.com/pehapkari/pehapkari.cz/pull/197
+            @hranicka: https://github.com/pehapkari/pehapkari.cz/pull/213
+            # https://github.com/pehapkari/pehapkari.cz/pull/217
     1:
         title: "roční licence na PHPStorm"
         product_link: "https://www.jetbrains.com/phpstorm/buy/#edition=personal"
