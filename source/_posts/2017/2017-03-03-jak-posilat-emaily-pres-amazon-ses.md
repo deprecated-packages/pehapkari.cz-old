@@ -10,7 +10,7 @@ reviwed_by: [1, 17]
 
 Amazon Web Services (AWS) je soubor cloudových služeb a stává se čím dál populárnějším řešením jako základ pro infrastrukturu, kterou může využívat vaše aplikace. AWS používá dnes už tolik služeb/webů, že je snad prakticky nemožné používat aspoň jednu službu, která by nebyla se službami Amazonu alespoň nějak propojená. 
 
-V tomto článku bych rád ukázal, jak snadno posílat emaily s využitím Amazon SES (Simple Email Service) a jak získat informace o tom, pokud email příjemci není doručen (bounces) nebo je označen jako spam (complaints).
+V tomto článku bych rád ukázal, **jak snadno posílat emaily** s využitím Amazon SES (Simple Email Service) a jak získat informace o tom, pokud email příjemci není doručen (bounces) nebo je označen jako spam (complaints).
 
 ## Prerekvizity
 
@@ -37,7 +37,7 @@ $options = [
     'persistent' => true,
 ];
     
-$message = new Message();
+$message = new \Nette\Mail\Message();
 $message->setFrom('odesilatel@example.com', 'Název odesilatele')
     ->addTo('prijemce@example.com')
     ->setSubject('PHP Předmět')
@@ -49,7 +49,7 @@ $smtpMailer->send($message);
 
 Obdobně byste nastavili odesílání emailů i kdybyste odesílali emaily přes SparkPost, Mailgun a další služby. V zásadě všechny tyto služby vám dají přístupy k SMTP serveru a ty jen nastavíte.
 
-Tohle řešení je pohodlné hlavně proto, že prakticky nemusíte řešit rozdílnost API jednotlivých poskytovatelů a přepnout je mezi sebou, když by bylo potřeba, není žádná překážka.
+Tohle řešení je pohodlné hlavně proto, že prakticky **nemusíte řešit rozdílnost API** jednotlivých poskytovatelů a přepnout je mezi sebou, když by bylo potřeba, není žádná překážka.
 
 ### AWS SDK pro PHP
 
@@ -88,13 +88,13 @@ try {
 }
 ```
 
-Podle mých testů je propustnost posílání emailů přes API větší než přes SMTP, proto pokud vám jde o to zvládnout v co nejkratším čase poslat co nejvíce emailů, může vám použití API pomoci.
+Podle mých testů **propustnost posílání emailů přes API je větší než přes SMTP**, proto pokud vám jde o to zvládnout v co nejkratším čase poslat co nejvíce emailů, může vám použití API pomoci.
 
 Jako další výhodu vidím, že dostanete ke každé zprávě přiřazený unikátní identifikátor, který lze pak použít, pokud chcete sledovat, zda byl email doručen, zda se jednalo o bounce apod.
 
 ## Jak získat feedback
 
-Abyste byli schopni udržet dobrou reputaci vaší databáze, je potřeba odhlašovat kontakty, kterým kupříkladu nelze doručit email, jejich emailová adresa je falešná nebo vás příjemce označí jako spam (tj. mimo jiné o vaše emaily nemá pravděpodobně dále zájem) apod.
+Abyste byli schopni udržet dobrou reputaci vaší databáze, je potřeba **odhlašovat kontakty**, kterým kupříkladu nelze doručit email, jejich emailová adresa je falešná nebo vás příjemce označí jako spam (tj. mimo jiné o vaše emaily nemá pravděpodobně dále zájem) apod.
 
 Proto je vhodné propojit SES s SNS (Simple Notification Service) a SQS (Simple Queue Service). Odkaz, jak nastavit, najdete na konci článku ve zdrojích. Každopádně jde o to, že zprávy o bounces a complaints budou končit ve frontách v SQS, odkud si je budete, třeba cronem, pravidelně stahovat a zpracovávat.
 
@@ -188,9 +188,11 @@ Příklad reálné zprávy (všimněte si, že k dispozici je **messageId**, kte
 
 A to je celá věda. Zpravidla se používají dvě fronty, jedna pro bounces, druhá pro complaints.
 
-## Závěr
+## Zkušenosti
 
-Posílání emailů přes Amazon je jednoduché a levné v porovnání s jinými službami podobného typu. Ty sice často nabízí nějaký pokročilejší logging, ale to často stejně málokdo využije (aspoň co jsem viděl u pár firem). Na produkci mám zkušenost s AWS SES třeba u [Tipli.cz](https://www.tipli.cz/), kde s tím není žádný problém. Navíc používáme oba způsoby odesílání emailů, jak přes SMTP, tak přes SDK. Pro notifikace se používá SMTP, pro newslettery, kde je důležitá rychlost odeslání velkého počtu emailů v krátkém časovém okně, se používá SDK.
+Posílání emailů přes Amazon je **jednoduché a levné** v porovnání s jinými službami podobného typu. Ty sice často nabízí nějaký pokročilejší logging, ale to často stejně málokdo využije (aspoň co jsem viděl u pár firem). 
+
+Na produkci mám zkušenost s AWS SES třeba u [Tipli.cz](https://www.tipli.cz/), kde s tím není žádný problém. Navíc používáme oba způsoby odesílání emailů, jak přes SMTP, tak přes SDK. Pro notifikace se používá SMTP, pro newslettery, kde je důležitá rychlost odeslání velkého počtu emailů v krátkém časovém okně, se používá SDK.
 
 Pokud vás cokoliv zajímá nebo zvažujete použití SES (a jeho reálné náklady), rád případně zodpovím. Ve článku jsem moc nechtěl probírat nastavení v Amazonu, protože si myslím, že to není tak složité. Kdyby bylo, stačí mi napsat, rád pomůžu, případně se podívejte na odkazy níže, kde jsem se snažil vybrat ty, které vám pomohou doplnit tyto informace.
 
