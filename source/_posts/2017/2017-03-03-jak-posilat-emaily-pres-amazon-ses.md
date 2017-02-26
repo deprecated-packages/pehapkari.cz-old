@@ -3,10 +3,10 @@ layout: post
 title: "Jak posílat emaily přes Amazon SES"
 perex: "Posílat emaily přes Amazon SES je snadné a levné. Zkuste to taky."
 author: 20
-reviwed_by: []
+reviwed_by: [1, 17]
 ---
 
-## Úvod
+## Cloudové služby Amazonu
 
 Amazon Web Services (AWS) je soubor cloudových služeb a stává se čím dál populárnějším řešením jako základ pro infrastrukturu, kterou může využívat vaše aplikace. AWS používá dnes už tolik služeb/webů, že je snad prakticky nemožné používat aspoň jednu službu, která by nebyla se službami Amazonu alespoň nějak propojená. 
 
@@ -14,40 +14,40 @@ V tomto článku bych rád ukázal, jak snadno posílat emaily s využitím Amaz
 
 ## Prerekvizity
 
-K tomu, aby jste mohli používat služby Amazonu, musíte mít založený účet. Jakmile budete mít založený účet, můžete začít nastavovat a používat služby Amazonu. 
+K tomu, abyste mohli používat služby Amazonu, musíte mít založený účet. Poté už můžete začít nastavovat a používat služby Amazonu. 
 
-Jakmile aktivujete Amazon SES, je samozřejmě ještě před prvními testy nutné si verifikovat doménu, z které budete chtít emaily posílat, poté ideálně nastavit DKIM, SPF záznamy apod.
+Jakmile aktivujete Amazon SES, je samozřejmě ještě před prvními testy nutné si verifikovat doménu, z které budete chtít emaily posílat, poté ideálně nastavit [DKIM](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail), [SPF](https://en.wikipedia.org/wiki/Sender_Policy_Framework) záznamy apod.
 
-Více o tom naleznete [zde](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/setting-up-email.html). V případě, že by jste chtěli SES použít a nebyli si jisti, jak nastavit  na straně Amazonu, klidně mi napište.
+Více o tom naleznete [zde](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/setting-up-email.html). V případě, že byste chtěli SES použít a nebyli si jisti, jak nastavit na straně Amazonu, klidně mi napište.
 
 ## Jak posílat emaily
 
-A teď už k posílání emailů. Emaily můžeme posílat dvěma způsoby. Buď s využitím SMTP serveru nebo skrze AWS SDK.
+A teď už k posílání emailů. Emaily můžete posílat dvěma způsoby. Buď s využitím SMTP serveru nebo skrze AWS SDK.
 
 ### SMTP
 
-Posílat emaily přes SMTP je ta nejsnadnější varianta. V zásadě vám stačí získat přístupy k SMTP. V **Nette** pak konfigurace může vypadat takto:
+Posílat emaily přes SMTP je ta nejsnažší varianta. V zásadě vám stačí získat přístupy k SMTP. V **Nette** pak konfigurace může vypadat takto:
 
 ```php
-    $options = [
-        'host' => 'email-smtp.eu-west-1.amazonaws.com', // napriklad tento, zalezi podle regionu
-        'username' => 'xxx',
-        'password' => 'yyy',
-        'secure' => 'ssl'
-        'persistent' => true,
-    ];
-        
-    $message = new Message();
-    $message->setFrom('odesilatel@example.com', 'Nazev odesilatele')
-        ->addTo('prijemce@example.com')
-        ->setSubject('PHP Predmet')
-        ->setHtmlBody('Mame radi PHP!');
-        
-    $smtpMailer = new \Nette\Mail\SmtpMailer($options);
-    $smtpMailer->send($message);
+$options = [
+    'host' => 'email-smtp.eu-west-1.amazonaws.com', // například tento, záleží podle regionu
+    'username' => 'xxx',
+    'password' => 'yyy',
+    'secure' => 'ssl'
+    'persistent' => true,
+];
+    
+$message = new Message();
+$message->setFrom('odesilatel@example.com', 'Název odesilatele')
+    ->addTo('prijemce@example.com')
+    ->setSubject('PHP Předmět')
+    ->setHtmlBody('Máme rádi PHP!');
+    
+$smtpMailer = new \Nette\Mail\SmtpMailer($options);
+$smtpMailer->send($message);
 ```
 
-Obdobně by jste nastavili odesílání emailů, i kdyby jste odesílali emaily přes SparkPost, Mailgun a další služby. V zásadě všechny tyto služby vám dají přístupy k SMTP serveru a ty jen nastavíte.
+Obdobně byste nastavili odesílání emailů i kdybyste odesílali emaily přes SparkPost, Mailgun a další služby. V zásadě všechny tyto služby vám dají přístupy k SMTP serveru a ty jen nastavíte.
 
 Tohle řešení je pohodlné hlavně proto, že prakticky nemusíte řešit rozdílnost API jednotlivých poskytovatelů a přepnout je mezi sebou, když by bylo potřeba, není žádná překážka.
 
@@ -60,103 +60,101 @@ Instalaci AWS SDK můžete provést přes Composer takto:
 ```bash
 composer require aws/aws-sdk-php
 ```
-V AWS si pak vytvoříte uživatele, který bude mít opravnění pracovat se službami SES skrze API a vygenerujete tak přístupové údaje, které se pak použijí při konfiguraci.
+V AWS si pak vytvoříte uživatele, který bude mít oprávnění pracovat se službami SES skrze API a vygenerujete tak přístupové údaje, které se pak použijí při konfiguraci.
 
 ```php
-    $options = [
-       'region' => 'eu-west-1', // zavisi na vybranem regionu
-       'version' => 'latest', // verze API
-       'credentials' => [
-           'key' => 'xxx', // vygeneruje se v IAM
-           'secret' => 'yyy' // vygeneruje se v IAM
-    ]];
-    
-    $sesClient = new SesClient($options);
-    
-    $request = [];
-    $request['Source'] = 'odesilatel@example.com';
-    $request['Destination']['ToAddresses'] = ['prijemce@example.com'];
-    $request['Message']['Subject']['Data'] = 'PHP Predmer';
-    $request['Message']['Body']['Html']['Data'] = 'Mame radi PHP!';
-    $request['Message']['Body']['Text']['Data'] = 'Mame radi PHP textove!';
-    
-    try {
-         $result = $sesClient->sendEmail($request);
-         $messageId = $result->get('MessageId'); // vrati id emailu
-    } catch (Exception $e) {
-        // kdyz se nepodari email odeslat
-    }
+$options = [
+   'region' => 'eu-west-1', // závisí na vybraném regionu
+   'version' => 'latest', // verze API
+   'credentials' => [
+       'key' => 'xxx', // vygeneruje se v IAM
+       'secret' => 'yyy' // vygeneruje se v IAM
+]];
+
+$sesClient = new \Aws\Ses\SesClient($options);
+
+$request = [];
+$request['Source'] = 'odesilatel@example.com';
+$request['Destination']['ToAddresses'] = ['prijemce@example.com'];
+$request['Message']['Subject']['Data'] = 'PHP Předmět';
+$request['Message']['Body']['Html']['Data'] = 'Máme rádi PHP!';
+$request['Message']['Body']['Text']['Data'] = 'Máme rádi PHP textově!';
+
+try {
+    $result = $sesClient->sendEmail($request);
+    $messageId = $result->get('MessageId'); // vrátí id emailu
+} catch (\Aws\Ses\Exception\SesException $e) {
+    // když se nepodaří email odeslat
+}
 ```
 
 Podle mých testů je propustnost posílání emailů přes API větší než přes SMTP, proto pokud vám jde o to zvládnout v co nejkratším čase poslat co nejvíce emailů, může vám použití API pomoci.
-
-> Using the Amazon SES query API enables you to submit the email send request using a single network call, whereas interfacing with the SMTP endpoint involves an SMTP conversation which consists of multiple network requests (for example, EHLO, MAIL FROM, RCPT TO, DATA, QUIT).
 
 Jako další výhodu vidím, že dostanete ke každé zprávě přiřazený unikátní identifikátor, který lze pak použít, pokud chcete sledovat, zda byl email doručen, zda se jednalo o bounce apod.
 
 ## Jak získat feedback
 
-Aby jste byli schopni udržet dobrou reputaci vaší databáze, je potřeba odhlašovat kontakty, kterým kupříkladu nelze doručit email, jejich emailová adresa je falešná nebo vás pčíjemce označí jako spam (tj. mimo jiné o vaše emaily nemá pravděpodobně dále zájem) apod.
+Abyste byli schopni udržet dobrou reputaci vaší databáze, je potřeba odhlašovat kontakty, kterým kupříkladu nelze doručit email, jejich emailová adresa je falešná nebo vás příjemce označí jako spam (tj. mimo jiné o vaše emaily nemá pravděpodobně dále zájem) apod.
 
 Proto je vhodné propojit SES s SNS (Simple Notification Service) a SQS (Simple Queue Service). Odkaz, jak nastavit, najdete na konci článku ve zdrojích. Každopádně jde o to, že zprávy o bounces a complaints budou končit ve frontách v SQS, odkud si je budete, třeba cronem, pravidelně stahovat a zpracovávat.
 
-Níže je ukázka kódu, kde z fronty **queue-bounces**, kterou jsem si vytvořil a nastavil, aby tam Amazon posílal bounces, stahuju záznamy. Zpravidla budete na záznamy reagovat tím, že uživatele odhlásíte, tj. vypnete mu příjem emailů, smažete jej z listu příjemců apod.
+Níže je ukázka kódu, kde z fronty **queue-bounces**, kterou jsem si vytvořil a nastavil, aby tam Amazon posílal bounces, stahuji záznamy. Zpravidla budete na záznamy reagovat tím, že uživatele odhlásíte, tj. vypnete mu příjem emailů, smažete jej z listu příjemců apod.
 
 ```php
-    // 1. inicializace SQS klienta
-    $options = [
-       'region' => 'eu-west-1', // zavisi na vybranem regionu
-       'version' => 'latest', // verze API
-       'credentials' => [
-           'key' => 'xxx', // vygeneruje se v IAM
-           'secret' => 'yyy' // vygeneruje se v IAM
-    ]];
-    
-    $sqsClient = \Aws\Sqs\SqsClient($options);
-    
-    // 2. získat URL fronty
-    $urlResult = $sqsClient->getQueueUrl(['QueueName' => 'queue-bounces']);
-    $queueUrl = $urlResult->get('QueueUrl');
-    
-    // 3. vrati zpravy z fronty
-    $queuResult = $sqsClient->receiveMessage([
-        'QueueUrl' => $queueUrl,
-        'MaxNumberOfMessages' => 10
-    ]);
-    
-    if ($queuResult['Messages'] == null) {
-        return;
-    }
-    
-    // 4.
-    foreach ($queuResult['Messages'] as $message) {
-        $receiptHandle = $message['ReceiptHandle'];
-        $body = \Nette\Utils\Json::decode($message['Body']);
-        $messageContent = \Nette\Utils\Json::decode($body->Message);
-    
-        if (isset($messageContent->mail)) {
-            foreach ($messageContent->mail->destination as $email) {
-                // 5. zde se odhlasi uzivatel 
-            }
+// 1. inicializace SQS klienta
+$options = [
+   'region' => 'eu-west-1', // závisí na vybraném regionu
+   'version' => 'latest', // verze API
+   'credentials' => [
+       'key' => 'xxx', // vygeneruje se v IAM
+       'secret' => 'yyy' // vygeneruje se v IAM
+]];
+
+$sqsClient = new \Aws\Sqs\SqsClient($options);
+
+// 2. získat URL fronty
+$urlResult = $sqsClient->getQueueUrl(['QueueName' => 'queue-bounces']);
+$queueUrl = $urlResult->get('QueueUrl');
+
+// 3. vrátí zprávy z fronty
+$queuResult = $sqsClient->receiveMessage([
+    'QueueUrl' => $queueUrl,
+    'MaxNumberOfMessages' => 10
+]);
+
+if ($queuResult['Messages'] == null) {
+    return;
+}
+
+// 4.
+foreach ($queuResult['Messages'] as $message) {
+    $receiptHandle = $message['ReceiptHandle'];
+    $body = \Nette\Utils\Json::decode($message['Body']);
+    $messageContent = \Nette\Utils\Json::decode($body->Message);
+
+    if (isset($messageContent->mail)) {
+        foreach ($messageContent->mail->destination as $email) {
+            // 5. zde se odhlásí uživatel 
         }
-    
-        // 6. zpravu jsme zpracovali a odstranime z fronty
-        $sqsClient->deleteMessage([
-            'QueueUrl' => $queueUrl,
-            'ReceiptHandle' => $receiptHandle
-        ]);
     }
+
+    // 6. zprávu jsme zpracovali a odstraníme z fronty
+    $sqsClient->deleteMessage([
+        'QueueUrl' => $queueUrl,
+        'ReceiptHandle' => $receiptHandle
+    ]);
+}
 ```
 Postup je jednoduchý:
 1. Inicializujete SQS klienta.
 2. Získáte URL fronty.
-3. Zavoláte frontu, aby jste z ní získali položky ke zpracování.
+3. Zavoláte frontu, abyste z ní získali položky ke zpracování.
 4. Projdete jednotlivé zprávy, kde **ReceiptHandle** je ID položky ve frontě a v těle položky najdete samotnou zprávu. Příklad zprávy je uveden níže v JSON.
 5. Zareagujete na událost - můžete třeba odhlásit uživatele podle emailu nebo podle messageId, pokud evidujete.
 6. Položku jsme zpracovali a z fronty smažeme.
 
 Příklad reálné zprávy (všimněte si, že k dispozici je **messageId**, které také vrací API při odeslání emailu):
-```json
+```javascript
 {  
    "notificationType":"Bounce",
    "bounce":{  
@@ -192,9 +190,9 @@ A to je celá věda. Zpravidla se používají dvě fronty, jedna pro bounces, d
 
 ## Závěr
 
-Posílání emailů přes Amazon je jednoduché a levné v porovnání s jinými službami podobného typu. Ty sice často nabízí nějaký pokročilejší logging, ale to často stejně málokdo využije (aspoň co jsem viděl u pár firem). Na produkci mám zkušenost s AWS SES třeba u [Tipli.cz](https://www.tipli.cz/), kde s tím není žádný problém. Navíc používáme oba způsoby odesílání emailů,. jak přes SMTP, tak přes SDK. Pro notifikace se používá SMTP, pro newslettery, kde je důležitá rychlost odeslání velkého počtu emailů v krátkém časovém okně, se používá SDK.
+Posílání emailů přes Amazon je jednoduché a levné v porovnání s jinými službami podobného typu. Ty sice často nabízí nějaký pokročilejší logging, ale to často stejně málokdo využije (aspoň co jsem viděl u pár firem). Na produkci mám zkušenost s AWS SES třeba u [Tipli.cz](https://www.tipli.cz/), kde s tím není žádný problém. Navíc používáme oba způsoby odesílání emailů, jak přes SMTP, tak přes SDK. Pro notifikace se používá SMTP, pro newslettery, kde je důležitá rychlost odeslání velkého počtu emailů v krátkém časovém okně, se používá SDK.
 
-Pokud vás cokoliv zajímá nebo zvažujete použití SES (a jeho reálné náklady), rád případně zodpovím. Ve článku jsem moc nechtěl probírat nastavení v Amazonu, protože si myslím, že to není tak složité. Kdyby bylo, stačí mi napsat, rád pomůžu nebo mrkněte na odkazy níže, kde jsem se snažil vybrat ty, které vám pomohou doplnit tyto informace.
+Pokud vás cokoliv zajímá nebo zvažujete použití SES (a jeho reálné náklady), rád případně zodpovím. Ve článku jsem moc nechtěl probírat nastavení v Amazonu, protože si myslím, že to není tak složité. Kdyby bylo, stačí mi napsat, rád pomůžu, případně se podívejte na odkazy níže, kde jsem se snažil vybrat ty, které vám pomohou doplnit tyto informace.
 
 ## Odkazy
 
