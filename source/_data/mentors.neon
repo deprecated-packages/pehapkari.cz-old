@@ -103,3 +103,9 @@ mentors:
         email: "eduard.stula@b-m.cz"
         intro_message: "PHP, PhpStorm, bezpečnost, GIT. Vedu vývoj v benes-michl.cz :)"
         link: "https://www.linkedin.com/in/eduardstula/"
+    18:
+        name: "Matěj Račinský"
+        location: "Praha"
+        email: "racinsky.matej@seznam.cz"
+        intro_message: "PHP, PhpStorm, GIT, Doctrine, Nette, Java, architektura, bezpečnost, bitcoin, umělá inteligence."
+        link: "https://github.com/racinmat"
