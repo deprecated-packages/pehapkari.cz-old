@@ -20,7 +20,7 @@ final class EventAwareNotifyMeOnVideoPublishedEventSubscriber implements EventSu
 
     public function notifyUserAboutVideo(YoutuberNameEvent $youtuberNameEvent)
     {
-        $this->youtuberUserName = $youtuberNameEvent->getYoutubeName();
+        $this->youtuberUserName = $youtuberNameEvent->getYoutuberName();
     }
 
     public function getYoutuberUserName() : string

@@ -11,15 +11,12 @@ id: blog
             Komunitní PHP blog
         </h2>
 
-        <p class="text-center">Chceš taky přidat článek? <a href="/blog/2016/12/01/chces-psat-o-php-posli-pr/">Tady si přeči jak</a></p>
+        <p class="text-center">Chceš taky přidat článek? <a href="/blog/2016/12/01/chces-psat-o-php-posli-pr/">Tady si přečti jak</a></p>
 
         <hr>
 
         {foreach $posts as $post}
-            {continueIf ($post->getDateInFormat('Y-m-d') > date('Y-m-d') || isset($post['redirect']))
-                && $post->getDateInFormat('Y-m-d') !== "2017-01-30"}
-            {* the date condition is temporary for BC *}
-            {* can be remove on 2017-01-30 and after *}
+            {continueIf $post->getDateInFormat('Y-m-d') > date('Y-m-d') || isset($post['redirect'])}
 
             {* to see your article locally, use this address: localhost:8000/blog/<year>/<month>/<day>/<slug> *}
             {* e.g. 2017-02-06-how-to-rehash-legacy-passwords-in-symfony.md =>
@@ -46,5 +43,5 @@ id: blog
 
 
 {block additionalJavascript}
-    <script id="dsq-count-scr" src="http://{$disqusName}.disqus.com/count.js" async defer></script>
+    <script id="dsq-count-scr" src="https://{$disqusName}.disqus.com/count.js" async defer></script>
 {/block}
