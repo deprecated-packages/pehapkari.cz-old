@@ -91,72 +91,70 @@ jako napříklady cykly.
 Ve file templates lze také používat proměnné a jejich hodnoty můžeme vyplnit ve chvíli vytváření nového souboru ze šablony.
 Například jednoduchý file template na Nette Presenter
 
-{syntax double}
-
 ```php
 <?php
 
 #parse("PHP File Header.php")
 
-#if (${Module} != "")
-namespace App\\${Module}Module\Presenters;
-#elseif (${Namespace} != "")
-namespace ${Namespace};
+#if ($❴Module❵ != "")
+namespace App\\$❴Module❵Module\Presenters;
+#elseif ($❴Namespace❵ != "")
+namespace $❴Namespace❵;
 #else
 namespace App;
 #end
 
 use Nette;
-#if (${NAME} == 'BasePresenter')
+#if ($❴NAME❵ == 'BasePresenter')
 use Nette\Application\UI;
 
-class ${NAME} extends UI\Presenter
+class $❴NAME❵ extends UI\Presenter
 #else
 
-class ${NAME} extends BasePresenter
+class $❴NAME❵ extends BasePresenter
 #end
 {
 
-#if (${Startup} != "")
+#if ($❴Startup❵ != "")
 	public function startup()
 	{
 		parent::startup();
 	}
 	
 #end
-#if (${Action} != "")
-	public function action${Action}()
+#if ($❴Action❵ != "")
+	public function action$❴Action❵()
 	{
 		
 	}
 
 #end
-#if (${Handle} != "")
-	public function handle${Handle}()
+#if ($❴Handle❵ != "")
+	public function handle$❴Handle❵()
 	{
 		
 	}
 
 #end
-#if (${BeforeRender} != "")
+#if ($❴BeforeRender❵ != "")
 	public function beforeRender()
 	{
 		
 	}
 
 #end
-#if (${NAME} != 'BasePresenter')
+#if ($❴NAME❵ != 'BasePresenter')
 	public function renderDefault()
 	{
 		
 	}
 
 #end
-#if (${Render} != "")
+#if ($❴Render❵ != "")
 
 ## This just capitalizes the first letter. This line is a comment.
 #set ($Capitalized = $Render.substring(0,1).toUpperCase() + $Render.substring(1))
-	public function render${Capitalized}()
+	public function render$❴Capitalized❵()
 	{
 		
 	}
@@ -166,8 +164,6 @@ class ${NAME} extends BasePresenter
 
 
 ```
-
-{{/syntax}}
 
 Při vytváření souboru ze šablony se pak objeví možnost vyplnit obsah proměnných.
 Ten lze samozřejmě ponechat i prázdný, není potřeba vyplňovat vždy vše.
@@ -192,12 +188,10 @@ Hned v prvním řádku je include PhpDocu.
 Direktiva `#parse` je vlastně jenom velocity alternativa php `include`. 
 
 
-{syntax double}
 Jazyk velocity má pro PHP jednu drobnou nevýhodu. Znak `$` totiž interpretuje jako začátek proměnné. Znak `$` tedy musíme 
-escapovat, a to takto `${DS}`. Pokud to neuděláme, tak se nám `$id` objeví ve formuláři při tvorbě souboru jako proměnná.
+escapovat, a to takto `$❴DS❵`. Pokud to neuděláme, tak se nám `$id` objeví ve formuláři při tvorbě souboru jako proměnná.
 Takže pokud chceme použít například ve file templatu nějaké entity toto `private $id;`, musíme to napsat následovně 
-`private ${DS}id;`.
-{{/syntax}}
+`private $❴DS❵id;`.
 
 Zajímavé je, že ve file templatech lze používat javovské operace pro práci se stringy.
 Tyto operace lz však používat jen uvnitř direktivy `#set`.
@@ -215,4 +209,4 @@ U editace file templates narazíte mimo jiné na `Enable Live Templates`. Toto p
 že budeme moct jejich hodnoty vyplnit po vygenerování (a pohybovat se na další rychle pomocí `TAB`). 
 Tyto nemají s live templaty jakožto kompletací kódu pod zkratkami, nic společného, což je na první pohled matoucí.
 
-Jak využíváte šablony vy? Máte pro něja nějaký zajímavý usecase?
+Jak využíváte šablony vy? Máte pro ně nějaký zajímavý usecase?
