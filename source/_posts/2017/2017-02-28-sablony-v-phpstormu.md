@@ -26,7 +26,7 @@ Defaultně existují například tyto file templates: *HTML File*, *XHTML File*,
 ## Live templates
 
 Live templates lze spravovat v **File | Settings | Editor | Live templates**. Zajímavé na live templatech je to, 
-že jsou context aware, tedy aktivují se pouze v určitém kontextu, a ne jinde. Jak lze vidět na následujícím obrázku:
+že jsou context aware, tedy aktivují se pouze v určitém kontextu, a ne jinde, jak je vidět na následujícím obrázku:
 
 <div class="text-center">
     <img src="/assets/images/posts/2017/phpstorm/contexts.png">
@@ -47,14 +47,14 @@ Používají se tak, že označím kus kódu či mám kurzor na nějakém řádk
 a stisknu `CTRL+ALT+T`. To mi zobrazí dostupné surround templates, a já vyberu příslušný template. Ten pak vybranou část obalí.
 To je dobré například pro obalování nějakým upraveným try-catchem, překladem apod.  
 
-V template textu (kde je kód, který se má po expandování zkratky objevit) lze používat proměnné.
+V template textu (kde je kód, který se má po expandování zkratky objevit) můžeme používat proměnné.
 Defaultně jsou definované proměnné $END$ a $SELECTION$.  
 Proměnná $END$ určuje, kde se má po expandování objevit kurzor.  
 $SELECTION$ se uplatní pouze u surround templates a říká, kde se má v kódu objeví vybraný text.
 Zároveň slouží k označení surround templates, protože každý live template, ve kterém je proměnná $SELECTION$, 
 je automaticky považovaný i za surround template.
 
-Dále si můžeme definovat vlastní proměnné, které lze použít například k tomu, abychom napsali jednu věc na více míst 
+Dále si můžeme definovat vlastní proměnné. Ty můžeme použít například k tomu, abychom napsali jednu věc na více míst 
 najednou. Po expanzi kódu nám IDE nabídne vyplnit obsah jednotlivých proměnných. 
 Pro pohyb k dalším proměnným stačí stisknout `ENTER` nebo `TAB`.
 Teď si ukážeme live template na tvorbu fluent setteru. To je setter, který vypadá například takto:
@@ -100,17 +100,17 @@ $this->translator->translate($SELECTION$)
 To obalí vybraný výraz překladovou funkcí.
 
 U víceřádkových live templates (zvláště u surround templates) se občas může rozházet formátování, 
-to lze ošetřit zaškrtnutím "Reformat according to style" v editaci live templatu.
+to ošetříme zaškrtnutím "Reformat according to style" v editaci live templatu.
 
 
 ## File templates
 
 File templates lze spravovat v **File | Settings | Editor | File and code templates**. Tam můžete buď přidávat 
 šablony vlastní nebo upravovat stávající. Pro tvorbu šablon se zde používá jazyk [velocity](http://velocity.apache.org/).
-Bohužel nelze využít všechny možnosti jazyku velocity v kombinaci s vyplňováním proměnných při tvorbě nového souboru, 
+Bohužel nejde využít všechny možnosti jazyku velocity v kombinaci s vyplňováním proměnných při tvorbě nového souboru, 
 jako například cykly.
 
-Ve file templates lze také používat proměnné a jejich hodnoty můžeme vyplnit ve chvíli vytváření nového souboru ze šablony.
+Ve file templates se také dají používat proměnné. Jejich hodnoty můžeme vyplnit ve chvíli vytváření nového souboru ze šablony.
 Například jednoduchý file template na Nette Presenter:
 
 ```php
