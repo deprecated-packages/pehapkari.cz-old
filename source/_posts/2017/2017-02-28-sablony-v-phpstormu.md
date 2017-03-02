@@ -9,21 +9,20 @@ author: 15
 
 Kód můžeme psát buď v IDE nebo v textovém editoru. IDE mají velkou výhodu v tom, že pomáhají s analýzou a kompletací kódu.
 Takže programátor nemusí psát všechno, ale může si tvořit vlastní zkratky či využívat zkratky stávající. 
-Zde budu rozebírat šablony pro IDE PhpStorm. PhpStorm je sice placený, což může být pro některé čtenáře problém, 
-ale pokud jste student, tak za ISIC lze získat studentskou licenci, která je zdarma.
+Zde budu rozebírat live a file templaty pro IDE PhpStorm. PhpStorm je sice placený, což může být pro některé čtenáře problém, 
+ale pro studenty je možnost za ISIC lze získat licenci zdarma.
 
 ### Kdy používat šablony? 
 Nejvíce se šabony hodí buď na velkých projektech, kde se část kódu často opakuje (controllery, DTO, entity, query objecty apod.), 
  nebo při časté tvorbě malých, velmi podobných projektů, kde se opakují části kódu, které nejde vyčlenit do nějakého sandboxu.
 
-V PhpStormu jsou dva druhy šablon. [File templates](https://www.jetbrains.com/help/phpstorm/2016.3/file-and-code-templates.html)
- jsou soubory s nějakým předem daným obsahem. 
-Defaultně existují například tyto file templates: *HTML File*, *XHTML File*, *PHP File*, *PHP Class*.
-
-Dále jsou k dispozici [live templates](https://www.jetbrains.com/help/phpstorm/2016.3/live-templates-2.html)
-které umožní definovat zkratku (pár písmen), a k ní odpovídající kód.
+V PhpStormu jsou dva druhy šablon. [Live templates](https://www.jetbrains.com/help/phpstorm/2016.3/live-templates-2.html)
+ umožňují definovat zkratku (pár písmen), a k ní odpovídající kód.
 Po napsání zkratky a stisknutí `TAB` se místo zkratky vloží k ní patřící kód. 
 
+Dále jsou k dispozici [file templates](https://www.jetbrains.com/help/phpstorm/2016.3/file-and-code-templates.html)
+, což jsou soubory s nějakým předem daným obsahem. 
+Defaultně existují například tyto file templates: *HTML File*, *XHTML File*, *PHP File*, *PHP Class*.
 ## Live templates
 
 Live templates lze spravovat v **File | Settings | Editor | Live templates**. Zajímavé na live templatech je to, 
@@ -40,37 +39,59 @@ Live templates lze spravovat v **File | Settings | Editor | Live templates**. Za
 <br>
 
 možné kontexty jsou například Javascript, HTML, PHP, SQL, a další. V rámci PHP pak můžeme mít zvlášť live templates pro 
-komentáře, class members apod.
-Tlačítko, kterým expandujeme zkratku do definovaného kusu kódu lze z výchozího `TAB` v tomto nastavení změnit.
+komentáře, class members apod.  
+Tlačítko, kterým expandujeme zkratku do definovaného kusu kódu, lze v tomto nastavení změnit z výchozího `TAB` na nějaké jiné.  
 Live templates lze také vyvolat zkratkou `CTRL+J`, která ukáže všechny dostupné live templates.
+Speciální druh **live templates** jsou **surround templates**, ty slouží k obalení vybraného kusu kódu nějakým live templatem.
+Používají se tak, že označím kus kódu či mám kurzor na nějakém řádku (to se pak chová jako označení celého řádku) 
+a stisknu `CTRL+ALT+T`. To mi zobrazí dostupné surround templates, a já vyberu příslušný template. Ten pak vybranou část obalí.
+To je dobré například pro obalování nějakým upraveným try-catchem, překladem apod.  
+
 V template textu (kde je kód, který se má po expandování zkratky objevit) lze používat proměnné.
-Defaultně jsou definované proměnné $END$ a $SELECTION$.
-Proměnná $END$ určuje, kde se má objevit po expandování kurzor. 
-Speciální druh **live templates** jsou **surround templates**.
-Surround templates jsou templates, které se používají tak, že označím kus kódu či mám kurzor na nějakém řádku 
-(to se pak chová jako označení celého řádku) a stisknu `CTRL+ALT+T`, a vyberu přískušný template. Ten pak vybranou část obalí.
-To je dobré například pro obalování nějakým upraveným try-catchem, překladem apod. 
-$SELECTION$ se uplatí pouze u **surround templates** a říká, kde se má v kódu objeví vybraný text.
+Defaultně jsou definované proměnné $END$ a $SELECTION$.  
+Proměnná $END$ určuje, kde se má po expandování objevit kurzor.  
+$SELECTION$ se uplatní pouze u surround templates a říká, kde se má v kódu objeví vybraný text.
+Zároveň slouží k označení surround templates, protože každý live template, ve kterém je proměnná $SELECTION$, 
+je automaticky považovaný i za surround template.
 
 Dále si můžeme definovat vlastní proměnné, které lze použít například k tomu, abychom napsali jednu věc na více míst 
 najednou. Po expanzi kódu nám IDE nabídne vyplnit obsah jednotlivých proměnných. 
 Pro pohyb k dalším proměnným stačí stisknout `ENTER` nebo `TAB`.
-Například si uděláme zkratku na tvorbu tovární funkce.
-Abbreviation: `com`  
-Template text:
-```php
-/*
- return $CLASS$
- */
-protected function createComponent$NAME$()
-{
-	return new $CLASS$($ARGS$);$END$
-}
-```
-Takže po stisku com a `TAB` můžeme vyplnit název třídy. Název třídy se pak píše najednou na obě místa, kde je proměnná $CLASS$. 
-Po stisku `TAB` pak vyplňujeme proměnnou $NAME$ a pak proměnnou $ARGS$.
+Teď si ukážeme live template na tvorbu fluent setteru. To je setter, který vypadá například takto:
 
-Další příklad využívá $SELECTION$:
+```php
+	/**
+	 * @param $bar
+	 * @return $this
+	 */
+	public function setBar($bar) {
+		$this->bar = $bar;
+		return $this;
+	}
+```
+
+U takového setteru pro například proměnnou `$bar `chceme, aby v názvu metody bylo setBar, s velkým B, ale jinde aby byl 
+název proměnné malými písmeny. Toho dosáhneme přes funkce pro live templates.  
+Když klikneme na `Edit variables`, je nám nabídnuto proměnným přiřadit funkce závisející na jiných proměnných.
+Nastavení takového live templatu můžeme vidět na následujícím obrázku:
+
+<div class="text-center">
+    <img src="/assets/images/posts/2017/phpstorm/live-template.png">
+    <br>
+    <em>
+        Live template s kapitalizací
+    </em>
+</div>
+
+<br>
+
+Takže po napsání `se` a stisku `TAB` můžeme vyplnit název property, pro kterou má setter být.  
+Takže když napíšeme napříkat `bar`, tak ji to všude doplné a v názvu metody bude `setBar`. 
+O to se nám stará funkce capitalize(Name), která používá obsah proměnné `$Name$`.  
+Když je zaškrtnuté `Skip if defined`, znamená to, že nám PhpStorm nenabídne vyplnit hodnotu `$Cap$`, pokud je k ní přiřazena nějaká funkce.  
+Když chceme v live templatech používat znak `$` těsně před názvem proměnné, musíme ho escapovat zdvojením, takto: `$$`.
+
+Další příklad využívá $SELECTION$:  
 Abbreviation: `tra`  
 Template text:
 ```php
@@ -180,28 +201,27 @@ Ten lze samozřejmě ponechat i prázdný, není potřeba vyplňovat vždy vše.
 
 Tento template umožní specifikovat modul, a pokud ten je prázdný, použije se namespace. 
 Stejně tak je tam již zakotvena logika pro dědění u BasePresenteru.
-Také je možné presenter rovnou vygenerovat s nějakou z action, render nebo handle metod, aby je člověk nemusel psát, 
-pokud ví, že je bude potřebovat. 
+Také je možné presenter rovnou vygenerovat s nějakou z action, render nebo handle metod, abychom je nemuseli psát ručně. 
 Ale pokud pole zůstanou prázdná, presenter se vygeneruje bez action, render i handle metod.
 
-Hned v prvním řádku je include PhpDocu. 
-Direktiva `#parse` je vlastně jenom velocity alternativa php `include`. 
+Hned v prvním řádku je include PhpDocu. Direktiva `#parse` je vlastně jenom velocity alternativa php `include`. 
 
 Jazyk velocity má pro PHP jednu drobnou nevýhodu. Znak `$` totiž interpretuje jako začátek proměnné a proto jej musíme 
-escapovat, takto `$❴DS❵`. Pokud to neuděláme, tak se nám `$id` objeví ve formuláři při tvorbě souboru jako proměnná.
-Takže pokud chceme použít například ve file templatu nějaké entity toto `private $id;`, musíme to napsat následovně: 
+escapovat, takto: `$❴DS❵`. Pokud to neuděláme, tak se nám `$id` objeví ve formuláři při tvorbě souboru jako proměnná.
+Takže pokud chceme použít například ve file templatu nějaké entity toto: `private $id;`, musíme to napsat následovně: 
 `private $❴DS❵id;`.
 
 Zajímavé je, že ve file templatech lze používat javovské operace pro práci se stringy.
-Tyto operace lze však používat jen uvnitř direktivy `#set`.
-To je vidět v řádku začínajícím `#set`. `#set` je v jazyce velocity deklarace proměnné. Proměnné se uvnitř `#set` používají 
- bez `{}`. Jakmile proměnnou v `#set` deklarujeme, dále ji opět používáme obalenou `{}`.
- Jak je vidět, proměnná `$Capitalized` má v sobě stejný obsah jako proměnná `$Render`, ale první písmeno má velké.
- Pomocí práce se stringy takto můžeme do file templatů zakotvit různé drobnosti, které bychom jinak museli upravovat ručně, 
- což stojí čas.
- Věci, které ve file templatech nejsou na první pohled zřejmé, můžeme okomentovat. 
- `##` totiž v jazyce velocity značí začátek komentáře a tento komentář se pak do textu nového souboru nepropíše.
-Takto můžeme dokonce uvnitř templatů vykonávat [nahrazování pomocí regulárních výrazů](https://intellij-support.jetbrains.com/hc/en-us/community/posts/206816669-How-to-use-Live-Templates-functions-in-File-Templates-). 
+Tyto operace lze však používat jen uvnitř direktivy `#set`. To je vidět v řádku pod komentářem. 
+`#set` je v jazyce velocity deklarace proměnné. Proměnné se uvnitř používají bez `{}`. 
+Jakmile proměnnou deklarujeme, dále ji opět používáme obalenou `{}`.  
+
+Jak je vidět, proměnná `$Capitalized` má v sobě stejný obsah jako proměnná `$Render`, ale první písmeno má velké. 
+Pomocí práce se stringy takto můžeme do file templatů zakotvit různé drobnosti, které bychom jinak museli upravovat ručně, 
+což stojí čas.
+Takto můžeme dokonce uvnitř templatů vykonávat [nahrazování pomocí regulárních výrazů](https://intellij-support.jetbrains.com/hc/en-us/community/posts/206816669-How-to-use-Live-Templates-functions-in-File-Templates-).  
+Věci, které ve file templatech nejsou na první pohled zřejmé, můžeme okomentovat. 
+`##` totiž v jazyce velocity značí začátek komentáře a tento komentář se pak do textu nového souboru nepropíše.
 
 Drobná poznámka na konec: 
 U editace file templates narazíte mimo jiné na `Enable Live Templates`. Toto pouze povolí využívání proměnných tak, 
