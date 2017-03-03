@@ -61,7 +61,7 @@ The first level requires 3 small steps.
 
 #### 1. Tune `composer.json` Autoloading
 
-```json
+```javascript
 {
     "require": {
         "..."
