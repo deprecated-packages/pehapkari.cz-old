@@ -13,7 +13,7 @@ Zde budu rozebírat live a file templaty pro IDE PhpStorm. PhpStorm je sice plac
 ale pro studenty je možnost za ISIC lze získat licenci zdarma.
 
 ### Kdy používat šablony? 
-Nejvíce se šabony hodí buď při práci na velkých projektech, kde se část kódu často opakuje (controllery, DTO, entity, query objecty apod.), 
+Nejvíce se šablony hodí buď při práci na velkých projektech, kde se část kódu často opakuje (controllery, DTO, entity, query objecty apod.), 
  nebo při časté tvorbě malých, velmi podobných projektů, kde se opakují části kódu, které nejde vyčlenit do nějakého sandboxu.
 
 V PhpStormu jsou dva druhy šablon. [Live templates](https://www.jetbrains.com/help/phpstorm/2016.3/live-templates-2.html)
