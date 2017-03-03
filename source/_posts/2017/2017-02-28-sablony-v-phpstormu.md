@@ -7,20 +7,20 @@ author: 15
 
 ### Proč šablony
 
-Kód můžeme psát buď v IDE nebo v textovém editoru. IDE mají velkou výhodu v tom, že pomáhají s analýzou a kompletací kódu.
-Takže programátor nemusí psát všechno, ale může si tvořit vlastní zkratky či využívat zkratky stávající. 
+Kód můžeme psát buď v IDE nebo v textovém editoru. IDE mají velkou výhodu v tom, že pomáhají s analýzou a kompletací kódu, 
+takže programátor nemusí psát všechno, ale může si tvořit vlastní zkratky či využívat zkratky stávající.  
 Zde budu rozebírat live a file templaty pro IDE PhpStorm. PhpStorm je sice placený, což může být pro některé čtenáře problém, 
 ale pro studenty je možnost za ISIC lze získat licenci zdarma.
 
 ### Kdy používat šablony? 
-Nejvíce se šabony hodí buď na velkých projektech, kde se část kódu často opakuje (controllery, DTO, entity, query objecty apod.), 
+Nejvíce se šabony nejvíce hodí buď při práci na velkých projektech, kde se část kódu často opakuje (controllery, DTO, entity, query objecty apod.), 
  nebo při časté tvorbě malých, velmi podobných projektů, kde se opakují části kódu, které nejde vyčlenit do nějakého sandboxu.
 
 V PhpStormu jsou dva druhy šablon. [Live templates](https://www.jetbrains.com/help/phpstorm/2016.3/live-templates-2.html)
  umožňují definovat zkratku (pár písmen), a k ní odpovídající kód.
 Po napsání zkratky a stisknutí `TAB` se místo zkratky vloží k ní patřící kód. 
 
-Dále jsou k dispozici [file templates](https://www.jetbrains.com/help/phpstorm/2016.3/file-and-code-templates.html)
+Druhým typem šablon jsou [file templates](https://www.jetbrains.com/help/phpstorm/2016.3/file-and-code-templates.html)
 , což jsou soubory s nějakým předem daným obsahem. 
 Defaultně existují například tyto file templates: *HTML File*, *XHTML File*, *PHP File*, *PHP Class*.
 ## Live templates
@@ -43,20 +43,20 @@ komentáře, class members apod.
 Tlačítko, kterým expandujeme zkratku do definovaného kusu kódu, lze v tomto nastavení změnit z výchozího `TAB` na nějaké jiné.  
 Live templates lze také vyvolat zkratkou `CTRL+J`, která ukáže všechny dostupné live templates.
 Speciální druh **live templates** jsou **surround templates**, ty slouží k obalení vybraného kusu kódu nějakým live templatem.
-Používají se tak, že označím kus kódu či mám kurzor na nějakém řádku (to se pak chová jako označení celého řádku) 
-a stisknu `CTRL+ALT+T`. To mi zobrazí dostupné surround templates, a já vyberu příslušný template. Ten pak vybranou část obalí.
+Používají se tak, že označím kus kódu, nebo mám kurzor na nějakém řádku (to se pak chová jako označení celého řádku) 
+a stisknu `CTRL+ALT+T`. To mi zobrazí dostupné surround templates, a já vyberu příslušný template, který pak vybranou část obalí.
 To je dobré například pro obalování nějakým upraveným try-catchem, překladem apod.  
 
 V template textu (kde je kód, který se má po expandování zkratky objevit) můžeme používat proměnné.
 Defaultně jsou definované proměnné $END$ a $SELECTION$.  
 Proměnná $END$ určuje, kde se má po expandování objevit kurzor.  
-$SELECTION$ se uplatní pouze u surround templates a říká, kde se má v kódu objeví vybraný text.
+$SELECTION$ se uplatní pouze u surround templates a říká, kde se má v kódu objevit vybraný text.
 Zároveň slouží k označení surround templates, protože každý live template, ve kterém je proměnná $SELECTION$, 
 je automaticky považovaný i za surround template.
 
 Dále si můžeme definovat vlastní proměnné. Ty můžeme použít například k tomu, abychom napsali jednu věc na více míst 
 najednou. Po expanzi kódu nám IDE nabídne vyplnit obsah jednotlivých proměnných. 
-Pro pohyb k dalším proměnným stačí stisknout `ENTER` nebo `TAB`.
+Pro pohyb k dalším proměnným stačí stisknout `ENTER` nebo `TAB`.  
 Teď si ukážeme live template na tvorbu fluent setteru. To je setter, který vypadá například takto:
 
 ```php
@@ -85,10 +85,10 @@ Nastavení takového live templatu můžeme vidět na následujícím obrázku:
 
 <br>
 
-Takže po napsání `se` a stisku `TAB` můžeme vyplnit název property, pro kterou má setter být.  
-Takže když napíšeme napříkat `bar`, tak ji to všude doplné a v názvu metody bude `setBar`. 
+Tedy po napsání `se` a stisku `TAB` můžeme vyplnit název property, pro kterou má setter být.  
+Například když napíšeme napříkat `bar`, tak ji to doplní do všech výskytu proměnné `$Name$` a v názvu metody bude `setBar`. 
 O to se nám stará funkce capitalize(Name), která používá obsah proměnné `$Name$`.  
-Když je zaškrtnuté `Skip if defined`, znamená to, že nám PhpStorm nenabídne vyplnit hodnotu `$Cap$`, pokud je k ní přiřazena nějaká funkce.  
+Je-li zaškrtnuté `Skip if defined`, znamená to, že nám PhpStorm nenabídne vyplnit hodnotu `$Cap$`, pokud je k ní přiřazena nějaká funkce.  
 Když chceme v live templatech používat znak `$` těsně před názvem proměnné, musíme ho escapovat zdvojením, takto: `$$`.
 
 Další příklad využívá $SELECTION$:  
@@ -97,7 +97,7 @@ Template text:
 ```php
 $this->translator->translate($SELECTION$)
 ```
-To obalí vybraný výraz překladovou funkcí.
+Výše uvedený template zajistí obalení vybraného výrazu překladovou metodou.
 
 U víceřádkových live templates (zvláště u surround templates) se občas může rozházet formátování, 
 to ošetříme zaškrtnutím "Reformat according to style" v editaci live templatu.
@@ -105,8 +105,8 @@ to ošetříme zaškrtnutím "Reformat according to style" v editaci live templa
 
 ## File templates
 
-File templates lze spravovat v **File | Settings | Editor | File and code templates**. Tam můžete buď přidávat 
-šablony vlastní nebo upravovat stávající. Pro tvorbu šablon se zde používá jazyk [velocity](http://velocity.apache.org/).
+File templates lze spravovat ve **File | Settings | Editor | File and code templates**. Tam můžete buď přidávat 
+vlastní šablony nebo upravovat stávající. Pro tvorbu šablon se zde používá jazyk [velocity](http://velocity.apache.org/).
 Bohužel nejde využít všechny možnosti jazyku velocity v kombinaci s vyplňováním proměnných při tvorbě nového souboru, 
 jako například cykly.
 
@@ -202,7 +202,7 @@ Ten lze samozřejmě ponechat i prázdný, není potřeba vyplňovat vždy vše.
 Tento template umožní specifikovat modul, a pokud ten je prázdný, použije se namespace. 
 Stejně tak je tam již zakotvena logika pro dědění u BasePresenteru.
 Také je možné presenter rovnou vygenerovat s nějakou z action, render nebo handle metod, abychom je nemuseli psát ručně. 
-Ale pokud pole zůstanou prázdná, presenter se vygeneruje bez action, render i handle metod.
+Nicméně pokud pole zůstanou prázdná, presenter se vygeneruje bez action, render i handle metod.
 
 Hned v prvním řádku je include PhpDocu. Direktiva `#parse` je vlastně jenom velocity alternativa php `include`. 
 
