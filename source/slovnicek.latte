@@ -175,9 +175,9 @@ id: slovnicek
                         služeb mezi sebou.
                     </dd>
 
-                    <dt>End-to-end test&nbsp;<sup><a id="e2e-test" href="#e2e-test">&hearts;</a></sup></dt>
+                    <dt>E2E testování&nbsp;<sup><a id="e2e-test" href="#e2e-test">&hearts;</a></sup></dt>
                     <dd>
-                        Ent-to-end test (nebo také E2E test) má za úkol otestovat správnost procesu v systému od jeho
+                        End-to-end test (nebo také E2E test) má za úkol otestovat správnost procesu v systému od jeho
                         začátku až do jeho konce. Tím se ověří celková integrita systému a jeho dat. Typickým příkladem
                         může být průchod e-shopem, od příhlášení přes přidání prodktů do košíku až po dokončení objednávky.
                         <sup>[<a href="https://www.tutorialspoint.com/software_testing_dictionary/end_to_end_testing.htm">wiki</a>]</sup>
@@ -186,8 +186,8 @@ id: slovnicek
                     <dt>Extrémní programování&nbsp;<sup><a id="xp" href="#xp">&hearts;</a></sup></dt>
                     <dd>
                         Zkracuje se jako **XP (Extreme Programming)**. Je to jedna z metod <a href="#agile">agilního vývoje</a>.
-                        Zahrnuje způsoby práce jako párové programování, vývoj řízený testy, vydávání aplikace po malých změnách,
-                        čistý kód, zapojení zákazníka do vývoje a další.
+                        Zahrnuje způsoby práce jako párové programování, <a href="#tdd">vývoj řízený testy</a>,
+                        vydávání aplikace po malých změnách, čistý kód, zapojení zákazníka do vývoje a další.
                         <sup>[<a href="https://en.wikipedia.org/wiki/Extreme_programming">wiki</a>]</sup>
                     </dd>
 
@@ -524,6 +524,20 @@ echo factorial(5); // 120
                         potřeba mít na paměti, že 100% pokrytí neznamená bezchybný systém. Často je úplné pokrytí systému
                         dokonce kontraproduktivní.
                         <sup>[<a href="https://en.wikipedia.org/wiki/Code_coverage">wiki</a>]</sup>
+                    </dd>
+
+                    <dt>TDD&nbsp;<sup><a id="tdd" href="#tdd">&hearts;</a></sup></dt>
+                    <dd>
+                        Test Driven Development (TDD) je jednou z technik <a href="#xp">extrémního programování</a>,
+                        při které nejprve vznikají jednotkové testy a až pak vzniká samotný funkční kód aplikace.
+                        Tato technika je vhodná zejména pro kritickou funkcionalitu systému, která lze snadno testovat.
+                        Tento proces má tři základní fáze:
+                        <ol>
+                            <li>Programátor přidá test pokrývající novou funkcionalitu - tento test neprochází, protože funkcionalita zatím není implementována</li>
+                            <li>Programátor implementuje funkcionalitu pouze do té míry, aby prošly testy</li>
+                            <li>Programátor zrefaktoruje implementaci, je-li potřeba, a dále pokračuje prvním krokem</li>
+                        </ol>
+                        <sup>[<a href="https://en.wikipedia.org/wiki/Test-driven_development">wiki</a>]</sup>
                     </dd>
 
                     <dt>Třída&nbsp;<sup><a id="trida" href="#trida">&hearts;</a></sup></dt>
