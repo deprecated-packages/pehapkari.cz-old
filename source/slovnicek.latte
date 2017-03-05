@@ -80,6 +80,16 @@ id: slovnicek
                         <sup>[<a href="https://en.wikipedia.org/wiki/Black-box_testing">wiki</a>]</sup>
                     </dd>
 
+                    <dt>Code review&nbsp;<sup><a id="code-review" href="#code-review">&hearts;</a></sup></dt>
+                    <dd>
+                        Code review je formou <a href="#static-testing">statického testování</a>, při kterém se reviduje
+                        zdrojový kód. Typicky je kód autora revidován jeho spolupracovníky s cílem odhalit zjevné chyby,
+                        poskytnout autorovi feedback a zvýšit celkovou kvalitu softwaru. V praxi je důležité, aby
+                        revidované změny v kódu nebyly příliš rozsáhlé a nepřehledné a aby šly snadno dohledat - ideálně
+                        pomocí některého z <a href="#vsc">VCS</a>.
+                        <sup>[<a href="https://en.wikipedia.org/wiki/Code_review">wiki</a>]</sup>
+                    </dd>
+
                     <dt>Composer&nbsp;<sup><a id="composer" href="#composer">&hearts;</a></sup></dt>
                     <dd>
                         Composer je <strong>správce závislostí pro PHP</strong>.
@@ -173,6 +183,14 @@ id: slovnicek
                         DI kontejner nebo také systémový kontejner je v podstatě <a href="#factory">tovární třída</a>
                         pro <a href="#service">služby</a> aplikace. DI kontejner za nás také řeší závislosti
                         služeb mezi sebou.
+                    </dd>
+
+                    <dt>Dynamické testování&nbsp;<sup><a id="dynamic-testing" href="#dynamic-testing">&hearts;</a></sup></dt>
+                    <dd>
+                        Dynamické testování je technika, při které se ověřuje správnost chování kódu pomocí jeho spuštění.
+                        Zpravidla jsou předem nastaveny vstupní parametry a kontrolují se výstupní hodnoty, nebo vnitřní
+                        stav systému. Opakem je <a href="#static-testing">statické testování</a>.
+                        <sup>[<a href="https://en.wikipedia.org/wiki/Dynamic_testing">wiki</a>]</sup>
                     </dd>
 
                     <dt>E2E testování&nbsp;<sup><a id="e2e-test" href="#e2e-test">&hearts;</a></sup></dt>
@@ -491,6 +509,15 @@ echo factorial(5); // 120
                         V dnešní době je považován za anti-pattern, protože jde proti principům testovatelnosti a <a href="#di">dependency injection</a>.
 
                         <sup>[<a href="https://en.wikipedia.org/wiki/Singleton_pattern">wiki</a>]</sup>
+                    </dd>
+
+                    <dt>Statické testování&nbsp;<sup><a id="static-testing" href="#static-testing">&hearts;</a></sup></dt>
+                    <dd>
+                        Statické testování je technika, při které je kontrolován zdrojový kód aplikace, ale není spouštěn.
+                        Typickými zástupci jsou <a href="#code-review">code review</a> a analýza kódu pomocí nástroje
+                        jako např. <a href="https://github.com/phpstan/phpstan">phpstan</a>. Cílem je odhalit potenciální chyby
+                        dříve, než dojde ke spuštění aplikace.
+                        <sup>[<a href="http://istqbexamcertification.com/what-is-static-testing/">wiki</a>]</sup>
                     </dd>
 
                     <dt>SOLID&nbsp;<sup><a id="solid" href="#solid">&hearts;</a></sup></dt>
