@@ -27,6 +27,15 @@ id: slovnicek
                         <sup>[<a href="https://en.wikipedia.org/wiki/Agile_software_development">wiki</a>]</sup>
                     </dd>
 
+                    <dt>Akceptační test&nbsp;<sup><a id="acceptance-test" href="#acceptance-test">&hearts;</a></sup></dt>
+                    <dd>
+                        Akceptační test je označení pro manuální nebo automatický test, který ověřuje správnost celkové
+                        funkcionality systému vůči jeho specifikaci. Svou koncepcí je velmi podobný <a href="#system-test">systémovému testu</a>,
+                        avšak akceptační test je prováděn zpravidla na straně zadavatele, který tak kontroluje, že
+                        systém splňuje jeho požadavky.
+                        <sup>[<a href="https://en.wikipedia.org/wiki/Acceptance_testing">wiki</a>]</sup>
+                    </dd>
+
                     <dt>Algoritmus&nbsp;<sup><a id="algoritmus" href="#algoritmus">&hearts;</a></sup></dt>
                     <dd>
                         Algoritmem při programování je myšlen teoretický popis po sobě jdoucích kroků, které vedou k vyřešení určité úlohy. K popisu algoritmu se dá
@@ -59,6 +68,16 @@ id: slovnicek
                         Autoloader můžete vytvářet sami, využít generovaný <a href="#composer">Composerem</a> nebo obojí.
                         <sup>[<a href="http://php.net/manual/en/language.oop5.autoload.php">PHP Autoloading Classes</a>]</sup>
                         <sup>[<a href="http://www.php-fig.org/psr/psr-4/">PSR-4 Autoloader</a>]</sup>
+                    </dd>
+
+                    <dt>Black-box testing&nbsp;<sup><a id="black-box-testing" href="#black-box-testing">&hearts;</a></sup></dt>
+                    <dd>
+                        Black-box testing je metoda testování, při které autor testu nezná vnitřní strukturu softwaru
+                        a snaží se otestovat správnost jeho fungování na základě dodané specifikace. Takový test může
+                        být vytvářen někým, kdo nemá podbrobnou znalost systému, hrozí ale, že se nepodaří odstanit chyby
+                        způsobené vnitřní strukturou systému. Typicky jsou tímto stylem tvořeny <a href="#acceptance-test">akceptační testy</a>.
+                        Opakem je <a href="#white-box-testing">white-box testing</a>.
+                        <sup>[<a href="https://en.wikipedia.org/wiki/Black-box_testing">wiki</a>]</sup>
                     </dd>
 
                     <dt>Composer&nbsp;<sup><a id="composer" href="#composer">&hearts;</a></sup></dt>
@@ -181,6 +200,13 @@ id: slovnicek
                         <sup>[<a href="https://cs.wikipedia.org/wiki/Framework">wiki</a>]</sup>
                     </dd>
 
+                    <dt>Funkcionální test&nbsp;<sup><a id="functional-test" href="#functional-test">&hearts;</a></sup></dt>
+                    <dd>
+                        Funkcionální test má za úkol ověřit správnost konkrétní funkčnosti v systému, která byla popsána
+                        ve specifikaci. Tím se liší od <a href="#system-test">systémového testu</a>.
+                        <sup>[<a href="https://en.wikipedia.org/wiki/Functional_testing">wiki</a>]</sup>
+                    </dd>
+
                     <dt>GD/Imagick&nbsp;<sup><a id="gd" href="#gd">&hearts;</a></sup></dt>
                     <dd>
                         PHP rozšíření pro práci s obrázky (generování, úpravy, konverze mezi formáty).
@@ -213,6 +239,14 @@ id: slovnicek
 
                         <br><br>
                         <pre><code>$some_instance = new \SplStack;</code></pre>
+                    </dd>
+
+                    <dt>Integrační test&nbsp;<sup><a id="integration-test" href="#integration-test">&hearts;</a></sup></dt>
+                    <dd>
+                        Integrační test je typ testu, který ověřuje vzájemnou součinnost jednotilvých komponent systému.
+                        Následuje zpravidla po <a href="#unit-test">jednotkovém testování</a>, ale na rozdíl od něj
+                        spojuje komponenty do skupin a testuje, zda fungují jako celek.
+                        <sup>[<a href="https://en.wikipedia.org/wiki/Integration_testing">wiki</a>]</sup>
                     </dd>
 
                     <dt>KISS&nbsp;<sup><a id="kiss" href="#kiss">&hearts;</a></sup></dt>
@@ -391,6 +425,15 @@ id: slovnicek
                         <sup>[<a href="https://en.wikipedia.org/wiki/Code_refactoring">wiki</a>]</sup>
                     </dd>
 
+                    <dt>Regresní testování&nbsp;<sup><a id="regression-testing" href="#regression-testing">&hearts;</a></sup></dt>
+                    <dd>
+                        <a href="https://en.wikipedia.org/wiki/Software_regression">Regrese</a> ve světě softwaru představuje
+                        jev, kdy dříve funkční část systému přestane po jeho úpravě fungovat. Regresní testování má za úkol
+                        předejít těmto chybám pomocí automatizovaného testování po každé úpravě a pomocí dobře
+                        navržených testovacích scénářů, které pokrývají stávající funkcionalitu systému.
+                        <sup>[<a href="https://en.wikipedia.org/wiki/Regression_testing">wiki</a>]</sup>
+                    </dd>
+
                     <dt>Regulární výrazy&nbsp;<sup><a id="regexp" href="#regexp">&hearts;</a></sup></dt>
                     <dd>
                         Regulární výrazy jsou vzory umožňující vyhledávání a nahrazování textu.
@@ -455,6 +498,26 @@ echo factorial(5); // 120
                         <sup>[<a href="https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)">wiki</a>]</sup>
                     </dd>
 
+                    <dt>Systémový test&nbsp;<sup><a id="system-test" href="#system-test">&hearts;</a></sup></dt>
+                    <dd>
+                        Systémový test ověřuje správnost fungování systému vůči požadavkům, které jsou na ně kladené.
+                        Ideálně je tento test prováděn v prostředí, které je co nejvíce podobné produkčnímu.
+                        Je velmi podobný <a href="#system-test">akceptačnímu testu</a>, ale narozdíl od něj
+                        probíhá na straně dodavatele, který ověřuje, zda může systém předat zákazníkovi k používání.
+                        <sup>[<a href="https://en.wikipedia.org/wiki/System_testing">wiki</a>]</sup>
+                    </dd>
+
+                    <dt>Test coverage&nbsp;<sup><a id="test-coverage" href="#test-coverage">&hearts;</a></sup></dt>
+                    <dd>
+                        Test coverage (nebo také Code coverage) je metrika, která měří pokrytí kódu systému testy,
+                        tedy jaké procento kódu systému je během testování spuštěno. Většina testovacích nástrojů
+                        umí za pomocí rozšíření <a href="https://xdebug.org">Xdebug</a> vygenerovat report Test coverage.
+                        Obecně platí, že čím větší je pokrytí, tím je větší šance odhalit chybu v systému. Zároveň je
+                        potřeba mít na paměti, že 100% pokrytí neznamená bezchybný systém. Často je úplné pokrytí systému
+                        dokonce kontraproduktivní.
+                        <sup>[<a href="https://en.wikipedia.org/wiki/Code_coverage">wiki</a>]</sup>
+                    </dd>
+
                     <dt>Třída&nbsp;<sup><a id="trida" href="#trida">&hearts;</a></sup></dt>
                     <dd>
                         Třída je předpis pro tvorbu objektů. S třídou samotnou nemůžu moc pracovat, jak taky pracovat
@@ -487,6 +550,22 @@ echo factorial(5); // 120
                         <sup>[<a href="https://en.wikipedia.org/wiki/User_experience">wiki</a>]</sup>
                     </dd>
 
+                    <dt>V-Model&nbsp;<sup><a id="v-model" href="#v-model">&hearts;</a></sup></dt>
+                    <dd>
+                        V-Model popisuje proces vývoje softwaru s důrazem na vztah jednotlivých kroků implementace
+                        a jejího testování. Podle tohoto modelu je vývoj rozdělen na dvě fáze. Nejprve (směr dolů) probíhá analýza,
+                        poté návrh a nakonec implementace. V druhé fázi (směr nahorů) probíhá nejprve testování implementace,
+                        tedy <a href="#unit-test">jednotkové</a> a <a href="#integration-test">integrační</a> testy,
+                        poté validace a verifikace a nakonec nasazení a údržba.
+                        Problém V-Modelu spočívá v <a href="http://istqbexamcertification.com/what-is-the-cost-of-defects-in-software-testing/">ceně za odhalení defektu v softwaru</a>.
+                        Ačkoliv je tento model schopný zachytit chybu v implementaci ihned po jejím dokončení, chyba v
+                        analýze nebo návrhu je odhalena až po implementaci a tím cena za její opravu exponenciálně stoupá.
+                        Odpověď na tento problém přináší tzv. <a href="http://www.softwaretestingtimes.com/2010/04/v-model-to-w-model-w-model-in-sdlc.html">W-Model</a>,
+                        který popisuje souběžné procesy implementace a testování, kde jsou analýza a návrh testovány
+                        pomocí revizí.
+                        <sup>[<a href="https://en.wikipedia.org/wiki/V-Model_(software_development)">wiki</a>]</sup>
+                    </dd>
+
                     <dt>Vendor&nbsp;<sup><a id="vendor" href="#vendor">&hearts;</a></sup></dt>
                     <dd>
                         Vendor je anglické slovo pro dodavatele služeb nebo zboží. V PHP se s tímto označením lze setkat u
@@ -516,6 +595,16 @@ echo factorial(5); // 120
                         Ke spuštění webové stránky je zapotřebí server, který přijme požadavek od návštěvníka
                         a po zpracování je pošle zpět k uživateli. K tomu dobře poslouží třeba
                         <a href="#apache">Apache</a> nebo <a href="#nginx">Nginx</a>.
+                    </dd>
+
+                    <dt>White-box testing&nbsp;<sup><a id="black-box-testing" href="#black-box-testing">&hearts;</a></sup></dt>
+                    <dd>
+                        White-box testing je metoda testování, která vychází z vnitřní struktury softwaru a podle toho
+                        se snaží otestovat jeho správnou funkčnost. Dokáže tak odhalit chyby způsobené strukturou,
+                        které by jinak zůstaly skryté. Při změně struktury je ale nákladnější údržba takových testů.
+                        Typickým zástupcem je <a href="#unit-test">unit test</a>.
+                        Opakem je <a href="#black-box-testing">black-box testing</a>.
+                        <sup>[<a href="https://en.wikipedia.org/wiki/White-box_testing">wiki</a>]</sup>
                     </dd>
                 </dl>
             </div>
