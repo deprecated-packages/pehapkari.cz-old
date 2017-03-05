@@ -18,7 +18,7 @@ rewards:
         image: "phpstorm.png"
         value_in_points: 10
         winners:
-            @enumag: https://github.com/pehapkari/pehapkari.cz/pull/199          
+            @enumag: https://github.com/pehapkari/pehapkari.cz/pull/199
     2:
         title: "Návrhové vzory v PHP"
         product_link: "http://knihy.cpress.cz/navrhove-vzory-v-php.html"
@@ -55,6 +55,7 @@ rewards:
             # + https://github.com/pehapkari/pehapkari.cz/pull/193
             @hranicka: https://github.com/pehapkari/pehapkari.cz/pull/217
             # + https://github.com/pehapkari/pehapkari.cz/pull/213
+            @klimesf: https://github.com/pehapkari/pehapkari.cz/pull/233
     5:
         title: "Web Security 2016"
         product_link: "https://www.phparch.com/books/web-security-2016/"
