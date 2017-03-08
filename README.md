@@ -4,22 +4,32 @@
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/pehapkari/pehapkari.cz.svg?style=flat-square)](https://scrutinizer-ci.com/g/pehapkari/pehapkari.cz)
 
 
-## How to run it?
-
-Install project with dependencies
+## Install
 
 ```sh
 composer create-project pehapkari/website pehapkari.cz @dev
 ```
 
-Generate website to static HTML with live reload
+To enabled live reload after any change, we need one more thing - *gulp*:
+
+```bash
+npm install -g gulp gulp-watch
+```
+
+## Run the website
+
+Now all you gotta do it move to the directory and run the gulp (see [gulpfile.js](/gulpfile.js) for more details):
 
 ```sh
 cd pehapkari.cz
-vendor/bin/statie generate
+gulp
 ```
 
-And open [http://localhost:8000](http://localhost:8000) in your browser
+And open [http://localhost:8000](http://localhost:8000) in your browser.
+
+That's all!
 
 
-*Are you using Docker? [Here is how to run this project](docs/docker.md) in it.*
+### Docker Enabled
+
+Are you using Docker? [Here is how to run this project](docs/docker.md) in it.
