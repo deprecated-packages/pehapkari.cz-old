@@ -16,7 +16,7 @@ Generate website to static HTML with live reload
 
 ```sh
 cd pehapkari.cz
-vendor/bin/statie generate --server
+vendor/bin/statie generate
 ```
 
 And open [http://localhost:8000](http://localhost:8000) in your browser
