@@ -12,6 +12,8 @@ RUN apt-get install zlib1g-dev && docker-php-ext-install zip
 RUN curl https://getcomposer.org/composer.phar -o "/usr/local/bin/composer" &&\
   chmod +x /usr/local/bin/composer
 
+# gulp dependencies
+RUN npm install -g gulp gulp-watch
+
 WORKDIR /src
-CMD composer install &&\
-  vendor/bin/statie generate
+CMD composer install && gulp
