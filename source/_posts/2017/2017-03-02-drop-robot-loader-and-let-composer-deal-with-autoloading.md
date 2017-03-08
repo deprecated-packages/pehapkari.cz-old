@@ -6,7 +6,7 @@ perex: '''
     <br><br>
     The best way to deal with them is acknowledge their purpose and then, let them go and enjoy the gift of present.
 '''
-author: 1
+author: tomas.votruba
 lang: en
 ---
 

@@ -6,9 +6,9 @@ perex: '''
     <br>
     Fortunately, thanks for Michal Špaček's ability to explain complex stuff in a simple way, we solved this over a single weekend.
 '''
-author: 1
+author: tomas.votruba
 lang: en
-reviewed_by: [17, 18]
+reviewed_by: [michael.moravec, michal.spacek]
 ---
 
 This site now runs on HTTPS, see: [https://pehapkari.cz/](https://pehapkari.cz) thanks to [Michal Špaček](https://www.michalspacek.com) who added [a simple how-to manual](https://github.com/pehapkari/pehapkari.cz/issues/162#issuecomment-272590505) to the GitHub issue. I will try to expand it here.
