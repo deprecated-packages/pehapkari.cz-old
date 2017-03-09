@@ -174,7 +174,7 @@ Lze ale spouštět vše, co se dá spuštět přes příkazový řádek. Pokud b
 Ano. A alternativ je spousta. Například:
 
 * [Travis CI](https://travis-ci.org/) - běžně se používá u open-source projetků na github.com; podporuje pouze GitHub.
-* [Shippable](https://app.shippable.com/) - podporuje GitLab, BitBucket i GitLab. Omezení v bezplatné verzi je jeden souběžný build a jeden Docker container.
+* [Shippable](https://app.shippable.com/) - podporuje GitHub, BitBucket i GitLab. Omezení v bezplatné verzi je jeden souběžný build a jeden Docker container.
 * [Codeship](http://codeship.com/) - podporuje GitHub, BitBucket i GitLab. Zdarma umožňuje 100 builů/měsíc a jeden souběžný build.
 * [Circle CI](http://circleci.com/) - podporuje GitHub a BitBucket. V bezplatné verzi je možný pouze jeden souběžný build a jeden Docker container. Navíc je omezení 1500 build minut/měsíc.
 
