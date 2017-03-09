@@ -13,7 +13,7 @@ gulp.task('default', function () {
     });
 
     // Run local server, open localhost:8000 in your browser
-    exec('php -S localhost:8000 -t output');
+    exec('php -S 0.0.0.0:8000 -t output');
 
     // For the second arg see: https://github.com/floatdrop/gulp-watch/issues/242#issuecomment-230209702
     return watch(['source/**/*', '!**/*___jb_tmp___'], { ignoreInitial: false })
