@@ -5,7 +5,7 @@ MAINTAINER adam.stipak@gmail.com
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
 
 # system deps
-RUN apt-get update && \+
+RUN apt-get update && \
   apt-get install -y \
     git \
     zlib1g-dev \
