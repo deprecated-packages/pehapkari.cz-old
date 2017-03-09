@@ -1,0 +1,14 @@
+{
+    "name": "pehapkari.cz",
+    "version": "1.0.0",
+    "main": "gulpfile.js",
+    "dependencies": {},
+    "devDependencies": {
+        "child_process": "^1.0.2",
+        "gulp": "^3.9.1",
+        "gulp-watch": "^4.3.11"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    }
+}
