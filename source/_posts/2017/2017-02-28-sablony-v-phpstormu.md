@@ -91,8 +91,8 @@ Použití pak vypadá následovně:
 
 <br>
 
-Dále si můžeme definovat vlastní proměnné. Ty můžeme použít například k tomu, abychom napsali jednu věc na více míst 
-najednou. Po expanzi templatu nám IDE nabídne vyplnit obsah jednotlivých proměnných. 
+Dále si můžeme definovat vlastní proměnné. Ty můžeme použít například k tomu, abychom napsali jednu věc na více míst najednou. 
+Po expanzi templatu nám IDE nabídne vyplnit obsah jednotlivých proměnných. 
 Pro pohyb k dalším proměnným stačí stisknout `ENTER` nebo `TAB`.  
 Teď si ukážeme live template na tvorbu fluent setteru. To je setter, který vypadá například takto:
 
@@ -107,8 +107,8 @@ Teď si ukážeme live template na tvorbu fluent setteru. To je setter, který v
 	}
 ```
 
-U takového setteru pro například proměnnou `$bar `chceme, aby v názvu metody bylo setBar, s velkým B, ale jinde aby byl 
-název proměnné malými písmeny. Toho dosáhneme přes funkce pro live templates.  
+U takového setteru pro například proměnnou `$bar `chceme, aby v názvu metody bylo setBar, s velkým B, 
+ale jinde aby byl název proměnné malými písmeny. Toho dosáhneme přes funkce pro live templates.  
 Když klikneme na `Edit variables`, je nám nabídnuto proměnným přiřadit funkce závisející na jiných proměnných.
 Nastavení takového live templatu můžeme vidět na následujícím obrázku:
 
@@ -134,8 +134,8 @@ to ošetříme zaškrtnutím "Reformat according to style" v editaci live templa
 
 ## File templates
 
-File templates lze spravovat ve **File | Settings | Editor | File and code templates**. Tam můžete buď přidávat 
-vlastní šablony nebo upravovat stávající. Pro tvorbu šablon se zde používá jazyk [velocity](http://velocity.apache.org/).
+File templates lze spravovat ve **File | Settings | Editor | File and code templates**. 
+Tam můžete buď přidávat vlastní šablony nebo upravovat stávající. Pro tvorbu šablon se zde používá jazyk [velocity](http://velocity.apache.org/).
 Bohužel nelze využívat všech vlastností tohoto jazyka v kombinaci s vyplňováním proměnných při tvorbě nového souboru (např. cykly).
 
 Ve file templates se také dají používat proměnné. Jejich hodnoty můžeme vyplnit ve chvíli vytváření nového souboru ze šablony.
@@ -259,8 +259,8 @@ Stejně tak je tam již zakotvena logika pro dědění u BasePresenteru.
 Také je možné presenter rovnou vygenerovat s nějakou z action, render nebo handle metod, abychom je nemuseli psát ručně. 
 Nicméně pokud pole zůstanou prázdná, presenter se vygeneruje bez nich.
 
-Jazyk velocity má pro PHP jednu drobnou nevýhodu. Znak `$` totiž interpretuje jako začátek proměnné, a proto jej musíme 
-escapovat jako `$❴DS❵`. Pokud to neuděláme, tak se nám `$id` objeví ve formuláři při tvorbě souboru jako proměnná.
+Jazyk velocity má pro PHP jednu drobnou nevýhodu. Znak `$` totiž interpretuje jako začátek proměnné, 
+a proto jej musíme escapovat jako `$❴DS❵`. Pokud to neuděláme, tak se nám `$id` objeví ve formuláři při tvorbě souboru jako proměnná.
 Pokud tedy chceme použít například ve file templatu nějakého objektu toto: `private $id;`, musíme to napsat následovně: 
 `private $❴DS❵id;`.
 
