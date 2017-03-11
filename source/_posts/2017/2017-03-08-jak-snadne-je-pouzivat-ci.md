@@ -180,4 +180,4 @@ Ano. A alternativ je spousta. Například:
 
 Vybral jsem si GitLab pro ilustraci z toho důvodu, že je nativní součástí hostovací služby pro repozitáře a není tak potřeba nic explicitně nastavovat.
 
-Vedle toho, GitLab nefunguje pouze na gitlab.com, ale existuje také očesaná open-source verze (GitLab CE), která je bezplatná a self-hosted. Pro náročné uživatele a velké firmy pak ještě placená self-hosted (GitLab EE), která by měla být shodná s tou provozovat bezplatně na gitlab.com.
+Vedle toho, GitLab nefunguje pouze na gitlab.com, ale existuje také očesaná open-source verze (GitLab CE), která je bezplatná a self-hosted. Pro náročné uživatele a velké firmy pak ještě placená self-hosted (GitLab EE), která by měla být shodná s tou provozovanou bezplatně na gitlab.com.
