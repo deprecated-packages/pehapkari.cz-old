@@ -41,3 +41,17 @@ books:
 		actual_owner_name: "Tomáš Votruba"
 		actual_owner_link: "https://tomasvotruba.cz/kontakt"
 		last_switch: "10. 2. 2017"
+	7:
+		name: "Nastavení mysli"
+		description: "Nová psychologie úspěchu aneb naučte se využít svůj potenciál. Za vaším úspěchem nestojí pouze schopnosti a talent, ale také váš přístup k nim: tzv. nastavení mysli. Profesorka Dwecková ve svém bestselleru vysvětluje, jak toto nastavení můžete změnit a jak napomoci lásce k učení a houževnatosti, které jsou základem úspěchu ve všech oblastech života."
+		publish_link: "https://www.melvil.cz/kniha-nastaveni-mysli/"
+		actual_owner_name: "Vašek Keberdle"
+		actual_owner_link: "https://about.me/keberdle"
+		last_switch: "12. 3. 2017"
+	8:
+		name: "Administrace systému Linux"
+		description: "V originále „Linux Administration: A Beginner's Guide“. Na úvod je dobré říct, že název v tomto případě nelže - kniha je skutečně určena uživatelům, kteří chtějí začít s administrací linuxového systému, lépe řečeno serveru. U čtenáře se předpokládají jen základní znalosti o hardware, principech fungování sítí a podobně, předchozí zkušenosti s Linuxem potřeba nejsou."
+		publish_link: "http://www.abclinuxu.cz/clanky/recenze/administrace-systemu-linux"
+		actual_owner_name: "Vašek Keberdle"
+		actual_owner_link: "https://about.me/keberdle"
+		last_switch: "12. 3. 2017"
