@@ -43,8 +43,7 @@ books:
 		last_switch: "10. 2. 2017"
 	7:
 		name: "Nastavení mysli"
-		description: "Nová psychologie úspěchu aneb naučte se využít svůj potenciál.
-		Za vaším úspěchem nestojí pouze schopnosti a talent, ale také váš přístup k nim: tzv. nastavení mysli. Profesorka Dwecková ve svém bestselleru vysvětluje, jak toto nastavení můžete změnit a jak napomoci lásce k učení a houževnatosti, které jsou základem úspěchu ve všech oblastech života."
+		description: "Nová psychologie úspěchu aneb naučte se využít svůj potenciál. Za vaším úspěchem nestojí pouze schopnosti a talent, ale také váš přístup k nim: tzv. nastavení mysli. Profesorka Dwecková ve svém bestselleru vysvětluje, jak toto nastavení můžete změnit a jak napomoci lásce k učení a houževnatosti, které jsou základem úspěchu ve všech oblastech života."
 		publish_link: "https://www.melvil.cz/kniha-nastaveni-mysli/"
 		actual_owner_name: "Vašek Keberdle"
 		actual_owner_link: "https://about.me/keberdle"
