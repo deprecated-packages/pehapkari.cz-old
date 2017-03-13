@@ -9,8 +9,8 @@ author: 15
 
 Kód můžeme psát buď v IDE nebo v textovém editoru. IDE mají velkou výhodu v tom, že pomáhají s analýzou a kompletací kódu, 
 takže programátor nemusí psát všechno, ale může si tvořit vlastní zkratky či využívat zkratky stávající.  
-Zde budu rozebírat live a file templaty pro IDE PhpStorm. PhpStorm je sice placený, což může být pro některé čtenáře problém.
-Studenti mohou získat licenci zdarma za ISIC, a ostatní mohou využít možnost [early access program](https://confluence.jetbrains.com/display/PhpStorm/PhpStorm+Early+Access+Program).
+Zde budu rozebírat live a file templaty pro IDE PhpStorm. PhpStorm je sice placený, což může být pro některé čtenáře problém, ale je možnost, jak jej používat zdarma.
+Studenti mohou získat licenci zdarma za ISIC, ostatní mohou využít možnost [early access program](https://confluence.jetbrains.com/display/PhpStorm/PhpStorm+Early+Access+Program).
 
 ### Druhy šablon
 
@@ -25,7 +25,7 @@ Hned od začátku máme k dispozici například tyto file templates: *HTML File*
 ## Live templates
 
 Live templates lze spravovat v **File | Settings | Editor | Live templates**. Zajímavé na live templatech je to, 
-že jsou context aware, tedy aktivují se pouze v určitém kontextu, a ne jinde, jak je vidět na následujícím obrázku:
+že jsou context aware, tedy že se aktivují se pouze v určitém kontextu, a ne jinde, jak je vidět na následujícím obrázku:
 
 <div class="text-center">
     <img src="/assets/images/posts/2017/phpstorm/contexts.png">
@@ -37,7 +37,7 @@ Live templates lze spravovat v **File | Settings | Editor | Live templates**. Za
 
 <br>
 
-možné kontexty jsou například Javascript, HTML, PHP, SQL, a další. V rámci PHP pak můžeme mít zvlášť live templates pro 
+Možné kontexty jsou například Javascript, HTML, PHP, SQL, a další. V rámci PHP pak můžeme mít zvlášť live templates pro 
 komentáře, class members apod.  
 Tlačítko, kterým expandujeme zkratku do definovaného kusu kódu, lze v tomto nastavení změnit z výchozího `TAB` na nějaké jiné.  
 Live templates lze také vyvolat zkratkou `CTRL+J`, která ukáže všechny dostupné live templates.
@@ -49,7 +49,7 @@ Template text:
 $this->translator->translate($WHAT$)$END$
 ```
 
-Výše uvedený template zajistí obalení vybraného výrazu překladovou metodou, jak můžeme vidět v gifu níže.
+Výše uvedený template zajistí obalení vybraného výrazu překladovou metodou, jak můžeme vidět v animaci:
 
 <div class="text-center">
     <img src="/assets/images/posts/2017/phpstorm/live_template.gif">
@@ -62,8 +62,8 @@ Výše uvedený template zajistí obalení vybraného výrazu překladovou metod
 <br>
 
 Speciální druh **live templates** jsou **surround templates**, ty slouží k obalení vybraného kusu kódu nějakým live templatem.
-Používají se tak, že označím kus kódu, nebo mám kurzor na nějakém řádku (to se pak chová jako označení celého řádku) 
-a stisknu `CTRL+ALT+T`. To mi zobrazí dostupné surround templates, a já vyberu příslušný template, který pak vybranou část obalí.
+Používají se tak, že označím kus kódu, nebo mám kurzor na nějakém řádku (to se pak chová jako označení celého řádku), 
+a stisknu `CTRL+ALT+T`. To mi zobrazí dostupné surround templates, z nichž si vyberu příslušný template, který pak vybranou část obalí.
 To je dobré například pro obalování nějakým upraveným try-catchem, překladem apod.  
 
 V template textu (kde je kód, který se má po expandování zkratky objevit) můžeme používat proměnné.
@@ -107,7 +107,7 @@ Teď si ukážeme live template na tvorbu fluent setteru. To je setter, který v
 	}
 ```
 
-U takového setteru pro například proměnnou `$bar `chceme, aby v názvu metody bylo setBar, s velkým B, 
+U takového setteru například pro proměnnou `$bar `chceme, aby v názvu metody bylo setBar, s velkým B, 
 ale jinde aby byl název proměnné malými písmeny. Toho dosáhneme přes funkce pro live templates.  
 Když klikneme na `Edit variables`, je nám nabídnuto proměnným přiřadit funkce závisející na jiných proměnných.
 Nastavení takového live templatu můžeme vidět na následujícím obrázku:
@@ -166,7 +166,7 @@ class $❴NAME❵
 }
 ```
 
-A takto pak vyplníme proměnné při tvorbě nové třídy.
+A takto pak vyplníme proměnné při tvorbě nové třídy:
 
 <div class="text-center">
     <img src="/assets/images/posts/2017/phpstorm/nette-class.png">
