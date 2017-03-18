@@ -109,3 +109,9 @@ mentors:
         email: "racinsky.matej@seznam.cz"
         intro_message: "PHP, PhpStorm, GIT, Doctrine, Nette, Java, architektura, bezpečnost, bitcoin, umělá inteligence."
         link: "https://github.com/racinmat"
+    19:
+        name: "Radek Hřebeček"
+        location: "Praha"
+        email: "radek@hrebecek.cz"
+        intro_message: "PHP, Doctrine, Nette, ReactJS"
+        link: "http://www.hrebecek.cz"
