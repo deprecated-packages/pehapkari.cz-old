@@ -222,3 +222,15 @@ The article should shed some of the myths about the needs and (im)possibility of
 You now know how simple and straightforward such setup is and can deploy it right away.
 It's of course also possible to install PHP 7.1 or 5.5, both are available in the aforementioned repository, configuration would be equivalent.
 You can also use this setup on Ubuntu systems, everything is same except that you'll just do it the Ubuntu-way and use the mentioned PPA repository.
+
+
+### Complete example with Docker
+
+You can also find this example in the following [GitHub Gist](https://gist.github.com/Majkl578/08bb58780344603ad253a9e3b0552eb0).
+If you would like to try it yourself, simply clone the Gist, build the image and run it locally:
+```
+$ git clone https://gist.github.com/08bb58780344603ad253a9e3b0552eb0.git /tmp/multiphp
+$ docker build -t multiphp /tmp/multiphp
+$ docker run --rm -P multiphp
+```
+Now just visit http://localhost:8870/ and http://localhost:8856/ respectively to see the result!
