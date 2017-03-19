@@ -7,8 +7,8 @@ trainings:
     Zkracování <a href='https://ondrej.mirtes.cz/zkracovani-feedback-loop'>feedback loop</a>:
         <br>
         <ul>
-            <li>Jak tvořit zadání se zadavatelem tak, aby vývoj proběhl hladce a zadavatel obdržel to, co chce?
-            <li>Jak zorganizovat práci v týmu a programovat tak, aby nedocházelo ke všemožným problémům, bugy na produkci, nefunkční aplikace?</li>
+            <li>Jak tvořit zadání se zadavatelem tak, aby vývoj proběhl hladce a zadavatel obdržel to, co chce?</li>
+            <li>Jak zorganizovat práci v týmu a programovat tak, aby nedocházelo ke všemožným problémům, bugům na produkci nebo nefunkční aplikaci?</li>
             <li>Continuous Integration - vytvoření build skriptu, rozběhání CI serveru, doporučení k problematice</li>
             <li>Přerod zastaralé aplikace v novou bez kompletního přepisu - strangler pattern, jak na refaktoring</li>
             <li>Bezvýpadkové databázové migrace, bezvýpadkové a časté nasazování nových verzí aplikace</li>
@@ -23,10 +23,10 @@ trainings:
         trainer_photo: "tomas-fejfar.jpg"
         description: '''
 <ul>
-    <li>základy nastavení projektu</li>
-    <li>efektivní ovládání</li>
-    <li>navigace v kódu</li>
-    <li>refaktoring</li>
+    <li>Základy nastavení projektu</li>
+    <li>Efektivní ovládání</li>
+    <li>Navigace v kódu</li>
+    <li>Refaktoring</li>
 </ul>
         '''
         duration: "3 hodiny"
@@ -38,12 +38,12 @@ trainings:
         trainer_photo: "vaclav-makes.jpg"
         description: '''
         <ul>
-            <li>motivace proč se ho učit</li>
-            <li>use-cases, jenž Git efektivně řeší</li>
-            <li>pár slov k historii (opravdu pár, jen tak aby člověk věděl co používá a proč je to dobré, na jakých principech Git stojí)</li>
-            <li>první kroky s verzováním - vlastní repo, první commity</li>
-            <li>vypublikování repositáře na privátní nebo veřejný server</li>
-            <li>sledování změn v repositáři</li>
+            <li>Motivace proč se ho učit</li>
+            <li>Use-cases, které Git efektivně řeší</li>
+            <li>Pár slov k historii (opravdu pár, jen tak, aby člověk věděl co používá a proč je to dobré, na jakých principech Git stojí)</li>
+            <li>První kroky s verzováním - vlastní repo, první commity</li>
+            <li>Vypublikování repositáře na privátní nebo veřejný server</li>
+            <li>Sledování změn v repositáři</li>
         </ul>
         '''
         duration: "3 hodiny"
