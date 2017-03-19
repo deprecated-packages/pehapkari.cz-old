@@ -34,7 +34,7 @@ final class DynamicConstraintsTest extends TestCase
             [
                 'zipcode' => 'This value is not a valid ZIP code.',
             ],
-            $this->validator->validate($address)
+            $this->validator->validate($address, null, ['zipcode'])
         );
     }
 
@@ -46,7 +46,7 @@ final class DynamicConstraintsTest extends TestCase
 
         $this->assertViolations(
             [],
-            $this->validator->validate($address)
+            $this->validator->validate($address, null, ['zipcode'])
         );
     }
 
