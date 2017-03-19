@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace Pehapkari\Website\Posts\Year2017\SymfonyValidatorDynamicConstraints;
 
 use Pehapkari\Website\Posts\Year2017\SymfonyValidatorDynamicConstraints\Constraints\ZipCodeConstraint;
+use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
@@ -24,7 +25,7 @@ final class Address
     protected $zipcode;
 
     /**
-     * @Assert\Callback()
+     * @Assert\Callback(groups = "zipcode")
      */
     public function validateZipcode(ExecutionContextInterface $context)
     {
@@ -33,7 +34,7 @@ final class Address
             ->getValidator()
             ->inContext($context)
             ->atPath('zipcode')
-            ->validate($this->zipcode, $constraint);
+            ->validate($this->zipcode, $constraint, [Constraint::DEFAULT_GROUP]);
     }
 
     public function getCountry() : string

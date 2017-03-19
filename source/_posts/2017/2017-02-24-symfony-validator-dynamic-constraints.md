@@ -76,6 +76,7 @@ Now this is almost correct except for one flaw. If the zipcode is not valid, the
 
 ```php
 use SLLH\IsoCodesValidator\Constraints\ZipCodeConstraint;
+use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
@@ -93,7 +94,7 @@ class Address
             ->getValidator()
             ->inContext($context)
             ->atPath('zipcode')
-            ->validate($this->zipcode, $constraint);
+            ->validate($this->zipcode, $constraint, [Constraint::DEFAULT_GROUP]);
     }
 }
 ```
