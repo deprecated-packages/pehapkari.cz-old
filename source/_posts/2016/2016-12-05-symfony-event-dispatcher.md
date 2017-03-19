@@ -3,7 +3,6 @@ layout: post
 title: "Event Dispatcher from the Scratch"
 perex: "Today we will look at first Symfony component - Event Dispatcher. Why should you start with it? It gives you flexibility, it is easy to understand and it helps you to write decoupled code."
 author: 1
-series: 1 
 tested: true
 test_slug: EventDispatcher
 lang: en
