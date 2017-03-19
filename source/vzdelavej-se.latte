@@ -1,51 +1,95 @@
 ---
 layout: default
-title: Investuje do sebe a nauč se něco nového od českých špiček PHP
+title: "Investuj do sebe a přijď na školení"
 id: vzdelavej-se
 ---
 
 {block content}
     <div class="section">
         <div class="container">
-            <div class="row text-center">
-                <div class="col-md-12">
-                    <h2>
-                        <em class="fa fa-graduation-cap fa-fw"></em>
-                        {$title}
-                    </h2>
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2 text-center">
-                            <p>BETA verze, ještě budeme ladit...</p>
-                        </div>
-                    </div>
+            <h2 class="text-center">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                {$title}
+            </h2>
 
-                    <h3>Jak na to?</h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Jak se dostaneš na školení?</h3>
                     <ul>
                         <li>vyber si školení, které by se ti líbilo</li>
+                        <li>přihlaš se pomocí formuláře</li>
                         <li>až se kurz odstateně naplní, dáme ti vědět možné termíny</li>
-                        <li>potvrídš nám termín, který ti nejvíc sedí a oproti platbě</li>
-                        <li>a hurá na školení</li>
+                        <li>potvrídš nám termín, který ti nejvíc sedí</li>
+                        <li>a oproti platbě hurá na školení</li>
                     </ul>
+                </div>
+            </div>
 
-                    <div class="row">
-                        <div class="col-md-4">
-                            {* do pole *}
-                            <h3>název školení</h3>
-                            <div>
-                                fotka lektora
+            <br>
+
+            <p>Aktuálně máme otevřené termíny pro tato {=count($trainings)} školení:</p>
+
+            <hr>
+
+            {foreach $trainings as $training}
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="text-center">{$training['name']|noescape}</h2>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p><strong>O čem je školení?</strong></p>
+                                <p>{$training['description']|noescape}</p>
+
+                                <br>
+
+                                <p>Délka: <strong>{$training['duration']}</strong></p>
+                                <p>Kapacita: <strong>{$training['capacity']}</strong></p>
+                                <p>To vše za: <strong>{$training['price']}</strong></p>
+
+                                <br>
+
+                                <p>
+                                    <a href="https://docs.google.com/forms/d/1axnUDWMpVU-6TnWqkmkupPxQRpLIhSAhxNay71yv1M8/prefill" class="btn btn-success btn-lg">
+                                        <em class="fa fa-fw fa-handshake-o"></em>
+                                        &nbsp;
+                                        Přihlaš se formulář
+                                    </a>
+                                </p>
                             </div>
-                            <p>náplň</p>
-                            <p>délka</p>
-                            <p>min-max</p>
-                            <p>cena</p>
-                            <p><a href="" class="btn btn-success">Přihlaš se formulář</a></p>
+                            <div class="col-md-4 text-center">
+                                <img src="/assets/images/trainers/{$training['trainer_photo']}" class="thumbnail">
+                                <p>
+                                    <strong>{$training['trainer_name']}</strong>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
+                {sep}<hr>{/sep}
+            {/foreach}
 
-                Kde? Praha - Node5 nebo Pracovna
-                Kdy? ~duben 2017
+            <hr>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>
+                        <em class="fa fa-fw fa-map-marker"></em>
+                        Kde školíme?
+                    </h3>
+
+                    <p>
+                        Začínáme <strong>v Praze</strong>
+                        - v <strong>krásných prostorách <a href="http://node5.cz/">smíchovského Node5</a></strong>
+                            nebo <strong><a href="http://pracovna.cz/">žižkovské Pracovny</a></strong>.
+                    </p>
+
+                    <h3>
+                        <em class="fa fa-fw fa-calendar-check-o"></em>
+                        Kdy budou první školení?
+                    </h3>
+                    <p>První termíny předpokládáme na <strong>duben 2017</strong>.</p>
+                </div>
             </div>
-        </div>
     </div>
 {/block}
