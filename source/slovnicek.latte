@@ -245,7 +245,7 @@ id: slovnicek
                         Facebookem vytvořené GraphQL je zajímavou alternativou k REST API. Programátor se zde
                         API zeptá přesně na to, co v danou chvíli potřebuje. To vše v jednom dotazu, který může
                         vypadat třeba takto:
-                        <pre><code>{
+                        <pre><code class="language-javascript">{
   user {
     id
     name
@@ -263,8 +263,8 @@ id: slovnicek
                         existuje od jeho vytvoření po ukončení běhu skriptu. Nová instance se vytváří použitím klíčového slova <code>new</code>.
                         <sup>[<a href="https://en.wikipedia.org/wiki/Instance_(computer_science)">wiki</a>]</sup>
 
-                        <br><br>
-                        <pre><code>$some_instance = new \SplStack;</code></pre>
+                        <br>
+                        <pre><code class="language-php">$some_instance = new \SplStack;</code></pre>
                     </dd>
 
                     <dt>Integrační test&nbsp;<sup><a id="integration-test" href="#integration-test">&hearts;</a></sup></dt>
@@ -399,8 +399,8 @@ id: slovnicek
                         Tato informace může být reference na <a href="#instance">instanci třídy</a>, resource, pole, primitivní datový typ jako např. řetězec, číslo.
                         V PHP jsou proměnné vždy prefixovány znakem <code>$</code>.
                         <sup>[<a href="https://cs.wikipedia.org/wiki/Prom%C4%9Bnn%C3%A1_(programov%C3%A1n%C3%AD)">wiki</a>]</sup>
-                        <br><br>
-                        <pre><code>$test = 5; // promenna s nazvem $test</code></pre>
+                        <br>
+                        <pre><code class="language-php">$test = 5; // promenna s nazvem $test</code></pre>
                     </dd>
 
 					<dt>PSR&nbsp;<sup><a id="psr" href="#psr">&hearts;</a></sup></dt>
@@ -463,7 +463,7 @@ id: slovnicek
                     <dt>Regulární výrazy&nbsp;<sup><a id="regexp" href="#regexp">&hearts;</a></sup></dt>
                     <dd>
                         Regulární výrazy jsou vzory umožňující vyhledávání a nahrazování textu.
-                        <pre><code n:syntax="off">@[A-Za-z][A-Za-z0-9_]{0,14}</code></pre>
+                        <pre><code n:syntax="off" class="language-bash">@[A-Za-z][A-Za-z0-9_]{0,14}</code></pre>
                         Tento regulár nalezne uživatelské jméno na Twitteru - musí začínat zavináčem,
                         následuje písmenko (velké nebo malé) a pak 0-14 znaků zahrnující písmena, čísla a podtržítko.
                         <sup>[<a href="https://en.wikipedia.org/wiki/Regular_expression">wiki</a>]</sup>
@@ -474,7 +474,7 @@ id: slovnicek
                         Rekurze v programování představuje opakované vnořené volání stejné funkce do sama sebe.
                         Obvykle má v sobě rekurzivní funkce uvedenu podmínku, kdy se má vnořování zastavit,
                         aby nedošlo k nekonečné smyčce.
-                        <pre><code>function factorial(int $x) {
+                        <pre><code class="language-php">function factorial(int $x) {
   if ($x < 0) return 'invalid argument';
   if ($x === 0) return 1; // zastavovací podmínka
 
@@ -658,4 +658,14 @@ echo factorial(5); // 120
             </div>
         </div>
     </div>
+{/block}
+
+
+{block additionalJavascript}
+    <script src="/assets/prism/prism.js"></script>
+{/block}
+
+
+{block additionalCss}
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
 {/block}
