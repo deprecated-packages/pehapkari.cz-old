@@ -9,12 +9,16 @@
                     <em class="fa fa-newspaper-o fa-fw"></em>
                     Blog
                 </a>
+                <a href="/vzdelavej-se/" n:class="(isset($id) && $id === 'vzdelavej-se') ? active">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
                 <a href="/mentori/" n:class="(isset($id) && $id === mentori) ? active">
                     <em class="fa fa-handshake-o fa-fw"></em>
                     Mentoři
                 </a>
                 <a href="/knihovnicka/" n:class="(isset($id) && $id === knihovnicka) ? active">
-                    <em class="fa fa-book fa-fw"></em>
+                    <em class="fa fa-newspaper-o fa-fw"></em>
                     Knížky
                 </a>
 
@@ -45,15 +49,15 @@
                 <br>
                 Blog
             </a>
+            <a href="/vzdelavej-se/" n:class="col-xs-3, (isset($id) && $id === 'vzdelavej-se') ? active">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
             <a href="/mentori/" n:class="col-xs-3, (isset($id) && $id === mentori) ? active">
                 <em class="fa fa-handshake-o fa-fw"></em>
                 <br>
                 Mentoři
-            </a>
-            <a href="/knihovnicka/" n:class="col-xs-3, (isset($id) && $id === knihovnicka) ? active">
-                <em class="fa fa-language fa-fw"></em>
-                <br>
-                Knížky
             </a>
         </div>
     </div>
