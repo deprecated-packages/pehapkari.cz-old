@@ -3,7 +3,7 @@ layout: post
 title: "Jak posílat e-maily přes Amazon SES"
 perex: "Posílat emaily přes Amazon SES je snadné a levné. Zkuste to taky."
 author: 20
-reviwed_by: [1, 17]
+reviewed_by: [1, 17]
 ---
 
 ## Cloudové služby Amazonu
