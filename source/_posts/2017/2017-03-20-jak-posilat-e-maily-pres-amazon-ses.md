@@ -8,13 +8,13 @@ reviewed_by: [1, 17]
 
 ## Cloudové služby Amazonu
 
-Amazon Web Services (AWS) je soubor cloudových služeb a stává se čím dál populárnějším řešením jako základ pro infrastrukturu, kterou může využívat vaše aplikace. AWS používá dnes už tolik služeb/webů, že je snad prakticky nemožné používat aspoň jednu službu, která by nebyla se službami Amazonu alespoň nějak propojená. 
+Amazon Web Services (AWS) je soubor cloudových služeb a stává se čím dál populárnějším řešením jako základ pro infrastrukturu, kterou může využívat vaše aplikace. AWS používá dnes už tolik služeb/webů, že je snad prakticky nemožné používat aspoň jednu službu, která by nebyla se službami Amazonu alespoň nějak propojená.
 
 V tomto článku bych rád ukázal, **jak snadno posílat e-maily** s využitím Amazon SES (Simple Email Service) a jak získat informace o tom, pokud e-mail příjemci není doručen (bounces) nebo je označen jako spam (complaints).
 
 ## Prerekvizity
 
-K tomu, abyste mohli používat služby Amazonu, musíte mít založený účet. Poté už můžete začít nastavovat a používat služby Amazonu. 
+K tomu, abyste mohli používat služby Amazonu, musíte mít založený účet. Poté už můžete začít nastavovat a používat služby Amazonu.
 
 Jakmile aktivujete Amazon SES, je samozřejmě ještě před prvními testy nutné si verifikovat doménu, z které budete chtít e-maily posílat, poté ideálně nastavit [DKIM](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail), [SPF](https://en.wikipedia.org/wiki/Sender_Policy_Framework) záznamy apod.
 
@@ -36,13 +36,13 @@ $options = [
     'secure' => 'ssl'
     'persistent' => true,
 ];
-    
+
 $message = new \Nette\Mail\Message();
 $message->setFrom('odesilatel@example.com', 'Název odesilatele')
     ->addTo('prijemce@example.com')
     ->setSubject('PHP Předmět')
     ->setHtmlBody('Máme rádi PHP!');
-    
+
 $smtpMailer = new \Nette\Mail\SmtpMailer($options);
 $smtpMailer->send($message);
 ```
@@ -134,7 +134,7 @@ foreach ($queuResult['Messages'] as $message) {
 
     if (isset($messageContent->mail)) {
         foreach ($messageContent->mail->destination as $email) {
-            // 5. zde se odhlásí uživatel 
+            // 5. zde se odhlásí uživatel
         }
     }
 
@@ -155,13 +155,13 @@ Postup je jednoduchý:
 
 Příklad reálné zprávy (všimněte si, že k dispozici je **messageId**, které také vrací API při odeslání e-mailu):
 ```javascript
-{  
+{
    "notificationType":"Bounce",
-   "bounce":{  
+   "bounce":{
       "bounceType":"Permanent",
       "bounceSubType":"General",
-      "bouncedRecipients":[  
-         {  
+      "bouncedRecipients":[
+         {
             "emailAddress":"nejakyEmailNaSeznamu@seznam.cz",
             "action":"failed",
             "status":"5.1.1",
@@ -173,7 +173,7 @@ Příklad reálné zprávy (všimněte si, že k dispozici je **messageId**, kte
       "remoteMtaIp":"77.75.76.42",
       "reportingMTA":"dsn; a3-5.smtp-out.eu-west-1.amazonses.com"
    },
-   "mail":{  
+   "mail":{
       "timestamp":"2017-02-25T14:10:02.000Z",
       "source":"odesilatel@example.com",
       "sourceArn":"arn:aws:ses:eu-west-1:798010509261:identity/example.com",
@@ -190,7 +190,7 @@ A to je celá věda. Zpravidla se používají dvě fronty, jedna pro bounces, d
 
 ## Zkušenosti
 
-Posílání e-mailů přes Amazon je **jednoduché a levné** v porovnání s jinými službami podobného typu. Ty sice často nabízí nějaký pokročilejší logging, ale to často stejně málokdo využije (aspoň co jsem viděl u pár firem). 
+Posílání e-mailů přes Amazon je **jednoduché a levné** v porovnání s jinými službami podobného typu. Ty sice často nabízí nějaký pokročilejší logging, ale to často stejně málokdo využije (aspoň co jsem viděl u pár firem).
 
 Na produkci mám zkušenost s AWS SES třeba u [Tipli.cz](https://www.tipli.cz/), kde s tím není žádný problém. Navíc používáme oba způsoby odesílání e-mailů, jak přes SMTP, tak přes SDK. Pro notifikace se používá SMTP, pro newslettery, kde je důležitá rychlost odeslání velkého počtu e-mailů v krátkém časovém okně, se používá SDK.
 

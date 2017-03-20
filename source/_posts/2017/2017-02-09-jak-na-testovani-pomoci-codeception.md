@@ -7,19 +7,19 @@ author: 15
 
 ## Co je to Codeception a proč jej používat?
 
-Codeception je PHP knihovna umožňující testovat webové aplikace přímo v prohlížeči. Testuje tak z pohledu uživatele, jestli funguje celý web, jak backend, tak frontend, neomezuje se jen na testování jednotlivých tříd. Díky Codeception můžete snadno a rychle proklikat velkou část webu a otestovat celé uživatelské scénáře 
+Codeception je PHP knihovna umožňující testovat webové aplikace přímo v prohlížeči. Testuje tak z pohledu uživatele, jestli funguje celý web, jak backend, tak frontend, neomezuje se jen na testování jednotlivých tříd. Díky Codeception můžete snadno a rychle proklikat velkou část webu a otestovat celé uživatelské scénáře
 (například registraci, přihlášení, objednávku v eshopu apod.).
 
 Dokumentace Codeception je k přečtení [zde](http://codeception.com/quickstart).
 
-Codeception má v sobě několik knihoven, které jde pro testy používat. 
+Codeception má v sobě několik knihoven, které jde pro testy používat.
 
 - Buď můžete na testování stránek používat
-[PhpBrowser](http://codeception.com/docs-2.0/04-AcceptanceTests#PHP-Browser), který **umožňuje proklikávat stránky a 
-vyplňovat formuláře, ale neumožní spouštění javascriptu**. 
+[PhpBrowser](http://codeception.com/docs-2.0/04-AcceptanceTests#PHP-Browser), který **umožňuje proklikávat stránky a
+vyplňovat formuláře, ale neumožní spouštění javascriptu**.
 
-- Pokud chcete plnohodnotný prohlížeč, **Codeception nám umožňuje testovat v reálném prohlížeči** pomocí 
-[Selenium Webdriveru](http://codeception.com/docs-2.0/04-AcceptanceTests#Selenium-WebDriver). Na jeho zprovoznění budeme potřebovat Selenium Server, jehož instalaci popisuji v dalším kroku. Jeho výhoda je mimo jiné v tom, že při selhání testu udělá printscreen a uloží html kód stránky, na které test selhal. 
+- Pokud chcete plnohodnotný prohlížeč, **Codeception nám umožňuje testovat v reálném prohlížeči** pomocí
+[Selenium Webdriveru](http://codeception.com/docs-2.0/04-AcceptanceTests#Selenium-WebDriver). Na jeho zprovoznění budeme potřebovat Selenium Server, jehož instalaci popisuji v dalším kroku. Jeho výhoda je mimo jiné v tom, že při selhání testu udělá printscreen a uloží html kód stránky, na které test selhal.
 
 ## Jak začít, co potřebuji?
 
@@ -31,15 +31,15 @@ composer require codeception/codeception --dev
 
 ### Instalujeme Selenium
 
-A nyní si stáhneme a zprovozníme Selenium Server. 
+A nyní si stáhneme a zprovozníme Selenium Server.
 
-* Nejdříve musíme mít nainstalovanou [Javu](https://java.com/en/download/). 
+* Nejdříve musíme mít nainstalovanou [Javu](https://java.com/en/download/).
 * Stáhnout Selenium Server lze na [této stránce](http://docs.seleniumhq.org/download/) v sekci "Selenium Standalone Server". Přímý link na stažení je [zde](https://goo.gl/Lyo36k).
 * Stažený `.jar` soubor umístíme kamkoli, kde na něj nezapomeneme.
-* Selenium WebDriver umožňuje používat různé prohlížece, my nyní budeme používat google chrome. 
+* Selenium WebDriver umožňuje používat různé prohlížece, my nyní budeme používat google chrome.
 * Stahneme si chromedriver [zde](https://sites.google.com/a/chromium.org/chromedriver/downloads).
-* Stahneme si archiv pro náš konkrétní počítač. 
-* Archiv extrahujeme na stejné místo, kde máme Selenium Server. 
+* Stahneme si archiv pro náš konkrétní počítač.
+* Archiv extrahujeme na stejné místo, kde máme Selenium Server.
 * Vytvoříme si soubor `selenium.sh` s obsahem
 
 ```bash
@@ -53,9 +53,9 @@ Pokud používáme Windows, vytvoříme místo toho analogicky `selenium.bat` s 
 java -jar -Dwebdriver.chrome.driver=chromedriver.exe selenium-server-standalone-3.0.1.jar
 ```
 
-Tento soubor spustíme. Nyní by měl nastartovat Selenium Server. 
+Tento soubor spustíme. Nyní by měl nastartovat Selenium Server.
 
-Všechno v Codeceptionu se řídí přes CLI. Od inicializace, přes vytváření testů (generování kódu pro skelet testů), 
+Všechno v Codeceptionu se řídí přes CLI. Od inicializace, přes vytváření testů (generování kódu pro skelet testů),
 až po spouštění.
 
 Nejdříve Codeception inicializujeme:
@@ -74,10 +74,10 @@ Tohle ve složce `tests` vytvoří složky pro různé druhy testů a konfigura�
 
 ## První test
 
-Pro ukázku budeme testovat různé stránky na serveru seznam.cz. Díky tomu vidíme, že narozdíl od unit testů není 
+Pro ukázku budeme testovat různé stránky na serveru seznam.cz. Díky tomu vidíme, že narozdíl od unit testů není
 na akceptační testování zapotřebí mít přístup ke zdrojákům, stačí běžící aplikace.
 
-Nyní si nakonfigurujeme Codeception, aby používal URL adresu aplikace, kterou chceme testovat, a aby používal Selenium 
+Nyní si nakonfigurujeme Codeception, aby používal URL adresu aplikace, kterou chceme testovat, a aby používal Selenium
 jako prohlížeč. To uděláme tak, že upravíme soubor `acceptance.suite.yml` a jeho obsah upravíme na
 
 ```yaml
@@ -92,8 +92,8 @@ modules:
         - \Helper\Acceptance
 ```
 
-Pokud chceme testovat naši vlastní aplikaci, použijeme stejnou adresu, jako používáme při ručném proklikávání. 
-Řádek, kde je ` - WebDriver:` říká, jaký prohlížeč chceme použít. Základní je PhpBrowser, ten sice neumožní testovat 
+Pokud chceme testovat naši vlastní aplikaci, použijeme stejnou adresu, jako používáme při ručném proklikávání.
+Řádek, kde je ` - WebDriver:` říká, jaký prohlížeč chceme použít. Základní je PhpBrowser, ten sice neumožní testovat
 javascript, ale zato je o poznání rychlejší.
 
 Nyní máme všechno připravené a můžeme se pustit do prvního testu.
@@ -108,11 +108,11 @@ a jako u inicializace, pokud nemáme soubor codecept v cestě, použijeme varian
 
 ```bash
 vendor/bin/codecept generate:cept acceptance Homepage
-``` 
+```
 (a jako výše, pro Windows se zpětnými lomítky)
 
 Tento příkaz nám vytvořil soubor `tests\acceptance\HomepageCept.php`
-Otevřeme si ho a rovnou můžeme psát jednotlivé testy. Otestujeme načtení hlavní stránky a 
+Otevřeme si ho a rovnou můžeme psát jednotlivé testy. Otestujeme načtení hlavní stránky a
 zda obsahuje všechny důležité prvky.
 Testujeme tedy [homepage seznam.cz](www.seznam.cz).
 Testovat přítomnost prvků můžeme jak testováním, zda je na stránce nějaký text, tak CSS selectory nebo XPath selectory.
@@ -166,14 +166,14 @@ Přehled všech použitelných metod je dostupný v [dokumentaci Codeceptionu](h
 ## Cest třídy a OOP psaní testů
 
 Pokud nechceme jen procedurální testy, ale chceme je lépe členit, je možné psát testy i objektově, pomocí Cest tříd.
-Ty vygenerujeme takto 
+Ty vygenerujeme takto
 ```bash
 codecept generate:cest acceptance Homepage
 ```
 a vidíme, že máme vytvořenou třídu `HomepageCest` v souboru `tests/acceptance/HomepageCest.php`.
- 
+
 Testy můžeme psát do jakýchkoli public metod, kromě metod začínajících podrtžítkem. Ty mají specifický význam:
 
-- metoda `_before` je zavolána před každým testem 
+- metoda `_before` je zavolána před každým testem
 - metoda `_after` je zavolána po každém testu
 - v cest testech je navíc metoda `_failed`, která se zavolá těsně poté, co nějaký test neprojde

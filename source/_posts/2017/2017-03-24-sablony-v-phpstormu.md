@@ -158,12 +158,12 @@ use Nette;
 class $❴NAME❵
 {
 	use Nette\SmartObject;
-	
+
 	public function __construct()
 	{
-	
+
 	}
-	
+
 }
 ```
 
@@ -217,14 +217,14 @@ class $❴NAME❵ extends BasePresenter
 #if ($❴Action❵ != "")
 	public function action$❴Action❵()
 	{
-		
+
 	}
 
 #end
 #if ($❴NAME❵ != 'BasePresenter')
 	public function renderDefault()
 	{
-		
+
 	}
 
 #end
@@ -234,7 +234,7 @@ class $❴NAME❵ extends BasePresenter
 #set ($Capitalized = $Render.substring(0,1).toUpperCase() + $Render.substring(1))
 	public function render$❴Capitalized❵()
 	{
-		
+
 	}
 
 #end

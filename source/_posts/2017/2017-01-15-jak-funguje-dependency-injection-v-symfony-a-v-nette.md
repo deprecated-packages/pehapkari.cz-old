@@ -17,7 +17,7 @@ Spojením DI a containeru získáme tyto výhody:
 - **Závislosti se kontrolují již při sestavení containeru**
 - **Hned při pohledu na konstruktor je jasné, na čem třída závisí**
 - **Eliminace skrytých závislostí**
-	
+
 
 ```php
 // Presenter/Controller
@@ -38,7 +38,7 @@ class MyClass
     {
         $this->mailer = $mailer;
     }
-    
+
     public function send()
     {
         $this->mailer->send()
@@ -98,7 +98,7 @@ Každá třída má svou závislost a nepůjde získat z containeru aniž by svo
 
 ## Jak to funguje v Symfony
 
-**Controller v Symfony jako služba registrovaný není**, a tak mu není možné vložit jinou závislost konstruktorem. Místo toho 
+**Controller v Symfony jako služba registrovaný není**, a tak mu není možné vložit jinou závislost konstruktorem. Místo toho
 existuje traita `ContainerAwareTrait`, která předává controlleru celý container. Pokud bychom měli stejnou situaci jako v předchozí části, pak by vypadala následovně:
 
 ```php
@@ -132,7 +132,7 @@ class MyClass
 }
 ```
 
-Základní rozdíl je tento řádek: 
+Základní rozdíl je tento řádek:
 
 ```php
 $this->myClass = $this->container->get('myClass');
@@ -153,7 +153,7 @@ Na začátku jsme si definovali 3 úkoly, které chceme po spojení DI a contain
 
 ## Controller jako služba
 
-Naštěstí existuje řešení! Bundle [Symplify/ControllerAutowire](https://github.com/Symplify/ControllerAutowire), který automaticky **registruje controller jako službu do containeru**. Po instalaci se bude controller chovat stejně jako presenter v předchozí ukázce. 
+Naštěstí existuje řešení! Bundle [Symplify/ControllerAutowire](https://github.com/Symplify/ControllerAutowire), který automaticky **registruje controller jako službu do containeru**. Po instalaci se bude controller chovat stejně jako presenter v předchozí ukázce.
 
 Bude mu možné předat závislost konstruktorem a získáme tím všechny přednosti, které jsme chtěli po spojení DI a containeru. Navíc při použití traity [ControllerAwareTrait](https://github.com/Symplify/ControllerAutowire#used-to-frameworkbundles-controller-use-helpers-traits) fungují i všechny pomocné metody z FrameworkBundle.
 
