@@ -117,17 +117,17 @@ $urlResult = $sqsClient->getQueueUrl(['QueueName' => 'queue-bounces']);
 $queueUrl = $urlResult->get('QueueUrl');
 
 // 3. vrátí zprávy z fronty
-$queuResult = $sqsClient->receiveMessage([
+$queueResult = $sqsClient->receiveMessage([
     'QueueUrl' => $queueUrl,
     'MaxNumberOfMessages' => 10
 ]);
 
-if ($queuResult['Messages'] == null) {
+if ($queueResult['Messages'] == null) {
     return;
 }
 
 // 4.
-foreach ($queuResult['Messages'] as $message) {
+foreach ($queueResult['Messages'] as $message) {
     $receiptHandle = $message['ReceiptHandle'];
     $body = \Nette\Utils\Json::decode($message['Body']);
     $messageContent = \Nette\Utils\Json::decode($body->Message);
