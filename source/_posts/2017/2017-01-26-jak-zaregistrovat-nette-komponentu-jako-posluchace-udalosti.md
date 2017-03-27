@@ -10,7 +10,7 @@ test_slug: ListeningNetteComponents
 
 ## Úvod do problému
 
-U složitějších aplikací může dojit k tomu, že v jednom presenteru máte vloženo více komponent, které mají mezi sebou pomyslnou vazbu. Pokud se stane něco v jedné komponentě, tak je potřeba překreslit (ajaxově snippetem) komponentu druhou apod. Typicky u eshopů se jedná o ten use-case, že při přidání položky do košíku potřebuji překreslit ten malý košík s cenou umístěný většinou v pravo nahoře a má mi vyskočit nějaký popup s podobnými produkty. 
+U složitějších aplikací může dojit k tomu, že v jednom presenteru máte vloženo více komponent, které mají mezi sebou pomyslnou vazbu. Pokud se stane něco v jedné komponentě, tak je potřeba překreslit (ajaxově snippetem) komponentu druhou apod. Typicky u eshopů se jedná o ten use-case, že při přidání položky do košíku potřebuji překreslit ten malý košík s cenou umístěný většinou v pravo nahoře a má mi vyskočit nějaký popup s podobnými produkty.
 
 **Jak elegantně překreslovat komponenty** v závislosti na ajaxových požadavcích? Řešením je použití událostí a jejich posluchačů.
 
@@ -171,7 +171,7 @@ public function startup()
 ...
 ```
 
-`EventDispatcher` pro přidání nových posluchačů na události používá metodu [addListener](http://symfony.com/doc/current/components/event_dispatcher.html#connecting-listeners), která má dva parametry. První parametrem je název události, na kterou posluchač poslouchá a druhým parametrem je callback, který se zavolá při vyvolání události. Docela jednoduché API, že? :) 
+`EventDispatcher` pro přidání nových posluchačů na události používá metodu [addListener](http://symfony.com/doc/current/components/event_dispatcher.html#connecting-listeners), která má dva parametry. První parametrem je název události, na kterou posluchač poslouchá a druhým parametrem je callback, který se zavolá při vyvolání události. Docela jednoduché API, že? :)
 
 Přes nově nabyté znalosti tedy **vytvoříme událost**, kterou bude vyvolávat komponenta `AddTobasketControl` a zaregistrujeme komponentu `BasketContentControl` do `EventDispatcher`u jako posluchače této události.
 
@@ -242,7 +242,7 @@ public function startup()
     $basketContentControl = $this->getComponent('basketContent');
 
     $this->eventDispatcher->addListener(
-        ProductAddedToBasketEvent::class, 
+        ProductAddedToBasketEvent::class,
         [$basketContentControl, 'onProductAddedToBasketEvent']
     );
 }
@@ -251,9 +251,9 @@ public function startup()
 
 ## Vyvolání události
 
-Tak už máme `EventDispatcher` napojený do Nette. Také máme komponentu `BasketContentControl` zaregistrovanou jako posluchače události `ProductAddedToBasketEvent`. Takže je na řadě **samotné vyvolání události**. 
+Tak už máme `EventDispatcher` napojený do Nette. Také máme komponentu `BasketContentControl` zaregistrovanou jako posluchače události `ProductAddedToBasketEvent`. Takže je na řadě **samotné vyvolání události**.
 
-To se udělá opět velmi snadno - konkrétně přes metodu [dispatch](http://symfony.com/doc/current/components/event_dispatcher.html#dispatch-the-event), která je nečekaně součástí `EventDispatcher`u. Metoda má opět dva parametry. První parametr je název události, která se bude vyvolávat (na tento název jsou zaregistrováni posluchači). Druhý parametr je samotná instance události, přes kterou můžete předávat data do posluchačů. 
+To se udělá opět velmi snadno - konkrétně přes metodu [dispatch](http://symfony.com/doc/current/components/event_dispatcher.html#dispatch-the-event), která je nečekaně součástí `EventDispatcher`u. Metoda má opět dva parametry. První parametr je název události, která se bude vyvolávat (na tento název jsou zaregistrováni posluchači). Druhý parametr je samotná instance události, přes kterou můžete předávat data do posluchačů.
 
 Dost teorie - **chci vyvolat svoji událost**!
 
@@ -416,7 +416,7 @@ public function handleAdd()
 }
 ```
 
-U tohoto řešení je problém v tom, že **komponenta** `addToBasketControl` **zná implementaci presenteru**, ve kterém je připojena a spoléhá na to, že je v něm zaregistrovaná componenta s názvem `basketContent`. Pokud bych tedy chtěl komponentu `addToBasketControl` použít v jiném presenteru, musel bych v něm zaregistrovat i komponentu `BasketContentControl`, což je nehezké provázání závislostí. 
+U tohoto řešení je problém v tom, že **komponenta** `addToBasketControl` **zná implementaci presenteru**, ve kterém je připojena a spoléhá na to, že je v něm zaregistrovaná componenta s názvem `basketContent`. Pokud bych tedy chtěl komponentu `addToBasketControl` použít v jiném presenteru, musel bych v něm zaregistrovat i komponentu `BasketContentControl`, což je nehezké provázání závislostí.
 
 Co pak, když by bylo potřeba, aby na událost `ProductAddedToBasket` poslouchala i jiná komponenta? OK - upravíme metodu na:
 
@@ -430,13 +430,13 @@ public function handleAdd()
 ```
 
 a už tu vzniká programming hell a **programátorský dluh do budoucnosti**.
- 
+
 Druhý mnohem složitější problém by nastal v momentě, kdy se událost nevyhazuje v komponentě, ale v nějaké službě. Typicky můžeme mít `BasketFacade`, která před přidáním produktu do košíku musí zvalidovat např. to, zda může být produkt přidán do košíku a pokud ano, tak produkt přidá a vyvolá událost. Pak nám nezbývá  nic jiného než použití `return` pokud bychom chtěli událost přeci jen vyvolávat v komponentě. Problém může být, ale pokud `BasketFacade` deleguje požadavek na přidání produktu jiné službě apod. Pak musíme `return`ovat `return`y z celého řetezce volaných metod a to je pěkný oser. :)
 
 
 ## Shrnutí
 
-Ukázali jsme si jak jednoduše se dá propojit Symfony s Nette a **jak přimět komponenty poslouchat na události**. Zároveň jsme si osvěžili práci se ajaxem, snippety a vysvětlili jsme si, jak fungují **události a posluchači**. 
+Ukázali jsme si jak jednoduše se dá propojit Symfony s Nette a **jak přimět komponenty poslouchat na události**. Zároveň jsme si osvěžili práci se ajaxem, snippety a vysvětlili jsme si, jak fungují **události a posluchači**.
 
 Jaký to dobrý pocit z nově nabytých znalostí! :)
 

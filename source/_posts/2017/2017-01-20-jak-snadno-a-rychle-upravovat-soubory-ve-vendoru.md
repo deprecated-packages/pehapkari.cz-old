@@ -8,9 +8,9 @@ reviewed_by: [1]
 
 ## Chyba je ve vendoru...
 
-Občas se může stát, že aplikace po spuštění `composer update` začne vyhazovat notice, warning nebo dokonce fatal error. Co se stalo? Kde je chyba? Je v mojí aplikaci nebo někde jinde... Po pár minutách až hodinách :) zjistíš, že **chyba není v aplikaci, ale v balíčku**, který se ti právě aktualizoval. 
+Občas se může stát, že aplikace po spuštění `composer update` začne vyhazovat notice, warning nebo dokonce fatal error. Co se stalo? Kde je chyba? Je v mojí aplikaci nebo někde jinde... Po pár minutách až hodinách :) zjistíš, že **chyba není v aplikaci, ale v balíčku**, který se ti právě aktualizoval.
 
-Jak je možné, že někdo otaguje balíček, který obsahuje takovou chybu? Každy z nás je pouze člověk a i sebelepší programátor se semtam sekne a vytvoří bug, ať už spravuje svůj osobní nebo celosvětově používaný balíček. 
+Jak je možné, že někdo otaguje balíček, který obsahuje takovou chybu? Každy z nás je pouze člověk a i sebelepší programátor se semtam sekne a vytvoří bug, ať už spravuje svůj osobní nebo celosvětově používaný balíček.
 
 Mně se například po přechodu na PHP7 stalo to, že [Doctrine\DBAL](https://github.com/doctrine/dbal) špatně bindoval parametry do dotazů viz. [OCI8 - bindValue overwrite previous values issue](https://github.com/doctrine/dbal/issues/2261). Takže chybu jsme už našli co dál?
 
@@ -18,19 +18,19 @@ Mně se například po přechodu na PHP7 stalo to, že [Doctrine\DBAL](https://g
 ## Jak chybu opravit?
 
 ### Udělám vlastní fork
-Tak to je přeci jednoduché! Pošlu **pull-request s opravou** a počkám až to autor spojí. To ale může trvat dny i měsíce a tag v nedohlednu. Mezitím moje **aplikace nepojede**? Dobře, půjdu na to chytřeji... 
+Tak to je přeci jednoduché! Pošlu **pull-request s opravou** a počkám až to autor spojí. To ale může trvat dny i měsíce a tag v nedohlednu. Mezitím moje **aplikace nepojede**? Dobře, půjdu na to chytřeji...
 
-Pošlu pull-request a ve své aplikaci nasměruju composer na **svoji forknutou verzi** balíčku a je hotovo. OK, ale než se můj pull-request spojí, tak si musím fork udržovat aktuální... 
+Pošlu pull-request a ve své aplikaci nasměruju composer na **svoji forknutou verzi** balíčku a je hotovo. OK, ale než se můj pull-request spojí, tak si musím fork udržovat aktuální...
 
 ### Upravím si soubor lokálně
-Co to tedy udělat trochu na prasáčka? Otevřu si soubor ve vendoru a **opravím si to sám** a bude - ehm počkat... Složku vendor si automaticky vytváří a spravuje [Composer](https://getcomposer.org/) nepřepíše se mi tedy upravený soubor? Přepíše, ale pouze při vydání nové verze balíčku - bezva! Nové verze balíčku nevychází tak často a až vyjde, tak už to bude třeba opravené. 
+Co to tedy udělat trochu na prasáčka? Otevřu si soubor ve vendoru a **opravím si to sám** a bude - ehm počkat... Složku vendor si automaticky vytváří a spravuje [Composer](https://getcomposer.org/) nepřepíše se mi tedy upravený soubor? Přepíše, ale pouze při vydání nové verze balíčku - bezva! Nové verze balíčku nevychází tak často a až vyjde, tak už to bude třeba opravené.
 
 V tento moment mám vyhráno! Soubor jsem si upravil u sebe - aplikace jede a autorovi balíčku jsem poslal pull-request s opravou. Je čas slavit! Nebo ne?
 
 
 ### Stačí tohle řešení?
 
-To záleží na pár otázkách: 
+To záleží na pár otázkách:
  - **Pracuji v týmů** a je tedy možné, že stejnou chybu bude mít i kolega?
  - Nahrávám aplikaci **na server bez vendoru**, který se následně vytvoří přes `composer install`?
 
@@ -39,9 +39,9 @@ Pokud si alespoň na jednu otázku odpovím ano, tak mám opět problém. Spole�
 
 ## cweagans/composer-patches
 
-Naštěstí existuje balíček, který za tebe **vyřeší všechny problémy**, na které jsi zde narazil! [cweagans/composer-patches](https://github.com/cweagans/composer-patches) je balíček, který obsahuje nástroje pro patchování souborů (co je to [patch](https://cs.wikipedia.org/wiki/Patch)?). Zároveň je natolik chytrý, že poslouchá Composer a při instalaci/aktualizaci balíčku dokáže určit, zda pro daný balíček existuje patch a zda ho má aplikovat nebo ho už aplikoval. 
+Naštěstí existuje balíček, který za tebe **vyřeší všechny problémy**, na které jsi zde narazil! [cweagans/composer-patches](https://github.com/cweagans/composer-patches) je balíček, který obsahuje nástroje pro patchování souborů (co je to [patch](https://cs.wikipedia.org/wiki/Patch)?). Zároveň je natolik chytrý, že poslouchá Composer a při instalaci/aktualizaci balíčku dokáže určit, zda pro daný balíček existuje patch a zda ho má aplikovat nebo ho už aplikoval.
 
-Jak je to možné? Composer při instalaci balíčků vyvolává události, na které `cweagans/composer-patches` poslouchá a podle toho reaguje (jak fungují [události](http://pehapkari.cz/blog/2016/12/05/symfony-event-dispatcher/)?). 
+Jak je to možné? Composer při instalaci balíčků vyvolává události, na které `cweagans/composer-patches` poslouchá a podle toho reaguje (jak fungují [události](http://pehapkari.cz/blog/2016/12/05/symfony-event-dispatcher/)?).
 
 Dost teorie - jdeme opravit chybu!
 
@@ -57,7 +57,7 @@ Nainstalujeme balíček `cweagans/composer-patches`.
 ### 2. Vytvoření patch souboru
 
 Ve vendor složce si najdeš zabugovaný soubor a zkopíruješ ho do toho samého adresáře pouze s jiným názvem souboru (já používám suffix "-fixed" např. `bugged-file-fixed.php`). Následně si zkopírovaný soubor otevřeš a opravíš v něm co potřebuješ. Pak už jen zbývá spustit v CLI příkaz pro vygenerování patch souboru:
- 
+
 ```bash
 # diff -u ./vendor/package-name/path/to/bugged/file/BuggedFile.php ./vendor/path/to/bugged/file/BuggedFile-fixed.php > patches/bugged-file.patch
 ```
@@ -76,7 +76,7 @@ Zde budeš potřebovat nainstalovat příkazy `diff` a `patch` (dočteš se dál
  - zvol libovolný mirror (třeba hned ten první - http://cygwin.mirror.constant.com)
  - v tabulce "Select Packages" vyhledej slovo "patch" (mělo by se ti zobrazit cca 7 rozkliknutelných položek)
  - vyber "Devel", "Perl", "Text" a "Utils" a zaškrtni jednotlivé subpoložky
- - dokonči instalaci 
+ - dokonči instalaci
 
 Nyní je třeba zaregistrovat cestu k cygwinu do Path. V proměnném prostředí tedy přidáš do Path cestu k bin složce ("C:\cygwin\bin" - výchozí nastavení).
 
@@ -124,7 +124,7 @@ zbytek nech tak jak je. Všimni si, že cesta k souboru **musí být uvedena rel
  - `bugged/package` je klasický název balíčku např. `nette/di`, `symfony/console` apod., na který chceme patch aplikovat
  - `Patch message` je zpráva, která se vypíše v CLI po aplikování patche.
  - `patches/bugged-file.patch` je relativní cesta k patch souboru.
- 
+
 Toto je základní konfigurace pro lokální patch soubory, ale `cweagans/composer-patches` podporuje celou řadu dalších možností, které najdeš v [readme](https://github.com/cweagans/composer-patches/blob/master/README.md).
 
 
@@ -145,10 +145,10 @@ V tuto chvíli máš upravený soubor ve vendor složce. `cweagans/composer-patc
 
 ## Shrnutí
 
-V tomto článku jsi našel nástroj, kterým snadno a rychle řešit buggy ve vendoru a zároveň cestu, kterou můžeš opravy sdílet dál (mezi kolegy, na server apod.). 
+V tomto článku jsi našel nástroj, kterým snadno a rychle řešit buggy ve vendoru a zároveň cestu, kterou můžeš opravy sdílet dál (mezi kolegy, na server apod.).
 
 Zde je shrnutí v bodech, jak postupovat:
- 
+
 1. `composer require cweagans/composer-patches`
 2. Zkopírovat soubor s buggem a opravit ho
 3. Vytvořit patch soubor (příkaz `diff`)
@@ -156,10 +156,10 @@ Zde je shrnutí v bodech, jak postupovat:
 5. Přidat cestu k patch souboru do composer.json
 6. Spustit `composer install` nebo `composer update`
 7. Profit!
- 
+
 ## Chci se dozvědět více!
 
 Zde jsou materiály, které ti pomohou pochopit, jak takový nástroj funguje a jak ho můžeš použít.
- 
+
  - https://github.com/cweagans/composer-patches
  - https://getcomposer.org/doc/articles/scripts.md

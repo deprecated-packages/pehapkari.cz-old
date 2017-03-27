@@ -68,7 +68,7 @@ final class PasswordEncoder implements PasswordEncoderInterface
      * @var BCryptPasswordEncoder
      */
     private $bcrypt;
-    
+
     /**
      * @var EventDispatcherInterface
      */
@@ -85,13 +85,13 @@ final class PasswordEncoder implements PasswordEncoderInterface
         $this->dispatcher = $dispatcher;
         $this->legacyEncoder = $legacyEncoder;
     }
-    
+
     public function encodePassword($raw, $salt) {
         return $this->bcrypt->encodePassword($raw, $salt);
     }
- 
-    // ... 
- 
+
+    // ...
+
 }
 ```
 
@@ -210,10 +210,10 @@ final class PasswordUpdateManager implements EventSubscriberInterface
 
         // load a correct password encoder
         $encoder = $this->encoderFactory->getEncoder($user);
-        
+
         // rehashing happens here
         $newPassword = $encoder->encodePassword($this->passwordForRehash, $user->getSalt());
-        
+
         // now save the new password into the database
         $user->setPassword($newPassword);
         $this->entityManager->persist($user);
@@ -229,7 +229,7 @@ And as always, don't forget to add the service definition into the *services.yml
 
 app.password_update_manager:
     class: AppBundle\Security\PasswordUpdateManager
-    tags:    
+    tags:
       - { name: kernel.event_subscriber }
     autowire: true
 ```
@@ -239,5 +239,5 @@ Depending on your system, this might be just a beginning.
 
 Maybe you use **different kind of logins**, not just the interactive login. Then you need to extend the solution so the password rehashing will not be skipped. Also, you can make rehashing **completely automatic** using [Doctrine listeners](http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/events.html), so the rehashing is done each time a user changes his password.
 
-Do you have any suggestion for an improvement? Feel free to drop a comment below! 
+Do you have any suggestion for an improvement? Feel free to drop a comment below!
 And check out [my blog focused on Symfony and PHP development](http://blog.ikvasnica.com).

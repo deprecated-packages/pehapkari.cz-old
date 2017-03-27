@@ -19,31 +19,31 @@ author: 2
 
 ## SensioCloud
 
-V úvodní keynote [Fabien Potencier](https://github.com/fabpot) představil službu [SensioCloud](https://sensio.cloud/) - [PaaS](https://en.wikipedia.org/wiki/Platform_as_a_service) optimalizovaný pro Symfony.  
+V úvodní keynote [Fabien Potencier](https://github.com/fabpot) představil službu [SensioCloud](https://sensio.cloud/) - [PaaS](https://en.wikipedia.org/wiki/Platform_as_a_service) optimalizovaný pro Symfony.
 
 Jde o nadstavbu nad [Heroku](https://www.heroku.com). Celá platforma má být velmi jednodušše použitelná, s dobrou podporou škálování a optimalizací na vývoj: možnost branchování (testovací prostředí, staging...) nebo synchronizace DB mezi nimi.
 
-*Termín spuštění?* 
+*Termín spuštění?*
 Začátek roku 2017.
 
 ### Readonly FileSystem je ready
- 
+
 Důležitou součástí bylo **dokončení podpory readonly filesystému** (dostupné od verze [Symfony 3.2](https://github.com/symfony/symfony/blob/master/CHANGELOG-3.2.md)). Právě to umožní **deploying aplikací pomocí artefaktů**.
 
-Problém byl v komponěntě Cache, která kvůli absolutním cestám znemožňovala deploy Symfony aplikace na úložiště bez možnosti zápisu. **Cache lze od verze 3.2 zahřát na build serveru a vytvořit tak funkční artefakt, který již žádný zápis nevyžaduje**. 
+Problém byl v komponěntě Cache, která kvůli absolutním cestám znemožňovala deploy Symfony aplikace na úložiště bez možnosti zápisu. **Cache lze od verze 3.2 zahřát na build serveru a vytvořit tak funkční artefakt, který již žádný zápis nevyžaduje**.
 
 
 ## Symfony Flex
 
-V další přednášce Fabien popsal nedostatky v Symfony distribučním systému. Jako řešení představil **Symfony Flex**. Tím chce nahradit dosavadní balíčky jako [Symfony Demo Application](https://github.com/symfony/symfony-demo), [Symfony Standard Edition](https://github.com/symfony/symfony-standard) nebo  [Symfony CMF](http://cmf.symfony.com/). 
+V další přednášce Fabien popsal nedostatky v Symfony distribučním systému. Jako řešení představil **Symfony Flex**. Tím chce nahradit dosavadní balíčky jako [Symfony Demo Application](https://github.com/symfony/symfony-demo), [Symfony Standard Edition](https://github.com/symfony/symfony-standard) nebo  [Symfony CMF](http://cmf.symfony.com/).
 
-Řešením je použití kompozice místo dědičnosti a **rozpadení konfiguračních souborů/úkonů do samostatných souborů**, aby bylo možné "balíčky" jednoduše odebírat či přidávat. 
+Řešením je použití kompozice místo dědičnosti a **rozpadení konfiguračních souborů/úkonů do samostatných souborů**, aby bylo možné "balíčky" jednoduše odebírat či přidávat.
 
 *Termín spuštění?*
-Konec ledna 2017. 
+Konec ledna 2017.
 
 
-## Don't kill the chef - Keep PHP Alive Between Requests  
+## Don't kill the chef - Keep PHP Alive Between Requests
 
 [Andrew Carter](https://twitter.com/AndrewCarterUK) nám představil možnosti, jak je možné udžet Symfony aplikaci "živou" napříč více requestů a tak [zvýšit výkon výsledné aplikace](http://andrewcarteruk.github.io/slides/soup-up-symfony/#/49).
 
@@ -65,16 +65,16 @@ Upozornil také na nedostatky PHP při běhu v tomto režimu - memory leaky či 
 
 [Nicolas Grekas](https://github.com/nicolas-grekas) povídal o Cache komponentně, která odpovídá [PSR-6: Caching Interface](http://www.php-fig.org/psr/psr-6/) standardu.
 
-Krom funkcionality se zaměřil na perfomance testy, kde si komponenta vede obstojně. **Nejlépe v bulk operacích při použití Redis Adaptéru**. Nejlepším konkurentem byla [Doctrine\Cache](https://github.com/doctrine/cache). 
+Krom funkcionality se zaměřil na perfomance testy, kde si komponenta vede obstojně. **Nejlépe v bulk operacích při použití Redis Adaptéru**. Nejlepším konkurentem byla [Doctrine\Cache](https://github.com/doctrine/cache).
 
-**[Mrkni na slajdy](https://speakerdeck.com/nicolasgrekas/psr-6-and-symfony-cache-fast-by-standards-1)** 
+**[Mrkni na slajdy](https://speakerdeck.com/nicolasgrekas/psr-6-and-symfony-cache-fast-by-standards-1)**
 
 
 ## Knowing your state machines
 
 [Tobias Nyholm](https://github.com/Nyholm) nás uvedl do nové [Workflow komponenty](https://github.com/symfony/workflow), představil principy a ukázky použití. Workflow komponenta by mohla být velmi užitečná v nejedné business aplikaci - **pro stavy uživatelů nebo řízení stavů objednávky**.
 
-**[Mrkni na slajdy](http://www.slideshare.net/TobiasNyholm/knowing-your-state-machines)** 
+**[Mrkni na slajdy](http://www.slideshare.net/TobiasNyholm/knowing-your-state-machines)**
 
 
 ## A Year of Symfony
@@ -84,16 +84,16 @@ Krom funkcionality se zaměřil na perfomance testy, kde si komponenta vede obst
 Co mě zaujalo?
 
 - [zjednodušený přístup k proměnným prostředí (ENV)](https://speakerdeck.com/saro0h/symfonycon-berlin-a-year-of-symfony?slide=60)
-- [zjednodušení práce s Compiler Pass](https://speakerdeck.com/saro0h/symfonycon-berlin-a-year-of-symfony?slide=54) 
-- nebo  [Tagged Cache](https://speakerdeck.com/saro0h/symfonycon-berlin-a-year-of-symfony?slide=57)   
+- [zjednodušení práce s Compiler Pass](https://speakerdeck.com/saro0h/symfonycon-berlin-a-year-of-symfony?slide=54)
+- nebo  [Tagged Cache](https://speakerdeck.com/saro0h/symfonycon-berlin-a-year-of-symfony?slide=57)
 
 
-**[Mrkni na slajdy](https://speakerdeck.com/saro0h/symfonycon-berlin-a-year-of-symfony)** 
+**[Mrkni na slajdy](https://speakerdeck.com/saro0h/symfonycon-berlin-a-year-of-symfony)**
 
 
 ### A co další slajdy?
 
-**Všechny zveřejněné slajdy najdeš na [joind.in](https://joind.in/event/symfonycon-berlin-2016).** Z nich bych 
+**Všechny zveřejněné slajdy najdeš na [joind.in](https://joind.in/event/symfonycon-berlin-2016).** Z nich bych
 ještě rád vypíchnnul:
 
 
@@ -113,5 +113,5 @@ ještě rád vypíchnnul:
 <br>
 
 ### Pro tip na konec
-  
+
 Early-bird lístky na příští SymfonyCon se vyplatí sledovat - prvních **200 bývá za míň jak poloviční cenu**!

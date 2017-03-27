@@ -9,7 +9,7 @@ lang: en
 ---
 
 
-## Main feature of Event Dispatcher 
+## Main feature of Event Dispatcher
 
 - **Extend application** in some place **without putting any code right there**.
 
@@ -20,13 +20,13 @@ Not sure how that looks? You will - in the end of this article.
 
 ### Event Dispatcher
 
-**This is the brain**. It stores all subscribers and calls events when you need to. 
+**This is the brain**. It stores all subscribers and calls events when you need to.
 
 
 ### Event
 
-**This is name of a place**. When something has happened in application: *order is sent*, 
-or *user is deleted*.     
+**This is name of a place**. When something has happened in application: *order is sent*,
+or *user is deleted*.
 
 
 ### Event Subscriber
@@ -34,7 +34,7 @@ or *user is deleted*.
 This is **the action that happens when** we come to some place. When order is sent (= Event), *send me a confirmation sms* (= Event Subscriber). And *check that all the ordered products are on stock*. This means, that **1 event can invoke MORE Event Subscribers**.
 
 
-## Create First Subscriber in 3 Steps 
+## Create First Subscriber in 3 Steps
 
 
 ### 1. Install via Composer
@@ -53,7 +53,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 // 1. create the Dispatcher
 $eventDispatcher = new Symfony\Component\EventDispatcher\EventDispatcher;
 
-// 2. some event happend, we dispatch it 
+// 2. some event happend, we dispatch it
 $eventDispatcher->dispatch('youtube.newVideoPublished'); // oh: event is just a string
 ```
 
@@ -66,7 +66,7 @@ php index.php
 Wow! Nothing happened...
 
 That's ok, because there is no Subscriber. So let's...
- 
+
 
 ### 3. Create and Register Subscriber
 
@@ -119,7 +119,7 @@ int(0)
 int(1)
 ```
 
-And now you understand EventDispatcher. At least for ~60 % cases. 
+And now you understand EventDispatcher. At least for ~60 % cases.
 
 ---
 
@@ -173,7 +173,7 @@ final class NotifyMeOnVideoPublishedEventSubscriber implements EventSubscriberIn
     // Event Object is passed as method argument
     public function notifyUserAboutVideo(YoutuberNameEvent $youtuberNameEvent)
     {
-        var_dump($youtuberNameEvent->getYoutuberName());    
+        var_dump($youtuberNameEvent->getYoutuberName());
     }
 }
 ```
@@ -191,7 +191,7 @@ And here is the result:
 ```php
 $ php index.php
 string('Jirka Král')
-``` 
+```
 
 
 ## We Are 1 Step Further Now
@@ -204,6 +204,6 @@ You can now:
 
 ### Where to go next?
 
-Still hungry for knowledge? Go check [Symfony documentation](http://symfony.com/doc/current/components/event_dispatcher.html) then. 
+Still hungry for knowledge? Go check [Symfony documentation](http://symfony.com/doc/current/components/event_dispatcher.html) then.
 
 But remember: **practise is the best teacher**.

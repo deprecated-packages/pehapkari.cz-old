@@ -7,13 +7,13 @@ author: 1
 
 ## Jaké články sem patří?
 
-O PHP a jeho ekosystému - git, Github, PHPStorm, Doctrine, Latte, Symfony, Laravel, Nette, Coding Standard, Docker, Composer, Elastica, Redis, PHPUnit, Selenium, Mysql, Postgres, AWS, Blackfire, jak bylo na konferenci, co umí tenhle (můj) balíček...  
+O PHP a jeho ekosystému - git, Github, PHPStorm, Doctrine, Latte, Symfony, Laravel, Nette, Coding Standard, Docker, Composer, Elastica, Redis, PHPUnit, Selenium, Mysql, Postgres, AWS, Blackfire, jak bylo na konferenci, co umí tenhle (můj) balíček...
 
 
 ## Jak napsat článek?
 
 
-> "Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away." 
+> "Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away."
 >
 > – *Antoine de Saint Exupery*
 
@@ -32,7 +32,7 @@ O PHP a jeho ekosystému - git, Github, PHPStorm, Doctrine, Latte, Symfony, Lara
 - **po zpracování připomínek článek vydáme**
 - **hodíme ho na sociální sítě nebo retweetneme tvé sdílení**
 
-Ty si pak můžeš hodit nohy na stůl a slíznout smetanu slávy. Ke smetatně ti pomůže a svoje sociální kruhy.  
+Ty si pak můžeš hodit nohy na stůl a slíznout smetanu slávy. Ke smetatně ti pomůže a svoje sociální kruhy.
 
 
 ## V čem můžeš psát?
@@ -41,7 +41,7 @@ Máš tu k dispozici:
 
 - [Markdown](https://guides.github.com/features/mastering-markdown/#examples) (třeba tento článek je napsaný jen v něm)
 - [Latte](https://latte.nette.org/)
-- [neon](https://ne-on.org/) pro definování dat v hlavičce článku 
+- [neon](https://ne-on.org/) pro definování dat v hlavičce článku
 
 
 ## V jakém jazyce?
