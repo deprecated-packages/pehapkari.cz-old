@@ -8,122 +8,75 @@ id: napis-clanek-vem-si-darek
 
 {block content}
 
-<div class="container section" id="contest-rewards">
+<div class="container" id="contest-rewards">
     <h2 class="text-center">
-        <em class="fa fa-newspaper-o"></em>
-        Napiš článek &dash; vem si dárek
         <em class="fa fa-gift fa-fw"></em>
+        Napiš článek &dash; vem si dárek
     </h2>
 
     <p>
-        Řekli jsme si, že uděláme soutěž, ve které nemusíš doufat v štěstí, tedy <code>rand()</code> funkci, ale <strong>kde úspěch závisí na tvých schopnostech</strong>.
+        A aby se ti lépe psalo, dostaneš za každý článek na <a href="/blog">komunitní blog</a> odměnu.
     </p>
 
-    <h3>Ve zkratce</h3>
+    <h3>4 kroky k tvé nové knížce</h3>
 
     <ul>
-        <li>mrkni na ceny a jednu si vyber</li>
-        <li>abys ji vyhrál, <strong>potřebuješ nasbírat body</strong></li>
-        <li>pod cenami mrkni, jak je nasbírat</li>
-        <li><strong>splň úkol, nasbírej body a vyber si cenu</strong></li>
-        <li>předáme ti ji na srazu nebo pošleme</li>
+        <li><strong>napiš článek</strong> (česky, slovensky nebo anglicky) a pošli pull-request</li>
+        <li>po post-review ti článek schválíme a mergneme</li>
+        <li><strong>vyber si cenu a napiš nám <a href="https://facebook.com/pehapkari">na Facebooku</a></strong></li>
+        <li>cenu ti předáme na srazu nebo pošleme poštou</li>
     </ul>
-
-    <p>Celý proces můžeš opakovat <strong>až třikrát</strong>.</p>
 
     <br>
 
+    <div class="row">
+        {foreach $rewards as $reward}
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        <strong>{$reward['title']}</strong>
+                    </div>
+                    <div class="panel-body">
+                        {if $reward['winner']}
+                            <p class="text-center">
+                                Vyhrál <a n:if="$reward['winner']" href="{$reward['winner']['link']}">{$reward['winner']['name']}</a>
+                            </p>
+                        {/if}
+
+                        <a href="{$reward['product_link']}">
+                            <img src="/assets/images/contest/{$reward['image']}">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            {if $iterator->getCounter() % 3 === 0}
+                </div><div class="row">
+            {/if}
+        {/foreach}
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <em class="fa fa-calendar fa-fw"></em>
+            2. kolo soutěže poběží <strong>v květnu 2017</strong>.
+        </div>
+        <div class="col-md-6">
+            <em class="fa fa-question fa-fw"></em>
+            Dotazy nám piš na <a href="https://www.facebook.com/pehapkari/">Facebook</a>. Odpovíme do pár hodin.
+        </div>
+    </div>
+
+    <hr>
+
     <p>
-        <strong>Všechny knížky jsou z papíru</strong>! Sloni a trička z opravdové látky!
+        Protip: Chceš, aby se tvůj článek o Symfony 3 zachoval aktuální i v Symfony 4?
+    </p>
+    <p>
+        <strong><a href="/blog/2017/01/12/why-articles-with-code-examples-should-be-CI-tested/">Přidej k němu testy</a> a budeme ho udržovat aktualizovaný za tebe</strong>.
     </p>
 
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped">
-
-            <tr>
-                <th colspan="2" class="text-center text-uppercase">Co můžeš vyhrát</th>
-                <th class="text-uppercase">
-                    <nobr>
-                        <em class="fa fa-flag-checkered fa-fw"></em>
-                        Potřebuješ
-                    </nobr>
-                </th>
-                <th class="text-uppercase">
-                    <nobr>
-                        <em class="fa fa-trophy fa-fw"></em>
-                        Už vyhráli
-                    </nobr>
-                </th>
-            </tr>
-            <tr n:foreach="$rewards as $reward">
-                <td class="col-md-2">
-                    <a n:tag-ifset="$reward['product_link']" href="{$reward['product_link']}">
-                        <img src="/assets/images/contest/{$reward['image']}">
-                    </a>
-                </td>
-                <td>
-                    <h3>
-                        {$reward['count']}× {$reward['title']}
-                    </h3>
-                    <p n:ifset="$reward['sponsor_note']">
-                        {$reward['sponsor_note']|noescape}
-                    </p>
-                </td>
-                <td class="col-md-2">
-                    {$reward['value_in_points']} bodů
-                </td>
-                <td>
-                    <ul n:ifcontent="$reward['winners']">
-                        {foreach $reward['winners'] as $name => $link}
-                            <li><a href="{$link}">{$name}</a></li>
-                        {/foreach}
-                    </ul>
-                </td>
-            </tr>
-        </table>
-    </div>
-
-    <div id="contest-description">
-        <h2>
-            <em class="fa fa-fw fa-plus"></em>
-            Jak získat body?
-        </h2>
-
-        <h3>0,5 bodu za pojem do slovníčku</h3>
-
-        <p>Jednoduché na rozjezd. Stačí doplni 1 slovo do našeho <a href="/slovnicek">slovníčku</a>. Jaké pojmy nám chybí najdeš <a href="https://github.com/pehapkari/pehapkari.cz/issues/98#issue-188938879">tady</a>. Za 10 pojmů máš 5 bodů a je to.</p>
-
-        <h3>5 bodů za článek</h3>
-
-        <p>
-            Napiš nám článek - <strong>stačí ti téma a Markdown</strong>. Je to tvůj první článek? Neboj, jsme tu pro tebe &ndash; <strong>dáme ti feedback, revidujeme a článek oblíkneme do stylového a čtivého copy</strong>. <a href="/blog/2016/12/01/chces-psat-o-php-posli-pr/">Tady mrkni jak na to</a>.
-        </p>
-
-        <p>Rozsah článku? 5 minut. Abys měl představu, stačí když se vejdeš mezi <a href="http://pehapkari.cz/blog/2017/01/10/5-temat-po-kterych-php-programatori-touzi/">5 témat, po kterých PHP programátoři touží</a> (3 minuty) a <a href="http://pehapkari.cz/blog/2016/12/30/testovani-php-kodu/">Testování PHP kódu</a> (7 minut).</p>
-
-        <p>Poslední podmínkou je, že musí být exkluzivně u nás, tedy ne re-post z jiného zdroje.</p>
-
-        <h3>10 bodů za otestovaný článek</h3>
-
-        <p>
-            Články, které jsou pokryté testy, <strong>dokáži obstát i vydání nových major verzí</strong>. Má větší hodnotu, a proto za něj dostaneš dvojnásobek.
-        </p>
-
-        <p>
-            Jak takový článek vypadá? <a href="https://github.com/pehapkari/pehapkari.cz/commit/85b69950b32c39b9e972582720a23a18a1adc4be">Mrkni na tento commit</a>. Taky si můžeš přečíst, <a href="http://pehapkari.cz/blog/2017/01/12/why-articles-with-code-examples-should-be-CI-tested/">jak tento koncept vznikl a proč</a>.
-        </p>
-
-        <hr>
-
-        <h2>Podrobnější pravidla</h2>
-
-        <p>Soutěž potrvá <strong>2 měsíce</strong> do 9. března 2017 nebo vysoutěžení zásob.</p>
-        <p>Nemusíš čekat na vydání. Stačí když tvůj článek přijmeme a hned máš body.</p>
-        <p>Kdo dřív získá body, může si dřív vybrat.</p>
-
-        <br>
-
-        <p>Další dotazy ti pohodově odpovíme na <a href="https://www.facebook.com/pehapkari/">naší Facebook stránce</a>.
-        </p>
-    </div>
+    <br>
 </div>
