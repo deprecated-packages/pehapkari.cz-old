@@ -22,6 +22,7 @@ Now all you gotta do it move to the directory and run the gulp (see [gulpfile.js
 
 ```sh
 cd pehapkari.cz
+composer update
 npm install
 gulp
 ```
