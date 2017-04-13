@@ -27,3 +27,10 @@ rewards:
         winner:
 #            name:
 #            link:
+    5:
+        title: "Návrhové vzory v PHP"
+        product_link: "http://knihy.cpress.cz/navrhove-vzory-v-php.html"
+        image: "navrhove-vzory.jpg"
+        winner:
+#            name:
+#            link:
