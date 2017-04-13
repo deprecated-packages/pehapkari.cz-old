@@ -13,6 +13,8 @@ gulp.task('default', function () {
     // Run local server, open localhost:8000 in your browser
     exec('php -S 0.0.0.0:8000 -t output');
 
+    gulputil.log('Server is ready at http://127.0.0.1:8000');
+
     gulp.watch(
         // For the second arg see: https://github.com/floatdrop/gulp-watch/issues/242#issuecomment-230209702
         ['source/**/*', '!**/*___jb_tmp___'],
