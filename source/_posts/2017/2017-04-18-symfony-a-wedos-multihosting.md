@@ -44,7 +44,7 @@ Wedos má návod pro nastavení multihostingu ([návod pro nastavení multihosin
 
 ### .htaccess v root složce Symfony
 
-Wedosí `.htaccess` přesměrovává do root složky (symfonyprojekt.cz), kde hledá index. U Symfony ho zde nenajde, protože je až ve složce web. Proto je potřeba sem do root složky přidat nový `.htaccess` s obsahem, který se postará o další přesměrování.
+Wedosí `.htaccess` přesměrovává do root složky (symfonyprojekt.cz), kde hledá index. U Symfony ho zde nenajde, protože je až ve složce `web`. Proto je potřeba sem do root složky přidat nový `.htaccess` s obsahem, který se postará o další přesměrování.
 
 ```
 RewriteEngine On
