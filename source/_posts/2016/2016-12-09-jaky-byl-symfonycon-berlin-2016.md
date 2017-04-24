@@ -45,11 +45,11 @@ Konec ledna 2017.
 
 ## Don't kill the chef - Keep PHP Alive Between Requests
 
-[Andrew Carter](https://twitter.com/AndrewCarterUK) nám představil možnosti, jak je možné udžet Symfony aplikaci "živou" napříč více requestů a tak [zvýšit výkon výsledné aplikace](http://andrewcarteruk.github.io/slides/soup-up-symfony/#/49).
+[Andrew Carter](https://twitter.com/AndrewCarterUK) nám představil možnosti, jak je možné udžet Symfony aplikaci "živou" napříč více requestů a tak [zvýšit výkon výsledné aplikace](http://andrew.carterlunn.co.uk/slides/soup-up-symfony/#/49).
 
 Upozornil také na nedostatky PHP při běhu v tomto režimu - memory leaky či MySQL timeouty.
 
-**[Mrkni na slajdy](http://andrewcarteruk.github.io/slides/soup-up-symfony/)**
+**[Mrkni na slajdy](http://andrew.carterlunn.co.uk/slides/soup-up-symfony/)**
 
 <div class="text-center">
     <img src="/assets/images/posts/2016/symfonycon/dont-kill-chef.jpg">
@@ -74,7 +74,7 @@ Krom funkcionality se zaměřil na perfomance testy, kde si komponenta vede obst
 
 [Tobias Nyholm](https://github.com/Nyholm) nás uvedl do nové [Workflow komponenty](https://github.com/symfony/workflow), představil principy a ukázky použití. Workflow komponenta by mohla být velmi užitečná v nejedné business aplikaci - **pro stavy uživatelů nebo řízení stavů objednávky**.
 
-**[Mrkni na slajdy](http://www.slideshare.net/TobiasNyholm/knowing-your-state-machines)**
+**[Mrkni na slajdy](https://www.slideshare.net/TobiasNyholm/knowing-your-state-machines)**
 
 
 ## A Year of Symfony

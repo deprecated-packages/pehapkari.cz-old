@@ -11,7 +11,7 @@ reviewed_by: [1, 5]
 
 So you've decided to send a legacy project to his well-deserved retirement and write a nice, clean code instead. But there is an asset you cannot throw away. **Users**.
 
-If you care about web security at least a bit and you haven't lived in a cave for the last couple of years, you might have heard of a fact that **storing users passwords in plaintext is a bad thing**. So even your legacy project did hopefully use a hashing algorithm. But since you care about the security, you would like [to use bcrypt](http://security.stackexchange.com/questions/4781/do-any-security-experts-recommend-bcrypt-for-password-storage) for all users. Right now.
+If you care about web security at least a bit and you haven't lived in a cave for the last couple of years, you might have heard of a fact that **storing users passwords in plaintext is a bad thing**. So even your legacy project did hopefully use a hashing algorithm. But since you care about the security, you would like [to use bcrypt](https://security.stackexchange.com/questions/4781/do-any-security-experts-recommend-bcrypt-for-password-storage) for all users. Right now.
 
 Well, **you might reset all passwords** and send users an e-mail requesting for resetting their passwords. Or do so automatically when they log in.
 
@@ -240,4 +240,4 @@ Depending on your system, this might be just a beginning.
 Maybe you use **different kind of logins**, not just the interactive login. Then you need to extend the solution so the password rehashing will not be skipped. Also, you can make rehashing **completely automatic** using [Doctrine listeners](http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/events.html), so the rehashing is done each time a user changes his password.
 
 Do you have any suggestion for an improvement? Feel free to drop a comment below!
-And check out [my blog focused on Symfony and PHP development](http://blog.ikvasnica.com).
+And check out [my blog focused on Symfony and PHP development](https://ikvasnica.com/blog/).

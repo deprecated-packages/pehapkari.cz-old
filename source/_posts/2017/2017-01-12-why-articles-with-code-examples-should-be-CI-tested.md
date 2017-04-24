@@ -18,7 +18,7 @@ The idea behind Awesome list is to have resources that:
 
 ## How "Awesome Doctrine" was Born
 
-When I was working with Nette, I met **Doctrine ORM** thanks to [Filip Procházka](https://filip-prochazka.com/) and his great [Kdyby](http://github.com/Kdyby) open-source boom.
+When I was working with Nette, I met **Doctrine ORM** thanks to [Filip Procházka](https://filip-prochazka.com/) and his great [Kdyby](https://github.com/Kdyby) open-source boom.
 
 One day I decided to learn more about Doctrine. Documentation looked like a manual for experts rather than something I could learn from. I was also curious **how people use Doctrine in real applications, how to overcome performance issues, some cool features and pro tips**.
 
