@@ -10,7 +10,7 @@ author: 1
 lang: en
 ---
 
-*Martin Zlámal already [wrote about this](http://zlml.cz/psr-4-autoloader-aplikace) (Czech) a year ago and I think this needs to be promoted even more.*
+*Martin Zlámal already [wrote about this](https://zlml.cz/psr-4-autoloader-aplikace) (Czech) a year ago and I think this needs to be promoted even more.*
 
 ## Where is RobotLoader Useful
 
