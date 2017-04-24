@@ -11,11 +11,11 @@ Nevyhovoval mi však úplne štýl, akým je Adminer napísaný. Hlavne **spôso
 
 Rozhodol som sa, že skúsim vytvoriť aplikáciu, **v ktorej by sa na takéto možnosti rozšírenia myslelo hneď od začiatku** (na kopec iných vecí sa určite nemyslelo :) ale tak to chodí).
 
-A tak vznikla aplikácia, ktorej pracovný názov je *Adminer Next Generation* (skrátene *Adminer NG* - poznáte to, vymýšľanie názvov je jedna z najkomplikovanejších vecí v informatike, tak som to zbytočne nekomplikoval a radšej som sa venoval programovaniu).
+A tak vznikla aplikácia, ktorej názov je UniMan (původně *Adminer Next Generation*, skrátene *Adminer NG*).
 
 ## V čom je napísaný a čo podporuje
 
-[Adminer NG](https://github.com/lulco/adminerng) je napísaná ako jednoduchá [Nette aplikácia](https://nette.org) s využitím [Twitter Bootstrapu](http://getbootstrap.com).
+[UniMan](https://github.com/lulco/uniman) je napísaná ako jednoduchá [Nette aplikácia](https://nette.org) s využitím [Twitter Bootstrapu](http://getbootstrap.com).
 
 ### V súčasnosti umožňuje pripojenie k
 
@@ -83,10 +83,8 @@ Samozrejme, pracuje sa aj na editácii a vytváraní záznamov / tabuliek / data
 
 ## Chceš si ho vyskúšať?
 
-Adminer NG si môžete [stiahnuť ako 1 súbor](http://midatech.sk/adminerng/download.php) a hneď používať.
+Môžete si **stiahnuť aktuálnu verziu** z [GitHubu](https://github.com/lulco/uniman) a spustiť `sh scripts/init.sh`, ktorý za vás spustí `composer install` a vytvorí priečinky `/log` a `/temp` v roote aplikácie.
 
-Alebo si **môžete stiahnuť aktuálnu verziu** z [GitHubu](https://github.com/lulco/adminerng) a spustiť `sh scripts/init.sh`, ktorý za vás spustí `composer install` a vytvorí priečinky `/log` a `/temp` v roote aplikácie.
-
-Pokiaľ vám niečo bude chýbať (čo je v tejto fáze vývoja viac ako isté), môžete [spraviť issue](https://github.com/lulco/adminerng/issues) alebo ideálne rovno pull request. Vopred za všetky ďakujem :)
+Pokiaľ vám niečo bude chýbať (čo je v tejto fáze vývoja viac ako isté), môžete [spraviť issue](https://github.com/lulco/uniman/issues) alebo ideálne rovno pull request. Vopred za všetky ďakujem :)
 
 Ak sa chcete čokoľvek opýtať alebo konštruktívne skritizovať, napíšte do diskusie :)
