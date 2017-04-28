@@ -134,3 +134,10 @@ mentors:
         intro_message: "PHP, Doctrine, Nette, ReactJS"
         link: "http://www.hrebecek.cz"
         remote: false
+    20:
+        name: "Štěpán Kocourek"
+        location: "Praha"
+        email: "stepan@kocourek.io"
+        intro_message: "PHP, Nette, code review, základy Gitu"
+        link: "http://kocourek.io"
+        remote: false
