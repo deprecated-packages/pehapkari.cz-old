@@ -14,20 +14,13 @@ rewards:
 #            name:
 #            link:
     3:
-        title: "Persistence in PHP with Doctrine ORM"
-        product_link: "https://filip-prochazka.com/blog/kniha-persistence-in-php-with-doctrine-orm"
-        image: "doctrine.jpg"
-        winner:
-#            name:
-#            link:
-    4:
         title: "Úplně nová mysl"
         product_link: "http://neoluxor.cz/odborne-knihy/uplne-nova-mysl--29453/"
         image: "uplne-nova-mysl.jpg"
         winner:
 #            name:
 #            link:
-    5:
+    4:
         title: "Návrhové vzory v PHP"
         product_link: "http://knihy.cpress.cz/navrhove-vzory-v-php.html"
         image: "navrhove-vzory.jpg"
