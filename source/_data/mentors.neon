@@ -1,13 +1,13 @@
 mentors:
     1:
-        name: "Milan Šulc"
+        name: "Milan Felix Šulc"
         location: "Hradec Králové"
         email: "sulcmil@gmail.com"
         # self-promo, co chceš mentorovat, max. 140 znaků
-        intro_message: "Pomůžu ti s Nette, Dockerem a přesahem do frontendu."
+        intro_message: "Open Source Ninja - Nette, Componette, Planette, Contributte."
         # nepovinné: web, Twitter, FB..., stránka, kterou udržuješ a kde se něco dozvím
         link: "https://jfx.cz/"
-        remote: false
+        remote: true
     2:
         name: "Tomáš Votruba"
         location: "Praha"
