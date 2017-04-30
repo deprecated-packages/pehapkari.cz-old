@@ -70,6 +70,8 @@ id: mentori
                 <th>Kde</th>
                 <th>Kontakt</th>
             </tr>
+            {* sort the list of mentors alphabetically so it's not biased towards those who came first *}
+            {php usort($mentors, function ($a, $b) { return strcasecmp(iconv('UTF-8', 'ASCII//TRANSLIT', $a['name']), iconv('UTF-8', 'ASCII//TRANSLIT', $b['name'])); })}
             <tr n:foreach="$mentors as $mentor">
                 {continueIf ($remote && ! $mentor['remote']) || (!$remote && $mentor['remote'])}
                 <td>
