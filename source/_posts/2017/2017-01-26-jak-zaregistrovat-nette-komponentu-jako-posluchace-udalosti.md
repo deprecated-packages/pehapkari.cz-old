@@ -112,7 +112,7 @@ V presenteru `CategoryPresenter` máme zaregistrované komponenty `AddToBasketCo
 
 ## Nástroje
 
-Budeme potřebovat [Symfony\EventDispatcher](http://symfony.com/doc/current/components/event_dispatcher.html) (základní infromace o něm můžete načerpat z článku [Event Dispatcher from the Scratch](http://pehapkari.cz/blog/2016/12/05/symfony-event-dispatcher/)). To je vše! :)
+Budeme potřebovat [Symfony\EventDispatcher](http://symfony.com/doc/current/components/event_dispatcher.html) (základní infromace o něm můžete načerpat z článku [Event Dispatcher from the Scratch](https://pehapkari.cz/blog/2016/12/05/symfony-event-dispatcher/)). To je vše! :)
 
 
 ## Napojíme `Symfony\EventDispatcher` do Nette DI

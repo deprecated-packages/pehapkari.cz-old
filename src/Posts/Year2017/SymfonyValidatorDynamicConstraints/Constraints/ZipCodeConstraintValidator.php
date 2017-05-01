@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Pehapkari\Website\Posts\Year2017\SymfonyValidatorDynamicConstraints\Constraints;
 
@@ -15,7 +14,7 @@ final class ZipCodeConstraintValidator extends ConstraintValidator
      * @param mixed $value
      * @param ZipCodeConstraint $constraint
      */
-    public function validate($value, Constraint $constraint)
+    public function validate($value, Constraint $constraint): void
     {
         if (! $value) {
             return;
@@ -26,7 +25,7 @@ final class ZipCodeConstraintValidator extends ConstraintValidator
         }
     }
 
-    private function createViolation(string $message)
+    private function createViolation(string $message): void
     {
         $this->context->buildViolation($message)
             ->addViolation();

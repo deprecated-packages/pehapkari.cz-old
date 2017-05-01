@@ -22,28 +22,23 @@ id: mentori
 
         <br>
 
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped">
-                <tr>
-                    <th>Kdo</th>
-                    <th>Kde</th>
-                    <th>Co nejradši mentoruje</th>
-                    <th>Kontakt</th>
-                </tr>
-                <tr n:foreach="$mentors as $mentor">
-                    <td>
-                        <nobr><a n:tag-ifset="$mentor['link']" href="{$mentor['link']}">{$mentor['name']}</a></nobr>
-                    </td>
-                    <td>
-                        <nobr>{$mentor['location']}</nobr>
-                    </td>
-                    <td>
-                        <strong n:tag-if="strlen($mentor['intro_message']) < 140">{$mentor['intro_message']}</strong>
-                    </td>
-                    <td><a href="mailto:{$mentor['email']}">{$mentor['email']}</td>
-                </tr>
-            </table>
-        </div>
+        <h3>
+            <em class="fa fa-wifi fa-fw"></em>
+            Mentoři, kteří ti pomůžou i online
+        </h3>
+
+        <br>
+
+        {include mentorTable, "mentors" => $mentors, "remote" => true}
+
+        <h3>
+            <em class="fa fa-coffee fa-fw"></em>
+            Osobní mentoři
+        </h3>
+
+        <br>
+
+        {include mentorTable, "mentors" => $mentors, "remote" => false}
 
         <hr>
 
@@ -64,3 +59,32 @@ id: mentori
 
     </div>
 {/block}
+
+
+{define mentorTable}
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>Kdo</th>
+                <th>Co nejradši mentoruje</th>
+                <th>Kde</th>
+                <th>Kontakt</th>
+            </tr>
+            {* sort the list of mentors alphabetically so it's not biased towards those who came first *}
+            {php usort($mentors, function ($a, $b) { return strcasecmp(iconv('UTF-8', 'ASCII//TRANSLIT', $a['name']), iconv('UTF-8', 'ASCII//TRANSLIT', $b['name'])); })}
+            <tr n:foreach="$mentors as $mentor">
+                {continueIf ($remote && ! $mentor['remote']) || (!$remote && $mentor['remote'])}
+                <td>
+                    <nobr><a n:tag-ifset="$mentor['link']" href="{$mentor['link']}">{$mentor['name']}</a></nobr>
+                </td>
+                <td>
+                    <strong n:tag-if="strlen($mentor['intro_message']) < 140">{$mentor['intro_message']}</strong>
+                </td>
+                <td>
+                    {$mentor['location']}
+                </td>
+                <td><a href="mailto:{$mentor['email']}">{$mentor['email']}</td>
+            </tr>
+        </table>
+    </div>
+{/define}

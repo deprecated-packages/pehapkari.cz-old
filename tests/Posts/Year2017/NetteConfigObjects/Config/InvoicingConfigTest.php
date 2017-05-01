@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Pehapkari\Website\Tests\Posts\Year2017\NetteConfigObjects\Config;
 
@@ -11,23 +9,25 @@ use PHPUnit\Framework\TestCase;
 
 final class InvoicingConfigTest extends TestCase
 {
-    const PDF_PATH = 'tests/Posts/Year2017/NetteConfigObjects/../invoices';
+    /**
+     * @var string
+     */
+    private const PDF_PATH = 'tests/Posts/Year2017/NetteConfigObjects/../invoices';
 
     /**
      * @var Container
      */
     private $container;
 
-
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->container = (new ContainerFactory)->create();
     }
 
-    public function testBasicRequest()
+    public function testBasicRequest(): void
     {
         /** @var InvoicingConfig $config */
         $config = $this->container->getByType(InvoicingConfig::class);

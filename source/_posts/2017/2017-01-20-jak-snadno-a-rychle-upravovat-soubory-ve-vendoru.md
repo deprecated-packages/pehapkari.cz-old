@@ -41,7 +41,7 @@ Pokud si alespoň na jednu otázku odpovím ano, tak mám opět problém. Spole�
 
 Naštěstí existuje balíček, který za tebe **vyřeší všechny problémy**, na které jsi zde narazil! [cweagans/composer-patches](https://github.com/cweagans/composer-patches) je balíček, který obsahuje nástroje pro patchování souborů (co je to [patch](https://cs.wikipedia.org/wiki/Patch)?). Zároveň je natolik chytrý, že poslouchá Composer a při instalaci/aktualizaci balíčku dokáže určit, zda pro daný balíček existuje patch a zda ho má aplikovat nebo ho už aplikoval.
 
-Jak je to možné? Composer při instalaci balíčků vyvolává události, na které `cweagans/composer-patches` poslouchá a podle toho reaguje (jak fungují [události](http://pehapkari.cz/blog/2016/12/05/symfony-event-dispatcher/)?).
+Jak je to možné? Composer při instalaci balíčků vyvolává události, na které `cweagans/composer-patches` poslouchá a podle toho reaguje (jak fungují [události](https://pehapkari.cz/blog/2016/12/05/symfony-event-dispatcher/)?).
 
 Dost teorie - jdeme opravit chybu!
 

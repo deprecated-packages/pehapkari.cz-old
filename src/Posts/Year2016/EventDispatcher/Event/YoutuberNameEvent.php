@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Pehapkari\Website\Posts\Year2016\EventDispatcher\Event;
 
@@ -17,7 +16,7 @@ final class YoutuberNameEvent extends Event
         $this->youtuberName = $youtuberName;
     }
 
-    public function getYoutuberName() : string
+    public function getYoutuberName(): string
     {
         return $this->youtuberName;
     }

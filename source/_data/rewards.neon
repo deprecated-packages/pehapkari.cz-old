@@ -1,95 +1,22 @@
 rewards:
-    4:
-        title: "Principles of Package Design"
-        product_link: "https://leanpub.com/principles-of-package-design"
-        count: 3
-        image: "principles.jpg"
-        sponsor_note: 'Darovalo <a href="http://www.jobsdev.cz/">JobsDev</a>'
-        value_in_points: 5
-        winners:
-            @TomasPilar: https://github.com/pehapkari/pehapkari.cz/pull/174
-            @foxycode: https://github.com/pehapkari/pehapkari.cz/pull/197
-            @hranicka: https://github.com/pehapkari/pehapkari.cz/pull/213
-            # https://github.com/pehapkari/pehapkari.cz/pull/217
-    1:
-        title: "roční licence na PHPStorm"
-        product_link: "https://www.jetbrains.com/phpstorm/buy/#edition=personal"
-        count: 5
-        image: "phpstorm.png"
-        value_in_points: 10
-        winners:
-            @enumag: https://github.com/pehapkari/pehapkari.cz/pull/199
     2:
-        title: "Návrhové vzory v PHP"
-        product_link: "http://knihy.cpress.cz/navrhove-vzory-v-php.html"
-        count: 2
-        image: "navrhove-vzory.jpg"
-        value_in_points: 5
-        winners:
-            @TomasPilar: https://github.com/pehapkari/pehapkari.cz/pull/176
-    8:
-        title: "Nette kemp triko"
-        count: 5
-        image: "nette-triko.jpg"
-        sponsor_note: 'Daroval Honza Černý a David Grudl z <a href="http://nette.org">Nette</a>'
-        custom_note: "Máme: S, XL, XL, XL, XXL"
-        value_in_points: 5
-        winners:
-            @enumag: https://github.com/pehapkari/pehapkari.cz/pull/199
-    3:
         title: "1001 tipů a triků pro PHP"
         product_link: "https://phpfashion.com/recenze-knihy-1001-tipu-a-triku-pro-php"
-        count: 2
         image: "1001-php.jpg"
-        sponsor_note: 'Darovalo <a href="http://www.jobsdev.cz/">JobsDev</a>'
-        value_in_points: 5
-        winners: []
-    7:
-        title: "Černý Symfony sloník k 10. výročí"
-        count: 5
-        image: "slonik.jpg"
-        value_in_points: 7
-        winners:
-            @kbarborak: https://github.com/pehapkari/pehapkari.cz/pull/172
-            @foxycode: https://github.com/pehapkari/pehapkari.cz/pull/187
-            # + https://github.com/pehapkari/pehapkari.cz/pull/193
-            @hranicka: https://github.com/pehapkari/pehapkari.cz/pull/217
-            # + https://github.com/pehapkari/pehapkari.cz/pull/213
-            @klimesf: https://github.com/pehapkari/pehapkari.cz/pull/233
-    5:
-        title: "Web Security 2016"
-        product_link: "https://www.phparch.com/books/web-security-2016/"
-        count: 4
-        image: "security.png"
-        sponsor_note: 'Mile a nečekaně daroval <a href="https://www.michalspacek.cz">Michal Špaček</a>'
-        value_in_points: 5
-        winners:
-            @TomasPilar: https://github.com/pehapkari/pehapkari.cz/pull/176
-            @ikvasnica: https://github.com/pehapkari/pehapkari.cz/pull/200
-            @enumag: https://github.com/pehapkari/pehapkari.cz/pull/199
-            @rancimat: https://github.com/pehapkari/pehapkari.cz/pull/205
-            # + https://github.com/pehapkari/pehapkari.cz/pull/201
-    6:
-        title: "Persistence in PHP with Doctrine ORM"
-        product_link: "https://filip-prochazka.com/blog/kniha-persistence-in-php-with-doctrine-orm"
-        count: 1
-        image: "doctrine.jpg"
-        sponsor_note: 'Darovalo <a href="http://www.jobsdev.cz/">JobsDev</a>'
-        value_in_points: 5
-        winners: []
-#    9:
-#        title: "Úplně nová mysl"
-#        product_link: "http://neoluxor.cz/odborne-knihy/uplne-nova-mysl--29453/"
-#        count: 1
-#        image: "uplne-nova-mysl.jpg" # todo
-#        value_in_points: 5
-#        winners: []
-#        # donated by Tomas Votruba
-#    10:
-#        title: "Zázračný úklid"
-#        product_link: "https://www.kosmas.cz/knihy/208226/zazracny-uklid/"
-#        count: 1
-#        image: "zazracyn-uklid.jpg" # todo
-#        value_in_points: 5
-#        winners: []
-#        # donated by Tomas Votruba
+        winner:
+#            name:
+#            link:
+    3:
+        title: "Úplně nová mysl"
+        product_link: "http://neoluxor.cz/odborne-knihy/uplne-nova-mysl--29453/"
+        image: "uplne-nova-mysl.jpg"
+        winner:
+#            name:
+#            link:
+    4:
+        title: "Návrhové vzory v PHP"
+        product_link: "http://knihy.cpress.cz/navrhove-vzory-v-php.html"
+        image: "navrhove-vzory.jpg"
+        winner:
+#            name:
+#            link:

@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Pehapkari\Website\Tests\Posts\Year2016\EventDispatcher;
 
@@ -10,10 +8,10 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
 
 final class EventDispatchingTest extends TestCase
 {
-    public function test()
+    public function test(): void
     {
-        $eventDispatcher = new EventDispatcher();
-        $notifyMeOnVideoPublishedEventSubscriber = new NotifyMeOnVideoPublishedEventSubscriber();
+        $eventDispatcher = new EventDispatcher;
+        $notifyMeOnVideoPublishedEventSubscriber = new NotifyMeOnVideoPublishedEventSubscriber;
         $eventDispatcher->addSubscriber($notifyMeOnVideoPublishedEventSubscriber);
 
         // nothing happened, default value

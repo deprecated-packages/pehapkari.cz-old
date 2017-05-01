@@ -17,10 +17,6 @@
                     <em class="fa fa-handshake-o fa-fw"></em>
                     Mentoři
                 </a>
-                <a href="/knihovnicka/" n:class="(isset($id) && $id === knihovnicka) ? active">
-                    <em class="fa fa-newspaper-o fa-fw"></em>
-                    Knížky
-                </a>
 
                 {ifset $post}
                     {capture $githubEditLink}{$post|githubEditPostUrl}{/capture}

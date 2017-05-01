@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Pehapkari\Website\Posts\Year2017\ListeningNetteComponents\Component\AddToBasketControl;
 
@@ -10,7 +9,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 final class AddToBasketControl extends Control
 {
     /**
-     * @var array
+     * @var int[]|string[]
      */
     private $product;
 
@@ -19,15 +18,16 @@ final class AddToBasketControl extends Control
      */
     private $eventDispatcher;
 
-
+    /**
+     * @param int[]|string[] $product
+     */
     public function __construct(array $product, EventDispatcherInterface $eventDispatcher)
     {
         $this->product = $product;
         $this->eventDispatcher = $eventDispatcher;
     }
 
-
-    public function handleAdd()
+    public function handleAdd(): void
     {
         // Zde může být nějaká složitější logika
         // např.: $this->basketFacade->addProduct($this->product);
@@ -44,8 +44,7 @@ final class AddToBasketControl extends Control
         ); // vyvoláme událost!
     }
 
-
-    public function render()
+    public function render(): void
     {
         $this->template->render(__DIR__ . '/templates/default.latte');
     }
