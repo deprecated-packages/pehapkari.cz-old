@@ -4,8 +4,12 @@ namespace Pehapkari\Website\Posts\Year2017\NetteConfigObjects\Forms;
 
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
+use Nette\Bridges\ApplicationLatte\Template;
 use Pehapkari\Website\Posts\Year2017\NetteConfigObjects\Config\InvoicingConfig;
 
+/**
+ * @method Template getTemplate()
+ */
 final class InvoiceFormNew extends Control
 {
     /**
