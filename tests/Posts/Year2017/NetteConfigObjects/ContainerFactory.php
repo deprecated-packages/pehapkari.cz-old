@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Pehapkari\Website\Tests\Posts\Year2017\NetteConfigObjects;
 
@@ -10,7 +8,7 @@ use Nette\Utils\FileSystem;
 
 final class ContainerFactory
 {
-    public function create() : Container
+    public function create(): Container
     {
         $configurator = new Configurator;
         $configurator->setTempDirectory($this->createAndReturnTempDir());
@@ -19,11 +17,12 @@ final class ContainerFactory
         return $configurator->createContainer();
     }
 
-    private function createAndReturnTempDir() : string
+    private function createAndReturnTempDir(): string
     {
         $tempDir = sys_get_temp_dir() . '/pehapkari-nette-config-objects';
         FileSystem::delete($tempDir);
         FileSystem::createDir($tempDir);
+
         return $tempDir;
     }
 }

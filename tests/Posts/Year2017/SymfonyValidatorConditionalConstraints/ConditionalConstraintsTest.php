@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Pehapkari\Website\Tests\Posts\Year2017\SymfonyValidatorConditionalConstraints;
 
@@ -18,16 +16,16 @@ final class ConditionalConstraintsTest extends TestCase
      */
     private $validator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder;
         $builder->enableAnnotationMapping();
         $this->validator = $builder->getValidator();
     }
 
-    public function testViolationsFromDefaultAndCustomGroup()
+    public function testViolationsFromDefaultAndCustomGroup(): void
     {
-        $client = new Client();
+        $client = new Client;
 
         $this->assertViolations(
             [
@@ -38,9 +36,9 @@ final class ConditionalConstraintsTest extends TestCase
         );
     }
 
-    public function testViolationsFromCompanyGroup()
+    public function testViolationsFromCompanyGroup(): void
     {
-        $client = new Client();
+        $client = new Client;
         $client->setType(Client::TYPE_COMPANY);
 
         $this->assertViolations(
@@ -51,9 +49,9 @@ final class ConditionalConstraintsTest extends TestCase
         );
     }
 
-    public function testViolationsFromPersonGroup()
+    public function testViolationsFromPersonGroup(): void
     {
-        $client = new Client();
+        $client = new Client;
         $client->setType(Client::TYPE_PERSON);
 
         $this->assertViolations(
@@ -65,11 +63,14 @@ final class ConditionalConstraintsTest extends TestCase
         );
     }
 
-    private function assertViolations(array $expected, ConstraintViolationListInterface $violationList)
+    /**
+     * @param string[] $expected
+     */
+    private function assertViolations(array $expected, ConstraintViolationListInterface $violationList): void
     {
         $violations = [];
         foreach ($violationList as $violation) {
-            /** @var ConstraintViolationInterface $violation */
+            /* @var ConstraintViolationInterface $violation */
             $violations[$violation->getPropertyPath()] = $violation->getMessage();
         }
 

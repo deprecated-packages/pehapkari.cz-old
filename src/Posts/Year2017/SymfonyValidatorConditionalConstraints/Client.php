@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Pehapkari\Website\Posts\Year2017\SymfonyValidatorConditionalConstraints;
 
@@ -12,8 +10,15 @@ use Symfony\Component\Validator\GroupSequenceProviderInterface;
  */
 final class Client implements GroupSequenceProviderInterface
 {
-    const TYPE_COMPANY = 1;
-    const TYPE_PERSON = 2;
+    /**
+     * @var int
+     */
+    public const TYPE_COMPANY = 1;
+
+    /**
+     * @var int
+     */
+    public const TYPE_PERSON = 2;
 
     /**
      * @var int
@@ -41,9 +46,9 @@ final class Client implements GroupSequenceProviderInterface
     private $lastname;
 
     /**
-     * {@inheritdoc}
+     * @return string[][]
      */
-    public function getGroupSequence()
+    public function getGroupSequence(): array
     {
         return [
             [
@@ -53,42 +58,42 @@ final class Client implements GroupSequenceProviderInterface
         ];
     }
 
-    public function getType() : int
+    public function getType(): int
     {
         return $this->type;
     }
 
-    public function setType(int $type)
+    public function setType(int $type): void
     {
         $this->type = $type;
     }
 
-    public function getCompany() : string
+    public function getCompany(): string
     {
         return $this->company;
     }
 
-    public function setCompany(string $company)
+    public function setCompany(string $company): void
     {
         $this->company = $company;
     }
 
-    public function getFirstname() : string
+    public function getFirstname(): string
     {
         return $this->firstname;
     }
 
-    public function setFirstname(string $firstname)
+    public function setFirstname(string $firstname): void
     {
         $this->firstname = $firstname;
     }
 
-    public function getLastname() : string
+    public function getLastname(): string
     {
         return $this->lastname;
     }
 
-    public function setLastname(string $lastname)
+    public function setLastname(string $lastname): void
     {
         $this->lastname = $lastname;
     }

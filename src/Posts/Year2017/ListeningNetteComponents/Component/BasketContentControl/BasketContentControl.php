@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Pehapkari\Website\Posts\Year2017\ListeningNetteComponents\Component\BasketContentControl;
 
@@ -12,15 +11,13 @@ use Pehapkari\Website\Posts\Year2017\ListeningNetteComponents\Event\ProductAdded
  */
 final class BasketContentControl extends Control
 {
-
     /**
-     * @var array
+     * @var mixed[][]
      */
     private $products = [];
 
-
     // Tuto metodu zavolá EventSubscriber, protože je nastavena jako listener callback v CategoryPresenter::startup()
-    public function onProductAddedToBasketEvent(ProductAddedToBasketEvent $productAddedToBasketEvent)
+    public function onProductAddedToBasketEvent(ProductAddedToBasketEvent $productAddedToBasketEvent): void
     {
         $product = [
             'id' => $productAddedToBasketEvent->getId(),
@@ -33,8 +30,7 @@ final class BasketContentControl extends Control
         $this->redrawControl('content');
     }
 
-
-    public function render()
+    public function render(): void
     {
         $this->getTemplate()->render(
             __DIR__ . '/templates/default.latte',
