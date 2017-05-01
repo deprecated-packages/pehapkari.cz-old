@@ -4,14 +4,21 @@ namespace Pehapkari\Website\Posts\Year2017\NetteConfigObjects\Forms;
 
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
+use Nette\Bridges\ApplicationLatte\Template;
 
+/**
+ * @method Template getTemplate()
+ */
 final class InvoiceFormOld extends Control
 {
     /**
-     * @var array
+     * @var mixed[]
      */
     private $config;
 
+    /**
+     * @param mixed[] $config
+     */
     public function __construct(array $config)
     {
         $this->config = $config;

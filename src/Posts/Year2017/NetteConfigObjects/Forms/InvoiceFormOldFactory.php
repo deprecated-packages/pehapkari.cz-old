@@ -5,10 +5,13 @@ namespace Pehapkari\Website\Posts\Year2017\NetteConfigObjects\Forms;
 final class InvoiceFormOldFactory
 {
     /**
-     * @var array
+     * @var mixed[]
      */
     private $config;
 
+    /**
+     * @param mixed[] $config
+     */
     public function __construct(array $config)
     {
         $this->config = $config;

@@ -46,9 +46,9 @@ final class Client implements GroupSequenceProviderInterface
     private $lastname;
 
     /**
-     * {@inheritdoc}
+     * @return string[][]
      */
-    public function getGroupSequence()
+    public function getGroupSequence(): array
     {
         return [
             [

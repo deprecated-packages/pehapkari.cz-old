@@ -17,7 +17,7 @@ final class HashPasswordCommand extends Command
         $this->addArgument('password', InputArgument::REQUIRED, 'Password to be hashed.');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $password = $input->getArgument('password');
 

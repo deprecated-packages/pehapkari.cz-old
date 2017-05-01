@@ -67,6 +67,10 @@ checkers:
             - $rootNode
             - $requestMock
             - $entityManagerMock
+        methodsStartingAFluentInterface:
+            - buildViolation
+            - getValidator
+            - addText
 
     # Naming Conventions
     - PHP_CodeSniffer\Standards\Generic\Sniffs\NamingConventions\UpperCaseConstantNameSniff
@@ -127,7 +131,7 @@ checkers:
             - @todo
             - @dataProvider
             - @expectedException
-            - @Assert\Callbackq
+            - @Assert\Callback
         enableEachParameterAndReturnInspection: true
     - SlevomatCodingStandard\Sniffs\Namespaces\AlphabeticallySortedUsesSniff
     - SlevomatCodingStandard\Sniffs\Namespaces\DisallowGroupUseSniff
@@ -270,5 +274,9 @@ checkers:
 
     # Architecture
     - Symplify\CodingStandard\Sniffs\Architecture\ForbiddenTraitSniff
-    - Symplify\CodingStandard\Sniffs\Classes\EqualInterfaceImplementationSniff
     - Symplify\CodingStandard\Sniffs\Classes\FinalInterfaceSniff
+
+parameters:
+    skip:
+        PHP_CodeSniffer\Standards\Generic\Sniffs\Files\LineLengthSniff:
+            - src/Posts/Year2017/ListeningNetteComponents/Presenter/CategoryPresenter.php

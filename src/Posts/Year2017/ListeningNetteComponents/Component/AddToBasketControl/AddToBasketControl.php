@@ -9,7 +9,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 final class AddToBasketControl extends Control
 {
     /**
-     * @var array
+     * @var mixed[][]
      */
     private $product;
 
@@ -18,6 +18,9 @@ final class AddToBasketControl extends Control
      */
     private $eventDispatcher;
 
+    /**
+     * @param mixed[][] $product
+     */
     public function __construct(array $product, EventDispatcherInterface $eventDispatcher)
     {
         $this->product = $product;

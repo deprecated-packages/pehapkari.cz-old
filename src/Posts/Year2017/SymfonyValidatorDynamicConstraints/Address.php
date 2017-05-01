@@ -22,6 +22,9 @@ final class Address
      */
     protected $zipcode;
 
+    /**
+     * @Assert\Callback(groups = "zipcode")
+     */
     public function validateZipcode(ExecutionContextInterface $context): void
     {
         $constraint = new ZipCodeConstraint(['country' => $this->country]);

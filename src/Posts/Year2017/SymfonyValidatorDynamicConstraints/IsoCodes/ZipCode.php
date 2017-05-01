@@ -10,7 +10,7 @@ use InvalidArgumentException;
 final class ZipCode
 {
     /**
-     * @var array
+     * @var string[]
      */
     private static $patterns = [
         'CZ' => '\\d{3} ?\\d{2}',

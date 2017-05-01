@@ -19,7 +19,7 @@ final class ZipCodeConstraint extends Constraint
     public $message = 'This value is not a valid ZIP code.';
 
     /**
-     * @param array $options
+     * @param mixed[] $options
      */
     public function __construct(?array $options = null)
     {

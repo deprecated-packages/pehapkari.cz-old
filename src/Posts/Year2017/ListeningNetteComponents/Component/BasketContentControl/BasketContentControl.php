@@ -12,7 +12,7 @@ use Pehapkari\Website\Posts\Year2017\ListeningNetteComponents\Event\ProductAdded
 final class BasketContentControl extends Control
 {
     /**
-     * @var array
+     * @var mixed[][]
      */
     private $products = [];
 
