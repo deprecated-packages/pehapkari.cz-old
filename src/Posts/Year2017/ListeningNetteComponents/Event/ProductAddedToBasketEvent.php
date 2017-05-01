@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Pehapkari\Website\Posts\Year2017\ListeningNetteComponents\Event;
 
@@ -22,7 +21,6 @@ final class ProductAddedToBasketEvent extends Event
      */
     private $price;
 
-
     public function __construct(int $id, string $name, int $price)
     {
         $this->id = $id;
@@ -30,17 +28,17 @@ final class ProductAddedToBasketEvent extends Event
         $this->price = $price;
     }
 
-    public function getId() : int
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getName() : string
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function getPrice() : int
+    public function getPrice(): int
     {
         return $this->price;
     }

@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Pehapkari\Website\Tests\Posts\Year2017\SymfonyConsole\Command;
 
@@ -12,15 +10,15 @@ use Symfony\Component\Console\Output\BufferedOutput;
 
 final class HashPasswordCommandTest extends TestCase
 {
-    public function test()
+    public function test(): void
     {
-        $application = new Application();
+        $application = new Application;
         $application->setAutoExit(false); // required for testing output
-        $application->add(new HashPasswordCommand());
+        $application->add(new HashPasswordCommand);
 
         // same as when you run "bin/console hash-password Y2Kheslo123"
         $input = new StringInput('hash-password Y2Kheslo123');
-        $output = new BufferedOutput();
+        $output = new BufferedOutput;
 
         $result = $application->run($input, $output);
         $this->assertSame(0, $result); // 0 = success, sth else = fail

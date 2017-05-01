@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Pehapkari\Website\Posts\Year2017\SymfonyConsole\Command;
 
@@ -12,7 +10,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 final class HashPasswordCommand extends Command
 {
-    protected function configure()
+    protected function configure(): void
     {
         $this->setName('hash-password');
         $this->setDescription('Hashes provided password with BCRYPT and prints to output.');

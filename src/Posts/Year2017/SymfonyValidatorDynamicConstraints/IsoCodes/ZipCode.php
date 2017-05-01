@@ -1,12 +1,11 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Pehapkari\Website\Posts\Year2017\SymfonyValidatorDynamicConstraints\IsoCodes;
 
 use InvalidArgumentException;
 
 /**
- * Inspired by https://github.com/ronanguilloux/IsoCodes/blob/master/src/IsoCodes/ZipCode.php
+ * Inspired by https://github.com/ronanguilloux/IsoCodes/blob/master/src/IsoCodes/ZipCode.php.
  */
 final class ZipCode
 {
@@ -18,7 +17,7 @@ final class ZipCode
         'US' => '(\\d{5})(?:[ \\-](\\d{4}))?'
     ];
 
-    public static function validate(string $zipcode, string $country) : bool
+    public static function validate(string $zipcode, string $country): bool
     {
         $country = strtoupper($country);
 
@@ -30,7 +29,7 @@ final class ZipCode
         }
 
         return (bool) preg_match(
-            '/^('.self::$patterns[$country].')$/',
+            '/^(' . self::$patterns[$country] . ')$/',
             $zipcode
         );
     }
@@ -38,7 +37,7 @@ final class ZipCode
     /**
      * @return string[]
      */
-    public static function getAvailableCountries() : array
+    public static function getAvailableCountries(): array
     {
         return array_keys(self::$patterns);
     }

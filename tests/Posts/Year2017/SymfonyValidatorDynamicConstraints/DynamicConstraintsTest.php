@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Pehapkari\Website\Tests\Posts\Year2017\SymfonyValidatorDynamicConstraints;
 
@@ -17,16 +16,16 @@ final class DynamicConstraintsTest extends TestCase
      */
     private $validator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder;
         $builder->enableAnnotationMapping();
         $this->validator = $builder->getValidator();
     }
 
-    public function testInvalidZipcode()
+    public function testInvalidZipcode(): void
     {
-        $address = new Address();
+        $address = new Address;
         $address->setCountry('US');
         $address->setZipcode('123456');
 
@@ -38,9 +37,9 @@ final class DynamicConstraintsTest extends TestCase
         );
     }
 
-    public function testValidZipcode()
+    public function testValidZipcode(): void
     {
-        $address = new Address();
+        $address = new Address;
         $address->setCountry('US');
         $address->setZipcode('12345-6789');
 
@@ -50,11 +49,11 @@ final class DynamicConstraintsTest extends TestCase
         );
     }
 
-    private function assertViolations(array $expected, ConstraintViolationListInterface $violationList)
+    private function assertViolations(array $expected, ConstraintViolationListInterface $violationList): void
     {
         $violations = [];
         foreach ($violationList as $violation) {
-            /** @var ConstraintViolationInterface $violation */
+            /* @var ConstraintViolationInterface $violation */
             $violations[$violation->getPropertyPath()] = $violation->getMessage();
         }
 

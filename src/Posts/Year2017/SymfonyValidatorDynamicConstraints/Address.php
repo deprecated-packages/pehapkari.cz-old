@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Pehapkari\Website\Posts\Year2017\SymfonyValidatorDynamicConstraints;
 
@@ -24,10 +22,7 @@ final class Address
      */
     protected $zipcode;
 
-    /**
-     * @Assert\Callback(groups = "zipcode")
-     */
-    public function validateZipcode(ExecutionContextInterface $context)
+    public function validateZipcode(ExecutionContextInterface $context): void
     {
         $constraint = new ZipCodeConstraint(['country' => $this->country]);
         $context
@@ -37,22 +32,22 @@ final class Address
             ->validate($this->zipcode, $constraint, [Constraint::DEFAULT_GROUP]);
     }
 
-    public function getCountry() : string
+    public function getCountry(): string
     {
         return $this->country;
     }
 
-    public function setCountry(string $country)
+    public function setCountry(string $country): void
     {
         $this->country = $country;
     }
 
-    public function getZipcode() : string
+    public function getZipcode(): string
     {
         return $this->zipcode;
     }
 
-    public function setZipcode(string $zipcode)
+    public function setZipcode(string $zipcode): void
     {
         $this->zipcode = $zipcode;
     }

@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Pehapkari\Website\Posts\Year2017\SymfonyValidatorDynamicConstraints\Constraints;
 
@@ -22,7 +21,7 @@ final class ZipCodeConstraint extends Constraint
     /**
      * @param array $options
      */
-    public function __construct($options = null)
+    public function __construct(?array $options = null)
     {
         parent::__construct($options);
 

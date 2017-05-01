@@ -127,6 +127,7 @@ checkers:
             - @todo
             - @dataProvider
             - @expectedException
+            - @Assert\Callbackq
         enableEachParameterAndReturnInspection: true
     - SlevomatCodingStandard\Sniffs\Namespaces\AlphabeticallySortedUsesSniff
     - SlevomatCodingStandard\Sniffs\Namespaces\DisallowGroupUseSniff

@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Pehapkari\Website\Tests\Posts\Year2017\NetteConfigObjects\Forms;
 
@@ -21,16 +19,15 @@ final class InvoiceFormTest extends TestCase
      */
     private $container;
 
-
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->container = (new ContainerFactory)->create();
     }
 
-    public function testOldForm()
+    public function testOldForm(): void
     {
         /** @var InvoiceFormOldFactory $factory */
         $factory = $this->container->getByType(InvoiceFormOldFactory::class);
@@ -45,7 +42,7 @@ final class InvoiceFormTest extends TestCase
         $this->assertSame(7, $maturity->getValue());
     }
 
-    public function testNewForm()
+    public function testNewForm(): void
     {
         /** @var InvoiceFormNewFactoryInterface $factory */
         $factory = $this->container->getByType(InvoiceFormNewFactoryInterface::class);

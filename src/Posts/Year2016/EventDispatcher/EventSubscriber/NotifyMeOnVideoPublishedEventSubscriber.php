@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Pehapkari\Website\Posts\Year2016\EventDispatcher\EventSubscriber;
 
@@ -12,17 +11,17 @@ final class NotifyMeOnVideoPublishedEventSubscriber implements EventSubscriberIn
      */
     private $isUserNotified = false;
 
-    public static function getSubscribedEvents() : array
+    public static function getSubscribedEvents(): array
     {
         return ['youtube.newVideoPublished' => 'notifyUserAboutVideo'];
     }
 
-    public function notifyUserAboutVideo()
+    public function notifyUserAboutVideo(): void
     {
         $this->isUserNotified = true;
     }
 
-    public function isUserNotified() : bool
+    public function isUserNotified(): bool
     {
         return $this->isUserNotified;
     }
