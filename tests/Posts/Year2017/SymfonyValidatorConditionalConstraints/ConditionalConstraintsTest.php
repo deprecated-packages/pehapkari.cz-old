@@ -63,6 +63,9 @@ final class ConditionalConstraintsTest extends TestCase
         );
     }
 
+    /**
+     * @param string[] $expected
+     */
     private function assertViolations(array $expected, ConstraintViolationListInterface $violationList): void
     {
         $violations = [];

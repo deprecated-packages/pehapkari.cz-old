@@ -2,8 +2,8 @@
 
 namespace Pehapkari\Website\Tests\Posts\Year2016\EventDispatcher;
 
-use Pehapkari\Website\Posts\Year2016\EventDispatcher\EventSubscriber\EventAwareNotifyMeOnVideoPublishedEventSubscriber;
 use Pehapkari\Website\Posts\Year2016\EventDispatcher\Event\YoutuberNameEvent;
+use Pehapkari\Website\Posts\Year2016\EventDispatcher\EventSubscriber\EventAwareNotifyMeOnVideoPublishedEventSubscriber;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 

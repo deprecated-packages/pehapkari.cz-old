@@ -9,7 +9,10 @@ use PHPUnit\Framework\TestCase;
 
 final class InvoicingConfigTest extends TestCase
 {
-    public const PDF_PATH = 'tests/Posts/Year2017/NetteConfigObjects/../invoices';
+    /**
+     * @var string
+     */
+    private const PDF_PATH = 'tests/Posts/Year2017/NetteConfigObjects/../invoices';
 
     /**
      * @var Container
