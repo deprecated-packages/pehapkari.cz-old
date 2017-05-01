@@ -3,10 +3,10 @@
     "license": "MIT",
     "require": {
         "php": "^7.0",
-        "symplify/statie": "^1.3"
+        "symplify/statie": "^1.4"
     },
     "require-dev": {
-        "doctrine/annotations": "^1.3",
+        "doctrine/annotations": "^1.4",
         "doctrine/cache": "^1.6",
         "latte/latte": "^2.4",
         "nette/application": "^2.4",
@@ -20,7 +20,11 @@
 
         "phpstan/phpstan": "^0.6",
         "phpunit/phpunit": "^6.0",
-        "symplify/coding-standard": "1.3"
+        "squizlabs/php_codesniffer": "3.0.0RC4 as 2.8.1",
+        "symplify/easy-coding-standard": "v2.0.0-RC2",
+        "symplify/coding-standard": "v2.0.0-RC2",
+        "object-calisthenics/phpcs-calisthenics-rules": "v3.0.0-RC3",
+        "slevomat/coding-standard": "^2.1"
     },
     "autoload": {
         "psr-4": {
@@ -29,18 +33,13 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Pehapkari\\Website\\Tests\\": "tests"
+            "Pehapkari\\Website\\Tests\\": "tests",
+            "PHP_CodeSniffer\\": "vendor/squizlabs/php_codesniffer/src"
         }
     },
     "scripts": {
-        "check-cs": [
-            "vendor/bin/symplify-cs check src tests"
-        ],
-        "fix-cs": [
-            "vendor/bin/symplify-cs fix src tests"
-        ],
-        "phpstan": [
-            "vendor/bin/phpstan analyse --level=5 --configuration=phpstan.neon src tests"
-        ]
+        "check-cs": "vendor/bin/easy-coding-standard check src tests",
+        "fix-cs": "vendor/bin/easy-coding-standard check src tests --fix",
+        "phpstan": "vendor/bin/phpstan analyse --level=5 --configuration=phpstan.neon src tests"
     }
 }
