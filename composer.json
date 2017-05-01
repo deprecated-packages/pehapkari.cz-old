@@ -39,7 +39,10 @@
     },
     "scripts": {
         "check-cs": "vendor/bin/easy-coding-standard check src tests",
-        "fix-cs": "vendor/bin/easy-coding-standard check src tests --fix",
+        "fix-cs": [
+            "sh ./bin/clear_post_trailing_whitespaces.sh",
+            "vendor/bin/easy-coding-standard check src tests --fix"
+        ],
         "phpstan": "vendor/bin/phpstan analyse --level=5 --configuration=phpstan.neon src tests"
     }
 }
