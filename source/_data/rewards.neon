@@ -1,11 +1,4 @@
 rewards:
-    1:
-        title: "Principles of Package Design"
-        product_link: "https://leanpub.com/principles-of-package-design"
-        image: "principles.jpg"
-        winner:
-#            name:
-#            link:
     2:
         title: "1001 tipů a triků pro PHP"
         product_link: "https://phpfashion.com/recenze-knihy-1001-tipu-a-triku-pro-php"
