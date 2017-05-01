@@ -39,7 +39,7 @@ final class ComparisonConstraintsTest extends TestCase
     }
 
     /**
-     * @param string[][] $expected
+     * @param string[] $expected
      */
     private function assertViolations(array $expected, ConstraintViolationListInterface $violationList): void
     {
