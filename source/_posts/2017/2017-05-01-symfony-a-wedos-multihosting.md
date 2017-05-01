@@ -1,10 +1,8 @@
 ---
 layout: post
 title: "Rozběhnutí Symfony na Wedos multihostingu"
-perex: '''
-Spuštění webu postaveném na Symfony na Wedos multihostingu vypadalo na první pohled jako snadná věc. Nakonec jsem se na tom zasekl na 3 dny, než jsem přišel na to, jak hosting správně nastavit.<br>
-Aby se s tím nemusel trápit někdo další, tak jsem se rozhodl sepsat tento článek s návodem a s problémy na které jsem narazil. Finální řešení je nakonec jednoduché.
-'''
+perex: "Spuštění webu postaveném na Symfony na Wedos multihostingu vypadalo na první pohled jako snadná věc. Nakonec jsem se na tom zasekl na 3 dny, než jsem přišel na to, jak hosting správně nastavit.<br>
+Aby se s tím nemusel trápit někdo další, tak jsem se rozhodl sepsat tento článek s návodem a s problémy na které jsem narazil. Finální řešení je nakonec jednoduché."
 author: 22
 ---
 
