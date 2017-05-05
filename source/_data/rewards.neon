@@ -1,22 +1,43 @@
 rewards:
-    2:
+    1:
         title: "1001 tipů a triků pro PHP"
         product_link: "https://phpfashion.com/recenze-knihy-1001-tipu-a-triku-pro-php"
         image: "1001-php.jpg"
         winner:
 #            name:
 #            link:
-    3:
+    2:
         title: "Úplně nová mysl"
         product_link: "http://neoluxor.cz/odborne-knihy/uplne-nova-mysl--29453/"
         image: "uplne-nova-mysl.jpg"
         winner:
 #            name:
 #            link:
+    3:
+        title: "Začněte s proč"
+        product_link: "https://www.melvil.cz/kniha-zacnete-s-proc/"
+        image: "zacnete-s-proc.jpg"
+        winner:
+#            name:
+#            link:
     4:
-        title: "Návrhové vzory v PHP"
-        product_link: "http://knihy.cpress.cz/navrhove-vzory-v-php.html"
-        image: "navrhove-vzory.jpg"
+        title: "Designérem vlastního života"
+        product_link: "https://www.melvil.cz/kniha-designerem-vlastniho-zivota/"
+        image: "designerem-vlastniho-zivota.jpg"
+        winner:
+#            name:
+#            link:
+    5:
+        title: "Před-svědčování"
+        product_link: "https://www.melvil.cz/kniha-pred-svedcovani/"
+        image: "pred-svedcovani.jpg"
+        winner:
+#            name:
+#            link:
+    6:
+        title: "Dying to be me"
+        product_link: "http://anitamoorjani.com/books/"
+        image: "dying-to-be-me.jpg"
         winner:
 #            name:
 #            link:
