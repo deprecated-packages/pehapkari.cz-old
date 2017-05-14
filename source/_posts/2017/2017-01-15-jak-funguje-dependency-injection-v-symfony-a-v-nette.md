@@ -2,6 +2,7 @@
 layout: post
 title: "Jak funguje Dependency Injection v Symfony a v Nette"
 perex: "V tomto článku si ukážeme základy Dependency Injection &ndash; jaký je rozdíl mezi Nette presenterem a Symfony controllerem. A jak přenést trochu chování Nette do Symfony."
+tags: [nette, symfony]
 author: 10
 ---
 
