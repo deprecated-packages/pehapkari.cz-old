@@ -71,7 +71,7 @@ The first level requires 3 small steps.
             "App\\Forms\\": "app/forms",
             "App\\Model\\": "app/model",
             "App\\Presenters\\": "app/presenters",
-            "App\\": "app/router"
+            "App\\Router\\": "app/router"
         }
     }
 }
@@ -151,8 +151,6 @@ Into this:
     /Routing
     /...
 ```
-
-Also [rename `App\RouterFactory` to `App\Routing\RoutingFactory`](https://github.com/nette/sandbox/pull/86), so the class respects the file name and matches the structure.
 
 After these steps, you can simplify your `autoload` section as such:
 
