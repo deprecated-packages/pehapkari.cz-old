@@ -33,7 +33,7 @@ id: vzdelavej-se
 
             {foreach $trainings as $training}
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12" id="skoleni-{$iterator->counter}">
                         <h2 class="text-center">{$training['name']|noescape}</h2>
 
                         <div class="row">
