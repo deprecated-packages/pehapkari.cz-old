@@ -1,5 +1,6 @@
 # Pehapkari.cz - [Statie](https://github.com/Symplify/Statie) based web
 
+[![Chat on Slack](https://img.shields.io/badge/Slack-960+-green.svg?style=flat-square)](https://pehapkari.cz/#slack)
 [![Build Status](https://img.shields.io/travis/pehapkari/pehapkari.cz/master.svg?style=flat-square)](https://travis-ci.org/pehapkari/pehapkari.cz)
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/pehapkari/pehapkari.cz.svg?style=flat-square)](https://scrutinizer-ci.com/g/pehapkari/pehapkari.cz)
 
