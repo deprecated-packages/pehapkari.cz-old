@@ -2,7 +2,7 @@
 layout: post
 title: "Nenechte si podrazit nohy iterátory v PHP"
 perex: '''
-Iterátory v PHP jsou občas zrádné. Nechovají se vždy intuitivně a velmi špatně se ladí. Zjistěte jak na ně v vyhněte se problémům.
+Iterátory v PHP jsou občas zrádné. Nechovají se vždy intuitivně a velmi špatně se ladí. Zjistěte jak na ně. Vyhnete se tím hodinám zbytečného hledání chyb.
 '''
 author: 24
 ---
