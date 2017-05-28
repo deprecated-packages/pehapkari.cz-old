@@ -262,4 +262,33 @@ final class ZradneIteratoryVPHPTest extends TestCase
 		// Assert
 		$this->assertNotSame($iterator1, $iterator2);
 	}
+
+
+
+
+
+	public function test09Bonus_InfiniteLoop(): void
+	{
+		// Arrange
+		$a = new \SplFixedArray(2);
+		$a[0] = 'first-value';
+		$a[1] = 'second-value';
+
+		$i = 0;
+
+		// Act
+		foreach ($a as $key1 => $val1) {
+			foreach ($a as $key2 => $val2) {
+				if ($i >= 1000) { continue; } // prevent looping to infinity
+				$i++;
+
+				// this is how you make this loop infinite:
+				// Task: rewrite this loops as a while loops (see above) and get the idea what is happening
+				break;
+			}
+		}
+
+		// Assert
+		$this->assertEquals(1000, $i);
+	}
 }
