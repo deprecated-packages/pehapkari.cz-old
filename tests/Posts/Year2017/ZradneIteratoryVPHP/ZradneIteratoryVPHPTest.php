@@ -11,15 +11,15 @@ final class ZradneIteratoryVPHPTest extends TestCase
     public function test01SimpleArray(): void
     {
         // Arrange
-        $a = [];
-        $a[0] = 'first-value';
-        $a[1] = 'second-value';
+        $object = [];
+        $object[0] = 'first-value';
+        $object[1] = 'second-value';
 
         $accumulator = [];
 
         // Act
-        foreach ($a as $key1 => $val1) {
-            foreach ($a as $key2 => $val2) {
+        foreach ($object as $key1 => $val1) {
+            foreach ($object as $key2 => $val2) {
                 $accumulator[] = [$val1, $val2];
             }
         }
@@ -38,15 +38,15 @@ final class ZradneIteratoryVPHPTest extends TestCase
     public function test02SplFixedArrayWTF(): void
     {
         // Arrange
-        $a = new SplFixedArray(2);
-        $a[0] = 'first-value';
-        $a[1] = 'second-value';
+        $object = new SplFixedArray(2);
+        $object[0] = 'first-value';
+        $object[1] = 'second-value';
 
         $accumulator = [];
 
         // Act
-        foreach ($a as $key1 => $val1) {
-            foreach ($a as $key2 => $val2) {
+        foreach ($object as $key1 => $val1) {
+            foreach ($object as $key2 => $val2) {
                 $accumulator[] = [$val1, $val2];
             }
         }
@@ -63,7 +63,7 @@ final class ZradneIteratoryVPHPTest extends TestCase
     public function test03SplFixedArrayWTF(): void
     {
         // Arrange
-        $a = new class (2) extends SplFixedArray
+        $object = new class (2) extends SplFixedArray
         {
             public function __debugInfo()
             {
@@ -75,13 +75,13 @@ final class ZradneIteratoryVPHPTest extends TestCase
                 return $ret;
             }
         };
-        $a[0] = 'first-value';
-        $a[1] = 'second-value';
+        $object[0] = 'first-value';
+        $object[1] = 'second-value';
 
         $accumulator = [];
 
         // Act
-        foreach ($a as $key1 => $val1) {
+        foreach ($object as $key1 => $val1) {
             $accumulator[] = [$val1];
         }
 
@@ -97,7 +97,7 @@ final class ZradneIteratoryVPHPTest extends TestCase
     public function test04SplFixedArrayWTF(): void
     {
         // Arrange
-        $a = new class (2) extends SplFixedArray
+        $object = new class (2) extends SplFixedArray
         {
             public function __debugInfo()
             {
@@ -109,14 +109,14 @@ final class ZradneIteratoryVPHPTest extends TestCase
                 return $ret;
             }
         };
-        $a[0] = 'first-value';
-        $a[1] = 'second-value';
+        $object[0] = 'first-value';
+        $object[1] = 'second-value';
 
         $accumulator = [];
 
         // Act
-        foreach ($a as $key1 => $val1) {
-            $a->__debugInfo(); // simulate what happens when you stop on breakpoint on this line
+        foreach ($object as $key1 => $val1) {
+            $object->__debugInfo(); // simulate what happens when you stop on breakpoint on this line
             // same as `var_dump($a)`
             $accumulator[] = [$val1];
         }
@@ -132,17 +132,17 @@ final class ZradneIteratoryVPHPTest extends TestCase
     public function test05ForeachWrittenAsWhile(): void
     {
         // Arrange
-        $a = new SplFixedArray(2);
-        $a[0] = 'first-value';
-        $a[1] = 'second-value';
+        $object = new SplFixedArray(2);
+        $object[0] = 'first-value';
+        $object[1] = 'second-value';
 
         $accumulator = [];
 
         // Act
-        reset($a); // PHPStorm's static analysis is crying here; it is intentional
-        while (list($key1, $val1) = each($a)) {
-            reset($a);
-            while (list($key2, $val2) = each($a)) {
+        reset($object); // PHPStorm's static analysis is crying here; it is intentional
+        while (list($key1, $val1) = each($object)) {
+            reset($object);
+            while (list($key2, $val2) = each($object)) {
                 $accumulator[] = [$val1, $val2];
             }
         }
@@ -159,15 +159,15 @@ final class ZradneIteratoryVPHPTest extends TestCase
     public function test06QuickFixUsingClone(): void
     {
         // Arrange
-        $a = new SplFixedArray(2);
-        $a[0] = 'first-value';
-        $a[1] = 'second-value';
+        $object = new SplFixedArray(2);
+        $object[0] = 'first-value';
+        $object[1] = 'second-value';
 
         $accumulator = [];
 
         // Act
-        foreach (clone $a as $key1 => $val1) {
-            foreach (clone $a as $key2 => $val2) {
+        foreach (clone $object as $key1 => $val1) {
+            foreach (clone $object as $key2 => $val2) {
                 $accumulator[] = [$val1, $val2];
             }
         }
@@ -186,15 +186,15 @@ final class ZradneIteratoryVPHPTest extends TestCase
     public function test07ArrayObject(): void
     {
         // Arrange
-        $a = new ArrayObject();
-        $a[0] = 'first-value';
-        $a[1] = 'second-value';
+        $object = new ArrayObject();
+        $object[0] = 'first-value';
+        $object[1] = 'second-value';
 
         $accumulator = [];
 
         // Act
-        foreach ($a as $key1 => $val1) {
-            foreach ($a as $key2 => $val2) {
+        foreach ($object as $key1 => $val1) {
+            foreach ($object as $key2 => $val2) {
                 $accumulator[] = [$val1, $val2];
             }
         }
@@ -213,11 +213,11 @@ final class ZradneIteratoryVPHPTest extends TestCase
     public function test08NewIteratorIsReturnedEveryTime(): void
     {
         // Arrange
-        $a = new ArrayObject();
+        $object = new ArrayObject();
 
         // Act
-        $iterator1 = $a->getIterator();
-        $iterator2 = $a->getIterator();
+        $iterator1 = $object->getIterator();
+        $iterator2 = $object->getIterator();
 
         // Assert
         $this->assertNotSame($iterator1, $iterator2);
@@ -227,15 +227,15 @@ final class ZradneIteratoryVPHPTest extends TestCase
     public function test09Bonus_InfiniteLoop(): void
     {
         // Arrange
-        $a = new SplFixedArray(2);
-        $a[0] = 'first-value';
-        $a[1] = 'second-value';
+        $object = new SplFixedArray(2);
+        $object[0] = 'first-value';
+        $object[1] = 'second-value';
 
         $i = 0;
 
         // Act
-        foreach ($a as $key1 => $val1) {
-            foreach ($a as $key2 => $val2) {
+        foreach ($object as $key1 => $val1) {
+            foreach ($object as $key2 => $val2) {
                 if ($i >= 1000) {
                     continue;
                 } // prevent looping to infinity
