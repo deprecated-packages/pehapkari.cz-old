@@ -117,7 +117,7 @@ final class ZradneIteratoryVPHPTest extends TestCase
         // Act
         foreach ($object as $key1 => $val1) {
             $object->__debugInfo(); // simulate what happens when you stop on breakpoint on this line
-            // same as `var_dump($a)`
+            // same as `var_dump($object)`
             $accumulator[] = [$val1];
         }
 
