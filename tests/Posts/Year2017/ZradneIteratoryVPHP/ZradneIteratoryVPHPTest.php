@@ -2,7 +2,9 @@
 
 namespace Pehapkari\Website\Tests\Posts\Year2017\ZradneIteratoryVPHP;
 
+use ArrayObject;
 use PHPUnit\Framework\TestCase;
+use SplFixedArray;
 
 final class ZradneIteratoryVPHPTest extends TestCase
 {
@@ -36,7 +38,7 @@ final class ZradneIteratoryVPHPTest extends TestCase
     public function test02SplFixedArrayWTF(): void
     {
         // Arrange
-        $a = new \SplFixedArray(2);
+        $a = new SplFixedArray(2);
         $a[0] = 'first-value';
         $a[1] = 'second-value';
 
@@ -61,7 +63,7 @@ final class ZradneIteratoryVPHPTest extends TestCase
     public function test03SplFixedArrayWTF(): void
     {
         // Arrange
-        $a = new class (2) extends \SplFixedArray
+        $a = new class (2) extends SplFixedArray
         {
             public function __debugInfo()
             {
@@ -95,7 +97,7 @@ final class ZradneIteratoryVPHPTest extends TestCase
     public function test04SplFixedArrayWTF(): void
     {
         // Arrange
-        $a = new class (2) extends \SplFixedArray
+        $a = new class (2) extends SplFixedArray
         {
             public function __debugInfo()
             {
@@ -130,7 +132,7 @@ final class ZradneIteratoryVPHPTest extends TestCase
     public function test05ForeachWrittenAsWhile(): void
     {
         // Arrange
-        $a = new \SplFixedArray(2);
+        $a = new SplFixedArray(2);
         $a[0] = 'first-value';
         $a[1] = 'second-value';
 
@@ -157,7 +159,7 @@ final class ZradneIteratoryVPHPTest extends TestCase
     public function test06QuickFixUsingClone(): void
     {
         // Arrange
-        $a = new \SplFixedArray(2);
+        $a = new SplFixedArray(2);
         $a[0] = 'first-value';
         $a[1] = 'second-value';
 
@@ -184,7 +186,7 @@ final class ZradneIteratoryVPHPTest extends TestCase
     public function test07ArrayObject(): void
     {
         // Arrange
-        $a = new \ArrayObject();
+        $a = new ArrayObject();
         $a[0] = 'first-value';
         $a[1] = 'second-value';
 
@@ -211,7 +213,7 @@ final class ZradneIteratoryVPHPTest extends TestCase
     public function test08NewIteratorIsReturnedEveryTime(): void
     {
         // Arrange
-        $a = new \ArrayObject();
+        $a = new ArrayObject();
 
         // Act
         $iterator1 = $a->getIterator();
@@ -225,7 +227,7 @@ final class ZradneIteratoryVPHPTest extends TestCase
     public function test09Bonus_InfiniteLoop(): void
     {
         // Arrange
-        $a = new \SplFixedArray(2);
+        $a = new SplFixedArray(2);
         $a[0] = 'first-value';
         $a[1] = 'second-value';
 
