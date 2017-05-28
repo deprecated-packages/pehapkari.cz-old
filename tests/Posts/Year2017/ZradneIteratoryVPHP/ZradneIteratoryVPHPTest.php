@@ -26,7 +26,7 @@ final class ZradneIteratoryVPHPTest extends TestCase
 
         // Assert
         $this->assertCount(2 * 2, $accumulator); // cartesian product
-        $this->assertEquals([
+        $this->assertSame([
             ['first-value', 'first-value'],
             ['first-value', 'second-value'],
             ['second-value', 'first-value'],
@@ -53,7 +53,7 @@ final class ZradneIteratoryVPHPTest extends TestCase
 
         // Assert
         $this->assertCount(2, $accumulator); // cartesian product
-        $this->assertEquals([
+        $this->assertSame([
             ['first-value', 'first-value'],
             ['first-value', 'second-value'],
         ], $accumulator);
@@ -87,7 +87,7 @@ final class ZradneIteratoryVPHPTest extends TestCase
 
         // Assert
         $this->assertCount(2, $accumulator); // cartesian product
-        $this->assertEquals([
+        $this->assertSame([
             ['first-value'],
             ['second-value'],
         ], $accumulator);
@@ -123,7 +123,7 @@ final class ZradneIteratoryVPHPTest extends TestCase
 
         // Assert
         $this->assertCount(1, $accumulator); // cartesian product
-        $this->assertEquals([
+        $this->assertSame([
             ['first-value'],
         ], $accumulator);
     }
@@ -149,7 +149,7 @@ final class ZradneIteratoryVPHPTest extends TestCase
 
         // Assert
         $this->assertCount(2, $accumulator); // cartesian product
-        $this->assertEquals([
+        $this->assertSame([
             ['first-value', 'first-value'],
             ['first-value', 'second-value'],
         ], $accumulator);
@@ -174,7 +174,7 @@ final class ZradneIteratoryVPHPTest extends TestCase
 
         // Assert
         $this->assertCount(2 * 2, $accumulator); // cartesian product
-        $this->assertEquals([
+        $this->assertSame([
             ['first-value', 'first-value'],
             ['first-value', 'second-value'],
             ['second-value', 'first-value'],
@@ -201,7 +201,7 @@ final class ZradneIteratoryVPHPTest extends TestCase
 
         // Assert
         $this->assertCount(2 * 2, $accumulator); // cartesian product
-        $this->assertEquals([
+        $this->assertSame([
             ['first-value', 'first-value'],
             ['first-value', 'second-value'],
             ['second-value', 'first-value'],
@@ -248,6 +248,6 @@ final class ZradneIteratoryVPHPTest extends TestCase
         }
 
         // Assert
-        $this->assertEquals(1000, $i);
+        $this->assertSame(1000, $i);
     }
 }
