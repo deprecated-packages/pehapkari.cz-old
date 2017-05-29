@@ -53,29 +53,10 @@ checkers:
         nestingLevel: 3
         absoluteNestingLevel: 6
     - PHP_CodeSniffer\Standards\PSR2\Sniffs\Methods\MethodDeclarationSniff
-    - ObjectCalisthenics\Sniffs\Metrics\MaxNestingLevelSniff
-    ObjectCalisthenics\Sniffs\Metrics\MethodPerClassLimitSniff:
-        maxCount: 16 # 10 by default
-    - ObjectCalisthenics\Sniffs\Metrics\PropertyPerClassLimitSniff
-    - ObjectCalisthenics\Sniffs\Files\ClassTraitAndInterfaceLengthSniff
-    - ObjectCalisthenics\Sniffs\Files\FunctionLengthSniff
-    ObjectCalisthenics\Sniffs\CodeAnalysis\OneObjectOperatorPerLineSniff:
-        variablesHoldingAFluentInterface:
-            - $containerBuilder
-            - $container
-            - $kernel
-            - $rootNode
-            - $requestMock
-            - $entityManagerMock
-        methodsStartingAFluentInterface:
-            - buildViolation
-            - getValidator
-            - addText
 
     # Naming Conventions
     - PHP_CodeSniffer\Standards\Generic\Sniffs\NamingConventions\UpperCaseConstantNameSniff
     - PHP_CodeSniffer\Standards\Generic\Sniffs\NamingConventions\CamelCapsFunctionNameSniff
-    - ObjectCalisthenics\Sniffs\NamingConventions\ElementNameMinimalLengthSniff
 
     # PHP
     - PhpCsFixer\Fixer\PhpTag\FullOpeningTagFixer
