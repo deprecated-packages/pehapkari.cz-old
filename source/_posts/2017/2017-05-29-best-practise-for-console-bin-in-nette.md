@@ -97,7 +97,7 @@ As you can see, they are standard way to let user know, where to start.
 
 ## Show me Real Refactoring!
 
-If you'd like to see a real life code, [I made PR on Github](htthttps://eventigo.cz/ps://github.com/eventigo/eventigo-web/pull/19/files) to [Eventigo.cz](https://eventigo.cz/) recently.
+If you'd like to see a real life code, [I made PR on Github](https://github.com/eventigo/eventigo-web/pull/19/files) to [Eventigo.cz](https://eventigo.cz/) recently.
 
 We use lightweight and simple [Contributte\Console](https://github.com/contributte/console) by [Milan Šulc](https://jfx.cz/), that also
 allowed use to drop [useless command tagging](https://www.tomasvotruba.cz/blog/2017/02/12/drop-all-service-tags-in-your-nette-and-symfony-applications/#get-rid-of-tagging-in-nette).
