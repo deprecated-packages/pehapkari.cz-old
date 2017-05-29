@@ -18,7 +18,7 @@
         "symfony/intl": "^3.2",
         "symfony/validator": "^3.2",
 
-        "phpstan/phpstan": "dev-master",
+        "phpstan/phpstan": "^0.7",
         "phpunit/phpunit": "^6.0",
         "squizlabs/php_codesniffer": "3.0.0RC4 as 2.8.1",
         "symplify/easy-coding-standard": "v2.0.0-RC2",
