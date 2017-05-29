@@ -26,7 +26,7 @@ Jedná se o klasický [NoLimit webhosting](https://hosting.wedos.com/cs/webhosti
             * .
             * web
                 * app.php
-                .htaccess            
+                .htaccess
     * subdom
     * .htaccess
 ```
