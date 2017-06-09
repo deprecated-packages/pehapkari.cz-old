@@ -169,7 +169,7 @@ foreach($a as $key1 => $val1) {
 
 Tentokrát budou **čtyři**! Proč? Magie!
 
-Příčina totož neleží v tom, jestli je iterovaný předmět *objekt* nebo *pole*.
+Příčina neleží v tom, jestli je iterovaný předmět *objekt* nebo *pole*.
 
 - `SplFixedArray` implementuje interface [`Iterator`](https://secure.php.net/manual/en/class.iterator.php)
 - `ArrayObject` implementuje [`IteratorAggregate`](https://secure.php.net/manual/en/class.iteratoraggregate.php)
