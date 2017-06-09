@@ -28,7 +28,7 @@ foreach($a as $key1 => $val1) {
 
 Kolik prvků bude v `$accumulator`?
 
-Dva vnořené cykly do sebe by měly vytvořit kartézský součin. Tedy 4 řádky. A ono se tak opravdu stane!
+Dva vnořené cykly do sebe by měly vytvořit kartézský součin. Tedy 4 řádky. ...a ono se tak opravdu stane! Nic překvapivého.
 
 Nyní nahradím obyčejné pole za [`SplFixedArray`](https://secure.php.net/manual/en/class.splfixedarray.php). Kolik bude prvků v `$accumulator` teď? 
 
@@ -47,9 +47,9 @@ foreach($a as $key1 => $val1) {
 }
 ```
 
-Budou tam **dva**! 
+Kolik byste čekali? Čtyři? Budou tam **dva**! 
 
-Teď si asi říkáte, k čemu je dobré iterovat dvakrát ten samý objekt v sobě. To přece nikdo nepotřebuje. Pojďme tedy na další ukázku.
+Teď si asi říkáte, k čemu je dobré iterovat dvakrát ten samý objekt v sobě. To přece nikdo nepotřebuje. Opak je pravdou, vnořené interování se umí občas pěkně schovat. Koukněme na další příklad:
 
 ```php
 $object = new class (2) extends SplFixedArray {
@@ -70,38 +70,39 @@ $object[1] = 'second-value';
 $accumulator = [];
 
 foreach($object as $key1 => $val1) {
-	echo $val1 . "\n";                       // (1)
+	$accumulator[] = $val1;                // (1)
 }
 ```
 
-Tento kód vypadá mnohem reálněji. Pokud jej spustím vypíše obsah pole (= dva řádky).
+Takovýto kód napíšete běžně. Pojďme jej spusit... V accumulator budou řádky **dva**.
 
-Nyní si zkuste dát breakpoint na řádek `(1)`.
+Nyní si zkuste dát breakpoint na řádek `(1)`. Kolik se vypsalo řádků?
 
-Kolik se vypsalo řádků? **Jeden?!**
+**Jeden?!** Co se stalo? XDebug se pokusil vypsat obsah lokálních proměnných a zavolal metodu `__debugInfo()`. Abychom však rozkryli, v čem je ten zakopaný pes, koukněme na kousek teorie.
 
 
 
-## Co je to foreach?
+
+## Co je to `foreach`?
 
 ```php
-$arr = array("one", "two", "three");
-foreach ($arr as $key => $value) {
-    echo "Key: $key; Value: $value<br />\n";
+$arr = ["one", "two", "three"];
+foreach($arr as $key => $value) {
+    echo "Key: $key; Value: $value\n";
 }
 ```
 
 je naprosto identické tomuto kódu: ([zdroj](https://secure.php.net/manual/en/control-structures.foreach.php))
 
 ```php
-$arr = array("one", "two", "three");
+$arr = ["one", "two", "three"];
 reset($arr);
-while (list($key, $value) = each($arr)) {
-    echo "Key: $key; Value: $value<br />\n";
+while(list($key, $value) = each($arr)) {
+    echo "Key: $key; Value: $value\n";
 }
 ```
 
-Aha! `Foreach` tedy nastaví vždy na začátku pozici na začátek a projde pole až do konce. Pokud mám jeden iterator a dva foreach v sobě stane se toto:
+Aha! `foreach` tedy nastaví vždy na začátku pozici iterátoru na začátek a projde iterátorem až do konce. Pokud mám jeden iterator a dva foreach v sobě stane se toto:
 
 1. vnější foreach nastaví ukazatel na začátek
 2. vnější foreach přečte první prvek (a posune se na další)
@@ -120,7 +121,7 @@ A tak jsme došli ke **dvěma prvkům** místo čtyřem.
 
 Takže PHP má objekty rozbité a iterování nad datovými strukturami pořádně nepodporuje? Na php.net o tom nic moc nepíší.
 
-Vrátím se tedy k příkladu s `SplFixedArray`. Foreach mění iterní pozici iterátoru a protože dva iterátory mění jednu pozici, dostaneme jen dva prvky na výstupu. Potřebujeme tedy uchovávat pozici pro každý foreach zvlášť. Co zkusit objekt klonovat?
+Vrátím se tedy k příkladu s `SplFixedArray`. `foreach` mění interní pozici iterátoru a protože dva `foreach`e prochází jen **jeden** iterátor, dostaneme jen dva prvky na výstupu. Potřebujeme tedy uchovávat pozici pro každý `foreach` zvlášť. Co zkusit objekt klonovat?
 
 ```php
 // Arrange
@@ -137,11 +138,11 @@ foreach(clone $a as $key1 => $val1) {
 	}
 }
 ```
-Nyní dostaneme 4 prvky.
+Nyní dostaneme prvky **čtyři**. Hurá!
 
-Títo však kopírujeme celý objekt i s jeho hodnotami, což není příliš efektivní řešení, navíc ne všechny objekty počítají s tím, že budou klonovány.
+Títo však kopírujeme celý objekt i s jeho hodnotami, což může být pomalé. Navíc ne všechny objekty počítají s tím, že budou klonovány.
 
-Pokud objekt podporuje `clone`, jako rychlé řešení to není špatné. `Clone` však jen obchází příčinu chyby.
+Pokud objekt podporuje `clone`, jako rychlé řešení je tento přístup použitelný. Tento přístup však jen obchází příčinu chyby, neřeší ji.
 
 
 
@@ -166,25 +167,27 @@ foreach($a as $key1 => $val1) {
 }
 ```
 
-Tentokrát budou **čtyři**! Proč?
+Tentokrát budou **čtyři**! Proč? Magie!
 
-To je zvláštní... `\ArrayObject` je přece taky objekt, stejně jako `\SplFixedArray`!
+Příčina totož neleží v tom, jestli je iterovaný předmět *objekt* nebo *pole*.
 
-Příčina totož neleží v tom, jestli je iterovaný předmět *objekt* nebo *pole*. `SplFixedArray` implementuje interface [`Iterator`](https://secure.php.net/manual/en/class.iterator.php) a `\ArrayObject` implementuje [`IteratorAggregate`](https://secure.php.net/manual/en/class.iteratoraggregate.php).
+- `SplFixedArray` implementuje interface [`Iterator`](https://secure.php.net/manual/en/class.iterator.php)
+- `\ArrayObject` implementuje [`IteratorAggregate`](https://secure.php.net/manual/en/class.iteratoraggregate.php)
 
 Pojďme se těmto interface kouknout na zoubek.
 
 `Iterator` interface:
 
 ```php
-Iterator extends Traversable {
-	abstract public mixed current ( void )
-	abstract public mixed key ( void )
-	abstract public void next ( void )
-	abstract public void rewind ( void )
-	abstract public boolean valid ( void )
+interface Iterator extends Traversable {
+	function current();
+	function key();
+	function next(): void;
+	function rewind(): void;
+	function valid(): bool;
 }
 ```
+
 - mluví vždy o instanci sama sebe
 - zná pozici v iterované kolekci
 - jeho metody závisející na aktuálním stavu (na aktuální pozici)
@@ -193,36 +196,76 @@ Iterator extends Traversable {
 `IteratorAggregate` interface:
 
 ```php
-IteratorAggregate extends Traversable {
-	abstract public Traversable getIterator ( void )
+interface IteratorAggregate extends Traversable {
+	function getIterator(): Traversable;
 }
 ```
-- je to továrna
-- nevyžaduje uchovávání žádného stavu související s iterací (to deleguje)
 
-Pokud tedy metoda `getIterator()` bude **při každém zavolání vracet novou instanci iterátoru**, bude fungovat zanořený foreach, protože PHP si vždy inicializuje novou instanci iterátoru, který si každý uchovává svůj stav iterace.
+- `getIterator()` je to továrna
+	- **při každém zavolání musí vracet novou instanci `Traversable`**
+- nevyžaduje uchovávání žádného stavu související s iterací
+	- uchování stavu deleguje do vytvořeného `Traversable`
 
-Kdežto pokud objekt/kolekce implementuje `\Iterator`, existuje jen jeden možný stav iterace, zanořený foreach tedy nikdy fungovat nemůže a je třeba celý objekt klonovat.
+## Sémantika `Iterator` a `IteratorAggregate`
 
+`Iterator` je pohled na nějaká data. Například [`DirectoryIterator`](TODO). Přes tento iterátor je možné procházet obsah složky.
 
-## Proč tedy `\Iterator` existuje?
+`IteratorAggregate` říká, obsah objektu, implementující toto rozhraní, je možné procházet pomocí iterátoru, který je dostupný přes metodu `getIterator()`.
+
+Dokonce mi nic nebrání pohled na data upravit. Například mohu data přefiltrovat, třeba takto:
+
+```php
+$iterator = new CallbackFilterIterator(
+	$collection->getIterator(), 
+	function($value, $key) { return rand(0,100) < 50; }
+);
+foreach($iterator as $key => $value) { /* ... */ }
+```
+
+Případně použít úplně jiný pohled na data:
+```php
+$iterator = new MyAwesomeIterator($collection);
+foreach($iterator as $key => $value) { /* ... */ }
+```
+
+Všimněte si, že `MyAwesomeIterator` bere jako parametr přímo kolekci, na kterou zprostředkovává pohled.
+
+## A proč je tedy možné `foreach` s `IteratorAggregate` procházet zanořeně?
+
+`foreach` v PHP je chytrý a pokud procházený objekt implementuje rozhraní `IteratorAggregate`, automaticky před začátkem iterace vytáhne "nový pohled".
+
+Když `foreach` přepíšu jako `while`, vypadá to takto:
+
+```php
+$collection = /* implementuje IteratorAggregate */;
+
+foreach($collection as $key => $value) { /* ... */ }
+
+// je funkčně stejný jako:
+
+$iterator = $collection->getIterator();
+while($iterator->valid()) {
+	$key = $iterator->key();
+	$value = $iterator->current();
+
+	/* ... */
+
+	$iterator->next();
+}
 
 ```
-iterable
- |- Traversable
-   |- Iterator
-   \- IteratorAggregate
-```
 
-**IteratorAggregate** (kdy `getIterator()` vrací vždy novou instanci) je vhodný pro kolekce. Pro objekty uchovávající data.
-**Iterator** je vhodný pro implementaci samotných iterátorů. Něco co implementuje `\Iterator` tedy budeme typicky vracet z metody `getIterator()` z interface `IteratorAggregate`.
 
-Z výše uvedeného tedy plyne, že `iterable`, `Traversable`, `Iterator` a `IteratorAggregate` (který vrací vždy tu stejnou instanci iterátoru) **negarantují, že půjde struktura procházet zanořeně**.
 
-Kolekce by neměla implementuje `\Iterator` přímo, protože koncepčně má potom dvě zodpovědnosti:
+## TL;DR Závěr
 
-1. uchovává svoje data
-2. implementuje iterátor sama sebe 
-
-Pokud tyto dvě zodpovědnosti rozdělíme, je možné mít iterátorů více. Každý pak může zprostředkovat jiný pohled na data. (přefiltrovat, seřadit, ...) Navíc takové iterátory poté lze skládat i dohromady. 
+- Pokud implementujete **kolekci** (objekt, který drží nějaká data), vždy implementujte rozhraní `IteratorAggregate`.
+- Pokud implementujete **pohled na data**, implementujte rozhraní `Iterator`.
+- pokud chcete, aby se struktura, kterou dostanete na vstupu chovala **stejně jako pole**, vyžadujte rozhraní `IteratorAggreage`
+- Ke kolekci může existovat více `Iterator`ů - tedy **více pohledů**, na ta **stejná data**.
+- Kolekce by neměla implementovat `I	terator` přímo, protože...
+	- tím říká, že na ni v **jednu chvíli** existuje jen **jeden pohled**.
+	- má poté **dvě zodpovědnosti** - uchování dat a zprostředkování pohledu na data v ní uložené.
+- Dejte si pozor na `SplFixedArray`, `SplObjectStorage` a další kolekce, které implementují iterátor přímo.
+- Použijte raději [phpds](https://secure.php.net/manual/en/book.ds.php), kde jsou datové struktury implementovány správně.
 
