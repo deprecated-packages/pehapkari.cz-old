@@ -52,7 +52,7 @@ Kolik byste čekali? Čtyři? Budou tam **dva**!
 Teď si asi říkáte, k čemu je dobré iterovat dvakrát ten samý objekt v sobě. To přece nikdo nepotřebuje. Opak je pravdou, vnořené interování se umí občas pěkně schovat. Koukněme na další příklad:
 
 ```php
-$object = new class (2) extends SplFixedArray {
+$object = new class(2) extends SplFixedArray {
 	public function __debugInfo()
 	{
 		$ret = [];
