@@ -140,7 +140,7 @@ foreach(clone $a as $key1 => $val1) {
 ```
 Nyní dostaneme prvky **čtyři**. Hurá!
 
-Títo však kopírujeme celý objekt i s jeho hodnotami, což může být pomalé. Navíc ne všechny objekty počítají s tím, že budou klonovány.
+Tímto však kopírujeme celý objekt i s jeho hodnotami, což může být pomalé. Navíc ne všechny objekty počítají s tím, že budou klonovány.
 
 Pokud objekt podporuje `clone`, jako rychlé řešení je tento přístup použitelný. Tento přístup však jen obchází příčinu chyby, neřeší ji.
 
