@@ -33,7 +33,7 @@ Dva vnořené cykly do sebe by měly vytvořit kartézský součin. Tedy 4 řád
 Nyní nahradím obyčejné pole za [`SplFixedArray`](https://secure.php.net/manual/en/class.splfixedarray.php). Kolik bude prvků v `$accumulator` teď? 
 
 ```php
-$a = new \SplFixedArray(2);
+$a = new SplFixedArray(2);
 $a[0] = 'first-value';
 $a[1] = 'second-value';
 
@@ -150,7 +150,7 @@ Pokud objekt podporuje `clone`, jako rychlé řešení je tento přístup použi
 
 ## Opravdové řešení
 
-Nyní jsem nahradil v původním příkladu s `SplFixedArray` náš objekt za [`\ArrayObject`](https://secure.php.net/manual/en/class.arrayobject.php). Kolik bude teď prvků v `$accumulator`?
+Nyní jsem nahradil v původním příkladu s `SplFixedArray` náš objekt za [`ArrayObject`](https://secure.php.net/manual/en/class.arrayobject.php). Kolik bude teď prvků v `$accumulator`?
 
 ```php
 $a = new ArrayObject();
@@ -172,7 +172,7 @@ Tentokrát budou **čtyři**! Proč? Magie!
 Příčina totož neleží v tom, jestli je iterovaný předmět *objekt* nebo *pole*.
 
 - `SplFixedArray` implementuje interface [`Iterator`](https://secure.php.net/manual/en/class.iterator.php)
-- `\ArrayObject` implementuje [`IteratorAggregate`](https://secure.php.net/manual/en/class.iteratoraggregate.php)
+- `ArrayObject` implementuje [`IteratorAggregate`](https://secure.php.net/manual/en/class.iteratoraggregate.php)
 
 Pojďme se těmto interface kouknout na zoubek.
 
