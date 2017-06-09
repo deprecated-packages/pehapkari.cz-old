@@ -257,7 +257,7 @@ while($iterator->valid()) {
 
 
 
-## TL;DR Závěr
+## Co si z toho odnést? (TL;DR)
 
 - Pokud implementujete **kolekci** (objekt, který drží nějaká data), vždy implementujte rozhraní `IteratorAggregate`.
 - Pokud implementujete **pohled na data**, implementujte rozhraní `Iterator`.
@@ -268,4 +268,8 @@ while($iterator->valid()) {
 	- má poté **dvě zodpovědnosti** - uchování dat a zprostředkování pohledu na data v ní uložené.
 - Dejte si pozor na `SplFixedArray`, `SplObjectStorage` a další kolekce, které implementují iterátor přímo.
 - Použijte raději [phpds](https://secure.php.net/manual/en/book.ds.php), kde jsou datové struktury implementovány správně.
+- Pokud kolekce, kterou používáš implementuje přímo rozhraní `Iterator`, podporuje klonování a nemůžeš použít jinou kolekci, která implementuje `IteratorAggregate`, můžeš zkusit `foreach(clone $collection as $key => $value) { /* .. */ }`
+	- měj však na paměti, že je to pomalé
+	- a všude kde iteruješ kolekci budeš muset navíc ještě psát i `clone`
+
 
