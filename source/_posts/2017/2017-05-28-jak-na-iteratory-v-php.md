@@ -235,7 +235,7 @@ Všimněte si, že `MyAwesomeIterator` (implementuje `Iterator`) bere jako param
 
 `foreach` v PHP je chytrý. Pokud procházený objekt implementuje rozhraní `IteratorAggregate`, vždy před začátkem procházení vytáhne "nový pohled" (zavolá `->getIterator()`).
 
-Když `foreach` procházející `IteratorAggregate` přepíšu jako `while`, vypadalo by to takto:
+Když `foreach` procházející `IteratorAggregate` přepíšu jako `while`, vypadá to takto:
 
 ```php
 $collection = /* implementuje IteratorAggregate */;
