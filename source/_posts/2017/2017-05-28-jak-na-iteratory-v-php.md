@@ -233,7 +233,7 @@ Všimněte si, že `MyAwesomeIterator` (implementuje `Iterator`) bere jako param
 
 ## A proč je tedy možné `foreach` s `IteratorAggregate` procházet zanořeně?
 
-`foreach` v PHP je chytrý. Pokud procházený objekt implementuje rozhraní `IteratorAggregate`, vždy přes začátkem procházení vytáhne "nový pohled" (zavolá `->getIterator()`).
+`foreach` v PHP je chytrý. Pokud procházený objekt implementuje rozhraní `IteratorAggregate`, vždy před začátkem procházení vytáhne "nový pohled" (zavolá `->getIterator()`).
 
 Když `foreach` procházející `IteratorAggregate` přepíšu jako `while`, vypadalo by to takto:
 
