@@ -272,9 +272,9 @@ Budou-li tedy **dva `foreach`e v sobě**, každý bude **mít svoji instanci ite
 	- má poté **dvě zodpovědnosti** - uchování dat a zprostředkování pohledu na data v ní uložené.
 - Dejte si pozor na `SplFixedArray`, `SplObjectStorage` a další kolekce, které implementují `Iterator`.
 - Použijte raději [phpds](https://secure.php.net/manual/en/book.ds.php), kde jsou datové struktury implementovány správně.
-- Pokud kolekce, kterou používáš implementuje přímo rozhraní `Iterator`, podporuje klonování a nemůžeš použít jinou kolekci, která implementuje `IteratorAggregate`, můžeš zkusit `foreach(clone $collection as $key => $value) { /* .. */ }`
-	- měj však na paměti, že je to pomalé
-	- a všude kde iteruješ kolekci budeš muset navíc ještě psát i `clone`
+- Pokud kolekce, kterou používáš implementuje přímo rozhraní `Iterator`, podporuje klonování a nemůžeš použít jinou kolekci, která implementuje `IteratorAggregate`, můžeš zkusit `foreach(clone $collection as $key => $value) { /* .. */ }`.
+	- Měj však na paměti, že je to pomalé.
+	- A všude kde iteruješ kolekci budeš muset navíc ještě psát i `clone`.
 
 
 ### Bonusový úkol
