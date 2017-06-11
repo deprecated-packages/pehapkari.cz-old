@@ -52,14 +52,22 @@ $ apt-get install nginx
 
 This will install NGINX with default modules and configuration.
 
-#### Installing PHP 7.0
 
-Install PHP 7.0 from Debian archive.
-This will be (sadly) the default version in Stretch, 7.1 came out too late to squeeze into Stretch's timeline.
+We'll now add his repository (as well as enable HTTPS for APT and register the APT key):
+```
+$ apt-get install apt-transport-https
+$ curl https://packages.sury.org/php/apt.gpg | apt-key add -
+$ echo 'deb https://packages.sury.org/php/ stretch main' > /etc/apt/sources.list.d/deb.sury.org.list
+$ apt-get update
+```
+
+#### Installing PHP 7.1
+
+Install PHP 7.1 from Debian archive.
 Do this using the following command:
 
 ```
-$ apt-get install php7.0-cli php7.0-fpm
+$ apt-get install php7.1-cli php7.1-fpm
 ```
 
 Notice the different pattern of the package name.
@@ -75,24 +83,16 @@ Fortunately there are packages directly from a maintainer of Debian's PHP packag
 Visit [his page](https://deb.sury.org/) about packaging to learn more.
 (There is also a PPA repository in case you'd rather use Ubuntu instead of Debian.)
 
-We'll now add his repository (as well as enable HTTPS for APT and register the APT key):
-```
-$ apt-get install apt-transport-https
-$ curl https://packages.sury.org/php/apt.gpg | apt-key add -
-$ echo 'deb https://packages.sury.org/php/ stretch main' > /etc/apt/sources.list.d/deb.sury.org.list
-$ apt-get update
-```
-
 Now that we have the repository added, we can install the packages from there:
 ```
 $ apt-get install php5.6-cli php5.6-fpm
 ```
 
-This will install PHP 5.6 in parallel to PHP 7.0 installed earlier.
+This will install PHP 5.6 in parallel to PHP 7.1 installed earlier.
 We can check this is true by simply running:
 ```
-$ php7.0 -v
-PHP 7.0.15-1 (cli)
+$ php7.1 -v
+PHP 7.1.5-1 (cli)
 $ php5.6 -v
 PHP 5.6.30-5+0~20170223133422.27+stretch~1.gbp1ee0cb (cli)
 ```
@@ -100,7 +100,7 @@ PHP 5.6.30-5+0~20170223133422.27+stretch~1.gbp1ee0cb (cli)
 Note that for conviniency there is also a `php` command provided by _alternatives_ (which defaults to the newest version):
 ```
 $ php -v
-PHP 7.0.15-1 (cli)
+PHP 7.1.5-1 (cli)
 ```
 
 You can switch the default version using update-alternatives, just run the following command and pick the version you prefer:
@@ -115,12 +115,12 @@ Additionally the configuration is separate for each SAPI.
 Same applies to PHP modules so you don't have to worry about incompatible modules between versions.
 
 We are looking for FPM configuration.
-PHP 7.0 FPM configuration is stored in `/etc/php/7.0/fpm` and PHP 5.6 in `/etc/php/5.6/fpm`.
+PHP 7.1 FPM configuration is stored in `/etc/php/7.1/fpm` and PHP 5.6 in `/etc/php/5.6/fpm`.
 Each FPM instance consists of multiple pools.
 Ideally each site/project should have its separate pool, but that's out of scope of this article, so we'll just use the default pool called _www_.
-Open `/etc/php/7.0/fpm/pool.d/www.conf` and look for the `listen` option.
-It should equal `/run/php/php7.0-fpm.sock` or similar.
-Now do the same for 5.6, it should contain the same with just 5.6 instead of 7.0.
+Open `/etc/php/7.1/fpm/pool.d/www.conf` and look for the `listen` option.
+It should equal `/run/php/php7.1-fpm.sock` or similar.
+Now do the same for 5.6, it should contain the same with just 5.6 instead of 7.1.
 Note that it could also be a bind address, i.e. IP address with port (which is performance-wise more suitable for production than sockets).
 
 #### Configuring NGINX
@@ -141,26 +141,26 @@ Finally remove anything in `/etc/nginx/sites-enabled`, we don't want any default
 Now that we have everything ready, let's create two virtual hosts.
 For simplicity we'll just run them on a different port so we don't have to worry with setting up the hostnames.
 
-#### Site with PHP 7.0
+#### Site with PHP 7.1
 
 First, create folder for our new site and just add a `phpinfo()` there:
 ```
-$ mkdir /var/www/site-with-php7.0
-$ echo -e '<?php\nphpinfo();' > /var/www/site-with-php7.0/index.php
+$ mkdir /var/www/site-with-php7.1
+$ echo -e '<?php\nphpinfo();' > /var/www/site-with-php7.1/index.php
 ```
 
 Now create a simple virtual host with this content.
-Put the following into `/etc/nginx/sites-available/site-with-php7.0`:
+Put the following into `/etc/nginx/sites-available/site-with-php7.1`:
 ```
 server {
 	listen 8870 default_server;
 	listen [::]:8870 default_server;
 	server_name _;
-	root /var/www/site-with-php7.0;
+	root /var/www/site-with-php7.1;
 	index index.php;
 	location / {
 		include snippets/fastcgi-php.conf;
-		fastcgi_pass unix:/run/php/php7.0-fpm.sock; # adjust for the listen setting discussed above
+		fastcgi_pass unix:/run/php/php7.1-fpm.sock; # adjust for the listen setting discussed above
 	}
 }
 ```
@@ -192,7 +192,7 @@ server {
 Enable these sites:
 ```
 $ ln -s ../sites-available/site-with-php5.6 /etc/nginx/sites-enabled
-$ ln -s ../sites-available/site-with-php7.0 /etc/nginx/sites-enabled
+$ ln -s ../sites-available/site-with-php7.1 /etc/nginx/sites-enabled
 ```
 
 Reload NGINX and we're done:
@@ -205,10 +205,10 @@ $ systemctl reload nginx.service
 
 We should now test that our setup works, shouldn't we?
 
-#### Testing site with 7.0
+#### Testing site with 7.1
 
 Head over to your browser and open `http://localhost:8870/`.
-You should see the output of `phpinfo()` telling you that you are running PHP 7.0.
+You should see the output of `phpinfo()` telling you that you are running PHP 7.1.
 
 #### Testing site with 5.6
 
