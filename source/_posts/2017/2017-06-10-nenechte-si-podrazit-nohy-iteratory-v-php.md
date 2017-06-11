@@ -7,9 +7,7 @@ Iterátory v PHP jsou občas zrádné. V některých kolekcích se chovají nein
 author: 24
 ---
 
-## Nenechte si podrazit nohy iterátory v PHP
-
-Při programování a používání kolekcí v doménovém modelu jsem narazil na velmi podivné chování `SplObjectStorage` (2. příklad) při vnořeném iterování. V jednom příkladu dokonce XDebug mění chování kódu. Nenechte se napálit a pochopte sémantiku iterátorů v PHP.
+Při programování a používání kolekcí v doménovém modelu jsem narazil na velmi podivné chování `SplObjectStorage` (2. příklad) při vnořeném iterování. V jednom příkladu dokonce XDebug mění chování kódu (3. příklad). Nenechejte se napálit a pochopte sémantiku iterátorů v PHP.
 
 ```php
 $a = [];
@@ -229,7 +227,7 @@ $iterator = new MyAwesomeIterator($collection);
 foreach($iterator as $key => $value) { /* ... */ }
 ```
 
-Všimněte si, že `MyAwesomeIterator` (implementuje `Iterator`) bere jako parametr přímo kolekci, na kterou zprostředkovává pohled.
+Všimněte si, že `MyAwesomeIterator` (implementuje `Iterator`) bere jako parametr přímo kolekci = zprostředkovává pohled na kolekci.
 
 ## A proč je tedy možné `foreach` s `IteratorAggregate` procházet zanořeně?
 
@@ -265,16 +263,16 @@ Budou-li tedy **dva `foreach`e v sobě**, každý bude **mít svoji instanci ite
 - Nikdy **neprocházejte jednu instanci `Iterator` zanořeně**
 - Pokud implementujete **kolekci** (objekt, který drží nějaká data), vždy implementujte rozhraní `IteratorAggregate`.
 - Pokud implementujete **pohled na data**, implementujte rozhraní `Iterator`.
-- pokud chcete, aby se struktura, kterou dostanete na vstupu chovala **stejně jako pole**, vyžadujte rozhraní `IteratorAggreage`.
+- pokud chcete, aby se struktura, kterou dostanete na vstupu chovala **stejně jako pole**, vyžadujte rozhraní `IteratorAggregate`.
 - Ke kolekci může existovat více `Iterator`ů - tedy **více pohledů**, na ta **stejná data**.
 - Kolekce by neměla implementovat `Iterator` přímo, protože...
 	- tím říká, že na ni v **jednu chvíli** existuje jen **jeden pohled**.
 	- má poté **dvě zodpovědnosti** - uchování dat a zprostředkování pohledu na data v ní uložené.
 - Dejte si pozor na `SplFixedArray`, `SplObjectStorage` a další kolekce, které implementují `Iterator`.
 - Použijte raději [phpds](https://secure.php.net/manual/en/book.ds.php), kde jsou datové struktury implementovány správně.
-- Pokud kolekce, kterou používáš implementuje přímo rozhraní `Iterator`, podporuje klonování a nemůžeš použít jinou kolekci, která implementuje `IteratorAggregate`, můžeš zkusit `foreach(clone $collection as $key => $value) { /* .. */ }`.
-	- Měj však na paměti, že je to pomalé.
-	- A všude kde iteruješ kolekci budeš muset navíc ještě psát i `clone`.
+- Pokud kolekce, kterou používáte implementuje přímo rozhraní `Iterator`, podporuje klonování a nemůžete použít jinou kolekci, která implementuje `IteratorAggregate`, můžete zkusit `foreach(clone $collection as $key => $value) { /* .. */ }`.
+	- Mějte však na paměti, že je to pomalé.
+	- A všude kde iterujete kolekci budete muset navíc ještě psát i `clone`.
 
 
 ### Bonusový úkol
