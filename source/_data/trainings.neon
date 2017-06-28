@@ -49,3 +49,20 @@ trainings:
         duration: "3 hodiny"
         price: "1999 Kč"
         capacity: "4-10 lidí"
+    3:
+        name: "Úvod do Nette"
+        trainer_name: "Štěpán Kocourek"
+        trainer_photo: "stepan-kocourek.jpg"
+        description: '''
+        <ul>
+            <li>adresářová struktura</li>
+            <li>routování: vytváření odkazů a hezkých URL v jakékoliv podobě</li>
+            <li>Model-View-Controller: presenter a životní cyklus</li>
+            <li>úvod do formulářů</li>
+            <li>Latte: silný šablonovací jazyk a dědění šablon</li>
+            <li>Tracy Debugger a eliminace chyb</li>
+        </ul>
+        '''
+        duration: "4 hodiny"
+        price: "2499 Kč"
+        capacity: "4-6 lidí"
