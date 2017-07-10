@@ -191,19 +191,7 @@ It could not be simpler and meets all the conditions
 
 This is my story for event naming evolution. What is yours - **which event naming system do you use**? I'm curious and ready to be wrong, so let me know in the comments.
  
-I still think there might be better way.
-
-Like this tip by friend of mine @enumag.
-
-```php
-$postEvent = new PostEvent($post);
-$this->eventDispatcher->dispatch($postEvent)
-```
-
-With simple wrapper over `EventDispatcher`:
-
-```php
-public function dispatch(Event $event)
+P
 {
     $this->eventDispatcher->dispatch(get_class($event), $event);
 }
