@@ -1,8 +1,10 @@
+
+
 parameters:
-    pageTitle: "Děláš v PHP? Jsi jedním z nás"
+    page_title: "Děláš v PHP? Jsi jedním z nás"
     site_Url: "https://pehapkari.cz"
-    githubEditUrlStart: "https://github.com/pehapkari/pehapkari.cz/edit/master/source/"
-    githubShowUrlStart: "https://github.com/pehapkari/pehapkari.cz/tree/master/"
+    github_edit_url_start: "https://github.com/pehapkari/pehapkari.cz/edit/master/source/"
+    github_show_url_start: "https://github.com/pehapkari/pehapkari.cz/tree/master/"
 
     lang: "cs" # default language
 
