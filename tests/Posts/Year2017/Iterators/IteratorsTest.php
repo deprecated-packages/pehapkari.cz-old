@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Pehapkari\Website\Tests\Posts\Year2017\ZradneIteratoryVPHP;
+namespace Pehapkari\Website\Tests\Posts\Year2017\Iterators;
 
 use ArrayObject;
 use PHPUnit\Framework\TestCase;
 use SplFixedArray;
 
-final class ZradneIteratoryVPHPTest extends TestCase
+final class IteratorsTest extends TestCase
 {
     public function test01SimpleArray(): void
     {
