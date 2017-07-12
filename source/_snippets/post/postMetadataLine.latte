@@ -4,7 +4,7 @@
         <p class="success">
             <strong><em class="fa fa-fw fa-check-square-o"></em>
                 <a href="{$testDirectoryOnGithub}">
-                    {="post.covered_by_test"|translate: $post['lang'] ?? $lang}
+                    This post is Tested
                 </a>
             </strong>
         </p>
@@ -16,8 +16,7 @@
 
         |
 
-        {="post.by"|translate: $post['lang'] ?? $lang}
-        <strong>{$authors[$post['author']]['name']}</strong>
+        by <strong>{$authors[$post['author']]['name']}</strong>
 
         &ndash;
 
@@ -25,10 +24,11 @@
             {$post->getDateInFormat('j. n. Y')}
         </time>
 
-        |
+        {ifset $showCommentCount}
+            |
 
-        <em class="fa fa-fw fa-comments"></em>
-        <a href="{$siteUrl}/{$post['relativeUrl']}/#disqus_thread">X</a>
-        {="post.comment_count"|translate: $post['lang'] ?? $lang}
+            <em class="fa fa-fw fa-comments"></em>
+            <a href="{$siteUrl}/{$post['relativeUrl']}/#disqus_thread">X</a> comments
+        {/ifset}
     </p>
 </div>
