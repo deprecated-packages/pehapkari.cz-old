@@ -3,6 +3,7 @@
 namespace Pehapkari\Website\Tests\Posts\Year2017\Iterators;
 
 use ArrayObject;
+use Pehapkari\Website\Posts\Year2017\Iterators\FixedArray;
 use PHPUnit\Framework\TestCase;
 use SplFixedArray;
 
@@ -61,21 +62,7 @@ final class IteratorsTest extends TestCase
     public function test03SplFixedArrayWtf(): void
     {
         // Arrange
-        $object = new class(2) extends SplFixedArray {
-            /**
-             * @return mixed[]
-             */
-            public function __debugInfo(): array
-            {
-                $return = [];
-                /* @noinspection ForeachSourceInspection */
-                foreach ($this as $key => $val) {
-                    $return[(string) $key] = (string) $val;
-                }
-
-                return $return;
-            }
-        };
+        $object = new FixedArray(2);
         $object[0] = 'first-value';
         $object[1] = 'second-value';
 
@@ -97,21 +84,7 @@ final class IteratorsTest extends TestCase
     public function test04SplFixedArrayWtf(): void
     {
         // Arrange
-        $object = new class(2) extends SplFixedArray {
-            /**
-             * @return mixed[]
-             */
-            public function __debugInfo(): array
-            {
-                $return = [];
-                /* @noinspection ForeachSourceInspection */
-                foreach ($this as $key => $val) {
-                    $return[(string) $key] = (string) $val;
-                }
-
-                return $return;
-            }
-        };
+        $object = new FixedArray(2);
         $object[0] = 'first-value';
         $object[1] = 'second-value';
 
