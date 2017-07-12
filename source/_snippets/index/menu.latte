@@ -21,7 +21,7 @@
                 {ifset $post}
                     {capture $githubEditLink}{$post|githubEditPostUrl}{/capture}
                 {elseifset $id}
-                    {capture $githubEditLink}{$githubEditUrlStart}{$githubLink =  $id . '.latte'}{/capture}
+                    {capture $githubEditLink}{$github_edit_url_start}{$githubLink =  $id . '.latte'}{/capture}
                 {/ifset}
 
                 {ifset $githubEditLink}

@@ -4,10 +4,10 @@
     <channel>
         <feedpress:locale>cs</feedpress:locale>
         <feedpress:newsletterId>nejenophp</feedpress:newsletterId>
-        <atom:link rel="self" href="{$siteUrl}/rss.xml" />
+        <atom:link rel="self" href="{$site_url}/rss.xml" />
 
         <title><![CDATA[Nejen o PHP]]></title>
-        <link><![CDATA[{$siteUrl}]]></link>
+        <link><![CDATA[{$site_url}]]></link>
         <language>cs</language>
         <copyright><![CDATA[© 2016 Péhápkaři.cz]]></copyright>
         <description><![CDATA[Povídání o všem možném kolem PHP, komunit a vzdělání.]]></description>
@@ -23,7 +23,7 @@
             {continueIf ! isset($post['podcast'])}
             <item>
                 <title>Nejen o PHP {$post['podcast']['title']}</title>
-                <guid>{$siteUrl}/{$post['relativeUrl']}</guid>
+                <guid>{$site_url}/{$post['relativeUrl']}</guid>
                 <pubDate>{$post['podcast']['publish_date']} 11:00:00 +0000</pubDate>
                 <description>{$post['perex']}</description>
 

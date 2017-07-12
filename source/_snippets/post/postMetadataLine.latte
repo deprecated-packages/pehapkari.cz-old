@@ -1,6 +1,6 @@
 <div class="metadataLine">
     {ifset $post['tested']}
-        {capture $testDirectoryOnGithub}{$githubShowUrlStart}tests/Posts/Year{$post->getDateInFormat('Y')}/{$post['test_slug']}{/capture}
+        {capture $testDirectoryOnGithub}{$github_show_url_start}tests/Posts/Year{$post->getDateInFormat('Y')}/{$post['test_slug']}{/capture}
         <p class="success">
             <strong><em class="fa fa-fw fa-check-square-o"></em>
                 <a href="{$testDirectoryOnGithub}">
@@ -28,7 +28,7 @@
             |
 
             <em class="fa fa-fw fa-comments"></em>
-            <a href="{$siteUrl}/{$post['relativeUrl']}/#disqus_thread">X</a> comments
+            <a href="{$site_url}/{$post['relativeUrl']}/#disqus_thread">X</a> comments
         {/ifset}
     </p>
 </div>
