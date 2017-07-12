@@ -12,7 +12,7 @@ lang: en
 reviewed_by: [5]
 ---
 
-## 1. Start with *Stringly* 
+## 1. Start with *Stringly*
 
 You can start with simple *string named event*:
 
@@ -30,7 +30,7 @@ $postEvent = new PostEvent($post);
 $this->eventDispatcher('post_add', $postEvent)
 ```
 
-All looked good, but **the subscriber didn't work**. Fun time with event subscribers debugging was about to come. 
+All looked good, but **the subscriber didn't work**. Fun time with event subscribers debugging was about to come.
 
 Hour has passed. Event subscriber was registered as a service, tagged, collected by dispatcher... but I still couldn't find the issue. So I showed it to my colleague:
 
@@ -83,7 +83,7 @@ final class TagPostSubscriber implements SubscriberInterface
     {
         return [PostEvents::ON_POST_ADDED => 'tagPost'];
     }
-    
+
     public function tagPost(PostAddedEvent $postAddedEvent): void
     {
         // ...
@@ -95,7 +95,7 @@ final class TagPostSubscriber implements SubscriberInterface
 
 - All events are in one place.
 - Easy to orientate for new programmer what events he or she can use.
-- IDE helps you with constant autocompletion. 
+- IDE helps you with constant autocompletion.
 
 
 ### Cons
@@ -174,10 +174,10 @@ Like this!
 
 ### Cons
 
-- You still need a human brain computation to keep `constant NAME = '...'` unique per-class. 
-- Beautiful place for error and long nights of debugging. 
+- You still need a human brain computation to keep `constant NAME = '...'` unique per-class.
+- Beautiful place for error and long nights of debugging.
 
-**Take a step back**: what is my goal? 
+**Take a step back**: what is my goal?
 
 I look for an identifier that is:
 
@@ -185,7 +185,7 @@ I look for an identifier that is:
 - **constant** (in both meanings if possible)
 - **IDE friendly**
 - **coupled to Event class** in any way
-- doesn't allow me to make naming errors and typos 
+- doesn't allow me to make naming errors and typos
 
 Can you see it? I think you do :)
 
@@ -213,8 +213,8 @@ All 4 reasons above +
 This is my story for event naming evolution. But what is yours - **which event naming system do you use**? I'm curious and ready to be wrong, so please let me know in the comments if you like it or do it any different way.
 
 
-### Taking it Step Further 
- 
+### Taking it Step Further
+
 [Enumag](http://enumag.cz/) suggested such different way by removing first argument:
 
 ```php
