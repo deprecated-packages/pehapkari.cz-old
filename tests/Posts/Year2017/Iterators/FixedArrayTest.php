@@ -2,40 +2,13 @@
 
 namespace Pehapkari\Website\Tests\Posts\Year2017\Iterators;
 
-use ArrayObject;
 use Pehapkari\Website\Posts\Year2017\Iterators\FixedArray;
 use PHPUnit\Framework\TestCase;
 use SplFixedArray;
 
-final class IteratorsTest extends TestCase
+final class FixedArrayTest extends TestCase
 {
-    public function test01SimpleArray(): void
-    {
-        // Arrange
-        $object = [];
-        $object[0] = 'first-value';
-        $object[1] = 'second-value';
-
-        $accumulator = [];
-
-        // Act
-        foreach ($object as $key1 => $val1) {
-            foreach ($object as $key2 => $val2) {
-                $accumulator[] = [$val1, $val2];
-            }
-        }
-
-        // Assert
-        $this->assertCount(2 * 2, $accumulator); // cartesian product
-        $this->assertSame([
-            ['first-value', 'first-value'],
-            ['first-value', 'second-value'],
-            ['second-value', 'first-value'],
-            ['second-value', 'second-value'],
-        ], $accumulator);
-    }
-
-    public function test02SplFixedArrayWtf(): void
+    public function testSplFixedArrayWtf(): void
     {
         // Arrange
         $object = new SplFixedArray(2);
@@ -59,7 +32,7 @@ final class IteratorsTest extends TestCase
         ], $accumulator);
     }
 
-    public function test03SplFixedArrayWtf(): void
+    public function testFixedArrayWtf(): void
     {
         // Arrange
         $object = new FixedArray(2);
@@ -81,7 +54,7 @@ final class IteratorsTest extends TestCase
         ], $accumulator);
     }
 
-    public function test04SplFixedArrayWtf(): void
+    public function testBreakPoint(): void
     {
         // Arrange
         $object = new FixedArray(2);
@@ -104,7 +77,7 @@ final class IteratorsTest extends TestCase
         ], $accumulator);
     }
 
-    public function test05ForeachWrittenAsWhile(): void
+    public function testForeachWrittenAsWhile(): void
     {
         // Arrange
         $object = new SplFixedArray(2);
@@ -130,7 +103,7 @@ final class IteratorsTest extends TestCase
         ], $accumulator);
     }
 
-    public function test06QuickFixUsingClone(): void
+    public function testQuickFixUsingClone(): void
     {
         // Arrange
         $object = new SplFixedArray(2);
@@ -154,45 +127,6 @@ final class IteratorsTest extends TestCase
             ['second-value', 'first-value'],
             ['second-value', 'second-value'],
         ], $accumulator);
-    }
-
-    public function test07ArrayObject(): void
-    {
-        // Arrange
-        $object = new ArrayObject;
-        $object[0] = 'first-value';
-        $object[1] = 'second-value';
-
-        $accumulator = [];
-
-        // Act
-        foreach ($object as $key1 => $val1) {
-            foreach ($object as $key2 => $val2) {
-                $accumulator[] = [$val1, $val2];
-            }
-        }
-
-        // Assert
-        $this->assertCount(2 * 2, $accumulator); // cartesian product
-        $this->assertSame([
-            ['first-value', 'first-value'],
-            ['first-value', 'second-value'],
-            ['second-value', 'first-value'],
-            ['second-value', 'second-value'],
-        ], $accumulator);
-    }
-
-    public function test08NewIteratorIsReturnedEveryTime(): void
-    {
-        // Arrange
-        $object = new ArrayObject;
-
-        // Act
-        $iterator1 = $object->getIterator();
-        $iterator2 = $object->getIterator();
-
-        // Assert
-        $this->assertNotSame($iterator1, $iterator2);
     }
 
     public function test09BonusInfiniteLoop(): void
