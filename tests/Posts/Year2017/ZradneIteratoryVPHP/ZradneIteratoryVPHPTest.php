@@ -34,7 +34,7 @@ final class ZradneIteratoryVPHPTest extends TestCase
         ], $accumulator);
     }
 
-    public function test02SplFixedArrayWTF(): void
+    public function test02SplFixedArrayWtf(): void
     {
         // Arrange
         $object = new SplFixedArray(2);
@@ -58,19 +58,22 @@ final class ZradneIteratoryVPHPTest extends TestCase
         ], $accumulator);
     }
 
-    public function test03SplFixedArrayWTF(): void
+    public function test03SplFixedArrayWtf(): void
     {
         // Arrange
         $object = new class(2) extends SplFixedArray {
-            public function __debugInfo()
+            /**
+             * @return mixed[]
+             */
+            public function __debugInfo(): array
             {
-                $ret = [];
+                $return = [];
                 /* @noinspection ForeachSourceInspection */
                 foreach ($this as $key => $val) {
-                    $ret[(string) $key] = (string) $val;
+                    $return[(string) $key] = (string) $val;
                 }
 
-                return $ret;
+                return $return;
             }
         };
         $object[0] = 'first-value';
@@ -91,19 +94,22 @@ final class ZradneIteratoryVPHPTest extends TestCase
         ], $accumulator);
     }
 
-    public function test04SplFixedArrayWTF(): void
+    public function test04SplFixedArrayWtf(): void
     {
         // Arrange
         $object = new class(2) extends SplFixedArray {
-            public function __debugInfo()
+            /**
+             * @return mixed[]
+             */
+            public function __debugInfo(): array
             {
-                $ret = [];
+                $return = [];
                 /* @noinspection ForeachSourceInspection */
                 foreach ($this as $key => $val) {
-                    $ret[(string) $key] = (string) $val;
+                    $return[(string) $key] = (string) $val;
                 }
 
-                return $ret;
+                return $return;
             }
         };
         $object[0] = 'first-value';
@@ -216,7 +222,7 @@ final class ZradneIteratoryVPHPTest extends TestCase
         $this->assertNotSame($iterator1, $iterator2);
     }
 
-    public function test09Bonus_InfiniteLoop(): void
+    public function test09BonusInfiniteLoop(): void
     {
         // Arrange
         $object = new SplFixedArray(2);
