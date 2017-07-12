@@ -12,7 +12,6 @@ final class FixedArray extends SplFixedArray
     public function __debugInfo(): array
     {
         $return = [];
-        /* @noinspection ForeachSourceInspection */
         foreach ($this as $key => $val) {
             $return[(string) $key] = (string) $val;
         }
