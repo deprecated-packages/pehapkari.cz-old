@@ -4,6 +4,7 @@
     "main": "gulpfile.js",
     "dependencies": {},
     "devDependencies": {
+        "write-good": "^0.10",
         "child_process": "^1.0.2",
         "gulp": "^3.9.1",
         "gulp-util": "^3.0.8",
