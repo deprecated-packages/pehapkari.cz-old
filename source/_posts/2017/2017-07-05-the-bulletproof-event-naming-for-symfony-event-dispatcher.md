@@ -1,124 +1,140 @@
 ---
 layout: post
-title: "The Bulletproof Event Naming For Symfony\EventDispatcher"
+title: "The Bulletproof Event Naming For Symfony Event Dispatcher"
 perex: '''
-    ...
+    I wrote <a href="/blog/2016/12/05/symfony-event-dispatcher/">intro to Symfony\EventDispatcher</a> and how to use it with simple event.
+    <br><br>
+    But when it comes to dispatching events, you can choose from <strong>4 different ways</strong>. Which one to choose and why?
+    Today I will show you pros and cons of all of them to make it easier for you.
 '''
 author: 1
 lang: en
 ---
 
-I wrote intro about [Symfony\EventDispatcher](/blog/2016/12/05/symfony-event-dispatcher/) and how to dispatch events and their Event classes.
+## 1. Start with *Stringly* 
 
-When it comes to dispatching events, you can choose from many ways to do it.
-Today I will show you all their advantages and disadvantages. Follow me and think of the one you like the best. 
-
-## 3 Ways to Dispatch Event     
-    
-You can start with simple *string named event*: 
+You can start with simple *string named event*:
 
 ```php
 $postEvent = new PostEvent($post);
 $this->eventDispatcher('post_added', $postEvent)
 ```
 
-This is simple for start and easy to use for one place and one event. I started with this and it was nice and easy.
+Simple for start and easy to use for one place and one event.
 
-I started to use in in more places like this:     
+One day I started to use in in more places:
 
 ```php
 $postEvent = new PostEvent($post);
 $this->eventDispatcher('post_add', $postEvent)
 ```
 
-All looked good, but the subscriber didn't work. Quite fun to debug subscribers, right?
+All looked good, but **the subscriber didn't work**. Fun time with event subscribers debugging was about to come. 
 
-Over hour have passed and I still could find the issue. Event subscriber was registered as services, tagged, collected by dispatcher... When I was really despreated, I showed it to collegaue of mine. 
+Hour has passed. Event subscriber was registered as a service, tagged, collected by dispatcher... but I still couldn't find the issue. So I showed it to my colleague:
 
-"Oh, you've got: "post_add" there, there should be "post_added".
+*Oh, you've got "post_add" there, but there should be "post_added".*
 
-I simply copied the previous subscriber with "post_added" but made a typo in event dispatching.
+YAY! I only copied the previous subscriber with "post_added" but **I made a typo** while dispatching event.
 
-There must be a cure for this. I looked for way how others do it.
+There must be a cure for this, I wished.
 
+## 2. Group File with Events Names as Constants
 
-## Group File with Events Names as Constants
-
-Then I got inspired by Symfony [`ConsoleEvents` class](https://github.com/symfony/symfony/blob/d203ee33954f4e0c5b39cdc6224fe4fb96cac0c3/src/Symfony/Component/Console/ConsoleEvents.php) that collects all events from one domain ("Console" here).
-
-### Why you should use it?
-
-- all events in one place
-- easy to orientate for new programmer
+Then I got inspired by Symfony [`ConsoleEvents` class](https://github.com/symfony/symfony/blob/d203ee33954f4e0c5b39cdc6224fe4fb96cac0c3/src/Symfony/Component/Console/ConsoleEvents.php) that collects all events from one domain in constants.
 
 ```php
-final class OrderEvents
+final class PostEvents
 {
     /**
-     * This event is invoked when order start.
-     * It is called here @see \App\Order\OrderService::start().
-     * And @see \App\Events\OrderStartEvent class is passed.
+     * This event is invoked when post is added.
+     * It is called here @see \App\Post\PostService::add().
+     * And @see \App\Events\PostAddedEvent class is passed.
      *
      * @var string
      */
-    public constant ON_ORDER_START = 'order.start';
-    
+    public constant ON_POST_ADDED = 'post_added';
+
     /**
-     * This event is invoked when order is finished.
-     * It is called here @see \App\Order\OrderService::end().
-     * And @see \App\Events\OrderEndEvent  class is passed.
+     * This event is invoked when post is published.
+     * It is called here @see \App\Post\PostService::puslished().
+     * And @see \App\Events\PostPuslishedEvent class is passed.
+     *
+     * @var string
      */
-    public constant ON_ORDER_FINISHED = 'order.finished';
+    public constant ON_POST_PUBLISHED = 'post_published';
 }
 ```
 
-Also subscriber becase typo-proof:
+Our first example will change from *stringly* to *strongly* typed:
 
 ```php
-class TagPostSubscriber implements SubscriberInterface
+$postAddedEvent = new PostAddedEvent($post);
+$this->eventDispatcher(PostEvents::ON_POST_ADDED, $postAddedEvent)
+```
+
+Also subscriber becomes typo-proof:
+
+```php
+final class TagPostSubscriber implements SubscriberInterface
 {
     public static function getSubscribedEvents(): array
     {
-        return [PostEvent::class => 'tagPost'];
+        return [PostEvents::ON_POST_ADDED => 'tagPost'];
+    }
+    
+    public function tagPost(PostAddedEvent $postAddedEvent): void
+    {
+        // ...
     }
 }
 ```
 
+### Pros
 
-### Why not 
-
-- stringly over strongly - I have to type the "order.start"
-- Breaks open-closed principle, to add new event I have to put it here as well
-    - possiblity of skpping this nad using event directly in with own string
-- i have to come up with expalnation over constant and where is sued and link the evnet classes (correctly, e.g. `EventClass` doesn'T work in PHPStorm to click trough, but `@see EventClass` does)
-- the more events you have the harder is this to maintain properly, 
-    - with 5th event you might end up like this
-    
-    ```php
-    final class OrderEvents
-    {
-        /**
-         * This event is invoked when order is finished.
-         * It is called here @see \App\Order\OrderService::end().
-         * And @see \App\Events\OrderEndEvent  class is passed.
-         */
-        public constant ON_ORDER_FINISHED = 'order.finished';
-        
-        // 3 more clearly annotated events, than this...
-      
-        public constant ON_ORDER_CHANGED = 'changed';
-    }```
+- All events are in one place.
+- Easy to orientate for new programmer what events he or she can use.
+- IDE helps you with constant autocompletion. 
 
 
+### Cons
+
+- One class to store all events **breaks [open-closed principle](https://github.com/wataridori/solid-php-example/blob/master/2-open-closed-principle.php)**.
+    - To add new event I have to put it here as well - human memory vulnerable.
+- Your have to come up with **long annotation description above constant**:
+    - where is used (one place or all),
+    - link the event class with IDE-compatible notation, e.g. `EventClass` doesn't work in PHPStorm, but `@see EventClass` does
+
+The more events you have the harder is this to maintain properly. With 5th event you might end up like this:
+
+```php
+final class PostEvents
+{
+    /**
+     * This event is invoked when post is published.
+     * It is called here @see \App\Post\PostService::puslished().
+     * And @see \App\Events\PostPuslishedEvent class is passed.
+     *
+     * @var string
+     */
+    public constant ON_POST_PUBLISHED = 'post_published';
+
+    // 3 more nicely annotated events...
+
+    public constant ON_POST_CHANGED = 'changed';
+}
+```
 
 I wanted to respect open-closed principle, so global class was a no-go.
 
-Maybe I could put...
+Maybe I could put those...
 
-## Constant names in Events
+## 3. Constant Names in Particular Event Classes
 
-```php 
-final class PostEvent
+Like this:
+
+```php
+final class PostAddedEvent
 {
     /**
      * @var string
@@ -129,80 +145,97 @@ final class PostEvent
      * @var Post
      */
     private $post;
-    
-    public function __construct(Post $post) 
+
+    public function __construct(Post $post)
     {
         $this->post = $post;
     }
-    
-    // ...
 }
 ```
 
+Our example is now *strongly* typed and **respects open-closed principle**:
+
 ```php
-$postEvent = new PostEvent($post);
-$this->eventDispatcher(PostEvent::NAME, $postEvent)
+$postAddedEvent = new PostAddedEvent($post);
+$this->eventDispatcher(PostAddedEvent::NAME, $postAddedEvent)
 ```
 
-
-### Why you should use it?
-
-- easy to refactor event name
-- no more human error in evnet names typos
-- native IDE support for constant autocomplete 
-
-### Why not?
-
-- Because you need to keep unique per-class `NAME`
-- still at manual writing and putting responsibility on programmer 
+Like this!
 
 
-**Take a step back**
+### Pros
 
-What is my goal? I look for identifier that is:
+**All the above +**
+
+- Easy to refactor event name.
+- No more human error in event name typos.
+
+
+### Cons
+
+- You still need a human brain computation to keep `constant NAME = '...'` unique per-class. 
+- Beautiful place for error and long nights of debugging. 
+
+**Take a step back**: what is my goal? 
+
+I look for an identifier that is:
 
 - **unique per class**
-- **constant**
+- **constant** (in both meanings if possible)
 - **IDE friendly**
 - **coupled to Event class** in any way
+- doesn't allow me to make naming errors and typos 
 
 Can you see it? I think you do :)
 
 
-
-### Class based Event Naming
+## 4. Class-based Event Naming
 
 ```php
-$postEvent = new PostEvent($post);
-$this->eventDispatcher(PostEvent::class, $postEvent)
+$postAddedEvent = new PostAddedEvent($post);
+$this->eventDispatcher(PostAddedEvent::class, $postAddedEvent)
 ```
 
-It could not be simpler and meets all the conditions
+It could not be simpler and meets all the conditions!
 
-## Why use it
 
-- all 4 reasons above
-- it's typo proofs
-- it uses PHP native `::class` support
-- it's addictively easy
- 
+### Pros
+
+All 4 reasons above +
+
+- **It's typo-proof**
+- It uses PHP **native `::class` support**.
+- It's addictively easy.
 
 ## Which Type Do You Like?
 
-This is my story for event naming evolution. What is yours - **which event naming system do you use**? I'm curious and ready to be wrong, so let me know in the comments.
+This is my story for event naming evolution. But what is yours - **which event naming system do you use**? I'm curious and ready to be wrong, so please let me know in the comments if you like it or do it any different way.
+
+
+### Taking it Step Further 
  
-P
+[Enumag](http://enumag.cz/) suggested such different way by removing first argument:
+
+```php
+public function dispatch(Event $event): void
 {
     $this->eventDispatcher->dispatch(get_class($event), $event);
 }
 ```
 
-Or [eliminating visual debt](http://ocramius.github.io/blog/eliminating-visual-debt/) like this:
- 
+```php
+$postAddedEvent = new PostAddedEvent($post);
+$this->eventDispatcher($postAddedEvent);
+
+// or in case we don't need to get changed content from the event
+
+$this->eventDispatcher(new PostAddedEvent($post));
+```
+
+Or you can take it 2 steps further and [eliminate visual debt](http://ocramius.github.io/blog/eliminating-visual-debt/):
+
 ```php
 EventDispatcher::dispatch([$post]);
 ```
 
 #sarcasm
-
- 
