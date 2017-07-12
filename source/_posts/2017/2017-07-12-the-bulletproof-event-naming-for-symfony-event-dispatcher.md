@@ -5,7 +5,7 @@ perex: '''
     I wrote <a href="/blog/2016/12/05/symfony-event-dispatcher/">intro to Symfony\EventDispatcher</a> and how to use it with simple event.
     <br><br>
     But when it comes to dispatching events, you can choose from <strong>4 different ways</strong>. Which one to choose and why?
-    Today I will show you pros and cons of all of them to make it easier for you.
+    Today I will show you pros and cons of them to make it easier for you.
 '''
 author: 1
 lang: en
@@ -22,7 +22,7 @@ $this->eventDispatcher('post_added', $postEvent)
 
 Simple for start and easy to use for one place and one event.
 
-One day I started to use in in more places:
+One day I started to use in more places:
 
 ```php
 $postEvent = new PostEvent($post);
@@ -35,7 +35,7 @@ Hour has passed. Event subscriber was registered as a service, tagged, collected
 
 *Oh, you've got "post_add" there, but there should be "post_added".*
 
-YAY! I only copied the previous subscriber with "post_added" but **I made a typo** while dispatching event.
+YAY! I copied the previous subscriber with "post_added" but **I made a typo** while dispatching event.
 
 There must be a cure for this, I wished.
 
@@ -127,9 +127,9 @@ final class PostEvents
 
 I wanted to respect open-closed principle, so global class was a no-go.
 
-Maybe I could put those...
+Maybe, I could put those...
 
-## 3. Constant Names in Particular Event Classes
+## 3. ...Constant Names in Particular Event Classes
 
 Like this:
 
