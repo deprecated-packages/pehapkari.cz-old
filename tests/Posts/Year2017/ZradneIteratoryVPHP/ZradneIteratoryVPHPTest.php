@@ -34,7 +34,6 @@ final class ZradneIteratoryVPHPTest extends TestCase
         ], $accumulator);
     }
 
-
     public function test02SplFixedArrayWTF(): void
     {
         // Arrange
@@ -59,19 +58,18 @@ final class ZradneIteratoryVPHPTest extends TestCase
         ], $accumulator);
     }
 
-
     public function test03SplFixedArrayWTF(): void
     {
         // Arrange
-        $object = new class (2) extends SplFixedArray
-        {
+        $object = new class(2) extends SplFixedArray {
             public function __debugInfo()
             {
                 $ret = [];
-                /** @noinspection ForeachSourceInspection */
+                /* @noinspection ForeachSourceInspection */
                 foreach ($this as $key => $val) {
                     $ret[(string) $key] = (string) $val;
                 }
+
                 return $ret;
             }
         };
@@ -93,19 +91,18 @@ final class ZradneIteratoryVPHPTest extends TestCase
         ], $accumulator);
     }
 
-
     public function test04SplFixedArrayWTF(): void
     {
         // Arrange
-        $object = new class (2) extends SplFixedArray
-        {
+        $object = new class(2) extends SplFixedArray {
             public function __debugInfo()
             {
                 $ret = [];
-                /** @noinspection ForeachSourceInspection */
+                /* @noinspection ForeachSourceInspection */
                 foreach ($this as $key => $val) {
                     $ret[(string) $key] = (string) $val;
                 }
+
                 return $ret;
             }
         };
@@ -127,7 +124,6 @@ final class ZradneIteratoryVPHPTest extends TestCase
             ['first-value'],
         ], $accumulator);
     }
-
 
     public function test05ForeachWrittenAsWhile(): void
     {
@@ -155,7 +151,6 @@ final class ZradneIteratoryVPHPTest extends TestCase
         ], $accumulator);
     }
 
-
     public function test06QuickFixUsingClone(): void
     {
         // Arrange
@@ -182,11 +177,10 @@ final class ZradneIteratoryVPHPTest extends TestCase
         ], $accumulator);
     }
 
-
     public function test07ArrayObject(): void
     {
         // Arrange
-        $object = new ArrayObject();
+        $object = new ArrayObject;
         $object[0] = 'first-value';
         $object[1] = 'second-value';
 
@@ -209,11 +203,10 @@ final class ZradneIteratoryVPHPTest extends TestCase
         ], $accumulator);
     }
 
-
     public function test08NewIteratorIsReturnedEveryTime(): void
     {
         // Arrange
-        $object = new ArrayObject();
+        $object = new ArrayObject;
 
         // Act
         $iterator1 = $object->getIterator();
@@ -222,7 +215,6 @@ final class ZradneIteratoryVPHPTest extends TestCase
         // Assert
         $this->assertNotSame($iterator1, $iterator2);
     }
-
 
     public function test09Bonus_InfiniteLoop(): void
     {
@@ -239,7 +231,7 @@ final class ZradneIteratoryVPHPTest extends TestCase
                 if ($i >= 1000) {
                     continue;
                 } // prevent looping to infinity
-                $i++;
+                ++$i;
 
                 // this is how you make this loop infinite:
                 // Task: rewrite this loops as a while loops (see above) and get the idea what is happening
