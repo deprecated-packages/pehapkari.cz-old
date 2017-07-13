@@ -85,7 +85,7 @@ final class InvoiceFormFactory
 **Šablona**
 ```smarty
 <form n:name="invoiceForm">
-    ❴* naše vlastní vykreslení formuláře *❵
+    {* naše vlastní vykreslení formuláře *}
 </form>
 ```
 

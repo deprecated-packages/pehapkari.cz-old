@@ -364,13 +364,13 @@ V šabloně presenteru si vykreslíme komponentu `BasketContentControl` a vypí�
 ```html
 <!-- /templates/Category/default.latte -->
 
-❴control basketContent❵
+{control basketContent}
 <table>
     <tr n:foreach="$products as $product">
-        <td>❴$product['id']❵</td>
-        <td>❴$product['name']❵</td>
-        <td>❴$product['price']❵</td>
-        <td>❴control 'addToBasket-' . $product['id']❵</td>
+        <td>{$product['id']}</td>
+        <td>{$product['name']}</td>
+        <td>{$product['price']}</td>
+        <td>{control 'addToBasket-' . $product['id']}</td>
     </tr>
 </table>
 ```
@@ -391,15 +391,15 @@ A do třetice je tu šablona pro vykreslení obsahu košíku.
 ```html
 <!-- Component/BasketContentControl/templates/default.latte -->
 
-❴snippet content❵
+{snippet content}
     <table>
         <tr n:foreach="$products as $product">
-            <td>❴$product['id']❵</td>
-            <td>❴$product['name']❵</td>
-            <td>❴$product['price']❵</td>
+            <td>{$product['id']}</td>
+            <td>{$product['name']}</td>
+            <td>{$product['price']}</td>
         </tr>
     </table>
-❴/snippet❵
+{/snippet}
 ```
 
 Nyní máme vše hotové a **můžeme spustit aplikaci**!

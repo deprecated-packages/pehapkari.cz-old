@@ -147,15 +147,15 @@ Nyní si ukážeme jednoduchý příklad pro Nette class:
 
 #parse("PHP File Header.php")
 
-#if ($❴Namespace❵ != "")
-namespace $❴Namespace❵;
+#if (${Namespace} != "")
+namespace ${Namespace};
 #else
 namespace App;
 #end
 
 use Nette;
 
-class $❴NAME❵
+class ${NAME}
 {
 	use Nette\SmartObject;
 
@@ -182,7 +182,7 @@ A takto pak vyplníme proměnné při tvorbě nové třídy:
 V prvním řádku je include PhpDocu. Direktiva `#parse` je vlastně jenom velocity alternativa php konstruktu `include`.
 
 Díky větvení můžeme specifikovat namespace pro novou třídu, a pokud namespace nevyplníme, použije se defaultní, tedy `App`.
-Proměnná `$❴NAME❵` má stejnou hodnotu jako File name.
+Proměnná `${NAME}` má stejnou hodnotu jako File name.
 Při vytváření souboru ze šablony se objeví možnost vyplnit obsah proměnných, jak je vidět na obrázku.
 Proměnná File name je povinná, ale ostatní proměnné můžeme ponechat prázdné.
 
@@ -195,44 +195,44 @@ Takto by mohl vypadat file template pro Nette presenter:
 
 #parse("PHP File Header.php")
 
-#if ($❴Module❵ != "")
-namespace App\\$❴Module❵Module\Presenters;
-#elseif ($❴Namespace❵ != "")
-namespace $❴Namespace❵;
+#if (${Module} != "")
+namespace App\\${Module}Module\Presenters;
+#elseif (${Namespace} != "")
+namespace ${Namespace};
 #else
 namespace App;
 #end
 
 use Nette;
-#if ($❴NAME❵ == 'BasePresenter')
+#if (${NAME} == 'BasePresenter')
 use Nette\Application\UI;
 
-class $❴NAME❵ extends UI\Presenter
+class ${NAME} extends UI\Presenter
 #else
 
-class $❴NAME❵ extends BasePresenter
+class ${NAME} extends BasePresenter
 #end
 {
 
-#if ($❴Action❵ != "")
-	public function action$❴Action❵()
+#if (${Action} != "")
+	public function action${Action}()
 	{
 
 	}
 
 #end
-#if ($❴NAME❵ != 'BasePresenter')
+#if (${NAME} != 'BasePresenter')
 	public function renderDefault()
 	{
 
 	}
 
 #end
-#if ($❴Render❵ != "")
+#if (${Render} != "")
 
 ## Na následucíjím řádku kapitalizujeme obsah proměnné $Render. Tento řádek je pouze komentář.
 #set ($Capitalized = $Render.substring(0,1).toUpperCase() + $Render.substring(1))
-	public function render$❴Capitalized❵()
+	public function render${Capitalized}()
 	{
 
 	}
@@ -261,9 +261,9 @@ Také je možné presenter rovnou vygenerovat s nějakou z action, render nebo h
 Nicméně pokud pole zůstanou prázdná, presenter se vygeneruje bez nich.
 
 Jazyk velocity má pro PHP jednu drobnou nevýhodu. Znak `$` totiž interpretuje jako začátek proměnné,
-a proto jej musíme escapovat jako `$❴DS❵`. Pokud to neuděláme, tak se nám `$id` objeví ve formuláři při tvorbě souboru jako proměnná.
+a proto jej musíme escapovat jako `${DS}`. Pokud to neuděláme, tak se nám `$id` objeví ve formuláři při tvorbě souboru jako proměnná.
 Pokud tedy chceme použít například ve file templatu nějakého objektu toto: `private $id;`, musíme to napsat následovně:
-`private $❴DS❵id;`.
+`private ${DS}id;`.
 
 Zajímavé je, že ve file templatech lze používat javovské operace pro práci se stringy.
 Tyto operace lze však používat jen uvnitř direktivy `#set`, což můžeme vidět ve výše uvedeném příkladu.
