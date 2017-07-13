@@ -31,7 +31,7 @@ script:
     # check with phpstan (defined in composer.json "scripts" section)
     - if [[ $RUN_PHPSTAN = 1 ]]; then composer phpstan; fi
     # test that website is generated
-    - vendor/bin/statie generate
+    - vendor/bin/statie generate source
     # re-build website when on master only
     - |
         if [[ "$TRAVIS_BRANCH" == "master" && "$TRAVIS_PULL_REQUEST" == "false" ]]; then
