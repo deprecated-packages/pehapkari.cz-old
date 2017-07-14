@@ -49,7 +49,7 @@ trainings:
         duration: "3 hodiny"
         price: "1999 Kč"
         capacity: "4-10 lidí"
-    3:
+    4:
         name: "Úvod do Nette"
         trainer_name: "Štěpán Kocourek"
         trainer_photo: "stepan-kocourek.jpg"
