@@ -5,6 +5,8 @@ perex: '''
 Iterátory v PHP jsou občas zrádné. V některých kolekcích se chovají neintuitivně. Zjistěte proč a vyhnete se tím hodinám zbytečného hledání chyb.
 '''
 author: 24
+tested: true
+test_slug: Iterators
 ---
 
 Při programování a používání kolekcí v doménovém modelu jsem narazil na velmi podivné chování `SplObjectStorage` (2. příklad) při vnořeném iterování. V jednom příkladu dokonce XDebug mění chování kódu (3. příklad). Nenechejte se napálit a pochopte sémantiku iterátorů v PHP.
@@ -45,7 +47,7 @@ foreach($a as $key1 => $val1) {
 }
 ```
 
-Kolik jste čekali? Čtyři? Budou tam **dva**! 
+Kolik jste čekali? Čtyři? Budou tam **dva**!
 
 Teď si asi říkáte, k čemu je dobré iterovat dvakrát ten samý objekt v sobě. Vnořené iterování se umí občas pěkně schovat. Koukněme na další příklad:
 
@@ -106,7 +108,7 @@ Aha! `foreach` tedy nastaví vždy na začátku pozici iterátoru na začátek a
 2. vnější foreach přečte první prvek (a posune se na další)
 3. vnitřní foreach nastaví ukazatel na začátek
 4. vnitřní foreach přečtě první prvek (a posune se na daší)
-5. vnitřní foreach přečtě druhý prvek (a posune se na daší)    
+5. vnitřní foreach přečtě druhý prvek (a posune se na daší)
 6. vnitřní foreach zjistí, že již v iterátoru nic není, končí
 7. vnější foreach zjistí, že v iterátoru již nic není, končí
 
@@ -213,7 +215,7 @@ Iterátory je možné skládat do sebe. Kdy každý iterátor může pohled na d
 
 ```php
 $iterator = new CallbackFilterIterator(
-	$collection->getIterator(), 
+	$collection->getIterator(),
 	function($value, $key) { return rand(0,100) < 50; }
 );
 foreach($iterator as $key => $value) { /* ... */ }
