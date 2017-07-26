@@ -3,7 +3,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.1",
-        "symplify/statie": "^2.1"
+        "symplify/statie": "^2.2"
     },
     "require-dev": {
         "doctrine/annotations": "^1.4",
@@ -18,11 +18,9 @@
         "symfony/intl": "^3.2",
         "symfony/validator": "^3.2",
 
-        "phpstan/phpstan": "^0.7",
+        "phpstan/phpstan": "^0.8",
         "phpunit/phpunit": "^6.0",
-        "symplify/easy-coding-standard": "^2.1",
-        "symplify/coding-standard": "^2.1",
-        "slevomat/coding-standard": "^3.0"
+        "symplify/easy-coding-standard": "^2.2"
     },
     "autoload": {
         "psr-4": {
@@ -31,16 +29,15 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Pehapkari\\Website\\Tests\\": "tests",
-            "PHP_CodeSniffer\\": "vendor/squizlabs/php_codesniffer/src"
+            "Pehapkari\\Website\\Tests\\": "tests"
         }
     },
     "scripts": {
-        "check-cs": "vendor/bin/easy-coding-standard check src tests",
+        "check-cs": "ecs check src tests",
         "fix-cs": [
             "sh ./bin/clear_post_trailing_whitespaces.sh",
-            "vendor/bin/easy-coding-standard check src tests --fix"
+            "ecs check src tests --fix"
         ],
-        "phpstan": "vendor/bin/phpstan analyse --level=7 --configuration=phpstan.neon src tests"
+        "phpstan": "vendor/bin/phpstan analyse src tests --level 7 --configuration phpstan.neon"
     }
 }
