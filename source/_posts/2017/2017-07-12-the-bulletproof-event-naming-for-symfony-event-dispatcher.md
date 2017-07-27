@@ -233,10 +233,8 @@ $this->eventDispatcher($postAddedEvent);
 $this->eventDispatcher(new PostAddedEvent($post));
 ```
 
-Or you can take it 2 steps further and [eliminate visual debt](http://ocramius.github.io/blog/eliminating-visual-debt/):
+Or you can take it 2 steps further and [eliminate visual debt](http://ocramius.github.io/blog/eliminating-visual-debt/) ;)
 
 ```php
 EventDispatcher::dispatch([$post]);
 ```
-
-#sarcasm
