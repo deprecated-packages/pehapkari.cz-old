@@ -1,11 +1,12 @@
 var gulp = require('gulp');
 var watch = require('gulp-watch');
 var gulputil = require('gulp-util');
+var path = require('path');
 var exec = require('child_process').exec;
 
 gulp.task('default', function () {
     // Generate current version
-    exec('vendor/bin/statie generate', function (err, stdout, stderr) {
+    exec(path.normalize('vendor/bin/statie generate'), function (err, stdout, stderr) {
         gulputil.log(stdout);
         gulputil.log(stderr);
     });
@@ -20,7 +21,7 @@ gulp.task('default', function () {
         ['source/**/*', '!**/*___jb_tmp___'],
         { ignoreInitial: false },
         function() {
-            exec('vendor/bin/statie generate', function (err, stdout, stderr) {
+            exec(path.normalize('vendor/bin/statie generate'), function (err, stdout, stderr) {
                 gulputil.log(stdout);
                 gulputil.log(stderr);
             });
