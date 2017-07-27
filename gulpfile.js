@@ -6,7 +6,7 @@ var exec = require('child_process').exec;
 
 gulp.task('default', function () {
     // Generate current version
-    exec(path.normalize('vendor/bin/statie generate'), function (err, stdout, stderr) {
+    exec(path.normalize('vendor/bin/statie generate source'), function (err, stdout, stderr) {
         gulputil.log(stdout);
         gulputil.log(stderr);
     });
@@ -21,7 +21,7 @@ gulp.task('default', function () {
         ['source/**/*', '!**/*___jb_tmp___'],
         { ignoreInitial: false },
         function() {
-            exec(path.normalize('vendor/bin/statie generate'), function (err, stdout, stderr) {
+            exec(path.normalize('vendor/bin/statie generate source'), function (err, stdout, stderr) {
                 gulputil.log(stdout);
                 gulputil.log(stderr);
             });

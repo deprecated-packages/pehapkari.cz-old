@@ -21,13 +21,13 @@
                 {ifset $post}
                     {capture $githubEditLink}{$post|githubEditPostUrl}{/capture}
                 {elseifset $id}
-                    {capture $githubEditLink}{$githubEditUrlStart}{$githubLink =  $id . '.latte'}{/capture}
+                    {capture $githubEditLink}{$github_edit_url_start}{$githubLink =  $id . '.latte'}{/capture}
                 {/ifset}
 
                 {ifset $githubEditLink}
                     <a href="{$githubEditLink}" class="hidden-sm">
                         <em class="fa fa-fw fa-pencil"></em>
-                        {="layout.edit_page"|translate: $post['lang'] ?? $lang}
+                        Edit
                     </a>
                 {/ifset}
             </nav>

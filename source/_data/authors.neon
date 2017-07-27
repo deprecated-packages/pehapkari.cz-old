@@ -1,49 +1,50 @@
-authors:
-    1:
-        name: "Tomáš Votruba"
-    2:
-        name: "Pavel Rozehnal"
-    3:
-        name: "Michal Lulčo"
-    4:
-        name: "Petr Hejna"
-    5:
-        name: "Jáchym Toušek"
-    6:
-        name: "Tomáš Fejfar"
-    7:
-        name: "Tom Klíma"
-    8:
-        name: "Petr Vácha"
-    9:
-        name: "Martina Hynková"
-    10:
-        name: "Petr Olišar"
-    11:
-        name: "Tomáš Pilař"
-    12:
-        name: "Tomáš Jacík"
-    13:
-        name: "Martin Zlámal"
-    14:
-        name: "Ivan Kvasnica"
-    15:
-        name: "Matěj Račinský"
-    16:
-        name: "Jaroslav Hranička"
-    17:
-        name: "Michael Moravec"
-    18:
-        name: "Michal Špaček"
-    19:
-        name: "Václav Makeš"
-    20:
-        name: "Petr Jirásek"
-    21:
-        name: "Honza Černý"
-    22:
-        name: "Lukáš Vraný"
-    23:
-        name: "Filip Procházka"
-    24:
-        name: "Honza Kuchař"
+parameters:
+    authors:
+        1:
+            name: "Tomáš Votruba"
+        2:
+            name: "Pavel Rozehnal"
+        3:
+            name: "Michal Lulčo"
+        4:
+            name: "Petr Hejna"
+        5:
+            name: "Jáchym Toušek"
+        6:
+            name: "Tomáš Fejfar"
+        7:
+            name: "Tom Klíma"
+        8:
+            name: "Petr Vácha"
+        9:
+            name: "Martina Hynková"
+        10:
+            name: "Petr Olišar"
+        11:
+            name: "Tomáš Pilař"
+        12:
+            name: "Tomáš Jacík"
+        13:
+            name: "Martin Zlámal"
+        14:
+            name: "Ivan Kvasnica"
+        15:
+            name: "Matěj Račinský"
+        16:
+            name: "Jaroslav Hranička"
+        17:
+            name: "Michael Moravec"
+        18:
+            name: "Michal Špaček"
+        19:
+            name: "Václav Makeš"
+        20:
+            name: "Petr Jirásek"
+        21:
+            name: "Honza Černý"
+        22:
+            name: "Lukáš Vraný"
+        23:
+            name: "Filip Procházka"
+        24:
+            name: "Honza Kuchař"

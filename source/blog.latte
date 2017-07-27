@@ -18,7 +18,7 @@ id: blog
         {foreach $posts as $post}
             {continueIf $post->getDateInFormat('Y-m-d') > date('Y-m-d') || isset($post['redirect'])}
 
-            {* to see your article locally, use this address: localhost:8000/blog/<year>/<month>/<day>/<slug> *}
+            {* to see your future-dated article locally, use this address: localhost:8000/blog/<year>/<month>/<day>/<slug> *}
             {* e.g. 2017-02-06-how-to-rehash-legacy-passwords-in-symfony.md =>
                 localhost:8000/blog/2017/02/06/how-to-rehash-legacy-passwords-in-symfony
             *}
@@ -41,9 +41,4 @@ id: blog
 
         <br>
     </div>
-{/block}
-
-
-{block additionalJavascript}
-    <script id="dsq-count-scr" src="https://{$disqusName}.disqus.com/count.js" async defer></script>
 {/block}
