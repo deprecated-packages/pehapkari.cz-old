@@ -79,7 +79,6 @@ checkers:
     - Symplify\CodingStandard\Sniffs\Debug\CommentedOutCodeSniff
 
     # Namespaces
-    - Symplify\CodingStandard\Sniffs\Namespaces\ClassNamesWithoutPreSlashSniff
     - PhpCsFixer\Fixer\NamespaceNotation\SingleBlankLineBeforeNamespaceFixer
     - PhpCsFixer\Fixer\NamespaceNotation\BlankLineAfterNamespaceFixer
 
@@ -251,7 +250,6 @@ checkers:
     - PhpCsFixer\Fixer\Casing\MagicConstantCasingFixer
 
     # Architecture
-    - Symplify\CodingStandard\Sniffs\Architecture\ForbiddenTraitSniff
     - Symplify\CodingStandard\Sniffs\Classes\FinalInterfaceSniff
 
 parameters:
