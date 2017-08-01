@@ -5,7 +5,7 @@ var path = require('path');
 var exec = require('child_process').exec;
 
 gulp.task('default', function () {
-    // Generate current  version
+    // Generate current version
     exec(path.normalize('vendor/bin/statie generate source'), function (err, stdout, stderr) {
         gulputil.log(stdout);
         gulputil.log(stderr);
