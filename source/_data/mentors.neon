@@ -142,3 +142,10 @@ parameters:
             intro_message: "PHP, Nette, code review, základy Gitu"
             link: "http://kocourek.io"
             remote: false
+        21:
+            name: "Eduard Barnáš"
+            location: "Poprad"
+            email: "barnas.edo@gmail.com"
+            intro_message: "PHP, Nette, code review"
+            link: "https://www.linkedin.com/in/edobarnas/"
+            remote: true
