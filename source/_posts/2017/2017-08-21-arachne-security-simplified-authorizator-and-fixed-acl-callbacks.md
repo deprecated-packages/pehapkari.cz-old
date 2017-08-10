@@ -6,7 +6,7 @@ perex: '''
     This article will show you how you can solve these problems using the enhanced API provided by <a href="https://github.com/Arachne/Security">Arachne/Security</a>.
 '''
 author: 5
-reviewed_by: [1]
+reviewed_by: [1, 25, 26]
 lang: en
 ---
 

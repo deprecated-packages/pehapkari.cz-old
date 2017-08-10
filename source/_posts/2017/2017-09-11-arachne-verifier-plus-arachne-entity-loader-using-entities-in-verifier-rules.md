@@ -5,7 +5,7 @@ perex: '''
     This article demonstrates that while Arachne components are mostly independent on each other, their potential raises dramatically when you use them together. Push both <a href="https://github.com/Arachne/ParameterValidation">Arachne/ParameterValidation</a> and <a href="https://github.com/Arachne/SecurityVerification">Arachne/SecurityVerification</a> to their limits with <a href="https://github.com/Arachne/EntityLoader">Arachne/EntityLoader</a>!
 '''
 author: 5
-reviewed_by: [1]
+reviewed_by: [1, 25, 26]
 lang: en
 ---
 

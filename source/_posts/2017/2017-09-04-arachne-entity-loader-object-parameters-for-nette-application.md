@@ -7,7 +7,7 @@ perex: '''
     Of course it is not limited to Doctrine, you can easily use it with a different ORM library.
 '''
 author: 5
-reviewed_by: [1]
+reviewed_by: [1, 25, 26]
 lang: en
 ---
 
