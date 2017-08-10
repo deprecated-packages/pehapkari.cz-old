@@ -11,7 +11,7 @@
 composer create-project pehapkari/website pehapkari.cz @dev
 ```
 
-To enabled live reload after any change, we need one more thing - *gulp*:
+To enable live reload after any change, we need one more thing - *gulp*:
 
 ```bash
 npm install -g gulp gulp-watch
