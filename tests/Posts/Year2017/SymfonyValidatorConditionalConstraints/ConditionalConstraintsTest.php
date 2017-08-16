@@ -70,7 +70,7 @@ final class ConditionalConstraintsTest extends TestCase
     {
         $violations = [];
         foreach ($violationList as $violation) {
-            /* @var ConstraintViolationInterface $violation */
+            // @var ConstraintViolationInterface $violation
             $violations[$violation->getPropertyPath()] = $violation->getMessage();
         }
 
