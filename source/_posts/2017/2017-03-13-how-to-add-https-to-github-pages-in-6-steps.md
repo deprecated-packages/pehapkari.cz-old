@@ -61,11 +61,11 @@ Now we have a website running over HTTPS. But it is also accessible without HTTP
 
 ## How to Redirect "HTTP" urls to "HTTPS" in 3 Steps
 
-### 1. [Go to Page Rules](https://www.cloudflare.com/a/page-rules/)
+### 1. [Go to Crypto](https://www.cloudflare.com/a/crypto/)
 
-### 2. Add New Rule
+Scroll down a bit, roughly to the middle of the page.
 
-<img src="/assets/images/posts/2017/https/page-rule-https-create.png">
+### 2. Enable "Always use HTTPS"
 
 This will redirect both
 
@@ -74,7 +74,7 @@ This will redirect both
 
 to their `https://` versions.
 
-<img src="/assets/images/posts/2017/https/page-rule-https-list.png">
+If you need more or different redirections you can use [Page Rules](https://www.cloudflare.com/a/page-rules/).
 
 ### 3. Verify it Works
 
