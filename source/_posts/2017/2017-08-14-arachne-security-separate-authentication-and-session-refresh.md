@@ -20,7 +20,7 @@ Nette/Security does not have a good support for this. Quite often programmers do
 A firewall is basically a shield that protects a part of your application. It is an equivalent of `Nette\Security\User` with slightly different API:
 
 - `Firewall::login(IIdentity $identity)` - unlike `User::login()` you should check the user credentials beforehand and only call this method if the user authenticated successfully.
-- `Firwall::logout()` - same as `User::logout()`.
+- `Firewall::logout()` - same as `User::logout()`.
 - `Firewall::getIdentity()` - use instead of `User::isLoggedIn()` and `User::getIdentity()`. Unlike `User::getIdentity()` it will only return a non-expired `IIdentity`.
 
 ```yaml
