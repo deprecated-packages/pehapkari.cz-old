@@ -222,11 +222,6 @@ h1, h2, .h2, h3 {
     line-height: 1.5em;
 }
 
-#contest-rewards #blog {
-    padding-top: 1em;
-    padding-bottom: 3em;
-}
-
 #blog hr {
     margin-top: 2em;
     padding-bottom: 2em;
@@ -362,16 +357,6 @@ h1:hover .anchor-icon, h2:hover .anchor-icon, h3:hover .anchor-icon, h4:hover .a
 
 #article ol, #article ul {
     margin-bottom: .7em;
-}
-
-#contest-rewards td h3 {
-    margin-top: 0;
-}
-
-#contest-description h2 {
-    color: #111;
-    font-weight: 600;
-    font-size: 1.5em;
 }
 
 .main-logo {
