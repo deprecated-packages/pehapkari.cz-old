@@ -18,7 +18,7 @@ checkers:
     - Symplify\CodingStandard\Sniffs\Debug\DebugFunctionCallSniff
     - Symplify\CodingStandard\Sniffs\Debug\CommentedOutCodeSniff
 
-    # Slevomat Rules
+    # Slevomat
     - SlevomatCodingStandard\Sniffs\Exceptions\ReferenceThrowableOnlySniff
     - SlevomatCodingStandard\Sniffs\Classes\UnusedPrivateElementsSniff
     - SlevomatCodingStandard\Sniffs\TypeHints\NullableTypeForNullDefaultValueSniff
