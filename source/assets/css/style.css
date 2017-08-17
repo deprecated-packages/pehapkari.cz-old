@@ -13,6 +13,10 @@ p {
     line-height: 1.3em;
 }
 
+strong {
+    font-weight: bold;
+}
+
 ul, ol {
     padding-left: 1.1em;
 }
@@ -48,9 +52,13 @@ a:hover, a:focus, a:active {
 
 /* menu */
 header {
-    padding: .2em;
+    padding: .2em 0;
     font-size: 1.1em;
     background: #00A8C6;
+}
+
+header .navbar {
+    padding: 0;
 }
 
 header nav a {
@@ -204,15 +212,24 @@ h1, h2, .h2, h3 {
     font-size: 1.2em;
 }
 
+
 /* nicer, less-wide container */
 @media (min-width: 768px) {
     .container {
-        width: 100%;
+        max-width: 100%;
+    }
+
+    .container-fluid {
+        max-width: 100%;
     }
 }
 
 @media (min-width: 992px) {
     .container {
+        max-width: 940px;
+    }
+
+    .container-fluid {
         max-width: 940px;
     }
 }
@@ -371,4 +388,33 @@ h1:hover .anchor-icon, h2:hover .anchor-icon, h3:hover .anchor-icon, h4:hover .a
 
 .lead p {
     line-height: 1.5em;
+}
+
+
+/* show/hidden menu; ref https://stackoverflow.com/a/35362821/1348344 */
+@media (max-width: 768px) {
+    .hidden-sm-down {
+        display: none !important;
+    }
+}
+@media (min-width: 769px) {
+    .hidden-md-up {
+        display: none !important;
+    }
+}
+
+#mobile-menu {
+    padding: 0;
+    width: 100%;
+    text-align: center;
+}
+
+#mobile-menu .container {
+    padding: 0px;
+    max-width: 100%;
+}
+
+#mobile-menu a {
+    float: left;
+    width: 100%;
 }

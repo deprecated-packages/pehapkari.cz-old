@@ -1,10 +1,10 @@
 <header>
-    <div class="container">
-        {* normal menu *}
-        <div class="hidden-xs">
+    {* normal menu *}
+    <div class="hidden-sm-down">
+        <div class="container-fluid">
             <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
 
-            <nav class="top-navigation">
+            <nav class="navbar top-navigation">
                 <a href="/blog/" n:class="(isset($id) && $id === blog) || ($layout === post) ? active">
                     <em class="fa fa-newspaper-o fa-fw"></em>
                     Blog
@@ -32,25 +32,27 @@
                 {/ifset}
             </nav>
         </div>
+    </div>
 
-        {* mobile menu *}
-        <div id="mobile-menu" class="row text-center hidden-md hidden-sm hidden-lg">
-            <a href="/" n:class="col-xs-3, isset($id) && $id === index ? active">
+    {* mobile menu *}
+    <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" n:class="col-3, col-sm-3, isset($id) && $id === index ? active">
                 <em class="fa fa-home"></em>
                 <br>
                 Home
             </a>
-            <a href="/blog/" n:class="col-xs-3, (isset($id) && $id === blog) || ($layout === post) ? active">
+            <a href="/blog/" n:class="col-3, col-sm-3, (isset($id) && $id === blog) || ($layout === post) ? active">
                 <em class="fa fa-book fa-fw"></em>
                 <br>
                 Blog
             </a>
-            <a href="/vzdelavej-se/" n:class="col-xs-3, (isset($id) && $id === 'vzdelavej-se') ? active">
+            <a href="/vzdelavej-se/" n:class="col-3, col-sm-3, (isset($id) && $id === 'vzdelavej-se') ? active">
                 <em class="fa fa-graduation-cap fa-fw"></em>
                 <br>
                 Školení
             </a>
-            <a href="/mentori/" n:class="col-xs-3, (isset($id) && $id === mentori) ? active">
+            <a href="/mentori/" n:class="col-3, col-sm-3, (isset($id) && $id === mentori) ? active">
                 <em class="fa fa-handshake-o fa-fw"></em>
                 <br>
                 Mentoři
