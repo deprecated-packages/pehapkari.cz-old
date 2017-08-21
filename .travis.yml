@@ -32,6 +32,8 @@ script:
     - if [[ $RUN_PHPSTAN = 1 ]]; then composer phpstan; fi
     # test that website is generated
     - vendor/bin/statie generate source
+    # test when files have final newline
+    - sh bin/check_files_has_final_newline.sh
     # re-build website when on master only
     - |
         if [[ "$TRAVIS_BRANCH" == "master" && "$TRAVIS_PULL_REQUEST" == "false" ]]; then
