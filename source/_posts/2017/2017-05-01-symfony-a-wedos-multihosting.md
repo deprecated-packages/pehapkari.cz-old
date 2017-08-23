@@ -1,4 +1,5 @@
 ---
+id: 32
 layout: post
 title: "Rozběhnutí Symfony na Wedos multihostingu"
 perex: '''

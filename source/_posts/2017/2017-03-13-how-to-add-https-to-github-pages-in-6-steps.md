@@ -1,4 +1,5 @@
 ---
+id: 26
 layout: post
 title: "How to add HTTPS to GitHub Pages in 6 Steps"
 perex: '''

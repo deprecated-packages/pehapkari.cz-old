@@ -23,18 +23,18 @@ final class CategoryPresenter extends Presenter
         [
             'id' => 1,
             'name' => 'T-Shirt',
-            'price' => 100
+            'price' => 100,
         ],
         [
             'id' => 2,
             'name' => 'Red socks',
-            'price' => 29
+            'price' => 29,
         ],
         [
             'id' => 3,
             'name' => 'Green hat',
-            'price' => 99
-        ]
+            'price' => 99,
+        ],
     ];
 
     /**
@@ -77,7 +77,7 @@ final class CategoryPresenter extends Presenter
     public function renderDefault(): void
     {
         $this->getTemplate()->setParameters([
-            'products' => self::PRODUCTS
+            'products' => self::PRODUCTS,
         ]);
     }
 

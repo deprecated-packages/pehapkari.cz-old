@@ -1,4 +1,5 @@
 ---
+id: 1
 layout: post
 title: "Podcast Nejen o PHP #1 - O sebevzdělávání, školení a mentoringu"
 perex: '''

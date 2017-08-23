@@ -14,7 +14,7 @@ final class ZipCode
      */
     private static $patterns = [
         'CZ' => '\\d{3} ?\\d{2}',
-        'US' => '(\\d{5})(?:[ \\-](\\d{4}))?'
+        'US' => '(\\d{5})(?:[ \\-](\\d{4}))?',
     ];
 
     public static function validate(string $zipcode, string $country): bool

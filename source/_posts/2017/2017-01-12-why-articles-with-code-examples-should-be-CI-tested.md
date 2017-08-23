@@ -1,4 +1,5 @@
 ---
+id: 11
 layout: post
 title: "Why articles with code examples should be CI tested"
 perex: "I know many great articles that go right to the point. I use their code examples and they work. But when I recommend these articles to people I mentor, I realize the articles are already 2 years old and their code samples probably do not work any more. From hero to zero. Today I will show you how to keep them alive lot longer with a minimal effort."

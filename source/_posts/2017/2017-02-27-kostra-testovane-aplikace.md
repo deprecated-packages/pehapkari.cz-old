@@ -1,4 +1,5 @@
 ---
+id: 23
 layout: post
 title: "Kostra testované aplikace"
 perex: "Stále tápete, jak vytvořit základní kostru aplikace, kde je Composer vč. autoloaderu a máte i testy? Podíváme se na to, že to je velmi jednoduché."

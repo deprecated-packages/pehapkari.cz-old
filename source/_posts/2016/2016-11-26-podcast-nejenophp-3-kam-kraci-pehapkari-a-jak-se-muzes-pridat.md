@@ -1,4 +1,5 @@
 ---
+id: 3
 layout: post
 title: "Podcast Nejen o PHP #3 - Kam kráčí Péhápkaři a jak se můžeš přidat"
 perex: '''

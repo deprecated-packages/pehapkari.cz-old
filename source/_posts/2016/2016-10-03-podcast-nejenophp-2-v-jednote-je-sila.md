@@ -1,4 +1,5 @@
 ---
+id: 2
 layout: post
 title: "Podcast Nejen o PHP #2 - Blíží se hackatony, spojování sil a růst komunity - buď u toho!"
 perex: '''

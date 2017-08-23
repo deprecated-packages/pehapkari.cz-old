@@ -1,4 +1,5 @@
 ---
+id: 33
 layout: post
 title: "Best Practice for Symfony Console in Nette"
 perex: '''

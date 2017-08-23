@@ -40,8 +40,6 @@ id: mentori
 
         {include mentorTable, "mentors" => $mentors, "remote" => false}
 
-        <hr>
-
         <br>
 
         <h3>
@@ -63,28 +61,32 @@ id: mentori
 
 {define mentorTable}
     <div class="table-responsive">
-        <table class="table table-bordered table-striped">
-            <tr>
+        <table class="table table-striped">
+            <thead class="thead-inverse">
                 <th>Kdo</th>
                 <th>Co nejradši mentoruje</th>
                 <th>Kde</th>
                 <th>Kontakt</th>
-            </tr>
+            </thead>
             {* sort the list of mentors alphabetically so it's not biased towards those who came first *}
             {php usort($mentors, function ($a, $b) { return strcasecmp(iconv('UTF-8', 'ASCII//TRANSLIT', $a['name']), iconv('UTF-8', 'ASCII//TRANSLIT', $b['name'])); })}
-            <tr n:foreach="$mentors as $mentor">
-                {continueIf ($remote && ! $mentor['remote']) || (!$remote && $mentor['remote'])}
-                <td>
-                    <nobr><a n:tag-ifset="$mentor['link']" href="{$mentor['link']}">{$mentor['name']}</a></nobr>
-                </td>
-                <td>
-                    <strong n:tag-if="strlen($mentor['intro_message']) < 140">{$mentor['intro_message']}</strong>
-                </td>
-                <td>
-                    {$mentor['location']}
-                </td>
-                <td><a href="mailto:{$mentor['email']}">{$mentor['email']}</td>
-            </tr>
+            <tbody>
+                {foreach $mentors as $mentor}
+                    {continueIf ($remote && ! $mentor['remote']) || (!$remote && $mentor['remote'])}
+                    <tr>
+                        <td>
+                            <nobr><a n:tag-ifset="$mentor['link']" href="{$mentor['link']}">{$mentor['name']}</a></nobr>
+                        </td>
+                        <td>
+                            <strong>{$mentor['intro_message']}</strong>
+                        </td>
+                        <td>
+                            {$mentor['location']}
+                        </td>
+                        <td><a href="mailto:{$mentor['email']}">{$mentor['email']}</td>
+                    </tr>
+                {/foreach}
+            </tbody>
         </table>
     </div>
 {/define}

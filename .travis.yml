@@ -17,10 +17,7 @@ env:
         # And add it there; like you do when you want to run tests on some repository
         - secure: rEiaq5+CAd1qtkY8k4sjk++XMJx+HawwyxN2QrF8yZHsUpqm8wws7goQ649kXVcHNVbe+FdWoinkWah6MjKejGnpgc7jwWhy7Q6JuUdPNmWkgWsjtXljwBg87f4RFtZ4n9uw8QYAw1azH3iUkHbTeSco8Za+5USgl9NM5S9hgDDStT3kD5BqDzPnaVe+UYwULqvBgAuwzdaUVFrNbHMZvfwPyDKnLdkt6XUmpkc1jriGuoz6i03WmK1JjoeW0JcGSThhv+QCN3nWb7BRk42ZLU40v/bjR4MXXLe0ys7drbPXDIF3MUXqq9KVsNsK7BctnmDc/pqXc517n91+41A+tTegdAOj0XCGIfCqMzZcapqY0Mi00zw2MmyjL9nUbHCkaLdL5bnJMSDj6ck2hsooZnpy5C+aiLFp0Hy/DyFIJsyKecoFZ89CEMcjzhrBPi9oSepcyCZ3Z6K/ataPfmvpaoGQw+X3/tdV33I73t4eydcxNMuPjLNYTsxrch8eyV80AbIalXikZypugdR8xfX4q2DWsmLgF+iuBD7aZPJEQAyoFd4fFtQO466NXS4M+YyNN4oHi77ztrkib9v3YuX7vUAJFfB34BN59TGBJJyK2AujDIkzLS1onSTgu0Od0Mkrsxgib8jlthBM3Hd7IwVQLEMSSkKDaVoYyBmtD406wSs=
 
-before_script:
-    # to fasten up installation with parallel downloading
-    - composer global require hirak/prestissimo
-    # install composer dependencies
+install:
     - composer install
 
 script:

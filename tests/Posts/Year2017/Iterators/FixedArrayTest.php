@@ -88,9 +88,9 @@ final class FixedArrayTest extends TestCase
 
         // Act
         reset($object); // PHPStorm's static analysis is crying here; it is intentional
-        while (list($key1, $val1) = each($object)) {
+        while ([$key1, $val1] = each($object)) {
             reset($object);
-            while (list($key2, $val2) = each($object)) {
+            while ([$key2, $val2] = each($object)) {
                 $accumulator[] = [$val1, $val2];
             }
         }
