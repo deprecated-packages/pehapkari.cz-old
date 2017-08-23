@@ -8,6 +8,7 @@ tested: true
 test_slug: SymfonyConsole
 lang: en
 reviewed_by: [4, 5, 6]
+related_posts: [33]
 ---
 
 ## Main feature of Symfony Console

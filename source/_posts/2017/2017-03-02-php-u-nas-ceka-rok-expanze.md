@@ -8,6 +8,7 @@ perex: '''
     Dnes se s tebou chci podělit o to, kam jsme zatím došli a jaká velká cesta nás ještě čeká.
 '''
 author: 1
+related_posts: [42, 41]
 ---
 
 ## Scházíme se čím dál víc

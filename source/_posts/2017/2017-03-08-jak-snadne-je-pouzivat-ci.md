@@ -5,6 +5,7 @@ title: "Jak snadné je používat CI"
 perex: "Nejspíš jste zkratku CI již někde viděli, možná tušíte, co Continuous Integration znamená. Chcete vědět, jak snadno CI používat na vašich projektech? Pak čtěte dále."
 author: 16
 reviewed_by: [1, 17]
+related_posts: [31]
 ---
 
 ## Co je to CI
