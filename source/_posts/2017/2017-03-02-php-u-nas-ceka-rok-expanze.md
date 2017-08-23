@@ -17,7 +17,7 @@ První 3 srazy, které jsem organizoval v Brně ještě v roce 2015, byli 3 lidi
 Praha, Pardubice, Hradec Králové, České Budějovice a Ostrava. Tento rok taky **[PHP hory](https://www.facebook.com/events/1145689815543939/), [indický oběd](https://www.facebook.com/events/690537214452439/) nebo [mini hackaton](https://www.facebook.com/events/203723420110018/)**.
 
 <div class="text-center">
-    <img src="/../../../../assets/images/posts/2017/php-boom/hory.jpg" style="width:100%">
+    <img src="/../../../../assets/images/posts/2017/php-boom/hory.jpg" style="max-width:100%" class="img-thumbnail">
 </div>
 
 
@@ -71,7 +71,7 @@ Naposled jsme vysílali [workshop Filipa Procházky o Doctrine](https://www.face
 Každý týden [vyjde na blogu](https://pehapkari.cz/blog/) aspoň jeden článek. Už na něj přispělo **přes 12 různých autorů** - **z toho přes 80 % tak napsalo svůj úplně první článek**. Respekt! Líbí se mi diverzita názorů a konstruktivní diskuse v komentářích.
 
 <div class="text-center">
-    <img src="/../../../../assets/images/posts/2017/php-boom/posts.png">
+    <img src="/../../../../assets/images/posts/2017/php-boom/posts.png" class="img-thumbnail">
 </div>
 
 Ještě týden se můžeš [zúčastnit soutěže](https://pehapkari.cz/napis-clanek-vem-si-darek/) a za článek si odnést třeba triko :).
