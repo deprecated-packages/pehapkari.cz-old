@@ -418,3 +418,11 @@ h1:hover .anchor-icon, h2:hover .anchor-icon, h3:hover .anchor-icon, h4:hover .a
     float: left;
     width: 100%;
 }
+
+#related-posts {
+    font-size: 1.1em;
+}
+
+#related-posts li {
+    line-height: 1.8em;
+}
