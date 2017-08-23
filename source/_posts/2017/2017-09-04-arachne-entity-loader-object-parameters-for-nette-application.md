@@ -1,4 +1,5 @@
 ---
+id: 39
 layout: post
 title: "Arachne/EntityLoader - Object Parameters for Nette/Application"
 perex: '''

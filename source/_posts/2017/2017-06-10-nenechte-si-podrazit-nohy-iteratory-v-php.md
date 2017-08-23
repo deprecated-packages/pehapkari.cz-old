@@ -1,4 +1,5 @@
 ---
+id: 34
 layout: post
 title: "Nenechte si podrazit nohy iterátory v PHP"
 perex: '''

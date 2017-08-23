@@ -1,4 +1,5 @@
 ---
+id: 35
 layout: post
 title: "The Bulletproof Event Naming For Symfony Event Dispatcher"
 perex: '''

@@ -1,4 +1,5 @@
 ---
+id: 4
 layout: post
 title: "Chceš psát o PHP? Pošli Pull Request!"
 perex: "Pokud ti v psaní brání to, <strong>že nemáš funkční blog, krásný design, velké sociální kruhy pro šíření článků nebo copy-cítění</strong>, máme pro tebe řešení - komunitní blog o PHP. <strong>Nudnou rutinu nech na nás a v klidu se věnuj psaní</strong>."

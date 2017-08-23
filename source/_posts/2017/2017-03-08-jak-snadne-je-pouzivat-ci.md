@@ -1,4 +1,5 @@
 ---
+id: 25
 layout: post
 title: "Jak snadné je používat CI"
 perex: "Nejspíš jste zkratku CI již někde viděli, možná tušíte, co Continuous Integration znamená. Chcete vědět, jak snadno CI používat na vašich projektech? Pak čtěte dále."

@@ -1,4 +1,5 @@
 ---
+id: 24
 layout: post
 title: "Drop RobotLoader and let Composer Deal with Autoloading"
 perex: '''

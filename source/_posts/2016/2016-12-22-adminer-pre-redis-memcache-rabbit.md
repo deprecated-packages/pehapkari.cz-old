@@ -1,4 +1,5 @@
 ---
+id: 7
 layout: post
 title: "Adminer pre Redis, Memcache, RabbitMQ"
 perex: "Pred nejakým časom som potreboval vyhľadávať a zoraďovať dáta v Redise. Takže som si k tomu napísal jednoduchý PHP skript. A keď už som ho mal napísaný, chcel som pomôcť aj dalším ľuďom, ktorí by riešili podobný problém ako ja."
