@@ -19,7 +19,7 @@ Vítáme tak všechny, kteří **jakkoliv dělají s PHP**, v České republice 
 - A Facebook stránku na **[Péhápkaři](https://www.facebook.com/pehapkari)**
 - Symfony srazy budou PHP srazy
 
-Zbyte se dozvíš na webu *pehapkari.cz*, který bude do konce září.
+Zbytek se dozvíš na webu *pehapkari.cz*, který bude do konce září.
 
 <br>
 <br>
