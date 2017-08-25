@@ -31,9 +31,11 @@
                 </div>
             </div>
 
+            <br>
+
             <div class="intermezzo-smaller">
                 <div class="container">
-                    <h2>Share your View in the Comments</h2>
+                    {include relatedPosts, 'post' => $post}
                 </div>
             </div>
 
@@ -70,3 +72,20 @@
 {block additionalCss}
     <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
 {/block}
+
+
+{define relatedPosts}
+    {var $similarPosts = ($post|similarPosts)}
+
+    {if count($similarPosts)}
+        <h2>You Might Also Like</h2>
+
+        <ul id="related-posts">
+            {foreach $similarPosts as $similarPost}
+                <li>
+                    <a href="/{$similarPost['relativeUrl']}">{$similarPost['title']} &raquo;</a>
+                </li>
+            {/foreach}
+        </ul>
+    {/if}
+{/define}

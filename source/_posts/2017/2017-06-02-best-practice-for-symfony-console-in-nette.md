@@ -9,6 +9,7 @@ perex: '''
 '''
 author: 23
 lang: en
+related_posts: [9]
 ---
 
 
