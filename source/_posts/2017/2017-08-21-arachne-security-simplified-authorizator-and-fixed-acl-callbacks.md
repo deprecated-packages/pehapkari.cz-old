@@ -23,9 +23,10 @@ Here is an example of how to register and implement the authorizator.
 
 ```yaml
 services:
+    admin.authorizator.factory: App\Module\AdminModule\Security\AuthorizatorFactory
     admin.authorizator:
-        factory: App\Module\AdminModule\Security\AuthorizatorFactory::create
-        tag:
+        factory: @admin.authorizator.factory::create
+        tags:
             arachne.security.authorizator: admin
 ```
 
