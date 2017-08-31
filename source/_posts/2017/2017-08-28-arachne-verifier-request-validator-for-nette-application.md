@@ -62,7 +62,7 @@ This package provides rules for [Arachne/Security](https://github.com/Arachne/Se
 
 The most basic rule that simply requires the user to be authenticated via the specified Arachne/Security firewall.
 
-#### `@NoItentity(firewall="admin")`
+#### `@NoIdentity(firewall="admin")`
 
 The opposite of the previous rule, allows only non-authenticated users. This can be used for example to show ads only to unregistered users.
 
