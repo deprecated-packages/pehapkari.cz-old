@@ -33,7 +33,7 @@ id: vzdelavej-se
 
             {foreach $trainings as $training}
                 <div class="row">
-                    <div class="col-md-12" id="skoleni-{$iterator->counter}">
+                    <div class="col-md-12" id="{$training['name']|webalize}">
                         <h2 class="text-center">{$training['name']|noescape}</h2>
 
                         <div class="row">
@@ -45,7 +45,7 @@ id: vzdelavej-se
 
                                 <p>Délka: <strong>{$training['duration']}</strong></p>
                                 <p>Kapacita: <strong>{$training['capacity']}</strong></p>
-                                <p>To vše za: <strong>{$training['price']}</strong></p>
+                                <p>Pro tebe: <strong>{$training['price']}</strong></p>
 
                                 <br>
 
