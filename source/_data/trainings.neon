@@ -1,6 +1,6 @@
 parameters:
     trainings:
-        1:
+        -
             name: "Jak na rapidní vývoj a Continuous Delivery"
             trainer_name: "Ondřej Mirtes"
             trainer_photo: "ondrej-mirtes.jpg"
@@ -18,7 +18,7 @@ parameters:
             duration: "8 hodin"
             price: "4999 Kč"
             capacity: "4-8 lidí"
-        2:
+        -
             name: "Ovládni PhpStorm &ndash; od základů po profi tipy"
             trainer_name: "Tomáš Fejfar"
             trainer_photo: "tomas-fejfar.jpg"
@@ -33,7 +33,7 @@ parameters:
             duration: "3 hodiny"
             price: "1599 Kč"
             capacity: "5-12 lidí"
-        3:
+        -
             name: "Úvod do Gitu"
             trainer_name: "Václav Makeš"
             trainer_photo: "vaclav-makes.jpg"
@@ -50,7 +50,7 @@ parameters:
             duration: "3 hodiny"
             price: "1999 Kč"
             capacity: "4-10 lidí"
-        4:
+        -
             name: "Jak na pokročilou práci s Gitem"
             trainer_name: "Martin Hujer"
             trainer_photo: "martin-hujer.jpg"
@@ -71,24 +71,7 @@ parameters:
             duration: "4 hodiny"
             price: "3499 Kč"
             capacity: "4-8 lidí"
-        5:
-            name: "Úvod do Nette"
-            trainer_name: "Štěpán Kocourek"
-            trainer_photo: "stepan-kocourek.jpg"
-            description: '''
-            <ul>
-                <li>adresářová struktura</li>
-                <li>routování: vytváření odkazů a hezkých URL v jakékoliv podobě</li>
-                <li>Model-View-Controller: presenter a životní cyklus</li>
-                <li>úvod do formulářů</li>
-                <li>Latte: silný šablonovací jazyk a dědění šablon</li>
-                <li>Tracy Debugger a eliminace chyb</li>
-            </ul>
-            '''
-            duration: "4 hodiny"
-            price: "2499 Kč"
-            capacity: "4-6 lidí"
-        6:
+        -
             name: "Tvorba zadání a komunikace se zákazníkem"
             trainer_name: "Petr 'PePa' Pavel"
             trainer_photo: "petr-pavel.jpg"
