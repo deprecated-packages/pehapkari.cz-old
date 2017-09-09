@@ -4,7 +4,7 @@ layout: post
 title: "Symfony komunita roste na PéHáPkaře a otevírá se všem PHP programátorům"
 perex: '''
     Symfony komunita mění svůj název, jinak vše zůstane stejné jako dosud.
-    <strong>Říkáš si proč?</strong> To se dnes dozvíš. 
+    <strong>Říkáš si proč?</strong> To se dnes dozvíš.
 '''
 author: 1
 related_posts: [41, 43]
@@ -43,7 +43,7 @@ Během srazů **v Praze** občas zazněly zmatené hlasy: *"Proč není na Symfo
 **Pouze 6 z 21 přednášek bylo o Symfony**.
 
 Podobné to bylo v Ostravě a Brně. Nemluvilo se jen o Symfony, ale taky o:
-  
+
 - Drupalu
 - Nette
 - SOLID principles
@@ -85,14 +85,14 @@ Ptali jsme se taky [Javiera Eguiluze](https://twitter.com/javiereguiluz), který
 
 > The move that you propose is the exact same thing that happened to every Symfony user group in Spain (except for the Barcelona group). All of them are now PHP Group instead of Symfony Group. I think it makes a lot of sense to be more inclusive to other groups of people: Drupal, Laravel, WordPress, Magento, Nette etc.​
 
-Jak to měli v Madridu (3,1 mil. obyvatel) nám napsal [Ariel Ferrandini Price](https://twitter.com/aferrandini): 
+Jak to měli v Madridu (3,1 mil. obyvatel) nám napsal [Ariel Ferrandini Price](https://twitter.com/aferrandini):
 > After two or three years, we realised that we didn’t have too much to talk about Symfony.
 > After 3 years, we have changed from 15 to 1 340 members.
 > Also this will help people to know other technologies and open their minds.
 
-A taky přímo [Tobiase Nylhoma](https://twitter.com/tobiasnyholm) ze Švédska, když byl v Praze na návštěvě.  
+A taky přímo [Tobiase Nylhoma](https://twitter.com/tobiasnyholm) ze Švédska, když byl v Praze na návštěvě.
 
-> We did the same. We kept our topics and pretty much everything, but now we are targeting a larger audience. 
+> We did the same. We kept our topics and pretty much everything, but now we are targeting a larger audience.
 
 
 ## 3. Chceme podpořit PHP vzdělání u nás
@@ -101,12 +101,12 @@ Ze srazů, newsletterů, školení, vaší zpětné vazby a reakcí [na podcasty
 
 **Něco jako kdyby byla jen základní a vysoká škola a ty 4 volné roky mezi nimi si každý musí nějak zmáknout po svém.**
 
-Vyzkoušeli jsme si to i na [PHP/Symfony školení s Czechitas](https://www.facebook.com/events/129438077476969/), že Symfony je moc a PHP stačí. 
+Vyzkoušeli jsme si to i na [PHP/Symfony školení s Czechitas](https://www.facebook.com/events/129438077476969/), že Symfony je moc a PHP stačí.
 
 
-## Bonusový bod: jako sjednocená PHP komunita dokážeme divy 
+## Bonusový bod: jako sjednocená PHP komunita dokážeme divy
 
-Někde jsme slyšeli, že **čeští programátoři jsou ve světě opravdu špička**. Taky si to myslíme a teď vidíme příležitost, 
+Někde jsme slyšeli, že **čeští programátoři jsou ve světě opravdu špička**. Taky si to myslíme a teď vidíme příležitost,
 jak to dát vědět o něco více. Myslíme si, že je to otázka času. Však za poslední rok u nás vzniklo hned několik komunit a vzdělávacích projektů kolem programování.
 
 Začínáme žít a budeme vidět :)
@@ -114,9 +114,9 @@ Začínáme žít a budeme vidět :)
 
 ## Jak to vidíš ty?
 
-Tvůj hlas je pro nás také důležitý. 
+Tvůj hlas je pro nás také důležitý.
 
-- Napiš nám sem do komentářů ↓ 
+- Napiš nám sem do komentářů ↓
 - nebo přijď na [hospodský PHP sraz ve čtvrtek 29. 9. v Praze](https://www.facebook.com/events/759606430848460/)
 
 Budeme se těšit.

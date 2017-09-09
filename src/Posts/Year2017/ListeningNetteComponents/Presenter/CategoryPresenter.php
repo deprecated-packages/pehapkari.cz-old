@@ -91,6 +91,7 @@ final class CategoryPresenter extends Presenter
             foreach (self::PRODUCTS as $productData) {
                 if ($productData['id'] === (int) $productId) {
                     $product = $productData;
+
                     break;
                 }
             }
