@@ -3,7 +3,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.1",
-        "symplify/statie": "^2.2"
+        "symplify/statie": "^2.3"
     },
     "require-dev": {
         "doctrine/annotations": "^1.4",
@@ -12,15 +12,15 @@
         "nette/application": "^2.4|^3.0",
         "nette/forms": "^2.4|^3.0",
         "nette/security": "^2.4|^3.0",
-        "symfony/console": "^3.2",
-        "symfony/event-dispatcher": "^3.2",
-        "symfony/expression-language": "^3.2",
-        "symfony/intl": "^3.2",
-        "symfony/validator": "^3.2",
+        "symfony/console": "^3.3",
+        "symfony/event-dispatcher": "^3.3",
+        "symfony/expression-language": "^3.3",
+        "symfony/intl": "^3.3",
+        "symfony/validator": "^3.3",
 
         "phpstan/phpstan": "^0.8",
-        "phpunit/phpunit": "^6.0",
-        "symplify/easy-coding-standard": "^2.2"
+        "phpunit/phpunit": "^6.2",
+        "symplify/easy-coding-standard": "^2.3"
     },
     "autoload": {
         "psr-4": {
@@ -38,6 +38,6 @@
             "sh ./bin/clear_post_trailing_whitespaces.sh",
             "vendor/bin/ecs check src tests --fix"
         ],
-        "phpstan": "vendor/bin/phpstan analyse src tests --level 7 --configuration phpstan.neon"
+        "phpstan": "vendor/bin/phpstan analyse src tests --level max --configuration phpstan.neon"
     }
 }

@@ -45,8 +45,10 @@ parameters:
         PHP_CodeSniffer\Standards\Generic\Sniffs\Files\LineLengthSniff:
             - src/Posts/Year2017/ListeningNetteComponents/Presenter/CategoryPresenter.php
     exclude_checkers:
+        # from symfony-checkers.neon set
         - PhpCsFixer\Fixer\PhpTag\BlankLineAfterOpeningTagFixer
         - PhpCsFixer\Fixer\Operator\NewWithBracesFixer
         - PhpCsFixer\Fixer\Operator\UnaryOperatorSpacesFixer
         - PhpCsFixer\Fixer\Phpdoc\PhpdocAlignFixer
         - PhpCsFixer\Fixer\ClassNotation\ProtectedToPrivateFixer
+        - PhpCsFixer\Fixer\ControlStructure\YodaStyleFixer
