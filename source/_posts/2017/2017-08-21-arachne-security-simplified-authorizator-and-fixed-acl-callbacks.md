@@ -3,8 +3,8 @@ id: 37
 layout: post
 title: "Arachne/Security - Simplified Authorizator and Fixed ACL Callbacks"
 perex: '''
-    Authorization in <a href="https://github.com/nette/security">Nette/Security</a> has some long-known drawbacks as demonstrated in my 4 years old <a href="https://forum.nette.org/cs/13458-security-iauthorizator-a-identita">RFC</a> (Czech only).
-    This article will show you how you can solve these problems using the enhanced API provided by <a href="https://github.com/Arachne/Security">Arachne/Security</a>.
+    Authorization in [Nette/Security](https://github.com/nette/security) has some long-known drawbacks as demonstrated in my 4 years old [RFC](https://forum.nette.org/cs/13458-security-iauthorizator-a-identita) (Czech only).
+    This article will show you how you can solve these problems using the enhanced API provided by [Arachne/Security](https://github.com/Arachne/Security).
 '''
 author: 5
 reviewed_by: [1, 25, 26]

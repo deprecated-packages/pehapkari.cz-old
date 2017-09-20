@@ -3,8 +3,10 @@ id: 1
 layout: post
 title: "Podcast Nejen o PHP #1 - O sebevzdělávání, školení a mentoringu"
 perex: '''
-    Poslední půlrok u nás vzniká spousta možností, jak se vzdělávat v PHP. A zadarmo.<br>
-    <strong>Kdo je pořádá? Proč na ně není takový nával? A jak by tomu mohl pomoc mentoring?</strong><br>
+    Poslední půlrok u nás vzniká spousta možností, jak se vzdělávat v PHP. A zadarmo.
+
+    **Kdo je pořádá? Proč na ně není takový nával? A jak by tomu mohl pomoc mentoring?**
+
     O tom všem se dnes pobavíme.
 '''
 
@@ -19,15 +21,13 @@ related_posts: [2, 3]
 
 <br>
 
-Tento první díl má 34 minut - <strong>poslechni si ho celý...</strong>
+Tento první díl má 34 minut - **poslechni si ho celý...**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/1BjVVGmSdCw" frameborder="0" allowfullscreen name="video"></iframe>
 
 <br>
 
-<p>
-    <strong>...nebo si vyber jen to, co tě zajímá</strong>
-</p>
+**...nebo si vyber jen to, co tě zajímá**
 
 🕑 1:25 - <a href="https://www.youtube.com/embed/1BjVVGmSdCw?&start=75&autoplay=true" target="video">
     <em class="fa fa-fw fa-play"></em>

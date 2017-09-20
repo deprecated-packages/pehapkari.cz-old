@@ -11,7 +11,7 @@ final class AddToBasketControl extends Control
     /**
      * @var int[]|string[]
      */
-    private $product;
+    private $product = [];
 
     /**
      * @var EventDispatcherInterface

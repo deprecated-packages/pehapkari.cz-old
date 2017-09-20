@@ -2,7 +2,7 @@
 id: 9
 layout: post
 title: "Symfony Console from the Scratch"
-perex: "Symfony Console is the one package you will probably use to build a PHP CLI app. It's of one the easiest Symfony components. Why? You <strong>only create Application class, add your Command class and you are ready to go</strong>."
+perex: "Symfony Console is the one package you will probably use to build a PHP CLI app. It's of one the easiest Symfony components. Why? You **only create Application class, add your Command class and you are ready to go**."
 author: 1
 tested: true
 test_slug: SymfonyConsole
