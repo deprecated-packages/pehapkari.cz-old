@@ -2,7 +2,7 @@
 id: 10
 layout: post
 title: "5 témat, po kterých PHP programátoři touží"
-perex: "Zajímá české a slovenské programátory spíš intro do Gitu nebo Symfony pro pokročilé? Chtějí spíš týdenní výuku nebo víkendovou? Celý den nebo jen pár hodin? Na tyto a další otázky jsme měli jen subjektivní odpovědi. Chěli jsme vědět &ndash; <strong>a tak vznikl dotazník o vzdělávání na míru - na něj nám odpovědlo 76 z vás a dnes se podělíme o jeho výsledky</strong>."
+perex: "Zajímá české a slovenské programátory spíš intro do Gitu nebo Symfony pro pokročilé? Chtějí spíš týdenní výuku nebo víkendovou? Celý den nebo jen pár hodin? Na tyto a další otázky jsme měli jen subjektivní odpovědi. Chěli jsme vědět &ndash; **a tak vznikl dotazník o vzdělávání na míru - na něj nám odpovědlo 76 z vás a dnes se podělíme o jeho výsledky**."
 author: 1
 reviewed_by: [6, 8, 9]
 ---

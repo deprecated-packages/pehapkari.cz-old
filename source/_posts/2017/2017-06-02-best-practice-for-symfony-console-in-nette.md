@@ -3,7 +3,7 @@ id: 33
 layout: post
 title: "Best Practice for Symfony Console in Nette"
 perex: '''
-    If you use Symfony\Console in Nette, you will be probably familiar with <code>php index.php command</code> approach.
+    If you use Symfony\Console in Nette, you will be probably familiar with `php index.php command` approach.
     It has been obsolete since Nette 2.3, and we should all migrate to its successor.
     This blog post will show you why and how.
 '''

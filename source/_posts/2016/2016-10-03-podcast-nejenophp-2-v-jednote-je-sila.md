@@ -3,7 +3,7 @@ id: 2
 layout: post
 title: "Podcast Nejen o PHP #2 - Blíží se hackatony, spojování sil a růst komunity - buď u toho!"
 perex: '''
-    Na podzim se urodilo pár hackatonů, PHP srazů a po půl roce krystalizuje nápad na spojování a růst komunity. <strong>Kam směřuje PHP dál a jak nám s tím můžeš pomoct?</strong> Poslechni si v dnešním podcastu.
+    Na podzim se urodilo pár hackatonů, PHP srazů a po půl roce krystalizuje nápad na spojování a růst komunity. **Kam směřuje PHP dál a jak nám s tím můžeš pomoct?** Poslechni si v dnešním podcastu.
 '''
 author: 21
 
@@ -17,15 +17,13 @@ related_posts: [1, 3]
 
 <br>
 
-Dnešní díl má 35 minut - <strong>poslechni si ho celý...</strong>
+Dnešní díl má 35 minut - **poslechni si ho celý...**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/BdWMB6z8rKc" frameborder="0" allowfullscreen name="video"></iframe>
 
 <br>
 
-<p>
-    <strong>...nebo si vyber jen to, co tě zajímá</strong>
-</p>
+**...nebo si vyber jen to, co tě zajímá**
 
 🕑 1:13 - <a href="https://www.youtube.com/embed/BdWMB6z8rKc?&start=73&autoplay=true" target="video">
     <em class="fa fa-fw fa-play"></em>

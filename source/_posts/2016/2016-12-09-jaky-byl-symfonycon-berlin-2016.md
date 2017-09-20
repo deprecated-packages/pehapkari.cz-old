@@ -2,7 +2,7 @@
 id: 6
 layout: post
 title: "Jaký byl SymfonyCon Berlín 2016"
-perex: "Největší událost v Symfony světě je za námi. Představeny byly služby <strong>SensioCloud</strong>, nový balíčkovací systém <strong>Symfony Flex</strong> a mnoho dalšího."
+perex: "Největší událost v Symfony světě je za námi. Představeny byly služby **SensioCloud**, nový balíčkovací systém **Symfony Flex** a mnoho dalšího."
 author: 2
 ---
 

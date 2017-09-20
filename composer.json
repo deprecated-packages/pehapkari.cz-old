@@ -3,7 +3,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.1",
-        "symplify/statie": "^2.3"
+        "symplify/statie": "^2.4"
     },
     "require-dev": {
         "doctrine/annotations": "^1.4",

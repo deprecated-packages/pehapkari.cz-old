@@ -2,7 +2,7 @@
 id: 16
 layout: post
 title: "Jak zaregistrovat Nette komponentu jako posluchače událostí"
-perex: "Dnes si povíme o tom, jak přimět Nette <strong>komponenty poslouchat na události</strong>, které nám vyvolává aplikace a umožnit jim se podle toho zachovat."
+perex: "Dnes si povíme o tom, jak přimět Nette **komponenty poslouchat na události**, které nám vyvolává aplikace a umožnit jim se podle toho zachovat."
 author: 11
 tested: true
 test_slug: ListeningNetteComponents

@@ -4,7 +4,7 @@ layout: post
 title: "Symfony komunita roste na PéHáPkaře a otevírá se všem PHP programátorům"
 perex: '''
     Symfony komunita mění svůj název, jinak vše zůstane stejné jako dosud.
-    <strong>Říkáš si proč?</strong> To se dnes dozvíš.
+    **Říkáš si proč?** To se dnes dozvíš.
 '''
 author: 1
 related_posts: [41, 43]
