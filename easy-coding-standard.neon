@@ -20,8 +20,6 @@ checkers:
     - SlevomatCodingStandard\Sniffs\TypeHints\NullableTypeForNullDefaultValueSniff
     SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff:
         usefulAnnotations:
-            - @todo
-            - @dataProvider
             - @Assert\Callback
         enableEachParameterAndReturnInspection: true
     SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff:
