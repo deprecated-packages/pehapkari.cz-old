@@ -63,7 +63,7 @@ Ve vendor složce si najdeš zabugovaný soubor a zkopíruješ ho do toho saméh
 # diff -u ./vendor/package-name/path/to/bugged/file/BuggedFile.php ./vendor/path/to/bugged/file/BuggedFile-fixed.php > patches/bugged-file.patch
 ```
 
-Pokud ti CLI napíše, že příkaz `diff` nebyl nalezen, tak ho bude potřeba doinstalovat viz postupy níže. A pokud ho máš, můžeš [přeskočit sem](#3-Úprava-patch-souboru-pro-cweaganscomposer-patches).
+Pokud ti CLI napíše, že příkaz `diff` nebyl nalezen, tak ho bude potřeba doinstalovat viz postupy níže. A pokud ho máš, můžeš [přeskočit sem](#3-uprava-patch-souboru-pro-cweagans-composer-patches).
 
 #### Linux
 
