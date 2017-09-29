@@ -87,7 +87,7 @@ Při zavolání `composer install` by se nám již měly nainstalovat správné 
 ### Jak na to chytře?
 
 
-Nejdříve si načtete aplikaci pomocí `composer install –prefer-source`, což vám **načte balíčky včetně git repozitářů**, takže můžete nad nimi pracovat, přepínat větve, přidávat tagy atd. Pokud chcete upravovat jen konkrétní balíčky, **je lepší zavolat `composer update namespace/package --prefer-source` nad konkrétním balíčkem**, protože jinak se stahují všechny balíčky z composer včetně git meta dat a tato akce může nějakou dobu trvat, obzvláště pokud máte hodně závislostí.
+Nejdříve si načtete aplikaci pomocí `composer install –-prefer-source`, což vám **načte balíčky včetně git repozitářů**, takže můžete nad nimi pracovat, přepínat větve, přidávat tagy atd. Pokud chcete upravovat jen konkrétní balíčky, **je lepší zavolat `composer update namespace/package --prefer-source` nad konkrétním balíčkem**, protože jinak se stahují všechny balíčky z composer včetně git meta dat a tato akce může nějakou dobu trvat, obzvláště pokud máte hodně závislostí.
 
 Poté jednoduše přidáte v phpstormu repozitáře do jeho správy. 
 
