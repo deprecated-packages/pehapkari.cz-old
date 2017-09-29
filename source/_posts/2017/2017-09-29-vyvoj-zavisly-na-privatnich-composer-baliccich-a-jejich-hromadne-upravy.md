@@ -28,7 +28,7 @@ Nejdříve je potřeba si rozdělit aplikaci na logické celky tak, aby to dáva
 }
 ```
 
-Každý jednotlivý balíček obsahuje svůj vlastní `composer.json` s případnými dalšími závislostmi. Jakmile máme balíček hotový, můžeme ho nahrát na do svého privátního repozitáře (bitbucket, github), případně využít nějakého package managera (packagist – placený pro privátní balíčky, satis – open source pro vlastní hostování).
+Každý jednotlivý balíček obsahuje svůj vlastní `composer.json` s případnými dalšími závislostmi. Jakmile máme balíček hotový, můžeme ho nahrát na do svého privátního repozitáře (bitbucket, github), případně využít nějakého [package managera](https://getcomposer.org/doc/articles/handling-private-packages-with-satis.md) ([packagist](https://packagist.com/) – placený pro privátní balíčky, [satis](https://github.com/composer/satis) – open source pro vlastní hostování).
 
 Aby vám composer načítal privátní balíčky, je potřeba přidat repozitáře / managera do configu, aby o něm composer věděl. To provedete pomocí `composer config -e` (případně přidáte `-g` pro globální config).
 
@@ -48,7 +48,7 @@ Můžete přidat balíček z lokálního disku. Tady jen pozor, composer pak neu
 ### Přidání privátního repozitáře
 
 
-Tady je potřeba mít nastavený správný přístup ke git (bitbucket,...) repozitářům, zejména autorizaci tak, aby si composer správně načetl balíčky z privátních repozitářů. 
+Tady je potřeba mít nastavený správný přístup ke git (bitbucket,...) repozitářům, zejména autentizaci tak, aby si composer správně načetl balíčky z privátních repozitářů. 
 
 ```json
 {
@@ -71,7 +71,7 @@ Lze přidat např. satis, což je obdoba packagist pro privátní balíčky. Ten
 }
 ```
 
-U vlastního managera je potřeba obvykle ještě nastavit příp. autorizaci, která je ale lepší řešit např. v `auth.json` (http-auth, apod.)
+U vlastního managera je potřeba obvykle ještě nastavit příp. [autentizaci](https://getcomposer.org/doc/articles/handling-private-packages-with-satis.md#authentication), která je ale lepší řešit např. v `auth.json` (http-auth, apod.)
 
 Pokud máme správně nastaveny přístupy k privátním balíčkům, musíme si ještě nastavit vývojové prostředí:
 
