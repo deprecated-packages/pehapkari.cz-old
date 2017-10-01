@@ -51,7 +51,7 @@ Very common, very coupled. You would never use controller inside another control
 ### 1. Install via Composer
 
 ```bash
-composer require symfony/console
+$ composer require symfony/console
 ```
 
 ### 2. Create Console Application
@@ -61,7 +61,7 @@ Conventional location is `bin/console` (having `.php` suffix is also fine):
 #!/usr/bin/env php
 <?php
 
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 // Create the Application
 $application = new Symfony\Component\Console\Application;
@@ -73,7 +73,7 @@ $application->run();
 Now we can run app and see that it's ready:
 
 ```bash
-php bin/console
+$ php bin/console
 ```
 
 All good?
@@ -82,7 +82,12 @@ All good?
 
 Let's create command, that will safely hash any password you enter.
 
+```bash
+$ composer require nette/security
+```
+
 ```php
+<?php
 // src/Command/HashPasswordCommand.php
 
 namespace App\Command;
@@ -126,6 +131,19 @@ final class HashPasswordCommand extends Command
 }
 ```
 
+Configure autoloading, add the following to the `composer.json` file:
+
+```json
+"autoload": {
+        "psr-4": {"App\\": "src/"}
+}
+```
+
+Dump the autoloader
+
+```bash
+$ composer dump-autoload
+```
 
 And update our `bin/console` file:
 
@@ -133,7 +151,7 @@ And update our `bin/console` file:
 #!/usr/bin/env php
 <?php
 
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 // Create the Application
 $application = new Symfony\Component\Console\Application;
@@ -148,7 +166,7 @@ $application->run();
 Now you can run it from CLI with your password as argument:
 
 ```bash
-$ bin/console hash-password heslo123
+$ php bin/console hash-password heslo123
 Your hashed password is: $2y$10$NZVuDpvFbqhsBhR1AZZzX.xUHKhr5qtP1qGKjqRM4S9Xakxn1Xgy2
 ```
 
