@@ -3,7 +3,7 @@ id: 41
 layout: post
 title: "Jak hromadně spravovat privátní composer balíčky"
 perex: '''
- Composer je dobrý sluha, ale zlý pán, pokud nevíte jak s ním pracovat. Podívejte se na naše workflow vývoje, kdy je dána plně modulární aplikace a ta se řídí závislostmi na konkrétních balíčků.
+ Composer je dobrý sluha, ale zlý pán, pokud nevíte jak s ním pracovat. Podívejte se na naše workflow vývoje, kdy je dána plně modulární aplikace a ta se řídí závislostmi na konkrétních balíčcích.
 '''
 author: 27
 ---
@@ -28,7 +28,7 @@ Nejdříve je potřeba si rozdělit aplikaci na logické celky tak, aby to dáva
 }
 ```
 
-Každý jednotlivý balíček obsahuje svůj vlastní `composer.json` s případnými dalšími závislostmi. Jakmile máme balíček hotový, můžeme ho nahrát na do svého privátního repozitáře (bitbucket, github). Další možností je využít nějakého [package managera](https://getcomposer.org/doc/articles/handling-private-packages-with-satis.md) ([packagist](https://packagist.com/) – placený pro privátní balíčky, [satis](https://github.com/composer/satis) – open source pro vlastní hostování). Rozhodování je jednoduché. Pokud vám nevadí placená verze, je pohodlnější packagist. Satis je sice zdarma, ale musíte si ho nainstalovat sami a řešit zabezpečení apod. 
+Každý jednotlivý balíček obsahuje svůj vlastní `composer.json` s případnými dalšími závislostmi. Jakmile máme balíček hotový, můžeme ho nahrát do svého privátního repozitáře (bitbucket, github). Další možností je využít nějakého [package managera](https://getcomposer.org/doc/articles/handling-private-packages-with-satis.md) ([packagist](https://packagist.com/) – placený pro privátní balíčky, [satis](https://github.com/composer/satis) – open source pro vlastní hostování). Rozhodování je jednoduché. Pokud vám nevadí placená verze, je pohodlnější packagist. Satis je sice zdarma, ale musíte si ho nainstalovat sami a řešit zabezpečení apod. 
 
 Aby vám composer načítal privátní balíčky, je potřeba přidat repozitáře / managera do configu, aby o něm composer věděl. To provedete pomocí `composer config -e` (případně přidáte `-g` pro globální config).
 
@@ -82,12 +82,12 @@ Takto připravenou aplikaci jednoduše přidáme jako projekt v PhpStormu. Ten s
 
 
 
-Při zavolání `composer install` by se nám již měly nainstalovat správné verze našich balíčků. Takto máme připravenu aplikaci pro jednoho klienta. No jo, řeknete si, ale co když potřebuju upravit jeden balíček, který je závislý na druhém? Běžně by jste museli stáhnout a upravit každý balíček zvlášť, commitnout, přidat tag, pushnout a spustit commit update. To je docela zdlouhavé, pokud upravujete třeba 4 balíčky které jsou na sobě závislé.
+Při zavolání `composer install` by se nám již měly nainstalovat správné verze našich balíčků. Takto máme připravenu aplikaci pro jednoho klienta. No jo, řeknete si, ale co když potřebuju upravit jeden balíček, který je závislý na druhém? Běžně by jste museli stáhnout a upravit každý balíček zvlášť, commitnout, přidat tag, pushnout a spustit composer update. To je docela zdlouhavé, pokud upravujete třeba 4 balíčky které jsou na sobě závislé.
 
 ### Jak na to chytře?
 
 
-Nejdříve si načtete aplikaci pomocí `composer install –-prefer-source`, což vám **načte balíčky včetně git repozitářů**, takže můžete nad nimi pracovat, přepínat větve, přidávat tagy atd. Pokud chcete upravovat jen konkrétní balíčky, **je lepší zavolat `composer update namespace/package --prefer-source` nad konkrétním balíčkem**, protože jinak se stahují všechny balíčky z composer včetně git meta dat a tato akce může nějakou dobu trvat, obzvláště pokud máte hodně závislostí.
+Nejdříve si načtete aplikaci pomocí `composer install –-prefer-source`, což vám **načte balíčky včetně git repozitářů**, takže nad nimi můžete pracovat, přepínat větve, přidávat tagy atd. Pokud chcete upravovat jen konkrétní balíčky, **je lepší zavolat `composer update namespace/package --prefer-source` nad konkrétním balíčkem**, protože jinak se stahují všechny balíčky z composer včetně git meta dat a tato akce může nějakou dobu trvat, obzvláště pokud máte hodně závislostí.
 
 Poté jednoduše přidáte v phpstormu repozitáře do jeho správy. 
 
@@ -96,14 +96,14 @@ Poté jednoduše přidáte v phpstormu repozitáře do jeho správy.
  </div>
 <br/>
 
-Tím se dostáváme k tomu **největšímu usnadnění**. Teď již můžeme dělat změny ve všech balíčcích v jednom projektu. Pro usnadnění je dobré ještě v nastavení phpstorm zaškrtnout volbu **control repositories synchronously**, která vám umožní pracovat s větvemi jako by byla jedna. **Tzn. pokud vytvoříte jednu větev test, vytvoří se ve všech repozitářích a udělá se checkout.**
+Tím se dostáváme k tomu **největšímu usnadnění**. Teď již můžeme dělat změny ve všech balíčcích v jednom projektu. Pro usnadnění je dobré ještě v nastavení phpstormu zaškrtnout volbu **control repositories synchronously**, která vám umožní pracovat s větvemi jako by to byla jedna. **Tzn. pokud vytvoříte jednu větev test, vytvoří se ve všech repozitářích a udělá se checkout.**
  
  <div class="text-center">
       <img src="/assets/images/posts/2017/composer/synchro.png">
   </div>
  <br/>
 
-**PhpStorm tedy umí pracovat s několika git repozitáři současně.** Pro práci doporučuji vytvořit novou větev, což lze udělat jednoduše a php storm už se postará o zbytek. Dole na obrázku vidíte že se mi automaticky všechny repozitáře přeply do větve test. Commit a push probíha obdobně.
+**PhpStorm tedy umí pracovat s několika git repozitáři současně.** Pro práci doporučuji vytvořit novou větev, což lze udělat jednoduše a phpstorm už se postará o zbytek. Dole na obrázku vidíte že se mi automaticky všechny repozitáře přeply do větve test. Commit a push probíha obdobně.
 <div class="text-center">
      <img src="/assets/images/posts/2017/composer/branch.png">
  </div>
