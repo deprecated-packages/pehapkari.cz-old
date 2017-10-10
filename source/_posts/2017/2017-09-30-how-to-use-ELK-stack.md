@@ -9,7 +9,7 @@ author: 15
 lang: en
 ---
 
-## What is ELK stack
+## What is ELK Stack
 
 ELK stack (now known as Elastic stack) stands for [Elasticsearch](https://www.elastic.co/products/elasticsearch), 
 [Logstash](https://www.elastic.co/products/logstash), [Kibana](https://www.elastic.co/products/kibana) stack. 
@@ -24,7 +24,7 @@ In ELK stack, Elasticsearch is used as persistent storage for our logs.
 And Kibana visualizes logs from Elasticsearch and lets you create many handy visualizations and dashboards 
 which allow you to see all important metrics in one place.
 
-## How to run ELK stack: theory
+## How to run ELK Stack: Theory
 
 The most simple installation of ELK is with docker. Because there are 3 services in ELK (obviously), 
 you need to use `docker-compose` to manage them with ease.
@@ -34,7 +34,7 @@ Note that this links to searchguard branch of the git repository.
 
 Readme of the github repository describes how to run the ELK stack, be sure to check it out for further use.
 
-### Security note: Use Searchguard
+### Security Note: Use Searchguard
 
 ELK stack does not offer authentication out of the box.
 
@@ -56,9 +56,9 @@ Also, by default mapping of data in Elasticsearch to host OS is not present.
 
 So we will have to modify `volumes` section in the `docker-compose.yml`, so it maps data from Elasticsearch.
 
-That was some theory and now let's try it on our own.
+That was some theory and now let's try it in practise.
 
-## How to run ELK stack: practise
+## How to run ELK Stack: Practise
 
 1. [clone the repo](https://github.com/deviantony/docker-elk.git)
 2. switch to searchguard branch by `git checkout searchguard`
@@ -88,7 +88,7 @@ So now we have ELK stack fully working!
 Of course you don't want to use your ELK stack with these users without changing password, 
 because using publicly accessible passwords does not offer much security.
 
-### Searchguard configuration - changing passwords
+### Searchguard Configuration - Changing Passwords
 
 When you run the ELK stack with searchguard, it already contains some predefined users with configured privileges.
 You can see these users [in searchguard documentation](https://github.com/floragunncom/search-guard-docs/blob/master/configuration_internalusers.md).
