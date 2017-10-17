@@ -1,7 +1,7 @@
 ---
 id: 43
 layout: post
-title: "How to connect ELK with monolog"
+title: "How to connect ELK with Monolog"
 perex: '''
     ELK is awesome stack for logging. Monolog is awesome PHP logging library. Let's make them work together.
 '''
@@ -27,19 +27,19 @@ For Nette, there is [Kdyby package](https://github.com/Kdyby/Monolog) providing 
 Symfony uses Monolog [out of the box](https://symfony.com/doc/current/logging.html). 
 
 
-## What is ELK stack
+## What is ELK Stack
 
 ELK stack (now known as Elastic stack) stands for [Elasticsearch](https://www.elastic.co/products/elasticsearch), 
 [Logstash](https://www.elastic.co/products/logstash), [Kibana](https://www.elastic.co/products/kibana) stack. 
 
 I [wrote an article about ELK installation](https://pehapkari.cz/blog/2017/10/15/how-to-use-ELK-stack/), check it out if you're not familiar with ELK.
 
-## Integrating Monolog with ELK stack
+## Integrating Monolog with ELK Stack
 
 As I mentioned, Monolog has many handler which can output logs. 
 And Logstash has many inputs, so there is not only one way to connect them, but we can choose from multiple options.
 
-### Direct output of logs to Elasticseach.
+### Direct Output of Logs to Elasticseach.
 The most straightforward option is to bypass the Logstash and output logs directly to Elasticsearch by using [ElasticSearchHandler](https://github.com/Seldaek/monolog/blob/master/src/Monolog/Handler/ElasticSearchHandler.php).
 This most simple approach is very easy to setup, but has some drawbacks when your infrastructure gets more complex.
 If your application runs in other server than your elasticsearch instance, you need to deal with authentication and security of Elasticsearch.
@@ -408,7 +408,7 @@ When condidering speed, [this benchmark](https://github.com/mente/php-amqp-bench
 which is the reason why I used it in this tutorial. 
  
 
-## The end
+## The End
 
 Now our application sends logs to ELK and finally we can fully utilize information from logs, becaus the look much better in nice charts than in files. 
  
