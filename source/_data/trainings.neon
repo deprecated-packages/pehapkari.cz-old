@@ -95,3 +95,22 @@ parameters:
             duration: "4 hodiny"
             price: "2499 Kč"
             capacity: "4-8 lidí"
+        -
+            name: "Začněte debugovat jako profíci s xdebugem!"
+            trainer_name: "Jan Mikeš"
+            trainer_photo: "jan-mikes.jpg"
+            description: '''
+            <p>Na školení začneme s nastavením xdebugu pro vaše IDE. Ukážeme si, k čemu se xdebug používá, co umí a jak vám rapidně zefektivní práci. Na reálných aplikacích a problémech si projdeme debugování od základů až po pokročilejší techniky.</p>
+            <p><strong>Naučíte se jak debugovat:</strong></p>
+            <ul>
+                <li>Webové aplikace</li>
+                <li>Latte a Twig šablony</li>
+                <li>Testy</li>
+                <li>CLI skripty</li>
+                <li>REST api požadavky</li>
+            </ul>
+            <p><em>Je velmi pravděpodobné, že po absolvování školení, si budete ťukat na čelo, jak jste doposud mohli bez xdebugu v PHP programovat :-).</em></p>
+            '''
+            duration: "6 hodin"
+            price: "3999 Kč"
+            capacity: "5-10 lidí"
