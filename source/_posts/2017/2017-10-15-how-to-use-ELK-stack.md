@@ -1,5 +1,5 @@
 ---
-id: 42
+id: 44
 layout: post
 title: "How to use ELK stack"
 perex: '''
@@ -7,7 +7,7 @@ perex: '''
 '''
 author: 15
 lang: en
-related_posts: [43]
+related_posts: [45]
 ---
 
 ## What is ELK Stack
