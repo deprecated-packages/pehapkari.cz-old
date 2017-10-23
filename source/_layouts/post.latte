@@ -75,15 +75,15 @@
 
 
 {define relatedPosts}
-    {var $similarPosts = ($post|similarPosts)}
+    {var $relatedPosts = ($post|relatedPosts)}
 
-    {if count($similarPosts)}
+    {if count($relatedPosts)}
         <h2>You Might Also Like</h2>
 
         <ul id="related-posts">
-            {foreach $similarPosts as $similarPost}
+            {foreach $relatedPosts as $relatedPost}
                 <li>
-                    <a href="/{$similarPost['relativeUrl']}">{$similarPost['title']} &raquo;</a>
+                    <a href="/{$relatedPost['relativeUrl']}">{$relatedPost['title']} &raquo;</a>
                 </li>
             {/foreach}
         </ul>
