@@ -31,5 +31,8 @@ Aby bylo jasno: problém nebyl v tom, že by původní programátor blbě chápa
 2. Po přečtení se sejděte nebo spojte telefonem. Proberte všechno do detailu, dělejte si poznámky.
 3. Napište zápis a dejte ho zákazníkovi schválit.
 
+## Co dál
 
-*Příští tip bude o špatném zadání. Výborná zbraň pro zpoždění nebo úplné rozstřelení projektu :-)*
+Příští tip bude o špatném zadání. Výborná zbraň pro zpoždění nebo úplné rozstřelení projektu :-)
+
+*O volbě správného komunikačního kanálu i jiných věcech si **přijďte popovídat na [školení Tvorba zadání a komunikace se zákazníkem](https://pehapkari.cz/vzdelavej-se/#tvorba-zadani-a-komunikace-se-zakaznikem)**.*
