@@ -1,5 +1,5 @@
 ---
-id: 43
+id: 45
 layout: post
 title: "How to connect ELK with Monolog"
 perex: '''
@@ -7,7 +7,7 @@ perex: '''
 '''
 author: 15
 lang: en
-related_posts: [42]
+related_posts: [44]
 ---
 
 ## What is Monolog
