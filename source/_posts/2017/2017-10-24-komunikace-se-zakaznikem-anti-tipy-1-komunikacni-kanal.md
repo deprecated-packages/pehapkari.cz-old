@@ -1,5 +1,5 @@
 ---
-id: 44
+id: 46
 layout: post
 title: "Tipy na potopení projektu: #1 Trvejte na oblíbeném komunikačním kanále"
 perex: '''
@@ -7,6 +7,7 @@ perex: '''
 '''
 author: 28
 ---
+
 Někdo si rád **pokecá**, jiný posílá **e-maily**, geek zásadně **zprávy**. Projekt můžete s minimem úsilí potopit hned na začátku, když budete jeho kontext probírat výhradně přes Messenger. I když se ale zapomenete a kývnete na schůzku nebo telefonát, můžete projekt stihnout zabít ještě později - třeba tím, že nepořídíte zápis.
 
 ## Ze života hmyzu
