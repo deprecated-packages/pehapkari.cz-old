@@ -57,10 +57,10 @@ Nainstalujeme balíček `cweagans/composer-patches`.
 
 ### 2. Vytvoření patch souboru
 
-Ve vendor složce si najdeš zabugovaný soubor a zkopíruješ ho do toho samého adresáře pouze s jiným názvem souboru (já používám suffix "-fixed" např. `bugged-file-fixed.php`). Následně si zkopírovaný soubor otevřeš a opravíš v něm co potřebuješ. Pak už jen zbývá spustit v CLI příkaz pro vygenerování patch souboru:
+Ve vendor složce si najdeš zabugovaný soubor a zkopíruješ ho do toho samého adresáře pouze s jiným názvem souboru (já používám suffix "-fixed" např. `BuggedFile-fixed.php`). Následně si zkopírovaný soubor otevřeš a opravíš v něm co potřebuješ. Pak už jen zbývá spustit v CLI příkaz pro vygenerování patch souboru:
 
 ```bash
-# diff -u ./vendor/package-name/path/to/bugged/file/BuggedFile.php ./vendor/path/to/bugged/file/BuggedFile-fixed.php > patches/bugged-file.patch
+diff -u vendor/org/package/src/BuggedFile.php vendor/org/package/src/BuggedFile-fixed.php > patches/bugged-file.patch
 ```
 
 Pokud ti CLI napíše, že příkaz `diff` nebyl nalezen, tak ho bude potřeba doinstalovat viz postupy níže. A pokud ho máš, můžeš [přeskočit sem](#3-uprava-patch-souboru-pro-cweagans-composer-patches).
@@ -94,18 +94,24 @@ Otevři si vygenerovaný patch soubor a uprav hlavičku.
 Před:
 
 ```text
---- ./vendor/package-name/path/to/bugged/file/BuggedFile.php 2016-12-16 18:50:47.642172308 +0100
-+++ ./vendor/package-name/path/to/bugged/file/BuggedFile-fixed.php 2017-01-13 11:42:07.000000000 +0100
+--- vendor/org/package/src/BuggedFile.php 2016-12-16 18:50:47.642172308 +0100
++++ vendor/org/package/src/BuggedFile-fixed.php 2017-01-13 11:42:07.000000000 +0100
 ```
 
 Po:
 
 ```text
---- /dev/null
-+++ path/to/bugged/file/BuggedFile.php
+--- ../src/BuggedFile.php
++++ ../src/BuggedFile.php
 ```
 
-zbytek nech tak jak je. Všimni si, že cesta k souboru **musí být uvedena relativně** ke složce ve vendoru, která obsahuje balíček.
+Na obou řádcích bude cesta ke stejnému (původnímu) souboru. Někomu také funguje, když místo prvního souboru (za `---`) dá `/dev/null`. 
+
+Všimni si, že cesta k souborům musí být uvedena **relativně "nad"** složku s balíčkem ve vendoru. Dvě tečky v hlavičce (`../`) na začátku cest jsou tam tedy právě proto.  
+Balíček `cweagans/composer-patches` totiž interně zkouší volat (dozvíme se díky `composer -v install`) několik různých variant `git apply` a `patch` a první zkouší `git apply -p1`. Právě `-p1` znamená, že se otrimuje první `../` a dále se použije cesta relativně k balíčku.  
+Cesty mohou fungovat i bez `../`, protože v některém z dalších volání se použije `-p0`, takže je tam tedy přidávat nemusíte. Nicméně ušetříte si pár zavolání.
+
+Zbytek patche nech tak jak je.
 
 
 ### 4. Nastavení cesty k patch souboru pro cweagans/composer-patches
