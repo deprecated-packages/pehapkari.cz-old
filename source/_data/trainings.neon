@@ -34,23 +34,6 @@ parameters:
             price: "1599 Kč"
             capacity: "5-12 lidí"
         -
-            name: "Úvod do Gitu"
-            trainer_name: "Václav Makeš"
-            trainer_photo: "vaclav-makes.jpg"
-            description: '''
-            <ul>
-                <li>Motivace proč se ho učit</li>
-                <li>Use-cases, které Git efektivně řeší</li>
-                <li>Pár slov k historii (opravdu pár, jen tak, aby člověk věděl co používá a proč je to dobré, na jakých principech Git stojí)</li>
-                <li>První kroky s verzováním - vlastní repo, první commity</li>
-                <li>Vypublikování repositáře na privátní nebo veřejný server</li>
-                <li>Sledování změn v repositáři</li>
-            </ul>
-            '''
-            duration: "3 hodiny"
-            price: "1999 Kč"
-            capacity: "4-10 lidí"
-        -
             name: "Jak na pokročilou práci s Gitem"
             trainer_name: "Martin Hujer"
             trainer_photo: "martin-hujer.jpg"
