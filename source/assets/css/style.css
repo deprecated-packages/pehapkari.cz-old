@@ -435,5 +435,19 @@ footer {
 footer li {
     list-style-type: none;
     float: left;
-    padding-right: 2em;
+    line-height: 2.6em;
+}
+
+footer .pull-left li {
+    padding-right: 1.5em;
+}
+
+footer .pull-right li {
+    padding-left: 1.5em;
+}
+
+footer .rounded-circle {
+    text-align: center;
+    height: 2.6em;
+    width: 2.6em;
 }
