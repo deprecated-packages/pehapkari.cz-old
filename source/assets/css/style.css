@@ -200,11 +200,6 @@ h1, h2, .h2, h3 {
     font-size: 1.3em;
 }
 
-/* index page */
-#slack-logo {
-    padding: 4em 0;
-}
-
 .manual-list {
     margin-top: 1em;
     margin-left: -.8em;
