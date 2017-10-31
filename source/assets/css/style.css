@@ -426,3 +426,14 @@ h1:hover .anchor-icon, h2:hover .anchor-icon, h3:hover .anchor-icon, h4:hover .a
 #related-posts li {
     line-height: 1.8em;
 }
+
+footer {
+    font-size: 0.9em;
+    border-top: solid 2px #eaecef;
+}
+
+footer li {
+    list-style-type: none;
+    float: left;
+    padding-right: 2em;
+}
