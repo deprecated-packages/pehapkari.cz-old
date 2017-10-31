@@ -5,18 +5,6 @@ matrix:
         - php: 7.1
           env: PHPUNIT_FLAGS="--coverage-clover coverage.xml" CHECK_CS=1 RUN_PHPSTAN=1
 
-env:
-    global:
-        # Go to: Gitub User => Settings => Personal Access Token => Generate New Token
-        # Select "Repo" scope
-
-        # Download Travis CLI tool locally: https://github.com/travis-ci/travis.rb#installation
-        # Run in shell in repository root: travis encrypt GH_TOKEN=<code>
-
-        # If repo is not recognized by travis api, go to https://travis-ci.org/<repository-slug>, like githu.com/<repository-slug>
-        # And add it there; like you do when you want to run tests on some repository
-        - secure: rEiaq5+CAd1qtkY8k4sjk++XMJx+HawwyxN2QrF8yZHsUpqm8wws7goQ649kXVcHNVbe+FdWoinkWah6MjKejGnpgc7jwWhy7Q6JuUdPNmWkgWsjtXljwBg87f4RFtZ4n9uw8QYAw1azH3iUkHbTeSco8Za+5USgl9NM5S9hgDDStT3kD5BqDzPnaVe+UYwULqvBgAuwzdaUVFrNbHMZvfwPyDKnLdkt6XUmpkc1jriGuoz6i03WmK1JjoeW0JcGSThhv+QCN3nWb7BRk42ZLU40v/bjR4MXXLe0ys7drbPXDIF3MUXqq9KVsNsK7BctnmDc/pqXc517n91+41A+tTegdAOj0XCGIfCqMzZcapqY0Mi00zw2MmyjL9nUbHCkaLdL5bnJMSDj6ck2hsooZnpy5C+aiLFp0Hy/DyFIJsyKecoFZ89CEMcjzhrBPi9oSepcyCZ3Z6K/ataPfmvpaoGQw+X3/tdV33I73t4eydcxNMuPjLNYTsxrch8eyV80AbIalXikZypugdR8xfX4q2DWsmLgF+iuBD7aZPJEQAyoFd4fFtQO466NXS4M+YyNN4oHi77ztrkib9v3YuX7vUAJFfB34BN59TGBJJyK2AujDIkzLS1onSTgu0Od0Mkrsxgib8jlthBM3Hd7IwVQLEMSSkKDaVoYyBmtD406wSs=
-
 install:
     - composer install
 
@@ -36,14 +24,25 @@ script:
         fi
 
 after_script:
-    # upload coverage.xml file to Scrutinizer to analyze it
     - |
         if [ "$PHPUNIT_FLAGS" != "" ]; then
-            wget https://scrutinizer-ci.com/ocular.phar
-            php ocular.phar code-coverage:upload --format=php-clover coverage.xml
+            wget https://github.com/satooshi/php-coveralls/releases/download/v1.0.1/coveralls.phar
+            php coveralls.phar --verbose --config tests/.coveralls.yml
         fi
 
 # do not send success notifications, they have no value
 notifications:
     email:
         on_success: never
+
+env:
+    global:
+        # Go to: Gitub User => Settings => Personal Access Token => Generate New Token
+        # Select "Repo" scope
+
+        # Download Travis CLI tool locally: https://github.com/travis-ci/travis.rb#installation
+        # Run in shell in repository root: travis encrypt GH_TOKEN=<code>
+
+        # If repo is not recognized by travis api, go to https://travis-ci.org/<repository-slug>, like githu.com/<repository-slug>
+        # And add it there; like you do when you want to run tests on some repository
+        - secure: rEiaq5+CAd1qtkY8k4sjk++XMJx+HawwyxN2QrF8yZHsUpqm8wws7goQ649kXVcHNVbe+FdWoinkWah6MjKejGnpgc7jwWhy7Q6JuUdPNmWkgWsjtXljwBg87f4RFtZ4n9uw8QYAw1azH3iUkHbTeSco8Za+5USgl9NM5S9hgDDStT3kD5BqDzPnaVe+UYwULqvBgAuwzdaUVFrNbHMZvfwPyDKnLdkt6XUmpkc1jriGuoz6i03WmK1JjoeW0JcGSThhv+QCN3nWb7BRk42ZLU40v/bjR4MXXLe0ys7drbPXDIF3MUXqq9KVsNsK7BctnmDc/pqXc517n91+41A+tTegdAOj0XCGIfCqMzZcapqY0Mi00zw2MmyjL9nUbHCkaLdL5bnJMSDj6ck2hsooZnpy5C+aiLFp0Hy/DyFIJsyKecoFZ89CEMcjzhrBPi9oSepcyCZ3Z6K/ataPfmvpaoGQw+X3/tdV33I73t4eydcxNMuPjLNYTsxrch8eyV80AbIalXikZypugdR8xfX4q2DWsmLgF+iuBD7aZPJEQAyoFd4fFtQO466NXS4M+YyNN4oHi77ztrkib9v3YuX7vUAJFfB34BN59TGBJJyK2AujDIkzLS1onSTgu0Od0Mkrsxgib8jlthBM3Hd7IwVQLEMSSkKDaVoYyBmtD406wSs=
