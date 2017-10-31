@@ -444,8 +444,9 @@ footer .pull-right li {
 
 footer .rounded-circle {
     text-align: center;
-    height: 2.6em;
-    width: 2.6em;
+    padding-top: .6em;
+    height: 2.7em;
+    width: 2.7em;
 }
 
 
