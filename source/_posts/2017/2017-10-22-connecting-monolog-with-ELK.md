@@ -182,7 +182,7 @@ and then I generate some logs, e. g., `php bin/console app:generate:logs info 10
 
 When installing ELK myself, I spent many hours by resolving why my app does not send logs by Gelf. 
 I set `localhost` as host for Logstash instead of `127.0.0.1`, so my advice is to use ip address instead of domain name when we can, 
-because it saves you lots of hours debugginf.
+because it saves you lots of hours debugging.
 
 Some notes for debugging this:
 we can simply send some message by UDP from bash to Logstash, so we can easily see, whether the message arrives. 
