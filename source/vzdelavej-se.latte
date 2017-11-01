@@ -2,32 +2,59 @@
 layout: default
 title: "Investuj do sebe a přijď na školení"
 id: vzdelavej-se
+
+form_link: "https://docs.google.com/forms/d/e/1FAIpQLSf-x6HlwpfIB-Ig_oyrPzk7PKbyF4YMIHLH21n_dV9V5Edmyw/viewform"
 ---
 
 {block content}
     <div class="section">
+
         <div class="container">
             <h2 class="text-center">
                 <em class="fa fa-graduation-cap fa-fw"></em>
                 {$title}
             </h2>
 
+            <div class="card-deck">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <em class="fa fa-fw fa-map-marker"></em>
+                            Kde se školí
+                        </h4>
+                        <p class="card-text">
+                            V krásných prostorách <strong>pražského <a href="http://node5.cz/kontakty/">Node5</a></strong>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <em class="fa fa-fw fa-calendar-check-o"></em>
+                            Kdy probíhají školení?
+                        </h4>
+                        <p class="card-text">Kdykoliv se najde dodstatečný počet účastníků.</p>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-md-12">
                     <h3>Jak se dostaneš na školení?</h3>
                     <ol>
-                        <li>vyber si školení, které by se ti líbilo</li>
-                        <li>přihlas se pomocí formuláře</li>
-                        <li>až se kurz dostatečně naplní, dáme ti vědět možné termíny</li>
-                        <li>potvrdíš nám termín, který ti nejvíc sedí</li>
-                        <li>po přijetí platby ti pošleme pozvánku a můžeš vyrazit na školení</li>
+                        <li>Vyber si školení, které by se ti líbilo</li>
+                        <li><a href="{$form_link}">Přihlas se</a> pomocí formuláře</a></li>
+                        <li>Až se kurz dostatečně naplní, dáme ti vědět možné termíny</li>
+                        <li>Potvrdíš nám termín, který ti nejvíc sedí</li>
+                        <li>Po přijetí platby ti pošleme pozvánku a můžeš vyrazit na školení</li>
                     </ol>
                 </div>
             </div>
 
             <br>
 
-            <p>Aktuálně máme otevřené termíny pro tato školení:</p>
+            <p>Teď si můžeš vybrat z <strong>{count($trainings)} školení</strong>:</p>
 
             <hr>
 
@@ -50,7 +77,7 @@ id: vzdelavej-se
                                 <br>
 
                                 <p>
-                                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf-x6HlwpfIB-Ig_oyrPzk7PKbyF4YMIHLH21n_dV9V5Edmyw/viewform" class="btn btn-success btn-lg">
+                                    <a href="{$form_link}" class="btn btn-success btn-lg">
                                         <em class="fa fa-fw fa-handshake-o"></em>
                                         &nbsp;
                                         Přihlásit se na otevřený termín
@@ -68,27 +95,5 @@ id: vzdelavej-se
                 </div>
                 {sep}<hr>{/sep}
             {/foreach}
-
-            <hr>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <h3>
-                        <em class="fa fa-fw fa-map-marker"></em>
-                        Kde školíme?
-                    </h3>
-                    <p>
-                        Začínáme <strong>v Praze</strong>
-                        - v <strong>krásných prostorách <a href="http://node5.cz/">smíchovského Node5</a></strong>
-                            nebo <strong><a href="http://pracovna.cz/">žižkovské Pracovny</a></strong>.
-                    </p>
-
-                    <h3>
-                        <em class="fa fa-fw fa-calendar-check-o"></em>
-                        Kdy probíhají školení?
-                    </h3>
-                    <p>Každý rok od září až do června, jako ve škole.</p>
-                </div>
-            </div>
     </div>
 {/block}

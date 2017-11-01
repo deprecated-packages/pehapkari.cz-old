@@ -22,44 +22,6 @@ id: index
         </div>
     </div>
 
-    {include socialsLine}
-
-    <div class="container section" id="slack">
-        <h2 class="text-center">
-            <em class="fa fa-slack fa-fw"></em>
-            Přidej se k 960 dalším na Slacku
-        </h2>
-
-        <br>
-
-        <div class="row">
-            <div class="col-md-6 text-center">
-                <a href="https://pehapkari.slack.com">
-                    <img src="/assets/images/slack-real.png" alt="Přijď na sraz" class="bordered-img">
-                </a>
-            </div>
-
-            <div class="col-md-6">
-                <p>
-                    Zajímá tě Laravel, git nebo chceš jít na oběd s někým z Pardubic?
-                </p>
-                <p>
-                    Vyber tématický #kanál a <strong>žádná tvoje otázka už nebude offtopic</strong>.
-                </p>
-
-                <br>
-
-                <h3>Jak se tam dostaneš?</h3>
-
-                <ol class="manual-list">
-                    <li><a href="https://pehapkari.herokuapp.com/">Nech si poslat pozvánku na mail</a></li>
-                    <li><strong>Připoj se na <a href="https://pehapkari.slack.com">pehapkari.slack.com</a></strong></li>
-                    <li>Vyber si svůj kanál a piš</li>
-                </ol>
-            </div>
-        </div>
-    </div>
-
     {include twitchLine}
 
     <div class="container section" id="meetups">
@@ -96,6 +58,10 @@ id: index
         </div>
     </div>
 
+    {include slackLine}
+
+    ...
+
     {include youtubeLine}
 
     <div class="container section text-center">
@@ -105,7 +71,7 @@ id: index
         </h2>
 
         <div id="sponsor-logos">
-            <a href="https://www.jetbrains.com">
+            <a href="https://www.jetbrains.com"">
                 <img src="/assets/images/sponsors/jetbrains.png">
             </a>
         </div>
@@ -118,30 +84,18 @@ id: index
             nebo nám pošli příspěvek na náš <a href="https://www.fio.cz/ib2/transparent?a=2301196632">transparentní účet</a>
         </p>
 
-        <hr>
-
-        <p>
-            Chceš <strong>použít naše logo</strong>? <a href="/press">Tady si ho stáhni</a> ve velkém
-        </p>
-
-        <br>
-
-        <p>
-            Hledáš SOLID a další pojmy? Mrkni na <a href="/slovnicek/"><em class="fa fa-language fa-fw"></em> Slovníček</a>
-        </p>
+        {include "footer"}
     </div>
 {/block}
 
-
-{define socialsLine}
+{define slackLine}
     <div class="intermezzo">
         <div class="container text-center">
-            <em class="fa fa-facebook fa-fw"></em>
-            <strong>Sleduj novinky</strong> v PHP na <a href="https://www.facebook.com/pehapkari">naší FB stránce</a>
+            <em class="fa fa-slack fa-fw"></em>
+            Máš technický dotaz? Na Slacku najdeš <strong>1200 kamarádů</strong> - <a href="https://pehapkari.herokuapp.com/">požádej o pozvánku</a> a ptej se
         </div>
     </div>
 {/define}
-
 
 {define youtubeLine}
     <div class="intermezzo">
