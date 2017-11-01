@@ -149,3 +149,10 @@ parameters:
             intro_message: "PHP, Nette, code review"
             link: "https://www.linkedin.com/in/edobarnas/"
             remote: true
+        22:
+            name: "Martin Lonský"
+            location: "Ostrava"
+            email: "martin.lonsky@aputime.com"
+            intro_message: "ZF Cert. Engineer, ZF2 Cert. Architect; Angular.io"
+            link: "https://www.linkedin.com/in/martin-lonsky-91b91a82/"
+            remote: true
