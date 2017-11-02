@@ -24,6 +24,8 @@ id: index
 
     <div class="container section" id="videos">
 
+        {* consider youtube rss parsing *}
+        {* consider facebook videos rss parsing *}
     </div>
 
     {include twitchLine}
@@ -65,10 +67,12 @@ id: index
     {include slackLine}
 
     <div class="container section text-center">
-        <h2 class="mb-lg-5">
+        <h2>
             <em class="fa fa-users fa-fw"></em>
             Organizační Tým
         </h2>
+
+        <br>
 
         {* consider using oragnizers.neon *}
         <div class="row">
@@ -110,9 +114,18 @@ id: index
                 <p>livestreamy ze srazů</p>
                 <a href="https://www.grifart.cz">grifart.cz</a>
             </div>
+            <div class="col-md-4">
+                <img src="/assets/images/organizers/jan_kopp.jpg" class="rounded-circle">
+                <h3>Jan Kopp</h3>
+                <p>organizace srazů v Pardubicích</p>
+            </div>
+            <div class="col-md-4">
+                <img src="/assets/images/organizers/filip_simerda.jpg" class="rounded-circle">
+                <h3>Filip Šimerda</h3>
+                <p>organizace srazů v Pardubicích</p>
+            </div>
 
             {*
-            todo: add
             - ostrava shopsys meetups
             - pardubice digialsolutions
             - ?
@@ -127,7 +140,7 @@ id: index
     <div class="intermezzo">
         <div class="container text-center">
             <em class="fa fa-slack fa-fw"></em>
-            Máš technický dotaz? Na Slacku najdeš <strong>1200 kamarádů</strong> - <a href="https://pehapkari.herokuapp.com/">požádej o pozvánku</a> a ptej se
+            Potřebuješ poradit? Na Slacku najdeš <strong>1200 kamarádů</strong> - <a href="https://pehapkari.herokuapp.com/">stačí se pozvat</a> a seš tam taky
         </div>
     </div>
 {/define}
@@ -145,8 +158,8 @@ id: index
     <div class="intermezzo">
         <div class="container text-center">
             <em class="fa fa-twitch fa-fw"></em>
-            Sleduj <a href="https://twitch.tv/pehapkari" target="_blank">livestreamy na twitch.tv</a><br>
-            <a href="https://www.facebook.com/pg/pehapkari/events/" target="_blank"><strong>každé 2. úterý od 19:00</strong></a>
+            Sleduj <a href="https://twitch.tv/pehapkari" target="_blank">livestreamy na Twitch.tv</a> -
+            <a href="https://www.facebook.com/pg/pehapkari/events/" target="_blank"><strong>každé 2. úterý od 19 hod.</strong></a>
         </div>
     </div>
 {/define}
