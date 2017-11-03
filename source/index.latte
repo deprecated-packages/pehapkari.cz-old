@@ -22,10 +22,24 @@ id: index
         </div>
     </div>
 
-    <div class="container section" id="videos">
+    {include slackLine}
 
-        {* consider youtube rss parsing *}
-        {* consider facebook videos rss parsing *}
+    <div class="container section" id="videos">
+        <h2 class="text-center">
+            <em class="fa fa-fw fa-play"></em>
+            Sleduj díl za dílem
+        </h2>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Ze srazu</h3>
+                {* consider youtube rss parsing *}
+            </div>
+            <div class="col-md-6">
+                <h3>Záznamy z livestreamů</h3>
+                {* consider facebook videos rss parsing *}
+            </div>
+        </div>
     </div>
 
     {include twitchLine}
@@ -64,7 +78,7 @@ id: index
         </div>
     </div>
 
-    {include slackLine}
+    {include youtubeLine}
 
     <div class="container section text-center">
         <h2>
@@ -76,8 +90,8 @@ id: index
 
         <div class="row" id="organizers">
             {foreach $organizers as $organizer}
-                <div class="col-md-4 mb-lg-5">
-                    <img src="/assets/images/organizers/{$organizer['photo']}" class="rounded-circle">
+                <div class="col-xs-6 col-sm-4 col-md-3 mb-lg-5">
+                    <img src="/assets/images/organizers/{$organizer['photo']}" class="rounded-circle" width="150" height="150">
                     <h3>{$organizer['name']}</h3>
                     <p>{$organizer['responsibility']}</p>
                     {ifset $organizer['url']}
@@ -87,8 +101,6 @@ id: index
             {/foreach}
         </div>
     </div>
-
-    {include youtubeLine}
 {/block}
 
 {define slackLine}
