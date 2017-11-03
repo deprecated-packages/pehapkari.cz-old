@@ -89,7 +89,7 @@ id: index
                     <h3>{$organizer['name']}</h3>
                     <p>{$organizer['responsibility']|noescape}</p>
                     {ifset $organizer['url']}
-                        <a href="https://{$organizer['url']}/">{$organizer['url']}</a>
+                        <a href="{$organizer['url']}">{$organizer['url_name']}</a>
                     {/ifset}
                 </div>
             {/foreach}

@@ -5,51 +5,73 @@ parameters:
             photo: tomas_votruba.jpg
             name: "Tomáš Votruba"
             responsibility: "vedení, komunikace, sponzoři, organizace srazů v Praze"
-            url: tomasvotruba.cz
+            url: https://tomasvotruba.cz
+            url_name: tomasvotruba.cz
         -
             photo: honza_cerny.jpg
             name: "Honza Černý"
             responsibility: "<a href='https://www.nettecamp.cz/'>PoSobota</a>, <a href='https://www.nettecamp.cz/'>Nette Camp</a>, PHP Hory, <a href='https://forum.nette.org/cs/25487-nette-framework-emailovy-obcasnik#p169371'>Nette Občasník</a> a natáčení videí"
-            url: honzacerny.com
+            url: https://honzacerny.com/
+            url_name: honzacerny.com
         -
             photo: jakub_kratina.jpg
             name: "Jakub Kratina"
             responsibility: "organizace srazů v Praze, livestreamy a moderování"
-            url: jakubkratina.cz
+            url: http://jakubkratina.cz/
+            url_name: jakubkratina.cz
 
         # Pardubice
         -
             photo: vaclav_pavek.jpg
             name: "Václav Pávek"
             responsibility: "organizace PHP Pivo v Pardubicích"
-            url: vaclavpavek.cz
+            url: https://www.vaclavpavek.cz/
+            url_name: vaclavpavek.cz
         -
             photo: jan_kuchar.jpg
             name: "Jan Kuchař"
             responsibility: "livestreamy ze srazů"
-            url: grifart.cz
+            url: https://grifart.cz/
+            url_name: grifart.cz
         -
             photo: jan_kopp.jpg
             name: "Jan Kopp"
             responsibility: "organizace srazů v Pardubicích"
-            url: digitalsolutions.cz
+            url: https://www.digitalsolutions.cz/
+            url_name: digitalsolutions.cz
         -
             photo: filip_simerda.jpg
             name: "Filip Šimerda"
             responsibility: "organizace srazů v Pardubicích"
-            url: digitalsolutions.cz
+            url: https://www.digitalsolutions.cz/
+            url_name: digitalsolutions.cz
+
+        # České Budějovice
         -
             photo: nikol_jezkova.jpg
             name: "Nikol Ježková"
             responsibility: "organizace srazů v Českých Budějovicích"
-            url: roxtri.cz
+            url: https://roxtri.cz/
+            url_name: roxtri.cz
         -
             photo: martin_hlavac.jpg
             name: "Martin Hlaváč"
             responsibility: "organizace srazů v Českých Budějovicích"
-            url: hlavacm.net
+            url: http://hlavacm.net/
+            url_name: hlavacm.net
+
+        # Ostrava
         -
             photo: petr_heinz.jpg
             name: "Petr Heinz"
             responsibility: "organizace srazů v Ostravě"
-            url: shopsys.cz
+            url: https://www.shopsys.cz/
+            url_name: shopsys.cz
+
+        # Brno
+        -
+            photo: vaclav_cevela.jpg
+            name: "Václav Čevela"
+            responsibility: "organizace srazů v Brně"
+            url: http://blog.spameri.cz
+            url_name: blog.spameri.cz
