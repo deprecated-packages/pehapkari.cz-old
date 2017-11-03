@@ -1,0 +1,50 @@
+parameters:
+    organizers:
+        # Prague
+        -
+            photo: tomas_votruba.jpg
+            name: "Tomáš Votruba"
+            responsibility: "vedení, komunikace, sponzoři a marketing"
+            url: tomasvotruba.cz
+        -
+            photo: honza_cerny.jpg
+            name: "Honza Černý"
+            responsibility: "organizace akcí Posobota, Nette Camp, PHP Hory a Nette newsletter"
+            url: honzacerny.com
+        -
+            photo: jakub_kratina.jpg
+            name: "Jakub Kratina"
+            responsibility: "live streamy a moderování"
+            url: jakubkratina.cz
+
+        # Pardubice
+        -
+            photo: vaclav_pavek.jpg
+            name: "Václav Pávek"
+            responsibility: "organizace PHP Pivo v Pardubicích"
+            url: vaclavpavek.cz
+        -
+            photo: jan_kuchar.jpg
+            name: "Jan Kuchař"
+            responsibility: "livestreamy ze srazů"
+            url: grifart.cz
+        -
+            photo: jan_kopp.jpg
+            name: "Jan Kopp"
+            responsibility: "organizace srazů v Pardubicích"
+        -
+            photo: filip_simerda.jpg
+            name: "Filip Šimerda"
+            responsibility: "organizace srazů v Pardubicích"
+        -
+            photo: nikol_jezkova.jpg
+            name: "Nikol Ježková"
+            responsibility: "organizace srazů v Českých Budějovicích"
+        -
+            photo: martin_hlavac.jpg
+            name: "Martin Hlaváč"
+            responsibility: "organizace srazů v Českých Budějovicích"
+        -
+            photo: petr_heinz.jpg
+            name: "Petr Heinz"
+            responsibility: "organizace srazů v Ostravě"

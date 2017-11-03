@@ -74,71 +74,17 @@ id: index
 
         <br>
 
-        {* consider using oragnizers.neon *}
-        <div class="row">
-
-            <div class="col-md-4">
-                <img src="/assets/images/organizers/tomas_votruba.jpg" class="rounded-circle">
-                <h3>Tomáš Votruba</h3>
-                <p>vedení, komunikace, sponzoři a marketing</p>
-                <a href="https://tomasvotruba.cz/">tomasvotruba.cz</a>
-            </div>
-            <div class="col-md-4">
-                <img src="/assets/images/organizers/honza_cerny.jpg" class="rounded-circle">
-                <h3>Honza Černý</h3>
-                <p>organizace akcí Posobota, Nette Camp, PHP Hory a Nette newsletter</p>
-
-                <a href="https://honzacerny.com/">honzacerny.com</a>
-            </div>
-            <div class="col-md-4">
-                <img src="/assets/images/organizers/jakub_kratina.jpg" class="rounded-circle">
-                <h3>Jakub Kratina</h3>
-                <p>live streamy a moderování</p>
-                <a href="http://jakubkratina.cz/">jakubkratina.cz</a>
-            </div>
-        </div>
-
-        <br>
-        <br>
-
-        <div class="row">
-            <div class="col-md-4">
-                <img src="/assets/images/organizers/vaclav_pavek.jpg" class="rounded-circle">
-                <h3>Václav Pávek</h3>
-                <p>organizace PHP Pivo v Pardubicích</p>
-                <a href="https://www.vaclavpavek.cz">vaclavpavek.cz</a>
-            </div>
-            <div class="col-md-4">
-                <img src="/assets/images/organizers/jan_kuchar.jpg" class="rounded-circle">
-                <h3>Jan Kuchař</h3>
-                <p>livestreamy ze srazů</p>
-                <a href="https://www.grifart.cz">grifart.cz</a>
-            </div>
-            <div class="col-md-4">
-                <img src="/assets/images/organizers/jan_kopp.jpg" class="rounded-circle">
-                <h3>Jan Kopp</h3>
-                <p>organizace srazů v Pardubicích</p>
-            </div>
-            <div class="col-md-4">
-                <img src="/assets/images/organizers/filip_simerda.jpg" class="rounded-circle">
-                <h3>Filip Šimerda</h3>
-                <p>organizace srazů v Pardubicích</p>
-            </div>
-            <div class="col-md-4">
-                <img src="/assets/images/organizers/nikol_jezkova.jpg" class="rounded-circle">
-                <h3>Nikol Ježková</h3>
-                <p>organizace srazů v Českých Budějovicích</p>
-            </div>
-            <div class="col-md-4">
-                <img src="/assets/images/organizers/martin_hlavac.jpg" class="rounded-circle">
-                <h3>Martin Hlaváč</h3>
-                <p>organizace srazů v Českých Budějovicích</p>
-            </div>
-            <div class="col-md-4">
-                <img src="/assets/images/organizers/petr_heinz.jpg" class="rounded-circle">
-                <h3>Petr Heinz</h3>
-                <p>organizace srazů v Ostravě</p>
-            </div>
+        <div class="row" id="organizers">
+            {foreach $organizers as $organizer}
+                <div class="col-md-4 mb-lg-5">
+                    <img src="/assets/images/organizers/{$organizer['photo']}" class="rounded-circle">
+                    <h3>{$organizer['name']}</h3>
+                    <p>{$organizer['responsibility']}</p>
+                    {ifset $organizer['url']}
+                        <a href="https://{$organizer['url']}/">{$organizer['url']}</a>
+                    {/ifset}
+                </div>
+            {/foreach}
         </div>
     </div>
 
