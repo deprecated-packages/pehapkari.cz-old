@@ -32,19 +32,24 @@ parameters:
             photo: jan_kopp.jpg
             name: "Jan Kopp"
             responsibility: "organizace srazů v Pardubicích"
+            url: digitalsolutions.cz
         -
             photo: filip_simerda.jpg
             name: "Filip Šimerda"
             responsibility: "organizace srazů v Pardubicích"
+            url: digitalsolutions.cz
         -
             photo: nikol_jezkova.jpg
             name: "Nikol Ježková"
             responsibility: "organizace srazů v Českých Budějovicích"
+            url: roxtri.cz
         -
             photo: martin_hlavac.jpg
             name: "Martin Hlaváč"
             responsibility: "organizace srazů v Českých Budějovicích"
+            url: hlavacm.net
         -
             photo: petr_heinz.jpg
             name: "Petr Heinz"
             responsibility: "organizace srazů v Ostravě"
+            url: shopsys.cz
