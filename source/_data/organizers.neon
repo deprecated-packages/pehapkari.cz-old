@@ -4,17 +4,17 @@ parameters:
         -
             photo: tomas_votruba.jpg
             name: "Tomáš Votruba"
-            responsibility: "vedení, komunikace, sponzoři a marketing"
+            responsibility: "vedení, komunikace, sponzoři, organizace srazů v Praze"
             url: tomasvotruba.cz
         -
             photo: honza_cerny.jpg
             name: "Honza Černý"
-            responsibility: "organizace akcí Posobota, Nette Camp, PHP Hory a Nette newsletter"
+            responsibility: "<a href='https://www.nettecamp.cz/'>PoSobota</a>, <a href='https://www.nettecamp.cz/'>Nette Camp</a>, PHP Hory, <a href='https://forum.nette.org/cs/25487-nette-framework-emailovy-obcasnik#p169371'>Nette Občasník</a> a natáčení videí"
             url: honzacerny.com
         -
             photo: jakub_kratina.jpg
             name: "Jakub Kratina"
-            responsibility: "live streamy a moderování"
+            responsibility: "organizace srazů v Praze, livestreamy a moderování"
             url: jakubkratina.cz
 
         # Pardubice
