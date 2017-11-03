@@ -85,7 +85,7 @@ id: index
         <div class="row" id="organizers">
             {foreach $organizers as $organizer}
                 <div class="col-xs-6 col-sm-4 col-md-3 mb-lg-5">
-                    <img src="/assets/images/organizers/{$organizer['photo']}" class="rounded-circle" width="150" height="150">
+                    <img src="/assets/images/people/{$organizer['photo']}" class="rounded-circle" width="150" height="150">
                     <h3>{$organizer['name']}</h3>
                     <p>{$organizer['responsibility']|noescape}</p>
                     {ifset $organizer['url']}
