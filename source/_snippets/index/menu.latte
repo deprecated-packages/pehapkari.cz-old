@@ -17,19 +17,6 @@
                     <em class="fa fa-handshake-o fa-fw"></em>
                     Mentoři
                 </a>
-
-                {ifset $post}
-                    {capture $githubEditLink}{$post|githubEditPostUrl}{/capture}
-                {elseifset $id}
-                    {capture $githubEditLink}{$github_edit_url_start}{$githubLink =  $id . '.latte'}{/capture}
-                {/ifset}
-
-                {ifset $githubEditLink}
-                    <a href="{$githubEditLink}" class="hidden-sm">
-                        <em class="fa fa-fw fa-pencil"></em>
-                        Edit
-                    </a>
-                {/ifset}
             </nav>
         </div>
     </div>
