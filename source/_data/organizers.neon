@@ -65,8 +65,8 @@ parameters:
             photo: petr_heinz.jpg
             name: "Petr Heinz"
             responsibility: "organizace srazů v Ostravě"
-            url: https://www.shopsys.cz/
-            url_name: shopsys.cz
+            url: https://cz.linkedin.com/in/petr-heinz-45912113b
+            url_name: LinkedIn
 
         # Brno
         -
@@ -75,3 +75,11 @@ parameters:
             responsibility: "organizace srazů v Brně"
             url: http://blog.spameri.cz
             url_name: blog.spameri.cz
+
+        # Slovakia
+        -
+            photo: edo_barnas.jpg
+            name: "Edo Barnáš"
+            responsibility: "organizace srazů na Slovensku"
+            url: https://www.neoweb.sk
+            url_name: neoweb.sk
