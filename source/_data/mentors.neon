@@ -37,13 +37,6 @@ parameters:
             intro_message: "clean PHP, biomedicine hacking & bitcoin are my favourite playgrounds"
             link: "https://twitter.com/tomtomklima"
             remote: true
-        6:
-            name: "Tomáš Kazatel"
-            location: "Praha"
-            email: "kazatel@jiktogroup.cz"
-            intro_message: "Laravel, JS, Frontend. Tam všude ti rád pomůžu a poradím."
-            link: "https://twitter.com/tomaskazatel"
-            remote: false
         7:
             name: "Petr Fidler"
             location: "Praha"
