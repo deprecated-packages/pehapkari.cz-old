@@ -1,9 +1,8 @@
-<div class="container-fluid">
-    <footer class="text-dark text-left mt-5 pt-3">
-
-        <div class="row">
+<footer>
+    <div class="container-fluid">
+        <div class="row text-left pt-3">
             <div class="col-md-3 col-sm-6">
-                <h3>Pro tebe</h3>
+                <h3 class="text-light">Pro tebe</h3>
 
                 <ul>
                     <li><a href="https://www.facebook.com/groups/pehapkari.prace/">Hledáš práci v PHP?</a></li>
@@ -13,7 +12,7 @@
             </div>
 
             <div class="col-md-3 col-sm-6">
-                <h3>Přidej se</h3>
+                <h3 class="text-light">Přidej se</h3>
                 <ul>
                     <li>
                         <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
@@ -25,15 +24,16 @@
             </div>
 
             <div class="col-md-3 col-sm-6">
-                <h3>Pracujeme</h3>
+                <h3 class="text-light">Pracujeme</h3>
                 <ul>
+                    {* todo *}
                     <li><a href="/budte-videt">Pro firmy</a></li>
                     <li><a href="/zacni-skolit">Pro školitele</a></li>
                 </ul>
             </div>
 
             <div class="col-md-3 col-sm-6 text-left">
-                <h3 class="mb-4">Sleduj nás na sítích</h3>
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
 
                 <a href="https://www.facebook.com/pehapkari" class="btn btn-primary rounded-circle mb-3 mr-2">
                     <em class="fa fa-facebook"></em>
@@ -53,28 +53,32 @@
                 <a href="https://pehapkari.slack.com" class="btn btn-warning rounded-circle mb-3 mr-2">
                     <em class="fa fa-slack"></em>
                 </a>
+            </div>
+        </div>
 
-                <br>
+        <div class="row text-left pt-3">
+            <div class="col-md-6 col-sm-6">
+                <p class="powered-by">
+                    Web Péhápkaři.cz pohání <a href="https://github.com/Symplify/Statie">Statie</a> a najdeš ho na <a href="https://github.com/Pehapkari/pehapkari.cz">Githubu</a>.
 
+                    {ifset $post}
+                        {capture $githubEditLink}{$post|githubEditPostUrl}{/capture}
+                        {elseifset $id}
+                        {capture $githubEditLink}{$github_edit_url_start}{$githubLink =  $id . '.latte'}{/capture}
+                    {/ifset}
+
+                    {ifset $githubEditLink}
+                        <br>
+                        <strong>Našel jsi chybu?</strong> <a href="{$githubEditLink}">Oprav nám ji</a> prosím
+                    {/ifset}
+                </p>
+            </div>
+
+            <div class="col-md-6 col-sm-6 text-right">
                 <a href="https://www.posobota.cz/">
                     <img src="/assets/images/logos/posobota.png" id="posobota-logo">
                 </a>
             </div>
         </div>
-
-        <p class="powered-by">
-            Web Péhápkaři.cz pohání <a href="https://github.com/Symplify/Statie">Statie</a> a najdeš ho na <a href="https://github.com/Pehapkari/pehapkari.cz">Githubu</a>.
-
-            {ifset $post}
-                {capture $githubEditLink}{$post|githubEditPostUrl}{/capture}
-                    {elseifset $id}
-                {capture $githubEditLink}{$github_edit_url_start}{$githubLink =  $id . '.latte'}{/capture}
-            {/ifset}
-
-            {ifset $githubEditLink}
-                <br>
-                <strong>Našel jsi chybu?</strong> <a href="{$githubEditLink}">Oprav nám ji</a> prosím
-            {/ifset}
-        </p>
-    </footer>
-</div>
+    </div>
+</footer>
