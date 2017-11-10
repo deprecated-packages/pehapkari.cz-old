@@ -1,6 +1,6 @@
 parameters:
     mentors:
-        1:
+        -
             name: "Milan Felix Šulc"
             location: "Hradec Králové"
             email: "sulcmil@gmail.com"
@@ -9,140 +9,140 @@ parameters:
             # nepovinné: web, Twitter, FB..., stránka, kterou udržuješ a kde se něco dozvím
             link: "https://jfx.cz/"
             remote: true
-        2:
+        -
             name: "Tomáš Votruba"
             location: "Praha"
             email: "tomas.vot@gmail.com"
             intro_message: "Chceš psát články? Tvořit open-source? Školit? Napiš mi, rozjedem to."
             link: "https://tomasvotruba.cz/"
             remote: true
-        3:
+        -
             name: "Tomáš Fejfar"
             location: "Praha"
             email: "tomas.fejfar@gmail.com"
             intro_message: "Git, PhpStorm, vývoj v týmu"
             link: "https://www.tomasfejfar.cz/"
             remote: true
-        4:
+        -
             name: "Jan Mikeš"
             location: "Ostrava"
             email: "j.mikes@me.com"
             intro_message: "Full stack s primárním zaměřením na backend (Nette) a čistý kód."
             link: "https://www.linkedin.com/in/jan-mikeš-0405996b"
             remote: true
-        5:
+        -
             name: "Tom Klíma"
             location: "Praha"
             email: "tom@jakpsatphp.cz"
             intro_message: "clean PHP, biomedicine hacking & bitcoin are my favourite playgrounds"
             link: "https://twitter.com/tomtomklima"
             remote: true
-        7:
+        -
             name: "Petr Fidler"
             location: "Praha"
             email: "petr@petrfidler.cz"
             intro_message: "Nette, Symfony, čistý kód, strategie a uživatelský výzkum"
             link: "http://www.petrfidler.cz/"
             remote: false
-        8:
+        -
             name: "Honza Novák"
             location: "Plzeň"
             email: "jan.novak@id-sign.com"
             intro_message: "PHP, Symfony, čistý kód, zkušenosti z projektů www.id-sign.com"
             link: "https://cz.linkedin.com/in/novakhonza"
             remote: false
-        9:
+        -
             name: "Václav Makeš"
             location: "Praha, Most, Mladá Boleslav"
             email: "vaclav@makes.cz"
             intro_message: "struktura kódu, Git, PhpStorm"
             link: "http://www.makes.cz"
             remote: false
-        10:
+        -
             name: "Jan Šmíd"
             location: "Brno"
             email: "smid@fv.cz"
             intro_message: "13 let php aktivně/denní báze (vesměs cokoliv: {front|back}End architektura, údržba/cleaning legacy kódu, atp)"
             link: "http://jan.smid.sk"
             remote: true
-        11:
+        -
             name: "Michal Lulčo"
             location: "Bratislava"
             email: "michal.lulco@gmail.com"
             intro_message: "Potrebuješ niekoho na code review tvojich open source projektov v PHP? Rád ti s tým pomôžem."
             link: "https://github.com/lulco"
             remote: true
-        12:
+        -
             name: "Jan Voráček"
             location: "Pardubice"
             email: "jan@voracek.net"
             intro_message: "PHP, TypeScript + NodeJS, čistý kód, architektura, Git, WordPress – zkušenosti z vývoje VersionPressu"
             link: "http://voracek.net"
             remote: true
-        13:
+        -
             name: "Tomáš Pilař"
             location: "Chrudim"
             email: "email@tomaspilar.cz"
             intro_message: "PHP, Nette, Doctrine, Elasticsearch, čistý kód, architektura"
             link: "https://www.tomaspilar.cz"
             remote: false
-        14:
+        -
             name: "Tomáš Kavalek"
             location: "Kostelec nad Orlicí, Pardubice"
             email: "tomas.kavalek@gmail.com"
             intro_message: "S PHP jsem začínal ještě v minulém století :-) Nette, Symfony, Doctrine, Wordpress aj."
             link: "https://www.tomaskavalek.cz"
             remote: false
-        15:
+        -
             name: "Michal Kovarčík"
             location: "Bratislava"
             email: "whedro@gmail.com"
             intro_message: "PHP, Symfony, code review"
             link: "https://www.linkedin.com/in/michal-kovarcik-40884021/"
             remote: false
-        16:
+        -
             name: "Petr 'PePa' Pavel"
             location: "Praha"
             email: "petr.pavel@pepa.info"
             intro_message: "programuji a školím PHP (Nette), SQL/HTML/CSS/JS, 15 let zkušeností, fluent English"
             link: "https://www.naucmese.cz/kurz/programovani-pro-web-php-js"
             remote: true
-        17:
+        -
             name: "Eduard Štůla"
             location: "Plzeň"
             email: "eduard.stula@b-m.cz"
             intro_message: "PHP, PhpStorm, bezpečnost, GIT. Vedu vývoj v benes-michl.cz :)"
             link: "https://www.linkedin.com/in/eduardstula/"
             remote: false
-        18:
+        -
             name: "Matěj Račinský"
             location: "Praha"
             email: "racinsky.matej@seznam.cz"
             intro_message: "PHP, PhpStorm, GIT, Doctrine, Nette, Java, architektura, bezpečnost, bitcoin, umělá inteligence"
             link: "https://github.com/racinmat"
             remote: false
-        19:
+        -
             name: "Radek Hřebeček"
             location: "Praha"
             email: "radek@hrebecek.cz"
             intro_message: "PHP, Doctrine, Nette, ReactJS"
             link: "http://www.hrebecek.cz"
             remote: false
-        20:
+        -
             name: "Štěpán Kocourek"
             location: "Praha"
             email: "stepan@kocourek.io"
             intro_message: "PHP, Nette, code review, základy Gitu"
             link: "http://kocourek.io"
             remote: false
-        21:
+        -
             name: "Eduard Barnáš"
             location: "Poprad"
             email: "barnas.edo@gmail.com"
             intro_message: "PHP, Nette, code review"
             link: "https://www.linkedin.com/in/edobarnas/"
             remote: true
-        22:
+        -
             name: "Martin Lonský"
             location: "Ostrava"
             email: "martin.lonsky@aputime.com"
