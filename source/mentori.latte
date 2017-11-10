@@ -67,8 +67,16 @@ id: mentori
                 <th>Kde</th>
                 <th>Kontakt</th>
             </thead>
-            {* sort the list of mentors alphabetically so it's not biased towards those who came first *}
-            {php usort($mentors, function ($a, $b) { return strcasecmp(iconv('UTF-8', 'ASCII//TRANSLIT', $a['name']), iconv('UTF-8', 'ASCII//TRANSLIT', $b['name'])); })}
+
+            {* sort the list of mentors so it's not biased towards those who came first *}
+            {var $sortBy = $remote ? 'name' : 'location'}
+            {php usort($mentors, function ($a, $b) use ($sortBy) {
+                return strcasecmp(
+                    iconv('UTF-8', 'ASCII//TRANSLIT', $a[$sortBy]),
+                    iconv('UTF-8', 'ASCII//TRANSLIT', $b[$sortBy])
+                );
+            })}
+
             <tbody>
                 {foreach $mentors as $mentor}
                     {continueIf ($remote && ! $mentor['remote']) || (!$remote && $mentor['remote'])}
