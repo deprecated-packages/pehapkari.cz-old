@@ -9,13 +9,6 @@ parameters:
             # nepovinné: web, Twitter, FB..., stránka, kterou udržuješ a kde se něco dozvím
             link: "https://jfx.cz/"
             remote: true
-        -
-            name: "Tomáš Votruba"
-            location: "Praha"
-            email: "tomas.vot@gmail.com"
-            intro_message: "Chceš psát články? Tvořit open-source? Školit? Napiš mi, rozjedem to."
-            link: "https://tomasvotruba.cz/"
-            remote: true
         # confirmed
         -
             name: "Tomáš Fejfar"
@@ -138,13 +131,6 @@ parameters:
             email: "radek@hrebecek.cz"
             intro_message: "PHP, Doctrine, Nette, ReactJS"
             link: "http://www.hrebecek.cz"
-            remote: false
-        -
-            name: "Štěpán Kocourek"
-            location: "Praha"
-            email: "stepan@kocourek.io"
-            intro_message: "PHP, Nette, code review, základy Gitu"
-            link: "http://kocourek.io"
             remote: false
         # confirmed
         -
