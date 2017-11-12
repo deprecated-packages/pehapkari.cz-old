@@ -16,6 +16,7 @@ parameters:
             intro_message: "Chceš psát články? Tvořit open-source? Školit? Napiš mi, rozjedem to."
             link: "https://tomasvotruba.cz/"
             remote: true
+        # confirmed
         -
             name: "Tomáš Fejfar"
             location: "Praha"
@@ -23,6 +24,7 @@ parameters:
             intro_message: "Git, PhpStorm, vývoj v týmu"
             link: "https://www.tomasfejfar.cz/"
             remote: true
+        # confirmed
         -
             name: "Jan Mikeš"
             location: "Ostrava"
@@ -30,6 +32,7 @@ parameters:
             intro_message: "Full stack s primárním zaměřením na backend (Nette) a čistý kód."
             link: "https://www.linkedin.com/in/jan-mikeš-0405996b"
             remote: true
+        # confirmed
         -
             name: "Tom Klíma"
             location: "Praha"
@@ -37,6 +40,7 @@ parameters:
             intro_message: "clean PHP, biomedicine hacking & bitcoin are my favourite playgrounds"
             link: "https://twitter.com/tomtomklima"
             remote: true
+        # confirmed
         -
             name: "Petr Fidler"
             location: "Praha"
@@ -51,6 +55,7 @@ parameters:
             intro_message: "PHP, Symfony, čistý kód, zkušenosti z projektů www.id-sign.com"
             link: "https://cz.linkedin.com/in/novakhonza"
             remote: false
+        # confirmed
         -
             name: "Václav Makeš"
             location: "Praha, Most, Mladá Boleslav"
@@ -72,6 +77,7 @@ parameters:
             intro_message: "Potrebuješ niekoho na code review tvojich open source projektov v PHP? Rád ti s tým pomôžem."
             link: "https://github.com/lulco"
             remote: true
+        # confirmed
         -
             name: "Jan Voráček"
             location: "Pardubice"
@@ -79,6 +85,7 @@ parameters:
             intro_message: "PHP, TypeScript + NodeJS, čistý kód, architektura, Git, WordPress – zkušenosti z vývoje VersionPressu"
             link: "http://voracek.net"
             remote: true
+        # confirmed
         -
             name: "Tomáš Pilař"
             location: "Chrudim"
@@ -93,6 +100,7 @@ parameters:
             intro_message: "S PHP jsem začínal ještě v minulém století :-) Nette, Symfony, Doctrine, Wordpress aj."
             link: "https://www.tomaskavalek.cz"
             remote: false
+        # confirmed
         -
             name: "Michal Kovarčík"
             location: "Bratislava"
@@ -100,6 +108,7 @@ parameters:
             intro_message: "PHP, Symfony, code review"
             link: "https://www.linkedin.com/in/michal-kovarcik-40884021/"
             remote: false
+        # confirmed
         -
             name: "Petr 'PePa' Pavel"
             location: "Praha"
@@ -114,6 +123,7 @@ parameters:
             intro_message: "PHP, PhpStorm, bezpečnost, GIT. Vedu vývoj v benes-michl.cz :)"
             link: "https://www.linkedin.com/in/eduardstula/"
             remote: false
+        # confirmed
         -
             name: "Matěj Račinský"
             location: "Praha"
@@ -121,6 +131,7 @@ parameters:
             intro_message: "PHP, PhpStorm, GIT, Doctrine, Nette, Java, architektura, bezpečnost, bitcoin, umělá inteligence"
             link: "https://github.com/racinmat"
             remote: false
+        # confirmed
         -
             name: "Radek Hřebeček"
             location: "Praha"
@@ -135,6 +146,7 @@ parameters:
             intro_message: "PHP, Nette, code review, základy Gitu"
             link: "http://kocourek.io"
             remote: false
+        # confirmed
         -
             name: "Eduard Barnáš"
             location: "Poprad"
@@ -142,6 +154,7 @@ parameters:
             intro_message: "PHP, Nette, code review"
             link: "https://www.linkedin.com/in/edobarnas/"
             remote: true
+        # confirmed
         -
             name: "Martin Lonský"
             location: "Ostrava"
