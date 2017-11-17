@@ -9,7 +9,7 @@ parameters:
         -
             photo: honza_cerny.jpg
             name: "Honza Černý"
-            responsibility: "<a href='https://www.nettecamp.cz/'>PoSobota</a>, <a href='https://www.nettecamp.cz/'>Nette Camp</a>, PHP Hory, <a href='https://forum.nette.org/cs/25487-nette-framework-emailovy-obcasnik#p169371'>Nette Občasník</a> a natáčení videí"
+            responsibility: "PoSobota, Nette Camp, PHP Hory, Nette Občasník a natáčení videí"
             url: https://honzacerny.com/
         -
             photo: jakub_kratina.jpg
