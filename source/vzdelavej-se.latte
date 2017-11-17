@@ -21,6 +21,55 @@ inspiration:
             {$title}
         </h2>
 
+        <p class="text-center">
+            Rozšiř si své know-how od v odborníků PHP.<br>
+            Pořádáme školení Continuous delivery, Doctrine, Git, PHPStorm a další.
+        </p>
+
+        {* active only *}
+
+        {*<br>*}
+
+        {*<hr>*}
+
+        <div class="row">
+            {foreach $trainings as $training}
+                <div class="col-md-4" id="{$training['name']|webalize}">
+                    <h3>{$training['name']|noescape}</h3>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            {*<p><strong>O čem je školení?</strong></p>*}
+                            {* get short description *}
+                            <p>{$training['description']|noescape|truncate: 150, '...'}</p>
+
+                            <br>
+
+                            {*<p>Délka: <strong>{$training['duration']}</strong></p>*}
+                            {*<p>Kapacita: <strong>{$training['capacity']}</strong></p>*}
+                            {*<p>Pro tebe: <strong>{$training['price']}</strong></p>*}
+
+                            {*<br>*}
+
+                            {*<p>*}
+                                {*<a href="{$form_link}" class="btn btn-success btn-lg">*}
+                                    {*<em class="fa fa-fw fa-handshake-o"></em>*}
+                                    {*&nbsp;*}
+                                    {*Přihlásit se na otevřený termín*}
+                                {*</a>*}
+                            {*</p>*}
+                        </div>
+                        <div class="col-md-4 text-center pull-left">
+                            <img src="/assets/images/people/{$training['trainer_photo']}" class="img-thumbnail mb-2 rounded-circle ">
+                            <p>
+                                <strong>{$training['trainer_name']}</strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {/foreach}
+        </div>
+
         <div class="card-deck">
             <div class="card">
                 <div class="card-body">
@@ -34,64 +83,5 @@ inspiration:
                 </div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <h3>Jak se dostaneš na školení?</h3>
-                <ol>
-                    <li>Vyber si školení, které se ti líbí</li>
-                    <li><a href="{$form_link}">Přihlas se</a> pomocí formuláře</a></li>
-                    <li>Potvrdíš nám termín, který ti nejvíc sedí</li>
-                    <li>Po přijetí platby ti pošleme pozvánku a můžeš vyrazit na školení</li>
-                </ol>
-            </div>
-        </div>
-
-
-        <h2>Nejbližší školení</h2>
-
-        {* active only *}
-
-        <br>
-
-        <hr>
-
-        {foreach $trainings as $training}
-            <div class="row">
-                <div class="col-md-12" id="{$training['name']|webalize}">
-                    <h2 class="text-center">{$training['name']|noescape}</h2>
-
-                    <div class="row">
-                        <div class="col-md-8">
-                            <p><strong>O čem je školení?</strong></p>
-                            <p>{$training['description']|noescape}</p>
-
-                            <br>
-
-                            <p>Délka: <strong>{$training['duration']}</strong></p>
-                            <p>Kapacita: <strong>{$training['capacity']}</strong></p>
-                            <p>Pro tebe: <strong>{$training['price']}</strong></p>
-
-                            <br>
-
-                            <p>
-                                <a href="{$form_link}" class="btn btn-success btn-lg">
-                                    <em class="fa fa-fw fa-handshake-o"></em>
-                                    &nbsp;
-                                    Přihlásit se na otevřený termín
-                                </a>
-                            </p>
-                        </div>
-                        <div class="col-md-4 text-center">
-                            <img src="/assets/images/people/{$training['trainer_photo']}" class="img-thumbnail mb-2">
-                            <p>
-                                <strong>{$training['trainer_name']}</strong>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {sep}<hr>{/sep}
-        {/foreach}
     </div>
 {/block}
