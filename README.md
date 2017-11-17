@@ -4,32 +4,30 @@
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/pehapkari/pehapkari.cz.svg?style=flat-square)](https://scrutinizer-ci.com/g/pehapkari/pehapkari.cz)
 
 
-## Install
+## How to run Locally to Contribute
 
-```sh
-composer create-project pehapkari/website pehapkari.cz @dev
-```
+1. Fork
 
-To enable live reload after any change, we need one more thing - *gulp*:
+2. `git clone <your-fork>`
+
+3. Install dependencies
 
 ```bash
-npm install -g gulp gulp-watch
+composer update
+npm install
 ```
 
-## Run the website
-
-Now all you gotta do it move to the directory and run the gulp (see [gulpfile.js](/gulpfile.js) for more details):
+4. Run Website
 
 ```sh
 cd pehapkari.cz
-composer update
-npm install
 gulp
 ```
 
 And open [http://localhost:8000](http://localhost:8000) in your browser.
 
 That's all!
+
 
 
 ### Docker Enabled
