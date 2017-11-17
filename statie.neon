@@ -2,6 +2,7 @@ includes:
     - source/_data/authors.neon
     - source/_data/mentors.neon
     - source/_data/trainings.neon
+    - source/_data/organizers.neon
 
 parameters:
     page_title: "Děláš v PHP? Jsi jedním z nás"

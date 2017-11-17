@@ -3,7 +3,7 @@ parameters:
         -
             name: "Jak na rapidní vývoj a Continuous Delivery"
             trainer_name: "Ondřej Mirtes"
-            trainer_photo: "ondrej-mirtes.jpg"
+            trainer_photo: "ondrej_mirtes.jpg"
             description: '''
         Zkracování <a href='https://ondrej.mirtes.cz/zkracovani-feedback-loop'>feedback loop</a>:
             <br>
@@ -21,7 +21,7 @@ parameters:
         -
             name: "Ovládni PhpStorm &ndash; od základů po profi tipy"
             trainer_name: "Tomáš Fejfar"
-            trainer_photo: "tomas-fejfar.jpg"
+            trainer_photo: "tomas_fejfar.jpg"
             description: '''
     <ul>
         <li>Základy nastavení projektu</li>
@@ -36,7 +36,7 @@ parameters:
         -
             name: "Jak na pokročilou práci s Gitem"
             trainer_name: "Martin Hujer"
-            trainer_photo: "martin-hujer.jpg"
+            trainer_photo: "martin_hujer.jpg"
             description: '''
             <p>V rámci školení se podíváme na pokročilejší práci s Gitem, která ti pomůže zefektivnit (nejen) práci v týmu.  Je dobré, abys už uměl základy práce s Gitem - alespoň commit, push a pull.
             <p>Školení bude probíhat formou workshopu, kdy si vždycky něco málo povíme a pak si vše budeš zkoušet na vlastním notebooku.</p>
@@ -57,7 +57,7 @@ parameters:
         -
             name: "Tvorba zadání a komunikace se zákazníkem"
             trainer_name: "Petr 'PePa' Pavel"
-            trainer_photo: "petr-pavel.jpg"
+            trainer_photo: "petr_pavel.jpg"
             description: '''
             <p>Nejčastější příčinou krachu projektu je špatná komunikace, ať už uvnitř týmu nebo se zákazníkem. Přes 10 let na volné noze mě vyškolilo. Přineste si svoje noční můry na workshop a probereme, jak jim šlo zabránit.</p>
             <ul>
@@ -81,7 +81,7 @@ parameters:
         -
             name: "Začněte debugovat jako profíci s xdebugem!"
             trainer_name: "Jan Mikeš"
-            trainer_photo: "jan-mikes.jpg"
+            trainer_photo: "jan_mikes.jpg"
             description: '''
             <p>Na školení začneme s nastavením xdebugu pro vaše IDE. Ukážeme si, k čemu se xdebug používá, co umí a jak vám rapidně zefektivní práci. Na reálných aplikacích a problémech si projdeme debugování od základů až po pokročilejší techniky.</p>
             <p><strong>Naučíte se jak debugovat:</strong></p>
@@ -97,3 +97,25 @@ parameters:
             duration: "6 hodin"
             price: "3999 Kč"
             capacity: "5-10 lidí"
+
+        -
+            name: "Jak dělat open-source a vytěžit z něj maximum?"
+            trainer_name: "Tomáš Votruba"
+            trainer_photo: "tomas_votruba.jpg"
+            description: '''
+            <p>Na školení si ukážeme, jak využít open-source pro zisk znalostí, zkušeností i osobního brandu.</p>
+            <p><strong>Naučíte se:</strong></p>
+            <ul>
+                <li>co je potřeba vědět, než začneš s prvním balíčkem</li>
+                <li>jak použít open-source k učení</li>
+                <li>shortest-experment loop - 5x rychlejší než ve tvé práci</li>
+                <li>SOLID patterny v praxi</li>
+                <li>jak psát "nesmrtelný" kód na první dobrou</li>
+                <li>coding standardy, testování a automatický refaktoring</li>
+                <li>composer, Github a Travis</li>
+            </ul>
+            <p>Na konci školení budeš vědět, jak udělat tvůj balíček v tvém oblíbeném frameworku a která část své aplikace bude mít tu čest jít ven.</p>
+            '''
+            duration: "3 hodiny"
+            price: "1999 Kč"
+            capacity: "3-6 lidí"

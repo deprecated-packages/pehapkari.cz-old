@@ -4,7 +4,7 @@ id: index
 ---
 
 {block content}
-    <div class="container section first-section text-center">
+    <div class="container first-section text-center">
 
         <div class="row text-center">
             <div class="col-12">
@@ -22,51 +22,45 @@ id: index
         </div>
     </div>
 
-    {include socialsLine}
+    {*<div class="container section" id="training">*}
+        {*<h2 class="text-center">Mrkni na školení</h2>*}
+        {*{var $featuredTraining = $trainings[(array_rand($trainings))]}*}
+        {*<h3>{$featuredTraining['name']|noescape}</h3>*}
 
-    <div class="container section" id="slack">
-        <h2 class="text-center">
-            <em class="fa fa-slack fa-fw"></em>
-            Přidej se k 960 dalším na Slacku
-        </h2>
+        {*<p>*}
+            {*<img src="/assets/images/people/{$featuredTraining['trainer_photo']}" class="img-thumbnail mb-2" width="100" height="100">*}
+            {*<br>*}
+            {*{$featuredTraining['trainer_name']}*}
+        {*</p>*}
 
-        <br>
+        {*<p>*}
+            {*<a href="/vzdelavej-se">Všechna školení</a>*}
+        {*</p>*}
+    {*</div>*}
 
-        <div class="row">
-            <div class="col-md-6 text-center">
-                <a href="https://pehapkari.slack.com">
-                    <img src="/assets/images/slack-real.png" alt="Přijď na sraz" class="bordered-img">
-                </a>
-            </div>
+    {* wip *}
+    {*<div class="container" id="videos">*}
+        {*<h2 class="text-center">Sleduj díl za dílem</h2>*}
 
-            <div class="col-md-6">
-                <p>
-                    Zajímá tě Laravel, git nebo chceš jít na oběd s někým z Pardubic?
-                </p>
-                <p>
-                    Vyber tématický #kanál a <strong>žádná tvoje otázka už nebude offtopic</strong>.
-                </p>
-
-                <br>
-
-                <h3>Jak se tam dostaneš?</h3>
-
-                <ol class="manual-list">
-                    <li><a href="https://pehapkari.herokuapp.com/">Nech si poslat pozvánku na mail</a></li>
-                    <li><strong>Připoj se na <a href="https://pehapkari.slack.com">pehapkari.slack.com</a></strong></li>
-                    <li>Vyber si svůj kanál a piš</li>
-                </ol>
-            </div>
-        </div>
-    </div>
+        {*<div class="row">*}
+            {*<div class="col-md-6">*}
+                {*<h3>Ze srazů</h3>*}
+                {* consider facebook videos rss parsing *}
+                {* FB api video list manual: https://developers.facebook.com/docs/graph-api/reference/page/video_lists/ *}
+                {* more inspiration: https://stackoverflow.com/a/9778635/1348344, *}
+            {*</div>*}
+            {*<div class="col-md-6">*}
+                {*<h3>Záznamy z livestreamů</h3>*}
+                {* consider youtube rss parsing *}
+                {* livestream playlist: https://www.youtube.com/feeds/videos.xml?playlist_id=PLpPdQMJWIciF6kjVUkkSoK0tEpreS2FZt *}
+            {*</div>*}
+        {*</div>*}
+    {*</div>*}
 
     {include twitchLine}
 
-    <div class="container section" id="meetups">
-        <h2 class="text-center">
-            <em class="fa fa-fw fa-beer"></em>
-            Kdy a kde se potkáváme?
-        </h2>
+    <div class="container" id="meetups">
+        <h2 class="text-center">Kdy a kde se potkáváme?</h2>
 
         <br>
 
@@ -76,7 +70,7 @@ id: index
             </div>
             <div class="col-md-6">
                 <p>
-                    Srazy pořádají různé skupiny v 6 městech po celé zemi.
+                    Srazy pořádají <a href="/#team">různé skupiny v 6 městech</a>.
                 </p>
 
                 <p>
@@ -88,9 +82,9 @@ id: index
                 <h3>Kde se o nich dozvíš?</h3>
 
                 <ol class="manual-list">
-                    <li>Odebírej <a href="https://www.facebook.com/pehapkari/events">akce na Facebook stránce</a></li>
-                    <li>nebo <a href="https://eventigo.cz/">Eventigo newsletter</a> s PHP akcemi</li>
-                    <li>nebo importuj <a href="https://calendar.google.com/calendar/embed?src=07ofvjdfhg9ko1vm9jrodqnpl8%40group.calendar.google.com&ctz=Europe/Prague">Google kalendář</a> s PHP akcemi</li>
+                    <li>Odebírej <a href="https://www.facebook.com/pehapkari/events">akce na Facebook stránce</a>,</li>
+                    <li><a href="https://eventigo.cz/">Eventigo newsletter</a> s PHP akcemi</li>
+                    <li>nebo si importuj <a href="https://calendar.google.com/calendar/embed?src=07ofvjdfhg9ko1vm9jrodqnpl8%40group.calendar.google.com&ctz=Europe/Prague">Google kalendář</a></li>
                 </ol>
             </div>
         </div>
@@ -98,50 +92,36 @@ id: index
 
     {include youtubeLine}
 
-    <div class="container section text-center">
-        <h2>
-            <em class="fa fa-hand-peace-o fa-fw"></em>
-            Kdo nám s tím pomáhá?
-        </h2>
+    <div class="container text-center">
+        <h2>Organizační Tým</h2>
 
-        <div id="sponsor-logos">
-            <a href="https://www.jetbrains.com">
-                <img src="/assets/images/sponsors/jetbrains.png">
-            </a>
+        <br>
+
+        <div class="row" id="organizers">
+            {foreach $organizers as $organizer}
+                <div class="col-xs-6 col-sm-4 col-md-3 mb-lg-5">
+                    <img src="/assets/images/people/{$organizer['photo']}" class="rounded-circle" width="150" height="150">
+                    <h3>{$organizer['name']}</h3>
+                    <p>{$organizer['responsibility']|noescape}</p>
+                    {ifset $organizer['url']}
+                        <a href="{$organizer['url']}">{$organizer['url_name']}</a>
+                    {/ifset}
+                </div>
+            {/foreach}
         </div>
-
-        <br>
-
-        <p>
-            Chceš se přidat? <strong>Napiš nám na <a href="mailto:tomas@pehapkari.cz">tomas@pehapkari.cz</a></strong>
-            <br>
-            nebo nám pošli příspěvek na náš <a href="https://www.fio.cz/ib2/transparent?a=2301196632">transparentní účet</a>
-        </p>
-
-        <hr>
-
-        <p>
-            Chceš <strong>použít naše logo</strong>? <a href="/press">Tady si ho stáhni</a> ve velkém
-        </p>
-
-        <br>
-
-        <p>
-            Hledáš SOLID a další pojmy? Mrkni na <a href="/slovnicek/"><em class="fa fa-language fa-fw"></em> Slovníček</a>
-        </p>
     </div>
+
+    {include slackLine}
 {/block}
 
-
-{define socialsLine}
+{define slackLine}
     <div class="intermezzo">
         <div class="container text-center">
-            <em class="fa fa-facebook fa-fw"></em>
-            <strong>Sleduj novinky</strong> v PHP na <a href="https://www.facebook.com/pehapkari">naší FB stránce</a>
+            <em class="fa fa-slack fa-fw"></em>
+            Potřebuješ poradit? Na Slacku najdeš <strong>1200 kamarádů</strong> - <a href="https://pehapkari.herokuapp.com/">stačí se pozvat</a> a seš tam taky
         </div>
     </div>
 {/define}
-
 
 {define youtubeLine}
     <div class="intermezzo">
@@ -156,8 +136,8 @@ id: index
     <div class="intermezzo">
         <div class="container text-center">
             <em class="fa fa-twitch fa-fw"></em>
-            Sleduj <a href="https://twitch.tv/pehapkari" target="_blank">livestreamy na twitch.tv</a><br>
-            <a href="https://www.facebook.com/pg/pehapkari/events/" target="_blank"><strong>každé 2. úterý od 19:00</strong></a>
+            Sleduj livestreamy <a href="https://twitch.tv/pehapkari" target="_blank">na Twitch.tv</a> -
+            <a href="https://www.facebook.com/pg/pehapkari/events/" target="_blank"><strong>každé 2. úterý od 19 hod.</strong></a>
         </div>
     </div>
 {/define}

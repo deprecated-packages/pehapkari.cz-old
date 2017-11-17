@@ -1,9 +1,45 @@
 language: php
 
-matrix:
-    include:
-        - php: 7.1
-          env: PHPUNIT_FLAGS="--coverage-clover coverage.xml" CHECK_CS=1 RUN_PHPSTAN=1
+php:
+    - 7.1
+
+install:
+    - composer install
+
+jobs:
+    includes:
+      -
+        script:
+            # run tests for tested posts (with "tested: true" in header configuration)
+            - vendor/bin/phpunit -v
+            # test that website is generated
+            - vendor/bin/statie generate source
+
+      - stage: static analysis and code coverage
+        php: 7.1
+        script:
+            # static anal (defined in composer.json "scripts" section)
+            - composer check-cs
+            - composer phpstan
+            # get xdebug back for coverage
+            - mv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini{.disabled,}
+            - vendor/bin/phpunit --coverage-clover coverage.xml
+        after_script:
+            - wget https://github.com/satooshi/php-coveralls/releases/download/v1.0.1/coveralls.phar
+            - php coveralls.phar --verbose --config .coveralls.yml
+
+      - stage: publish github pages
+        if:
+            - branch = master
+            - type IN (push)
+        scripts:
+            - vendor/bin/statie generate source
+            - vendor/bin/statie push-to-github pehapkari/pehapkari.cz --token=${GH_TOKEN}
+
+# do not send success notifications, they have no value
+notifications:
+    email:
+        on_success: never
 
 env:
     global:
@@ -16,34 +52,3 @@ env:
         # If repo is not recognized by travis api, go to https://travis-ci.org/<repository-slug>, like githu.com/<repository-slug>
         # And add it there; like you do when you want to run tests on some repository
         - secure: rEiaq5+CAd1qtkY8k4sjk++XMJx+HawwyxN2QrF8yZHsUpqm8wws7goQ649kXVcHNVbe+FdWoinkWah6MjKejGnpgc7jwWhy7Q6JuUdPNmWkgWsjtXljwBg87f4RFtZ4n9uw8QYAw1azH3iUkHbTeSco8Za+5USgl9NM5S9hgDDStT3kD5BqDzPnaVe+UYwULqvBgAuwzdaUVFrNbHMZvfwPyDKnLdkt6XUmpkc1jriGuoz6i03WmK1JjoeW0JcGSThhv+QCN3nWb7BRk42ZLU40v/bjR4MXXLe0ys7drbPXDIF3MUXqq9KVsNsK7BctnmDc/pqXc517n91+41A+tTegdAOj0XCGIfCqMzZcapqY0Mi00zw2MmyjL9nUbHCkaLdL5bnJMSDj6ck2hsooZnpy5C+aiLFp0Hy/DyFIJsyKecoFZ89CEMcjzhrBPi9oSepcyCZ3Z6K/ataPfmvpaoGQw+X3/tdV33I73t4eydcxNMuPjLNYTsxrch8eyV80AbIalXikZypugdR8xfX4q2DWsmLgF+iuBD7aZPJEQAyoFd4fFtQO466NXS4M+YyNN4oHi77ztrkib9v3YuX7vUAJFfB34BN59TGBJJyK2AujDIkzLS1onSTgu0Od0Mkrsxgib8jlthBM3Hd7IwVQLEMSSkKDaVoYyBmtD406wSs=
-
-install:
-    - composer install
-
-script:
-    # run tests for tested posts (with "tested: true" in header configuration)
-    - vendor/bin/phpunit $PHPUNIT_FLAGS
-    # check coding standard (defined in composer.json "scripts" section)
-    - if [[ $CHECK_CS = 1 ]]; then composer check-cs; fi
-    # check with phpstan (defined in composer.json "scripts" section)
-    - if [[ $RUN_PHPSTAN = 1 ]]; then composer phpstan; fi
-    # test that website is generated
-    - vendor/bin/statie generate source
-    # re-build website when on master only
-    - |
-        if [[ "$TRAVIS_BRANCH" == "master" && "$TRAVIS_PULL_REQUEST" == "false" ]]; then
-            vendor/bin/statie push-to-github pehapkari/pehapkari.cz --token=${GH_TOKEN}
-        fi
-
-after_script:
-    # upload coverage.xml file to Scrutinizer to analyze it
-    - |
-        if [ "$PHPUNIT_FLAGS" != "" ]; then
-            wget https://scrutinizer-ci.com/ocular.phar
-            php ocular.phar code-coverage:upload --format=php-clover coverage.xml
-        fi
-
-# do not send success notifications, they have no value
-notifications:
-    email:
-        on_success: never

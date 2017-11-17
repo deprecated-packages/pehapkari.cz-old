@@ -95,27 +95,21 @@ header a:hover {
 }
 
 .intermezzo {
-    padding: 1.5em 0;
-    background: #F9F2E7;
-    font-size: 1.2em;
-}
-
-.intermezzo-smaller {
     padding: 1em 0;
     background: #F9F2E7;
     font-size: 1em;
 }
 
 h1 {
-    font-size: 3em;
+    font-size: 2.7em;
     line-height: 1.5em;
     padding: 1em 0;
 }
 
 h2, .h2 {
     margin: .8em 0;
-    font-size: 2.5em;
-    line-height: 1.1em;
+    font-size: 2.3em;
+    line-height: 1.2em;
     padding: 0;
 }
 
@@ -151,6 +145,7 @@ h1, h2, .h2, h3 {
 
 * img {
     max-width: 100%;
+    max-height: 100%;
 }
 
 .vcenter {
@@ -198,11 +193,6 @@ h1, h2, .h2, h3 {
 
 .text-greater {
     font-size: 1.3em;
-}
-
-/* index page */
-#slack-logo {
-    padding: 4em 0;
 }
 
 .manual-list {
@@ -304,7 +294,7 @@ h3 {
     font-size: 1em;
 }
 
-.intermezzo-smaller {
+.intermezzo {
     margin: 1em 0 3em;
 }
 
@@ -425,4 +415,42 @@ h1:hover .anchor-icon, h2:hover .anchor-icon, h3:hover .anchor-icon, h4:hover .a
 
 #related-posts li {
     line-height: 1.8em;
+}
+
+footer {
+    font-size: 0.9em;
+    background: #343434;
+    color: #AAA;
+    margin-top: 5em;
+}
+
+footer ul {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+footer li {
+    list-style-type: none;
+    line-height: 2em;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+footer .rounded-circle {
+    text-align: center;
+    padding-top: .6em;
+    height: 2.7em;
+    width: 2.7em;
+}
+
+footer a {
+    color: #EEE;
+}
+
+footer a:hover {
+    color: #FFF;
+}
+
+footer #posobota-logo {
+    height: 40px;
 }

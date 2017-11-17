@@ -5,9 +5,8 @@ id: mentori
 ---
 
 {block content}
-    <div class="container section">
+    <div class="container">
         <h2 class="text-center">
-            <em class="fa fa-handshake-o fa-fw"></em>
             {$title}
         </h2>
 
@@ -15,9 +14,8 @@ id: mentori
 
         <p>
             Chceš se posunout v PHP dopředu a hledáš zkušeného programátora, který by ti pomohl s těmi největšími překážkami?
-        </p>
-        <p>
-            <strong>Tady najdeš mentory, kteří nabízejí své know-how a chtějí ho sdílet dál</strong>.
+            <br>
+            <strong>Tady najdeš mentory, kteří své know-how chtějí sdílet dál</strong>.
         </p>
 
         <br>
@@ -31,6 +29,8 @@ id: mentori
 
         {include mentorTable, "mentors" => $mentors, "remote" => true}
 
+        <br>
+
         <h3>
             <em class="fa fa-coffee fa-fw"></em>
             Osobní mentoři
@@ -42,18 +42,16 @@ id: mentori
 
         <br>
 
-        <h3>
-            <em class="fa fa-graduation-cap fa-fw"></em>
-            Staň se taky mentorem
-        </h3>
+        <p class="text-center">
+            Děláš s PHP už nějaký ten pátek?
+            <strong>Umíš druhým doplnit potřebné znalosti a správně nasměrovat?</strong>
 
-        <p>
-            Děláš s PHP déle jak 3 roky?
-            <strong>Cítíš se na pozici mentora</strong>, který umí druhým doplnit potřebné znalosti a správně nasměrovat?
+            <a href="{$github_edit_url_start}_data/mentors.neon" class="btn btn-success text-center mt-5">
+                <em class="fa fa-plus fa-fw"></em>
+                Staň se taky mentorem
+            </a>
         </p>
-        <p>
-            <a href="{$github_edit_url_start}_data/mentors.neon">Přidej se</a> k ostatním mentorům do seznamu.
-        </p>
+
 
     </div>
 {/block}
@@ -68,8 +66,16 @@ id: mentori
                 <th>Kde</th>
                 <th>Kontakt</th>
             </thead>
-            {* sort the list of mentors alphabetically so it's not biased towards those who came first *}
-            {php usort($mentors, function ($a, $b) { return strcasecmp(iconv('UTF-8', 'ASCII//TRANSLIT', $a['name']), iconv('UTF-8', 'ASCII//TRANSLIT', $b['name'])); })}
+
+            {* sort the list of mentors so it's not biased towards those who came first *}
+            {var $sortBy = $remote ? 'name' : 'location'}
+            {php usort($mentors, function ($a, $b) use ($sortBy) {
+                return strcasecmp(
+                    iconv('UTF-8', 'ASCII//TRANSLIT', $a[$sortBy]),
+                    iconv('UTF-8', 'ASCII//TRANSLIT', $b[$sortBy])
+                );
+            })}
+
             <tbody>
                 {foreach $mentors as $mentor}
                     {continueIf ($remote && ! $mentor['remote']) || (!$remote && $mentor['remote'])}
