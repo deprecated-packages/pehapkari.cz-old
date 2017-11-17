@@ -77,32 +77,6 @@ final class FixedArrayTest extends TestCase
         ], $accumulator);
     }
 
-    public function testForeachWrittenAsWhile(): void
-    {
-        // Arrange
-        $object = new SplFixedArray(2);
-        $object[0] = 'first-value';
-        $object[1] = 'second-value';
-
-        $accumulator = [];
-
-        // Act
-        reset($object); // PHPStorm's static analysis is crying here; it is intentional
-        while ([$key1, $val1] = each($object)) {
-            reset($object);
-            while ([$key2, $val2] = each($object)) {
-                $accumulator[] = [$val1, $val2];
-            }
-        }
-
-        // Assert
-        $this->assertCount(2, $accumulator); // cartesian product
-        $this->assertSame([
-            ['first-value', 'first-value'],
-            ['first-value', 'second-value'],
-        ], $accumulator);
-    }
-
     public function testQuickFixUsingClone(): void
     {
         // Arrange
