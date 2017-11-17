@@ -101,11 +101,12 @@ id: index
             {foreach $organizers as $organizer}
                 <div class="col-xs-6 col-sm-4 col-md-3 mb-lg-5 mb-md-4 mb-sm-3">
                     <img src="/assets/images/people/{$organizer['photo']}" class="rounded-circle" width="150" height="150">
-                    <h3>{$organizer['name']}</h3>
+                    <h3>
+                        <a n:tag-ifset="$organizer['url']" href="{$organizer['url']}">
+                            {$organizer['name']}
+                        </a>
+                    </h3>
                     <p>{$organizer['responsibility']|noescape}</p>
-                    {ifset $organizer['url']}
-                        <a href="{$organizer['url']}">{$organizer['url_name']}</a>
-                    {/ifset}
                 </div>
             {/foreach}
         </div>

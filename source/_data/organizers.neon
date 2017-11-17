@@ -6,19 +6,16 @@ parameters:
             name: "Tomáš Votruba"
             responsibility: "vedení, komunikace, sponzoři, organizace srazů v Praze"
             url: https://tomasvotruba.cz
-            url_name: tomasvotruba.cz
         -
             photo: honza_cerny.jpg
             name: "Honza Černý"
             responsibility: "<a href='https://www.nettecamp.cz/'>PoSobota</a>, <a href='https://www.nettecamp.cz/'>Nette Camp</a>, PHP Hory, <a href='https://forum.nette.org/cs/25487-nette-framework-emailovy-obcasnik#p169371'>Nette Občasník</a> a natáčení videí"
             url: https://honzacerny.com/
-            url_name: honzacerny.com
         -
             photo: jakub_kratina.jpg
             name: "Jakub Kratina"
             responsibility: "organizace srazů v Praze, livestreamy a moderování"
             url: http://jakubkratina.cz/
-            url_name: jakubkratina.cz
 
         # Pardubice
         -
@@ -26,25 +23,21 @@ parameters:
             name: "Václav Pávek"
             responsibility: "organizace PHP Pivo v Pardubicích"
             url: https://www.vaclavpavek.cz/
-            url_name: vaclavpavek.cz
         -
             photo: jan_kuchar.jpg
             name: "Jan Kuchař"
             responsibility: "livestreamy ze srazů"
             url: https://grifart.cz/
-            url_name: grifart.cz
         -
             photo: jan_kopp.jpg
             name: "Jan Kopp"
             responsibility: "organizace srazů v Pardubicích"
             url: https://www.digitalsolutions.cz/
-            url_name: digitalsolutions.cz
         -
             photo: filip_simerda.jpg
             name: "Filip Šimerda"
             responsibility: "organizace srazů v Pardubicích"
             url: https://www.digitalsolutions.cz/
-            url_name: digitalsolutions.cz
 
         # České Budějovice
         -
@@ -52,13 +45,11 @@ parameters:
             name: "Nikol Ježková"
             responsibility: "organizace srazů v Českých Budějovicích"
             url: https://roxtri.cz/
-            url_name: roxtri.cz
         -
             photo: martin_hlavac.jpg
             name: "Martin Hlaváč"
             responsibility: "organizace srazů v Českých Budějovicích"
             url: http://hlavacm.net/
-            url_name: hlavacm.net
 
         # Ostrava
         -
@@ -66,7 +57,6 @@ parameters:
             name: "Petr Heinz"
             responsibility: "organizace srazů v Ostravě"
             url: https://cz.linkedin.com/in/petr-heinz-45912113b
-            url_name: LinkedIn
 
         # Brno
         -
@@ -74,7 +64,6 @@ parameters:
             name: "Václav Čevela"
             responsibility: "organizace srazů v Brně"
             url: http://blog.spameri.cz
-            url_name: blog.spameri.cz
 
         # Slovakia
         -
@@ -82,11 +71,9 @@ parameters:
             name: "Edo Barnáš"
             responsibility: "organizace srazů na Slovensku"
             url: https://www.neoweb.sk
-            url_name: neoweb.sk
 
         -
             photo: richard_koza.jpg
             name: "Richard Koza"
             responsibility: "příprava newsletteru"
             url: https://www.umimeweby.cz
-            url_name: umimeweby.cz
