@@ -1,5 +1,6 @@
 parameters:
     mentors:
+        # not yet
         -
             name: "Milan Felix Šulc"
             location: "Hradec Králové"
@@ -41,6 +42,7 @@ parameters:
             intro_message: "Nette, Symfony, čistý kód, strategie a uživatelský výzkum"
             link: "http://www.petrfidler.cz/"
             remote: false
+        # not yet
         -
             name: "Honza Novák"
             location: "Plzeň"
@@ -56,6 +58,7 @@ parameters:
             intro_message: "struktura kódu, Git, PhpStorm"
             link: "http://www.makes.cz"
             remote: false
+        # not yet
         -
             name: "Jan Šmíd"
             location: "Brno"
@@ -63,6 +66,7 @@ parameters:
             intro_message: "13 let php aktivně/denní báze (vesměs cokoliv: {front|back}End architektura, údržba/cleaning legacy kódu, atp)"
             link: "http://jan.smid.sk"
             remote: true
+        # not yet
         -
             name: "Michal Lulčo"
             location: "Bratislava"
@@ -86,6 +90,7 @@ parameters:
             intro_message: "PHP, Nette, Doctrine, Elasticsearch, čistý kód, architektura"
             link: "https://www.tomaspilar.cz"
             remote: false
+        # not yet
         -
             name: "Tomáš Kavalek"
             location: "Kostelec nad Orlicí, Pardubice"
@@ -109,6 +114,7 @@ parameters:
             intro_message: "programuji a školím PHP (Nette), SQL/HTML/CSS/JS, 15 let zkušeností, fluent English"
             link: "https://www.naucmese.cz/kurz/programovani-pro-web-php-js"
             remote: true
+        # confirmed
         -
             name: "Eduard Štůla"
             location: "Plzeň"
