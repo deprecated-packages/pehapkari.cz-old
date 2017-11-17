@@ -92,14 +92,14 @@ id: index
 
     {include youtubeLine}
 
-    <div class="container text-center">
+    <div class="container text-center" id="team">
         <h2>Organizační Tým</h2>
 
         <br>
 
         <div class="row" id="organizers">
             {foreach $organizers as $organizer}
-                <div class="col-xs-6 col-sm-4 col-md-3 mb-lg-5">
+                <div class="col-xs-6 col-sm-4 col-md-3 mb-lg-5 mb-md-4 mb-sm-3">
                     <img src="/assets/images/people/{$organizer['photo']}" class="rounded-circle" width="150" height="150">
                     <h3>{$organizer['name']}</h3>
                     <p>{$organizer['responsibility']|noescape}</p>
