@@ -83,3 +83,10 @@ parameters:
             responsibility: "organizace srazů na Slovensku"
             url: https://www.neoweb.sk
             url_name: neoweb.sk
+
+        -
+            photo: richard_koza.jpg
+            name: "Richard Koza"
+            responsibility: "příprava newsletteru"
+            url: https://www.umimeweby.cz
+            url_name: umimeweby.cz
