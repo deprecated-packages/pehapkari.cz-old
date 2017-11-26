@@ -160,24 +160,6 @@ h1, h2, .h2, h3 {
     font-size: 1.6em;
 }
 
-/* for kde-najdes-kamose.latte */
-.grey-bg {
-    background-color: #f5f5f5;
-}
-
-.input-group-btn button.btn {
-    font-size: 14px !important;
-}
-
-#map {
-    height: 500px;
-}
-
-#formMap {
-    height: 400px;
-    margin-top: 5px;
-}
-
 /* for slovnicek.latte */
 #vocabulary > dd {
     border-bottom: 1px #eee solid;
@@ -251,6 +233,10 @@ h1, h2, .h2, h3 {
 #article h2, h3 {
     color: #111;
     font-weight: 600;
+}
+
+#blog h3 {
+    font-size: 2em;
 }
 
 #article img {

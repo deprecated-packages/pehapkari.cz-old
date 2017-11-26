@@ -1,0 +1,33 @@
+parameters:
+    # id respects authors now, as future compatibility
+    users:
+        1:
+            name: "Tomáš Votruba"
+            url: "https://tomasvotruba.com"
+            photo: "tomas_votruba.jpg"
+        6:
+            name: "Tomáš Fejfar"
+            url: "https://www.tomasfejfar.cz/"
+            photo: "tomas_fejfar.jpg"
+        11:
+            name: "Tomáš Pilař"
+            url: "https://www.linkedin.com/in/tomaspilar"
+            photo: "tomas_pilar.jpg"
+        28:
+            name: "Petr 'PePa' Pavel"
+            url: "http://blog.pepa.info/"
+            photo: "petr_pavel.jpg"
+        30:
+            name: "Onřej Mirtes"
+            url: "https://ondrej.mirtes.cz/"
+            photo: "ondrej_mirtes.jpg"
+        31:
+            name: "Martin Hujer"
+            url: "https://martinhujer.cz"
+            photo: "martin_hujer.jpg"
+        32:
+            name: "Jan Mikeš"
+            photo: "jan_mikes.jpg"
+
+
+
