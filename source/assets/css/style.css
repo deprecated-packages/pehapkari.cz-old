@@ -110,7 +110,7 @@ h1 {
 
 h2, .h2 {
     margin: 1em 0;
-    font-size: 2.3em;
+    font-size: 2.1em;
     line-height: 1.2em;
     padding: 0;
 }
@@ -446,6 +446,6 @@ footer a:hover {
     color: #FFF;
 }
 
-footer #posobota-logo {
-    height: 40px;
+footer #posobota-logo, footer #pehapkari-logo {
+    height: 35px;
 }
