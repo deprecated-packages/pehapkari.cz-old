@@ -16,13 +16,13 @@ inspiration:
 
 
 {block content}
-    <div class="container section">
+    <div class="container section" id="trainings">
         <h1 class="text-center">
             {$title}
         </h1>
 
         <p class="text-center">
-            Rozšiř si své know-how od v odborníků PHP.<br>
+            Rozšiř si své know-how od odborníků v PHP.<br>
             Pořádáme školení Continuous delivery, Doctrine, Git, PHPStorm a další.
         </p>
 
@@ -33,12 +33,16 @@ inspiration:
         {foreach $trainings as $training}
             {continueIf ! isset($training['date'])}
 
-            <h2>{$training['name']|noescape}</h2>
+            <h2 class="text-center">
+                <img src="{$training['image']}" width="120">
+                <strong>{$training['name']|noescape}</strong>
 
-            <div class="row mb-5">
-                <div class="col-md-3">
-                    Kdy: <strong>{$training['date']}</strong>
-                </div>
+                <p class="term">
+                    příští termín: <strong>{$training['date']}</strong>
+                </p>
+            </h2>
+
+            <div class="row mb-5 clearfix">
                 <div class="col-md-3">
                     Délka: <strong>{$training['duration']}</strong>
                 </div>
@@ -46,35 +50,32 @@ inspiration:
                     Kapacita: <strong>{$training['capacity']}</strong>
                 </div>
                 <div class="col-md-3">
-                    Pro tebe: <strong>{$training['price']}</strong>
+                    Cena: <strong>{$training['price']}</strong>
+                </div>
+                <div class="col-md-3">
+                    <a href="{$form_link}" class="btn btn-success btn-lg">
+                        <em class="fa fa-fw fa-handshake-o"></em>
+                        &nbsp;
+                        Přihlásit se
+                    </a>
                 </div>
             </div>
-
-
-
-
             <div class="row">
                 <div class="col-md-8">
                     <p><strong>O čem je školení?</strong></p>
                     <p>{$training['description']|noescape}</p>
-
-                    <br>
-
-
-                    <br>
-
-                    <p>
-                    {*<a href="{$form_link}" class="btn btn-success btn-lg">*}
-                    <em class="fa fa-fw fa-handshake-o"></em>
-                    &nbsp;
-                    Přihlásit se
-                    </a>
-                    </p>
                 </div>
                 <div class="col-md-4 text-center pull-left">
-                    <img src="/assets/images/people/{$users[$training['user']]['photo']}" class="img-thumbnail mb-2 rounded-circle ">
                     <p>
-                        <strong>{$users[$training['user']]['name']}</strong>
+                        <strong>Školitel</strong>
+                    </p>
+
+                    <img width="200" src="/assets/images/people/{$users[$training['user']]['photo']}" class="img-thumbnail mb-2 rounded-circle">
+
+                    <p>
+                        <a n:tag-ifset="$users[$training['user']]['url']" href="{$users[$training['user']]['url']}">
+                            {$users[$training['user']]['name']}
+                        </a>
                     </p>
                 </div>
             </div>
@@ -89,7 +90,7 @@ inspiration:
                 Tato školení ještě nemají pevně stanovený termín. <strong>Chceš aby měli?</strong>
             </p>
 
-            <a href="{$open_form_link}" class="btn btn-success">Přihlaš se přes tento formulář</a>
+            <a href="{$open_form_link}" class="btn btn-primary">Dej nám o nich vědět</a>
         </div>
 
         <br>

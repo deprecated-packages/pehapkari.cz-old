@@ -435,3 +435,9 @@ footer a:hover {
 footer #posobota-logo, footer #pehapkari-logo {
     height: 35px;
 }
+
+#trainings .term {
+    color: #333;
+    font-size: .7em;
+    margin-top: -1em;
+}
