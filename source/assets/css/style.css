@@ -441,3 +441,8 @@ footer #posobota-logo, footer #pehapkari-logo {
     font-size: .7em;
     margin-top: -1em;
 }
+
+#trainings #gallery img {
+    padding: 0 0 3px 0;
+    margin: 0;
+}
