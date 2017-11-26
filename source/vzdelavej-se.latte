@@ -71,7 +71,7 @@ inspiration:
                         Kapacita: <strong>{$training['capacity']}</strong>
                     </div>
                     <div class="col-md-3">
-                        Cena: <strong>{$training['price']}</strong>
+                        Cena: <strong>{$training['price']|number: 0, '', ' '} Kč</strong>
                     </div>
                     <div class="col-md-3">
                         <a href="{$training['form_link']}" class="btn btn-success">

@@ -22,7 +22,7 @@ parameters:
             <p>Informace o mě: Již třetím rokem se jako senior programátor podílím na vývoji první internetové lékárny <a href='https://www.lekarna.cz'>Lekarna.cz</a>.</p>
             '''
             duration: "8 hodin"
-            price: "4999 Kč"
+            price: 4999
             capacity: "4-10 lidí"
 
         -
@@ -46,7 +46,7 @@ parameters:
             <p>Informace o mě: Již třetím rokem se jako senior programátor podílím na vývoji první internetové lékárny <a href='https://www.lekarna.cz'>Lekarna.cz</a>.</p>
             '''
             duration: "8 hodin"
-            price: "4999 Kč"
+            price: 4999
             capacity: "4-10 lidí"
 
 
@@ -66,7 +66,7 @@ parameters:
             </ul>
             '''
             duration: "8 hodin"
-            price: "4999 Kč"
+            price: 4999
             capacity: "4-8 lidí"
         -
             name: "Ovládni PhpStorm &ndash; od základů po profi tipy"
@@ -84,7 +84,7 @@ parameters:
     </ul>
             '''
             duration: "3 hodiny"
-            price: "1599 Kč"
+            price: 1599
             capacity: "5-12 lidí"
         -
             name: "Jak na pokročilou práci s Gitem"
@@ -104,7 +104,7 @@ parameters:
             </ul>
             '''
             duration: "4 hodiny"
-            price: "3499 Kč"
+            price: 3499
             capacity: "4-8 lidí"
         -
             name: "Tvorba zadání a komunikace se zákazníkem"
@@ -127,7 +127,7 @@ parameters:
             </p>
             '''
             duration: "4 hodiny"
-            price: "2499 Kč"
+            price: 2499
             capacity: "4-8 lidí"
         -
             name: "Začněte debugovat jako profíci s xdebugem!"
@@ -145,7 +145,7 @@ parameters:
             <p><em>Je velmi pravděpodobné, že po absolvování školení, si budete ťukat na čelo, jak jste doposud mohli bez xdebugu v PHP programovat :-).</em></p>
             '''
             duration: "6 hodin"
-            price: "3999 Kč"
+            price: 3999
             capacity: "5-10 lidí"
 
         -
@@ -166,7 +166,7 @@ parameters:
             <p>Informace o mě: Již třetím rokem se jako senior programátor podílím na vývoji první internetové lékárny <a href='https://www.lekarna.cz'>Lekarna.cz</a>.</p>
             '''
             duration: "8 hodin"
-            price: "6999 Kč"
+            price: 6999
             capacity: "4-10 lidí"
 
 
@@ -188,7 +188,7 @@ parameters:
             <p>Informace o mě: Již třetím rokem se jako senior programátor podílím na vývoji první internetové lékárny <a href='https://www.lekarna.cz'>Lekarna.cz</a>.</p>
             '''
             duration: "8 hodin"
-            price: "6999 Kč"
+            price: 6999
             capacity: "4-10 lidí"
 
         -
@@ -209,5 +209,5 @@ parameters:
             <p>Na konci školení budeš vědět, jak udělat tvůj balíček v tvém oblíbeném frameworku a která část své aplikace bude mít tu čest jít ven.</p>
             '''
             duration: "3 hodiny"
-            price: "1999 Kč"
+            price: 1999
             capacity: "3-6 lidí"
