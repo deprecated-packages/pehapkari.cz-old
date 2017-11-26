@@ -103,6 +103,7 @@ parameters:
             capacity: "5-10 lidí"
         -
             name: "Elasticsearch - Začínáme vyhledávat"
+            next_date: "7. 12. 2017"
             trainer_name: "Tomáš Pilař"
             trainer_photo: "tomas_pilar.jpg"
             description: '''
@@ -145,6 +146,7 @@ parameters:
             capacity: "4-10 lidí"
         -
             name: "Doctrine 2 ORM - Začínáme používat ORM"
+            next_date: "6. 12. 2017"
             trainer_name: "Tomáš Pilař"
             trainer_photo: "tomas_pilar.jpg"
             description: '''
