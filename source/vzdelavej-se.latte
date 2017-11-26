@@ -16,148 +16,160 @@ inspiration:
 
 
 {block content}
-    <div class="container section" id="trainings">
-        <h1 class="text-center">
-            {$title}
-        </h1>
+    <div id="trainings">
+        <div class="section">
+            <h1 class="text-center">
+                {$title}
+            </h1>
 
-        <p class="text-center">
-            Rozšiř si své know-how od odborníků v PHP.<br>
-            Pořádáme školení Continuous delivery, Doctrine, Git, PHPStorm a další.
-        </p>
-
-        <br>
-
-        {* active only *}
-
-        {foreach $trainings as $training}
-            {continueIf ! isset($training['date'])}
-
-            <h2 class="text-center">
-                <img src="{$training['image']}" width="120">
-                <strong>{$training['name']|noescape}</strong>
-
-                <p class="term">
-                    příští termín: <strong>{$training['date']}</strong>
-                </p>
-            </h2>
-
-            <div class="row mb-5 clearfix">
-                <div class="col-md-3">
-                    Délka: <strong>{$training['duration']}</strong>
-                </div>
-                <div class="col-md-3">
-                    Kapacita: <strong>{$training['capacity']}</strong>
-                </div>
-                <div class="col-md-3">
-                    Cena: <strong>{$training['price']}</strong>
-                </div>
-                <div class="col-md-3">
-                    <a href="{$training['form_link']}" class="btn btn-success btn-lg">
-                        <em class="fa fa-fw fa-handshake-o"></em>
-                        &nbsp;
-                        Přihlásit se
-                    </a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8">
-                    <p><strong>O čem je školení?</strong></p>
-                    <p>{$training['description']|noescape}</p>
-                </div>
-                <div class="col-md-4 text-center pull-left">
-                    <p>
-                        <strong>Školitel</strong>
-                    </p>
-
-                    <img width="200" src="/assets/images/people/{$users[$training['user']]['photo']}" class="img-thumbnail mb-2 rounded-circle">
-
-                    <p>
-                        <a n:tag-ifset="$users[$training['user']]['url']" href="{$users[$training['user']]['url']}">
-                            {$users[$training['user']]['name']}
-                        </a>
-                    </p>
-                </div>
-            </div>
-
-            {sep}<hr>{/sep}
-        {/foreach}
-
-        <div class="text-center">
-            <h2>Školení s otevřený termínem</h2>
-
-            <p class="text">
-                Tato školení ještě nemají pevně stanovený termín. <strong>Chceš aby měli?</strong>
+            <p class="text-center subtitle">
+                Rozšiř si své know-how od odborníků v PHP.<br>
+                Pořádáme školení Continuous delivery, Doctrine, Git, PHPStorm a další.
             </p>
-
-            <a href="{$open_form_link}" class="btn btn-primary">Dej nám o nich vědět</a>
         </div>
 
-        <br>
+        <div class="intermezzo">
+            <div class="container text-center">
+                <em class="fa fa-snowflake-o fa-fw"></em>
 
-        {* sort training by name *}
-        {php usort($trainings, function ($a, $b)  {
-            return strcasecmp(
-                iconv('UTF-8', 'ASCII//TRANSLIT', $a['name']),
-                iconv('UTF-8', 'ASCII//TRANSLIT', $b['name'])
-            );
+                Naděl si předčasné Vánoce a zajdi si <strong>v prosinci na 2 školení</strong> ↓
+            </div>
+        </div>
+
+        {* sort training by date *}
+        {php usort($trainings, function ($a, $b) {
+            return isset($a['date'], $b['date']) ? $a['date'] > $b['date'] : 0;
         })}
 
-        <div class="card-deck">
-            <div class="row">
-                {foreach $trainings as $training}
-                    {continueIf isset($training['date'])}
-                    <div class="col-lg-12 col-12">
-                        <div class="card mb-3" id="{$training['name']|webalize}">
-                            <div class="card-body">
-                                <h3 class="card-title pull-left">{$training['name']|noescape}</h3>
+        <div class="container">
+            {foreach $trainings as $training}
+                {continueIf ! isset($training['date'])}
 
-                                <div class="card-text">
-                                    <img src="/assets/images/people/{$users[$training['user']]['photo']}" class="mb-2 ml-4 rounded-circle pull-right" height="60" width="60">
-                                    <br>
-                                    <p class="pull-right">Lektor:
-                                        <a n:tag-ifset="$users[$training['user']]['url']" href="{$users[$training['user']]['url']}">
-                                            {$users[$training['user']]['name']}
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                <h2 class="text-center">
+                    <img src="{$training['image']}" width="120">
+                    <strong>{$training['name']|noescape}</strong>
+
+                    <p class="term">
+                        příští termín: <strong>{$training['date']}</strong>
+                    </p>
+                </h2>
+
+                <br>
+
+                <div class="row mb-5 clearfix">
+                    <div class="col-md-3">
+                        Délka: <strong>{$training['duration']}</strong>
                     </div>
-                {/foreach}
+                    <div class="col-md-3">
+                        Kapacita: <strong>{$training['capacity']}</strong>
+                    </div>
+                    <div class="col-md-3">
+                        Cena: <strong>{$training['price']}</strong>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="{$training['form_link']}" class="btn btn-success">
+                            <em class="fa fa-fw fa-handshake-o"></em>
+                            &nbsp;
+                            Přihlásit se
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <p><strong>O čem je školení?</strong></p>
+                        <p>{$training['description']|noescape}</p>
+                    </div>
+                    <div class="col-md-4 text-center pull-left">
+                        <p>
+                            <strong>Školitel</strong>
+                        </p>
+
+                        <img width="200" src="/assets/images/people/{$users[$training['user']]['photo']}" class="img-thumbnail mb-2 rounded-circle">
+
+                        <p>
+                            <a n:tag-ifset="$users[$training['user']]['url']" href="{$users[$training['user']]['url']}">
+                                {$users[$training['user']]['name']}
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+                {sep}<hr>{/sep}
+            {/foreach}
+
+            <div class="text-center">
+                <h2>Školení s otevřený termínem</h2>
+
+                <p class="text">
+                    Tato školení ještě nemají pevně stanovený termín. <strong>Chceš aby měli?</strong>
+                </p>
+
+                <a href="{$open_form_link}" class="btn btn-primary">Dej nám o nich vědět</a>
             </div>
-        </div>
-
-        <hr>
-
-        <div class="text-center">
-            <h2>Spokojení účastníci</h2>
 
             <br>
 
-            <div id="gallery">
-                <img src="/assets/images/lectures/lecture1.jpg" width="250" height="250">
-                <img src="/assets/images/lectures/lecture2.jpg" width="250" height="250">
-                <img src="/assets/images/lectures/lecture3.jpg" width="250" height="250">
-                <img src="/assets/images/lectures/lecture4.jpg" width="250" height="250">
-                <img src="/assets/images/lectures/lecture5.jpg" width="250" height="250">
-                <img src="/assets/images/lectures/lecture6.jpg" width="250" height="250">
+            {* sort training by name *}
+            {php usort($trainings, function ($a, $b) {
+                return strcasecmp($a['name'], $b['name']);
+            })}
 
-                {*<div class="col-md-6">*}
-                    {*kde/kdo/co...*}
-                {*</div>*}
+            <div class="card-deck">
+                <div class="row">
+                    {foreach $trainings as $training}
+                        {continueIf isset($training['date'])}
+                        <div class="col-lg-12 col-12">
+                            <div class="card mb-3" id="{$training['name']|webalize}">
+                                <div class="card-body">
+                                    <h3 class="card-title pull-left">{$training['name']|noescape}</h3>
+
+                                    <div class="card-text">
+                                        <img src="/assets/images/people/{$users[$training['user']]['photo']}" class="mb-2 ml-4 rounded-circle pull-right" height="60" width="60">
+                                        <br>
+                                        <p class="pull-right">Lektor:
+                                            <a n:tag-ifset="$users[$training['user']]['url']" href="{$users[$training['user']]['url']}">
+                                                {$users[$training['user']]['name']}
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {/foreach}
+                </div>
             </div>
-        </div>
 
-        <hr>
+            <hr>
 
-        <div class="text-center">
-            <h2>Kde školíme</h2>
-            <p class="card-text">
-                V krásných prostorách <strong>pražského <a href="http://node5.cz/kontakty/">Node5</a></strong>.
-            </p>
+            <div class="text-center">
+                <h2>Spokojení účastníci</h2>
 
-            <img src="/assets/images/places/node5.jpg" width="400" class="img-thumbnail">
+                <br>
+
+                <div id="gallery">
+                    <img src="/assets/images/lectures/lecture1.jpg" width="250" height="250">
+                    <img src="/assets/images/lectures/lecture2.jpg" width="250" height="250">
+                    <img src="/assets/images/lectures/lecture3.jpg" width="250" height="250">
+                    <img src="/assets/images/lectures/lecture4.jpg" width="250" height="250">
+                    <img src="/assets/images/lectures/lecture5.jpg" width="250" height="250">
+                    <img src="/assets/images/lectures/lecture6.jpg" width="250" height="250">
+
+                    {*<div class="col-md-6">*}
+                        {*kde/kdo/co...*}
+                    {*</div>*}
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="text-center">
+                <h2>Kde školíme</h2>
+                <p class="card-text">
+                    V krásných prostorách <strong>pražského <a href="http://node5.cz/kontakty/">Node5</a></strong>.
+                </p>
+
+                <img src="/assets/images/places/node5.jpg" width="400" class="img-thumbnail">
+            </div>
         </div>
     </div>
 {/block}

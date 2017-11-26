@@ -11,7 +11,7 @@ parameters:
             photo: "tomas_fejfar.jpg"
         11:
             name: "Tomáš Pilař"
-            url: "https://www.linkedin.com/in/tomaspilar"
+            url: "https://www.tomaspilar.cz/"
             photo: "tomas_pilar.jpg"
         28:
             name: "Petr 'PePa' Pavel"
@@ -27,7 +27,5 @@ parameters:
             photo: "martin_hujer.jpg"
         32:
             name: "Jan Mikeš"
+            url: "https://www.linkedin.com/in/jan-mike%%C5%%A1-0405996b"
             photo: "jan_mikes.jpg"
-
-
-
