@@ -4,6 +4,11 @@ id: index
 ---
 
 {block content}
+    <div class="row text-center">
+        <div class="col-xs-6">1</div>
+        <div class="col-xs-6">2</div>
+    </div>
+
     <div class="container first-section text-center">
 
         <div class="row text-center">
@@ -99,7 +104,7 @@ id: index
 
         <div class="row" id="organizers">
             {foreach $organizers as $organizer}
-                <div class="col-xs-6 col-sm-4 col-md-3 mb-lg-5 mb-md-4 mb-sm-3">
+                <div class="col-sm-6 col-md-4 mb-5">
                     <img src="/assets/images/people/{$organizer['photo']}" class="rounded-circle" width="150" height="150">
                     <h3>
                         <a n:tag-ifset="$organizer['url']" href="{$organizer['url']}">

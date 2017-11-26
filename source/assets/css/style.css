@@ -52,7 +52,6 @@ a:hover, a:focus, a:active {
 
 /* menu */
 header {
-    padding: .2em 0;
     font-size: 1.1em;
     background: #00A8C6;
 }
@@ -67,14 +66,14 @@ header nav a {
     padding: .6em .7em;
 }
 
-header a.active, header nav a:focus, header nav a:active {
-    color: white;
-    text-decoration: none;
+#mobile-menu a {
+    padding: .5em .4em;
 }
 
-header a:hover {
+header a.active, header nav a:focus, header nav a:active, header a:hover {
+    color: white;
     text-decoration: none;
-    color: #fff;
+    background: #0093b0;
 }
 
 .top-navigation {
@@ -395,13 +394,6 @@ h1:hover .anchor-icon, h2:hover .anchor-icon, h3:hover .anchor-icon, h4:hover .a
 
 #mobile-menu {
     padding: 0;
-    width: 100%;
-    text-align: center;
-}
-
-#mobile-menu .container {
-    padding: 0px;
-    max-width: 100%;
 }
 
 #mobile-menu a {
