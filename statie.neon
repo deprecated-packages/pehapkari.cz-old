@@ -1,6 +1,7 @@
 includes:
     - source/_data/authors.neon
     - source/_data/mentors.neon
+    - source/_data/users.neon
     - source/_data/trainings.neon
     - source/_data/organizers.neon
 

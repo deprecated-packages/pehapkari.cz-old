@@ -13,10 +13,6 @@
                     <em class="fa fa-graduation-cap fa-fw"></em>
                     Školení
                 </a>
-                <a href="/mentori/" n:class="(isset($id) && $id === mentori) ? active">
-                    <em class="fa fa-handshake-o fa-fw"></em>
-                    Mentoři
-                </a>
             </nav>
         </div>
     </div>
@@ -24,25 +20,20 @@
     {* mobile menu *}
     <div id="mobile-menu" class="row text-center hidden-md-up">
         <div class="container">
-            <a href="/" n:class="col-3, col-sm-3, isset($id) && $id === index ? active">
+            <a href="/" n:class="col-4, col-sm-4, isset($id) && $id === index ? active">
                 <em class="fa fa-home"></em>
                 <br>
                 Home
             </a>
-            <a href="/blog/" n:class="col-3, col-sm-3, (isset($id) && $id === blog) || ($layout === post) ? active">
+            <a href="/blog/" n:class="col-4, col-sm-4, (isset($id) && $id === blog) || ($layout === post) ? active">
                 <em class="fa fa-book fa-fw"></em>
                 <br>
                 Blog
             </a>
-            <a href="/vzdelavej-se/" n:class="col-3, col-sm-3, (isset($id) && $id === 'vzdelavej-se') ? active">
+            <a href="/vzdelavej-se/" n:class="col-4, col-sm-4, (isset($id) && $id === 'vzdelavej-se') ? active">
                 <em class="fa fa-graduation-cap fa-fw"></em>
                 <br>
                 Školení
-            </a>
-            <a href="/mentori/" n:class="col-3, col-sm-3, (isset($id) && $id === mentori) ? active">
-                <em class="fa fa-handshake-o fa-fw"></em>
-                <br>
-                Mentoři
             </a>
         </div>
     </div>

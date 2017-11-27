@@ -1,7 +1,7 @@
 /* color palette: http://www.colourlovers.com/palette/46688/fresh_cut_day */
 body {
     font-family: 'Arial', sans-serif;
-    font-size: 17px;
+    font-size: 16px;
     color: #222;
 }
 
@@ -10,7 +10,7 @@ h1, h2, h3, h4 {
 }
 
 p {
-    line-height: 1.3em;
+    line-height: 1.4em;
 }
 
 strong {
@@ -52,7 +52,6 @@ a:hover, a:focus, a:active {
 
 /* menu */
 header {
-    padding: .2em 0;
     font-size: 1.1em;
     background: #00A8C6;
 }
@@ -62,19 +61,22 @@ header .navbar {
 }
 
 header nav a {
-	color: #4bf4ff;
+	color: rgba(76, 240, 255, 0.90);
     display: inline-block;
     padding: .6em .7em;
 }
 
-header a.active, header nav a:focus, header nav a:active {
-    color: white;
-    text-decoration: none;
+#mobile-menu a {
+    padding: .5em .4em;
 }
 
-header a:hover {
+#mobile-menu a.active, #mobile-menu nav a:focus, #mobile-menu nav a:active, #mobile-menu a:hover {
+    background: #0093b0;
+}
+
+header a.active, header nav a:focus, header nav a:active, header a:hover {
+    color: white;
     text-decoration: none;
-    color: #fff;
 }
 
 .top-navigation {
@@ -107,8 +109,8 @@ h1 {
 }
 
 h2, .h2 {
-    margin: .8em 0;
-    font-size: 2.3em;
+    margin: 1em 0;
+    font-size: 2.1em;
     line-height: 1.2em;
     padding: 0;
 }
@@ -156,24 +158,6 @@ h1, h2, .h2, h3 {
 
 .highlights-list {
     font-size: 1.6em;
-}
-
-/* for kde-najdes-kamose.latte */
-.grey-bg {
-    background-color: #f5f5f5;
-}
-
-.input-group-btn button.btn {
-    font-size: 14px !important;
-}
-
-#map {
-    height: 500px;
-}
-
-#formMap {
-    height: 400px;
-    margin-top: 5px;
 }
 
 /* for slovnicek.latte */
@@ -249,6 +233,10 @@ h1, h2, .h2, h3 {
 #article h2, h3 {
     color: #111;
     font-weight: 600;
+}
+
+#blog h3 {
+    font-size: 2em;
 }
 
 #article img {
@@ -395,13 +383,6 @@ h1:hover .anchor-icon, h2:hover .anchor-icon, h3:hover .anchor-icon, h4:hover .a
 
 #mobile-menu {
     padding: 0;
-    width: 100%;
-    text-align: center;
-}
-
-#mobile-menu .container {
-    padding: 0px;
-    max-width: 100%;
 }
 
 #mobile-menu a {
@@ -451,6 +432,27 @@ footer a:hover {
     color: #FFF;
 }
 
-footer #posobota-logo {
-    height: 40px;
+footer #posobota-logo, footer #pehapkari-logo {
+    height: 35px;
+}
+
+#trainings .term {
+    color: #333;
+    font-size: .7em;
+    margin-top: -1em;
+}
+
+#trainings #gallery img {
+    padding: 0 0 3px 0;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 1.4em;
+    line-height: 1.6em;
+}
+
+.narrower {
+    max-width: 49em;
+    margin: auto;
 }
