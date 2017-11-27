@@ -45,7 +45,7 @@ inspiration:
             {foreach $trainings as $training}
                 {continueIf ! isset($training['date'])}
 
-                <h2 class="text-center">
+                <h2 class="text-center" id="{$training['name']|webalize}">
                     <img src="{$training['image']}" width="120">
                     <strong>{$training['name']|noescape}</strong>
 
