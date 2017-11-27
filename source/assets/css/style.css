@@ -124,12 +124,8 @@ h1, h2, .h2, h3 {
 }
 
 @media (max-width: 992px) {
-    h1 {
-        font-size: 3em;
-    }
-
-    h2 {
-        font-size: 2.3em;
+    body {
+        font-size: 14px;
     }
 }
 
@@ -444,6 +440,11 @@ footer #posobota-logo, footer #pehapkari-logo {
 
 #trainings #gallery img {
     padding: 0 0 3px 0;
+    margin: 0;
+}
+
+#trainings h2 {
+    line-height: 1em;
     margin: 0;
 }
 

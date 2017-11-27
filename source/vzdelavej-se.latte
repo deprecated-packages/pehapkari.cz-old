@@ -48,12 +48,9 @@ inspiration:
                 <h2 class="text-center" id="{$training['name']|webalize}">
                     <img src="{$training['image']}" width="120">
                     <strong>{$training['name']|noescape}</strong>
-
-                    <p class="term">
-                        příští termín: <strong>{$training['date']}</strong>
-                    </p>
                 </h2>
 
+                <br>
                 <br>
 
                 {*
@@ -63,17 +60,26 @@ inspiration:
                     - make nice table?
                 *}
 
-                <div class="row mb-5 clearfix">
-                    <div class="col-md-3">
-                        Délka: <strong>{$training['duration']}</strong>
+                <div class="row mb-5">
+                    <div class="col-md-4 col-6">
+                        <p>Příští termín: <strong>{$training['date']}</strong></p>
+                        <p>Délka: <strong>{$training['duration']}</strong></p>
+                        <p>Kapacita: <strong>{$training['capacity']}</strong></p>
+                        <p>Cena: <strong>{$training['price']|number: 0, '', ' '} Kč</strong></p>
                     </div>
-                    <div class="col-md-3">
-                        Kapacita: <strong>{$training['capacity']}</strong>
+                    <div class="col-md-4 col-6 text-center">
+                        <p>
+                            <strong>Školitel</strong>
+                        </p>
+
+                        <img width="150" src="/assets/images/people/{$users[$training['user']]['photo']}" class="img-thumbnail mb-2 rounded-circle">
+                        <p>
+                            <a n:tag-ifset="$users[$training['user']]['url']" href="{$users[$training['user']]['url']}">
+                                {$users[$training['user']]['name']}
+                            </a>
+                        </p>
                     </div>
-                    <div class="col-md-3">
-                        Cena: <strong>{$training['price']|number: 0, '', ' '} Kč</strong>
-                    </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4 col-12 text-md-right text-center">
                         <a href="{$training['form_link']}" class="btn btn-success">
                             <em class="fa fa-fw fa-handshake-o"></em>
                             &nbsp;
@@ -82,22 +88,9 @@ inspiration:
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <p><strong>O čem je školení?</strong></p>
                         <p>{$training['description']|noescape}</p>
-                    </div>
-                    <div class="col-md-4 text-center pull-left">
-                        <p>
-                            <strong>Školitel</strong>
-                        </p>
-
-                        <img width="200" src="/assets/images/people/{$users[$training['user']]['photo']}" class="img-thumbnail mb-2 rounded-circle">
-
-                        <p>
-                            <a n:tag-ifset="$users[$training['user']]['url']" href="{$users[$training['user']]['url']}">
-                                {$users[$training['user']]['name']}
-                            </a>
-                        </p>
                     </div>
                 </div>
 
