@@ -451,3 +451,8 @@ footer #posobota-logo, footer #pehapkari-logo {
     font-size: 1.4em;
     line-height: 1.6em;
 }
+
+.narrower {
+    max-width: 49em;
+    margin: auto;
+}
