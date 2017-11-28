@@ -13,8 +13,12 @@ parameters:
             <p><strong>Osnova školení:</strong></p>
             <ul>
                 <li>Seznámení s problematikou vyhledávání</li>
-                <li>Instalace a konfigurace Elasticsearch + Kibana</li>
-                <li>Vytvoření indexu + naplnění daty</li>
+				<li>Instalace a konfigurace Elasticsearch + Kibana</li>
+                <li>Základní práce se Elasticsearch</li>
+                <li>Základní operace v kostce</li>
+                <li>Vytvoření indexu</li>
+                <li>Plnění dat do indexu</li>
+                <li>Základní vyhledávání - přesná/volná shoda</li>
                 <li>Fulltextové vyhledávání včetně tolerance překlepů a synonym</li>
                 <li>Bonus: postřehy z produkce za 3 roky intenzivního používání Elasticsearch</li>
             </ul>
@@ -37,8 +41,11 @@ parameters:
             <p><strong>Osnova školení:</strong></p>
             <ul>
                 <li>Seznámení s problematikou ORM</li>
+                <li>Napojení Doctrine 2 do projektu</li>
+                <li>Základní pojmy/operace</li>
+                <li>Životní cyklus entity</li>
                 <li>Entity a závislosti mezi nimi</li>
-                <li>Ukládání, mazání a vyhledávání entit</li>
+                <li>Ukládání, mazání, vyhledávání a hydratace entit</li>
                 <li>"Úkolníček" (to-do list)</li>
                 <li>Bonus: temná strana Doctrine - postřehy ze 4 let zkušeností při skoro každodenní práce s Doctrine</li>
             </ul>
