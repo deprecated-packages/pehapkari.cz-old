@@ -13,7 +13,7 @@ parameters:
             <p><strong>Osnova školení:</strong></p>
             <ul>
                 <li>Seznámení s problematikou vyhledávání</li>
-				<li>Instalace a konfigurace Elasticsearch + Kibana</li>
+                <li>Instalace a konfigurace Elasticsearch + Kibana</li>
                 <li>Základní práce se Elasticsearch</li>
                 <li>Základní operace v kostce</li>
                 <li>Vytvoření indexu</li>
