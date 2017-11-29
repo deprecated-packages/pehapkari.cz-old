@@ -4,6 +4,28 @@ title: "Investuj do sebe a přijď na školení"
 id: vzdelavej-se
 
 open_form_link: "https://docs.google.com/forms/d/e/1FAIpQLSf-x6HlwpfIB-Ig_oyrPzk7PKbyF4YMIHLH21n_dV9V5Edmyw/viewform"
+
+
+lecture_references:
+    -
+        name: "Jan Mikeš, CTO & Co-founder of Entrydo"
+        url: "https://entrydo.com/"
+        lecture: "Jak na rapidní vývoj a Continuous Delivery"
+        reference: "Školení pro mě bylo velmi přínosné a inspirativní. Získané dovednosti jsem začal rychle aplikovat v praxi, teď již žádný feedback loop není příliš dlouhý."
+    -
+        name: "Ing. Eduard Barnáš"
+        url: "https://www.neoweb.sk"
+        lecture: "Jak na rapidní vývoj a Continuous Delivery"
+        reference: "Príjemné prostredie, výborna téma a skvelý prednášajúci Ondrej Mirtes. Teória sa prepája s praxou a myslím, že po tomto kurze bude Continuous Delivery hračkou. Vrelo odporúčam!"
+    -
+        name: "Jan Suchánek"
+        url: "https://suchanek.cz/"
+        lecture: "Jak na rapidní vývoj a Continuous Delivery"
+        reference: "Poučný a přehledný jednodenní kurz o refaktoringu a přechodu na Continuous Integration a Continuous Delivery od Ondřeje Mirtese má rozhodně smysl navštívit."
+    -
+        name: "Michal Dobrovolný"
+        lecture: "Jak na rapidní vývoj a Continuous Delivery"
+        reference: "Ondra měl jasno v tom co chce předat obecenstvu. Jeho školení nám pomohlo vylepšit systém našeho deploymentu a firemní procesy. Díky!"
 ---
 
 {*
@@ -147,22 +169,17 @@ inspiration:
                 <br>
 
                 <div class="row narrower">
-                    <div class="col-md-6 text-left">
-                        Jan Suchánek na školení <em>Jak na rapidní vývoj a Continuous Delivery</em>:
+                    {foreach $lecture_references as $lecture_reference}
+                        <div class="col-md-6 text-left mb-4">
+                            <a n:tag-ifset="$lecture_reference['url']" href="{$lecture_reference['url']}">
+                                {$lecture_reference['name']}
+                            </a> na školení <em>{$lecture_reference['lecture']}</em>:
 
-                        <p class="mt-3">
-                            <em>„Poučný a přehledný jednodenní kurz o refaktoringu a přechodu na Continuous Integration a Continuous Delivery od Ondřeje Mirtese má rozhodně smysl navštívit.“</em>
-                        </p>
-
-                    </div>
-                    <div class="col-md-6 text-left">
-
-                        <a href="https://www.neoweb.sk/">Ing. Eduard Barnáš</a> na školení <em>Jak na rapidní vývoj a Continuous Delivery</em>:
-
-                        <p class="mt-3">
-                            <em>„Príjemné prostredie, výborna téma a skvelý prednášajúci Ondrej Mirtes. Teória sa prepája s praxou a myslím, že po tomto kurze bude Continuous Delivery hračkou. Vrelo odporúčam!“</em>
-                        </p>
-                    </div>
+                            <p class="mt-3">
+                                <em>„{$lecture_reference['reference']}“</em>
+                            </p>
+                        </div>
+                    {/foreach}
                 </div>
 
                 <br>
