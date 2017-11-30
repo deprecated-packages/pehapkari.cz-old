@@ -183,7 +183,7 @@ abstract class AbstractText
 }
 ```
 
-Následně entitu Article podědíme od AbstractText.
+Následně entitu `Article` podědíme od `AbstractText`
 
 ```php
 <?php
@@ -211,7 +211,7 @@ class Article extends AbstractText
 }
 ```
 
-A nakonec podědíme od AbstractText i entitu News.
+a nakonec podědíme od `AbstractText` i entitu `News`.
 
 ```php
 <?php
@@ -276,7 +276,7 @@ Pro implementaci dědičnosti v relační databázi využívá Doctrine propojen
 ```sql
 // generováno pro PostgreSQL 9.6
 
-CREATE TABLE text (id SERIAL NOT NULL, header VARCHAR(255) NOT NULL, content TEXT NOT NULL, author VARCHAR(255) NOT NULL, discriminator TEXT NOT NULL, PRIMARY KEY(id));
+CREATE TABLE text (id SERIAL NOT NULL, header VARCHAR(255) NOT NULL, content TEXT NOT NULL, author VARCHAR(255) NOT NULL, published_At TIMESTAMP NOT NULL, discriminator TEXT NOT NULL, PRIMARY KEY(id));
 CREATE TABLE article (id INT NOT NULL, perex TEXT NOT NULL, PRIMARY KEY(id));
 CREATE TABLE news (id INT NOT NULL, tag VARCHAR(255) NOT NULL, PRIMARY KEY(id));
 
@@ -289,8 +289,7 @@ Jak je vidět, tak tabulky `text`, `article` a `news` sdílí hodnotu primární
 ```SQL
 // generováno pro PostgreSQL 9.6
 
-SELECT t1.id AS id_2, t1.header AS header_3, t1.content AS content_4, t1.author AS author_5,
-t0.perex AS perex_6, t1.discriminator 
+SELECT t1.id AS id_2, t1.header AS header_3, t1.content AS content_4, t1.author AS author_5, t1.publishedAt as published_at_6, t0.perex AS perex_7, t1.discriminator 
 FROM article t0 
 INNER JOIN text t1 ON t0.id = t1.id;
 ```
