@@ -4,7 +4,7 @@
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/pehapkari/pehapkari.cz.svg?style=flat-square)](https://scrutinizer-ci.com/g/pehapkari/pehapkari.cz)
 
 
-## How to run Locally to Contribute
+## How to Run Locally to Contribute
 
 1. Fork
 
