@@ -23,6 +23,7 @@ parameters:
                 <li>Bonus: postřehy z produkce za 3 roky intenzivního používání Elasticsearch</li>
             </ul>
             <p>Technologie: Elasticsearch, Kibana</p>
+            <p>Sleva 50% pro nepodnikající studenty denního studia</p>
             <p>Informace o mě: Již třetím rokem se jako senior programátor podílím na vývoji první internetové lékárny <a href='https://www.lekarna.cz'>Lekarna.cz</a>.</p>
             '''
             duration: "8 hodin"
@@ -50,6 +51,7 @@ parameters:
                 <li>Bonus: temná strana Doctrine - postřehy ze 4 let zkušeností při skoro každodenní práce s Doctrine</li>
             </ul>
             <p>Technologie: Doctrine 2, Nette, MySQL/PostgreSQL (podle Vás)</p>
+            <p>Sleva 50% pro nepodnikající studenty denního studia</p>
             <p>Informace o mě: Již třetím rokem se jako senior programátor podílím na vývoji první internetové lékárny <a href='https://www.lekarna.cz'>Lekarna.cz</a>.</p>
             '''
             duration: "8 hodin"
@@ -170,6 +172,7 @@ parameters:
                 <li>Bonus: problémy při ovlivňování výsledků a tipy z produkčního prostředí</li>
             </ul>
             <p>Technologie: Elasticsearch, Kibana, Nette</p>
+            <p>Sleva 50% pro nepodnikající studenty denního studia</p>
             <p>Informace o mě: Již třetím rokem se jako senior programátor podílím na vývoji první internetové lékárny <a href='https://www.lekarna.cz'>Lekarna.cz</a>.</p>
             '''
             duration: "8 hodin"
@@ -192,6 +195,7 @@ parameters:
                 <li>Bonus: jak "ne"cachovat multijazyčné aplikace + vychytávky pro ulehčení práce s Doctrine</li>
             </ul>
             <p>Technologie: Doctrine 2, Nette, MySQL/PostgreSQL (podle Vás)</p>
+            <p>Sleva 50% pro nepodnikající studenty denního studia</p>
             <p>Informace o mě: Již třetím rokem se jako senior programátor podílím na vývoji první internetové lékárny <a href='https://www.lekarna.cz'>Lekarna.cz</a>.</p>
             '''
             duration: "8 hodin"
