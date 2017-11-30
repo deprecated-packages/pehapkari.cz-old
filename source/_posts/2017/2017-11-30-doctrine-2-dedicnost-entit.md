@@ -300,6 +300,8 @@ Doctrine nám umožňuje používat dědičnost i na úrovni databáze bez zbyte
 
 ## Chci se dozvědět více!
 
+Zajímá tě dědičnost entit více do hloubky nebo se chceš přiučit jiným cool věcem? Přihlaš se na má [školení Doctrine 2](https://pehapkari.cz/vzdelavej-se/) právě teď! :)
+
 Zde jsou materiály, které ti pomohou pochopit, jak to v Doctrine funguje hlouběji.
 
  - http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/inheritance-mapping.html
