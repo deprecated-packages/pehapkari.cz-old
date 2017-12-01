@@ -3,8 +3,8 @@ id: 48
 layout: post
 title: "Doctrine 2 – Dědičnost entit"
 perex: '''
-	Entity v ORM (objektově relační mapování) zachycují objekty z reálného světa a transformují je do tříd v programovacím jazyku. V reálném světě má vždy skupina objektů stejné vlastnosti a liší v některých detailech. Všichni lidé mají jméno, datum narození, pohlaví, ale liší se v barvě očí, pleti, dovednostech apod. "
-	<br>
+	Entity v ORM (objektově relační mapování) zachycují objekty z reálného světa a transformují je do tříd v programovacím jazyku. V reálném světě má vždy skupina objektů stejné vlastnosti a liší v některých detailech. Všichni lidé mají jméno, datum narození, pohlaví, ale liší se v barvě očí, pleti, dovednostech apod.
+	<br><br>
 	Při čistém návrhu entit by se nám tedy hodila dědičnost. Umí ji Doctrine zpracovat, a jak s takovou entitou pracuje?
 '''
 author: 11
@@ -302,7 +302,7 @@ Doctrine nám umožňuje používat dědičnost i na úrovni databáze bez zbyte
 
 ## Chci se dozvědět více!
 
-Zajímá tě dědičnost entit více do hloubky nebo se chceš přiučit jiným cool věcem? Přihlaš se na má [školení Doctrine 2](https://pehapkari.cz/vzdelavej-se/) právě teď! :)
+Zajímá tě dědičnost entit více do hloubky nebo se chceš přiučit jiným cool věcem? Přihlaš se na má [školení Doctrine 2](https://pehapkari.cz/vzdelavej-se/) právě teď! První školení s názvem "Doctrine 2 - Začínáme používat ORM" proběhne již příští středu a máme ještě pár míst! :)
 
 Zde jsou materiály, které ti pomohou pochopit, jak to v Doctrine funguje hlouběji.
 
