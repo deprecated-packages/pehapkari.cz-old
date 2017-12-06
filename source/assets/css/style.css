@@ -452,3 +452,50 @@ footer #posobota-logo, footer #pehapkari-logo {
     max-width: 49em;
     margin: auto;
 }
+
+.training-card h3 {
+    margin-top: 0;
+}
+
+.training-card p {
+    margin: 0;
+    line-height: 150%;
+}
+
+.training-card img {
+    position: absolute;
+    right: 10px;
+    bottom: 10%;
+    margin-bottom: 15px;
+}
+
+.lector-info-title {
+    display: inline-block;
+    min-width: 75px;
+}
+
+@media (min-width: 768px) {
+    .training-card .card-text br {
+        display: none;
+    }
+
+    .training-card .card-text br + strong {
+        margin-left: 20px;
+    }
+
+    .lector-info-title {
+        min-width: auto;
+    }
+
+    .training-card img {
+        position: absolute;
+        bottom: 50%;
+        margin-bottom: -30px;
+        left: 20px;
+        right: auto;
+    }
+
+    .training-card {
+        padding-left: 85px;
+    }
+}

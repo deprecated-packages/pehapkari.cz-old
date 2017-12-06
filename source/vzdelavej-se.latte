@@ -141,19 +141,21 @@ inspiration:
                     {foreach $trainings as $training}
                         {continueIf isset($training['date'])}
                         <div class="col-lg-12 col-12">
-                            <div class="card mb-3" id="{$training['name']|webalize}">
+                            <div class="card training-card mb-3" id="{$training['name']|webalize}">
                                 <div class="card-body">
-                                    <h3 class="card-title pull-left">{$training['name']|noescape}</h3>
-
-                                    <div class="card-text">
-                                        <img src="/assets/images/people/{$users[$training['user']]['photo']}" class="mb-2 ml-4 rounded-circle pull-right" height="60" width="60">
+                                    <h3 class="card-title">{$training['name']|noescape}</h3>
+                                    <p class="card-text">
+                                        <img src="/assets/images/people/{$users[$training['user']]['photo']}" class="rounded-circle" height="60" width="60">
+                                        <strong class="lector-info-title">Lektor:</strong>
+                                        <a n:tag-ifset="$users[$training['user']]['url']" href="{$users[$training['user']]['url']}">
+                                            {$users[$training['user']]['name']}
+                                        </a>
                                         <br>
-                                        <p class="pull-right">Lektor:
-                                            <a n:tag-ifset="$users[$training['user']]['url']" href="{$users[$training['user']]['url']}">
-                                                {$users[$training['user']]['name']}
-                                            </a>
-                                        </p>
-                                    </div>
+                                        <strong class="lector-info-title">Délka:</strong> {$training['duration']}<br>
+                                        <strong class="lector-info-title">Cena:</strong> {$training['price']} Kč<br>
+                                        <strong class="lector-info-title">Kapacita:</strong> {$training['capacity']}<br>
+                                    </p>
+
                                 </div>
                             </div>
                         </div>
