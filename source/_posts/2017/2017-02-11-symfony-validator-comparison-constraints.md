@@ -10,6 +10,7 @@ test_slug: SymfonyValidatorComparisonConstraints
 related_posts: [21, 22]
 ---
 
+**Update 2017-12-02: In Symfony 3.4+ comparison constraints have a `propertyPath` option. In this case you could use `@Assert\GreaterThanOrEqual(propertyPath="startDate")` instead of the `Expression` constraint.**
 
 ### Example use case
 
