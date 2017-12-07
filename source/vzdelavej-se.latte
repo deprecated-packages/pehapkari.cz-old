@@ -136,37 +136,31 @@ inspiration:
                 return strcasecmp($a['name'], $b['name']);
             })}
 
-            <div class="card-deck">
-                <div class="row">
-                    {foreach $trainings as $training}
-                        {continueIf isset($training['date'])}
-                        <div class="col-lg-12 col-12">
-                            <div class="card training-card mb-3" id="{$training['name']|webalize}">
-                                <div class="card-body">
-                                    <h3 class="card-title">{$training['name']|noescape}</h3>
-                                    <p class="card-text">
-                                        <img src="/assets/images/people/{$users[$training['user']]['photo']}" class="rounded-circle" height="60" width="60">
-                                        <span class="lector-name">
-                                            <strong class="lector-info-title">Lektor:</strong>
-                                            <a n:tag-ifset="$users[$training['user']]['url']" href="{$users[$training['user']]['url']}">
-                                                {$users[$training['user']]['name']}
-                                            </a>
-                                        </span>
-                                        <br>
-                                        <strong>Délka:</strong> {$training['duration']}
-                                        <br>
-                                        <strong>Cena:</strong> {$training['price']} Kč
-                                        <br>
-                                        <strong>Kapacita:</strong> {$training['capacity']}
-                                    </p>
-                                </div>
-                            </div>
+            {foreach $trainings as $training}
+                {continueIf isset($training['date'])}
+                    <div class="card training-card mb-3" id="{$training['name']|webalize}">
+                        <div class="card-body">
+                            <h3 class="card-title">{$training['name']|noescape}</h3>
+                            <p class="card-text">
+                                <img src="/assets/images/people/{$users[$training['user']]['photo']}" class="rounded-circle" height="60" width="60">
+                                <span class="lector-name">
+                                    <strong class="lector-info-title">Lektor:</strong>
+                                    <a n:tag-ifset="$users[$training['user']]['url']" href="{$users[$training['user']]['url']}">
+                                        {$users[$training['user']]['name']}
+                                    </a>
+                                </span>
+                                <br>
+                                <strong>Délka:</strong> {$training['duration']}
+                                <br>
+                                <strong>Cena:</strong> {$training['price']} Kč
+                                <br>
+                                <strong>Kapacita:</strong> {$training['capacity']}
+                            </p>
                         </div>
-                    {/foreach}
-                </div>
-            </div>
+                    </div>
+            {/foreach}
 
-            <hr>
+            <hr class="mt-4">
 
             <div class="text-center">
                 <h2>Spokojení účastníci</h2>
