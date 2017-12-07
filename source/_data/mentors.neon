@@ -42,7 +42,7 @@ parameters:
             intro_message: "Nette, Symfony, čistý kód, strategie a uživatelský výzkum"
             link: "http://www.petrfidler.cz/"
             remote: false
-        # not yet
+        # confirmed
         -
             name: "Honza Novák"
             location: "Plzeň"
