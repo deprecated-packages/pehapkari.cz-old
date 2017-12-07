@@ -469,12 +469,16 @@ footer #posobota-logo, footer #pehapkari-logo {
     margin-bottom: 15px;
 }
 
-.lector-info-title {
+.lector-info-item strong {
     display: inline-block;
     min-width: 75px;
 }
 
 @media (min-width: 768px) {
+    .training-card .card-text {
+        text-align: right;
+    }
+
     .training-card .card-text br {
         display: none;
     }
@@ -483,8 +487,13 @@ footer #posobota-logo, footer #pehapkari-logo {
         margin-left: 20px;
     }
 
-    .lector-info-title {
+    .lector-name {
+        float: left;
+    }
+
+    .training-card .card-text strong {
         min-width: auto;
+        margin-right: 5px;
     }
 
     .training-card img {

@@ -146,16 +146,19 @@ inspiration:
                                     <h3 class="card-title">{$training['name']|noescape}</h3>
                                     <p class="card-text">
                                         <img src="/assets/images/people/{$users[$training['user']]['photo']}" class="rounded-circle" height="60" width="60">
-                                        <strong class="lector-info-title">Lektor:</strong>
-                                        <a n:tag-ifset="$users[$training['user']]['url']" href="{$users[$training['user']]['url']}">
-                                            {$users[$training['user']]['name']}
-                                        </a>
+                                        <span class="lector-name">
+                                            <strong class="lector-info-title">Lektor:</strong>
+                                            <a n:tag-ifset="$users[$training['user']]['url']" href="{$users[$training['user']]['url']}">
+                                                {$users[$training['user']]['name']}
+                                            </a>
+                                        </span>
                                         <br>
-                                        <strong class="lector-info-title">Délka:</strong> {$training['duration']}<br>
-                                        <strong class="lector-info-title">Cena:</strong> {$training['price']} Kč<br>
-                                        <strong class="lector-info-title">Kapacita:</strong> {$training['capacity']}<br>
+                                        <strong>Délka:</strong> {$training['duration']}
+                                        <br>
+                                        <strong>Cena:</strong> {$training['price']} Kč
+                                        <br>
+                                        <strong>Kapacita:</strong> {$training['capacity']}
                                     </p>
-
                                 </div>
                             </div>
                         </div>
