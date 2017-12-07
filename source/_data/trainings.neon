@@ -2,10 +2,10 @@ parameters:
     trainings:
         # active
         -
-            form_link: "https://goo.gl/forms/BNroxflCBvz7wRd02"
+            form_link: "https://goo.gl/forms/Lhjj0p6dEJAaegfi2"
             name: "Elasticsearch - Začínáme vyhledávat"
             image: "/assets/images/logos/elasticsearch.svg"
-            date: "7. 12. 2017"
+            date: "30. 1. 2018"
             user: 11
             description: '''
             <p>Naučte se používat <a href='https://www.elastic.co/products/elasticsearch'>Elasticsearch</a> od samotné instalace, přes plnění daty až po vlastní fulltextové vyhledávání. Školení začneme krátkým úvodem do problematiky vyhledávání a řekneme si, proč použít právě Elasticsearch. Následně přejdeme k samotné instalaci a základní konfiguraci. Seznámíme se s nástrojem <a href='https://www.elastic.co/products/kibana'>Kibana</a>. Ukážeme si, jak připravit mapping indexu pro data, ve kterých chceme vyhledávat. Samozřejmě si ukážeme, jak připravit vyhledávání, které se nezalekne překlepů a dokáže hledat i s pomocí synonym.</p>
@@ -33,7 +33,6 @@ parameters:
         -
             form_link: "https://goo.gl/forms/zAApPR2i2632ns123"
             name: "Doctrine 2 - Začínáme používat ORM"
-            date: "6. 12. 2017"
             image: "/assets/images/logos/doctrine.png"
             user: 11
             description: '''
@@ -61,7 +60,10 @@ parameters:
 
         # open terms
         -
+            form_link: "https://goo.gl/forms/ktc6zfC4SYx6QVsj1"
             name: "Jak na rapidní vývoj a Continuous Delivery"
+            date: "31. 1. 2018"
+            image: "/assets/images/logos/feedback.png"
             user: 30
             description: '''
         Zkracování <a href='https://ondrej.mirtes.cz/zkracovani-feedback-loop'>feedback loop</a>:
