@@ -3,24 +3,24 @@
     "license": "MIT",
     "require": {
         "php": "^7.1",
-        "symplify/statie": "^2.5"
+        "symplify/statie": "^3.0"
     },
     "require-dev": {
-        "doctrine/annotations": "^1.4",
-        "doctrine/cache": "^1.6",
-        "latte/latte": "^2.4|^3.0",
-        "nette/application": "^2.4|^3.0",
-        "nette/forms": "^2.4|^3.0",
-        "nette/security": "^2.4|^3.0",
-        "symfony/console": "^3.3",
-        "symfony/event-dispatcher": "^3.3",
-        "symfony/expression-language": "^3.3",
-        "symfony/intl": "^3.3",
-        "symfony/validator": "^3.3",
+        "doctrine/annotations": "^1.5",
+        "doctrine/cache": "^1.7",
+        "latte/latte": "^2.4",
+        "nette/application": "^2.4",
+        "nette/forms": "^2.4",
+        "nette/security": "^2.4",
+        "symfony/console": "^4.0",
+        "symfony/event-dispatcher": "^3.4|^4.0",
+        "symfony/expression-language": "^4.0",
+        "symfony/intl": "^4.0",
+        "symfony/validator": "^4.0",
 
-        "phpstan/phpstan": "^0.8",
-        "phpunit/phpunit": "^6.2",
-        "symplify/easy-coding-standard": "^2.5"
+        "phpstan/phpstan": "^0.9",
+        "phpunit/phpunit": "^6.5",
+        "symplify/easy-coding-standard": "^3.0"
     },
     "autoload": {
         "psr-4": {
