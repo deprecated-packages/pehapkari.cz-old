@@ -34,9 +34,9 @@ final class AddToBasketControl extends Control
 
         // vytvoříme instanci události
         $productAddedToBasketEvent = new ProductAddedToBasketEvent(
-            $this->product['id'],
-            $this->product['name'],
-            $this->product['price']
+            (int) $this->product['id'],
+            (string) $this->product['name'],
+            (int) $this->product['price']
         );
         $this->eventDispatcher->dispatch(
             ProductAddedToBasketEvent::class,
