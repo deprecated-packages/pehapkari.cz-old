@@ -12,7 +12,7 @@ Při vývoji člověk dojde do určité fáze, kdy je potřeba projekt nějakým
 ## Podívejme se na to, jak to řešíme u nás
 
 
-Nejdříve je potřeba si rozdělit aplikaci na logické celky tak, aby to dávalo smysl. Mějme např. klienta „klient“ a ten bude mít závislosti v composer.json. 
+Nejdříve je potřeba si rozdělit aplikaci na logické celky tak, aby to dávalo smysl. Mějme např. klienta „klient“ a ten bude mít závislosti v composer.json.
 
 ```json
 {
@@ -28,7 +28,7 @@ Nejdříve je potřeba si rozdělit aplikaci na logické celky tak, aby to dáva
 }
 ```
 
-Každý jednotlivý balíček obsahuje svůj vlastní `composer.json` s případnými dalšími závislostmi. Jakmile máme balíček hotový, můžeme ho nahrát do svého privátního repozitáře (bitbucket, github). Další možností je využít nějakého [package managera](https://getcomposer.org/doc/articles/handling-private-packages-with-satis.md) ([packagist](https://packagist.com/) – placený pro privátní balíčky, [satis](https://github.com/composer/satis) – open source pro vlastní hostování). Rozhodování je jednoduché. Pokud vám nevadí placená verze, je pohodlnější packagist. Satis je sice zdarma, ale musíte si ho nainstalovat sami a řešit zabezpečení apod. 
+Každý jednotlivý balíček obsahuje svůj vlastní `composer.json` s případnými dalšími závislostmi. Jakmile máme balíček hotový, můžeme ho nahrát do svého privátního repozitáře (bitbucket, github). Další možností je využít nějakého [package managera](https://getcomposer.org/doc/articles/handling-private-packages-with-satis.md) ([packagist](https://packagist.com/) – placený pro privátní balíčky, [satis](https://github.com/composer/satis) – open source pro vlastní hostování). Rozhodování je jednoduché. Pokud vám nevadí placená verze, je pohodlnější packagist. Satis je sice zdarma, ale musíte si ho nainstalovat sami a řešit zabezpečení apod.
 
 Aby vám composer načítal privátní balíčky, je potřeba přidat repozitáře / managera do configu, aby o něm composer věděl. To provedete pomocí `composer config -e` (případně přidáte `-g` pro globální config).
 
@@ -48,7 +48,7 @@ Můžete přidat balíček z lokálního disku. Tady jen pozor, composer pak neu
 ### Přidání privátního repozitáře
 
 
-Tady je potřeba mít nastavený správný přístup ke git (bitbucket,...) repozitářům, zejména autentizaci tak, aby si composer správně načetl balíčky z privátních repozitářů. 
+Tady je potřeba mít nastavený správný přístup ke git (bitbucket,...) repozitářům, zejména autentizaci tak, aby si composer správně načetl balíčky z privátních repozitářů.
 
 ```json
 {
@@ -89,7 +89,7 @@ Při zavolání `composer install` by se nám již měly nainstalovat správné 
 
 Nejdříve si načtete aplikaci pomocí `composer install –-prefer-source`, což vám **načte balíčky včetně git repozitářů**, takže nad nimi můžete pracovat, přepínat větve, přidávat tagy atd. Pokud chcete upravovat jen konkrétní balíčky, **je lepší zavolat `composer update namespace/package --prefer-source` nad konkrétním balíčkem**, protože jinak se stahují všechny balíčky z composer včetně git meta dat a tato akce může nějakou dobu trvat, obzvláště pokud máte hodně závislostí.
 
-Poté jednoduše přidáte v phpstormu repozitáře do jeho správy. 
+Poté jednoduše přidáte v phpstormu repozitáře do jeho správy.
 
  <div class="text-center">
      <img src="/assets/images/posts/2017/composer/git.png">
@@ -97,7 +97,7 @@ Poté jednoduše přidáte v phpstormu repozitáře do jeho správy.
 <br/>
 
 Tím se dostáváme k tomu **největšímu usnadnění**. Teď již můžeme dělat změny ve všech balíčcích v jednom projektu. Pro usnadnění je dobré ještě v nastavení phpstormu zaškrtnout volbu **control repositories synchronously**, která vám umožní pracovat s větvemi jako by to byla jedna. **Tzn. pokud vytvoříte jednu větev test, vytvoří se ve všech repozitářích a udělá se checkout.**
- 
+
  <div class="text-center">
       <img src="/assets/images/posts/2017/composer/synchro.png">
   </div>
@@ -108,7 +108,7 @@ Tím se dostáváme k tomu **největšímu usnadnění**. Teď již můžeme dě
      <img src="/assets/images/posts/2017/composer/branch.png">
  </div>
 <br/>
- 
+
 
 Pak už jen stačí vytvořit tag a profit.
 

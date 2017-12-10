@@ -105,10 +105,10 @@ Po:
 +++ ../src/BuggedFile.php
 ```
 
-Na obou řádcích bude cesta ke stejnému (původnímu) souboru. Někomu také funguje, když místo prvního souboru (za `---`) dá `/dev/null`. 
+Na obou řádcích bude cesta ke stejnému (původnímu) souboru. Někomu také funguje, když místo prvního souboru (za `---`) dá `/dev/null`.
 
-Všimni si, že cesta k souborům musí být uvedena **relativně "nad"** složku s balíčkem ve vendoru. Dvě tečky v hlavičce (`../`) na začátku cest jsou tam tedy právě proto.  
-Balíček `cweagans/composer-patches` totiž interně zkouší volat (dozvíme se díky `composer -v install`) několik různých variant `git apply` a `patch` a první zkouší `git apply -p1`. Právě `-p1` znamená, že se otrimuje první `../` a dále se použije cesta relativně k balíčku.  
+Všimni si, že cesta k souborům musí být uvedena **relativně "nad"** složku s balíčkem ve vendoru. Dvě tečky v hlavičce (`../`) na začátku cest jsou tam tedy právě proto.
+Balíček `cweagans/composer-patches` totiž interně zkouší volat (dozvíme se díky `composer -v install`) několik různých variant `git apply` a `patch` a první zkouší `git apply -p1`. Právě `-p1` znamená, že se otrimuje první `../` a dále se použije cesta relativně k balíčku.
 Cesty mohou fungovat i bez `../`, protože v některém z dalších volání se použije `-p0`, takže je tam tedy přidávat nemusíte. Nicméně ušetříte si pár zavolání.
 
 Zbytek patche nech tak jak je.
