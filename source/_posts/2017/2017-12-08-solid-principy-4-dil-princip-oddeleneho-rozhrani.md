@@ -14,7 +14,7 @@ author: 30
 
 Video (1:29)
 
-[![Video na Youtube](/assets/images/posts/2017/solid-4/solid-youtube.jpg)](http://www.youtube.com/watch?v=RkTMid_ccDo)
+[![Video na Youtube](/assets/images/posts/2017/solid-4/solid-youtube.jpg?version2)](http://www.youtube.com/watch?v=RkTMid_ccDo)
 
 Na ukázku zde mám rozhraní ```IBag```, třídu ```Bag```, která jej implementuje a třídu ```Renderer```:
 
