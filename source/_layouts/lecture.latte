@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="cs">
+    {include "head"}
+
+    <body>
+        {include "menu", "id" => "vzdelavej-se"}
+
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">{$lecture->getTitle()}</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        {$lecture->getContent()}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {include "googleAnalytics"}
+        {include "facebookPixel"}
+    </body>
+</html>
+
+
+{block socialTags}
+    {* Facebook sharing *}
+    <meta property="og:type" content="lecture" />
+    <meta property="og:title" content="{$lecture->getTitle()}" />
+    {*<meta property="og:description" content="{$lecture['perex']|striptags}" />*}
+    {*<meta property="og:url" content="{$site_url}/{$lecture['relativeUrl']}/" />*}
+
+    {* Twitter sharing *}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="{$lecture->getTitle()}" />
+    {*<meta name="twitter:description" content="{$lecture['perex']|striptags}" />*}
+{/block}
+
+
+{block additionalCss}
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+{/block}

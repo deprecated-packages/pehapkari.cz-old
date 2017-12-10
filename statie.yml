@@ -1,5 +1,5 @@
 imports:
-    - { resource: 'source/_**/*.yml' }
+    - { resource: 'source/_data/*.yml' }
 
 parameters:
     page_title: "Děláš v PHP? Jsi jedním z nás"

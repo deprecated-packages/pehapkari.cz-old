@@ -1,0 +1,10 @@
+parameters:
+    # see https://github.com/Symplify/Statie/blob/master/docs/Generators.md
+    generators:
+        lectures:
+            variable: 'lecture'
+            variable_global: 'lectures'
+            path: '_lectures'
+            layout: 'lecture'
+            route_prefix: 'kurz'
+            object: 'Pehapkari\Website\Statie\Generator\LectureFile'
