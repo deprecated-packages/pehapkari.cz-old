@@ -1,9 +1,5 @@
-includes:
-    - source/_data/authors.neon
-    - source/_data/mentors.neon
-    - source/_data/users.neon
-    - source/_data/trainings.neon
-    - source/_data/organizers.neon
+imports:
+    - { resource: 'source/_**/*.yml' }
 
 parameters:
     page_title: "Děláš v PHP? Jsi jedním z nás"
@@ -11,7 +7,7 @@ parameters:
     github_edit_url_start: "https://github.com/pehapkari/pehapkari.cz/edit/master/source/"
     github_show_url_start: "https://github.com/pehapkari/pehapkari.cz/tree/master/"
 
-    lang: "cs" # default language
+    # lang: "cs" # default language
 
     # services ID
     google_analytics_tracking_id: "UA-89860072-1"
@@ -20,4 +16,4 @@ parameters:
 
     # Statie configuration
     github_repository_slug: "pehapkari/pehapkari.cz"
-    markdown_headline_anchors: TRUE
+    markdown_headline_anchors: true
