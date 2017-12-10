@@ -88,7 +88,7 @@ class Renderer
 }
 ```
 
-Větší interface ```IBag``` mohu rozdělit na tři logické rozhraní: Contentable, Fileable, Renderable. 
+Větší interface ```IBag``` mohu rozdělit na tři logické rozhraní: Contentable, Fileable, Renderable.
 
 Třída ```Renderer``` tak už není nucena záviset na ```IBag```, ale postačí ```Renderable```. Třída ```Bag``` implementuje všechny tři rozhraní, ale další třídě může stačit už jenom třeba jedno.
 

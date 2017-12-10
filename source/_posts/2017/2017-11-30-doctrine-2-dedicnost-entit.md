@@ -30,7 +30,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Article
 {
-	
+
 	/**
 	 * @ORM\Id
 	 * @ORM\Column(type="integer")
@@ -38,31 +38,31 @@ class Article
 	 * @var int
 	 */
 	private $id;
-	
+
 	/**
 	 * @ORM\Column(type="string")
 	 * @var string
 	 */
 	private $header;
-	
+
 	/**
 	 * @ORM\Column(type="text")
 	 * @var string
 	 */
 	private $perex;
-	
+
 	/**
 	 * @ORM\Column(type="text")
 	 * @var string
 	 */
 	private $content;
-	
+
 	/**
 	 * @ORM\Column(type="string")
 	 * @var string
 	 */
 	private $author;
-	
+
 	// getters + setters
 
 }
@@ -102,7 +102,7 @@ class News
 	 * @var string
 	 */
 	private $content;
-	
+
 	/**
 	 * @ORM\Column(type="string")
 	 * @var string
@@ -116,11 +116,11 @@ class News
 	private $author;
 
 	// getters + setters
-	
+
 }
 ```
 
-Jak je vidět na první pohled entita `News` obsahuje stejné vlastnosti jako `Article` a liší se pouze ve štítku. V tento moment se nám může zdát jako zbytečné přemýšlet o nějaké dědičnosti. Možná… 
+Jak je vidět na první pohled entita `News` obsahuje stejné vlastnosti jako `Article` a liší se pouze ve štítku. V tento moment se nám může zdát jako zbytečné přemýšlet o nějaké dědičnosti. Možná…
 
 Blogger, pro kterého blog programuje, se rozhodne, že by chtěl u článků a novinek přidat možnost ukládat datum publikace. Takže si jako programátor otevřeme entitu `Article` a přidáme novou vlastnost `$publishedAt` a implementujeme getter + setter. V tento moment bude následovat copy&paste nových věci i do entity `News` a jakožto zkušení programátoři, kteří píší čistý kód, prostě ten Ctrl+C nezmáčkneme. Rozhodneme se to implementovat pořádně tak, jak se sluší od zkušeného programátora.
 
@@ -237,7 +237,7 @@ class News extends AbstractText
 	private $tag;
 
 	// getter + setter
-	
+
 }
 ```
 
@@ -291,8 +291,8 @@ Jak je vidět, tak tabulky `text`, `article` a `news` sdílí hodnotu primární
 ```SQL
 // generováno pro PostgreSQL 9.6
 
-SELECT t1.id AS id_2, t1.header AS header_3, t1.content AS content_4, t1.author AS author_5, t1.publishedAt as published_at_6, t0.perex AS perex_7, t1.discriminator 
-FROM article t0 
+SELECT t1.id AS id_2, t1.header AS header_3, t1.content AS content_4, t1.author AS author_5, t1.publishedAt as published_at_6, t0.perex AS perex_7, t1.discriminator
+FROM article t0
 INNER JOIN text t1 ON t0.id = t1.id;
 ```
 
