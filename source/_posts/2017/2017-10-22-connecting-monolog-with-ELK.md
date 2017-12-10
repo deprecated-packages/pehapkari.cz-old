@@ -15,28 +15,28 @@ related_posts: [44]
 Monolog is awesome PHP library for managing logs. [Check it on github](https://github.com/Seldaek/monolog).
 You can install it with composer, simply by `composer require monolog/monolog`.
 
-In a nutshell, Monolog offers you a logger, where you send your logs. 
+In a nutshell, Monolog offers you a logger, where you send your logs.
 This logger has multiple handlers, which send these logs wherever you need them.
-Monolog has many handlers, which enable you to to simply send logs to many destinations, e.g. files, e-mails, slack, logstash, and many more. 
+Monolog has many handlers, which enable you to to simply send logs to many destinations, e.g. files, e-mails, slack, logstash, and many more.
 
-Full list of handlers is [in Monolog documentation](https://github.com/Seldaek/monolog/blob/master/doc/02-handlers-formatters-processors.md#handlers). 
+Full list of handlers is [in Monolog documentation](https://github.com/Seldaek/monolog/blob/master/doc/02-handlers-formatters-processors.md#handlers).
 You can use Monolog as is, but there are integrations of Monolog to many frameworks, which simplify things a lot.
 
 For Nette, there is [Kdyby package](https://github.com/Kdyby/Monolog) providing Monolog integration.
 
-Symfony uses Monolog [out of the box](https://symfony.com/doc/current/logging.html). 
+Symfony uses Monolog [out of the box](https://symfony.com/doc/current/logging.html).
 
 
 ## What is ELK Stack
 
-ELK stack (now known as Elastic stack) stands for [Elasticsearch](https://www.elastic.co/products/elasticsearch), 
-[Logstash](https://www.elastic.co/products/logstash), [Kibana](https://www.elastic.co/products/kibana) stack. 
+ELK stack (now known as Elastic stack) stands for [Elasticsearch](https://www.elastic.co/products/elasticsearch),
+[Logstash](https://www.elastic.co/products/logstash), [Kibana](https://www.elastic.co/products/kibana) stack.
 
 I [wrote an article about ELK installation](https://pehapkari.cz/blog/2017/10/15/how-to-use-ELK-stack/), check it out if you're not familiar with ELK.
 
 ## Integrating Monolog with ELK Stack
 
-As I mentioned, Monolog has many handler which can output logs. 
+As I mentioned, Monolog has many handler which can output logs.
 And Logstash has many inputs, so there is not only one way to connect them, but we can choose from multiple options.
 
 ### Direct Output of Logs to Elasticseach.
@@ -44,18 +44,18 @@ The most straightforward option is to bypass the Logstash and output logs direct
 This most simple approach is very easy to setup, but has some drawbacks when your infrastructure gets more complex.
 If your application runs in other server than your elasticsearch instance, you need to deal with authentication and security of Elasticsearch.
 
-And obviously, you can't utilize the Logstash, but that is not so big problem since one of basic features of Logstash is logs formatting and preprocessing, 
-and Monolog can do all of this too, but in PHP, which is more comfortable than Logstash config. 
+And obviously, you can't utilize the Logstash, but that is not so big problem since one of basic features of Logstash is logs formatting and preprocessing,
+and Monolog can do all of this too, but in PHP, which is more comfortable than Logstash config.
 
 ### Gelf
 
-Other option is using the [Gelf](http://docs.graylog.org/en/2.3/pages/gelf.html). 
+Other option is using the [Gelf](http://docs.graylog.org/en/2.3/pages/gelf.html).
 Gelf sends logs over UDP protocol, which is super fast, but quite hard to debug, when your logs don't arrive to their destination.
 Also using UDP has the obvious drawback, cause it does not guarantee that your logs arrived which can be unpleasant.
 
 Monolog provides [GelfHandler](https://github.com/Seldaek/monolog/blob/master/src/Monolog/Handler/GelfHandler.php).
-The probably biggest advantage of using Gelf is the [GelfMessageFormatter](https://github.com/Seldaek/monolog/blob/master/src/Monolog/Formatter/GelfMessageFormatter.php) 
-which adds many useful information to your logs. 
+The probably biggest advantage of using Gelf is the [GelfMessageFormatter](https://github.com/Seldaek/monolog/blob/master/src/Monolog/Formatter/GelfMessageFormatter.php)
+which adds many useful information to your logs.
 
 Unfortunately, you can not use this formatted directly with other Handlers, becauses it outputs `Gelf\Message` object.
 
@@ -91,8 +91,8 @@ input {
 }
 ```
 
-When playing with Logstash, it's useful to configure it to output to standard output, 
-so we can see all logs in immediately. 
+When playing with Logstash, it's useful to configure it to output to standard output,
+so we can see all logs in immediately.
 
 
 ```
@@ -180,14 +180,14 @@ class GenerateLogsCommand extends ContainerAwareCommand {
 
 and then I generate some logs, e. g., `php bin/console app:generate:logs info 10` sends 10 info messages.
 
-When installing ELK myself, I spent many hours by resolving why my app does not send logs by Gelf. 
-I set `localhost` as host for Logstash instead of `127.0.0.1`, so my advice is to use ip address instead of domain name when we can, 
+When installing ELK myself, I spent many hours by resolving why my app does not send logs by Gelf.
+I set `localhost` as host for Logstash instead of `127.0.0.1`, so my advice is to use ip address instead of domain name when we can,
 because it saves you lots of hours debugging.
 
 Some notes for debugging this:
-we can simply send some message by UDP from bash to Logstash, so we can easily see, whether the message arrives. 
+we can simply send some message by UDP from bash to Logstash, so we can easily see, whether the message arrives.
 
-But testing whether our applications send message by UDP to outside world is little bit trickier. 
+But testing whether our applications send message by UDP to outside world is little bit trickier.
 
 On linux, you can use tcpdump for this:
 
@@ -208,24 +208,24 @@ RawCap.exe 127.0.0.1 localhost_capture.pcap
 
 [RabbitMQ](https://www.rabbitmq.com/) is the most widely known implementation of [AMQP](https://en.wikipedia.org/wiki/Advanced_Message_Queuing_Protocol).
 
-Basically, it consumes messages on one side and outputs them on the other side. RabbitMQ is very powerful, 
+Basically, it consumes messages on one side and outputs them on the other side. RabbitMQ is very powerful,
 but we'll use only its basic features.
 
-Logs are basically just messages, so we can use RabbitMQ as middleware between Monolog and Logstash.  
+Logs are basically just messages, so we can use RabbitMQ as middleware between Monolog and Logstash.
 
-This setup has advantage because RabbitMQ instance can run on same machine as our web application. 
+This setup has advantage because RabbitMQ instance can run on same machine as our web application.
 That means Monolog sends logs only to localhost and our app is not delayed by the network.
 Then, RabbitMQ sends logs to Logstash.
 
 In RabbitMQ, there are two important terms, exchanges and queues. Exchange is like entrypoint for messages.
 
-Queue is (surprisingly) a queue, it holds our logs until they are processed by some consumer. 
-We can bind one or more queues to one exchange.  
+Queue is (surprisingly) a queue, it holds our logs until they are processed by some consumer.
+We can bind one or more queues to one exchange.
 As I said, we need only basic setup, so we'll have one exchange and one queue.
 
 For simplicity, we can use RabbitMQ in docker. We can use official `rabbitmq:3-management` image.
 All `*-management` images contain web management interface of RabbitMQ, where you can play with RabbitMQ configuration.
-But the mainstream way to configure out rabbits is config file, surprisingly. 
+But the mainstream way to configure out rabbits is config file, surprisingly.
 When using `docker-compose`, we can run RabbitMQ as follows:
 ```yaml
 version: "3"
@@ -243,7 +243,7 @@ services:
 
 Port 5672 is used for the RabbitMQ itself, port 15672 is used for the web interface.
 
-`/var/lib/rabbitmq/mnesia` is where data is stored. 
+`/var/lib/rabbitmq/mnesia` is where data is stored.
 
 `/etc/rabbitmq/rabbitmq.config` is config file.
 
@@ -341,7 +341,7 @@ In the `rabbitmq_management` we specify where is stored our queues definitions f
 Now we have configured RabbitMQ instance which is prepared to be connected to the Monolog and Logstash.
 
 We'll modify our `logstash.conf` and configure the input:
- 
+
 ```
 input {
     rabbitmq {
@@ -403,12 +403,12 @@ For Monolog, there is a little lenghty setup involved.
 And now we are done and we can happily send logs from Monolog to ELK stack.
 
 #### Note
-There are multiple possibilites of AMQP connection. 
-When condidering speed, [this benchmark](https://github.com/mente/php-amqp-benchmark) shows that `AMQPSocketConnection` is much faster than `AMQPStreamConnection`, 
-which is the reason why I used it in this tutorial. 
- 
+There are multiple possibilites of AMQP connection.
+When condidering speed, [this benchmark](https://github.com/mente/php-amqp-benchmark) shows that `AMQPSocketConnection` is much faster than `AMQPStreamConnection`,
+which is the reason why I used it in this tutorial.
+
 
 ## The End
 
-Now our application sends logs to ELK and finally we can fully utilize information from logs, becaus the look much better in nice charts than in files. 
- 
+Now our application sends logs to ELK and finally we can fully utilize information from logs, becaus the look much better in nice charts than in files.
+

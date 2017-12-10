@@ -1,11 +1,9 @@
 includes:
-    - vendor/symplify/easy-coding-standard/config/symfony-checkers.neon
-    - vendor/symplify/easy-coding-standard/config/php54-checkers.neon
-    - vendor/symplify/easy-coding-standard/config/php70-checkers.neon
-    - vendor/symplify/easy-coding-standard/config/php71-checkers.neon
+    - vendor/symplify/easy-coding-standard/config/symfony.neon
+    - vendor/symplify/easy-coding-standard/config/php70.neon
+    - vendor/symplify/easy-coding-standard/config/php71.neon
     - vendor/symplify/easy-coding-standard/config/common.neon
-    - vendor/symplify/easy-coding-standard/config/spaces.neon
-    - vendor/symplify/easy-coding-standard/config/symplify-checkers.neon
+    - vendor/symplify/easy-coding-standard/config/symplify.neon
 
 checkers:
     Symplify\CodingStandard\Sniffs\DependencyInjection\NoClassInstantiationSniff:
@@ -37,9 +35,6 @@ parameters:
     skip:
         PHP_CodeSniffer\Standards\Generic\Sniffs\Files\LineLengthSniff:
             - src/Posts/Year2017/ListeningNetteComponents/Presenter/CategoryPresenter.php
-        Symplify\CodingStandard\Sniffs\Classes\EqualInterfaceImplementationSniff:
-            # validations
-            - src/Posts/Year2017/SymfonyValidatorConditionalConstraints/Client.php
     exclude_checkers:
         # from symplify-checkers.neon set
         - Symplify\CodingStandard\Fixer\Naming\PropertyNameMatchingTypeFixer

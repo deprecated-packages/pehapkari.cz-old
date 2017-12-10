@@ -1,0 +1,214 @@
+parameters:
+    trainings:
+        # active
+        -
+            form_link: "https://goo.gl/forms/Lhjj0p6dEJAaegfi2"
+            name: "Elasticsearch - Začínáme vyhledávat"
+            image: "/assets/images/logos/elasticsearch.svg"
+            date: "30. 1. 2018"
+            user: 11
+            description: |
+                <p>Naučte se používat <a href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a> od samotné instalace, přes plnění daty až po vlastní fulltextové vyhledávání. Školení začneme krátkým úvodem do problematiky vyhledávání a řekneme si, proč použít právě Elasticsearch. Následně přejdeme k samotné instalaci a základní konfiguraci. Seznámíme se s nástrojem <a href="https://www.elastic.co/products/kibana">Kibana</a>. Ukážeme si, jak připravit mapping indexu pro data, ve kterých chceme vyhledávat. Samozřejmě si ukážeme, jak připravit vyhledávání, které se nezalekne překlepů a dokáže hledat i s pomocí synonym.</p>
+                <p><em>Jako bonus Vám povím na co si dát pozor, co se může stát v produkčním prostředí a co dokáží zákazníci vyhledat, když jim to nevědomky umožníte. :)</em></p>
+                <p><strong>Osnova školení:</strong></p>
+                <ul>
+                    <li>Seznámení s problematikou vyhledávání</li>
+                    <li>Instalace a konfigurace Elasticsearch + Kibana</li>
+                    <li>Základní práce se Elasticsearch</li>
+                    <li>Základní operace v kostce</li>
+                    <li>Vytvoření indexu</li>
+                    <li>Plnění dat do indexu</li>
+                    <li>Základní vyhledávání - přesná/volná shoda</li>
+                    <li>Fulltextové vyhledávání včetně tolerance překlepů a synonym</li>
+                    <li>Bonus: postřehy z produkce za 3 roky intenzivního používání Elasticsearch</li>
+                </ul>
+                <p>Technologie: Elasticsearch, Kibana</p>
+                <p>Sleva 50% pro nepodnikající studenty denního studia</p>
+                <p>Informace o mě: Již třetím rokem se jako senior programátor podílím na vývoji první internetové lékárny <a href="https://www.lekarna.cz">Lekarna.cz</a>.</p>
+            duration: "8 hodin"
+            price: 4999
+            capacity: "4-10 lidí"
+        -
+            form_link: "https://goo.gl/forms/zAApPR2i2632ns123"
+            name: "Doctrine 2 - Začínáme používat ORM"
+            image: "/assets/images/logos/doctrine.png"
+            user: 11
+            description: |
+                <p>Dozvíte se, proč používat <a href="http://www.doctrine-project.org/">Doctrine 2 ORM</a>, jak ji používat, na co si dát pozor a čemu se raději vyhnout obloukem. Na začátku se seznámíme s principem ORM a jeho přínosem, ale i stinnými stránkami Doctrine. Vysvětlíme si, k čemu slouží entita, repositář a fasáda. Ukážeme si, jak vytvořit entitu, jak ji propojit s entitou druhou. Představíme si ukládání, mazání a vyhledávání entit za pomoci repositářů. Připravíme si jednoduchou aplikaci "úkolníček" (to-do list) postavenou na Nette a Doctrine.</p>
+                <p><em>Jako bonus Vám ukáži temnou stranu Doctrine a také problémy, na které narazíte až na produkci. Zároveň ukáži i jejich řešení. :)</em></p>
+                <p><strong>Osnova školení:</strong></p>
+                <ul>
+                    <li>Seznámení s problematikou ORM</li>
+                    <li>Napojení Doctrine 2 do projektu</li>
+                    <li>Základní pojmy/operace</li>
+                    <li>Životní cyklus entity</li>
+                    <li>Entity a závislosti mezi nimi</li>
+                    <li>Ukládání, mazání, vyhledávání a hydratace entit</li>
+                    <li>"Úkolníček" (to-do list)</li>
+                    <li>Bonus: temná strana Doctrine - postřehy ze 4 let zkušeností při skoro každodenní práce s Doctrine</li>
+                </ul>
+                <p>Technologie: Doctrine 2, Nette, MySQL/PostgreSQL (podle Vás)</p>
+                <p>Sleva 50% pro nepodnikající studenty denního studia</p>
+                <p>Informace o mě: Již třetím rokem se jako senior programátor podílím na vývoji první internetové lékárny <a href="https://www.lekarna.cz">Lekarna.cz</a>.</p>
+            duration: "8 hodin"
+            price: 4999
+            capacity: "4-10 lidí"
+
+        # open terms
+        -
+            form_link: "https://goo.gl/forms/ktc6zfC4SYx6QVsj1"
+            name: "Jak na rapidní vývoj a Continuous Delivery"
+            date: "31. 1. 2018"
+            image: "/assets/images/logos/feedback.png"
+            user: 30
+            description: |
+                Zkracování <a href="https://ondrej.mirtes.cz/zkracovani-feedback-loop">feedback loop</a>:
+                    <br>
+                    <ul>
+                        <li>Jak tvořit zadání se zadavatelem tak, aby vývoj proběhl hladce a zadavatel obdržel to, co chce?</li>
+                        <li>Jak zorganizovat práci v týmu a programovat tak, aby nedocházelo ke všemožným problémům, bugům na produkci nebo nefunkční aplikaci?</li>
+                        <li>Continuous Integration - vytvoření build skriptu, rozběhání CI serveru, doporučení k problematice</li>
+                        <li>Přerod zastaralé aplikace v novou bez kompletního přepisu - strangler pattern, jak na refaktoring</li>
+                        <li>Bezvýpadkové databázové migrace, bezvýpadkové a časté nasazování nových verzí aplikace</li>
+                    </ul>
+            duration: "8 hodin"
+            price: 4999
+            capacity: "4-8 lidí"
+        -
+            name: "Ovládni PhpStorm &ndash; od základů po profi tipy"
+            user: 6
+            description: |
+                <p>Pro nás vývojáře je IDE hlavní pracovní nástroj, a proto se vyplatí ho perfektně znát. Na školení se naučíte využívat možnosti, které PhpStorm nabízí, a společně si všechno vyzkoušíme. S nově získanými znalostmi vám půjde práce od ruky a vyhnete se i častým chybám z nepozornosti.</p>
+                <p><strong>Osnova školení</strong></p>
+                <ul>
+                    <li>Jak efektivně pracovat s kódem a najít to, co potřebujete</li>
+                    <li>Jak využívat automatické refaktoringy a na co si u nich dát pozor</li>
+                    <li>Jak si ušetřit psaní pomocí předpřipravených templatů a formátování</li>
+                    <li>Jak integrovat externí nástroje s PhpStormem</li>
+                    <li>Jak v PhpStormu testovat</li>
+                    <li>Nastavení na míru vašemu projektu</li>
+                </ul>
+            duration: "3 hodiny"
+            price: 1599
+            capacity: "5-12 lidí"
+        -
+            name: "Jak na pokročilou práci s Gitem"
+            user: 31
+            description: |
+                <p>V rámci školení se podíváme na pokročilejší práci s Gitem, která ti pomůže zefektivnit (nejen) práci v týmu.  Je dobré, abys už uměl základy práce s Gitem - alespoň commit, push a pull.
+                <p>Školení bude probíhat formou workshopu, kdy si vždycky něco málo povíme a pak si vše budeš zkoušet na vlastním notebooku.</p>
+
+                <p><strong>Osnova školení</strong></p>
+                <ul>
+                    <li>Neboj se branchování. Feature-branche ti pomohou udržet pořádek v rozdělané práci.</li>
+                    <li>Kdy použít rebase a kdy raději merge?</li>
+                    <li>Jak pomocí interaktivního rebase získat elegantní historii commitů (squash, fixup a další kouzla)</li>
+                    <li>Jak psát výstižné commit messages</li>
+                    <li>Týmové workflow s Gitem</li>
+                    <li>Konfigurace Gitu</li>
+                </ul>
+            duration: "4 hodiny"
+            price: 3499
+            capacity: "4-8 lidí"
+        -
+            name: "Tvorba zadání a komunikace se zákazníkem"
+            user: 28
+            description: |
+                <p>Nejčastější příčinou krachu projektu je špatná komunikace, ať už uvnitř týmu nebo se zákazníkem. Přes 10 let na volné noze mě vyškolilo. Přineste si svoje noční můry na workshop a probereme, jak jim šlo zabránit.</p>
+                <ul>
+                    <li>co získáš, když budeš dělat zápisy z jednání</li>
+                    <li>proč je lepší, když zadání napíšeš ty</li>
+                    <li>v čem je aktivní přístup lepší a jak zákazníka vést</li>
+                    <li>s kým se o zadání bavit a na co se ptát</li>
+                    <li>ostych a uhýbání před konfrontací - stejně to nakonec rupne a bude větší průšvih</li>
+                    <li>sdílený dokument, e-mail, instant messenger, telefonát, schůzka - každý nástroj má svoje použití</li>
+                    <li>zadání: procesy a data; okrajové situace, chybové stavy, formuláře, drátěné modely</li>
+                </ul>
+                <p>
+                Na podobné téma jsem měl přednášku, můžeš se podívat na
+                <a href="https://www.youtube.com/watch?v=tDHSRE7qgrU" target="_blank">záznam</a> a
+                <a href="http://pepa.info/prednasky/co-musi-programator-umet.pdf" target="_blank">slajdy</a>.
+                </p>
+            duration: "4 hodiny"
+            price: 2499
+            capacity: "4-8 lidí"
+        -
+            name: "Začněte debugovat jako profíci s xdebugem!"
+            user: 32
+            description:
+                <p>Na školení začneme s nastavením xdebugu pro vaše IDE. Ukážeme si, k čemu se xdebug používá, co umí a jak vám rapidně zefektivní práci. Na reálných aplikacích a problémech si projdeme debugování od základů až po pokročilejší techniky.</p>
+                <p><strong>Naučíte se jak debugovat:</strong></p>
+                <ul>
+                    <li>Webové aplikace</li>
+                    <li>Latte a Twig šablony</li>
+                    <li>Testy</li>
+                    <li>CLI skripty</li>
+                    <li>REST api požadavky</li>
+                </ul>
+                <p><em>Je velmi pravděpodobné, že po absolvování školení, si budete ťukat na čelo, jak jste doposud mohli bez xdebugu v PHP programovat :-).</em></p>
+            duration: "6 hodin"
+            price: 3999
+            capacity: "5-10 lidí"
+
+        -
+            name: "Elasticsearch - Pokročilé vyhledávání s ohledem na business"
+            user: 11
+            description: |
+                <p>Ukážeme si, jak připravit pokročilé vyhledávání přes <a href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a>, které bude užitečné pro zákazníka, ale zároveň bude podporovat business firmy. Představíme si možnosti, jakými se dají ovlivňovat výsledky vyhledávání s ohledem na přesnost, ziskovost, ale také výkon. Připravíme si reálný vyhledávací dotaz, který bude zohledňovat požadavky zákazníka a zároveň pomáhat businessu. Také si ukážeme, jak se dá použít Elasticsearch pro filtraci produktů na e-shopu a jednu takovou mocnou filtraci si i připravíme.</p>
+                <p>Jako bonus zjistíte, jaké problémy může skrývat ovlivňování výsledků z vyhledávání. A také se rád podělím o své zkušenosti za 3 roky intenzivního používání Elasticsearch na produkci. :)</p>
+                <p><strong>Osnova školení:</strong></p>
+                <ul>
+                    <li>Seznámení s tím, jak může Elasticsearch pomoci businessu</li>
+                    <li>Pokročilé vyhledávání s ohledem na zákazníka</li>
+                    <li>Pokročilé vyhledávání s ohledem na business</li>
+                    <li>Filtrace s pomocí Elastisearch</li>
+                    <li>Bonus: problémy při ovlivňování výsledků a tipy z produkčního prostředí</li>
+                </ul>
+                <p>Technologie: Elasticsearch, Kibana, Nette</p>
+                <p>Sleva 50% pro nepodnikající studenty denního studia</p>
+                <p>Informace o mě: Již třetím rokem se jako senior programátor podílím na vývoji první internetové lékárny <a href="https://www.lekarna.cz">Lekarna.cz</a>.</p>
+            duration: "8 hodin"
+            price: 6999
+            capacity: "4-10 lidí"
+
+
+        -
+            name: "Doctrine 2 - Pokročilé použití"
+            user: 11
+            description: |
+                <p>Zjistíte, jak správně rozpoznat vztahy mezi <a href="http://www.doctrine-project.org/">Doctrine 2 ORM</a> entitami a jak je efektivně propojit mezi sebou. Představíme si jazyk DQL a ukážeme si, jak se s jeho pomocí dají připravit složitější dotazy do databáze. Vysvětlíme si, jak Doctrine dokáže optimalizovat množství dotazů do databáze a naopak, kdy ji musíme pomoci sami. Ukážeme si co a jak, ale také kdy ukládat do cache. Představíme si Doctrine Events, Filters, Translations a také mocnou Second Level Cache.</p>
+                <p><em>Jako bonus zjistíte, na jaké problémy můžete narazit při nesprávném cachování hlavně multijazyčných aplikací + se rád podělím o pár vychytávek, na které jsem narazil za 4 roky při skoro každodenní práci s Doctrine.</em></p>
+                <p><strong>Osnova školení:</strong></p>
+                <ul>
+                    <li>Entity a jejich vztahy</li>
+                    <li>DQL a jeho reálné použití</li>
+                    <li>Optimalizace počtu, ale i samotných dotazů do databáze</li>
+                    <li>Doctrine Events, Filters, Translations a Second Level Cache - aneb to co se Vám určitě hodí</li>
+                    <li>Bonus: jak "ne"cachovat multijazyčné aplikace + vychytávky pro ulehčení práce s Doctrine</li>
+                </ul>
+                <p>Technologie: Doctrine 2, Nette, MySQL/PostgreSQL (podle Vás)</p>
+                <p>Sleva 50% pro nepodnikající studenty denního studia</p>
+                <p>Informace o mě: Již třetím rokem se jako senior programátor podílím na vývoji první internetové lékárny <a href="https://www.lekarna.cz">Lekarna.cz</a>.</p>
+            duration: "8 hodin"
+            price: 6999
+            capacity: "4-10 lidí"
+
+        -
+            name: "Jak dělat open-source a vytěžit z něj maximum?"
+            user: 1
+            description: |
+                <p>Na školení si ukážeme, jak využít open-source pro zisk znalostí, zkušeností i osobního brandu.</p>
+                <p><strong>Naučíte se:</strong></p>
+                <ul>
+                    <li>co je potřeba vědět, než začneš s prvním balíčkem</li>
+                    <li>jak použít open-source k učení</li>
+                    <li>shortest-experment loop - 5x rychlejší než ve tvé práci</li>
+                    <li>SOLID patterny v praxi</li>
+                    <li>jak psát "nesmrtelný" kód na první dobrou</li>
+                    <li>coding standardy, testování a automatický refaktoring</li>
+                    <li>composer, Github a Travis</li>
+                </ul>
+                <p>Na konci školení budeš vědět, jak udělat tvůj balíček v tvém oblíbeném frameworku a která část své aplikace bude mít tu čest jít ven.</p>
+            duration: "3 hodiny"
+            price: 1999
+            capacity: "3-6 lidí"

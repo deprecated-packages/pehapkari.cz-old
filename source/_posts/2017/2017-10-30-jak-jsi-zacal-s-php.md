@@ -3,7 +3,7 @@ id: 47
 layout: post
 title: "Jak jsi začal s PHP?"
 perex: '''
-    Dnes se řeší jaká technologie je nejlepší, kdo má větší kontejner nebo nejnovější smartfoun. Ve víru informací se zapomíná na to, **jak naše PHP cesty vlastně začaly**. Co v nás tu vášeň zažehlo. 
+    Dnes se řeší jaká technologie je nejlepší, kdo má větší kontejner nebo nejnovější smartfoun. Ve víru informací se zapomíná na to, **jak naše PHP cesty vlastně začaly**. Co v nás tu vášeň zažehlo.
     <br>
     <br>
     Před nedávnem jsme dávali anketu *Jak jsi začal s PHP*. Pojďme si tu vášeň připomenout - tady je pár vybraných kousků, které jste nám poslali.
@@ -20,7 +20,7 @@ Začínal jsem s **legendární knihou Jirky Koska o PHP** a jedním z prvních 
 
 <br>
 
-Hrál jsem webovou hru http://www.bkc-game.net. **Ta se mi tak zalíbila, že jsem si chtěl udělat něco podobného**. A vzhledem k tomu, že mé znalosti tenkrát byli jen trocha html, tak jsem hledal a našel PHP. Poprvé jsem si k tomu čichnul a napsal jednoduchý portál, kde šlo vkládat komentáře do skupin a různé takové blbinky. Tím jsem se seznámil s PHP. 
+Hrál jsem webovou hru http://www.bkc-game.net. **Ta se mi tak zalíbila, že jsem si chtěl udělat něco podobného**. A vzhledem k tomu, že mé znalosti tenkrát byli jen trocha html, tak jsem hledal a našel PHP. Poprvé jsem si k tomu čichnul a napsal jednoduchý portál, kde šlo vkládat komentáře do skupin a různé takové blbinky. Tím jsem se seznámil s PHP.
 
 *Jakub*
 
@@ -45,7 +45,7 @@ Chcel som dokazat arogantnym vyvojarom jedneho komunitneho webu zalozenom na PHP
 
 <br>
 
-Někdy v roce 2001 jsem považoval za výhodu, že se v něm dá dobře prasit! Javascript byl tenkrát takový to skriptování na generování animovaných hodin a nedokázal jsem si představit, co všechno by mohl jednou umět. A hlavně - **byly k sehnání hostingy zadarmo, které PHP podporovaly**. 
+Někdy v roce 2001 jsem považoval za výhodu, že se v něm dá dobře prasit! Javascript byl tenkrát takový to skriptování na generování animovaných hodin a nedokázal jsem si představit, co všechno by mohl jednou umět. A hlavně - **byly k sehnání hostingy zadarmo, které PHP podporovaly**.
 
 Pro študáka tenkrát argument #1! Od té doby rostu spolu s PHP a **za těch 15 let mu dokážu odpustit, že se v něm dá prasit** a snažím se předstírat, že o tom nevím :) Za API standardních objektů/funkcí se už ale vážně hodně stydím...
 
@@ -54,10 +54,10 @@ Pro študáka tenkrát argument #1! Od té doby rostu spolu s PHP a **za těch 1
 <br>
 
 A já?
- 
-Já hrál [webgame.cz](https://www.webgame.cz/) a jeden kluk měl šikovnou Excel tabulku na počítání slabin nepřítele z jeho infiltrace. Ale nechtěl ji nikomu dát. Tak jsem se naštval a začal to samé dělat krok za krokem ve svém Excelu. Jenže mě nebavilo to posílat kamarádům při každé menší aktualizaci (= tehdejší *verzování*) a kamarád mi řekl, že na něco takového je prý PHP. Tak mě hecnul si ho nainstalovat. 
 
-**To první odeslání formuláře s `$_GET`, které jsem mohl se všemi čísly poslat kámošům jako odkaz na ICQ a měli tam stejný výpočet - to bylo prostě boží!** 
+Já hrál [webgame.cz](https://www.webgame.cz/) a jeden kluk měl šikovnou Excel tabulku na počítání slabin nepřítele z jeho infiltrace. Ale nechtěl ji nikomu dát. Tak jsem se naštval a začal to samé dělat krok za krokem ve svém Excelu. Jenže mě nebavilo to posílat kamarádům při každé menší aktualizaci (= tehdejší *verzování*) a kamarád mi řekl, že na něco takového je prý PHP. Tak mě hecnul si ho nainstalovat.
+
+**To první odeslání formuláře s `$_GET`, které jsem mohl se všemi čísly poslat kámošům jako odkaz na ICQ a měli tam stejný výpočet - to bylo prostě boží!**
 
 Pak z toho vznikla stránka WgTabs.wz.cz, dnes převzaté [WgTabulky](http://www.wgtabulky.cz/infiltrace/). Můj první open-source ještě na FTP :)
 
