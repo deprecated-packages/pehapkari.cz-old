@@ -77,6 +77,7 @@ parameters:
         -
             name: "Ovládni PhpStorm &ndash; od základů po profi tipy"
             date: "25. 1. 2018"
+            form_link: "https://goo.gl/forms/3u8TiSYO5sPeAM3L2"
             image: "/assets/images/logos/phpstorm.png"
             user: 6
             description: |
@@ -137,6 +138,7 @@ parameters:
         -
             name: "Začněte debugovat jako profíci s xdebugem!"
             date: "25. 1. 2018"
+            form_link: "https://goo.gl/forms/MLST6xPJLizrqZS62"
             image: "/assets/images/logos/xdebug.png"
             user: 32
             description:
@@ -150,7 +152,7 @@ parameters:
                     <li>REST api požadavky</li>
                 </ul>
                 <p><em>Je velmi pravděpodobné, že po absolvování školení, si budete ťukat na čelo, jak jste doposud mohli bez xdebugu v PHP programovat :-).</em></p>
-            duration: "6 hodin"
+            duration: "4 hodiny"
             price: 3999
             capacity: "5-10 lidí"
 
