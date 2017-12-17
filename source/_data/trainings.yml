@@ -76,6 +76,9 @@ parameters:
             capacity: "4-8 lidí"
         -
             name: "Ovládni PhpStorm &ndash; od základů po profi tipy"
+            date: "25. 1. 2018"
+            form_link: "https://goo.gl/forms/3u8TiSYO5sPeAM3L2"
+            image: "/assets/images/logos/phpstorm.png"
             user: 6
             description: |
                 <p>Pro nás vývojáře je IDE hlavní pracovní nástroj, a proto se vyplatí ho perfektně znát. Na školení se naučíte využívat možnosti, které PhpStorm nabízí, a společně si všechno vyzkoušíme. S nově získanými znalostmi vám půjde práce od ruky a vyhnete se i častým chybám z nepozornosti.</p>
@@ -134,6 +137,9 @@ parameters:
             capacity: "4-8 lidí"
         -
             name: "Začněte debugovat jako profíci s xdebugem!"
+            date: "25. 1. 2018"
+            form_link: "https://goo.gl/forms/MLST6xPJLizrqZS62"
+            image: "/assets/images/logos/xdebug.png"
             user: 32
             description:
                 <p>Na školení začneme s nastavením xdebugu pro vaše IDE. Ukážeme si, k čemu se xdebug používá, co umí a jak vám rapidně zefektivní práci. Na reálných aplikacích a problémech si projdeme debugování od základů až po pokročilejší techniky.</p>
@@ -146,8 +152,8 @@ parameters:
                     <li>REST api požadavky</li>
                 </ul>
                 <p><em>Je velmi pravděpodobné, že po absolvování školení, si budete ťukat na čelo, jak jste doposud mohli bez xdebugu v PHP programovat :-).</em></p>
-            duration: "6 hodin"
-            price: 3999
+            duration: "4 hodiny"
+            price: 2999
             capacity: "5-10 lidí"
 
         -
