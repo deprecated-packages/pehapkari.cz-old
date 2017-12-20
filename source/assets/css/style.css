@@ -439,8 +439,8 @@ footer #posobota-logo, footer #pehapkari-logo {
 }
 
 #trainings #gallery img {
-    padding: 0 0 3px 0;
-    margin: 0;
+    padding: 0 0 1px 0;
+    margin-right: -3px;
 }
 
 .subtitle {
