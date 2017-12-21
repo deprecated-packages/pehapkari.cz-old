@@ -44,11 +44,13 @@ inspiration:
             </p>
         </div>
 
+        {* make global add, as http://www.yegor256.com/ *}
+
         <div class="intermezzo">
             <div class="container text-center">
                 <em class="fa fa-snowflake-o fa-fw"></em>
 
-                Naděl si předčasné Vánoce a zajdi si <strong>v prosinci na 2 školení</strong> ↓
+                Naděl si předčasné Vánoce a zajdi si <strong>v lednu na 4 školení</strong> ↓
             </div>
         </div>
 
@@ -58,6 +60,16 @@ inspiration:
         })}
 
         <div class="container">
+            {foreach $lectures as $lecture}
+                {continueIf ! $lecture->isActive()}
+                <h2>
+                    <a href="{$lecture->getRelativeUrl()}">{$lecture->getTitle()}</a>
+                </h2>
+
+            {/foreach}
+
+            <!-- old -->
+
             {foreach $trainings as $training}
                 {continueIf ! isset($training['date'])}
 
