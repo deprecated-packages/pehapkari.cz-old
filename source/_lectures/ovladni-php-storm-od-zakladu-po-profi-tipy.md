@@ -1,5 +1,5 @@
 ---
-title: "Ovládni PhpStorm - od základů po profi tipy" 
+name: "Ovládni PhpStorm - od základů po profi tipy" 
 date: "25. 1. 2018"
 form_link: "https://goo.gl/forms/3u8TiSYO5sPeAM3L2"
 image: "/assets/images/logos/phpstorm.png"

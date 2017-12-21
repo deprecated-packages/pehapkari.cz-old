@@ -1,5 +1,5 @@
 ---
-title: Jak na rapidní vývoj a Continuous Delivery
+name: Jak na rapidní vývoj a Continuous Delivery
 date: "31. 1. 2018"
 image: "/assets/images/logos/feedback.png"
 user: 30

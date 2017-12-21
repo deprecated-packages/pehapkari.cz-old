@@ -7,7 +7,7 @@
 
         <div id="article">
             <div class="container">
-                <h1 class="h2 text-center">{$lecture->getTitle()}</h1>
+                <h1 class="h2 text-center">{$lecture->getName()}</h1>
 
                 <div class="row text-center">
                     <div class="col-md-12">
@@ -26,13 +26,13 @@
 {block socialTags}
     {* Facebook sharing *}
     <meta property="og:type" content="lecture" />
-    <meta property="og:title" content="{$lecture->getTitle()}" />
+    <meta property="og:title" content="{$lecture->getName()}" />
     {*<meta property="og:description" content="{$lecture['perex']|striptags}" />*}
     {*<meta property="og:url" content="{$site_url}/{$lecture['relativeUrl']}/" />*}
 
     {* Twitter sharing *}
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="{$lecture->getTitle()}" />
+    <meta name="twitter:title" content="{$lecture->getName()}" />
     {*<meta name="twitter:description" content="{$lecture['perex']|striptags}" />*}
 {/block}
 

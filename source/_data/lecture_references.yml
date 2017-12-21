@@ -1,6 +1,6 @@
 parameters:
     lecture_references:
-
+      -
           name: "Jan Mikeš, CTO & Co-founder of Entrydo"
           url: "https://entrydo.com/"
           lecture: "Jak na rapidní vývoj a Continuous Delivery"

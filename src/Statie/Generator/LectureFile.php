@@ -16,8 +16,13 @@ final class LectureFile extends AbstractFile
         return (bool) $this->configuration['date'];
     }
 
-    public function getTitle(): string
+    public function getName(): string
     {
-        return $this->configuration['title'];
+        return $this->configuration['name'];
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->configuration['image'] ?? null;
     }
 }

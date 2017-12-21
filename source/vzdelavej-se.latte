@@ -36,20 +36,10 @@ inspiration:
         <div class="container">
             {foreach $lectures as $lecture}
                 {continueIf ! $lecture->isActive()}
-                <h2>
-                    <a href="{$lecture->getRelativeUrl()}">{$lecture->getTitle()}</a>
-                </h2>
 
-            {/foreach}
-
-            <!-- old -->
-
-            {foreach $lectuers as $lecture}
-                {continueIf ! isset($lecture['date'])}
-
-                <h2 class="text-center" id="{$lecture['name']|webalize}">
-                    <img src="{$lecture['image']}" width="120">
-                    <strong>{$lecture['name']|noescape}</strong>
+                <h2 class="text-center">
+                    <img src="{$lecture->getImage()}" width="120">
+                    <strong>{$lecture->getName()|noescape}</strong>
                 </h2>
 
                 <br>
@@ -62,53 +52,53 @@ inspiration:
                     - make nice table?
                 *}
 
-                <div class="row mb-5">
-                    <div class="col-md-4 col-6">
-                        <p>Příští termín: <strong>{$lecture['date']}</strong></p>
-                        <p>Délka: <strong>{$lecture['duration']}</strong></p>
-                        <p>Kapacita: <strong>{$lecture['capacity']}</strong></p>
-                        <p>Cena: <strong>{$lecture['price']|number: 0, '', ' '} Kč</strong></p>
-                    </div>
-                    <div class="col-md-4 col-6 text-center">
-                        <p>
-                            <strong>Školitel</strong>
-                        </p>
+                {*<div class="row mb-5">*}
+                    {*<div class="col-md-4 col-6">*}
+                        {*<p>Příští termín: <strong>{$lecture['date']}</strong></p>*}
+                        {*<p>Délka: <strong>{$lecture['duration']}</strong></p>*}
+                        {*<p>Kapacita: <strong>{$lecture['capacity']}</strong></p>*}
+                        {*<p>Cena: <strong>{$lecture['price']|number: 0, '', ' '} Kč</strong></p>*}
+                    {*</div>*}
+                    {*<div class="col-md-4 col-6 text-center">*}
+                        {*<p>*}
+                            {*<strong>Školitel</strong>*}
+                        {*</p>*}
 
-                        <img width="150" src="/assets/images/people/{$users[$lecture['user']]['photo']}" class="img-thumbnail mb-2 rounded-circle">
-                        <p>
-                            <a n:tag-ifset="$users[$lecture['user']]['url']" href="{$users[$lecture['user']]['url']}">
-                                {$users[$lecture['user']]['name']}
-                            </a>
-                        </p>
-                    </div>
-                    <div class="col-md-4 col-12 text-md-right text-center">
-                        <a href="{$lecture['form_link']}" class="btn btn-success">
-                            <em class="fa fa-fw fa-handshake-o"></em>
-                            &nbsp;
-                            Přihlásit se
-                        </a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <p><strong>O čem je školení?</strong></p>
-                        <p>{$lecture['description']|noescape}</p>
-                    </div>
-                </div>
+                        {*<img width="150" src="/assets/images/people/{$users[$lecture['user']]['photo']}" class="img-thumbnail mb-2 rounded-circle">*}
+                        {*<p>*}
+                            {*<a n:tag-ifset="$users[$lecture['user']]['url']" href="{$users[$lecture['user']]['url']}">*}
+                                {*{$users[$lecture['user']]['name']}*}
+                            {*</a>*}
+                        {*</p>*}
+                    {*</div>*}
+                    {*<div class="col-md-4 col-12 text-md-right text-center">*}
+                        {*<a href="{$lecture['form_link']}" class="btn btn-success">*}
+                            {*<em class="fa fa-fw fa-handshake-o"></em>*}
+                            {*&nbsp;*}
+                            {*Přihlásit se*}
+                        {*</a>*}
+                    {*</div>*}
+                {*</div>*}
+                {*<div class="row">*}
+                    {*<div class="col-md-12">*}
+                        {*<p><strong>O čem je školení?</strong></p>*}
+                        {*<p>{$lecture['description']|noescape}</p>*}
+                    {*</div>*}
+                {*</div>*}
 
                 {sep}<hr>{/sep}
             {/foreach}
 
             <br>
 
-            <div class="text-left text-smaller">
+            {*<div class="text-left text-smaller">*}
                 {* sort training by name *}
-                {php usort($lectures, function ($a, $b) {
-                    return strcasecmp($a['name'], $b['name']);
-                })}
+                {*{php usort($lectures, function ($a, $b) {*}
+                    {*return strcasecmp($a['name'], $b['name']);*}
+                {*})}*}
 
-                <p>
-                    Další kurzy, které teď nemají vypsaný termín:
+                {*<p>*}
+                    {*Další kurzy, které teď nemají vypsaný termín:*}
 
                     {foreach $lectures as $lecture}
                         {continueIf $lecture->isActive()}

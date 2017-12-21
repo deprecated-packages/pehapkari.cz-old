@@ -1,5 +1,5 @@
 ---
-title: "Tvorba zadání a komunikace se zákazníkem" 
+name: "Tvorba zadání a komunikace se zákazníkem" 
 user: 28
 duration: "4 hodiny"
 price: 2499
