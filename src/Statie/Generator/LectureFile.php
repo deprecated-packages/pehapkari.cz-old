@@ -25,4 +25,14 @@ final class LectureFile extends AbstractFile
     {
         return $this->configuration['image'] ?? null;
     }
+
+    public function getUserId(): int
+    {
+        return (int) $this->configuration['user'];
+    }
+
+    public function getDateInString(): string
+    {
+        return $this->configuration['date'];
+    }
 }

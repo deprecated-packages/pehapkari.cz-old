@@ -23,72 +23,50 @@ inspiration:
 
         {* make global add, as http://www.yegor256.com/ *}
 
-        <div class="intermezzo">
-            <div class="container text-center">
-                <em class="fa fa-snowflake-o fa-fw"></em>
-
-                Naděl si předčasné Vánoce a zajdi si <strong>v lednu na 4 školení</strong> ↓
-            </div>
-        </div>
+        <hr>
 
         {* sort training by date *}
 
         <div class="container">
-            {foreach $lectures as $lecture}
-                {continueIf ! $lecture->isActive()}
+            <div class="row">
+                {foreach $lectures as $lecture}
+                    {continueIf ! $lecture->isActive()}
+                    <div class="card flex col-md-6">
+                        <h3 class="text-center">
+                            <strong>{$lecture->getName()|noescape}</strong>
+                        </h3>
 
-                <h2 class="text-center">
-                    <img src="{$lecture->getImage()}" width="120">
-                    <strong>{$lecture->getName()|noescape}</strong>
-                </h2>
+                        <img src="{$lecture->getImage()}" width="120">
 
-                <br>
-                <br>
+                        <p>Příští termín: <strong>{$lecture->getDateInString()}</strong></p>
 
-                {*
-                @todo add
-                    - lunch included
-                    - certificate included
-                    - make nice table?
-                *}
+                        <div>
+                            <p>
+                                <strong>Školí:</strong>
+                                <a n:tag-ifset="$users[$lecture->getUserId()]['url']" href="{$users[$lecture->getUserId()]['url']}">
+                                    {$users[$lecture->getUserId()]['name']}
+                                </a>
+                            </p>
 
-                {*<div class="row mb-5">*}
-                    {*<div class="col-md-4 col-6">*}
-                        {*<p>Příští termín: <strong>{$lecture['date']}</strong></p>*}
-                        {*<p>Délka: <strong>{$lecture['duration']}</strong></p>*}
-                        {*<p>Kapacita: <strong>{$lecture['capacity']}</strong></p>*}
-                        {*<p>Cena: <strong>{$lecture['price']|number: 0, '', ' '} Kč</strong></p>*}
-                    {*</div>*}
-                    {*<div class="col-md-4 col-6 text-center">*}
-                        {*<p>*}
-                            {*<strong>Školitel</strong>*}
-                        {*</p>*}
-
-                        {*<img width="150" src="/assets/images/people/{$users[$lecture['user']]['photo']}" class="img-thumbnail mb-2 rounded-circle">*}
-                        {*<p>*}
-                            {*<a n:tag-ifset="$users[$lecture['user']]['url']" href="{$users[$lecture['user']]['url']}">*}
-                                {*{$users[$lecture['user']]['name']}*}
+                            <img width="75" src="/assets/images/people/{$users[$lecture->getUserId()]['photo']}" class="img-thumbnail mb-2 rounded-circle">
+                        </div>
+                    </div>
+                        {*<div class="col-md-4 col-12 text-md-right text-center">*}
+                            {*<a href="{$lecture['form_link']}" class="btn btn-success">*}
+                                {*<em class="fa fa-fw fa-handshake-o"></em>*}
+                                {*&nbsp;*}
+                                {*Přihlásit se*}
                             {*</a>*}
-                        {*</p>*}
+                        {*</div>*}
                     {*</div>*}
-                    {*<div class="col-md-4 col-12 text-md-right text-center">*}
-                        {*<a href="{$lecture['form_link']}" class="btn btn-success">*}
-                            {*<em class="fa fa-fw fa-handshake-o"></em>*}
-                            {*&nbsp;*}
-                            {*Přihlásit se*}
-                        {*</a>*}
+                    {*<div class="row">*}
+                        {*<div class="col-md-12">*}
+                            {*<p><strong>O čem je školení?</strong></p>*}
+                            {*<p>{$lecture['description']|noescape}</p>*}
+                        {*</div>*}
                     {*</div>*}
-                {*</div>*}
-                {*<div class="row">*}
-                    {*<div class="col-md-12">*}
-                        {*<p><strong>O čem je školení?</strong></p>*}
-                        {*<p>{$lecture['description']|noescape}</p>*}
-                    {*</div>*}
-                {*</div>*}
-
-                {sep}<hr>{/sep}
-            {/foreach}
-
+                {/foreach}
+            </div>
             <br>
 
             {*<div class="text-left text-smaller">*}
