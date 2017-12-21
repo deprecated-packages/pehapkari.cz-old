@@ -113,48 +113,25 @@ inspiration:
                 {sep}<hr>{/sep}
             {/foreach}
 
-            <div class="text-center">
-                <h2>Školení s otevřeným termínem</h2>
-
-                <p class="text">
-                    Tato školení ještě nemají pevně stanovený termín. <strong>Chceš aby měla?</strong>
-                </p>
-
-                <a href="{$open_form_link}" class="btn btn-primary">Dej nám o nich vědět</a>
-            </div>
-
             <br>
 
-            {* sort training by name *}
-            {php usort($trainings, function ($a, $b) {
-                return strcasecmp($a['name'], $b['name']);
-            })}
+            <div class="text-left text-smaller">
+                {* sort training by name *}
+                {php usort($trainings, function ($a, $b) {
+                    return strcasecmp($a['name'], $b['name']);
+                })}
 
-            {foreach $trainings as $training}
-                {continueIf isset($training['date'])}
-                    <div class="card training-card mb-3" id="{$training['name']|webalize}">
-                        <div class="card-body">
-                            <h3 class="card-title">{$training['name']|noescape}</h3>
-                            <p class="card-text">
-                                <img src="/assets/images/people/{$users[$training['user']]['photo']}" class="rounded-circle" height="60" width="60">
-                                <span class="lector-name">
-                                    <strong class="lector-info-title">Lektor:</strong>
-                                    <a n:tag-ifset="$users[$training['user']]['url']" href="{$users[$training['user']]['url']}">
-                                        {$users[$training['user']]['name']}
-                                    </a>
-                                </span>
-                                <br>
-                                <strong>Délka:</strong> {$training['duration']}
-                                <br>
-                                <strong>Cena:</strong> {$training['price']} Kč
-                                <br>
-                                <strong>Kapacita:</strong> {$training['capacity']}
-                            </p>
-                        </div>
-                    </div>
-            {/foreach}
+                <p>
+                    Další kurzy, které teď nemají vypsaný termín:
 
-            <hr class="mt-4">
+                    {foreach $trainings as $training}
+                        {continueIf isset($training['date'])}
+                        <li><a href="...">{$training['name']|noescape}</a></li>
+                    {/foreach}
+                </p>
+            </div>
+
+            <hr class="mt-5">
 
             <div class="text-center">
                 <h2>Spokojení účastníci</h2>

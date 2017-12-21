@@ -508,3 +508,8 @@ footer #posobota-logo, footer #pehapkari-logo {
         padding-left: 85px;
     }
 }
+
+.text-smaller {
+    color: #555;
+    font-size: 0.9em;
+}
