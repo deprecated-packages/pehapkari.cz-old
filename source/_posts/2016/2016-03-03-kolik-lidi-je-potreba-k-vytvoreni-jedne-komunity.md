@@ -82,7 +82,7 @@ Už jsme docela slušně rozjetí, takže dál už jen stručně:
 
 - Díky [Honzovi Javorkovi](https://twitter.com/honzajavorek) za předání cenných 4letých zkušeností při řízení velkých komunit!
 - Díky [Michalovi Švecovi](https://twitter.com/svecmichal), že mi vytrvale doporučoval seriál [Create your own framework on top of the Symfony Components](http://symfony.com/blog/create-your-own-framework-on-top-of-the-symfony-components), i když jsem mu první rok vůbec nerozuměl!
-- Díky lidem z [Designeo.cz](http://designeo.cz/), [Etnetera.cz](http://etnetera.cz/), [Jobs.cz](http://jobs.cz/), [Skrz.cz](http://skrz.cz/), [Bandzone.cz](http://bandzone.cz/) a [Shipito.cz](http://shipito.cz/) za ujasnění si konceptu propagace firem, který jsme pak začali nabízet!
+- Díky lidem z [Designeo.cz](http://designeo.cz/), [Etnetera.cz](http://etnetera.cz/), [Jobs.cz](http://jobs.cz/), [Skrz.cz](http://skrz.cz/), [Bandzone.cz](http://bandzone.cz/) a [Shipito.com](http://shipito.com/) za ujasnění si konceptu propagace firem, který jsme pak začali nabízet!
 - Díky [Lmc.eu](https://www.lmc.eu/) za první sraz v pořádné firmě s chutným rautem a vychlazeným pivem!
 - Díky [Lucce](http://kvitekmedovy.rajce.idnes.cz/) [Patoprsté](https://www.linkedin.com/in/patoprstalucia) za profesionální fotky s rychlým dodáním!
 - Díky [Shopsys.cz](https://www.shopsys.cz/) za srdečnou spolupráci, organizaci pravidelných srazů v Ostravě a propagaci na [PHPLive](http://www.phplive.cz/) a [ostravském BacCampu](http://www.barcampostrava.cz/)!

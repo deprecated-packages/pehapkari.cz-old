@@ -62,7 +62,7 @@ Podobné to bylo v Ostravě a Brně. Nemluvilo se jen o Symfony, ale taky o:
 
 Pojali jsme tedy podezření: "že by lidi zajímal více ekosystém PHP než Symfony"?
 
-Abychom to ověřili, uspořádali jsme s pár přáteli [PHP konferenci](http://phpprague.cz).
+Abychom to ověřili, uspořádali jsme s pár přáteli konferenci PHP Prague,
 kde bylo téma *PHP bez frameworků*. I když jsme akci propagovali jen 2-3 týdny dopředu, **dorazilo na ni [přes 120 lidí](http://srazy.info/PHPPrague/6496)**.
 Včetně bratrů ze Slovenska!
 
@@ -97,7 +97,7 @@ A taky přímo [Tobiase Nylhoma](https://twitter.com/tobiasnyholm) ze Švédska,
 
 ## 3. Chceme podpořit PHP vzdělání u nás
 
-Ze srazů, newsletterů, školení, vaší zpětné vazby a reakcí [na podcasty](http://nejenophp.cz/) vidíme, že vzdělání v PHP je mnohem více žádanější a potřeba, než rozvoj v tom či onom frameworku. Tím, že se téma zredukovalo na frameworky, nemají lidé, kteří žádný framework neumí a chtějí se v PHP vzdělávat a posouvat, prostor.
+Ze srazů, newsletterů, školení, vaší zpětné vazby a reakcí na podcasty *Nejen o PHP* vidíme, že vzdělání v PHP je mnohem více žádanější a potřeba, než rozvoj v tom či onom frameworku. Tím, že se téma zredukovalo na frameworky, nemají lidé, kteří žádný framework neumí a chtějí se v PHP vzdělávat a posouvat, prostor.
 
 **Něco jako kdyby byla jen základní a vysoká škola a ty 4 volné roky mezi nimi si každý musí nějak zmáknout po svém.**
 

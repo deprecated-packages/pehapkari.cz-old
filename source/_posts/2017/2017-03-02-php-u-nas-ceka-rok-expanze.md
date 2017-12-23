@@ -75,8 +75,6 @@ Každý týden [vyjde na blogu](https://pehapkari.cz/blog/) aspoň jeden článe
     <img src="/../../../../assets/images/posts/2017/php-boom/posts.png" class="img-thumbnail">
 </div>
 
-Ještě týden se můžeš [zúčastnit soutěže](https://pehapkari.cz/napis-clanek-vem-si-darek/) a za článek si odnést třeba triko :).
-
 
 ## Firmy si začínají uvědomovat, že je vzdělávání užitečné
 

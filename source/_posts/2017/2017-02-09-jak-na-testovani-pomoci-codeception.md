@@ -115,7 +115,7 @@ vendor/bin/codecept generate:cept acceptance Homepage
 Tento příkaz nám vytvořil soubor `tests\acceptance\HomepageCept.php`
 Otevřeme si ho a rovnou můžeme psát jednotlivé testy. Otestujeme načtení hlavní stránky a
 zda obsahuje všechny důležité prvky.
-Testujeme tedy [homepage seznam.cz](www.seznam.cz).
+Testujeme tedy [homepage seznam.cz](https://www.seznam.cz).
 Testovat přítomnost prvků můžeme jak testováním, zda je na stránce nějaký text, tak CSS selectory nebo XPath selectory.
 ```php
 // tests/acceptance/HomepageCept.php
