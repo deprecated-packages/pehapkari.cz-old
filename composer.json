@@ -20,7 +20,8 @@
 
         "phpstan/phpstan": "^0.9",
         "phpunit/phpunit": "^6.5",
-        "symplify/easy-coding-standard": "^3.0"
+        "symplify/easy-coding-standard": "^3.0",
+        "spatie/http-status-check": "^2.5"
     },
     "autoload": {
         "psr-4": {
@@ -38,6 +39,9 @@
             "sh ./bin/clear_post_trailing_whitespaces.sh",
             "vendor/bin/ecs check src tests --fix"
         ],
-        "phpstan": "vendor/bin/phpstan analyse src tests --level max --configuration phpstan.neon"
+        "phpstan": "vendor/bin/phpstan analyse src tests --level max --configuration phpstan.neon",
+        "check-status": [
+            "vendor/bin/http-status-check scan https://pehapkari.cz --output invalid-links.txt"
+        ]
     }
 }

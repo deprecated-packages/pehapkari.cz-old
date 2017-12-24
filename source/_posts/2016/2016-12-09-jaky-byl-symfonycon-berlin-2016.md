@@ -29,7 +29,7 @@ Začátek roku 2017.
 
 ### Readonly FileSystem je ready
 
-Důležitou součástí bylo **dokončení podpory readonly filesystému** (dostupné od verze [Symfony 3.2](https://github.com/symfony/symfony/blob/master/CHANGELOG-3.2.md)). Právě to umožní **deploying aplikací pomocí artefaktů**.
+Důležitou součástí bylo **dokončení podpory readonly filesystému** (dostupné od verze [Symfony 3.2](https://github.com/symfony/symfony/blob/3.4/CHANGELOG-3.2.md)). Právě to umožní **deploying aplikací pomocí artefaktů**.
 
 Problém byl v komponěntě Cache, která kvůli absolutním cestám znemožňovala deploy Symfony aplikace na úložiště bez možnosti zápisu. **Cache lze od verze 3.2 zahřát na build serveru a vytvořit tak funkční artefakt, který již žádný zápis nevyžaduje**.
 
