@@ -9,7 +9,6 @@ Už žádné `print()` a `echo` v konzolových commandech pro zjištění hodnot
 '''
 author: 32
 lang: cs
-related_posts: []
 ---
 
 Nezáleží na tom, jestli používáš `Symfony\Console` nebo pouštíš běžný PHP skript, většinou to děláš nějak takto:
@@ -38,8 +37,10 @@ Ale co když chci vypsat více proměnných a v kódu se chci posouvat nebo jej 
 
 ## Xdebug na pomoc
 
+<small>*Následující řádky předpokládají nainstalovanou a [aktivní xdebug extension](https://stackoverflow.com/a/14046603) pro vaše PHP. Nejrychlejší kontrola je přes příkaz `php -v|grep 'Xdebug'`.*</small>
+
 Postup je opět velice jednoduchý:
-1. Zapnu naslouchání IDE pro příchozí spojení `Run -> Listen for debug connections`
+1. Zapnu naslouchání IDE pro příchozí spojení `Run → Listen for debug connections`
 2. Umístím **breakpoint** na místo, kde chci běh skriptu zastavit
 3. Spustím skript se zapnutým xdebugem & Profit
 
@@ -75,4 +76,4 @@ Aby byla změna permanentní, je potřeba řádek s aliasem přidat do [bash_pro
 *Přeji šťastné a veselé debugování CLI skriptů!*
 
 ## Chci se dozvědět více!
-Přihlaš se na [Xdebug školení](https://pehapkari.cz/vzdelavej-se/), kde probereme téma více do hloubky a ukážeme si pokročilé tipy! 
+Přihlaš se na školení [Začněte debugovat jako profíci s xdebugem](https://www.facebook.com/events/755430577984268/), kde probereme téma více do hloubky a ukážeme si pokročilé tipy! 
