@@ -6,7 +6,7 @@ perex: '''
  All of us model every day.
  A friend tells us a joke, we imagine the situation and if we model it as is intended, we find the situation funny.
  A customer wants to have a new functionality and while he speaks, we try to imagine what does the customer wants - we model.
- 
+
  We are going to take a look at what is software modeling, how can we express the model and how can we capture key concepts.
 '''
 author: 29

@@ -25,7 +25,7 @@ final class ZipCodeConstraint extends Constraint
     {
         parent::__construct($options);
 
-        if (! in_array($this->country, IsoCodesZipCode::getAvailableCountries())) {
+        if (! in_array($this->country, IsoCodesZipCode::getAvailableCountries(), true)) {
             throw new ConstraintDefinitionException(sprintf(
                 'The option "country" must be one of "%s" or "all"',
                 implode('", "', IsoCodesZipCode::getAvailableCountries())

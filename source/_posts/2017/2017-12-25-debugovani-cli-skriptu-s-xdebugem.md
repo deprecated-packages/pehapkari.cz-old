@@ -5,7 +5,7 @@ title: "Debugování CLI skriptů s Xdebugem"
 perex: '''
 Debugování je každodenním chlebem programátorů. Ukáži vám, jak rychle a jednoduše se dají debugovat konzolové skripty s Xdebugem.
 
-Už žádné `print()` a `echo` v konzolových commandech pro zjištění hodnoty proměnné  :-). 
+Už žádné `print()` a `echo` v konzolových commandech pro zjištění hodnoty proměnné  :-).
 '''
 author: 32
 lang: cs
@@ -76,4 +76,4 @@ Aby byla změna permanentní, je potřeba řádek s aliasem přidat do [bash_pro
 *Přeji šťastné a veselé debugování CLI skriptů!*
 
 ## Chci se dozvědět více!
-Přihlaš se na školení [Začněte debugovat jako profíci s xdebugem](https://www.facebook.com/events/755430577984268/), kde probereme téma více do hloubky a ukážeme si pokročilé tipy! 
+Přihlaš se na školení [Začněte debugovat jako profíci s xdebugem](https://www.facebook.com/events/755430577984268/), kde probereme téma více do hloubky a ukážeme si pokročilé tipy!
