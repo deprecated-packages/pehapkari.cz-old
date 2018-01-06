@@ -6,14 +6,14 @@
         "symplify/statie": "^3.1"
     },
     "require-dev": {
-        "doctrine/annotations": "^1.5",
+        "doctrine/annotations": "^1.6",
         "doctrine/cache": "^1.7",
         "latte/latte": "^2.4",
         "nette/application": "^2.4",
         "nette/forms": "^2.4",
         "nette/security": "^2.4",
         "symfony/console": "^4.0",
-        "symfony/event-dispatcher": "^3.4|^4.0",
+        "symfony/event-dispatcher": "^4.0",
         "symfony/expression-language": "^4.0",
         "symfony/intl": "^4.0",
         "symfony/validator": "^4.0",
