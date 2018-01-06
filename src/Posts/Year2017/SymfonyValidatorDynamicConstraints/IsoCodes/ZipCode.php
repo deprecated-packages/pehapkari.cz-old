@@ -2,7 +2,7 @@
 
 namespace Pehapkari\Website\Posts\Year2017\SymfonyValidatorDynamicConstraints\IsoCodes;
 
-use InvalidArgumentException;
+use Pehapkari\Website\Posts\Year2017\SymfonyValidatorDynamicConstraints\Exception\MissingZipCodeValidatorException;
 
 /**
  * Inspired by https://github.com/ronanguilloux/IsoCodes/blob/master/src/IsoCodes/ZipCode.php.
@@ -22,7 +22,7 @@ final class ZipCode
         $country = strtoupper($country);
 
         if (! isset(self::$patterns[$country])) {
-            throw new InvalidArgumentException(sprintf(
+            throw new MissingZipCodeValidatorException(sprintf(
                 'The zipcode validator for "%s" does not exists yet: feel free to add it.',
                 $country
             ));
