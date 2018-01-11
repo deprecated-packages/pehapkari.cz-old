@@ -1,4 +1,5 @@
-/* http://prismjs.com/download.html?themes=prism-solarizedlight&languages=markup+clike+javascript+ini+php+php-extras+twig+yaml */
+/* PrismJS 1.9.0
+http://prismjs.com/download.html?themes=prism-solarizedlight&languages=markup+css+clike+javascript+diff+php+php-extras+twig+yaml */
 /*
  Solarized Color Schemes originally by Ethan Schoonover
  http://ethanschoonover.com/solarized
@@ -29,7 +30,6 @@ cyan      #2aa198
 green     #859900
 */
 
-pre > code,
 code[class*="language-"],
 pre[class*="language-"] {
 	color: #657b83; /* base00 */
