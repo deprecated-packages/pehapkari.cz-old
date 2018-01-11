@@ -14,14 +14,6 @@ lang: en
 related_posts: [49, 52]
 ---
 
-# Domain-Driven Design - Simplify Object Model
-
-There are always many ways how to implement the abstract model.
-The implementation can be made in smooth and simple or in overcomplicated way.
-It is surprisingly easy to end up with a complicated solution.
-
-But we will take the effort and introduce strategies and concepts that will help us simplify the model.
-
 ## Model
 
 It doesn't make sense to explain modeling on *Foo, Bar, etc...*, the Domain-driven design is about the domain.
