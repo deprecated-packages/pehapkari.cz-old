@@ -18,6 +18,10 @@
                     {if $lecture->isActive()}
                         <p>Příští termín: <strong>{$lecture->getHumanDate()}</strong></p>
 
+                        <p n:if="$lecture->getFbEventLink()">
+                            <a href="{$lecture->getFbEventLink()}">Akce na FB</a>
+                        </p>
+
                         {*<div class="col-md-4 col-12 text-md-right text-center">*}
                         <a href="{$lecture->getFormLink()}" class="btn btn-success">
                             <em class="fa fa-fw fa-handshake-o"></em>

@@ -50,4 +50,9 @@ final class LectureFile extends AbstractFile
 
         return $courseDate->format('j. n. Y');
     }
+
+    public function getFbEventLink(): ?string
+    {
+        return $this->configuration['fb_event'] ?? null;
+    }
 }
