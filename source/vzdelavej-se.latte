@@ -31,20 +31,20 @@ inspiration:
             <div class="row">
                 {foreach $lectures as $lecture}
                     {continueIf ! $lecture->isActive()}
-                    <div class="card flex col-md-6">
-                        <h3 class="text-center">
+                    <div class="flex col-md-6">
+                        <h3>
                             <a href="/{$lecture->getRelativeUrl()}/">
                                 <strong>{$lecture->getName()|noescape}</strong>
                             </a>
                         </h3>
 
-                        <div class="text-center mt-xl-5 mb-xl-5">
+                        <div class="text-center pt-xl-5 pb-xl-5 border-secondary border mb-3 mt-3">
+                            <img width="75" src="/assets/images/people/{$users[$lecture->getUserId()]['photo']}" class="img-thumbnail mr-4 rounded-circle pull-right">
+
                             <img src="{$lecture->getImage()}" width="150">
                         </div>
 
-                        {if $lecture->getPerex()}
-                            <p>{$lecture->getPerex()|noescape}</p>
-                        {/if}
+                        <p n:if="$lecture->getPerex()">{$lecture->getPerex()|noescape}</p>
 
                         <p>Příští termín: <strong>{$lecture->getHumanDate()}</strong></p>
                         <p>
@@ -56,24 +56,24 @@ inspiration:
                             </strong>
                         </p>
 
-                        <img width="75" src="/assets/images/people/{$users[$lecture->getUserId()]['photo']}" class="img-thumbnail mb-2 rounded-circle">
+                        <br>
+                        <br>
                     </div>
                 {/foreach}
             </div>
+
+            <br>
+            <br>
             <br>
 
-            {*<div class="text-left text-smaller">*}
-                {* sort training by name *}
-                {*{php usort($lectures, function ($a, $b) {*}
-                    {*return strcasecmp($a['name'], $b['name']);*}
-                {*})}*}
-
-                {*<p>*}
-                    {*Další kurzy, které teď nemají vypsaný termín:*}
-
+            <div class="text-center text-smaller">
+                <p>
+                    Další kurzy, které teď nemají vypsaný termín:
+                </p>
+                <p>
                     {foreach $lectures as $lecture}
                         {continueIf $lecture->isActive()}
-                        <li><a href="...">{$lecture['name']|noescape}</a></li>
+                        <a href="/{$lecture->getRelativeUrl()}/">{$lecture->getName()|noescape}</a>{sep}, {/sep}
                     {/foreach}
                 </p>
             </div>
