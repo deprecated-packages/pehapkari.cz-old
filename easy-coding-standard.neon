@@ -13,9 +13,7 @@ checkers:
              - 'Nette\Application\UI\Multiplier'
 
     # Slevomat
-    - SlevomatCodingStandard\Sniffs\Exceptions\ReferenceThrowableOnlySniff
     - SlevomatCodingStandard\Sniffs\Classes\UnusedPrivateElementsSniff
-    - SlevomatCodingStandard\Sniffs\TypeHints\NullableTypeForNullDefaultValueSniff
     SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff:
         usefulAnnotations:
             - @Assert\Callback
