@@ -6,18 +6,38 @@
         {include "menu", "id" => "vzdelavej-se"}
 
         <div class="container">
-            <h1 class="h2 text-center">{$lecture->getName()}</h1>
+            <h1 class="text-center">{$lecture->getName()}</h1>
 
             <div class="row">
                 <div class="col-md-8">
+                    <h2>O čem je školení</h2>
                     {$lecture->getContent()|noescape}
                 </div>
 
                 <div class="col-md-4">
-                    Školitel
+                    {if $lecture->isActive()}
+                        <p>Příští termín: <strong>{$lecture->getHumanDate()}</strong></p>
+
+                        {*<div class="col-md-4 col-12 text-md-right text-center">*}
+                        <a href="{$lecture->getFormLink()}" class="btn btn-success">
+                            <em class="fa fa-fw fa-handshake-o"></em>
+                            Přihlásit se
+                        </a>
+                    {/if}
+
+                    <h3>Školitel</h3>
+                    <div>
+                        <p>
+                            <strong>Školí:</strong>
+                            <a n:tag-ifset="$users[$lecture->getUserId()]['url']" href="{$users[$lecture->getUserId()]['url']}">
+                                {$users[$lecture->getUserId()]['name']}
+                            </a>
+                        </p>
 
 
 
+                        <img width="75" src="/assets/images/people/{$users[$lecture->getUserId()]['photo']}" class="img-thumbnail mb-2 rounded-circle">
+                    </div>
                 </div>
             </div>
         </div>
