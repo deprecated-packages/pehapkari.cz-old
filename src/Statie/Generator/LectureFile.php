@@ -39,6 +39,11 @@ final class LectureFile extends AbstractFile
         return (int) $this->configuration['user'];
     }
 
+    public function getPerex(): ?string
+    {
+        return $this->configuration['perex'] ?? null;
+    }
+
     public function getHumanDate(): string
     {
         $courseDate = new DateTime($this->configuration['date']);

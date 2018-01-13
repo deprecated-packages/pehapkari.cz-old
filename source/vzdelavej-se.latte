@@ -38,35 +38,26 @@ inspiration:
                             </a>
                         </h3>
 
-                        <img src="{$lecture->getImage()}" width="120">
+                        <div class="text-center mt-xl-5 mb-xl-5">
+                            <img src="{$lecture->getImage()}" width="150">
+                        </div>
+
+                        {if $lecture->getPerex()}
+                            <p>{$lecture->getPerex()|noescape}</p>
+                        {/if}
 
                         <p>Příští termín: <strong>{$lecture->getHumanDate()}</strong></p>
-
-                        <div>
-                            <p>
-                                <strong>Školí:</strong>
+                        <p>
+                            Lektor:
+                            <strong>
                                 <a n:tag-ifset="$users[$lecture->getUserId()]['url']" href="{$users[$lecture->getUserId()]['url']}">
-                                    {$users[$lecture->getUserId()]['name']}
+                                {$users[$lecture->getUserId()]['name']}
                                 </a>
-                            </p>
+                            </strong>
+                        </p>
 
-                            <img width="75" src="/assets/images/people/{$users[$lecture->getUserId()]['photo']}" class="img-thumbnail mb-2 rounded-circle">
-                        </div>
+                        <img width="75" src="/assets/images/people/{$users[$lecture->getUserId()]['photo']}" class="img-thumbnail mb-2 rounded-circle">
                     </div>
-                        {*<div class="col-md-4 col-12 text-md-right text-center">*}
-                            {*<a href="{$lecture['form_link']}" class="btn btn-success">*}
-                                {*<em class="fa fa-fw fa-handshake-o"></em>*}
-                                {*&nbsp;*}
-                                {*Přihlásit se*}
-                            {*</a>*}
-                        {*</div>*}
-                    {*</div>*}
-                    {*<div class="row">*}
-                        {*<div class="col-md-12">*}
-                            {*<p><strong>O čem je školení?</strong></p>*}
-                            {*<p>{$lecture['description']|noescape}</p>*}
-                        {*</div>*}
-                    {*</div>*}
                 {/foreach}
             </div>
             <br>
