@@ -1,6 +1,6 @@
 ---
 name: "Začněte debugovat jako profíci s xdebugem!"
-date: "25. 1. 2018"
+date: "2018-01-25"
 form_link: "https://goo.gl/forms/MLST6xPJLizrqZS62"
 image: "/assets/images/logos/xdebug.png"
 user: 32

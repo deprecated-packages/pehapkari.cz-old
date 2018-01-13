@@ -1,6 +1,6 @@
 ---
 name: Jak na rapidní vývoj a Continuous Delivery
-date: "31. 1. 2018"
+date: "2018-01-31"
 image: "/assets/images/logos/feedback.png"
 user: 30
 duration: "8 hodin"

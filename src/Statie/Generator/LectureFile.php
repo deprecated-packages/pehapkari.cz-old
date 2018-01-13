@@ -2,6 +2,7 @@
 
 namespace Pehapkari\Website\Statie\Generator;
 
+use DateTime;
 use Symplify\Statie\Renderable\File\AbstractFile;
 
 final class LectureFile extends AbstractFile
@@ -12,8 +13,10 @@ final class LectureFile extends AbstractFile
             return false;
         }
 
-        // @todo check future
-        return (bool) $this->configuration['date'];
+        $now = new DateTime();
+        $courseDate = new DateTime($this->configuration['date']);
+
+        return $courseDate > $now;
     }
 
     public function getName(): string
@@ -31,8 +34,10 @@ final class LectureFile extends AbstractFile
         return (int) $this->configuration['user'];
     }
 
-    public function getDateInString(): string
+    public function getHumanDate(): string
     {
-        return $this->configuration['date'];
+        $courseDate = new DateTime($this->configuration['date']);
+
+        return $courseDate->format('j. n. Y');
     }
 }
