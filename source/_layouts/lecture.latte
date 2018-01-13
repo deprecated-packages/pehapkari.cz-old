@@ -5,14 +5,19 @@
     <body>
         {include "menu", "id" => "vzdelavej-se"}
 
-        <div id="article">
-            <div class="container">
-                <h1 class="h2 text-center">{$lecture->getName()}</h1>
+        <div class="container">
+            <h1 class="h2 text-center">{$lecture->getName()}</h1>
 
-                <div class="row text-center">
-                    <div class="col-md-12">
-                        {$lecture->getContent()}
-                    </div>
+            <div class="row">
+                <div class="col-md-8">
+                    {$lecture->getContent()|noescape}
+                </div>
+
+                <div class="col-md-4">
+                    Školitel
+
+
+
                 </div>
             </div>
         </div>
@@ -21,7 +26,6 @@
         {include "facebookPixel"}
     </body>
 </html>
-
 
 {block socialTags}
     {* Facebook sharing *}
@@ -35,7 +39,6 @@
     <meta name="twitter:title" content="{$lecture->getName()}" />
     {*<meta name="twitter:description" content="{$lecture['perex']|striptags}" />*}
 {/block}
-
 
 {block additionalCss}
     <link href="/assets/prism/prism.css?v=0.1" rel="stylesheet" type="text/css" />

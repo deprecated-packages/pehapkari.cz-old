@@ -33,7 +33,9 @@ inspiration:
                     {continueIf ! $lecture->isActive()}
                     <div class="card flex col-md-6">
                         <h3 class="text-center">
-                            <strong>{$lecture->getName()|noescape}</strong>
+                            <a href="/{$lecture->getRelativeUrl()}/">
+                                <strong>{$lecture->getName()|noescape}</strong>
+                            </a>
                         </h3>
 
                         <img src="{$lecture->getImage()}" width="120">
