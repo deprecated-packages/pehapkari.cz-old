@@ -7,6 +7,7 @@ user: 11
 duration: "8 hodin"
 price: 4999
 capacity: "4-10 lidí"
+fb_event: https://www.facebook.com/events/1573052692775468/
 ---
 
 Naučte se používat <a href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a> od samotné instalace, přes plnění daty až po vlastní fulltextové vyhledávání. Školení začneme krátkým úvodem do problematiky vyhledávání a řekneme si, proč použít právě Elasticsearch. Následně přejdeme k samotné instalaci a základní konfiguraci. Seznámíme se s nástrojem <a href="https://www.elastic.co/products/kibana">Kibana</a>. Ukážeme si, jak připravit mapping indexu pro data, ve kterých chceme vyhledávat. Samozřejmě si ukážeme, jak připravit vyhledávání, které se nezalekne překlepů a dokáže hledat i s pomocí synonym.

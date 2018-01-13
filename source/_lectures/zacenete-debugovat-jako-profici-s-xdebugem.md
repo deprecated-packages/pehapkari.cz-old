@@ -7,6 +7,7 @@ user: 32
 duration: "4 hodiny"
 price: 2999
 capacity: "5-10 lidí"
+fb_event: https://www.facebook.com/events/755430577984268/
 ---
 
 Na školení začneme s nastavením xdebugu pro vaše IDE. Ukážeme si, k čemu se xdebug používá, co umí a jak vám rapidně zefektivní práci. Na reálných aplikacích a problémech si projdeme debugování od základů až po pokročilejší techniky.

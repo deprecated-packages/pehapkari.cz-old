@@ -6,6 +6,7 @@ user: 30
 duration: "8 hodin"
 price: 4999
 capacity: "4-8 lidí"
+fb_event: https://www.facebook.com/events/608839619507792/
 ---
 
 Zkracování <a href="https://ondrej.mirtes.cz/zkracovani-feedback-loop">feedback loop</a>:
