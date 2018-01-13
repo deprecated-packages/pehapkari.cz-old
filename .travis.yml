@@ -3,7 +3,9 @@ language: php
 matrix:
     include:
         - php: 7.1
-          env: STATIC_ANALYSIS=1
+          env: ECS=1
+        - php: 7.1
+          env: PHPSTAN=1
         - php: 7.2
           env: PHPUNIT_FLAGS="--coverage-clover coverage.xml"
 
@@ -14,8 +16,8 @@ script:
     # run tests for tested posts (with "tested: true" in header configuration)
     - vendor/bin/phpunit $PHPUNIT_FLAGS
     # check code standard (defined in composer.json "scripts" section)
-    - if [[ $STATIC_ANALYSIS = 1 ]]; then composer check-cs; fi
-    - if [[ $STATIC_ANALYSIS = 1 ]]; then composer phpstan; fi
+    - if [[ $ECS = 1 ]]; then composer check-cs; fi
+    - if [[ $PHPSTAN = 1 ]]; then composer phpstan; fi
     # test that website is generated
     - vendor/bin/statie generate source
 
