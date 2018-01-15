@@ -9,6 +9,8 @@ author: 6
 lang: cs
 ---
 
+**Update:** Udělal jsem [phpstorm meta file pro PhpUnit](#update-1). 
+
 Nástroje jako refaktoring a inspekce kódu jsou plně závislé na tom, jak dobře dokáže PhpStorm váš kód pochopit. Ale protože je PHP dynamicky typovaný jazyk, tak je to mnohem složitější úkol, než třeba ve staticky typované Javě. 
 
 Pokusím se to přiblížit na následujícím kusu kódu. PhpStorm bude mít problém pochopit, co ten kód vrátí a nebude vám schopný dál nic napovídat, ani za vás nic pohlídat. 
@@ -251,6 +253,8 @@ namespace PHPSTORM_META {
 ```
 
 Bohužel je v současnosti možné takto specifikovat jen první parametr volání. Je to čistě omezení současné implementace v PhpStormu. Nicméně [z definice](https://github.com/JetBrains/phpstorm-stubs/blob/master/meta/.phpstorm.meta.php) je vidět, že samotný formát je na to připraven a implementaci je možné do budoucna rozšířit. 
+
+<span id="update-1">**Update:** Připravil jsem [phpstorm meta file pro PhpUnit](https://github.com/tomasfejfar/phpunit-phpstorm-meta), který správně napovídá když zavoláte `createMock` nebo `getMockForAbstractClass` (zkusil jsem to nejdřív [navrhnout přímo](https://github.com/sebastianbergmann/phpunit/pull/2961)). Pokud používáte PHPStan, tak ten si nejspíš bude stěžovat taky a [budete mu muset přidat plugin](https://github.com/phpstan/phpstan-phpunit).
 
 ## Závěr
 
