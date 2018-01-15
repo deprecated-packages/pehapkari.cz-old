@@ -15,6 +15,7 @@ Detaily by měly záviset na abstrakci.
 De facto můžeme říct, že byste téměř vždy měli záviset na abstrakci a nikoli na konkrétní implementaci.
 '''
 author: 30
+related_posts: [50,57,58,59]
 ---
 
 Video (1:29)
