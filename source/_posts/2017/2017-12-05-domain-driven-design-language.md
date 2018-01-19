@@ -9,7 +9,7 @@ perex: '''
 '''
 author: 29
 lang: en
-related_posts: [52, 54, 61, 63]
+related_items: [52, 54, 61, 63]
 ---
 
 ### Personal Motivation

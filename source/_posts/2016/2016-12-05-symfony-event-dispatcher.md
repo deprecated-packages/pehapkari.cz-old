@@ -7,7 +7,7 @@ author: 1
 tested: true
 test_slug: EventDispatcher
 lang: en
-related_posts: [35]
+related_items: [35]
 ---
 
 

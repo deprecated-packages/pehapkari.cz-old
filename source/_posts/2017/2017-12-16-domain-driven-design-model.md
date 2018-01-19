@@ -11,7 +11,7 @@ perex: '''
 '''
 author: 29
 lang: en
-related_posts: [49, 54, 61, 63]
+related_items: [49, 54, 61, 63]
 ---
 
 ## Modeling

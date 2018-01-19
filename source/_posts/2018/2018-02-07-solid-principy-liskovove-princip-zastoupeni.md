@@ -15,7 +15,7 @@ Trochu lidskými slovy ale říká:
 
 '''
 author: 30
-related_posts: [50,57,58]
+related_items: [50,57,58]
 ---
 
 Video (1:46)

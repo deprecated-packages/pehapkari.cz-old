@@ -11,7 +11,7 @@ perex: '''
 author: 1
 lang: en
 reviewed_by: [5]
-related_posts: [5]
+related_items: [5]
 ---
 
 ## 1. Start with *Stringly*

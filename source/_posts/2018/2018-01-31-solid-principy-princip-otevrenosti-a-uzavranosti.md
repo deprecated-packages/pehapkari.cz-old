@@ -9,7 +9,7 @@ Princip říká, že:
 
 '''
 author: 30
-related_posts: [50,57]
+related_items: [50,57]
 ---
 
 Video (1:50)

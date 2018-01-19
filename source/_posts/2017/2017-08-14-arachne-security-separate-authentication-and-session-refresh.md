@@ -10,7 +10,7 @@ perex: '''
 author: 5
 reviewed_by: [1, 25, 26]
 lang: en
-related_posts: [37, 38, 39, 40]
+related_items: [37, 38, 39, 40]
 ---
 
 ## Separate Authentication

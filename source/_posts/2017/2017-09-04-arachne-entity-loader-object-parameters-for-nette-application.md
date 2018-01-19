@@ -10,7 +10,7 @@ perex: '''
 author: 5
 reviewed_by: [1, 25, 26]
 lang: en
-related_posts: [36, 37, 38, 40]
+related_items: [36, 37, 38, 40]
 ---
 
 ## The basics

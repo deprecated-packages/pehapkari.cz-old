@@ -8,7 +8,7 @@ Princip jedné odpovědnosti (Single Responsibility Principle) je první z pěti
 Jde o metodu, díky které se kód stává přehlednějším a srozumitelnější. Říká třídě, že je zodpovědná pouze za jednu jedinou věc.
 '''
 author: 30
-related_posts: [50]
+related_items: [50]
 ---
 
 Video (1:26)

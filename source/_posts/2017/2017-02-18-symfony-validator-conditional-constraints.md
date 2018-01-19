@@ -7,7 +7,7 @@ author: 5
 lang: en
 tested: true
 test_slug: SymfonyValidatorConditionalConstraints
-related_posts: [20, 22]
+related_items: [20, 22]
 ---
 
 

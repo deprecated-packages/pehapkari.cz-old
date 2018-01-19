@@ -7,7 +7,7 @@ perex: '''
 '''
 author: 15
 lang: en
-related_posts: [45]
+related_items: [45]
 ---
 
 ## What is ELK Stack

@@ -12,7 +12,7 @@ podcast:
     mp3_duration: "17:13"
 
 author: 21
-related_posts: [1, 2]
+related_items: [1, 2]
 ---
 
 <br>

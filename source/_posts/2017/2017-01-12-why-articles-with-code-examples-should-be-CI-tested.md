@@ -6,7 +6,7 @@ perex: "I know many great articles that go right to the point. I use their code 
 author: 1
 lang: en
 reviewed_by: [5]
-related_posts: [4]
+related_items: [4]
 ---
 
 Do you know [Awesome lists](https://github.com/sindresorhus/awesome/)? If not, go to check them. They collect best sources about a certain topic. When I try to learn something new, I usually start on Github looking for "awesome <technology>". I recommend at least briefly to check them.

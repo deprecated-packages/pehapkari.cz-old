@@ -7,7 +7,7 @@ perex: '''
     **Říkáš si proč?** To se dnes dozvíš.
 '''
 author: 1
-related_posts: [41, 43]
+related_items: [41, 43]
 ---
 
 Od září 2016 měníme název komunity *Symfonisti* na *Péhápkaři*.

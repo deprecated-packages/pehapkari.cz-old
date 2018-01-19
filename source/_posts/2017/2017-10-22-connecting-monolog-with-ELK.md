@@ -7,7 +7,7 @@ perex: '''
 '''
 author: 15
 lang: en
-related_posts: [44]
+related_items: [44]
 ---
 
 ## What is Monolog

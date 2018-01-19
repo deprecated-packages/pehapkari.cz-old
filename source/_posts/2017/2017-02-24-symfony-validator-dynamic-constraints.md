@@ -7,7 +7,7 @@ author: 5
 lang: en
 tested: true
 test_slug: SymfonyValidatorDynamicConstraints
-related_posts: [20, 21]
+related_items: [20, 21]
 ---
 
 

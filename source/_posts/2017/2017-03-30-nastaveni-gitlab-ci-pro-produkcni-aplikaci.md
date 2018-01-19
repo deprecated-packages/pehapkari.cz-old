@@ -4,7 +4,7 @@ layout: post
 title: "Nastavení GitLab CI pro produkční aplikaci"
 perex: "GitLab CI je dnes moderní. Vychází o něm články s krásnými, jednoduchými příklady, jak jej začít používat. Pak ale člověk narazí. Jak se utkat s překážkami a vyjít z toho jako vítěz?"
 author: 12
-related_posts: [25]
+related_items: [25]
 ---
 
 Už delší dobu jsem uvažoval, že vyzkouším GitLab a jeho [CI](https://cs.wikipedia.org/wiki/Pr%C5%AFb%C4%9B%C5%BEn%C3%A1_integrace)
