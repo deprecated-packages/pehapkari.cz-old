@@ -3,17 +3,20 @@
 namespace Pehapkari\Website\Statie\Generator;
 
 use DateTime;
+use DateTimeInterface;
 use Symplify\Statie\Renderable\File\AbstractFile;
 
 final class LectureFile extends AbstractFile
 {
     public function isActive(): bool
     {
+        var_dump($this->configuration);
+
         if (! isset($this->configuration['date'])) {
             return false;
         }
 
-        $now = new DateTime();
+        $now = new DateTime('now');
         $courseDate = new DateTime($this->configuration['date']);
 
         return $courseDate > $now;
@@ -42,6 +45,15 @@ final class LectureFile extends AbstractFile
     public function getPerex(): ?string
     {
         return $this->configuration['perex'] ?? null;
+    }
+
+    public function getDateTime(): ?DateTimeInterface
+    {
+        if (isset($this->configuration['date'])) {
+            return new DateTime($this->configuration['date']);
+        }
+
+        return null;
     }
 
     public function getHumanDate(): string
