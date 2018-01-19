@@ -3,7 +3,7 @@ id: 56
 layout: post
 title: "A place to meet Statie"
 perex: '''
-I'm happy to announce that Statie, a newcomer to the field of static site generators written in PHP, received a place where it could promote itself better. <a href=\"https://www.statie.org/\">It's own website</a>. Though a really simple one; but it's healthy to start with small things, they say.
+I'm happy to announce that Statie, a newcomer to the field of static site generators written in PHP, received a place where it could promote itself better. [It's own website](https://www.statie.org/). Though a really simple one; but it's healthy to start with small things, they say.
 '''
 lang: en
 author: 31
