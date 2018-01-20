@@ -10,8 +10,6 @@ final class LectureFile extends AbstractFile
 {
     public function isActive(): bool
     {
-        var_dump($this->configuration);
-
         if (! isset($this->configuration['date'])) {
             return false;
         }

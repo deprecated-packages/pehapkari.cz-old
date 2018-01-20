@@ -2,7 +2,6 @@
 
 namespace Pehapkari\Website\Statie\Generator;
 
-use DateTime;
 use Symplify\Statie\Generator\Contract\ObjectSorterInterface;
 
 final class LectureFileSorter implements ObjectSorterInterface
@@ -26,7 +25,7 @@ final class LectureFileSorter implements ObjectSorterInterface
         $activeLectures = $this->sortActiveLecturesByDate($activeLectures);
         $restOfLectures = $this->sortRestOfLecturesByName($restOfLectures);
 
-        return $activeLectures + $restOfLectures;
+        return array_merge($activeLectures, $restOfLectures);
     }
 
     /**
@@ -36,7 +35,7 @@ final class LectureFileSorter implements ObjectSorterInterface
     private function sortActiveLecturesByDate(array $activeLectures): array
     {
         usort($activeLectures, function (LectureFile $firstFile, LectureFile $secondFile) {
-            return $secondFile->getDateTime() - $firstFile->getDateTime();
+            return $secondFile->getDateTime() < $firstFile->getDateTime();
         });
         return $activeLectures;
     }
@@ -48,7 +47,7 @@ final class LectureFileSorter implements ObjectSorterInterface
     private function sortRestOfLecturesByName(array $restOfLectures): array
     {
         usort($restOfLectures, function (LectureFile $firstFile, LectureFile $secondFile) {
-            return strcmp($secondFile->getName(), $firstFile->getName());
+            return strcmp($firstFile->getName(), $secondFile->getName());
         });
         return $restOfLectures;
     }
