@@ -6,10 +6,10 @@ perex: '''
 Definice říká, že:
 
 ```
-A. Moduly vyšší úrovně by neměly záviset na modulech nižší úrovně. 
+A. Moduly vyšší úrovně by neměly záviset na modulech nižší úrovně.
 Oboje by mělo být  závislé na abstrakci.
 
-B. Abstrakce by neměla záviset na detailech. 
+B. Abstrakce by neměla záviset na detailech.
 Detaily by měly záviset na abstrakci.
 ```
 De facto můžeme říct, že byste téměř vždy měli záviset na abstrakci a nikoli na konkrétní implementaci.

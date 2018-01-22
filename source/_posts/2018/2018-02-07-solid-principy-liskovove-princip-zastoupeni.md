@@ -5,7 +5,7 @@ title: "SOLID principy: Liskovové princip zastoupení"
 perex: '''
 Liskovové princip zastupitelnosti je definovám jako tahle na první podhled děsivá rovnice:
 
->>> Nechť Φ(x) je vlastnost prokazatelná objektu x typu T. 
+>>> Nechť Φ(x) je vlastnost prokazatelná objektu x typu T.
 Potom Φ(y) jsou pravdivé pro objekty y typu S, kde S je potomkem T.
 
 Trochu lidskými slovy ale říká:

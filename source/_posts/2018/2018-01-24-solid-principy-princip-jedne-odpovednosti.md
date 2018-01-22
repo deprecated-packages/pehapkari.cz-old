@@ -51,8 +51,8 @@ class Person
     {
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             return true;
-        } 
-        
+        }
+
         throw new InvalidArgumentException("Email is not valid email");
     }
 }
