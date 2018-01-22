@@ -43,10 +43,7 @@ final class DynamicConstraintsTest extends TestCase
         $address->setCountry('US');
         $address->setZipcode('12345-6789');
 
-        $this->assertViolations(
-            [],
-            $this->validator->validate($address, null, ['zipcode'])
-        );
+        $this->assertViolations([], $this->validator->validate($address, null, ['zipcode']));
     }
 
     /**
