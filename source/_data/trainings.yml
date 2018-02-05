@@ -218,3 +218,28 @@ parameters:
             duration: "3 hodiny"
             price: 1999
             capacity: "3-6 lidí"
+
+        -
+            name: "Začni so Symfony 4"
+            image: "/assets/images/logos/symfony.jpg"
+            user: 33
+            description: |
+                <p>O Symfony si už počul, no zatiaľ si ho nepoužil pre žiadny svoj projekt? Chceš s ním začať v jeho najnovšej a najlepšej verzií - Symfony 4? Práve to sa naučíš na mojom školení.</p>
+                <p><strong>Pre koho je školenie určené?</strong></p>
+                <p>Školenie je určené pre pokročilejších pehapečkárov, ktorí sú však úplnými nováčikmi v práci so Symfony frameworkom. Teda školenie nie je vhodné pre etablovaných používateľov aktuálnej alebo nižších verzií.</p>
+                <p><strong>Čo sa naučíš?</strong></p>
+                <ul>
+                    <li>inštalácia a rozširovanie frameworku pomocou Symfony Flex,</li>
+                    <li>vontroller - základný stavebný kameň,</li>
+                    <li>routovanie a odkazy</li>
+                    <li>dependency Injection - PSR-4, defaults,</li>
+                    <li>request + response cyklus</li>
+                    <li>jednoduchý formulár s následným spracovaním,</li>
+                    <li>doctrine v Symfony - Repository + Entity,</li>
+                    <li>profiler - ladenka podľa Symfony,</li>
+                    <li>šablóny a Twig.</li>
+                </ul>
+                <p>Na konci dňa budeš vedieť ako použiť Symfony 4 na svoj nový projekt. Tak do toho! :)</p>
+            duration: "8 hodín"
+            price: 5999
+            capacity: "6-10 ľudí"

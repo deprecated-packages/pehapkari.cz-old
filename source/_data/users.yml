@@ -29,3 +29,7 @@ parameters:
             name: "Jan Mikeš"
             url: "https://www.linkedin.com/in/jan-mike%%C5%%A1-0405996b"
             photo: "jan_mikes.jpg"
+        33:
+            name: "Eduard Barnáš"
+            url: "https://www.linkedin.com/in/edobarnas/"
+            photo: "edo_barnas.jpg"
