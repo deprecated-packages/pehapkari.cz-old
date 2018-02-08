@@ -30,6 +30,8 @@ parameters:
     exclude_checkers:
         # from symplify-checkers.neon set
         - Symplify\CodingStandard\Fixer\Naming\PropertyNameMatchingTypeFixer
+        - Symplify\CodingStandard\Sniffs\Naming\InterfaceNameSniff
+        - Symplify\CodingStandard\Sniffs\Naming\AbstractClassNameSniff
         - Symplify\CodingStandard\Sniffs\Property\DynamicPropertySniff
         - Symplify\CodingStandard\Sniffs\DependencyInjection\NoClassInstantiationSniff
         # from symfony-checkers.neon set

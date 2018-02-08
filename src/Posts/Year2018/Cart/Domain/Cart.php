@@ -5,9 +5,19 @@ namespace Pehapkari\Website\Posts\Year2018\Cart\Domain;
 class Cart
 {
     /**
+     * @var string
+     */
+    private $id;
+
+    /**
      * @var Item[]
      */
     private $items = [];
+
+    public function __construct(string $id)
+    {
+        $this->id = $id;
+    }
 
     public function add(string $productId, Price $unitPrice, int $amount = 1): void
     {
@@ -50,6 +60,11 @@ class Cart
         $totalPrice = Price::sum($prices);
 
         return new CartDetail(array_values($detailItems), $totalPrice);
+    }
+
+    public function getId(): string
+    {
+        return $this->id;
     }
 
     /**
