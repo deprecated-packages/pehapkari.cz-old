@@ -28,10 +28,7 @@ final class ZipCode
             ));
         }
 
-        return (bool) preg_match(
-            '/^(' . self::$patterns[$country] . ')$/',
-            $zipcode
-        );
+        return (bool) preg_match('/^(' . self::$patterns[$country] . ')$/', $zipcode);
     }
 
     /**
