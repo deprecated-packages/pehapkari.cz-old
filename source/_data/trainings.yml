@@ -253,7 +253,7 @@ parameters:
                 <p><strong>O čem školení bude:</strong></p>
                 <ul>
                     <li>Seznámíme se s Dockerem</li>
-                    <li>Vysvětlíme si jak vytvořit Dockerfile a docker-compose.yml soubory</li>
+                    <li>Vysvětlíme si, jak vytvořit Dockerfile a docker-compose.yml soubory</li>
                     <li>Řekneme si o základních příkazech pro práci s kontejnery</li>
                     <li>Krok po kroku vytvoříme první image a spustíme první kontejner</li>
                     <li>Představíme si nástroj Portainer</li>
