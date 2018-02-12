@@ -33,3 +33,7 @@ parameters:
             name: "Eduard Barnáš"
             url: "https://www.linkedin.com/in/edobarnas/"
             photo: "edo_barnas.jpg"
+        34:
+            name: "Vladimír Macháček"
+            url: "https://machy8.com/"
+            photo: "vladimir_machacek.jpg"
