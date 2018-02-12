@@ -243,3 +243,27 @@ parameters:
             duration: "8 hodín"
             price: 5999
             capacity: "6-10 ľudí"
+
+        -
+            name: "Docker bez předchozích znalostí"
+            image: "/assets/images/logos/docker.png"
+            user: 34
+            description: |
+                <p><a href="https://www.docker.com/" target="blank" rel="noopener">Docker</a> je poslední dobou velmi oblíbený nástroj. Zjednodušuje práci a je díky němu možné mít napříkld stejné vývojové a produkční prostředí na různých zařízeních. Začátky s ním však mohou být těžké, krkolomné a lze nad nimi ztrávit mnoho času. Na školení si vysvětlíme všechny potřebné základy, na kterých je už pak lehké stavět.</p>
+                <p><strong>O čem školení bude:</strong></p>
+                <ul>
+                    <li>Seznámíme se s Dockerem</li>
+                    <li>Vysvětlíme si, jak vytvořit Dockerfile a docker-compose.yml soubory</li>
+                    <li>Řekneme si o základních příkazech pro práci s kontejnery</li>
+                    <li>Krok po kroku vytvoříme první image a spustíme první kontejner</li>
+                    <li>Představíme si nástroj Portainer</li>
+                    <li>Rozchodíme si Nette / Symfony v Dockeru</li>
+                    <li>Seznámíme se s Gitlabem - porovnání s Githubem, plusy, mínusy, CI, CD</li>
+                    <li>Vytvoříme si pipeliny - build => test a vyzkoušíme si deploy</li>
+                    <li>Ukážeme si využití proxy serveru</li>
+                </ul>
+                <p>Sleva 50% pro nepodnikající studenty denního studia</p>
+                <p>Něco málo o mně: Druhým rokem se podílím na vývoji internetové lékárny <a href="https://www.lekarna.cz">Lekarna.cz</a>.</p>
+            duration: "8 hodin"
+            price: 5999
+            capacity: "6-10 lidí"
