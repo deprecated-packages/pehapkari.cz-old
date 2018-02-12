@@ -258,11 +258,12 @@ parameters:
                     <li>Krok po kroku vytvoříme první image a spustíme první kontejner</li>
                     <li>Představíme si nástroj Portainer</li>
                     <li>Rozchodíme si Nette / Symfony v Dockeru</li>
-                    <li>Seznámíme se s Gitlabem - porovnání s Githubem, plusy, mínusy, CI/CD</li>
+                    <li>Seznámíme se s Gitlabem - porovnání s Githubem, plusy, mínusy, CI, CD</li>
                     <li>Vytvoříme si pipeliny - build => test a vyzkoušíme si deploy</li>
                     <li>Ukážeme si využití proxy serveru</li>
                 </ul>
                 <p>Sleva 50% pro nepodnikající studenty denního studia</p>
+                <p>Něco málo o mně: Druhým rokem se podílím na vývoji internetové lékárny <a href="https://www.lekarna.cz">Lekarna.cz</a>.</p>
             duration: "8 hodin"
             price: 5999
             capacity: "6-10 lidí"
