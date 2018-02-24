@@ -1,10 +1,17 @@
-# Symfony 4: Vytváříme chytrý kontroler
-
+---
+id: 63
+layout: post
+title: "Symfony 4: Vytváříme chytrý kontroler"
+perex: '''
 Co kdyby byl Symfony kontroler schopný automaticky najít správnou šablonu k požadované akci bez nutnosti opakovaně psát
 její cestu? Co takhle mít možnost zasílat parametry do šablony z více míst a třeba i před renderovací metodou?
 Symfony 4 je skvělý framework ale po chvíli práce s ním mi začaly chybět některé fičury, na které jsem byl zvyklý z
 jiných frameworků, jako je například [Nette Framework](https://nette.org/cs/).
 Rozhodl jsem se, že si je do Symfony musím dodělat. V tomto článku vám ukážu, jak jsem toho docílil.
+'''
+author: 34
+lang: cs
+---
 
 Řekněme, že máme nějaký HomepageController s renderDefault metodou umístěný ve složce `src/controller`
 
