@@ -3,7 +3,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.1",
-        "symplify/statie": "^3.1"
+        "symplify/statie": "^3.2"
     },
     "require-dev": {
         "doctrine/annotations": "^1.6",
@@ -19,8 +19,8 @@
         "symfony/validator": "^4.0",
 
         "phpstan/phpstan": "^0.9",
-        "phpunit/phpunit": "^6.5",
-        "symplify/easy-coding-standard": "^3.1",
+        "phpunit/phpunit": "^7.0",
+        "symplify/easy-coding-standard": "^3.2",
         "spatie/http-status-check": "^2.5"
     },
     "autoload": {
