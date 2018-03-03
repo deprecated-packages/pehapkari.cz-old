@@ -61,12 +61,8 @@ class ConnectionManager
         return $GLOBALS['DB_HOST'] ?? null;
     }
 
-    private static function getDriver(): ?Driver
+    private static function getDriver(): Driver
     {
-        if (! isset($GLOBALS['DB_DRIVER'])) {
-            return null;
-        }
-
         if ($GLOBALS['DB_DRIVER'] === 'pdo_pgsql') {
             return new PgSqlDriver();
         }

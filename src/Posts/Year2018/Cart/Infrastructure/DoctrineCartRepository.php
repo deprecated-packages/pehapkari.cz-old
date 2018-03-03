@@ -6,7 +6,6 @@ use Doctrine\ORM\EntityManager;
 use Pehapkari\Website\Posts\Year2018\Cart\Domain\Cart;
 use Pehapkari\Website\Posts\Year2018\Cart\Domain\CartNotFoundException;
 use Pehapkari\Website\Posts\Year2018\Cart\Domain\CartRepository;
-use TypeError;
 
 final class DoctrineCartRepository implements CartRepository
 {
@@ -36,17 +35,18 @@ final class DoctrineCartRepository implements CartRepository
         $this->entityManger->remove($cart);
     }
 
-    private function find(string $id): ?Cart
+    private function find(string $id): ?object
     {
         return $this->entityManger->find(Cart::class, $id);
     }
 
     private function getThrowingException(string $id): Cart
     {
-        try {
-            return $this->find($id);
-        } catch (TypeError $e) {
-            throw new CartNotFoundException();
+        $cart = $this->find($id);
+        if ($cart instanceof Cart) {
+            return $cart;
         }
+
+        throw new CartNotFoundException();
     }
 }
