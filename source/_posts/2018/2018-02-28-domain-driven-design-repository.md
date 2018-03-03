@@ -9,7 +9,7 @@ perex: '''
 author: 29
 lang: en
 tested: true
-test_slug: Cart/Infrastructure
+test_slug: Cart/Infrastructure/MemoryCartRepository.php
 related_posts: [49, 52, 54]
 ---
 
