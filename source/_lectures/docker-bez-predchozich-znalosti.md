@@ -6,7 +6,7 @@ image: "/assets/images/logos/docker.png"
 user: 34
 duration: "4 hodin"
 price: 2999
-capacity: "6-10"
+capacity: "6-10 lidí"
 fb_event: "https://www.facebook.com/events/392533094552990/"
 
 # 2-3 věty

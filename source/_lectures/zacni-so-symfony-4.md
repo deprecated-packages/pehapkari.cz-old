@@ -6,7 +6,7 @@ image: "/assets/images/logos/symfony.png"
 user: 33
 duration: "8 hodin"
 price: 5999
-capacity: "6-10"
+capacity: "6-10 ľudí"
 fb_event: "https://www.facebook.com/events/499386367123254/"
 
 # 2-3 věty

@@ -9,34 +9,13 @@
             <h1 class="text-center">{$lecture->getName()}</h1>
 
             <div class="row">
-                <div class="col-md-8">
-                    <h2>O čem je školení</h2>
-                    {$lecture->getContent()|noescape}
-                </div>
-
                 <div class="col-md-4">
-                    {if $lecture->isActive()}
-                        <p>Příští termín: <strong>{$lecture->getHumanDate()}</strong></p>
-
-                        <p n:if="$lecture->getFbEventLink()">
-                            <a href="{$lecture->getFbEventLink()}">Akce na FB</a>
-                        </p>
-
-                        <p>Kapacita: <strong>{$lecture->getCapacity()} lidí</strong></p>
-                        <p>Cena: <strong>{$lecture->getPrice()} Kč</strong></p>
-
-                        <a href="{$lecture->getFormLink()}" class="btn btn-success">
-                            <em class="fa fa-fw fa-handshake-o"></em>
-                            Přihlásit se
-                        </a>
-                    {/if}
-
-                    <h3>Školitel</h3>
-                    <div>
-                        <p>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img width="100" src="/assets/images/people/{$users[$lecture->getUserId()]['photo']}" class="img-thumbnail mb-3 rounded-circle pull-left mr-3">
+                        </div>
+                        <div class="col-md">
                             <strong>Školí:</strong>
-
-                            <img width="75" src="/assets/images/people/{$users[$lecture->getUserId()]['photo']}" class="img-thumbnail mb-2 rounded-circle pull-right">
 
                             <a n:tag-ifset="$users[$lecture->getUserId()]['url']" href="{$users[$lecture->getUserId()]['url']}">
                                 {$users[$lecture->getUserId()]['name']}
@@ -45,9 +24,34 @@
                             <p n:ifset="$users[$lecture->getUserId()]['bio']">
                                 „{$users[$lecture->getUserId()]['bio']|noescape}“
                             </p>
-                        </p>
+                        </div>
                     </div>
+
+                    <div class="clearfix"></div>
+
+                    {if $lecture->isActive()}
+                        <p>Příští termín: <strong>{$lecture->getHumanDate()}</strong></p>
+
+                        <p n:if="$lecture->getFbEventLink()">
+                            <a href="{$lecture->getFbEventLink()}">Akce na FB</a>
+                        </p>
+
+                        <p>Kapacita: <strong>{$lecture->getCapacity()}</strong></p>
+                        <p>Cena: <strong>{$lecture->getPrice()} Kč</strong></p>
+
+                        <div class="text-center">
+                            <a href="{$lecture->getFormLink()}" class="btn btn-success mt-4">
+                                <em class="fa fa-fw fa-handshake-o"></em>
+                                Přihlásit se
+                            </a>
+                        </div>
+                    {/if}
                 </div>
+
+                <div class="col-md-8">
+                    {$lecture->getContent()|noescape}
+                </div>
+
             </div>
         </div>
 
