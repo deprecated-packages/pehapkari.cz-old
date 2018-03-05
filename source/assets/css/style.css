@@ -432,6 +432,10 @@ footer #posobota-logo, footer #pehapkari-logo {
     height: 35px;
 }
 
+#trainings h2 {
+    font-size: 1.8em;
+}
+
 #trainings .term {
     color: #333;
     font-size: .7em;
@@ -507,4 +511,9 @@ footer #posobota-logo, footer #pehapkari-logo {
     .training-card {
         padding-left: 85px;
     }
+}
+
+.text-smaller {
+    color: #555;
+    font-size: 0.9em;
 }

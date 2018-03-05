@@ -4,6 +4,38 @@ id: index
 ---
 
 {block content}
+    <div class="container mt-4" id="top-promo-bar">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                {var $displayedPostCount = 0}
+
+                <strong>Nejnovější články</strong>:<br>
+                {foreach $posts as $post}
+                    {continueIf $post->getDateInFormat('Y-m-d') > date('Y-m-d') || isset($post['redirect']) || $displayedPostCount >= 3}
+                    <a href="/{$post['relativeUrl']}">{$post['title']}</a>{sep}<br>{/sep}
+
+                    {php ++$displayedPostCount}
+                {/foreach}
+            </div>
+            <div class="col-md-6 mb-3">
+                {var $displayedLectureCount = 0}
+
+                {foreach $lectures as $lecture}
+                    {continueIf (! $lecture->isActive() || $displayedLectureCount >= 3)}
+
+                    {if $displayedLectureCount === 0}
+                        <strong>Nejbližší školení</strong>:<br>
+                    {/if}
+
+                    <a href="/{$lecture->getRelativeUrl()}/">{$lecture->getHumanDate()} - {$lecture->getName()|noescape}</a>{sep}<br>{/sep}
+                    {php ++$displayedLectureCount}
+                {/foreach}
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
     <div class="container first-section text-center">
         <div class="row text-center">
             <div class="col-12">

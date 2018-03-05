@@ -5,37 +5,75 @@
     <body>
         {include "menu", "id" => "vzdelavej-se"}
 
-        <div id="article">
-            <div class="container">
-                <h1 class="h2 text-center">{$lecture->getTitle()}</h1>
+        <div class="container">
+            <h1 class="text-center">{$lecture->getName()}</h1>
 
-                <div class="row text-center">
-                    <div class="col-md-12">
-                        {$lecture->getContent()}
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img width="100" src="/assets/images/people/{$users[$lecture->getUserId()]['photo']}" class="img-thumbnail mb-3 rounded-circle pull-left mr-3">
+                        </div>
+                        <div class="col-md">
+                            <strong>Školí:</strong>
+
+                            <a n:tag-ifset="$users[$lecture->getUserId()]['url']" href="{$users[$lecture->getUserId()]['url']}">
+                                {$users[$lecture->getUserId()]['name']}
+                            </a>
+
+                            <p n:ifset="$users[$lecture->getUserId()]['bio']">
+                                „{$users[$lecture->getUserId()]['bio']|noescape}“
+                            </p>
+                        </div>
                     </div>
+
+                    <div class="clearfix"></div>
+
+                    {if $lecture->isActive()}
+                        <p>Příští termín: <strong>{$lecture->getHumanDate()}</strong></p>
+
+                        <p n:if="$lecture->getFbEventLink()">
+                            <a href="{$lecture->getFbEventLink()}">Akce na FB</a>
+                        </p>
+
+                        <p>Kapacita: <strong>{$lecture->getCapacity()}</strong></p>
+                        <p>Cena: <strong>{$lecture->getPrice()} Kč</strong></p>
+
+                        <div class="text-center">
+                            <a href="{$lecture->getFormLink()}" class="btn btn-success mt-4">
+                                <em class="fa fa-fw fa-handshake-o"></em>
+                                Přihlásit se
+                            </a>
+                        </div>
+                    {/if}
                 </div>
+
+                <div class="col-md-8">
+                    {$lecture->getContent()|noescape}
+                </div>
+
             </div>
         </div>
+
+        {include "footer"}
 
         {include "googleAnalytics"}
         {include "facebookPixel"}
     </body>
 </html>
 
-
 {block socialTags}
     {* Facebook sharing *}
     <meta property="og:type" content="lecture" />
-    <meta property="og:title" content="{$lecture->getTitle()}" />
+    <meta property="og:title" content="{$lecture->getName()}" />
     {*<meta property="og:description" content="{$lecture['perex']|striptags}" />*}
     {*<meta property="og:url" content="{$site_url}/{$lecture['relativeUrl']}/" />*}
 
     {* Twitter sharing *}
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="{$lecture->getTitle()}" />
+    <meta name="twitter:title" content="{$lecture->getName()}" />
     {*<meta name="twitter:description" content="{$lecture['perex']|striptags}" />*}
 {/block}
-
 
 {block additionalCss}
     <link href="/assets/prism/prism.css?v=0.1" rel="stylesheet" type="text/css" />
