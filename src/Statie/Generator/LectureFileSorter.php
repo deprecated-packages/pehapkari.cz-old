@@ -37,11 +37,12 @@ final class LectureFileSorter implements ObjectSorterInterface
         usort($activeLectures, function (LectureFile $firstFile, LectureFile $secondFile) {
             return $secondFile->getDateTime() < $firstFile->getDateTime();
         });
+
         return $activeLectures;
     }
 
     /**
-     * @param LectureFile[] $activeLectures
+     * @param LectureFile[] $restOfLectures
      * @return LectureFile[]
      */
     private function sortRestOfLecturesByName(array $restOfLectures): array
@@ -49,6 +50,7 @@ final class LectureFileSorter implements ObjectSorterInterface
         usort($restOfLectures, function (LectureFile $firstFile, LectureFile $secondFile) {
             return strcmp($firstFile->getName(), $secondFile->getName());
         });
+
         return $restOfLectures;
     }
 }
