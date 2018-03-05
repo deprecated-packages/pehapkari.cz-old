@@ -1,13 +1,13 @@
 ---
 name: "Docker bez předchozích znalostí"
-date: 2018-03-29
+date: '2018-03-29 09:00:00'
 form_link: "https://goo.gl/forms/EpsbC6AmCnTDMKfv2"
 image: "/assets/images/logos/symfony.png"
 user: 34
 duration: "4 hodin"
 price: 2999
 capacity: "6-10"
-fb_event: @todo
+fb_event: "https://www.facebook.com/events/392533094552990/"
 
 # 2-3 věty
 perex: 'Docker je poslední dobou stále oblíbenější. Jak si s ním zjednodušit práci a hlavně překonat těžké začátky? To se dovíte na mém školení.'

@@ -1,13 +1,13 @@
 ---
 name: "Začni so Symfony 4"
-date: 2018-03-27
+date: '2018-03-27 10:00:00'
 form_link: "https://goo.gl/forms/ULUobWdFpjRwhLAw1"
 image: "/assets/images/logos/symfony.png"
 user: 33
 duration: "8 hodin"
 price: 5999
 capacity: "6-10"
-fb_event: @todo
+fb_event: "https://www.facebook.com/events/499386367123254/"
 
 # 2-3 věty
 perex: 'O Symfony si už počul, no zatiaľ si ho nepoužil pre žiadny svoj projekt? Chceš s ním začať v jeho najnovšej a najlepšej verzií - Symfony 4? Práve to sa naučíš na mojom školení.'
