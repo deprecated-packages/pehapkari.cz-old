@@ -13,7 +13,7 @@ author: 34
 lang: cs
 ---
 
-Řekněme, že máme nějaký HomepageController s renderDefault metodou umístěný ve složce `src/controller`
+Řekněme, že máme nějaký `HomepageController` s `renderDefault()` metodou umístěný ve složce `src/controller`
 
 ````PHP
 namespace App\Controller;
@@ -47,7 +47,7 @@ Number: {{ number }}
 ````
 
 Všechno funguje a vypadá v pořádku. No jo, jenomže co když budu náhodou potřebovat vložit parametr odjinud
-než z renderDefault metody? To je v tuto chvíli nemožné..., ledaže bychom si vytvořili AbstractController, který nám to umožní.
+než z `renderDefault()` metody? To je v tuto chvíli nemožné..., ledaže bychom si vytvořili `AbstractController`, který nám to umožní.
 
 ````PHP
 namespace App\Controller;
@@ -82,7 +82,7 @@ abstract class AbstractController extends Controller
 }
 ````
 
-Zbývá už jen AbstractController podědit v HomepageControlleru, vytvořit setter metodu a zavolat ji v renderDefault metodě.
+Zbývá už jen `AbstractController` podědit v `HomepageController`, vytvořit setter metodu a zavolat ji v `renderDefault()` metodě.
 
 ````PHP
 namespace App\Controller;
@@ -117,7 +117,7 @@ final class HomepageController extends AbstractController
 
 Takto vytvořená metoda pro předávání parametrů do šablony je sice pěkná, ale kdybychom chtěli dané číslo vkládat
 do každé šablony automaticky, je potřeba ji neustále a dokola volat v každé render metodě. V tuhle chvíli
-by se hodila beforeRender metoda, tak si ji pojďme přidat do AbstractControlleru.
+by se hodila `beforeRender()` metoda, tak si ji pojďme přidat do `AbstractControlleru`.
 
 ````PHP
 // ...
@@ -135,7 +135,7 @@ protected function renderTemplate(string $template, array $parameters = [], Resp
 }
 ````
 
-Nyní jen stačí tuto metodu použít v HomepageControlleru.
+Nyní jen stačí tuto metodu použít v `HomepageController`.
 
 ````PHP
 // ...
@@ -154,17 +154,17 @@ public function renderDefault(): Response
 }
 ````
 
-V HomepageControlleru je ale stále potřeba zapisovat cestu k šabloně. Většinou preferuji modulární strukturu aplikace
+V `HomepageController` je ale stále potřeba zapisovat cestu k šabloně. Většinou preferuji modulární strukturu aplikace
 s šablonami umístěnými ve složce pojmenované po kontroleru zanořené v templates složce, která je ve stejné složce jako kontrolery.
 Zní to trošku divně, takže uvedu jednoduchý příklad:
-- HomepageController => `src/Modules/HomepageModule/Controller/HomepageController.php`
+- `HomepageController` => `src/Modules/HomepageModule/Controller/HomepageController.php`
 - Šablona => `src/Modules/HomepageModule/Controller/templates/Homepage/default.twig`
 
 Povětšinou ještě modul dělím na admin a front ale pro tento článek je tato struktura dostačující. V dalším kroku je tedy potřeba
-přesunout Homepage modul a jeho šablony do zmiňované adresářové struktury, a stejně tak přesunout AbstractController. Ten však bude
+přesunout Homepage modul a jeho šablony do zmiňované adresářové struktury, a stejně tak přesunout `AbstractController`. Ten však bude
 například ve složce CoreModule `src/Modules/CoreModule/Controller/AbstractController.php`.
 
-Abychom to všechno zprovoznili, je potřeba provést několik úprav. Nejdříve upravíme AbstractController,
+Abychom to všechno zprovoznili, je potřeba provést několik úprav. Nejdříve upravíme `AbstractController`,
 protože zde nastává největší změna.
 
 ````PHP
@@ -213,10 +213,10 @@ abstract class AbstractController extends Controller
 }
 ````
 
-Přibylo volání preg_match funkce v renderTemplate metodě, a byla přidána metoda getTemplatePath.
+Přibylo volání `preg_match` funkce v `renderTemplate()` metodě, a byla přidána metoda `getTemplatePath()`.
 Tato metoda roztokenuje jméno aktuálního kontroleru a render metody, a následně vrátí cestu k šabloně.
 
-Za další je potřeba upravit HomepageController. Zde již není cesta k šabloně, protože ji nepotřebujeme.
+Za další je potřeba upravit `HomepageController`. Zde již není cesta k šabloně, protože ji nepotřebujeme.
 
 ````PHP
 /**
@@ -252,10 +252,10 @@ App\Modules\:
 ````
 
 Hotovo! Nyní už nemusíme psát cestu k šabloně, můžeme předávat parametry do šablon z více míst
-a popřípadě je vkládat automaticky v beforeRender metodě.
+a popřípadě je vkládat automaticky v `beforeRender()` metodě.
 
 Nevýhodou toho všeho je, že je potřeba dodržovat adresářovou strukturu, která je nastavena
-v getTemplatePath metodě ve třídě AbstractController.
+v `getTemplatePath()` metodě ve třídě `AbstractController`.
 
 Budu rád za jakýkoliv váš feedback (klidně i negativní)!
 
