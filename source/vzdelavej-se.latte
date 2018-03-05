@@ -13,7 +13,7 @@ inspiration:
     <div id="trainings">
         <div class="section">
             <h1 class="text-center">{$title}</h1>
-sp
+
             <p class="text-center subtitle">
                 Rozšiř si své know-how od odborníků v PHP.<br>
                 Pořádáme školení Continuous delivery, Doctrine, Git, PHPStorm a další.
@@ -79,45 +79,50 @@ sp
 
             <hr>
 
-            <div class="section">
-                <div class="text-center">
-                    <h2>Spokojení účastníci</h2>
+            <div class="text-center">
+                <h2 class="mb-lg-5">Přes 40 spokojených účastníků</h2>
 
-                    <br>
+                <div class="row narrower">
+                    {foreach $lecture_references as $lecture_reference}
+                        <div class="col-md-6 text-left mb-4">
+                            <a n:tag-ifset="$lecture_reference['url']" href="{$lecture_reference['url']}">
+                                {$lecture_reference['name']}
+                            </a> na školení <em>{$lecture_reference['lecture']}</em>:
 
-                    <div class="row narrower">
-                        {foreach $lecture_references as $lecture_reference}
-                            <div class="col-md-6 text-left mb-4">
-                                <a n:tag-ifset="$lecture_reference['url']" href="{$lecture_reference['url']}">
-                                    {$lecture_reference['name']}
-                                </a> na školení <em>{$lecture_reference['lecture']}</em>:
-
-                                <p class="mt-3">
-                                    <em>„{$lecture_reference['reference']|noescape}“</em>
-                                </p>
-                            </div>
-                        {/foreach}
-                    </div>
-
-                    <br>
-
-                    <div id="gallery">
-                        <img src="/assets/images/lectures/lecture1.jpg" width="200" height="200">
-                        <img src="/assets/images/lectures/lecture7.jpg" width="200" height="200">
-                        <img src="/assets/images/lectures/lecture9.jpg" width="200" height="200">
-                        <img src="/assets/images/lectures/lecture4.jpg" width="200" height="200">
-                        <img src="/assets/images/lectures/lecture3.jpg" width="200" height="200">
-                        <img src="/assets/images/lectures/lecture2.jpg" width="200" height="200">
-                        <img src="/assets/images/lectures/lecture6.jpg" width="200" height="200">
-                        <img src="/assets/images/lectures/lecture8.jpg" width="200" height="200">
-                    </div>
+                            <p class="mt-3">
+                                <em>„{$lecture_reference['reference']|noescape}“</em>
+                            </p>
+                        </div>
+                    {/foreach}
                 </div>
-
-                <br>
+            </div>
 
             <hr>
 
             <div class="text-center">
+                <h2>Už 6 proběhlých školení</h2>
+
+                <p>Od <strong>května 2017</strong> jsme zorganizovali 6 veřejných školení od 4 odborných školitelů.</p>
+
+                <br>
+
+                <div id="gallery">
+                    <img src="/assets/images/lectures/lecture1.jpg" width="200" height="200">
+                    <img src="/assets/images/lectures/lecture7.jpg" width="200" height="200">
+                    <img src="/assets/images/lectures/lecture9.jpg" width="200" height="200">
+                    <img src="/assets/images/lectures/lecture4.jpg" width="200" height="200">
+                    <img src="/assets/images/lectures/lecture3.jpg" width="200" height="200">
+                    <img src="/assets/images/lectures/lecture2.jpg" width="200" height="200">
+                    <img src="/assets/images/lectures/lecture6.jpg" width="200" height="200">
+                    <img src="/assets/images/lectures/lecture8.jpg" width="200" height="200">
+                </div>
+            </div>
+
+            <br>
+
+            <hr>
+
+            <div class="text-center" id="kde-skolime">
                 <h2>Kde školíme</h2>
                 <p class="card-text">
                     V krásných prostorách <strong>pražského <a href="http://node5.cz/kontakty/">Node5</a></strong>.

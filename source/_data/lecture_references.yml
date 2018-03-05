@@ -1,21 +1,31 @@
 parameters:
     lecture_references:
-      -
-          name: "Jan Mikeš, CTO & Co-founder of Entrydo"
-          url: "https://entrydo.com/"
-          lecture: "Jak na rapidní vývoj a Continuous Delivery"
-          reference: "Školení bylo velmi přínosné a inspirativní. Získané dovednosti jsem hned aplikovat v praxi. <strong>Teď již žádný feedback loop není příliš dlouhý :)</strong>."
-      -
-          name: "Michael Kufner"
-          url: "https://www.linkedin.com/in/michael-kufner-cz"
-          lecture: "Doctrine 2 - Začínáme používat ORM"
-          reference: "Výborné školení, obrovské množství informací, <strong>které jsem hned druhý den využil v kanceláři</strong>. Určitě to nebylo naposled! Na konci to bylo sice trochu hrr, ale vzhledem k tomu množství informací by nepomohly ani 4 hodiny navíc. Díky!"
-      -
-          name: "Ing. Eduard Barnáš"
-          url: "https://www.neoweb.sk"
-          lecture: "Jak na rapidní vývoj a Continuous Delivery"
-          reference: "Príjemné prostredie, výborna téma a <strong>skvelý prednášajúci Ondrej Mirtes</strong>. <strong>Teória sa prepája s praxou</strong>. Po tomto kurze bude Continuous Delivery hračkou. Vrelo odporúčam!"
-      -
-          name: "Michal Dobrovolný"
-          lecture: "Jak na rapidní vývoj a Continuous Delivery"
-          reference: "Ondra měl jasno v tom co chce předat obecenstvu. <strong>Jeho školení nám pomohlo vylepšit systém našeho deploymentu</strong> a firemní procesy. Díky!"
+        -
+            name: "Adam Janča"
+            url: "https://www.antstudio.cz"
+            lecture: "Elasticsearch - Začínáme vyhledávat"
+            reference: "Vše bylo ve formě, která měla výborný poměr teorie/praxe. Praxe byla dobrá - dokážu si představit reálné využítí příkladů na skutečných projektech. <strong>Tomáš byl flexibilní a suprově reagoval - sdílel kód hned online, abychom nemuseli vše otrocky přepisovat.</strong>"
+        -
+            name: "Michal Klabník"
+            url: "http://www.klabnik.cz/"
+            lecture: "Ovládni PhpStorm – od základů po profi tipy"
+            reference: "S PhpStormem jsem nikdy předtím nedělal a byla to super ukázka toho, co to všechno umí. <strong>Tomáš skvěle, lidsky a poutavě přednášel, nachystané to měl na jedničku</strong>."
+        -
+            name: "Jan Mikeš, CTO & Co-founder of Entrydo"
+            url: "https://entrydo.com/"
+            lecture: "Jak na rapidní vývoj a Continuous Delivery"
+            reference: "Školení bylo velmi přínosné a inspirativní. Získané dovednosti jsem hned aplikovat v praxi. <strong>Teď již žádný feedback loop není příliš dlouhý :)</strong>."
+        -
+            name: "Michael Kufner"
+            url: "https://www.linkedin.com/in/michael-kufner-cz"
+            lecture: "Doctrine 2 - Začínáme používat ORM"
+            reference: "Výborné školení, obrovské množství informací, <strong>které jsem hned druhý den využil v kanceláři</strong>. Určitě to nebylo naposled! Na konci to bylo sice trochu hrr, ale vzhledem k tomu množství informací by nepomohly ani 4 hodiny navíc. Díky!"
+        -
+            name: "Ing. Eduard Barnáš"
+            url: "https://www.neoweb.sk"
+            lecture: "Jak na rapidní vývoj a Continuous Delivery"
+            reference: "Príjemné prostredie, výborna téma a <strong>skvelý prednášajúci Ondrej Mirtes</strong>. <strong>Teória sa prepája s praxou</strong>. Po tomto kurze bude Continuous Delivery hračkou. Vrelo odporúčam!"
+        -
+            name: "Michal Dobrovolný"
+            lecture: "Jak na rapidní vývoj a Continuous Delivery"
+            reference: "Ondra měl jasno v tom co chce předat obecenstvu. <strong>Jeho školení nám pomohlo vylepšit systém našeho deploymentu</strong> a firemní procesy. Díky!"
