@@ -10,14 +10,11 @@ final class LectureFile extends AbstractFile
 {
     public function isActive(): bool
     {
-        if (! isset($this->configuration['date'])) {
+        if (! $this->getDateTime()) {
             return false;
         }
 
-        $now = new DateTime('now');
-        $courseDate = new DateTime($this->configuration['date']);
-
-        return $courseDate > $now;
+        return $this->getDateTime() > new DateTime();
     }
 
     public function getName(): string
@@ -48,6 +45,10 @@ final class LectureFile extends AbstractFile
     public function getDateTime(): ?DateTimeInterface
     {
         if (isset($this->configuration['date'])) {
+            if ($this->configuration['date'] instanceof DateTimeInterface) {
+                return $this->configuration['date'];
+            }
+
             return new DateTime($this->configuration['date']);
         }
 
@@ -56,9 +57,8 @@ final class LectureFile extends AbstractFile
 
     public function getHumanDate(): string
     {
-        $courseDate = new DateTime($this->configuration['date']);
-
-        return $courseDate->format('j. n. Y');
+        return $this->getDateTime()
+            ->format('j. n. Y');
     }
 
     public function getFbEventLink(): ?string
