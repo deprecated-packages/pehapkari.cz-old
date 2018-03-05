@@ -8,7 +8,7 @@ perex: '''
 author: 29
 lang: en
 tested: true
-test_slug: Cart/Infrastructure/DoctrineCartRepository.php
+test_slug: Cart/Infrastructure/DoctrineCartRepositoryTest.php
 related_posts: [49, 52, 54, 62]
 ---
 
