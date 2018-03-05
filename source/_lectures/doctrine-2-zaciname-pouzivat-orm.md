@@ -22,6 +22,4 @@ Dozvíte se, proč používat <a href="http://www.doctrine-project.org/">Doctrin
 - "Úkolníček" (to-do list)
 - Bonus: temná strana Doctrine - postřehy ze 4 let zkušeností při skoro každodenní práce s Doctrine
 
-<p>Technologie: Doctrine 2, Nette, MySQL/PostgreSQL (podle Vás)</p>
-
-<p>Informace o mě: Již třetím rokem se jako senior programátor podílím na vývoji první internetové lékárny <a href="https://www.lekarna.cz">Lekarna.cz</a>.</p>
+Technologie: Doctrine 2, Nette, MySQL/PostgreSQL (podle Vás)

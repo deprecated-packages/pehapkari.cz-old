@@ -25,7 +25,6 @@
                         <p>Kapacita: <strong>{$lecture->getCapacity()} lidí</strong></p>
                         <p>Cena: <strong>{$lecture->getPrice()} Kč</strong></p>
 
-                        {*<div class="col-md-4 col-12 text-md-right text-center">*}
                         <a href="{$lecture->getFormLink()}" class="btn btn-success">
                             <em class="fa fa-fw fa-handshake-o"></em>
                             Přihlásit se
@@ -36,18 +35,23 @@
                     <div>
                         <p>
                             <strong>Školí:</strong>
+
+                            <img width="75" src="/assets/images/people/{$users[$lecture->getUserId()]['photo']}" class="img-thumbnail mb-2 rounded-circle pull-right">
+
                             <a n:tag-ifset="$users[$lecture->getUserId()]['url']" href="{$users[$lecture->getUserId()]['url']}">
                                 {$users[$lecture->getUserId()]['name']}
                             </a>
+
+                            <p n:ifset="$users[$lecture->getUserId()]['bio']">
+                                „{$users[$lecture->getUserId()]['bio']|noescape}“
+                            </p>
                         </p>
-
-
-
-                        <img width="75" src="/assets/images/people/{$users[$lecture->getUserId()]['photo']}" class="img-thumbnail mb-2 rounded-circle">
                     </div>
                 </div>
             </div>
         </div>
+
+        {include "footer"}
 
         {include "googleAnalytics"}
         {include "facebookPixel"}
