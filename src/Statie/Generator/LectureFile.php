@@ -42,6 +42,16 @@ final class LectureFile extends AbstractFile
         return $this->configuration['perex'] ?? null;
     }
 
+    public function getPrice(): ?int
+    {
+        return $this->configuration['price'] ?? null;
+    }
+
+    public function getCapacity(): ?string
+    {
+        return $this->configuration['capacity'] ?? null;
+    }
+
     public function getDateTime(): ?DateTimeInterface
     {
         if (isset($this->configuration['date'])) {

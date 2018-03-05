@@ -22,6 +22,9 @@
                             <a href="{$lecture->getFbEventLink()}">Akce na FB</a>
                         </p>
 
+                        <p>Kapacita: <strong>{$lecture->getCapacity()} lidí</strong></p>
+                        <p>Cena: <strong>{$lecture->getPrice()} Kč</strong></p>
+
                         {*<div class="col-md-4 col-12 text-md-right text-center">*}
                         <a href="{$lecture->getFormLink()}" class="btn btn-success">
                             <em class="fa fa-fw fa-handshake-o"></em>
