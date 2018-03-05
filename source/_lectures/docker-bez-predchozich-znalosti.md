@@ -1,7 +1,7 @@
 ---
 name: "Docker bez předchozích znalostí"
 date: 2018-03-29
-form_link: "@todo"
+form_link: "https://goo.gl/forms/EpsbC6AmCnTDMKfv2"
 image: "/assets/images/logos/symfony.png"
 user: 34
 duration: "4 hodin"

@@ -1,7 +1,7 @@
 ---
 name: "Začni so Symfony 4"
 date: 2018-03-27
-form_link: "@todo"
+form_link: "https://goo.gl/forms/ULUobWdFpjRwhLAw1"
 image: "/assets/images/logos/symfony.png"
 user: 33
 duration: "8 hodin"

@@ -1,7 +1,7 @@
 ---
 name: "Začněte debugovat jako profíci s xdebugem!"
-date: 2018-01-25
-form_link: "https://goo.gl/forms/MLST6xPJLizrqZS62"
+date: 2018-03-29
+form_link: "https://goo.gl/forms/qNSILHl9XqM9yotD2"
 image: "/assets/images/logos/xdebug.png"
 user: 32
 duration: "4 hodiny"
