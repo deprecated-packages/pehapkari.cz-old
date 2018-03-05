@@ -2,7 +2,6 @@
 layout: default
 title: "Investuj do sebe a přijď na školení"
 id: vzdelavej-se
-open_form_link: "https://docs.google.com/forms/d/e/1FAIpQLSf-x6HlwpfIB-Ig_oyrPzk7PKbyF4YMIHLH21n_dV9V5Edmyw/viewform"
 ---
 
 {*
@@ -14,7 +13,7 @@ inspiration:
     <div id="trainings">
         <div class="section">
             <h1 class="text-center">{$title}</h1>
-
+sp
             <p class="text-center subtitle">
                 Rozšiř si své know-how od odborníků v PHP.<br>
                 Pořádáme školení Continuous delivery, Doctrine, Git, PHPStorm a další.
@@ -75,43 +74,46 @@ inspiration:
                     {/foreach}
                 </p>
             </div>
-        </div>
-
-        <div class="section">
-            <div class="text-center">
-                <h2>Spokojení účastníci</h2>
-
-                <br>
-
-                <div class="row narrower">
-                    {foreach $lecture_references as $lecture_reference}
-                        <div class="col-md-6 text-left mb-4">
-                            <a n:tag-ifset="$lecture_reference['url']" href="{$lecture_reference['url']}">
-                                {$lecture_reference['name']}
-                            </a> na školení <em>{$lecture_reference['lecture']}</em>:
-
-                            <p class="mt-3">
-                                <em>„{$lecture_reference['reference']|noescape}“</em>
-                            </p>
-                        </div>
-                    {/foreach}
-                </div>
-
-                <br>
-
-                <div id="gallery">
-                    <img src="/assets/images/lectures/lecture1.jpg" width="200" height="200">
-                    <img src="/assets/images/lectures/lecture7.jpg" width="200" height="200">
-                    <img src="/assets/images/lectures/lecture9.jpg" width="200" height="200">
-                    <img src="/assets/images/lectures/lecture4.jpg" width="200" height="200">
-                    <img src="/assets/images/lectures/lecture3.jpg" width="200" height="200">
-                    <img src="/assets/images/lectures/lecture2.jpg" width="200" height="200">
-                    <img src="/assets/images/lectures/lecture6.jpg" width="200" height="200">
-                    <img src="/assets/images/lectures/lecture8.jpg" width="200" height="200">
-                </div>
-            </div>
 
             <br>
+
+            <hr>
+
+            <div class="section">
+                <div class="text-center">
+                    <h2>Spokojení účastníci</h2>
+
+                    <br>
+
+                    <div class="row narrower">
+                        {foreach $lecture_references as $lecture_reference}
+                            <div class="col-md-6 text-left mb-4">
+                                <a n:tag-ifset="$lecture_reference['url']" href="{$lecture_reference['url']}">
+                                    {$lecture_reference['name']}
+                                </a> na školení <em>{$lecture_reference['lecture']}</em>:
+
+                                <p class="mt-3">
+                                    <em>„{$lecture_reference['reference']|noescape}“</em>
+                                </p>
+                            </div>
+                        {/foreach}
+                    </div>
+
+                    <br>
+
+                    <div id="gallery">
+                        <img src="/assets/images/lectures/lecture1.jpg" width="200" height="200">
+                        <img src="/assets/images/lectures/lecture7.jpg" width="200" height="200">
+                        <img src="/assets/images/lectures/lecture9.jpg" width="200" height="200">
+                        <img src="/assets/images/lectures/lecture4.jpg" width="200" height="200">
+                        <img src="/assets/images/lectures/lecture3.jpg" width="200" height="200">
+                        <img src="/assets/images/lectures/lecture2.jpg" width="200" height="200">
+                        <img src="/assets/images/lectures/lecture6.jpg" width="200" height="200">
+                        <img src="/assets/images/lectures/lecture8.jpg" width="200" height="200">
+                    </div>
+                </div>
+
+                <br>
 
             <hr>
 
@@ -128,6 +130,16 @@ inspiration:
 
             <div class="row">
                 <div class="col-md-6">
+                    <h3 class="text-center mb-lg-4">Jak to probíhá</h3>
+                    <ul>
+                        <li>přihlásíš se přes formulář na kurz</li>
+                        <li>až se termín naplní, pošleme ti fakturu</li>
+                        <li>tu zaplatíš a můžeš se těšit na školení</li>
+                        <li>pozvánku ti pošleme cca týden před termínem</li>
+                    </ul>
+                </div>
+
+                <div class="col-md-6">
                     <h3 class="text-center mb-lg-4">Co máš v ceně kurzu?</h3>
                     <ul>
                         <li>certifikát o absolvování kurzu</li>
@@ -136,16 +148,20 @@ inspiration:
 
                     <p>Nejsme plátci DPH.</p>
                 </div>
+            </div>
 
-                <div class="col-md-6">
+            <hr>
+
+            <div class="row">
+                <div class="col-md-12">
                     <h3 class="text-center mb-lg-4">Partenská školení</h3>
 
                     <p>
-                        Nauč se <a href="https://www.michalspacek.cz/skoleni/bezpecnost-php-aplikaci">Bezpečnost PHP aplikací</a> a další <a href="https://www.michalspacek.cz/skoleni">školení</a> v podání security exterta Michala Špačka.
+                        Nauč se <a href="https://www.michalspacek.cz/skoleni/bezpecnost-php-aplikaci">Bezpečnost PHP aplikací</a> a další <a href="https://www.michalspacek.cz/skoleni">školení</a> v podání security exterta <strong>Michala Špačka</strong>.
                     </p>
 
                     <p>
-                        Zajdi taky na <a href="https://www.skoleniphp.cz/skoleni-nette-vyvoj-webovych-aplikaci">Vývoj webových aplikací v Nette Framework</a> a další <a href="https://www.skoleniphp.cz/skoleni">školení</a> PHP Guru Davida Grudla.
+                        Zajdi taky na <a href="https://www.skoleniphp.cz/skoleni-nette-vyvoj-webovych-aplikaci">Vývoj webových aplikací v Nette Framework</a> a další <a href="https://www.skoleniphp.cz/skoleni">školení</a> PHP Guru <strong>Davida Grudla</strong>.
                     </p>
 
                     <p>
@@ -156,19 +172,8 @@ inspiration:
                         <a href="https://www.vzhurudolu.cz/kurzy/javascript">Javascript</a>
                         na
                         <a href="https://www.vzhurudolu.cz/kurzy">frontendových školeních</a>
-                        ze Vzhůru dolů.
+                        ze <strong>Vzhůru dolů</strong>.
                     </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="text-center col-md-6">
-                    <h2>Jak to probíhá</h2>
-                    <ul>
-                        <li>přihlásíš se přes formulář na kurz</li>
-                        <li>až se termín naplní, pošleme ti fakturu</li>
-                        <li>tu zaplatíš a můžeš se těšit na školení</li>
-                        <li>pozvánku ti pošleme týden před termínem</li>
-                    </ul>
                 </div>
             </div>
         </div>
