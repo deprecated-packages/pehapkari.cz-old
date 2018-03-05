@@ -2,6 +2,7 @@
 name: "Doctrine 2 - Pokročilé použití"
 date: '2018-03-28 10:00:00'
 form_link: "https://goo.gl/forms/iNy3Q4QMfIRrwaWm1"
+image: "/assets/images/logos/doctrine.png"
 user: 11
 duration: "8 hodin"
 price: 6999

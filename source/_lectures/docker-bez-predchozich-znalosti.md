@@ -2,7 +2,7 @@
 name: "Docker bez předchozích znalostí"
 date: '2018-03-29 09:00:00'
 form_link: "https://goo.gl/forms/EpsbC6AmCnTDMKfv2"
-image: "/assets/images/logos/symfony.png"
+image: "/assets/images/logos/docker.png"
 user: 34
 duration: "4 hodin"
 price: 2999
