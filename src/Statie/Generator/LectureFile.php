@@ -65,8 +65,12 @@ final class LectureFile extends AbstractFile
         return null;
     }
 
-    public function getHumanDate(): string
+    public function getHumanDate(): ?string
     {
+        if ($this->getDateTime() === null) {
+            return null;
+        }
+
         return $this->getDateTime()
             ->format('j. n. Y H:i');
     }
