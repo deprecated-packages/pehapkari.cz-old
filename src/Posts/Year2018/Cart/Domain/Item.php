@@ -5,6 +5,11 @@ namespace Pehapkari\Website\Posts\Year2018\Cart\Domain;
 class Item
 {
     /**
+     * @var int
+     */
+    protected $generatedId;
+
+    /**
      * @var string
      */
     private $productId;

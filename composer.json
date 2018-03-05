@@ -8,6 +8,7 @@
     "require-dev": {
         "doctrine/annotations": "^1.6",
         "doctrine/cache": "^1.7",
+        "doctrine/orm": "^2.6",
         "latte/latte": "^2.4",
         "nette/application": "^2.4",
         "nette/forms": "^2.4",
