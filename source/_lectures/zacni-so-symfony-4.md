@@ -1,6 +1,6 @@
 ---
 name: "Začni so Symfony 4"
-date: '2018-03-27 10:00:00'
+date: '2018-03-28 10:00:00'
 form_link: "https://goo.gl/forms/ULUobWdFpjRwhLAw1"
 image: "/assets/images/logos/symfony.png"
 user: 33
