@@ -13,5 +13,5 @@ parameters:
     disqus_name: "pehapkari"
 
     # Statie configuration
-    github_repository_slug: "pehapkari/pehapkari.cz"
+    github_repository_source_directory: "https://github.com/pehapkari/pehapkari.cz/tree/master/source"
     markdown_headline_anchors: true
