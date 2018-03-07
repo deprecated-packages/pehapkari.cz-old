@@ -15,13 +15,12 @@ perex: 'Na školení začneme s nastavením xdebugu pro vaše IDE. Ukážeme si,
 
 Na školení začneme s nastavením xdebugu pro vaše IDE. Ukážeme si, k čemu se xdebug používá, co umí a jak vám rapidně zefektivní práci. Na reálných aplikacích a problémech si projdeme debugování od základů až po pokročilejší techniky.
 
-<p><strong>Naučíte se jak debugovat:</strong></p>
-<ul>
-    <li>Webové aplikace</li>
-    <li>Latte a Twig šablony</li>
-    <li>Testy</li>
-    <li>CLI skripty</li>
-    <li>REST api požadavky</li>
-</ul>
+**Naučíte se jak debugovat**
+
+- Webové aplikace
+- Latte a Twig šablony
+- Testy
+- CLI skripty
+- REST api požadavky
 
 Je velmi pravděpodobné, že po absolvování školení, si budete ťukat na čelo, jak jste doposud mohli bez xdebugu v PHP programovat.

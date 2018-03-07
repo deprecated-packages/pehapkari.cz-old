@@ -15,7 +15,7 @@ perex: 'Docker je poslední dobou stále oblíbenější. Jak si s ním zjednodu
 
 <a href="https://www.docker.com/" target="blank" rel="noopener">Docker</a> je poslední dobou velmi oblíbený nástroj. Zjednodušuje práci a je díky němu možné mít napříkld stejné vývojové a produkční prostředí na různých zařízeních. Začátky s ním však mohou být těžké, krkolomné a lze nad nimi ztrávit mnoho času. Na školení si vysvětlíme všechny potřebné základy, na kterých je už pak lehké stavět.</p>
 
-**O čem školení bude?**
+**Co si ze školení odneseš?**
 
 - Seznámíme se s Dockerem
 - Vysvětlíme si jak vytvořit Dockerfile a docker-compose.yml soubory

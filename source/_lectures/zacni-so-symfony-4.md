@@ -19,7 +19,7 @@ O Symfony si už počul, no zatiaľ si ho nepoužil pre žiadny svoj projekt? Ch
 
 Školenie je určené pre pokročilejších pehapečkárov, ktorí sú však úplnými nováčikmi v práci so Symfony frameworkom. Teda školenie nie je vhodné pre etablovaných používateľov aktuálnej alebo nižších verzií.
 
-**Čo sa naučíš?**
+**Čo si ze školenie odneseš?**
 
 - inštalácia a rozširovanie frameworku pomocou Symfony Flex
 - vontroller - základný stavebný kameň
