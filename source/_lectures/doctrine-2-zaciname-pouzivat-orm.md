@@ -11,7 +11,7 @@ Dozvíte se, proč používat <a href="http://www.doctrine-project.org/">Doctrin
 
 *Jako bonus Vám ukáži temnou stranu Doctrine a také problémy, na které narazíte až na produkci. Zároveň ukáži i jejich řešení. :)*
 
-**Osnova školení**
+**Co si ze školení odneseš?**
 
 - Seznámení s problematikou ORM
 - Napojení Doctrine 2 do projektu

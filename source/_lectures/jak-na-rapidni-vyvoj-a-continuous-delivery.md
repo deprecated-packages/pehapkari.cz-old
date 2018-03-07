@@ -12,14 +12,12 @@ fb_event: https://www.facebook.com/events/608839619507792/
 perex: 'Jak tvořit zadání se zadavatelem tak, aby vývoj proběhl hladce a zadavatel obdržel to, co chce? Jak programovat tak, aby nedocházelo k bugům na produkci nebo nefunkční aplikaci?'
 ---
 
-Zkracování <a href="https://ondrej.mirtes.cz/zkracovani-feedback-loop">feedback loop</a>:
+Zkracování [feedback loop](https://ondrej.mirtes.cz/zkracovani-feedback-loop).
 
-<br>
+**Co si ze školení odneseš?**
 
-<ul>
-    <li>Jak tvořit zadání se zadavatelem tak, aby vývoj proběhl hladce a zadavatel obdržel to, co chce?</li>
-    <li>Jak zorganizovat práci v týmu a programovat tak, aby nedocházelo ke všemožným problémům, bugům na produkci nebo nefunkční aplikaci?</li>
-    <li>Continuous Integration - vytvoření build skriptu, rozběhání CI serveru, doporučení k problematice</li>
-    <li>Přerod zastaralé aplikace v novou bez kompletního přepisu - strangler pattern, jak na refaktoring</li>
-    <li>Bezvýpadkové databázové migrace, bezvýpadkové a časté nasazování nových verzí aplikace</li>
-</ul>
+- Jak tvořit zadání se zadavatelem tak, aby vývoj proběhl hladce a zadavatel obdržel to, co chce?
+- Jak zorganizovat práci v týmu a programovat tak, aby nedocházelo ke všemožným problémům, bugům na produkci nebo nefunkční aplikaci?
+- Continuous Integration - vytvoření build skriptu, rozběhání CI serveru, doporučení k problematice
+- Přerod zastaralé aplikace v novou bez kompletního přepisu - strangler pattern, jak na refaktoring
+- Bezvýpadkové databázové migrace, bezvýpadkové a časté nasazování nových verzí aplikace

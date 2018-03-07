@@ -15,13 +15,11 @@ perex: 'Pro nás vývojáře je IDE hlavní pracovní nástroj, a proto se vypla
 
 Pro nás vývojáře je IDE hlavní pracovní nástroj, a proto se vyplatí ho perfektně znát. Na školení se naučíte využívat možnosti, které PhpStorm nabízí, a společně si všechno vyzkoušíme. S nově získanými znalostmi vám půjde práce od ruky a vyhnete se i častým chybám z nepozornosti.
  
-<strong>Osnova školení</strong>
+**Co si ze školení odneseš?**
 
-<ul>
-    <li>Jak efektivně pracovat s kódem a najít to, co potřebujete</li>
-    <li>Jak využívat automatické refaktoringy a na co si u nich dát pozor</li>
-    <li>Jak si ušetřit psaní pomocí předpřipravených templatů a formátování</li>
-    <li>Jak integrovat externí nástroje s PhpStormem</li>
-    <li>Jak v PhpStormu testovat</li>
-    <li>Nastavení na míru vašemu projektu</li>
-</ul>
+- Jak efektivně pracovat s kódem a najít to, co potřebujete
+- Jak využívat automatické refaktoringy a na co si u nich dát pozor
+- Jak si ušetřit psaní pomocí předpřipravených templatů a formátování
+- Jak integrovat externí nástroje s PhpStormem
+- Jak v PhpStormu testovat
+- Nastavení na míru vašemu projektu
