@@ -29,11 +29,11 @@ parameters:
             photo: "martin_hujer.jpg"
         32:
             name: "Jan Mikeš"
-            url: "https://www.linkedin.com/in/jan-mike%%C5%%A1-0405996b"
+            url: "https://janmikes.cz/"
             photo: "jan_mikes.jpg"
         33:
             name: "Eduard Barnáš"
-            url: "https://www.linkedin.com/in/edobarnas/"
+            url: "https://www.neoweb.sk/"
             photo: "edo_barnas.jpg"
         34:
             name: "Vladimír Macháček"
