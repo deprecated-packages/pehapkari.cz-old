@@ -23,4 +23,4 @@ Na školení začneme s nastavením xdebugu pro vaše IDE. Ukážeme si, k čemu
 - CLI skripty
 - REST api požadavky
 
-Je velmi pravděpodobné, že po absolvování školení, si budete ťukat na čelo, jak jste doposud mohli bez xdebugu v PHP programovat.
+Je velmi pravděpodobné, že po absolvování školení si budete ťukat na čelo, jak jste doposud mohli bez xdebugu v PHP programovat.
