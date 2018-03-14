@@ -79,9 +79,4 @@ final class LectureFile extends AbstractFile
         return $this->getDateTime()
             ->format('j. n. Y H:i');
     }
-
-    public function getFbEventLink(): ?string
-    {
-        return $this->configuration['fb_event'] ?? null;
-    }
 }
