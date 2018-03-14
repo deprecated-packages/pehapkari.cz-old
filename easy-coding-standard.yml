@@ -28,6 +28,8 @@ parameters:
         PHP_CodeSniffer\Standards\Generic\Sniffs\Files\LineLengthSniff:
             - 'src/Posts/Year2017/ListeningNetteComponents/Presenter/CategoryPresenter.php'
 
+        SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff.UselessDocComment: ~
+
     exclude_checkers:
         # from symplify-checkers.yml set
         - 'Symplify\CodingStandard\Fixer\Naming\PropertyNameMatchingTypeFixer'
