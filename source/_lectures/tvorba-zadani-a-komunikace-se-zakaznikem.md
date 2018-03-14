@@ -3,7 +3,7 @@ name: "Tvorba zadání a komunikace se zákazníkem"
 user: 28
 duration: "4 hodiny"
 price: 2499
-capacity: "4-8 lidí"
+capacity: "8 lidí"
 ---
 
 Nejčastější příčinou krachu projektu je špatná komunikace, ať už uvnitř týmu nebo se zákazníkem. Přes 10 let na volné noze mě vyškolilo. Přineste si svoje noční můry na workshop a probereme, jak jim šlo zabránit.

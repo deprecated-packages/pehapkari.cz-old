@@ -5,7 +5,7 @@ image: "/assets/images/logos/feedback.png"
 user: 30
 duration: "8 hodin"
 price: 4999
-capacity: "4-8 lidí"
+capacity: "10 lidí"
 fb_event: https://www.facebook.com/events/608839619507792/
 
 # 2-3 věty

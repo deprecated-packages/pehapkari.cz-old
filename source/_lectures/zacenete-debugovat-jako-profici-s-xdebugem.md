@@ -6,7 +6,7 @@ image: "/assets/images/logos/xdebug.png"
 user: 32
 duration: "4 hodiny"
 price: 2999
-capacity: "5-10 lidí"
+capacity: "10 lidí"
 fb_event: "https://www.facebook.com/events/390637891408278/"
 
 # 2-3 věty

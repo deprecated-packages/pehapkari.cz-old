@@ -3,7 +3,7 @@ name: "Elasticsearch - Pokročilé vyhledávání s ohledem na business"
 user: 11
 duration: "8 hodin"
 price: 6999
-capacity: "4-10 lidí"
+capacity: "10 lidí"
 ---
 
 Ukážeme si, jak připravit pokročilé vyhledávání přes <a href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a>, které bude užitečné pro zákazníka, ale zároveň bude podporovat business firmy. Představíme si možnosti, jakými se dají ovlivňovat výsledky vyhledávání s ohledem na přesnost, ziskovost, ale také výkon. Připravíme si reálný vyhledávací dotaz, který bude zohledňovat požadavky zákazníka a zároveň pomáhat businessu. Také si ukážeme, jak se dá použít Elasticsearch pro filtraci produktů na e-shopu a jednu takovou mocnou filtraci si i připravíme.

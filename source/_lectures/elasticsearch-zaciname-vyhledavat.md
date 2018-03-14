@@ -6,7 +6,7 @@ date: 2018-01-30
 user: 11
 duration: "8 hodin"
 price: 4999
-capacity: "4-10 lidí"
+capacity: "10 lidí"
 fb_event: https://www.facebook.com/events/1573052692775468/
 
 # 2-3 věty

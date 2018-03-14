@@ -4,7 +4,7 @@ image: "/assets/images/logos/doctrine.png"
 user: 11
 duration: "8 hodin"
 price: 4999
-capacity: "4-10 lidí"
+capacity: "10 lidí"
 ---
 
 Dozvíte se, proč používat <a href="http://www.doctrine-project.org/">Doctrine 2 ORM</a>, jak ji používat, na co si dát pozor a čemu se raději vyhnout obloukem. Na začátku se seznámíme s principem ORM a jeho přínosem, ale i stinnými stránkami Doctrine. Vysvětlíme si, k čemu slouží entita, repositář a fasáda. Ukážeme si, jak vytvořit entitu, jak ji propojit s entitou druhou. Představíme si ukládání, mazání a vyhledávání entit za pomoci repositářů. Připravíme si jednoduchou aplikaci "úkolníček" (to-do list) postavenou na Nette a Doctrine.
