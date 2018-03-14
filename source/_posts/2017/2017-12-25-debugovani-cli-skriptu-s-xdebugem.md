@@ -76,4 +76,4 @@ Aby byla změna permanentní, je potřeba řádek s aliasem přidat do [bash_pro
 *Přeji šťastné a veselé debugování CLI skriptů!*
 
 ## Chci se dozvědět více!
-Přihlaš se na školení [Začněte debugovat jako profíci s xdebugem](https://www.facebook.com/events/755430577984268/), kde probereme téma více do hloubky a ukážeme si pokročilé tipy!
+Přihlaš se na školení [Začněte debugovat jako profíci s xdebugem](https://pehapkari.cz/kurz/zacenete-debugovat-jako-profici-s-xdebugem/), kde probereme téma více do hloubky a ukážeme si pokročilé tipy!
