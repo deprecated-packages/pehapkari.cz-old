@@ -10,7 +10,7 @@ author: 29
 lang: en
 tested: true
 test_slug: Cart/Infrastructure/MemoryCartRepositoryTest.php
-related_items: [49, 52, 54, 61, 63]
+related_items: [49, 52, 54, 61, 63, 65]
 ---
 
 ## Collections and Reality

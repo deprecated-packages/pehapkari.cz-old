@@ -9,7 +9,7 @@ author: 29
 lang: en
 tested: true
 test_slug: Cart/Infrastructure/DoctrineCartRepositoryTest.php
-related_items: [49, 52, 54, 61, 62]
+related_items: [49, 52, 54, 61, 62, 65]
 ---
 
 The repository is a persistent collection that we know from [repository article](/blog/2018/02/28/domain-driven-design-repository/).
