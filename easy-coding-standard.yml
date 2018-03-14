@@ -26,20 +26,20 @@ services:
 parameters:
     skip:
         PHP_CodeSniffer\Standards\Generic\Sniffs\Files\LineLengthSniff:
-            - src/Posts/Year2017/ListeningNetteComponents/Presenter/CategoryPresenter.php
+            - 'src/Posts/Year2017/ListeningNetteComponents/Presenter/CategoryPresenter.php'
 
     exclude_checkers:
         # from symplify-checkers.yml set
-        - Symplify\CodingStandard\Fixer\Naming\PropertyNameMatchingTypeFixer
-        - Symplify\CodingStandard\Sniffs\Naming\InterfaceNameSniff
-        - Symplify\CodingStandard\Sniffs\Naming\AbstractClassNameSniff
-        - Symplify\CodingStandard\Sniffs\Property\DynamicPropertySniff
-        - Symplify\CodingStandard\Sniffs\DependencyInjection\NoClassInstantiationSniff
+        - 'Symplify\CodingStandard\Fixer\Naming\PropertyNameMatchingTypeFixer'
+        - 'Symplify\CodingStandard\Sniffs\Naming\InterfaceNameSniff'
+        - 'Symplify\CodingStandard\Sniffs\Naming\AbstractClassNameSniff'
+        - 'Symplify\CodingStandard\Sniffs\Property\DynamicPropertySniff'
+        - 'Symplify\CodingStandard\Sniffs\DependencyInjection\NoClassInstantiationSniff'
 
         # from symfony-checkers.yml set
-        - PhpCsFixer\Fixer\PhpTag\BlankLineAfterOpeningTagFixer
-        - PhpCsFixer\Fixer\Operator\NewWithBracesFixer
-        - PhpCsFixer\Fixer\Operator\UnaryOperatorSpacesFixer
-        - PhpCsFixer\Fixer\Phpdoc\PhpdocAlignFixer
-        - PhpCsFixer\Fixer\ClassNotation\ProtectedToPrivateFixer
-        - PhpCsFixer\Fixer\ControlStructure\YodaStyleFixer
+        - 'PhpCsFixer\Fixer\PhpTag\BlankLineAfterOpeningTagFixer'
+        - 'PhpCsFixer\Fixer\Operator\NewWithBracesFixer'
+        - 'PhpCsFixer\Fixer\Operator\UnaryOperatorSpacesFixer'
+        - 'PhpCsFixer\Fixer\Phpdoc\PhpdocAlignFixer'
+        - 'PhpCsFixer\Fixer\ClassNotation\ProtectedToPrivateFixer'
+        - 'PhpCsFixer\Fixer\ControlStructure\YodaStyleFixer'
