@@ -248,7 +248,7 @@ Poslední co je potřeba upravit je cesta pro mapování kontrolerů.
 ````YAML
 App\Modules\:
     resource: '../src/Modules'
-    tags: ['controller.service_arguments'
+    tags: ['controller.service_arguments']
 ````
 
 Hotovo! Nyní už nemusíme psát cestu k šabloně, můžeme předávat parametry do šablon z více míst
