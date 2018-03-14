@@ -31,12 +31,9 @@
 
                     {if $lecture->isActive()}
                         <p>Příští termín: <strong>{$lecture->getHumanDate()}</strong></p>
-
-                        <p n:if="$lecture->getFbEventLink()">
-                            <a href="{$lecture->getFbEventLink()}">Akce na FB</a>
-                        </p>
                     {/if}
 
+                    <p>Délka: <strong>{$lecture->getDuration()}</strong></p>
                     <p>Kapacita: <strong>{$lecture->getCapacity()}</strong></p>
                     <p>Cena: <strong>{$lecture->getPrice()|number: 0 , "," , " "} Kč</strong></p>
 
