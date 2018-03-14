@@ -35,10 +35,12 @@
                         <p n:if="$lecture->getFbEventLink()">
                             <a href="{$lecture->getFbEventLink()}">Akce na FB</a>
                         </p>
+                    {/if}
 
-                        <p>Kapacita: <strong>{$lecture->getCapacity()}</strong></p>
-                        <p>Cena: <strong>{$lecture->getPrice()} Kč</strong></p>
+                    <p>Kapacita: <strong>{$lecture->getCapacity()}</strong></p>
+                    <p>Cena: <strong>{$lecture->getPrice()|number: 0 , "," , " "} Kč</strong></p>
 
+                    {if $lecture->isActive()}
                         <div class="text-center">
                             <a href="{$lecture->getFormLink()}" class="btn btn-success mt-4">
                                 <em class="fa fa-fw fa-handshake-o"></em>

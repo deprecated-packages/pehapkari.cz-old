@@ -6,7 +6,7 @@ image: "/assets/images/logos/phpstorm.png"
 user: 6
 duration: "3 hodiny"
 price: 1999
-capacity: "5-12 lidí"
+capacity: "12 lidí"
 fb_event: https://www.facebook.com/events/928021040679722/
 
 # 2-3 věty
