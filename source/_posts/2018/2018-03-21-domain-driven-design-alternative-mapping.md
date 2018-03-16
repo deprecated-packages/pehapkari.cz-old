@@ -169,7 +169,7 @@ class LangValueType extends Type {
             return NULL;
         }
 
-        return json_encode($value->all());
+        return json_encode($value->all(), JSON_UNESCAPED_UNICODE);
     }
 
     public function convertToPHPValue($value, AbstractPlatform $platform) {
