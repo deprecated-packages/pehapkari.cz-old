@@ -12,7 +12,7 @@ author: 29
 lang: en
 tested: true
 test_slug: Cart/Domain
-related_items: [49, 52, 54, 62, 63, 65]
+related_items: [49, 52, 54, 62, 63, 65, 66]
 ---
 
 ## Model
