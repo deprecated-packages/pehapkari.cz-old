@@ -3,7 +3,7 @@ id: 67
 layout: post
 title: "Symfony 4 - Ako v praxi funguje Flex"
 perex: '''
-Ako titulka napovedá, pozrieme sa spoločne na jednu z mnohych skvelých noviniek, ktorú priniesol framework Symfony vo svojej štvrtej verzii. Pokusim sa Vám priblížiť čo Symfony Flex vlastne je a ako pracuje.
+Ako titulka napovedá, pozrieme sa spoločne na jednu z mnohých skvelých noviniek, ktorú priniesol framework Symfony vo svojej štvrtej verzii. Pokúsim sa Vám priblížiť, čo Symfony Flex vlastne je a ako pracuje.
 '''
 author: 33
 lang: sk
@@ -13,11 +13,11 @@ lang: sk
 
 ## Novinky na úvod
 
-Vydanie Symfony verzie 4 prinieslo so sebou viacero noviniek, medzi nimi aj **Symfony Flex**. Kým sa vrhneme na jeho použitie pozrieme sa spoločne na pár noviniek, ktoré môžu byť nápomocné pre rýchlejšie pochopenie ako Symfony Flex reálne pracuje.
+Vydanie Symfony verzie 4 prinieslo so sebou viacero noviniek, medzi nimi aj **Symfony Flex**. Kým sa vrhneme na jeho použitie, pozrieme sa spoločne na pár noviniek, ktoré môžu byť nápomocné pre rýchlejšie pochopenie ako Symfony Flex reálne pracuje.
 
 ### Framework
 
-**Symfony 4 je miroframework**. Predchádzajúce verzie si spravidla niesli zo sebou množstvo komponent, ktoré nie vždy boli reálne potrebné. Framework prešiel výraznou odtučňovacou kúrou a teraz má v základe iba 5 závislosti, čo je v porovnaní s verziou 3.4 o polovicu menej.
+**Symfony 4 je miroframework**. Predchádzajúce verzie si spravidla niesli zo sebou množstvo komponentov, ktoré nie vždy boli reálne potrebné. Framework prešiel výraznou odtučňovacou kúrou a teraz má v základe iba 5 závislosti, čo je v porovnaní s verziou 3.4 o polovicu menej.
 
 Náhľad do ``composer.json`` Symfony verzie 4:
 
@@ -74,7 +74,7 @@ Použitie premenných prostredia má viacero výhod:
 
 ### Autowiring a Dependency Injection
 
-Vylepšení sa dočkal **DI kontajner** už vo verzií [Symfony 3.3](https://symfony.com/doc/current/service_container/3.3-di-changes.html), ktorých cieľom bolo zjednodušiť registráciu a konfiguráciu služieb. Symfony 4 zachováva všetky zlepšenia s tým rozdielom, že ich definuje ako predvolené.
+Viacerých vylepšení sa dočkal **DI kontajner** už vo verzií [Symfony 3.3](https://symfony.com/doc/current/service_container/3.3-di-changes.html), ktorých cieľom bolo zjednodušiť registráciu a konfiguráciu služieb. Symfony 4 zachováva všetky zlepšenia s tým rozdielom, že ich definuje ako predvolené.
 
 ````json
 services:
@@ -156,7 +156,7 @@ $ composer create-project symfony/skeleton symfony4-project
 
 Na základe príkazu Composer stiahne repozitár [symfony/skeleton](https://github.com/symfony/skeleton), ktorý obsahuje iba súbor ``composer.json``, definujúci závislosti frameworku, ktoré nainštaluje. 
 
-Všimnite si, že v novo vzniknutom projekte máte okrem adresárovej štruktúry aj inicializovaný git repozitár, čo je ďalšia z mnohých vecí, ktorú framework vyrieši za Vás.
+Všimnite si, že v novovzniknutom projekte máte okrem adresárovej štruktúry aj inicializovaný git repozitár, čo je ďalšia z mnohých vecí, ktorú framework vyrieši za Vás.
 
 ### Ako pridať Twig?
     
@@ -224,7 +224,7 @@ Symfony Flex si vytvára alebo aktualizuje súbor ``symfony.lock``, v ktorom zac
 
 ### Balíček sem, balíček tam
 
-Väčšina všeobecne obľúbených oficiálnych alebo komunitných balíčkov publikuje svoj recept na [oficiálnom portály](https://symfony.sh/).
+Väčšina všeobecne obľúbených oficiálnych alebo komunitných balíčkov publikuje svoj recept na [oficiálnom portáli](https://symfony.sh/).
 
 Skús niektoré zo svojich obľúbených vyhľadať a hneď nainštalovať:
     * symfony/orm-pack alias doctrine
