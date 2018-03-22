@@ -1,13 +1,17 @@
 FROM php:7
 MAINTAINER adam.stipak@gmail.com
 
-# system deps configuration
-RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
-
 # system deps
 RUN apt-get update && \
   apt-get install -y \
     git \
+    gnupg
+
+# system deps configuration
+RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
+
+# nodejs
+RUN apt-get install -y \
     zlib1g-dev \
     nodejs
 
