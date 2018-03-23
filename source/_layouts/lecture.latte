@@ -6,6 +6,12 @@
         {include "menu", "id" => "vzdelavej-se"}
 
         <div class="container">
+            {if $lecture->getImage()}
+                <p class="text-center mt-lg-5">
+                    <img src="{$lecture->getImage()}" width="150">
+                </p>
+            {/if}
+
             <h1 class="text-center">{$lecture->getName()}</h1>
 
             <div class="row">

@@ -15,6 +15,8 @@ price: 4999
 # doporučujeme: 6-10
 capacity: "10 lidí"
 
+image: "/assets/images/logos/zen.jpg"
+
 perex: "Dvě věty, které jsou vidět na hlavní stránce, FB a Twitteru a které vás chytnou za oči. Po tomhle školneí získáš náskok před konkurencí, který bys sám budoval 6 měsíců. "
 ---
 
@@ -24,12 +26,10 @@ Chcete školit a chceš se zlepšovat rychleji než z feedbacku tvých účasnt�
 
 ### Co si ze školení odneseš?
 
-Ukážu ti:
-
-- proč je důležité pracovat s emocemi, vášní a zájmem jednotlivých účastníků
-- kde najít nejlepší školitele v tvém oboru, kteří už ti vyšlapali cestu a od kterých se můžeš učit
-- knížky, které tě naučí předávat své know-how tak, že tvé školení bude vždy vyprodané
-- jaké aktivity dělat navíc za minimum času, co účastníci ocení a budou se cítit jako v bavlnce
+- Proč je důležité pracovat s emocemi, vášní a zájmem jednotlivých účastníků
+- Kde najít nejlepší školitele v tvém oboru, kteří už ti vyšlapali cestu a od kterých se můžeš učit
+- Knížky, které tě naučí předávat své know-how tak, že tvé školení bude vždy vyprodané
+- Jaké aktivity dělat navíc za minimum času, co účastníci ocení a budou se cítit jako v bavlnce
 
 <br>
 
