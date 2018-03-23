@@ -14,7 +14,7 @@ perex: 'Na školení začneme s nastavením xdebugu pro vaše IDE. Ukážeme si,
 
 Na školení začneme s nastavením xdebugu pro vaše IDE. Ukážeme si, k čemu se xdebug používá, co umí a jak vám rapidně zefektivní práci. Na reálných aplikacích a problémech si projdeme debugování od základů až po pokročilejší techniky.
 
-**Naučíte se jak debugovat**
+### Naučíte se jak debugovat
 
 - Webové aplikace
 - Latte a Twig šablony

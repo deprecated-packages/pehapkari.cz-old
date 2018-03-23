@@ -14,7 +14,7 @@ Zjistíte, jak správně rozpoznat vztahy mezi <a href="http://www.doctrine-proj
 
 *Jako bonus zjistíte, na jaké problémy můžete narazit při nesprávném cachování hlavně multijazyčných aplikací + se rád podělím o pár vychytávek, na které jsem narazil za 4 roky při skoro každodenní práci s Doctrine.*
 
-**Co si ze školení odneseš?**
+### Co si ze školení odneseš?
 
 - Entity a jejich vztahy
 - DQL a jeho reálné použití

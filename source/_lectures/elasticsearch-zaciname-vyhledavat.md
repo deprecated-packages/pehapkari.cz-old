@@ -16,7 +16,7 @@ Naučte se používat <a href="https://www.elastic.co/products/elasticsearch">El
 
 *Jako bonus Vám povím na co si dát pozor, co se může stát v produkčním prostředí a co dokáží zákazníci vyhledat, když jim to nevědomky umožníte. :)*
 
-**Co si ze školení odneseš?**
+### Co si ze školení odneseš?
 
 - Seznámení s problematikou vyhledávání
 - Instalace a konfigurace Elasticsearch + Kibana

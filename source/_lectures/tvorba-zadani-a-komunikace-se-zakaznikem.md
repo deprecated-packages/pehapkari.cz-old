@@ -8,7 +8,7 @@ capacity: "8 lidí"
 
 Nejčastější příčinou krachu projektu je špatná komunikace, ať už uvnitř týmu nebo se zákazníkem. Přes 10 let na volné noze mě vyškolilo. Přineste si svoje noční můry na workshop a probereme, jak jim šlo zabránit.
 
-**Co si ze školení odneseš?**
+### Co si ze školení odneseš?
 
 - co získáš, když budeš dělat zápisy z jednání
 - proč je lepší, když zadání napíšeš ty

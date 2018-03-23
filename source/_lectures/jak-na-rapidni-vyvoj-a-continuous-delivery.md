@@ -13,7 +13,7 @@ perex: 'Jak tvořit zadání se zadavatelem tak, aby vývoj proběhl hladce a za
 
 Zkracování [feedback loop](https://ondrej.mirtes.cz/zkracovani-feedback-loop).
 
-**Co si ze školení odneseš?**
+### Co si ze školení odneseš?
 
 - Jak tvořit zadání se zadavatelem tak, aby vývoj proběhl hladce a zadavatel obdržel to, co chce?
 - Jak zorganizovat práci v týmu a programovat tak, aby nedocházelo ke všemožným problémům, bugům na produkci nebo nefunkční aplikaci?
