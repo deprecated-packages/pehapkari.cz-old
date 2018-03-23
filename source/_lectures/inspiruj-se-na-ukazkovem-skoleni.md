@@ -1,15 +1,15 @@
 ---
 name: "Jak vytvořit první školení jako seniorní školitel"
 
-# číslo uživatele v authors.yml
+# číslo uživatele v users.yml
 user: 99
 # @todo: mentors - doplnit?
 
 # obvykle půldenní 3Vladimír Macháček-4 hodiny nebo celodenní 8 (včetně oběda)
 duration: "8 hodin" 
 
-# x999, obvykle 3 k za půldenní, 6 k za celodenní
-price: 6999 
+# x999, obvykle 3 k za půldenní, 5 k za celodenní
+price: 4999 
 
 # max. počet lidí, který zvládneš a je ještě efektinví pro předávání tvého know-how
 # doporučujeme: 6-10 

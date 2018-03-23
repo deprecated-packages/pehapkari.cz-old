@@ -39,3 +39,7 @@ parameters:
             name: "Vladimír Macháček"
             url: "https://machy8.com/"
             photo: "vladimir_machacek.jpg"
+        99:
+            name: "Ukázkový Školitel"
+            url: "https://webkdesedovisomnevice.cz/"
+            photo: "ukazkovy_skolitel.jpg"
