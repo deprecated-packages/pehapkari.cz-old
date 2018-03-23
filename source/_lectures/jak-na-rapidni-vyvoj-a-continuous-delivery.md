@@ -6,7 +6,6 @@ user: 30
 duration: "8 hodin"
 price: 4999
 capacity: "10 lidí"
-fb_event: https://www.facebook.com/events/608839619507792/
 
 # 2-3 věty
 perex: 'Jak tvořit zadání se zadavatelem tak, aby vývoj proběhl hladce a zadavatel obdržel to, co chce? Jak programovat tak, aby nedocházelo k bugům na produkci nebo nefunkční aplikaci?'

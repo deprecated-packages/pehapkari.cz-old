@@ -7,7 +7,6 @@ user: 33
 duration: "8 hodin"
 price: 5999
 capacity: "10 ľudí"
-fb_event: "https://www.facebook.com/events/499386367123254/"
 
 # 2-3 věty
 perex: 'O Symfony si už počul, no zatiaľ si ho nepoužil pre žiadny svoj projekt? Chceš s ním začať v jeho najnovšej a najlepšej verzií - Symfony 4? Práve to sa naučíš na mojom školení.'

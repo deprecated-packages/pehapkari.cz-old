@@ -7,7 +7,6 @@ user: 32
 duration: "4 hodiny"
 price: 2999
 capacity: "10 lidí"
-fb_event: "https://www.facebook.com/events/390637891408278/"
 
 # 2-3 věty
 perex: 'Na školení začneme s nastavením xdebugu pro vaše IDE. Ukážeme si, k čemu se xdebug používá, co umí a jak vám rapidně zefektivní práci.'

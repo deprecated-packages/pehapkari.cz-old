@@ -7,7 +7,6 @@ user: 6
 duration: "3 hodiny"
 price: 1999
 capacity: "12 lidí"
-fb_event: https://www.facebook.com/events/928021040679722/
 
 # 2-3 věty
 perex: 'Pro nás vývojáře je IDE hlavní pracovní nástroj, a proto se vyplatí ho perfektně znát. Na školení se naučíte využívat možnosti, které PhpStorm nabízí, a společně si všechno vyzkoušíme.'

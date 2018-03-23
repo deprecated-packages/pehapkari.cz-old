@@ -7,7 +7,6 @@ user: 34
 duration: "4 hodiny"
 price: 2999
 capacity: "10 lidí"
-fb_event: "https://www.facebook.com/events/392533094552990/"
 
 # 2-3 věty
 perex: 'Docker je poslední dobou stále oblíbenější. Jak si s ním zjednodušit práci a hlavně překonat těžké začátky? To se dovíte na mém školení.'

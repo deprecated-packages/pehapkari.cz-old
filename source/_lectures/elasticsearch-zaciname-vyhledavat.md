@@ -7,7 +7,6 @@ user: 11
 duration: "8 hodin"
 price: 4999
 capacity: "10 lidí"
-fb_event: https://www.facebook.com/events/1573052692775468/
 
 # 2-3 věty
 perex: 'Naučte se používat <a href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a> od samotné instalace, přes plnění daty až po vlastní fulltextové vyhledávání. Odhalíme problematiku vyhledávání a řekneme si, proč použít právě Elasticsearch.'
