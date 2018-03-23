@@ -1,7 +1,7 @@
 ---
 id: 66
 layout: post
-title: "Domain-Driven Design - Services and Factories"
+title: "Domain-Driven Design, part 8 - Services and Factories"
 perex: '''
  This article is a reaction to reader'  s confusion about services.
  We'll try to cover what is a domain service and domain factory, when to use them and when not.
