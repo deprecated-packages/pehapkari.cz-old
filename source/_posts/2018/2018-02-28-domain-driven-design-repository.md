@@ -1,7 +1,7 @@
 ---
 id: 62
 layout: post
-title: "Domain-Driven Design - Repository"
+title: "Domain-Driven Design, part 5 - Repository"
 perex: '''
  We will discuss how to store and read domain objects while pretending we have an in-memory system.
  Simply, we will show how to implement and test repository.

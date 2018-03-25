@@ -1,7 +1,7 @@
 ---
 id: 52
 layout: post
-title: "Domain-Driven Design - Model"
+title: "Domain-Driven Design, part 2 - Model"
 perex: '''
  All of us model every day.
  A friend tells us a joke, we imagine the situation and if we model it as is intended, we find the situation funny.

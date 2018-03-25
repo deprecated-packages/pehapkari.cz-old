@@ -1,7 +1,7 @@
 ---
 id: 54
 layout: post
-title: "Domain-Driven Design - Simplify Object Model"
+title: "Domain-Driven Design, part 3 - Simplify Object Model"
 perex: '''
  There are always many ways how to implement the abstract model.
  The implementation can be made in smooth and simple or in overcomplicated way.

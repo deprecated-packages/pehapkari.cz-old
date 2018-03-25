@@ -1,7 +1,7 @@
 ---
 id: 61
 layout: post
-title: "Domain-Driven Design - Implementation"
+title: "Domain-Driven Design, part 4 - Implementation"
 perex: '''
  It is great to model something and now we have reached the point where we turn the model into the code.
  We will implement the model, no persistence, no input, only the most important part - the domain model.
