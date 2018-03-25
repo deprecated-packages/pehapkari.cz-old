@@ -28,6 +28,7 @@ parameters:
         PHP_CodeSniffer\Standards\Generic\Sniffs\Files\LineLengthSniff:
             - 'src/Posts/Year2017/ListeningNetteComponents/Presenter/CategoryPresenter.php'
 
+        # remove on Symplify v4.0.0alpha4
         SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff.UselessDocComment: ~
 
     exclude_checkers:
@@ -37,6 +38,7 @@ parameters:
         - 'Symplify\CodingStandard\Sniffs\Naming\AbstractClassNameSniff'
         - 'Symplify\CodingStandard\Sniffs\Property\DynamicPropertySniff'
         - 'Symplify\CodingStandard\Sniffs\DependencyInjection\NoClassInstantiationSniff'
+        - 'Symplify\CodingStandard\Sniffs\CleanCode\ForbiddenStaticFunctionSniff'
 
         # from symfony-checkers.yml set
         - 'PhpCsFixer\Fixer\PhpTag\BlankLineAfterOpeningTagFixer'
