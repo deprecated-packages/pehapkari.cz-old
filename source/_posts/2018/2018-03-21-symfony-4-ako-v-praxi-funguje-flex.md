@@ -2,9 +2,8 @@
 id: 67
 layout: post
 title: "Symfony 4 - Ako v praxi funguje Flex"
-perex: '''
-Ako titulka napovedá, pozrieme sa spoločne na jednu z mnohých skvelých noviniek, ktorú priniesol framework Symfony vo svojej štvrtej verzii. Pokúsim sa Vám priblížiť, čo Symfony Flex vlastne je a ako pracuje.
-'''
+perex: |
+    Ako titulka napovedá, pozrieme sa spoločne na jednu z mnohých skvelých noviniek, ktorú priniesol framework Symfony vo svojej štvrtej verzii. Pokúsim sa Vám priblížiť, čo Symfony Flex vlastne je a ako pracuje.
 author: 33
 lang: sk
 ---

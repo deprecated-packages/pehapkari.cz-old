@@ -2,10 +2,9 @@
 id: 38
 layout: post
 title: "Arachne/Verifier - Request Validator for Nette/Application"
-perex: '''
+perex: |
     The concept behind [Arachne/Verifier](https://github.com/Arachne/Verifier) was originally meant to solve annotations-based authorization for [Nette/Application](https://github.com/nette/application).
     Now after years of development it is no longer limited to neither annotations nor authorization making it a very powerful tool for your security layer.
-'''
 author: 5
 reviewed_by: [1, 25, 26]
 lang: en

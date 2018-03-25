@@ -2,9 +2,8 @@
 id: 51
 layout: post
 title: "Strange codes, multiple identities and team habits"
-perex: '''
-Just what I had in my mind or have tackled with in the recent past underlayed with the knowledge of the others.
-'''
+perex: |
+    Just what I had in my mind or have tackled with in the recent past underlayed with the knowledge of the others.
 lang: en
 author: 31
 ---

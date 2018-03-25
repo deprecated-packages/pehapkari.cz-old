@@ -2,12 +2,11 @@
 id: 61
 layout: post
 title: "Domain-Driven Design, part 4 - Implementation"
-perex: '''
+perex: |
  It is great to model something and now we have reached the point where we turn the model into the code.
  We will implement the model, no persistence, no input, only the most important part - the domain model.
  The implementation will be supported by tests and we will see how easy it is to test domain objects.
  We will also discuss the connection to the ubiquitous language and model and practical aspect of object encapsulation.
-'''
 author: 29
 lang: en
 tested: true

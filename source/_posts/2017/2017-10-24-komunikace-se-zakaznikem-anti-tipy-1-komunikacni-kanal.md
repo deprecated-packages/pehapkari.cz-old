@@ -2,9 +2,8 @@
 id: 46
 layout: post
 title: "Tipy na potopení projektu: #1 Trvejte na oblíbeném komunikačním kanále"
-perex: '''
+perex: |
  Existuje tisíc a jeden způsobů, jak podělat projekt, a v našem seriálu si některé ukážeme. Dnes bych rád mluvil o **způsobu komunikace**.
-'''
 author: 28
 ---
 

@@ -2,13 +2,12 @@
 id: 50
 layout: post
 title: "SOLID principy: Princip odděleného rozhraní"
-perex: '''
-Princip odděleného rozhraní je definované Robertem C. Martinem původně pro Xerox a říká:
+perex: |
+    Princip odděleného rozhraní je definované Robertem C. Martinem původně pro Xerox a říká:
+    
+    > Více specifických rozhraní je lepší než jedno obecné rozhraní.
 
-> Více specifických rozhraní je lepší než jedno obecné rozhraní.
-
-Při jeho dodržování se kód stává více znovupoužitelný a užitečný. Pokud je více tříd nuceno implementovat rozhraní s metodami, které nepotřebují, je vhodné najít logický průnik (v čem se shodují) a rozhraní oddělit.
-'''
+    Při jeho dodržování se kód stává více znovupoužitelný a užitečný. Pokud je více tříd nuceno implementovat rozhraní s metodami, které nepotřebují, je vhodné najít logický průnik (v čem se shodují) a rozhraní oddělit.
 author: 30
 ---
 

@@ -2,9 +2,8 @@
 id: 44
 layout: post
 title: "How to use ELK stack"
-perex: '''
+perex: |
     In this article, I'll show you how to use ELK stack for logging. We will use ELK in docker for easy setup.
-'''
 author: 15
 lang: en
 related_items: [45]

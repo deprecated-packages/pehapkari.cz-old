@@ -2,11 +2,10 @@
 id: 57
 layout: post
 title: "SOLID principy: Princip jedné odpovědnosti"
-perex: '''
-Princip jedné odpovědnosti (Single Responsibility Principle) je první z pěti principů SOLID (právě to S).
+perex: |
+    Princip jedné odpovědnosti (Single Responsibility Principle) je první z pěti principů SOLID (právě to S).
 
-Jde o metodu, díky které se kód stává přehlednějším a srozumitelnější. Říká třídě, že je zodpovědná pouze za jednu jedinou věc.
-'''
+    Jde o metodu, díky které se kód stává přehlednějším a srozumitelnější. Říká třídě, že je zodpovědná pouze za jednu jedinou věc.
 author: 30
 related_items: [50]
 ---

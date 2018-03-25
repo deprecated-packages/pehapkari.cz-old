@@ -2,9 +2,8 @@
 id: 34
 layout: post
 title: "Nenechte si podrazit nohy iterátory v PHP"
-perex: '''
-Iterátory v PHP jsou občas zrádné. V některých kolekcích se chovají neintuitivně. Zjistěte proč a vyhnete se tím hodinám zbytečného hledání chyb.
-'''
+perex: |
+    Iterátory v PHP jsou občas zrádné. V některých kolekcích se chovají neintuitivně. Zjistěte proč a vyhnete se tím hodinám zbytečného hledání chyb.
 author: 24
 tested: true
 test_slug: Iterators
