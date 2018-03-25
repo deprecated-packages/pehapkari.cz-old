@@ -35,7 +35,7 @@ final class DoctrineCartRepository implements CartRepository
         $this->entityManger->remove($cart);
     }
 
-    private function find(string $id): ?object
+    private function find(string $id): ?Cart
     {
         return $this->entityManger->find(Cart::class, $id);
     }
