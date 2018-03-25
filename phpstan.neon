@@ -4,6 +4,7 @@ parameters:
 
         # known value
         - '#Cannot call method render\(\) on Nette\\Application\\UI\\ITemplate\|stdClass#'
+        - '#Method Pehapkari\\Website\\Posts\\Year2018\\Cart\\Infrastructure\\DoctrineCartRepository::find\(\) should  Pehapkari\\Website\\Posts\\Year2018\\Cart\\Domain\\Cart|null but returns object|null#'
 
         # buggy
         - '#Property Pehapkari\\Website\\Tests\\Posts\\Year2017\\ListeningNetteComponents\\ListeningNetteComponentsTest::\$presenterFactory \(Nette\\Application\\IPresenterFactory\) does not accept object#'

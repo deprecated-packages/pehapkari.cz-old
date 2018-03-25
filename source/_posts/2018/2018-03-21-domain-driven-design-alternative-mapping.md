@@ -4,7 +4,7 @@ layout: post
 title: "Domain-Driven Design, part 7 - Alternative Relational Database Mapping"
 perex: '''
  Do you think that multilingual text must always be in a separate database table? Than this article is for you!
- 
+
  We will show that not all arrays have to be mapped as database tables.
  And we will also show the Doctrine implementation.
 '''

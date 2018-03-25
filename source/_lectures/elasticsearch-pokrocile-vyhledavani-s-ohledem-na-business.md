@@ -10,7 +10,7 @@ Ukážeme si, jak připravit pokročilé vyhledávání přes <a href="https://w
 
 Jako bonus zjistíte, jaké problémy může skrývat ovlivňování výsledků z vyhledávání. A také se rád podělím o své zkušenosti za 3 roky intenzivního používání Elasticsearch na produkci na [Lekarna.cz](https://www.lekarna.cz/).
 
-**Co si ze školení odneseš?**
+### Co si ze školení odneseš?
 
 - Seznámení s tím, jak může Elasticsearch pomoci businessu
 - Pokročilé vyhledávání s ohledem na zákazníka

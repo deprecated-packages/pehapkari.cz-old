@@ -7,7 +7,6 @@ user: 33
 duration: "8 hodin"
 price: 5999
 capacity: "10 ľudí"
-fb_event: "https://www.facebook.com/events/499386367123254/"
 
 # 2-3 věty
 perex: 'O Symfony si už počul, no zatiaľ si ho nepoužil pre žiadny svoj projekt? Chceš s ním začať v jeho najnovšej a najlepšej verzií - Symfony 4? Práve to sa naučíš na mojom školení.'
@@ -15,11 +14,11 @@ perex: 'O Symfony si už počul, no zatiaľ si ho nepoužil pre žiadny svoj pro
 
 O Symfony si už počul, no zatiaľ si ho nepoužil pre žiadny svoj projekt? Chceš s ním začať v jeho najnovšej a najlepšej verzií - Symfony 4? Práve to sa naučíš na mojom školení.
 
-**Pre koho je školenie určené?**
+### Pre koho je školenie určené?
 
 Školenie je určené pre pokročilejších pehapečkárov, ktorí sú však úplnými nováčikmi v práci so Symfony frameworkom. Teda školenie nie je vhodné pre etablovaných používateľov aktuálnej alebo nižších verzií.
 
-**Čo si ze školenie odneseš?**
+### Čo si ze školenie odneseš?
 
 - inštalácia a rozširovanie frameworku pomocou Symfony Flex
 - vontroller - základný stavebný kameň
