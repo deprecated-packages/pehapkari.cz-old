@@ -27,3 +27,9 @@ Naučte se používat <a href="https://www.elastic.co/products/elasticsearch">El
 - Základní vyhledávání - přesná/volná shoda
 - Fulltextové vyhledávání včetně tolerance překlepů a synonym
 - Bonus: postřehy z produkce za 3 roky intenzivního používání Elasticsearch
+
+### Co je potřeba před školením
+*(Pokud budeš chtít testovat předváděné příklady i na svém notebooku.)*
+
+- mít nainstalovaný Elasticsearch 5 a vyšší (ideálně verzi 6) + odpovídající Kibanu
+- pro část ukázek se hodí mít nainstalovaný plugin [ICU](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-icu.html) a [Cerebro](https://github.com/lmenezes/cerebro)

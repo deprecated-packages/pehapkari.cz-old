@@ -22,4 +22,12 @@ Zjistíte, jak správně rozpoznat vztahy mezi <a href="http://www.doctrine-proj
 - Doctrine Events, Filters a Second Level Cache - aneb to co se Vám určitě hodí
 - Bonus: jak "ne"cachovat multijazyčné aplikace + vychytávky pro ulehčení práce s Doctrine
 
-Technologie: Doctrine 2, Nette, MySQL/PostgreSQL (podle Vás)
+### Co je potřeba před školením
+*(Pokud budeš chtít testovat předváděné příklady i na svém notebooku.)*
+
+- mít nainstalované PHP 7.1 a vyšší + relační databázi (MySQL, PostgreSQL, atd.)
+- mít nainstalované nějaké IDE např. [PHPStorm](https://www.jetbrains.com/phpstorm/download/)
+- zkušenosti s Nette frameworkem výhodou, ale ne nutností
+- zkušenosti s Doctrine 2 výhodou, ale ne nutností
+
+Použité technologie: Doctrine 2, Nette, MySQL/PostgreSQL (podle Vás)
