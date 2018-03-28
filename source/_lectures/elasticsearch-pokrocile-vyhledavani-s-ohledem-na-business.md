@@ -24,6 +24,7 @@ Jako bonus zjistíte, jaké problémy může skrývat ovlivňování výsledků 
 
 - mít nainstalovaný [Elasticsearch](https://www.elastic.co/downloads/elasticsearch) + [Kibanu](https://www.elastic.co/downloads/kibana
 - pro část ukázek se hodí mít nainstalovaný plugin [ICU](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-icu.html) a [Cerebro](https://github.com/lmenezes/cerebro)
+- mít nainstalované nějaké IDE např. [PHPStorm](https://www.jetbrains.com/phpstorm/download/)
 - mít nainstalované PHP 7.1 a vyšší + relační databázi (MySQL, PostgreSQL, atd.)
 
 Použité technologie: Elasticsearch, Kibana, Nette, MySQL/PostgreSQL (podle Vás)
