@@ -12,7 +12,7 @@ perex: "Jak efektivně propojit entity? Jak dělat s DQL složitější dotazy d
 
 Zjistíte, jak správně rozpoznat vztahy mezi <a href="http://www.doctrine-project.org/">Doctrine 2 ORM</a> entitami a jak je efektivně propojit mezi sebou. Představíme si jazyk DQL a ukážeme si, jak se s jeho pomocí dají připravit složitější dotazy do databáze. Vysvětlíme si, jak Doctrine dokáže optimalizovat množství dotazů do databáze a naopak, kdy ji musíme pomoci sami. Ukážeme si co a jak, ale také kdy ukládat do cache. Představíme si Doctrine Events, Filters a také mocnou Second Level Cache.
 
-*Jako bonus zjistíte, na jaké problémy můžete narazit při nesprávném cachování hlavně multijazyčných aplikací + se rád podělím o pár vychytávek, na které jsem narazil za 4 roky při skoro každodenní práci s Doctrine.*
+Jako bonus zjistíte, na jaké problémy můžete narazit při nesprávném cachování hlavně multijazyčných aplikací + se rád podělím o pár vychytávek, na které jsem narazil za 4 roky při skoro každodenní práci s Doctrine.
 
 ### Co si ze školení odneseš?
 
@@ -23,7 +23,6 @@ Zjistíte, jak správně rozpoznat vztahy mezi <a href="http://www.doctrine-proj
 - Bonus: jak "ne"cachovat multijazyčné aplikace + vychytávky pro ulehčení práce s Doctrine
 
 ### Co je potřeba před školením
-*(Pokud budeš chtít testovat předváděné příklady i na svém notebooku.)*
 
 - mít nainstalované PHP 7.1 a vyšší + relační databázi (MySQL, PostgreSQL, atd.)
 - mít nainstalované nějaké IDE např. [PHPStorm](https://www.jetbrains.com/phpstorm/download/)

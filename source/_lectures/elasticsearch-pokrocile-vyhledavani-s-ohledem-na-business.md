@@ -8,7 +8,7 @@ capacity: "10 lidí"
 
 Ukážeme si, jak připravit pokročilé vyhledávání přes <a href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a>, které bude užitečné pro zákazníka, ale zároveň bude podporovat business firmy. Představíme si možnosti, jakými se dají ovlivňovat výsledky vyhledávání s ohledem na přesnost, ziskovost, ale také výkon. Ukážeme si, jak se dá pomocí Elasticsearch připravit filtrace produktů na e-shopu a jednu takovou mocnou filtraci si i připravíme. Zároveň si vytvoříme reálný vyhledávací dotaz, který bude zohledňovat požadavky zákazníka.
 
-*Jako bonus zjistíte, jaké problémy může skrývat ovlivňování výsledků z vyhledávání. A také se rád podělím o své zkušenosti za 3 roky intenzivního používání Elasticsearch na produkci na [Lekarna.cz](https://www.lekarna.cz/).*
+Jako bonus zjistíte, jaké problémy může skrývat ovlivňování výsledků z vyhledávání. A také se rád podělím o své zkušenosti za 3 roky intenzivního používání Elasticsearch na produkci na [Lekarna.cz](https://www.lekarna.cz/).
 
 ### Co si ze školení odneseš?
 
@@ -21,9 +21,8 @@ Ukážeme si, jak připravit pokročilé vyhledávání přes <a href="https://w
 
 
 ### Co je potřeba před školením
-*(Pokud budeš chtít testovat předváděné příklady i na svém notebooku.)*
 
-- mít nainstalovaný Elasticsearch 5 a vyšší (ideálně verzi 6) + odpovídající Kibanu
+- mít nainstalovaný [Elasticsearch](https://www.elastic.co/downloads/elasticsearch) + [Kibanu](https://www.elastic.co/downloads/kibana
 - pro část ukázek se hodí mít nainstalovaný plugin [ICU](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-icu.html) a [Cerebro](https://github.com/lmenezes/cerebro)
 - mít nainstalované PHP 7.1 a vyšší + relační databázi (MySQL, PostgreSQL, atd.)
 
