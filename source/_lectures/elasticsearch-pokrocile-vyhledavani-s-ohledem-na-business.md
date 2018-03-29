@@ -6,16 +6,25 @@ price: 6999
 capacity: "10 lidí"
 ---
 
-Ukážeme si, jak připravit pokročilé vyhledávání přes <a href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a>, které bude užitečné pro zákazníka, ale zároveň bude podporovat business firmy. Představíme si možnosti, jakými se dají ovlivňovat výsledky vyhledávání s ohledem na přesnost, ziskovost, ale také výkon. Připravíme si reálný vyhledávací dotaz, který bude zohledňovat požadavky zákazníka a zároveň pomáhat businessu. Také si ukážeme, jak se dá použít Elasticsearch pro filtraci produktů na e-shopu a jednu takovou mocnou filtraci si i připravíme.
+Ukážeme si, jak připravit pokročilé vyhledávání přes <a href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a>, které bude užitečné pro zákazníka, ale zároveň bude podporovat business firmy. Představíme si možnosti, jakými se dají ovlivňovat výsledky vyhledávání s ohledem na přesnost, ziskovost, ale také výkon. Ukážeme si, jak se dá pomocí Elasticsearch připravit filtrace produktů na e-shopu a jednu takovou mocnou filtraci si i připravíme. Zároveň si vytvoříme reálný vyhledávací dotaz, který bude zohledňovat požadavky zákazníka.
 
 Jako bonus zjistíte, jaké problémy může skrývat ovlivňování výsledků z vyhledávání. A také se rád podělím o své zkušenosti za 3 roky intenzivního používání Elasticsearch na produkci na [Lekarna.cz](https://www.lekarna.cz/).
 
 ### Co si ze školení odneseš?
 
 - Seznámení s tím, jak může Elasticsearch pomoci businessu
-- Pokročilé vyhledávání s ohledem na zákazníka
-- Pokročilé vyhledávání s ohledem na business
-- Filtrace s pomocí Elastisearch
+- Pokročilé vyhledávání s ohledem na zákazníka a business
+- Zvýhoďnování celých frází před překlepy
+- Schopnost psát agregační dotazy (dříve facety)
+- Uživatelská filtrace s pomocí Elastisearch
 - Bonus: problémy při ovlivňování výsledků a tipy z produkčního prostředí
 
-Technologie: Elasticsearch, Kibana, Nette
+
+### Co je potřeba před školením
+
+- mít nainstalovaný [Elasticsearch](https://www.elastic.co/downloads/elasticsearch) + [Kibanu](https://www.elastic.co/downloads/kibana
+- pro část ukázek se hodí mít nainstalovaný plugin [ICU](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-icu.html) a [Cerebro](https://github.com/lmenezes/cerebro)
+- mít nainstalované nějaké IDE např. [PHPStorm](https://www.jetbrains.com/phpstorm/download/)
+- mít nainstalované PHP 7.1 a vyšší + relační databázi (MySQL, PostgreSQL, atd.)
+
+Použité technologie: Elasticsearch, Kibana, Nette, MySQL/PostgreSQL (podle Vás)
