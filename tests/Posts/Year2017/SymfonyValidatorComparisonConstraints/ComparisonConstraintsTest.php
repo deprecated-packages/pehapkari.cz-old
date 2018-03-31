@@ -30,12 +30,9 @@ final class ComparisonConstraintsTest extends TestCase
         $event->setStartDate(new DateTime('today'));
         $event->setEndDate(new DateTime('yesterday'));
 
-        $this->assertViolations(
-            [
-                'endDate' => 'This value is not valid.',
-            ],
-            $this->validator->validate($event)
-        );
+        $this->assertViolations([
+            'endDate' => 'This value is not valid.',
+        ], $this->validator->validate($event));
     }
 
     /**

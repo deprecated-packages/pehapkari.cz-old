@@ -2,11 +2,10 @@
 id: 39
 layout: post
 title: "Arachne/EntityLoader - Object Parameters for Nette/Application"
-perex: '''
+perex: |
     Ever wanted to get rid of `EntityManager::find($id)` as the first thing in your every presenter action?
     With [Arachne/EntityLoader](https://github.com/Arachne/EntityLoader) you can.
     Of course it is not limited to Doctrine, you can easily use it with a different ORM library.
-'''
 author: 5
 reviewed_by: [1, 25, 26]
 lang: en

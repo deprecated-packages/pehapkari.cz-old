@@ -2,12 +2,10 @@
 id: 58
 layout: post
 title: "SOLID principy: Princip otevřenosti a uzavřenosti"
-perex: '''
-Princip říká, že:
+perex: |
+    Princip říká, že:
 
->>> Softwarové entity (třídy, moduly, funkce, atd.) by měly být otevřené pro rozšíření, ale uzavřené pro změnu.
-
-'''
+    >>> Softwarové entity (třídy, moduly, funkce, atd.) by měly být otevřené pro rozšíření, ale uzavřené pro změnu.
 author: 30
 related_items: [50,57]
 ---

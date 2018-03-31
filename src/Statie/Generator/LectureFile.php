@@ -4,6 +4,7 @@ namespace Pehapkari\Website\Statie\Generator;
 
 use DateTime;
 use DateTimeInterface;
+use Nette\Utils\DateTime as NetteDateTime;
 use Symplify\Statie\Renderable\File\AbstractFile;
 
 final class LectureFile extends AbstractFile
@@ -64,7 +65,7 @@ final class LectureFile extends AbstractFile
                 return $this->configuration['date'];
             }
 
-            return new DateTime($this->configuration['date']);
+            return NetteDateTime::from($this->configuration['date']);
         }
 
         return null;
@@ -78,10 +79,5 @@ final class LectureFile extends AbstractFile
 
         return $this->getDateTime()
             ->format('j. n. Y H:i');
-    }
-
-    public function getFbEventLink(): ?string
-    {
-        return $this->configuration['fb_event'] ?? null;
     }
 }

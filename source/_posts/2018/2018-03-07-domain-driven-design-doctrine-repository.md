@@ -2,9 +2,8 @@
 id: 63
 layout: post
 title: "Domain-Driven Design, part 6 - Doctrine Repository"
-perex: '''
- Now we will implement an actual relational database repository using Doctrine 2 and as always we'll try to test it.
-'''
+perex: |
+    Now we will implement an actual relational database repository using Doctrine 2 and as always we'll try to test it.
 author: 29
 lang: en
 tested: true

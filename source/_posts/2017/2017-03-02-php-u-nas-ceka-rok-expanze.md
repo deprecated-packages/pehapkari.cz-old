@@ -2,11 +2,10 @@
 id: 43
 layout: post
 title: "PHP u nás čeká rok expanze"
-perex: '''
+perex: |
     Za minulý rok naše php komunita vyrostla jako nikdy předtím. Přestali jsem řešit, kdo má větší framework, **začali jsme sdílet online i offline a spojovat se napříč republikou**. Mám z toho ohromnou radost!
     <br><br>
     Dnes se s tebou chci podělit o to, kam jsme zatím došli a jaká velká cesta nás ještě čeká.
-'''
 author: 1
 related_items: [42, 41]
 ---

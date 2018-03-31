@@ -2,13 +2,12 @@
 id: 1
 layout: post
 title: "Podcast Nejen o PHP #1 - O sebevzdělávání, školení a mentoringu"
-perex: '''
+perex: |
     Poslední půlrok u nás vzniká spousta možností, jak se vzdělávat v PHP. A zadarmo.
 
     **Kdo je pořádá? Proč na ně není takový nával? A jak by tomu mohl pomoc mentoring?**
 
     O tom všem se dnes pobavíme.
-'''
 
 podcast:
     title: "#1 - O sebevzdělání, školení a mentoringu"

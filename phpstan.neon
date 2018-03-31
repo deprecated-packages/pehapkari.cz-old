@@ -8,7 +8,3 @@ parameters:
 
         # buggy
         - '#Property Pehapkari\\Website\\Tests\\Posts\\Year2017\\ListeningNetteComponents\\ListeningNetteComponentsTest::\$presenterFactory \(Nette\\Application\\IPresenterFactory\) does not accept object#'
-        - '#Cannot call method (add|map)\(\) on array<Pehapkari\\Website\\Posts\\Year2018\\Cart\\Domain\\Item>|Doctrine\\Common\\Collections\\Collection#'
-
-    # clean once upon a time
-    reportUnmatchedIgnoredErrors: false
