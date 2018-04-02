@@ -76,13 +76,7 @@ class Cart
      */
     private function find(string $productId): Item
     {
-        foreach ($this->items as $item) {
-            if ($item->getProductId() === $productId) {
-                return $item;
-            }
-        }
-
-        throw new ProductNotInCartException();
+        return $this->items[$this->findKey($productId)];
     }
 
     /**
