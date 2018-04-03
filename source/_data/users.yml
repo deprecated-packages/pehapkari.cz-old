@@ -43,3 +43,9 @@ parameters:
             name: "Ukázkový Školitel"
             url: "https://webkdesedovisomnevice.cz/"
             photo: "ukazkovy_skolitel.jpg"
+        118:
+            name: "Łukasz Chruściel"
+            url: "https://www.sylius.com/"
+            photo: "lukasz_chrusciel.jpg"
+            # for lectors
+            bio: "Trainer, software engineer and API expert at Sylius."
