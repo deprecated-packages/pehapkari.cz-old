@@ -1,7 +1,7 @@
 ---
 name: "Ovládni PhpStorm - od základů po profi tipy"
-date: 2018-01-25
-form_link: "https://goo.gl/forms/3u8TiSYO5sPeAM3L2"
+date: '2018-05-25 13:00:00'
+form_link: "https://goo.gl/forms/dcIMJJsLWtoAvRkg1"
 image: "/assets/images/logos/phpstorm.png"
 user: 6
 duration: "3 hodiny"
