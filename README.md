@@ -12,7 +12,13 @@
 
 3. Install dependencies
 
+This project requires a gulp library installed globally. If you don't have it install it with this command:
 ```bash
+npm install --global gulp-cli
+```
+
+```bash
+cd pehapkari.cz
 composer update
 npm install
 ```
@@ -20,7 +26,6 @@ npm install
 4. Run Website
 
 ```sh
-cd pehapkari.cz
 gulp
 ```
 
