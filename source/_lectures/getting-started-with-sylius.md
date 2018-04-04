@@ -3,9 +3,9 @@ name: "Getting started with Sylius"
 
 date: "2018-05-11 10:00:00"
 user: 118
-duration: "8 hodin"
+duration: "8 hours"
 price: 4999
-capacity: "10 lidí"
+capacity: "10 people"
 image: "/assets/images/logos/sylius.png"
 perex: "Comprehensive introduction to Sylius eCommerce framework. Join us and learn how to customise one of the most promising eCommerce solutions."
 ---
@@ -14,7 +14,7 @@ Have you heard about Sylius eCommerce framework? If so, you already know that it
 
 <br>
 
-### Co si ze školení odneseš?
+### What Will You Learn?
 
 - Being familiar with Sylius architecture and bundles separation.
 - Creating a CRUD API in minutes.
@@ -26,7 +26,7 @@ Have you heard about Sylius eCommerce framework? If so, you already know that it
 
 <br>
 
-### Co je potřeba před školením
+### What Do You Need to be Prepared?
 
 - Installed PHP 7.1
 - Installed [PHPStorm](https://www.jetbrains.com/phpstorm/download/)
