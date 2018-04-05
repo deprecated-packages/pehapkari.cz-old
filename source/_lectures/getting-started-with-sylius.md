@@ -2,6 +2,7 @@
 name: "Getting started with Sylius"
 
 date: "2018-05-11 10:00:00"
+form_link: "https://goo.gl/forms/n3L5StHbrEAUNzsB2"
 user: 118
 duration: "8 hours"
 price: 4999
