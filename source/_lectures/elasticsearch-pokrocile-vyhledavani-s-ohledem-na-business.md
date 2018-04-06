@@ -1,5 +1,8 @@
 ---
 name: "Elasticsearch - Pokročilé vyhledávání s ohledem na business"
+image: "/assets/images/logos/elasticsearch.svg"
+date: '2018-05-21 10:00:00'
+form_link: "https://goo.gl/forms/7KJz0cy1UnGoe6J72"
 user: 11
 duration: "8 hodin"
 price: 6999
