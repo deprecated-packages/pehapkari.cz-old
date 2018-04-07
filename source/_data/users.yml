@@ -45,7 +45,7 @@ parameters:
             photo: "ukazkovy_skolitel.jpg"
         118:
             name: "Łukasz Chruściel"
-            url: "https://www.sylius.com/"
+            url: "https://sylius.com/"
             photo: "lukasz_chrusciel.jpg"
             # for lectors
             bio: "Trainer, software engineer and API expert at Sylius."
