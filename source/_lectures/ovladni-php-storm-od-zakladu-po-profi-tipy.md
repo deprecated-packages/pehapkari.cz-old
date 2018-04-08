@@ -22,7 +22,7 @@ Pro nás vývojáře je IDE hlavní pracovní nástroj, a proto se vyplatí ho p
 - Jak integrovat externí nástroje s PhpStormem
 - Jak v PhpStormu testovat
 - Jak si nastavit PhpStorm na míru projektu
-- ZDARMA Poukaz na 2 měsíce z roční licence (800Kč sleva) 
+- ZDARMA Poukaz na 2 měsíce z roční licence (800Kč sleva)
 
 ### Co je potřeba na školení
 
@@ -37,8 +37,8 @@ Pro nás vývojáře je IDE hlavní pracovní nástroj, a proto se vyplatí ho p
 
 ### Co o školení říkají účastníci?
 
-> S PhpStormem jsem nikdy předtím nedělal a byla to super ukázka toho, co to všechno umí. <strong>Tomáš skvěle, lidsky a poutavě přednášel, nachystané to měl na jedničku</strong>.  
+> S PhpStormem jsem nikdy předtím nedělal a byla to super ukázka toho, co to všechno umí. <strong>Tomáš skvěle, lidsky a poutavě přednášel, nachystané to měl na jedničku</strong>.
 >*[Michal Klabník](http://www.klabnik.cz/)*
 
-> Vždycky jsem si myslel, že to co dělam složitě, určitě PhpStorm umí udelat nějak jednodušeji, ale dozvěděl jsem se, ze dělam složite i věci o kterých jsem si myslel, že je dělam jednoduše.  
+> Vždycky jsem si myslel, že to co dělam složitě, určitě PhpStorm umí udelat nějak jednodušeji, ale dozvěděl jsem se, ze dělam složite i věci o kterých jsem si myslel, že je dělam jednoduše.
 > *Ondřej Popelka, [Keboola](https://www.keboola.com/)*
