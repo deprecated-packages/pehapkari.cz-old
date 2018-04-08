@@ -17,11 +17,14 @@ Anything around PHP and its ecosystem - git, Github, PHPStorm, Doctrine, Symfony
 
 ## How To Write a Post?
 
-> "Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away."
->
-> – *Antoine de Saint Exupery*
+<blockquote class="blockquote mb-5 mt-5 text-center">
+    <p>"Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away."</p>
+    <p class="blockquote-footer">Antoine de Saint Exupery</p>
+</blockquote>
 
 In case you'll be writing your first post ever, don't worry, we're here to help you up!
+
+We use [Markdown](https://guides.github.com/features/mastering-markdown/#examples) and Yaml to define metadata in post header (very rare).
 
 ### 1. Your Job...
 
@@ -38,15 +41,11 @@ In case you'll be writing your first post ever, don't worry, we're here to help 
 - Tweet it with [@pehapkari](https://twitter.com/pehapkari) mention and we retweet it
 - the best posts are shared on Facebook
 
-## What to Write in?
-
-- [Markdown](https://guides.github.c om/features/mastering-markdown/#examples)
-- Yaml to define metadata in post header (very rare)
 
 Do you want your post to **survive years to the future**? [Add few tests to it](/blog/2017/01/12/why-articles-with-code-examples-should-be-CI-tested/). Such posts are easily updated and re-published when other posts die with next major release of technology or package they describe. 
 
-### Got Any Questions?
+Got Any Questions? Just [write us](mailto:tomas@pehpkari.cz) or send PR and we'll help you. 
 
-Just [write us](mailto:tomas@pehpkari.cz) or send PR and we'll help you. 
+<br>
 
 We look forward to you post :)
