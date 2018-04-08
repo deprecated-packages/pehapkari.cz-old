@@ -42,8 +42,7 @@ Ty si pak můžeš hodit nohy na stůl a slíznout smetanu slávy. Ke smetatně 
 Máš tu k dispozici:
 
 - [Markdown](https://guides.github.com/features/mastering-markdown/#examples) (třeba tento článek je napsaný jen v něm)
-- [Latte](https://latte.nette.org/)
-- [Yaml](https://symfony.com/doc/current/components/yaml.html) pro definování dat v hlavičce článku
+- Yaml pro definování dat v hlavičce článku
 
 ## V jakém jazyce?
 
