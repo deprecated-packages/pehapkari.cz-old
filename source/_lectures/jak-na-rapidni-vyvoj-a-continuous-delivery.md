@@ -25,7 +25,7 @@ Zkracování [feedback loop](https://ondrej.mirtes.cz/zkracovani-feedback-loop).
 
 ### Co potřebuješ před školením?
 
-Mít připravené odpovědi na tyto otázky: 
+Mít připravené odpovědi na tyto otázky:
 
 - Na jakém projektu (projektech) pracujete a v jak velkém týmu?
 - Jaké typické problémy při vývoji vás potkávají a co vás pálí nejvíc? (bugy, dlouhá doba vývoje nové funkcionality, nespokojenost klienta, technický dluh, merge konflikty, dlouho žijící větve atd.)

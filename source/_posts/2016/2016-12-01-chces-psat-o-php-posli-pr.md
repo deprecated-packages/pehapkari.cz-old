@@ -42,14 +42,11 @@ Ty si pak můžeš hodit nohy na stůl a slíznout smetanu slávy. Ke smetatně 
 Máš tu k dispozici:
 
 - [Markdown](https://guides.github.com/features/mastering-markdown/#examples) (třeba tento článek je napsaný jen v něm)
-- [Latte](https://latte.nette.org/)
-- [neon](https://ne-on.org/) pro definování dat v hlavičce článku
-
+- Yaml pro definování dat v hlavičce článku
 
 ## V jakém jazyce?
 
 Česky, slovensky nebo anglicky. Pro anglickou verzi přidej `lang: en` do hlavičky článku.
-
 
 Proces psaní a přijímání článků se může časem vyvíjet. **Tohle je start, kterým začneme, a uvidíme, kam budeme směřovat.**
 
