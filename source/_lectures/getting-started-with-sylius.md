@@ -9,6 +9,7 @@ price: 4999
 capacity: "10 people"
 image: "/assets/images/logos/sylius.png"
 perex: "Comprehensive introduction to Sylius eCommerce framework. Join us and learn how to customise one of the most promising eCommerce solutions."
+lang: en
 ---
 
 Have you heard about Sylius eCommerce framework? If so, you already know that it is an integral part of Symfony ecosystem and it is one of the most significant, publicly available projects developed in BDD methodology. If not, join me and learn the e-commerce technology of the future. Forget legacy platforms like Magento or PrestaShop. Enjoy being a developer again!

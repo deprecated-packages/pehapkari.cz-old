@@ -9,6 +9,11 @@ use Symplify\Statie\Renderable\File\AbstractFile;
 
 final class LectureFile extends AbstractFile
 {
+    public function isInEnglish(): bool
+    {
+        return isset($this->configuration['lang']) && $this->configuration['lang'] === 'en';
+    }
+
     public function isActive(): bool
     {
         if (! $this->getDateTime()) {

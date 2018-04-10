@@ -21,7 +21,7 @@
                             <img width="100" src="/assets/images/people/{$users[$lecture->getUserId()]['photo']}" class="img-thumbnail mb-3 rounded-circle pull-left mr-3">
                         </div>
                         <div class="col-md">
-                            <strong>Školí:</strong>
+                            <strong>{if $lecture->isInEnglish()}Lector{else}Školí{/if}:</strong>
 
                             <a n:tag-ifset="$users[$lecture->getUserId()]['url']" href="{$users[$lecture->getUserId()]['url']}">
                                 {$users[$lecture->getUserId()]['name']}
@@ -36,18 +36,39 @@
                     <div class="clearfix"></div>
 
                     {if $lecture->isActive()}
-                        <p>Příští termín: <strong>{$lecture->getHumanDate()}</strong></p>
+                        <p>
+                            {if $lecture->isInEnglish()}Next term{else}Příští termín{/if}:
+                            <strong>{$lecture->getHumanDate()}</strong>
+                        </p>
                     {/if}
 
-                    <p>Délka: <strong>{$lecture->getDuration()}</strong></p>
-                    <p>Kapacita: <strong>{$lecture->getCapacity()}</strong></p>
-                    <p>Cena: <strong>{$lecture->getPrice()|number: 0 , "," , " "} Kč</strong></p>
+                    <p>
+                        {if $lecture->isInEnglish()}Locatoin{else}Místo{/if}:
+                        <strong>
+                            <a href="https://www.google.com/maps/place/Node5/@50.0663614,14.4005504,17z/data=!3m1!4b1!4m5!3m4!1s0x470b9450c0dcebfb:0x2fad6c1cd982e330!8m2!3d50.066358!4d14.4027444">Node5, Praha</a>
+                        </strong>
+                    </p>
+                    <p>
+                        {if $lecture->isInEnglish()}Duration{else}Délka{/if}:
+                        <strong>{$lecture->getDuration()}</strong>
+                    </p>
+
+                    <p>
+                        {if $lecture->isInEnglish()}Capacity{else}Kapacita{/if}:
+                        <strong>{$lecture->getCapacity()}</strong>
+                    </p>
+
+                    <p>
+                        {if $lecture->isInEnglish()}Price{else}Cena{/if}:
+                        <strong>{$lecture->getPrice()|number: 0 , "," , " "} Kč</strong>
+                    </p>
 
                     {if $lecture->isActive()}
                         <div class="text-center">
                             <a href="{$lecture->getFormLink()}" class="btn btn-success mt-4">
                                 <em class="fa fa-fw fa-handshake-o"></em>
-                                Přihlásit se
+                                &nbsp;
+                                {if $lecture->isInEnglish()}Sign Up{else}Přihlásit se{/if}
                             </a>
                         </div>
                     {/if}
