@@ -1,5 +1,7 @@
 imports:
     - { resource: 'source/_data/*.yml' }
+    # enabled on localhost only
+    - { resource: 'config/config.local.yml',  ignore_errors: true }
 
 parameters:
     page_title: "Děláš v PHP? Jsi jedním z nás"
