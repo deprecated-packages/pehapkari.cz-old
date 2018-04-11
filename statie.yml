@@ -5,6 +5,7 @@ imports:
     - { resource: 'config/config.local.yml',  ignore_errors: true }
 
 parameters:
+    twitter_name: 'Pehapkari'
     minimal_gap_in_days: 0 # how many days to wait before publishing another Tweet
 
     page_title: "Děláš v PHP? Jsi jedním z nás"
