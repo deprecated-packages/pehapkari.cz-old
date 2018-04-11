@@ -23,9 +23,9 @@ final class LectureFile extends AbstractFile
         return $this->getDateTime() > new DateTime();
     }
 
-    public function getName(): string
+    public function getTitle(): string
     {
-        return $this->configuration['name'];
+        return $this->configuration['title'];
     }
 
     public function getImage(): ?string

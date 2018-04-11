@@ -1,5 +1,5 @@
 ---
-name: "Tvorba zadání a komunikace se zákazníkem"
+title: "Tvorba zadání a komunikace se zákazníkem"
 date: '2018-05-25 09:00:00'
 form_link: "https://goo.gl/forms/wBb4g05HlyZdQr2X2"
 user: 28

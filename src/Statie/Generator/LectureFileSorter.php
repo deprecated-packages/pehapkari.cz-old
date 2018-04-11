@@ -48,7 +48,7 @@ final class LectureFileSorter implements ObjectSorterInterface
     private function sortRestOfLecturesByName(array $restOfLectures): array
     {
         usort($restOfLectures, function (LectureFile $firstFile, LectureFile $secondFile) {
-            return strcmp($firstFile->getName(), $secondFile->getName());
+            return strcmp($firstFile->getTitle(), $secondFile->getTitle());
         });
 
         return $restOfLectures;

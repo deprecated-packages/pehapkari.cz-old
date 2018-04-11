@@ -24,7 +24,7 @@ id: vzdelavej-se
                     <div class="flex col-md-6">
                         <h2>
                             <a href="/{$lecture->getRelativeUrl()}/">
-                                <strong>{$lecture->getName()|noescape}</strong>
+                                <strong>{$lecture->getTitle()|noescape}</strong>
                             </a>
                         </h2>
 
@@ -66,7 +66,7 @@ id: vzdelavej-se
                 <p>
                     {foreach $lectures as $lecture}
                         {continueIf $lecture->isActive()}
-                        <a href="/{$lecture->getRelativeUrl()}/">{$lecture->getName()|noescape}</a>{sep}, {/sep}
+                        <a href="/{$lecture->getRelativeUrl()}/">{$lecture->getTitle()|noescape}</a>{sep}, {/sep}
                     {/foreach}
                 </p>
             </div>

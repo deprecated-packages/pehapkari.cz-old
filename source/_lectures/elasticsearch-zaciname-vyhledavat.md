@@ -1,6 +1,6 @@
 ---
 form_link: "https://goo.gl/forms/Lhjj0p6dEJAaegfi2"
-name: "Elasticsearch - Začínáme vyhledávat"
+title: "Elasticsearch - Začínáme vyhledávat"
 image: "/assets/images/logos/elasticsearch.svg"
 date: 2018-01-30
 user: 11
