@@ -8,6 +8,7 @@ perex: |
     Rozhodl jsem se, že si je do Symfony musím dodělat. V tomto článku vám ukážu, jak jsem toho docílil.
 author: 34
 lang: cs
+tweet: "Urodilo se na blogu: #Symfony 4: Vytváříme chytrý kontroler"
 ---
 
 Řekněme, že máme nějaký `HomepageController` s `renderDefault()` metodou umístěný ve složce `src/controller`

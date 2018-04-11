@@ -7,6 +7,7 @@ perex: |
 author: 15
 lang: en
 related_items: [45]
+tweet: "Post from Community Blog: How to use #ELK stack"
 ---
 
 ## What is ELK Stack

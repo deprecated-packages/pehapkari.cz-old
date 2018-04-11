@@ -6,6 +6,7 @@ perex: |
     Just what I had in my mind or have tackled with in the recent past underlayed with the knowledge of the others.
 lang: en
 author: 31
+tweet: "Post from Community Blog: Strange codes, multiple identities and team habits"
 ---
 
 _originally published at [romanvesely.com](https://romanvesely.com) on 2017-10-16_

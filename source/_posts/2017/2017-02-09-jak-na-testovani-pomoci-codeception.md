@@ -4,6 +4,7 @@ layout: post
 title: "Jak na akceptační testovaní pomocí Codeception"
 perex: "Jak automaticky testovat celé stránky a simulovat chování uživatele na webu pomocí Codeception"
 author: 15
+tweet: "Urodilo se na blogu: Jak na akceptační testovaní pomocí #Codeception"
 ---
 
 ## Co je to Codeception a proč jej používat?

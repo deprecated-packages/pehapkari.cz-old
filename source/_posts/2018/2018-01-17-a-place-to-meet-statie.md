@@ -6,6 +6,7 @@ perex: |
     I'm happy to announce that Statie, a newcomer to the field of static site generators written in PHP, received a place where it could promote itself better. [Its own website](https://www.statie.org). Though a really simple one; but it's healthy to start with small things, they say.
 lang: en
 author: 31
+tweet: "Post from Community Blog: A place to meet Statie #php #static #generator"
 ---
 
 _originally published at [romanvesely.com](https://romanvesely.com) on 2018-01-08_

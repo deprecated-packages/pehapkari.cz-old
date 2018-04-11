@@ -9,6 +9,7 @@ perex: |
 author: 1
 related_items: [4, 11]
 lang: en
+tweet: "Post from Community Blog: How Anyone Can Write a Post Here #blogging #open"
 ---
 
 ## What Can You Write About?

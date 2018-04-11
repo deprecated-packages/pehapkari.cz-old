@@ -5,6 +5,7 @@ title: "Jak hromadně spravovat privátní composer balíčky"
 perex: |
  Composer je dobrý sluha, ale zlý pán, pokud nevíte jak s ním pracovat. Podívejte se na naše workflow vývoje, kdy je dána plně modulární aplikace a ta se řídí závislostmi na konkrétních balíčcích.
 author: 27
+tweet: "Urodilo se na blogu: Jak hromadně spravovat privátní composer balíčky #git #monorepo"
 ---
 Při vývoji člověk dojde do určité fáze, kdy je potřeba projekt nějakým způsobem rozšiřovat dál, nabídnout více klientům. Tady se pak dostáváme do situace, kdy má sice funkční aplikaci, ale naráží na různé problémy. Jedním z nich může být když chce klient nějakou modifikaci. Nebo se najde nějaká chyba. To vše vede k tomu že se musí upravovat kód u každého klienta zvlášť. Řešení je jednoduché. Rozdělit kód do balíčků a ty verzovat. Klientům lze pak poskytovat konkrétní verze.
 

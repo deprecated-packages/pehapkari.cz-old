@@ -8,6 +8,7 @@ lang: en
 tested: true
 test_slug: SymfonyValidatorConditionalConstraints
 related_items: [20, 22]
+tweet: "Post from Community Blog: How to use Conditional Constraints with #Symfony/#Validator"
 ---
 
 

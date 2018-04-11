@@ -8,6 +8,7 @@ perex: |
     Dnes se s tebou chci podělit o to, kam jsme zatím došli a jaká velká cesta nás ještě čeká.
 author: 1
 related_items: [42, 41]
+tweet: "Urodilo se na blogu: PHP u nás čeká rok expanze #retro"
 ---
 
 ## Scházíme se čím dál víc

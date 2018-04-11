@@ -6,6 +6,7 @@ perex: "Nejspíš jste zkratku CI již někde viděli, možná tušíte, co Cont
 author: 16
 reviewed_by: [1, 17]
 related_items: [31]
+tweet: "Urodilo se na blogu: Jak snadné je používat #CI"
 ---
 
 ## Co je to CI

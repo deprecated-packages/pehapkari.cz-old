@@ -8,6 +8,7 @@ author: 5
 reviewed_by: [1, 25, 26]
 lang: en
 related_items: [36, 37, 38, 39]
+tweet: "Post from Community Blog: Arachne/Verifier + Arachne/EntityLoader - Using Entities in Verifier Rules #symfony #validator #doctrineORM"
 ---
 
 ## Wait a Second

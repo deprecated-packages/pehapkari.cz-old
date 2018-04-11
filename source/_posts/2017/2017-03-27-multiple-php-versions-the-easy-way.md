@@ -6,6 +6,7 @@ perex: "Always wanted to try or run your application with a different PHP versio
 author: 17
 reviewed_by: [12]
 lang: en
+tweet: "Post from Community Blog: Multiple #PHP versions, the easy way"
 ---
 
 

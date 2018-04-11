@@ -15,6 +15,7 @@ perex: |
     De facto můžeme říct, že byste téměř vždy měli záviset na abstrakci a nikoli na konkrétní implementaci.
 author: 30
 related_items: [50,57,58,59]
+tweet: "Urodilo se na blogu: #SOLID principy: Princip obrácení zavislostí #dip"
 ---
 
 Video (1:29)

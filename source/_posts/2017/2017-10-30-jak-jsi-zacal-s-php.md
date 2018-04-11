@@ -8,6 +8,7 @@ perex: |
     <br>
     Před nedávnem jsme dávali anketu *Jak jsi začal s PHP*. Pojďme si tu vášeň připomenout - tady je pár vybraných kousků, které jste nám poslali.
 author: 1
+tweet: "Urodilo se na blogu: Jak jsi začal s #PHP? #story"
 ---
 
 

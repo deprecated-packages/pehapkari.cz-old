@@ -7,6 +7,7 @@ perex: |
 author: 24
 tested: true
 test_slug: Iterators
+tweet: "Urodilo se na blogu: Nenechte si podrazit nohy iterátory v #PHP"
 ---
 
 Při programování a používání kolekcí v doménovém modelu jsem narazil na velmi podivné chování `SplObjectStorage` (2. příklad) při vnořeném iterování. V jednom příkladu dokonce XDebug mění chování kódu (3. příklad). Nenechejte se napálit a pochopte sémantiku iterátorů v PHP.

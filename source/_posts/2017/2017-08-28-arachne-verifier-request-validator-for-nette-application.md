@@ -9,6 +9,7 @@ author: 5
 reviewed_by: [1, 25, 26]
 lang: en
 related_items: [36, 37, 39, 40]
+tweet: "Post from Community Blog: Arachne/Verifier - Request #Validator for Nette/Application #nettefw #symfony"
 ---
 
 ## The Basics

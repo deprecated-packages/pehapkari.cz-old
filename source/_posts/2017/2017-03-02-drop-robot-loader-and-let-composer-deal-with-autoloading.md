@@ -8,6 +8,7 @@ perex: |
     The best way to deal with them is acknowledge their purpose and then, let them go and enjoy the gift of present.
 author: 1
 lang: en
+tweet: "Post from Community Blog: Drop RobotLoader and let #Composerphp Deal with Autoloading #nettefw #psr4"
 ---
 
 *Martin Zlámal already [wrote about this](https://zlml.cz/psr-4-autoloader-aplikace) (Czech) a year ago and I think this needs to be promoted even more.*

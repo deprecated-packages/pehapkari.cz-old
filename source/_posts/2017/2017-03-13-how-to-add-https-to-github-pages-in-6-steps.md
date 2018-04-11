@@ -10,6 +10,7 @@ author: 1
 lang: en
 reviewed_by: [17, 18]
 related_items: [18]
+tweet: "Post from Community Blog: How to add #HTTPS to #GitHub Pages in 6 Steps #cloudflare"
 ---
 
 This site now runs on HTTPS, see: [https://pehapkari.cz/](https://pehapkari.cz) thanks to [Michal Špaček](https://www.michalspacek.com) who added [a simple how-to manual](https://github.com/pehapkari/pehapkari.cz/issues/162#issuecomment-272590505) to the GitHub issue. I will try to expand it here.

@@ -12,6 +12,7 @@ podcast:
 
 author: 21
 related_items: [1, 2]
+tweet: "Urodilo se na blogu: Podcast Nejen o PHP #3 - Kam kráčí Péhápkaři a jak se můžeš přidat #retro"
 ---
 
 <br>

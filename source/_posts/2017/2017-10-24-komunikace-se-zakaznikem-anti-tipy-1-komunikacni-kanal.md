@@ -5,6 +5,7 @@ title: "Tipy na potopení projektu: #1 Trvejte na oblíbeném komunikačním kan
 perex: |
  Existuje tisíc a jeden způsobů, jak podělat projekt, a v našem seriálu si některé ukážeme. Dnes bych rád mluvil o **způsobu komunikace**.
 author: 28
+tweet: "Urodilo se na blogu: Tipy na potopení projektu: #1 Trvejte na oblíbeném komunikačním kanále #communication"
 ---
 
 Někdo si rád **pokecá**, jiný posílá **e-maily**, geek zásadně **zprávy**. Projekt můžete s minimem úsilí potopit hned na začátku, když budete jeho kontext probírat výhradně přes Messenger. I když se ale zapomenete a kývnete na schůzku nebo telefonát, můžete projekt stihnout zabít ještě později - třeba tím, že nepořídíte zápis.

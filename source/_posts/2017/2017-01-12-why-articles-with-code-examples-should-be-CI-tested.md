@@ -7,6 +7,7 @@ author: 1
 lang: en
 reviewed_by: [5]
 related_items: [4, 69]
+tweet: "Post from Community Blog: Why articles with code examples should be CI tested #blogging #testing #sustainability"
 ---
 
 Do you know [Awesome lists](https://github.com/sindresorhus/awesome/)? If not, go to check them. They collect best sources about a certain topic. When I try to learn something new, I usually start on Github looking for "awesome <technology>". I recommend at least briefly to check them.

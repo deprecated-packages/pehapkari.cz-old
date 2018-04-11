@@ -10,6 +10,7 @@ perex: |
 author: 29
 lang: en
 related_items: [49, 52, 54, 61, 62, 63, 66]
+tweet: "Post from Community Blog: Domain-Driven Design, part 7 - Alternative Relational Database Mapping #ddd #domain #php"
 ---
 
 ## Product Name Story

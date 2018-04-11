@@ -7,6 +7,7 @@ perex: |
 author: 15
 lang: en
 related_items: [44]
+tweet: "Post from Community Blog: How to connect #ELK with #Monolog"
 ---
 
 ## What is Monolog

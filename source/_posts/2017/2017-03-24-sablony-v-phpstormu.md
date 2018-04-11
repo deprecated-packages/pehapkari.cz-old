@@ -5,6 +5,7 @@ title: "Live a file templates v PhpStormu"
 perex: "Jak si usnadnit život používáním live a file templates v PhpStormu"
 author: 15
 reviewed_by: [6, 17]
+tweet: "Urodilo se na blogu: Live a file templates v #PhpStormu"
 ---
 
 ### Proč šablony

@@ -8,6 +8,7 @@ perex: |
     >>> Softwarové entity (třídy, moduly, funkce, atd.) by měly být otevřené pro rozšíření, ale uzavřené pro změnu.
 author: 30
 related_items: [50,57]
+tweet: "Urodilo se na blogu: #SOLID principy: Princip otevřenosti a uzavřenosti"
 ---
 
 Video (1:50)

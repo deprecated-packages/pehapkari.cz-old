@@ -8,6 +8,7 @@ lang: en
 tested: true
 test_slug: SymfonyValidatorDynamicConstraints
 related_items: [20, 21]
+tweet: "Post from Community Blog: How to use Dynamic Constraints with #Symfony/#Validator"
 ---
 
 

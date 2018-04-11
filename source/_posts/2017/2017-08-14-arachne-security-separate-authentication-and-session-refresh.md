@@ -10,6 +10,7 @@ author: 5
 reviewed_by: [1, 25, 26]
 lang: en
 related_items: [37, 38, 39, 40]
+tweet: "Post from Community Blog: Arachne/Security - Separate Authentication and Session Refresh #security #nettefw #symfony"
 ---
 
 ## Separate Authentication

@@ -12,6 +12,7 @@ lang: en
 tested: true
 test_slug: Cart/Domain
 related_items: [49, 52, 54, 62, 63, 65, 66]
+tweet: "Post from Community Blog: Domain-Driven Design, part 4 - Implementation #ddd #domain #php"
 ---
 
 ## Model

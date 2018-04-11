@@ -10,6 +10,7 @@ lang: en
 tested: true
 test_slug: Cart/Infrastructure/MemoryCartRepositoryTest.php
 related_items: [49, 52, 54, 61, 63, 65, 66]
+tweet: "Post from Community Blog: Domain-Driven Design, part 5 - Repository #ddd #domain #php"
 ---
 
 ## Collections and Reality

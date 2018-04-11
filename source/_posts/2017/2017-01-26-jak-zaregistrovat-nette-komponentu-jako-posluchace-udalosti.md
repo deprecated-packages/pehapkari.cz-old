@@ -6,6 +6,7 @@ perex: "Dnes si povíme o tom, jak přimět Nette **komponenty poslouchat na ud�
 author: 11
 tested: true
 test_slug: ListeningNetteComponents
+tweet: "Urodilo se na blogu: Jak zaregistrovat #NetteFW komponentu jako posluchače událostí #eventdispatcher #symfony"
 ---
 
 

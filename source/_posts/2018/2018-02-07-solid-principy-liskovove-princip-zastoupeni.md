@@ -13,6 +13,7 @@ perex: |
     >>> Supertyp by měl být plně nahraditelný podtypem.
 author: 30
 related_items: [50,57,58]
+tweet: "Urodilo se na blogu: #SOLID principy: Liskovové princip zastoupení"
 ---
 
 Video (1:46)

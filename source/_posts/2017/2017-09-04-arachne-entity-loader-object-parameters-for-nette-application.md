@@ -10,6 +10,7 @@ author: 5
 reviewed_by: [1, 25, 26]
 lang: en
 related_items: [36, 37, 38, 40]
+tweet: "Post from Community Blog: Arachne/EntityLoader - Object Parameters for Nette/Application #doctrineORM"
 ---
 
 ## The basics

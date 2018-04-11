@@ -5,6 +5,7 @@ title: "Chceš psát o PHP? Pošli Pull Request!"
 perex: "Pokud ti v psaní brání to, **že nemáš funkční blog, krásný design, velké sociální kruhy pro šíření článků nebo copy-cítění**, máme pro tebe řešení - komunitní blog o PHP. **Nudnou rutinu nech na nás a v klidu se věnuj psaní**."
 author: 1
 related_items: [11]
+tweet: "Urodilo se na blogu: Chceš psát o PHP? Pošli Pull Request! #blogging #community"
 ---
 
 ## Jaké články sem patří?
