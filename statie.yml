@@ -1,7 +1,13 @@
 imports:
     - { resource: 'source/_data/*.yml' }
+    - { resource: 'vendor/tomasvotruba/statie-tweet-publisher/src/config/config.yml' }
+    # enabled on localhost only
+    - { resource: 'config/config.local.yml',  ignore_errors: true }
 
 parameters:
+    twitter_name: 'Pehapkari'
+    minimal_gap_in_days: 0 # how many days to wait before publishing another Tweet
+
     page_title: "Děláš v PHP? Jsi jedním z nás"
     site_url: "https://pehapkari.cz"
     github_edit_url_start: "https://github.com/pehapkari/pehapkari.cz/edit/master/source/"
