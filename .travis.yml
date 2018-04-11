@@ -3,7 +3,7 @@ language: php
 matrix:
     include:
         - php: 7.1
-          env: ECS=1
+          env: ECS=1 TWEET=1
         - php: 7.1
           env: PHPSTAN=1
         - php: 7.2
@@ -22,7 +22,7 @@ script:
     - vendor/bin/statie generate source
 
     # tweets posts
-    - if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]]; then vendor/bin/publish-new-tweet; fi
+    - if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" && $TWEET != "" ]]; then vendor/bin/publish-new-tweet; fi
 
 after_script:
     - |
