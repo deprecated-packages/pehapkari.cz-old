@@ -7,7 +7,6 @@ perex: |
     With [Arachne/EntityLoader](https://github.com/Arachne/EntityLoader) you can.
     Of course it is not limited to Doctrine, you can easily use it with a different ORM library.
 author: 5
-reviewed_by: [1, 25, 26]
 lang: en
 related_items: [36, 37, 38, 40]
 tweet: "Post from Community Blog: Arachne/EntityLoader - Object Parameters for Nette/Application #doctrineORM"

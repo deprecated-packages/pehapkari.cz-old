@@ -5,7 +5,6 @@ title: "Why articles with code examples should be CI tested"
 perex: "I know many great articles that go right to the point. I use their code examples and they work. But when I recommend these articles to people I mentor, I realize the articles are already 2 years old and their code samples probably do not work any more. From hero to zero. Today I will show you how to keep them alive lot longer with a minimal effort."
 author: 1
 lang: en
-reviewed_by: [5]
 related_items: [4, 69]
 tweet: "Post from Community Blog: Why articles with code examples should be CI tested #blogging #testing #sustainability"
 ---

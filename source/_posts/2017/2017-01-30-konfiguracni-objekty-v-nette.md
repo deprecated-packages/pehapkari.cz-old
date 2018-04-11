@@ -6,7 +6,6 @@ perex: "Jak se poprat s předáním konfigurace službě z config.neon? A jak k 
 author: 12
 tested: true
 test_slug: NetteConfigObjects
-reviewed_by: [1, 5, 13]
 tweet: "Urodilo se na blogu: Konfigurační objekty v #NetteFw #config"
 ---
 

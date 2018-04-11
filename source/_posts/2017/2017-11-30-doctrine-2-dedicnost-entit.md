@@ -7,7 +7,6 @@ perex: |
     <br><br>
     Při čistém návrhu entit by se nám tedy hodila dědičnost. Umí ji Doctrine zpracovat, a jak s takovou entitou pracuje?
 author: 11
-reviewed_by: [1]
 tweet: "Urodilo se na blogu: Doctrine 2 – Dědičnost entit #doctrineORM"
 ---
 

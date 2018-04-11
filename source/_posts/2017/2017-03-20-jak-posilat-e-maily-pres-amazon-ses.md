@@ -4,7 +4,6 @@ layout: post
 title: "Jak posílat e-maily přes Amazon SES"
 perex: "Posílat emaily přes Amazon SES je snadné a levné. Zkuste to taky."
 author: 20
-reviewed_by: [1, 17]
 tweet: "Urodilo se na blogu: Jak posílat e-maily přes #Amazon SES #aws"
 ---
 

@@ -4,7 +4,6 @@ layout: post
 title: "Git - proč se jej učit v příkazové řádce"
 perex: "Tento článek je určen pro začátečníky, kteří se chystají začít učit verzovací systém Git. Popisuje proč se vyplatí používat Git v příkazové řádce namísto v grafickém prostředí externích SW či IDE."
 author: 19
-reviewed_by: [1]
 tweet: "Urodilo se na blogu: #Git - proč se jej učit v příkazové řádce #cli"
 ---
 

@@ -9,7 +9,6 @@ perex: |
     Today I will show you pros and cons of them to make it easier for you.
 author: 1
 lang: en
-reviewed_by: [5]
 related_items: [5]
 tweet: "Post from Community Blog: The Bulletproof Event Naming For Symfony Event Dispatcher #symfony #eventdispatcher"
 ---

@@ -12,13 +12,6 @@
                 <div class="row text-center">
                     <div class="col-md-12">
                         {include "postMetadataLine", "post" => $post}
-                        <div n:ifset="$post['reviewed_by']" id="reviewed_by">
-                            <p>Peer-Reviewed by:
-                                {foreach $post['reviewed_by'] as $reviewerId}
-                                    {$authors[$reviewerId]['name']}{sep}, {/sep}
-                                {/foreach}
-                            </p>
-                        </div>
                     </div>
                 </div>
 

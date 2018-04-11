@@ -8,7 +8,6 @@ perex: |
     Fortunately, thanks for Michal Špaček's ability to explain complex stuff in a simple way, we solved this over a single weekend.
 author: 1
 lang: en
-reviewed_by: [17, 18]
 related_items: [18]
 tweet: "Post from Community Blog: How to add #HTTPS to #GitHub Pages in 6 Steps #cloudflare"
 ---
