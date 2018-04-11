@@ -5,6 +5,8 @@ imports:
     - { resource: 'config/config.local.yml',  ignore_errors: true }
 
 parameters:
+    minimal_gap_in_days: 0 # how many days to wait before publishing another Tweet
+
     page_title: "Děláš v PHP? Jsi jedním z nás"
     site_url: "https://pehapkari.cz"
     github_edit_url_start: "https://github.com/pehapkari/pehapkari.cz/edit/master/source/"
