@@ -21,7 +21,7 @@
                     <strong>Nejbližší školení</strong>:<br>
                 {/if}
 
-                <a href="/{$lecture->getRelativeUrl()}/">{$lecture->getHumanDate()} - {$lecture->getName()|noescape}</a>{sep}<br>{/sep}
+                <a href="/{$lecture->getRelativeUrl()}/">{$lecture->getHumanDate()} - {$lecture->getTitle()|noescape}</a>{sep}<br>{/sep}
                 {php ++$displayedLectureCount}
             {/foreach}
         </div>

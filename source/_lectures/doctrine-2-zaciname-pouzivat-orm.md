@@ -1,5 +1,5 @@
 ---
-name: "Doctrine 2 - Začínáme používat ORM"
+title: "Doctrine 2 - Začínáme používat ORM"
 image: "/assets/images/logos/doctrine.png"
 user: 11
 duration: "8 hodin"

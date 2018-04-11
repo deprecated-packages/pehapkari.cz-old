@@ -1,5 +1,5 @@
 ---
-name: "Jak vytvořit první školení jako seniorní školitel"
+title: "Jak vytvořit první školení jako seniorní školitel"
 
 # číslo uživatele v users.yml
 user: 99
