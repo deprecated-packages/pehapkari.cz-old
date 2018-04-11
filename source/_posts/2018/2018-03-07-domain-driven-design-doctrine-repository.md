@@ -9,6 +9,7 @@ lang: en
 tested: true
 test_slug: Cart/Infrastructure/DoctrineCartRepositoryTest.php
 related_items: [49, 52, 54, 61, 62, 65, 66]
+tweet: "Post from Community Blog: Domain-Driven Design, part 6 - Doctrine Repository #ddd #domain #php"
 ---
 
 The repository is a persistent collection that we know from [repository article](/blog/2018/02/28/domain-driven-design-repository/).

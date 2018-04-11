@@ -6,6 +6,7 @@ perex: |
     Spuštění webu postaveném na Symfony na Wedos multihostingu vypadalo na první pohled jako snadná věc. Nakonec jsem se na tom zasekl na 3 dny, než jsem přišel na to, jak hosting správně nastavit.<br>
     Aby se s tím nemusel trápit někdo další, tak jsem se rozhodl sepsat tento článek s návodem a s problémy na které jsem narazil. Finální řešení je nakonec jednoduché.
 author: 22
+tweet: "Urodilo se na blogu: #Rozběhnutí Symfony na Wedos multihostingu"
 ---
 
 ## Hosting a jeho struktura

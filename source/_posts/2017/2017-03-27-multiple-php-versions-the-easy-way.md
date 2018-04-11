@@ -4,8 +4,8 @@ layout: post
 title: "Multiple PHP versions, the easy way"
 perex: "Always wanted to try or run your application with a different PHP version without breaking everything else? Why not, there is a way to run multiple versions in parallel!"
 author: 17
-reviewed_by: [12]
 lang: en
+tweet: "Post from Community Blog: Multiple #PHP versions, the easy way"
 ---
 
 

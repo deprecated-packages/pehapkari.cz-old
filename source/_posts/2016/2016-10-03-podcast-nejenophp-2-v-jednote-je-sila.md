@@ -12,6 +12,7 @@ podcast:
     publish_date: "Mon, 03 Sep 2016"
     mp3_duration: "34:36"
 related_items: [1, 3]
+tweet: "Urodilo se na blogu: Podcast Nejen o PHP #2 - Blíží se hackatony, spojování sil a růst komunity - buď u toho! #retro"
 ---
 
 <br>

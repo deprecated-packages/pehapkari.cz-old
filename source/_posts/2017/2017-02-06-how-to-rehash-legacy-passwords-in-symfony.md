@@ -5,8 +5,8 @@ title: "How to rehash legacy passwords in Symfony"
 perex: "You need to import users from an old project, but but don't want to bother them with resetting their passwords just because you want to use bcrypt. Fortunately, there is a solution."
 author: 14
 lang: en
-reviewed_by: [1, 5]
 related_items: [26]
+tweet: "Post from Community Blog: How to rehash legacy passwords in #Symfony #security"
 ---
 
 *NB: Michal Špaček has suggested slightly better and more secure way of [rehashing passwords](https://pehapkari.cz/blog/2017/02/06/how-to-rehash-legacy-passwords-in-symfony/#comment-3153608090) in the comments, [check it out](https://pehapkari.cz/blog/2017/02/06/how-to-rehash-legacy-passwords-in-symfony/#comment-3153608090).*

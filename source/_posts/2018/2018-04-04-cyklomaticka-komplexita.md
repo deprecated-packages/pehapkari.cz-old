@@ -15,6 +15,7 @@ perex: |
     
     Pomáhá nám to také určit počet testů, které bychom měli na kódu provádět.
 author: 30
+tweet: "Urodilo se na blogu: Cyklomatická komplexita #solid"
 ---
 
 Video (4:45)

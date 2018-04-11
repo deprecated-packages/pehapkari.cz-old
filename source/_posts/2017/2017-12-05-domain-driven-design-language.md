@@ -9,6 +9,7 @@ perex: |
 author: 29
 lang: en
 related_items: [52, 54, 61, 62, 63, 65, 66]
+tweet: "Post from Community Blog: Domain-Driven Design, part 1 - Language #ddd #domain"
 ---
 
 ### Personal Motivation

@@ -16,6 +16,7 @@ podcast:
 
 author: 21
 related_items: [2, 3]
+tweet: "Urodilo se na blogu: Podcast Nejen o PHP #1 - O sebevzdělávání, školení a mentoringu #retro"
 ---
 
 <br>

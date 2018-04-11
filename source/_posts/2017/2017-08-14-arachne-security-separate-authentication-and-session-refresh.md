@@ -7,9 +7,9 @@ perex: |
     Experienced Nette users therefore often recommend using some custom solution instead.
     In this article I'll go over the known problems with user authentication and how [Arachne/Security](https://github.com/Arachne/Security) can help you solve them.
 author: 5
-reviewed_by: [1, 25, 26]
 lang: en
 related_items: [37, 38, 39, 40]
+tweet: "Post from Community Blog: Arachne/Security - Separate Authentication and Session Refresh #security #nettefw #symfony"
 ---
 
 ## Separate Authentication

@@ -8,6 +8,7 @@ tested: true
 test_slug: EventDispatcher
 lang: en
 related_items: [35]
+tweet: "Post from Community Blog: #EventDispatcher from the Scratch #symfony"
 ---
 
 

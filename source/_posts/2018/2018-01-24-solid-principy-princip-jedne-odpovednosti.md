@@ -8,6 +8,7 @@ perex: |
     Jde o metodu, díky které se kód stává přehlednějším a srozumitelnější. Říká třídě, že je zodpovědná pouze za jednu jedinou věc.
 author: 30
 related_items: [50]
+tweet: "Urodilo se na blogu: #SOLID principy: Princip jedné odpovědnosti"
 ---
 
 Video (1:26)

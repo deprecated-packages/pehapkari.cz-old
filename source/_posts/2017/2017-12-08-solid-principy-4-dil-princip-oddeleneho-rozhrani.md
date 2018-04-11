@@ -9,6 +9,7 @@ perex: |
 
     Při jeho dodržování se kód stává více znovupoužitelný a užitečný. Pokud je více tříd nuceno implementovat rozhraní s metodami, které nepotřebují, je vhodné najít logický průnik (v čem se shodují) a rozhraní oddělit.
 author: 30
+tweet: "Urodilo se na blogu: #SOLID principy: Princip odděleného rozhraní #ocp"
 ---
 
 Video (1:29)

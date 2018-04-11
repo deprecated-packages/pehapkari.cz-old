@@ -258,12 +258,6 @@ h3 {
     font-size: 1.25em;
 }
 
-#article #reviewed_by {
-    font-size: .8em;
-    color: #c1c1c1;
-    margin: .3em 0;
-}
-
 #article-content {
     padding-top: 0;
 }

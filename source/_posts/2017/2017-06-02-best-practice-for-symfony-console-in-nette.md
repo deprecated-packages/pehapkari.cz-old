@@ -9,6 +9,7 @@ perex: |
 author: 23
 lang: en
 related_items: [9]
+tweet: "Post from Community Blog: Best Practice for #symfony Console in #nettefw"
 ---
 
 Running console through the `www/index.php` was introduced in [Kdyby\Console](https://github.com/Kdyby/Console/) by [me (Filip Procházka)](https://filip-prochazka.com/) and [the practice is now deprecated](https://github.com/Kdyby/Console/commit/db9c3304f0998bc82724665d3b43d3b6e3eb40ce). This article shows why it was introduced, why it is deprecated and how to use [Symfony\Console](https://github.com/symfony/console) more elegantly.

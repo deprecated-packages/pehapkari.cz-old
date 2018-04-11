@@ -11,7 +11,7 @@ perex: |
 author: 29
 lang: en
 related_items: [49, 52, 61, 62, 63, 65, 66]
-tweet: "New Post on Community Blog: Domain-Driven Design, part 3 - Simplify Object Model #ddd #domain"
+tweet: "Post from Community Blog: Domain-Driven Design, part 3 - Simplify Object Model #ddd #domain"
 ---
 
 ## Model

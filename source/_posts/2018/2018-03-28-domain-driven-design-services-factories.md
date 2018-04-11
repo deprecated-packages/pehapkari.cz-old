@@ -8,6 +8,7 @@ perex: |
 author: 29
 lang: en
 related_items: [49, 52, 54, 61, 62, 63, 65]
+tweet: "Post from Community Blog: Domain-Driven Design, part 8 - Services and Factories #ddd #domain #php"
 ---
 
 Domain-driven design is about the domain.

@@ -6,6 +6,7 @@ perex: |
     Ako titulka napovedá, pozrieme sa spoločne na jednu z mnohých skvelých noviniek, ktorú priniesol framework Symfony vo svojej štvrtej verzii. Pokúsim sa Vám priblížiť, čo Symfony Flex vlastne je a ako pracuje.
 author: 33
 lang: sk
+tweet: "Urodilo se na blogu: #Symfony 4 - Ako v praxi funguje #Flex"
 ---
 
 **Symfony Flex** je nástroj umožňujúci vývojárom automatizovať správu balíčkov pre ich Symfony projekt. Inštalácia balíčku sa stáva veľmi jednoduchou a intuitívnou, kedy ako plugin do obľúbeného Composera vykoná všetky potrebné akcie k registrácií a konfigurácií balíčka do projektu.

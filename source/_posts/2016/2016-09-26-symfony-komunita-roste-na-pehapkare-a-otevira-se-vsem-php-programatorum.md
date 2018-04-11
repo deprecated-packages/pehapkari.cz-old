@@ -7,6 +7,7 @@ perex: |
     **Říkáš si proč?** To se dnes dozvíš.
 author: 1
 related_items: [41, 43]
+tweet: "Urodilo se na blogu: Symfony komunita roste na PéHáPkaře a otevírá se všem PHP programátorům #retro #community"
 ---
 
 Od září 2016 měníme název komunity *Symfonisti* na *Péhápkaři*.
