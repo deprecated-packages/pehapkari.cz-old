@@ -8,7 +8,7 @@ author: 29
 lang: en
 tested: true
 test_slug: Cart/Infrastructure/DoctrineCartRepositoryTest.php
-related_items: [49, 52, 54, 61, 62, 65, 66]
+related_items: [49, 52, 54, 61, 62, 65, 66, 70]
 tweet: "Post from Community Blog: Domain-Driven Design, part 6 - Doctrine Repository #ddd #domain #php"
 ---
 
