@@ -3,7 +3,7 @@ id: 69
 layout: post
 title: "How Anyone Can Write a Post Here"
 perex: |
-    Do you want to write about PHP, but don't have a blog? Do you have some ideas you'd like to share, but don't have time and know-how to spread them over social networks? Do you to share your ideas to hunders of listening programmers?
+    Do you want to write about PHP, but don't have a blog? Do you have some ideas you'd like to share, but don't have time and know-how to spread them over social networks? Do you want to share your ideas to hunders of listening programmers?
     <br><br>
     **Just write a post in Markdown and send PR to this open-source blog.** 
 author: 1
