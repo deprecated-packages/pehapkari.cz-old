@@ -1,0 +1,10 @@
+parameters:
+    lecture_references:
+        -
+            name: "Martin"
+            lecture_id: 2
+            reference: "Nejvíc se mi líbil individuální přístup."
+        -
+            name: "Milan Sedlák"
+            lecture_id: 2
+            reference: "Praktické ukážky, podanie problematiky lektorom a reálne príklady."

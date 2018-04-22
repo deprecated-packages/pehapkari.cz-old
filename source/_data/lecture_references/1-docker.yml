@@ -1,0 +1,6 @@
+parameters:
+    lecture_references:
+        -
+            name: "Tomáš Brandejs"
+            lecture_id: 1
+            reference: "Dobře připravené příklady s popsaným postupem."
