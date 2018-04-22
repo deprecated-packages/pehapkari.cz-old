@@ -87,7 +87,12 @@ lecture_references_limit: 4
                     {foreach $lecture_references as $lecture_reference}
                         {continueIf $iterator->counter > $lecture_references_limit}
 
-                        {include "lectureReference", "lecture_reference" => $lecture_reference}
+                        {*{var $activeLecture = }*}
+
+                        {include "lectureReference",
+                            "lecture_reference" => $lecture_reference,
+                            "active_lecture" => $lectures[$lecture_reference['lecture_id']]
+                        }
                     {/foreach}
                 </div>
             </div>

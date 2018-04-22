@@ -85,14 +85,21 @@
                 <div class="col-md-8">
                     {$lecture->getContent()|noescape}
 
-                    <h3>@todo: Co o školení říkají účastníci?</h3>
+                    <hr>
 
-                    ...
+                    <h3>Co o školení říkají účastníci?</h3>
 
-                    ...
+                    <div class="row">
+                        {foreach $lecture_references as $lecture_reference}
+                            {continueIf $lecture_reference['lecture_id'] !== $lecture->getId()}
 
-                    ...
-
+                            {include "lectureReference",
+                                "lecture_reference" => $lecture_reference,
+                                "active_lecture" => $lecture,
+                                "is_lecture_detail" => true
+                            }
+                        {/foreach}
+                    </div>
                 </div>
             </div>
         </div>
