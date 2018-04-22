@@ -130,6 +130,9 @@ final class LectureFile extends AbstractFile
             ->format('j. n. Y H:i');
     }
 
+    /**
+     * @param mixed[] $lectureReferences
+     */
     public function isInReferences(array $lectureReferences): bool
     {
         foreach ($lectureReferences as $lectureReference) {
