@@ -9,6 +9,12 @@ use Symplify\Statie\Renderable\File\AbstractFile;
 
 final class LectureFile extends AbstractFile
 {
+    /**
+     * @see https://stackoverflow.com/a/40475070/1348344
+     * @var string
+     */
+    private const CALENDAR_TIME_FORMAT = 'Ymd\\THi00';
+
     public function isInEnglish(): bool
     {
         return isset($this->configuration['lang']) && $this->configuration['lang'] === 'en';
@@ -26,6 +32,44 @@ final class LectureFile extends AbstractFile
     public function getTitle(): string
     {
         return $this->configuration['title'];
+    }
+
+    /**
+     * @see https://stackoverflow.com/questions/10488831/link-to-add-to-google-calendar
+     */
+    public function showAddToCalendarLink(): bool
+    {
+        if (! isset($this->configuration['start'])) {
+            return false;
+        }
+
+        if (! isset($this->configuration['end'])) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function getStartInCalendarFormat(): ?string
+    {
+        if (! isset($this->configuration['start'])) {
+            return null;
+        }
+
+        $dateTime = NetteDateTime::from($this->configuration['start']);
+
+        return $dateTime->format(self::CALENDAR_TIME_FORMAT);
+    }
+
+    public function getEndInCalendarFormat(): ?string
+    {
+        if (! isset($this->configuration['end'])) {
+            return null;
+        }
+
+        $dateTime = NetteDateTime::from($this->configuration['end']);
+
+        return $dateTime->format(self::CALENDAR_TIME_FORMAT);
     }
 
     public function getImage(): ?string
@@ -65,12 +109,12 @@ final class LectureFile extends AbstractFile
 
     public function getDateTime(): ?DateTimeInterface
     {
-        if (isset($this->configuration['date'])) {
-            if ($this->configuration['date'] instanceof DateTimeInterface) {
-                return $this->configuration['date'];
+        if (isset($this->configuration['start'])) {
+            if ($this->configuration['start'] instanceof DateTimeInterface) {
+                return $this->configuration['start'];
             }
 
-            return NetteDateTime::from($this->configuration['date']);
+            return NetteDateTime::from($this->configuration['start']);
         }
 
         return null;

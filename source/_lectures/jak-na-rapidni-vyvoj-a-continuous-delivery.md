@@ -1,6 +1,7 @@
 ---
 title: Jak na rapidní vývoj a Continuous Delivery
-date: '2018-05-22 10:00:00'
+start: '2018-05-22 10:00:00'
+end: '2018-05-22 18:00:00'
 form_link: "https://goo.gl/forms/38dgC7Dy6U7WmfEh2"
 image: "/assets/images/logos/feedback.png"
 user: 30
