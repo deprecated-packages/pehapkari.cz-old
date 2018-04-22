@@ -109,12 +109,12 @@ final class LectureFile extends AbstractFile
 
     public function getDateTime(): ?DateTimeInterface
     {
-        if (isset($this->configuration['date'])) {
-            if ($this->configuration['date'] instanceof DateTimeInterface) {
-                return $this->configuration['date'];
+        if (isset($this->configuration['start'])) {
+            if ($this->configuration['start'] instanceof DateTimeInterface) {
+                return $this->configuration['start'];
             }
 
-            return NetteDateTime::from($this->configuration['date']);
+            return NetteDateTime::from($this->configuration['start']);
         }
 
         return null;
