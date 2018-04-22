@@ -1,4 +1,5 @@
 ---
+id: 11
 title: "Začněte debugovat jako profíci s xdebugem!"
 date: '2018-03-29 14:00:00'
 form_link: "https://goo.gl/forms/qNSILHl9XqM9yotD2"

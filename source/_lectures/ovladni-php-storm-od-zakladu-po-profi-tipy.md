@@ -1,4 +1,5 @@
 ---
+id: 9
 title: "Ovládni PhpStorm - od základů po profi tipy"
 start: '2018-05-25 13:00:00'
 end: '2018-05-25 16:00:00'
