@@ -1,0 +1,8 @@
+parameters:
+    lecture_references:
+        -
+            name: "Adam Janča"
+            company_name: "ANT Studio"
+            url: "https://antstudio.cz" # @todo: verify
+            lecture_id: 5
+            reference: "Ze školení jsem nadšený! Výborný poměr teorie/praxe - dokážu si hned představit reálné využítí na skutečných projektech. Tomáš byl flexibilní a suprově reagoval na naše podněty - sdílel kód online, abychom ho nemuseli otrocky přepisovat. Díky moc za školení a těším se na další."

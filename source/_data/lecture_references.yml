@@ -1,3 +1,6 @@
+imports:
+    - { resource: 'lecture_references/*.yml' }
+
 parameters:
     lecture_references:
         -
@@ -13,35 +16,3 @@ parameters:
             lecture: "Elasticsearch - Začínáme vyhledávat"
             lecture_id: 5
             reference: "Vše bylo ve formě, která měla výborný poměr teorie/praxe. Praxe byla dobrá - dokážu si představit reálné využítí příkladů na skutečných projektech. <strong>Tomáš byl flexibilní a suprově reagoval - sdílel kód hned online, abychom nemuseli vše otrocky přepisovat.</strong>"
-
-        -
-            name: "Michal Klabník"
-            url: "http://www.klabnik.cz/"
-            lecture: "Ovládni PhpStorm – od základů po profi tipy"
-            lecture_id: 9
-            reference: "S PhpStormem jsem nikdy předtím nedělal a byla to super ukázka toho, co to všechno umí. <strong>Tomáš skvěle, lidsky a poutavě přednášel, nachystané to měl na jedničku</strong>."
-        -
-            name: "Ondřej Popelka, Keboola"
-            url: "https://www.keboola.com/"
-            lecture: "Ovládni PhpStorm – od základů po profi tipy"
-            lecture_id: 9
-            reference: "Vždycky jsem si myslel, že to co dělam složitě, určitě PhpStorm umí udelat nějak jednodušeji, ale dozvěděl jsem se, ze dělam složite i věci o kterých jsem si myslel, že je dělam jednoduše."
-
-        # Jak na rapidní vývoj a Continuous Delivery
-        -
-            name: "Jan Mikeš, CTO & Co-founder of Entrydo"
-            url: "https://entrydo.com/"
-            lecture: "Jak na rapidní vývoj a Continuous Delivery"
-            lecture_id: 8
-            reference: "Školení bylo velmi přínosné a inspirativní. Získané dovednosti jsem hned aplikovat v praxi. <strong>Teď již žádný feedback loop není příliš dlouhý :)</strong>."
-        -
-            name: "Ing. Eduard Barnáš"
-            url: "https://www.neoweb.sk"
-            lecture: "Jak na rapidní vývoj a Continuous Delivery"
-            lecture_id: 8
-            reference: "Príjemné prostredie, výborna téma a <strong>skvelý prednášajúci Ondrej Mirtes</strong>. <strong>Teória sa prepája s praxou</strong>. Po tomto kurze bude Continuous Delivery hračkou. Vrelo odporúčam!"
-        -
-            name: "Michal Dobrovolný"
-            lecture: "Jak na rapidní vývoj a Continuous Delivery"
-            lecture_id: 8
-            reference: "Ondra měl jasno v tom co chce předat obecenstvu. <strong>Jeho školení nám pomohlo vylepšit systém našeho deploymentu</strong> a firemní procesy. Díky!"

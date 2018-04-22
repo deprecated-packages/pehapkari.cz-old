@@ -1,0 +1,17 @@
+parameters:
+    lecture_references:
+        -
+            name: "Michal Klabník"
+            url: "http://www.klabnik.cz/"
+            lecture: "Ovládni PhpStorm – od základů po profi tipy"
+            lecture_id: 9
+            reference: "S PhpStormem jsem nikdy předtím nedělal a byla to super ukázka toho, co to všechno umí. <strong>Tomáš skvěle, lidsky a poutavě přednášel, nachystané to měl na jedničku</strong>."
+        -
+            name: "Ondřej Popelka, Keboola"
+            url: "https://www.keboola.com/"
+            lecture: "Ovládni PhpStorm – od základů po profi tipy"
+            lecture_id: 9
+            reference: "Vždycky jsem si myslel, že to co dělam složitě, určitě PhpStorm umí udelat nějak jednodušeji, ale dozvěděl jsem se, ze dělam složite i věci o kterých jsem si myslel, že je dělam jednoduše."
+        -
+            lecture_id: 9
+            reference: "Školení bylo super nakopnutí, abych se naučil PhpStorm používat efektivněji. Odnesl jsem si spoustu poznámek, které mám v plánu postupně zavést."
