@@ -87,8 +87,6 @@ lecture_references_limit: 4
                     {foreach $lecture_references as $lecture_reference}
                         {continueIf $iterator->counter > $lecture_references_limit}
 
-                        {*{var $activeLecture = }*}
-
                         {include "lectureReference",
                             "lecture_reference" => $lecture_reference,
                             "active_lecture" => $lectures[$lecture_reference['lecture_id']]
@@ -106,15 +104,31 @@ lecture_references_limit: 4
 
                 <br>
 
-                <div id="gallery">
-                    <img src="/assets/images/lectures/lecture1.jpg" width="200" height="200">
-                    <img src="/assets/images/lectures/lecture9.jpg" width="200" height="200">
-                    <img src="/assets/images/lectures/lecture4.jpg" width="200" height="200">
-                    <img src="/assets/images/lectures/lecture3.jpg" width="200" height="200">
-                    <img src="/assets/images/lectures/lecture11.jpg" width="200" height="200">
-                    <img src="/assets/images/lectures/lecture6.jpg" width="200" height="200">
-                    <img src="/assets/images/lectures/lecture12.jpg" width="200" height="200">
-                    <img src="/assets/images/lectures/lecture10.jpg" width="200" height="200">
+                <div id="gallery" class="row">
+                    <div class="col-md-3 col-sm-4 col-6">
+                        <img src="/assets/images/lectures/lecture1.jpg">
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-6">
+                        <img src="/assets/images/lectures/lecture9.jpg">
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-6">
+                        <img src="/assets/images/lectures/lecture4.jpg">
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-6">
+                        <img src="/assets/images/lectures/lecture3.jpg">
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-6">
+                        <img src="/assets/images/lectures/lecture11.jpg">
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-6">
+                        <img src="/assets/images/lectures/lecture6.jpg">
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-6">
+                        <img src="/assets/images/lectures/lecture12.jpg">
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-6">
+                        <img src="/assets/images/lectures/lecture10.jpg">
+                    </div>
                 </div>
             </div>
 
