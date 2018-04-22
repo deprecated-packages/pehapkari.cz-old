@@ -7,7 +7,7 @@
 
         <div class="container">
             {if $lecture->getImage()}
-                <p class="text-center mt-lg-5">
+                <p class="text-center mt-5 d-none d-sm-block">
                     <img src="{$lecture->getImage()}" width="150">
                 </p>
             {/if}
@@ -73,7 +73,7 @@
 
                     {if $lecture->isActive()}
                         <div class="text-center">
-                            <a href="{$lecture->getFormLink()}" class="btn btn-success mt-4">
+                            <a href="{$lecture->getFormLink()}" class="btn btn-success mt-4 mb-5">
                                 <em class="fa fa-fw fa-handshake-o"></em>
                                 &nbsp;
                                 {if $lecture->isInEnglish()}Sign Up{else}Přihlásit se{/if}
