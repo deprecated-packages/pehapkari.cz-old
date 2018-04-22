@@ -92,7 +92,7 @@ lecture_references_limit: 4
 
                         <div class="col-md-6 text-left mb-4">
                             <a n:tag-ifset="$lecture_reference['url']" href="{$lecture_reference['url']}">{ifset $lecture_reference['name']}{$lecture_reference['name']}{else}účastník{/ifset}</a> na školení
-                            <a href="{$activeLecture->getRelativeUrl()}">{$activeLecture->getTitle()}</a>:
+                            <a href="/{$activeLecture->getRelativeUrl()}">{$activeLecture->getTitle()}</a>:
 
                             <p class="mt-3">
                                 <em>„{$lecture_reference['reference']|noescape}“</em>
