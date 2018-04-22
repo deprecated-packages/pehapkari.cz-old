@@ -1,0 +1,8 @@
+parameters:
+    lecture_references:
+        -
+            name: "Michael Kufner"
+            url: "https://www.linkedin.com/in/michael-kufner-cz"
+            lecture: "Doctrine 2 - Začínáme používat ORM"
+            lecture_id: 3
+            reference: "Výborné školení, obrovské množství informací, <strong>které jsem hned druhý den využil v kanceláři</strong>. Určitě to nebylo naposled! Na konci to bylo sice trochu hrr, ale vzhledem k tomu množství informací by nepomohly ani 4 hodiny navíc. Díky!"
