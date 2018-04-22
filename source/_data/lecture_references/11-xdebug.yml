@@ -3,3 +3,11 @@ parameters:
         -
             lecture_id: 11
             reference: "Super nakopnutí jak zvýšit svoje schopnosti. Xdebug beru jako zlepšení vývoje, teď jen nabité dovednosti přenést do praxe."
+        -
+            name: "Petr Thiel"
+            lecture_id: 11
+            reference: "Super individuální!"
+        -
+            name: "Jan Záruba"
+            lecture_id: 11
+            reference: "Praktické ukázky :)"
