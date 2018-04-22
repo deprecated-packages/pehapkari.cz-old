@@ -1,4 +1,5 @@
 ---
+id: 6
 title: "Getting started with Sylius"
 start: "2018-05-11 10:00:00"
 end: "2018-05-11 18:00:00"

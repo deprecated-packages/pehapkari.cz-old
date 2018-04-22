@@ -1,4 +1,5 @@
 ---
+id: 3
 title: "Doctrine 2 - Začínáme používat ORM"
 image: "/assets/images/logos/doctrine.png"
 user: 11

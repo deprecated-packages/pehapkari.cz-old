@@ -1,4 +1,5 @@
 ---
+id: 9
 title: "Ovládni PhpStorm - od základů po profi tipy"
 start: '2018-05-25 13:00:00'
 end: '2018-05-25 16:00:00'
@@ -35,11 +36,3 @@ Pro nás vývojáře je IDE hlavní pracovní nástroj, a proto se vyplatí ho p
   - naklonovaný ukázkový projekt
   - *detailní informace rozesílám přihlášeným v předstihu před školením*
 - chuť se učit a dobrou náladu
-
-### Co o školení říkají účastníci?
-
-> S PhpStormem jsem nikdy předtím nedělal a byla to super ukázka toho, co to všechno umí. <strong>Tomáš skvěle, lidsky a poutavě přednášel, nachystané to měl na jedničku</strong>.
->*[Michal Klabník](http://www.klabnik.cz/)*
-
-> Vždycky jsem si myslel, že to co dělam složitě, určitě PhpStorm umí udelat nějak jednodušeji, ale dozvěděl jsem se, ze dělam složite i věci o kterých jsem si myslel, že je dělam jednoduše.
-> *Ondřej Popelka, [Keboola](https://www.keboola.com/)*

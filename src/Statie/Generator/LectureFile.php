@@ -129,4 +129,18 @@ final class LectureFile extends AbstractFile
         return $this->getDateTime()
             ->format('j. n. Y H:i');
     }
+
+    /**
+     * @param mixed[] $lectureReferences
+     */
+    public function isInReferences(array $lectureReferences): bool
+    {
+        foreach ($lectureReferences as $lectureReference) {
+            if ($this->getId() === $lectureReference['lecture_id']) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

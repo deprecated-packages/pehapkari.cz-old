@@ -2,6 +2,7 @@
 
 namespace Pehapkari\Website\Statie\Generator;
 
+use Pehapkari\Website\Exception\MissingLectureIdException;
 use Symplify\Statie\Generator\Contract\ObjectSorterInterface;
 
 final class LectureFileSorter implements ObjectSorterInterface
@@ -25,7 +26,9 @@ final class LectureFileSorter implements ObjectSorterInterface
         $activeLectures = $this->sortActiveLecturesByDate($activeLectures);
         $restOfLectures = $this->sortRestOfLecturesByName($restOfLectures);
 
-        return array_merge($activeLectures, $restOfLectures);
+        $allLectures = array_merge($activeLectures, $restOfLectures);
+
+        return $this->useIdsAsArrayKeys($allLectures);
     }
 
     /**
@@ -52,5 +55,34 @@ final class LectureFileSorter implements ObjectSorterInterface
         });
 
         return $restOfLectures;
+    }
+
+    /**
+     * @param LectureFile[] $allLectures
+     * @return LectureFile[]
+     */
+    private function useIdsAsArrayKeys(array $allLectures): array
+    {
+        $arrayWithIdAsKey = [];
+
+        foreach ($allLectures as $lecture) {
+            $this->ensureIdIsSet($lecture);
+
+            $arrayWithIdAsKey[$lecture->getId()] = $lecture;
+        }
+
+        return $arrayWithIdAsKey;
+    }
+
+    private function ensureIdIsSet(LectureFile $lectureFile): void
+    {
+        if ($lectureFile->getId()) {
+            return;
+        }
+
+        throw new MissingLectureIdException(sprintf(
+            'Lecture "%s" is missing "id:" in its configuration. Complete it.',
+            $lectureFile->getTitle()
+        ));
     }
 }

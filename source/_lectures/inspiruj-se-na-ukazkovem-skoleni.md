@@ -1,4 +1,5 @@
 ---
+id: 7
 title: "Jak vytvořit první školení jako seniorní školitel"
 
 # číslo uživatele v users.yml

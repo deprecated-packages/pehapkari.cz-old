@@ -1,4 +1,5 @@
 ---
+id: 8
 title: Jak na rapidní vývoj a Continuous Delivery
 start: '2018-05-22 10:00:00'
 end: '2018-05-22 18:00:00'

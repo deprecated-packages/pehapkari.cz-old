@@ -1,5 +1,6 @@
 imports:
     - { resource: 'source/_data/*.yml' }
+    - { resource: 'source/_data/lecture_references/*.yml' }
     - { resource: 'vendor/tomasvotruba/statie-tweet-publisher/src/config/config.yml' }
     # enabled on localhost only
     - { resource: 'config/config.local.yml',  ignore_errors: true }

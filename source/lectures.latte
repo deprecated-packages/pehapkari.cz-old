@@ -2,6 +2,9 @@
 layout: default
 title: "Investuj do sebe a přijď na školení"
 id: vzdelavej-se
+outputPath: "vzdelavej-se/index.html"
+
+lecture_references_limit: 4
 ---
 
 {block content}
@@ -76,19 +79,20 @@ id: vzdelavej-se
             <hr>
 
             <div class="text-center">
-                <h2 class="mb-lg-5">Přes 40 spokojených účastníků</h2>
+                <h2 class="mb-lg-5">Přes 50 spokojených účastníků</h2>
 
                 <div class="row narrower">
-                    {foreach $lecture_references as $lecture_reference}
-                        <div class="col-md-6 text-left mb-4">
-                            <a n:tag-ifset="$lecture_reference['url']" href="{$lecture_reference['url']}">
-                                {$lecture_reference['name']}
-                            </a> na školení {$lecture_reference['lecture']}:
+                    {php shuffle($lecture_references)}
 
-                            <p class="mt-3">
-                                <em>„{$lecture_reference['reference']|noescape}“</em>
-                            </p>
-                        </div>
+                    {foreach $lecture_references as $lecture_reference}
+                        {continueIf $iterator->counter > $lecture_references_limit}
+
+                        {*{var $activeLecture = }*}
+
+                        {include "lectureReference",
+                            "lecture_reference" => $lecture_reference,
+                            "active_lecture" => $lectures[$lecture_reference['lecture_id']]
+                        }
                     {/foreach}
                 </div>
             </div>
@@ -96,24 +100,20 @@ id: vzdelavej-se
             <hr>
 
             <div class="text-center">
-                <h2>Už 6 proběhlých školení</h2>
+                <h2>Už 9 proběhlých školení</h2>
 
-                <p>Od <strong>května 2017</strong> jsme zorganizovali 6 veřejných školení od 4 odborných školitelů.</p>
+                <p>Od <strong>května 2017</strong> jsme zorganizovali 9 veřejných školení od 5 odborných školitelů.</p>
 
                 <br>
 
                 <div id="gallery">
                     <img src="/assets/images/lectures/lecture1.jpg" width="200" height="200">
-                    <img src="/assets/images/lectures/lecture7.jpg" width="200" height="200">
                     <img src="/assets/images/lectures/lecture9.jpg" width="200" height="200">
-                    <img src="/assets/images/lectures/lecture13.jpg" width="200" height="200">
                     <img src="/assets/images/lectures/lecture4.jpg" width="200" height="200">
                     <img src="/assets/images/lectures/lecture3.jpg" width="200" height="200">
                     <img src="/assets/images/lectures/lecture11.jpg" width="200" height="200">
-                    <img src="/assets/images/lectures/lecture2.jpg" width="200" height="200">
                     <img src="/assets/images/lectures/lecture6.jpg" width="200" height="200">
                     <img src="/assets/images/lectures/lecture12.jpg" width="200" height="200">
-                    <img src="/assets/images/lectures/lecture8.jpg" width="200" height="200">
                     <img src="/assets/images/lectures/lecture10.jpg" width="200" height="200">
                 </div>
             </div>

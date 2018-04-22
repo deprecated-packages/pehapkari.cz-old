@@ -1,0 +1,19 @@
+parameters:
+    lecture_references:
+        -
+            name: "Jan Mikeš, CTO & Co-founder of Entrydo"
+            url: "https://entrydo.com/"
+            lecture: "Jak na rapidní vývoj a Continuous Delivery"
+            lecture_id: 8
+            reference: "Školení bylo velmi přínosné a inspirativní. Získané dovednosti jsem hned aplikovat v praxi. <strong>Teď již žádný feedback loop není příliš dlouhý :)</strong>."
+        -
+            name: "Ing. Eduard Barnáš"
+            url: "https://www.neoweb.sk"
+            lecture: "Jak na rapidní vývoj a Continuous Delivery"
+            lecture_id: 8
+            reference: "Príjemné prostredie, výborna téma a <strong>skvelý prednášajúci Ondrej Mirtes</strong>. <strong>Teória sa prepája s praxou</strong>. Po tomto kurze bude Continuous Delivery hračkou. Vrelo odporúčam!"
+        -
+            name: "Michal Dobrovolný"
+            lecture: "Jak na rapidní vývoj a Continuous Delivery"
+            lecture_id: 8
+            reference: "Ondra měl jasno v tom co chce předat obecenstvu. <strong>Jeho školení nám pomohlo vylepšit systém našeho deploymentu</strong> a firemní procesy. Díky!"
