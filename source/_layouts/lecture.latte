@@ -44,7 +44,7 @@
                                 <br>
                                 <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Lecture:+{$lecture->getTitle()}&dates={$lecture->getStartInCalendarFormat()}/{$lecture->getEndInCalendarFormat()}&details=Details:+https://pehapkari.cz/{$lecture->getRelativeUrl()}&ctz=Europe/Prague&location=Node5,+Radlická+180/50,+150+00+Praha+5-Smíchov,+Czechia&sf=true&output=xml">
                                     <em class="fa fa-fw fa-calendar"></em>
-                                    {if $lecture->isInEnglish()}Add to Calendar{else}Přidat do kalenáře{/if}
+                                    {if $lecture->isInEnglish()}Add to Calendar{else}Přidat do kalendáře{/if}
                                 </a>
                             {/if}
                         </p>
