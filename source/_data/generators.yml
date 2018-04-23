@@ -1,5 +1,5 @@
 parameters:
-    # see https://github.com/Symplify/Statie/blob/master/docs/Generators.md
+    # see https://www.statie.org/docs/generators/
     generators:
         lectures:
             variable: 'lecture'
