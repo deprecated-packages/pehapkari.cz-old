@@ -44,6 +44,8 @@ That’s a lot of bragging, but how does it work? Let’s create a sample Sylius
 php composer.phar create-project sylius/sylius-standard Acme
 ```
 
+![composer create project output](/assets/images/posts/2018/sylius-resource-bundle/create-project.png)
+
 Go to the project directory:
 
 ```bash
@@ -55,6 +57,8 @@ And install Sylius project with default data. During this installation a new dat
 ```bash
 php bin/console sylius:install
 ```
+
+![sylius install output](/assets/images/posts/2018/sylius-resource-bundle/sylius-install.png)
 
 Once we created our project, it is high time to write a little bit of code.
 We will start easy and create a new entity class, which will become our resource in the later stage of coding.
@@ -146,6 +150,8 @@ When the new entity is defined, we can generate a doctrine migration (which is a
 php bin/console doctrine:migrations:diff
 ```
 
+![migration diff output](/assets/images/posts/2018/sylius-resource-bundle/migration-diff.png)
+
 You can check a newly created migration file in `app/migrations/` folder.
 The file will be prefixed with the `Version` word and suffixed with the current timestamp.
 The migration can be executed with the following command:
@@ -153,6 +159,8 @@ The migration can be executed with the following command:
 ```bash
 php bin/console doctrine:migrations:migrate
 ```
+
+![migration migrate output](/assets/images/posts/2018/sylius-resource-bundle/migration-migrate.png)
 
 Of course, we need to confirm our intention of data migration.
 We have created a new entity and mapped it to the database.
@@ -201,6 +209,8 @@ Another way to check what ResourceBundle generated is to call Symfony debug cont
 php bin/console debug:container --show-private | grep product_bundle
 ```
 
+![debug container output](/assets/images/posts/2018/sylius-resource-bundle/debug-container.png)
+
 All services with the `app` prefix are newly created.
 
 ## But why should I care?
@@ -223,6 +233,8 @@ app_bundle:
 ```bash
 php bin/console debug:router | grep product_bundle
 ```
+
+![debug router output](/assets/images/posts/2018/sylius-resource-bundle/debug-router.png)
 
 > **Note**: You can now use your newly created API to manage your resource, but first you need to authenticate with OAuth2 according to Sylius documentation: http://docs.sylius.com/en/1.1/api/authorization.html and run the server app.
 
