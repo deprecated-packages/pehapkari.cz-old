@@ -21,6 +21,10 @@ services:
 
 parameters:
     exclude_checkers:
+        # buggy in Symplify 4.1
+        - 'Symplify\CodingStandard\Fixer\Import\ImportNamespacedNameFixer'
+        - 'Symplify\CodingStandard\Fixer\Commenting\RemoveUselessDocBlockFixer'
+
         # from symplify.yml set
         - 'Symplify\CodingStandard\Fixer\Naming\PropertyNameMatchingTypeFixer'
         - 'Symplify\CodingStandard\Sniffs\Naming\InterfaceNameSniff'
