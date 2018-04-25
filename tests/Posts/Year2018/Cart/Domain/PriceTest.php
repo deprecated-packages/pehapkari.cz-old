@@ -29,11 +29,7 @@ class PriceTest extends TestCase
 
     public function testSum(): void
     {
-        $prices = [
-            new Price(9.0),
-            new Price(0.7),
-            new Price(0.3),
-        ];
+        $prices = [new Price(9.0), new Price(0.7), new Price(0.3)];
 
         $sum = Price::sum($prices);
         $expected = new Price(10.0);

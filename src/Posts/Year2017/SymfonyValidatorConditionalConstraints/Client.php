@@ -50,12 +50,7 @@ final class Client implements GroupSequenceProviderInterface
      */
     public function getGroupSequence(): array
     {
-        return [
-            [
-                'Client',
-                $this->type === self::TYPE_PERSON ? 'person' : 'company',
-            ],
-        ];
+        return [['Client', $this->type === self::TYPE_PERSON ? 'person' : 'company']];
     }
 
     public function getType(): int

@@ -26,10 +26,7 @@ final class FixedArrayTest extends TestCase
 
         // Assert
         $this->assertCount(2, $accumulator); // cartesian product
-        $this->assertSame([
-            ['first-value', 'first-value'],
-            ['first-value', 'second-value'],
-        ], $accumulator);
+        $this->assertSame([['first-value', 'first-value'], ['first-value', 'second-value']], $accumulator);
     }
 
     public function testFixedArrayWtf(): void
@@ -48,10 +45,7 @@ final class FixedArrayTest extends TestCase
 
         // Assert
         $this->assertCount(2, $accumulator); // cartesian product
-        $this->assertSame([
-            ['first-value'],
-            ['second-value'],
-        ], $accumulator);
+        $this->assertSame([['first-value'], ['second-value']], $accumulator);
     }
 
     public function testBreakPoint(): void
@@ -72,9 +66,7 @@ final class FixedArrayTest extends TestCase
 
         // Assert
         $this->assertCount(1, $accumulator); // cartesian product
-        $this->assertSame([
-            ['first-value'],
-        ], $accumulator);
+        $this->assertSame([['first-value']], $accumulator);
     }
 
     public function testQuickFixUsingClone(): void
