@@ -21,10 +21,6 @@ services:
 
 parameters:
     exclude_checkers:
-        # buggy in Symplify 4.1
-        - 'Symplify\CodingStandard\Fixer\Import\ImportNamespacedNameFixer'
-        - 'Symplify\CodingStandard\Fixer\Commenting\RemoveUselessDocBlockFixer'
-
         # from symplify.yml set
         - 'Symplify\CodingStandard\Fixer\Naming\PropertyNameMatchingTypeFixer'
         - 'Symplify\CodingStandard\Sniffs\Naming\InterfaceNameSniff'
@@ -40,3 +36,4 @@ parameters:
         - 'PhpCsFixer\Fixer\Phpdoc\PhpdocAlignFixer'
         - 'PhpCsFixer\Fixer\ClassNotation\ProtectedToPrivateFixer'
         - 'PhpCsFixer\Fixer\ControlStructure\YodaStyleFixer'
+        - 'PhpCsFixer\Fixer\Phpdoc\PhpdocSeparationFixer'
