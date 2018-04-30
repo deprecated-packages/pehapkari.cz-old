@@ -14,6 +14,11 @@ One of the main advantages of Sylius from the software engineer perspective is t
 High productivity and fast iteration loops are essential for us. 
 That being said, SOLID and DRY are fundamental principles at our work.
 
+## TL;DR
+
+SyliusResourceBundle can boost you CRUD develepment, you should try it out.
+You can also join the [Getting started with Sylius training](https://pehapkari.cz/kurz/getting-started-with-sylius/) in Prague and see it in action live.
+
 ## Ok, but what does it mean regarding an e-commerce framework? 
 
 Let’s take a look at administrator panel of a typical e-commerce website. 
@@ -28,7 +33,7 @@ Our main aim was to provide a standard Symfony workflow without writing all of t
 The second goal was to provide a simple solution, which will bootstrap feature implementation at the beginning, but will be easy to customise in the further phase of development. 
 And now the SyliusResourceBundle comes to play, all in white!
 
-## What is a SyliusResourceBundle?
+## What is SyliusResourceBundle?
 
 It is a generic, CRUD-based implementation of the most common services required for rapid application development.
 Once you declare some entity as a resource, you will have access to several services such as factory, controller (with the show, index, create, update and delete actions), repository and form type.
@@ -38,7 +43,7 @@ And all of them have just a default implementation, which can be overridden when
 
 > **Note**: Example below has been crafted for Sylius v1.1 and Symfony v3.4. A [composer](https://getcomposer.org/download/) is required as well for project bootstrap.
 
-That’s a lot of bragging, but how does it work? Let’s create a sample Sylius project so that we can save some time on a setup:
+That’s a lot of bragging, but how does it work? Let’s create a sample Sylius project so that we can save some time on setup:
 
 ```bash
 php composer.phar create-project sylius/sylius-standard Acme
@@ -62,8 +67,10 @@ php bin/console sylius:install
 
 Once we created our project, it is high time to write a little bit of code.
 We will start easy and create a new entity class, which will become our resource in the later stage of coding.
+What I would like to do is a new CRUD anemic model `ProductBundle`. This class will contain a name, code and id, just as an identifiers.
+During the workshop we will add a relation to product and add possibility to buy whole bundle at once, so it will be something like a product pack.
 First of all, we need to create an `Entity` folder under `src/AppBundle`.
-Inside of this folder, we need to create a new `ProductBundle` class and declare two simple properties inside:
+Inside of this folder, we need to create a new `ProductBundle` class and declare three simple properties inside:
 
 ```php
 // src/AppBundle/Entity/ProductBundle.php
@@ -141,7 +148,7 @@ Let’s create `Resources/config/doctrine` folders and inside of a `doctrine` on
 </doctrine-mapping>
 ```
 
-The file and folder structure is predefined by Doctrine library and should be known for all whose are familiar with Doctrine project itself.
+The file and folder structure is predefined by Doctrine library and should be known for all who are familiar with Doctrine project itself.
 The file contains information about basic class mapping to SQL database.
 We have declared that the class has three fields, where one is an auto-incremented integer, and there are two other string fields: code and name.
 When the new entity is defined, we can generate a doctrine migration (which is a recommended way of handling database changes):
@@ -241,7 +248,7 @@ php bin/console debug:router | grep product_bundle
 As you can imagine, HTML-based management panel is also straightforward to set up.
 
 What is probably even more important, the whole logic is not coupled to Sylius at all.
-As with every Symfony Bundle, you can reuse this logic to use in whatever Symfony app you want.
+As with every Symfony Bundle, you can reuse this logic in any Symfony app you want.
 
 ## Want to see more?
 
@@ -254,8 +261,3 @@ If you would like to read a little bit more about ResourceBundle itself you can 
 Furthermore, you can join me on May 11th in Prague for 8-hour training.
 I will show you how easy it is to add custom logic to Sylius based on a class we have just created.
 If you are interested, you can read more about the training itself [here](https://pehapkari.cz/kurz/getting-started-with-sylius/).
-
-## TL;DR
-
-SyliusResourceBundle can boost you CRUD develepment, you should try it out.
-You can also join the [Getting started with Sylius training](https://pehapkari.cz/kurz/getting-started-with-sylius/) in Prague and see it in action live.
