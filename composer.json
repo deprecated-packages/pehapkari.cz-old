@@ -3,8 +3,8 @@
     "license": "MIT",
     "require": {
         "php": "^7.1",
-        "symplify/statie": "^4.0",
-        "symplify/package-builder": "^4.0"
+        "symplify/statie": "dev-master",
+        "symplify/package-builder": "^4.1"
     },
     "require-dev": {
         "doctrine/annotations": "^1.6",
@@ -22,8 +22,8 @@
         "symfony/expression-language": "^4.0",
         "symfony/intl": "^4.0",
         "symfony/validator": "^4.0",
-        "symplify/coding-standard": "^4.0",
-        "symplify/easy-coding-standard": "^4.0",
+        "symplify/coding-standard": "^4.1",
+        "symplify/easy-coding-standard": "^4.1",
         "tomasvotruba/statie-tweet-publisher": "@dev"
     },
     "autoload": {

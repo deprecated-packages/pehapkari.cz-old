@@ -5,9 +5,9 @@ namespace Pehapkari\Website\Statie\Generator;
 use DateTime;
 use DateTimeInterface;
 use Nette\Utils\DateTime as NetteDateTime;
-use Symplify\Statie\Renderable\File\AbstractFile;
+use Symplify\Statie\Generator\Renderable\File\AbstractGeneratorFile;
 
-final class LectureFile extends AbstractFile
+final class LectureFile extends AbstractGeneratorFile
 {
     /**
      * @see https://stackoverflow.com/a/40475070/1348344

@@ -20,6 +20,10 @@ services:
         absoluteNestingLevel: 3
 
 parameters:
+    skip:
+        Symplify\CodingStandard\Fixer\LineLength\LineLengthFixer:
+            - 'src/Posts/Year2018/Cart/Domain/Cart.php'
+
     exclude_checkers:
         # from symplify.yml set
         - 'Symplify\CodingStandard\Fixer\Naming\PropertyNameMatchingTypeFixer'
