@@ -14,11 +14,11 @@ final class LectureFileSorter implements ObjectSorterInterface
     {
         $activeLectures = [];
         $restOfLectures = [];
-        foreach ($files as $file) {
+        foreach ($files as $key => $file) {
             if ($file->isActive()) {
-                $activeLectures[] = $file;
+                $activeLectures[$key] = $file;
             } else {
-                $restOfLectures[] = $file;
+                $restOfLectures[$key] = $file;
             }
         }
 
@@ -34,7 +34,7 @@ final class LectureFileSorter implements ObjectSorterInterface
      */
     private function sortActiveLecturesByDate(array $activeLectures): array
     {
-        usort($activeLectures, function (LectureFile $firstFile, LectureFile $secondFile) {
+        uasort($activeLectures, function (LectureFile $firstFile, LectureFile $secondFile) {
             return $secondFile->getDateTime() < $firstFile->getDateTime();
         });
 
@@ -47,7 +47,7 @@ final class LectureFileSorter implements ObjectSorterInterface
      */
     private function sortRestOfLecturesByName(array $restOfLectures): array
     {
-        usort($restOfLectures, function (LectureFile $firstFile, LectureFile $secondFile) {
+        uasort($restOfLectures, function (LectureFile $firstFile, LectureFile $secondFile) {
             return strcmp($firstFile->getTitle(), $secondFile->getTitle());
         });
 
