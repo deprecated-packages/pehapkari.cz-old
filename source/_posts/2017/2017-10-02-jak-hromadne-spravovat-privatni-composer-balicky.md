@@ -1,5 +1,5 @@
 ---
-id: 41
+id: 72
 layout: post
 title: "Jak hromadně spravovat privátní composer balíčky"
 perex: |
