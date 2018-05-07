@@ -3,7 +3,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.1",
-        "symplify/statie": "dev-master",
+        "symplify/statie": "dev-master as 4.0",
         "symplify/package-builder": "^4.1"
     },
     "require-dev": {
@@ -49,5 +49,7 @@
     },
     "config": {
         "sort-packages": true
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
