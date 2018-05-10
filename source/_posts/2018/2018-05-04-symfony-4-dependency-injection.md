@@ -3,22 +3,22 @@ id: 73
 layout: post
 title: "Symfony 4 - Dependency Injection"
 perex: |
-    O Dependency Injection už počul snáď každý programátor. Symfony posúva hranice DI ďalej a v spojení s autokonfiguráciou služieb zakladá predpoklad vzniku flexibilnejších a prehľadnejších aplikácií.
+    O Dependency Injection už počul snáď každý programátor. Symfony posúva hranice DI ďalej a v spojení s autokonfiguráciou služieb tvorí predpoklad pre vznik flexibilnejších a prehľadnejších aplikácií.
 author: 33
 lang: sk
 ---
 
 ## Trochu teórie
 
-Implementácia návrhového vzoru Dependency Injection formou tzv. DI kontajnera, následuje myšlienku vkladanie závislosti objektom z vonkajšieho prostredia. V praxi DI kontajner znižuje závislosti medzi jednotlivými objektami a odoberá im zodpovednosť za získavanie svojích závislosti.
+Implementácia návrhového vzoru Dependency Injection formou tzv. DI kontajnera, nasleduje myšlienku vkladanie závislosti objektom z vonkajšieho prostredia. V praxi DI kontajner znižuje závislosti medzi jednotlivými objektmi a odoberá im zodpovednosť za získavanie svojich závislosti.
 
 > _The basic idea of the Dependency Injection is to have a separate object, an assembler, that populates a field in a class with an appropriate implementation for the interface._
 >
 > --Martin Fowler
  
-Najčastejšie formy vkladania závislosti do objektov sú **Constructor Injection** a **Setter Injection**.
+Najčastejšie používané formy vkladania závislosti do objektov sú **Constructor Injection** a **Setter Injection**.
 
-**Constructor Injection** je vkladanie závislosti objektu prostredníctvom konštruktora. Konštruktor ako vstupný bod poskytuje prehľad o všetkých závislostiach objektu na jednom mieste a zabepečuje jeho konzistenciu, teda objekt nemôže byť inštancovný bez potrebných závislosti. Nevýhodou je možná neprehľadnosť konštruktora pri vyššom počte závisloti, čo je však skôr otázkou správneho návrhu.
+**Constructor Injection** je vkladanie závislosti objektu prostredníctvom konštruktora. Konštruktor ako vstupný bod poskytuje prehľad o všetkých závislostiach objektu na jednom mieste a zabezpečuje jeho konzistenciu, teda objekt nemôže byť inštancovný bez potrebných závislosti. Nevýhodou je možná neprehľadnosť konštruktora pri vyššom počte závislostí, čo je však skôr otázkou správneho návrhu.
 
 ````php
 final class DependantService
@@ -35,7 +35,7 @@ final class DependantService
 }
 ````
 
-**Setter Injection** ako vkladanie závislosti prostredníctvom špecifických setrov zjednodušuje inštancovnie objektu. Setovanie závislosti nie je vyžadované a možné sa volať opakovane. To je výhodné v prípade, ak je potrebné setovať závisloť až v čase behu aplikácie. Keďže volanie setra nemusí nastať objekt je nekonzistenný v prípade, ak je závislosť nutná pre jeho správne fungovanie.
+**Setter Injection** ako vkladanie závislosti prostredníctvom špecifických setrov zjednodušuje vytvorenie objektu. Setovanie závislosti nie je vyžadované a môže sa volať opakovane. To je výhodné v prípade, ak je potrebné setovať závislosť až v čase behu aplikácie. Keďže volanie setra nemusí nastať, objekt je nekonzistentný v prípade, ak je závislosť nutná pre jeho správne fungovanie.
 
 ````php
 final class DependantService
@@ -107,7 +107,7 @@ final class MailSender
 
 Vkladanie pracuje na úrovni typu služby alebo interfacu, ktorý služba implementuje.
 
-Ak existujú viacere služby implementujúce rovnaký interface DI kontajner nebude vedieť, ktorú službu má poskytnúť ako závislosť. K interfacu ako kľúču na úrovni DI kontajneru priradíme konkrétnu implementáciu služby:
+Ak existujú viaceré služby implementujúce rovnaký interface DI kontajner nebude vedieť, ktorú službu má poskytnúť ako závislosť. K interfacu ako kľúču na úrovni DI kontajneru, priradíme konkrétnu implementáciu služby:
  
 ````
 services:        
@@ -170,9 +170,9 @@ Vytváranie služieb je lazy a tak ich DI kontajner vytvára až v čase, keď s
 
 ## Autokonfigurácia
 
-Povolenie ``autoconfigure``, ako už názov napovedá povoľuje automatickú konfiguráciu služieb, resp. automatické tagovanie. Tagy sú interné značky DI kontajnera, ktoré nemajú žiaden význam mimo jeho hranice. Na základe tagu môže byť služba v rámci DI kontajneru spracovaná.
+Povolenie ``autoconfigure``, ako už názov napovedá, povoľuje automatickú konfiguráciu služieb, resp. automatické tagovanie. Tagy sú interné značky DI kontajnera, ktoré nemajú žiaden význam mimo jeho hranice. Na základe tagu môže byť služba v rámci DI kontajneru spracovaná.
 
-Predstavme si služby, ktorá rozširuje šablónovací systém **Twig**. Služba musí implemenť rozhranie ``Twig_ExtensionInterface``. Bez autokonfigur8cie ju musíme ručne zaregistrovať v ``services.yml`` a zadefinovať správny tag, v tomto prípade ``twig.extension``: 
+Predstavme si služby, ktorá rozširuje šablónovací systém **Twig**. Služba musí implementovať rozhranie ``Twig_ExtensionInterface``. Bez automatickej figurácie ju musíme ručne zaregistrovať v ``services.yml`` a zadefinovať správny tag, v tomto prípade ``twig.extension``: 
 
 ````
 services:
@@ -187,7 +187,7 @@ services:
 		resource: '../../src/*'
 ````
 
-Tento zápis môžeme zjednodušiť definíciou tagu pre interface v sekcií ``_instanceof``.
+Tento zápis môžeme zjednodušiť definíciou tagu pre interface v sekcii``_instanceof``.
 
 ````
 services:
@@ -234,7 +234,7 @@ services:
 
 ## Bindovanie parametrov
 
-Častokrát potrebujeme vložiť službám skalárne argumenty, napríklad číslo alebo reťazec. V takomto prípade sme museli explicitnú definovať službu alebo viacero služieb, ak boli na argumente závislé.
+Častokrát potrebujeme vložiť službám skalárne argumenty, napríklad číslo alebo reťazec. V takomto prípade by sme museli explicitne definovať službu alebo viacero služieb, ak argument vyžadovali.
 
 ````
 services:
@@ -248,7 +248,7 @@ services:
         $logDir: '%kernel.project_dir%/var/log'
 ````
 
-Autowiring skalárnych argumentov môžeme vyriešiť jednoduchšie pomocou tzv. **bindovanie** v sekcií ``_defaults``.
+Autowiring skalárnych argumentov môžeme vyriešiť jednoduchšie pomocou tzv. **bindovanie** v sekcii ``_defaults``.
 
 ````
 services:
@@ -259,7 +259,7 @@ services:
             $logDir: '%kernel.project_dir%/var/log'
 ````
 
-Následne všetky naše službu vyžadujúce skalárny argument ``$logDir`` získajú nabindovaný skalár.
+Následne všetky naše služby vyžadujúce skalárny argument ``$logDir`` získajú nabindovaný skalár.
 
 Ak pre niektorú zo služieb potrebujeme určiť inú hodnotu argumentu ``$logDir`` musíme definíciu služby preťažiť:
 
@@ -277,11 +277,11 @@ services:
 
 ## Registrácia služieb
 
-Hromadná registrácia služieb (autodiscovery) prostredníctvom špecifického doménového názvu (FQCN) odtieňuje vývojara od zdĺhavej definície každej služby, sprehľadňuje konfiguračný súbor ``services.yml`` a v neposlednom rade značne zvyšuje efektivitu práce tým, že definície služieb vytvára automaticky.
+Hromadná registrácia služieb (autodiscovery) prostredníctvom špecifického doménového názvu (FQCN) odtieňuje vývojára od zdĺhavej definície každej služby, sprehľadňuje konfiguračný súbor ``services.yml`` a v neposlednom rade značne zvyšuje efektivitu práce tým, že definície služieb vytvára automaticky.
 
-Definícia začína určením spoločného doménového názvu (FQCN), ktorý musí byť ukočený spätným lomítkom.
+Definícia začína určením spoločného doménového názvu (FQCN), ktorý musí byť ukončený spätným lomítkom.
 
-Prvý argumentom ``resource`` definujeme cestu k zložke, kde sa súbory pre registráciu nachádzaju a druhým nepovinným parametrom ``exclude`` môžeme určiť, ktoré zložky alebo súbory sa majú z registrácie vylúčiť. Definícia môže obsahovať aj iné parametre napr. ``arguments``, ``tags`` a podobne.:  
+Prvý argumentom ``resource`` definujeme cestu k zložke, kde sú umiestnené súbory pre registráciu a druhým nepovinným parametrom ``exclude`` môžeme určiť, ktoré zložky alebo súbory sa majú z registrácie vylúčiť. Definícia môže obsahovať aj iné parametre napr. ``arguments``, ``tags`` a podobne.:  
 
 ````
 services:
@@ -298,7 +298,7 @@ Z ukážky vyššie je zrejmé, že v základnom nastavení sa registrujú všet
 
 Do parametrov ``resource`` a ``exclude`` nemusíme definovať len presnú cestu, ale pre zvýšenie flexibility umožňujú aj valídny zápis cesty so zástupnými znakmi v [glob patterne](https://en.wikipedia.org/wiki/Glob_(programming)). 
 
-Predstavme si jednoduchý príklad, kde chceme vylúčiť z načítania všetký súbory, ktorých názov obsahuje reťazec **Command** alebo **Query** a tieto súbory môžu byť zanorené v ľubovľnej hierarchií zložiek:
+Predstavme si jednoduchý príklad, kde chceme vylúčiť z načítania všetky súbory, ktorých názov obsahuje reťazec **Command** alebo **Query** a tieto súbory môžu byť zanorené v ľubovoľnej hierarchií zložiek:
  
 ````json
 services:
@@ -310,13 +310,13 @@ services:
         exclude: '../src/**/*{Command,Query}.php'
 ````
  
-V zápise ``resource`` sme použili zástupný znak ``*``, ktorý  v tomto prípade zastupuje akýkoľvek názov súboru. Zástupné znaky, môžeme spresňovať prefixom alebo sufixom, ako sme to urobili v zápise argumentu ``exclude``. Za zmienky ešte stojí znak ``**``, ktorý zastupuje rôznú úroveň vnorenie adresárov.
+V zápise ``resource`` sme použili zástupný znak ``*``, ktorý  v tomto prípade zastupuje akýkoľvek názov súboru. Zástupné znaky, môžeme spresňovať prefixom alebo sufixom, ako sme to urobili v zápise argumentu ``exclude``. Za zmienku ešte stojí znak ``**``, ktorý zastupuje rôznu úroveň vnorenie adresárov.
 
 Viac informácií o ``glob patterne`` nájdete na [wikipédií](https://en.wikipedia.org/wiki/Glob_(programming)).
 
 Definície registrácií odporúčam radiť od obecných po konkrétne. Auto registrácia má vyššiu prioritu ako ručná registrácia a teda neskorší obecný zápis preťaží všetky ručné definície.
 
-Na taketo spravanie som narazil v súvislosti s importom súborov ``yml``, ktoré obsahovali konkrétne definície služieb. Importy sa vždy spracúvajú pred sekciou ``services`` a teda všetky moje definície s konkrétnymi zmenami mi auto registrácia odstránila.
+Na takéto správanie som narazil v súvislosti s importom súborov ``yml``, ktoré obsahovali konkrétne definície služieb. Importy sa vždy spracúvajú pred sekciou ``services`` a teda všetky moje definície s konkrétnymi zmenami mi auto registrácia odstránila.
 
 ## Debugovanie
 
@@ -324,7 +324,7 @@ Pre efektívnejšiu prácu a potreby ladenia kontajnera môžeme použiť zákla
 
 Príkaz ``debug:autowiring`` vypisuje zoznam všetkých dostupných služieb alebo ich interfacov, ktoré môžu byť vkladané ako závislosti.
 
-… prikaz a jeho výstup … 
+… príkaz a jeho výstup … 
 
 Nepovinný argument ``search`` vyfiltruje zoznam podľa zadanej hodnoty, nech sa nachádza v ktorejkoľvek časti názvu.
 
@@ -338,7 +338,7 @@ Príkaz má viacero nastavení, z ktorých stojí za zmienku napríklad paramete
 
 … príkaz + list ...
 
-Viac informácí o príkazoch nájde v nápovede pre konkrétny konzolový skript.
+Viac informácií o príkazoch nájde v nápovede pre konkrétny konzolový skript.
 
 … príkaz nápovedy pre autowiring -h + výpis
  
@@ -346,7 +346,7 @@ Viac informácí o príkazoch nájde v nápovede pre konkrétny konzolový skrip
 
 Depency Injection je skvelá myšlienka, ktorá nám umožňuje vytvárať lepšie a flexibilnejšie aplikácie. Symfony túto myšlienku pomaly ale iste doťahuje k dokonalosti.
 
-Verím, že sa mi podarilo priblížiť Vám základné použitie DI v Symfony 4 a ďalšie rozšírené možností môžete nájsť v [oficálnej dokumentácií](http://symfony.com/doc/current/service_container.html).
+Verím, že sa mi podarilo priblížiť Vám základné použitie DI v Symfony 4 a ďalšie rozšírené možností môžete nájsť v [oficiálnej dokumentácií](http://symfony.com/doc/current/service_container.html).
 
 Teším sa na vecné komentáre, ktoré môžu mňa a moju prácu posunúť opäť o kúsok ďalej.
 
