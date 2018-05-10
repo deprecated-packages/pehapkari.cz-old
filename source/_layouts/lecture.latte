@@ -42,7 +42,8 @@
 
                             {if $lecture->showAddToCalendarLink()}
                                 <br>
-                                <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Lecture:+{$lecture->getTitle()}&dates={$lecture->getStartInCalendarFormat()}/{$lecture->getEndInCalendarFormat()}&details=Details:+https://pehapkari.cz/{$lecture->getRelativeUrl()}&ctz=Europe/Prague&location={$lecture->getCalendarLocation()}&sf=true&output=xml">
+                                <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Lecture:+{$lecture->getTitle()}&dates={$lecture->getStartInCalendarFormat()}/{$lecture->getEndInCalendarFormat()}&details=Details:+https://pehapkari.cz/{$lecture->getRelativeUrl()}&ctz=Europe/Prague&location=
+{$places[$lecture->getPlaceId()]['google_calendar_place']}&sf=true&output=xml">
                                     <em class="fa fa-fw fa-calendar"></em>
                                     {if $lecture->isInEnglish()}Add to Calendar{else}Přidat do kalendáře{/if}
                                 </a>
@@ -53,7 +54,9 @@
                     <p>
                         {if $lecture->isInEnglish()}Location{else}Místo{/if}:
                         <strong>
-                            <a href="{$lecture->getLocationLink()}">{$lecture->getLocationName()}</a>
+                            <a href="{$places[$lecture->getPlaceId()]['google_maps_link']}">
+                                {$places[$lecture->getPlaceId()]['name']}
+                            </a>
                         </strong>
                     </p>
                     <p>

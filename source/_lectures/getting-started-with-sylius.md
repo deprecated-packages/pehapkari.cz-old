@@ -8,9 +8,7 @@ user: 118
 duration: "8 hours"
 price: 4999
 capacity: "10 people"
-location: "Pobřežní 667/78, Prague, 18600"
-location_name: "FootShop, 3. patro, Prague"
-location_link: "https://www.google.com/maps/place/KARL%C3%8DN+GROUP/@50.0951188,14.4520104,17z/data=!3m1!4b1!4m5!3m4!1s0x470b94a145a26d35:0xb4a2f3a802a46a2a!8m2!3d50.0951154!4d14.4542044"
+place_id: 2
 image: "/assets/images/logos/sylius.png"
 perex: "Comprehensive introduction to Sylius eCommerce framework. Join us and learn how to customise one of the most promising eCommerce solutions."
 lang: en

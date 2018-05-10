@@ -14,6 +14,7 @@ price: 4999
 
 # max. počet lidí, který zvládneš a je ještě efektinví pro předávání tvého know-how
 # doporučujeme: 6-10
+place_id: 1
 capacity: "10 lidí"
 
 image: "/assets/images/logos/zen.jpg"
