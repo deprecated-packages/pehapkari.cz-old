@@ -5,6 +5,7 @@ namespace Pehapkari\Website\Statie\Generator;
 use DateTime;
 use DateTimeInterface;
 use Nette\Utils\DateTime as NetteDateTime;
+use Pehapkari\Website\Statie\Exception\LectureConfigurationException;
 use Symplify\Statie\Generator\Renderable\File\AbstractGeneratorFile;
 
 final class LectureFile extends AbstractGeneratorFile
@@ -144,30 +145,44 @@ final class LectureFile extends AbstractGeneratorFile
         return false;
     }
 
-    public function getCalendarLocation(): string
-    {
-        if (isset($this->configuration['location'])) {
-            return str_replace(' ', '+', $this->configuration['location']) . ',+Czechia';
-        }
+//    public function getCalendarLocation(): string
+//    {
+//        $this->ensurePlaceIsSet();
+//
+//        return 'Node5,+Radlická+180/50,+150+00+Praha+5-Smíchov,+Czechia';
+//    }
 
-        return 'Node5,+Radlická+180/50,+150+00+Praha+5-Smíchov,+Czechia';
+    public function getPlaceId(): int
+    {
+        $this->ensurePlaceIsSet();
+
+        return (int) $this->configuration['place_id'];
     }
+//
+//    public function getLocationLink(): string
+//    {
+//        $this->ensurePlaceIsSet();
+//
+//        if (isset($this->configuration['place_id'])) {
+//            return $this->configuration['location_link'];
+//        }
+//
+//        if (isset($this->configuration['location_link'])) {
+//            return $this->configuration['location_link'];
+//        }
+//
+//        return 'https://www.google.com/maps/place/Node5/@50.0663614,14.4005504,17z/data=!3m1!4b1!4m5!3m4!1s0x470b9450c0dcebfb:0x2fad6c1cd982e330!8m2!3d50.066358!4d14.4027444';
+//    }
 
-    public function getLocationName(): string
+    private function ensurePlaceIsSet(): void
     {
-        if (isset($this->configuration['location_name'])) {
-            return $this->configuration['location_name'];
+        if (isset($this->configuration['place_id'])) {
+            return;
         }
 
-        return 'Node5, Praha';
-    }
-
-    public function getLocationLink(): string
-    {
-        if (isset($this->configuration['location_link'])) {
-            return $this->configuration['location_link'];
-        }
-
-        return 'https://www.google.com/maps/place/Node5/@50.0663614,14.4005504,17z/data=!3m1!4b1!4m5!3m4!1s0x470b9450c0dcebfb:0x2fad6c1cd982e330!8m2!3d50.066358!4d14.4027444';
+        throw new LectureConfigurationException(sprintf(
+            '%s is missing "place_id" value, add it.',
+            $this->getFilePath()
+        ));
     }
 }

@@ -7,6 +7,7 @@ image: "/assets/images/logos/docker.png"
 user: 34
 duration: "4 hodiny"
 price: 2999
+place_id: 1
 capacity: "10 lidí"
 
 # 2-3 věty

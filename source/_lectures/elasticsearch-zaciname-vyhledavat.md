@@ -7,6 +7,7 @@ date: 2018-01-30
 user: 11
 duration: "8 hodin"
 price: 4999
+place_id: 1
 capacity: "10 lidí"
 
 # 2-3 věty

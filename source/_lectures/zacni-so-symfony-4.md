@@ -7,6 +7,7 @@ image: "/assets/images/logos/symfony.png"
 user: 33
 duration: "8 hodin"
 price: 5999
+place_id: 1
 capacity: "10 ľudí"
 
 # 2-3 věty

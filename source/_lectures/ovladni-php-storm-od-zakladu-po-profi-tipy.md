@@ -8,6 +8,7 @@ image: "/assets/images/logos/phpstorm.png"
 user: 6
 duration: "3 hodiny"
 price: 2499
+place_id: 1
 capacity: "12 lidí"
 
 # 2-3 věty

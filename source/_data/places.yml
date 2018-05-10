@@ -1,0 +1,13 @@
+parameters:
+    places:
+        # Node 5
+        1:
+            name: "Node 5, Prague"
+            google_maps_link: "https://www.google.com/maps/place/Node5/@50.0663614,14.4005504,17z/data=!3m1!4b1!4m5!3m4!1s0x470b9450c0dcebfb:0x2fad6c1cd982e330!8m2!3d50.066358!4d14.4027444"
+            google_calendar_place: "Node5,+Radlická+180/50,+150+00+Praha+5-Smíchov,+Czechia"
+
+        # FootShop
+        2:
+            name: "Footshop, Prague"
+            google_maps_link: "https://www.google.com/maps/place/KARL%%C3%%8DN+GROUP/@50.0951188,14.4520104,17z/data=!3m1!4b1!4m5!3m4!1s0x470b94a145a26d35:0xb4a2f3a802a46a2a!8m2!3d50.0951154!4d14.4542044"
+            google_calendar_place: "Pobřežní+667/78,+Prague,+18600,+Czechia"
