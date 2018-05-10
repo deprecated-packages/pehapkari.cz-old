@@ -7,7 +7,7 @@ image: "/assets/images/logos/xdebug.png"
 user: 32
 duration: "4 hodiny"
 price: 2999
-place_id: 1
+place_id: 2
 capacity: "10 lidí"
 
 # 2-3 věty

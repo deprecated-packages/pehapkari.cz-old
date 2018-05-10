@@ -8,7 +8,7 @@ image: "/assets/images/logos/feedback.png"
 user: 30
 duration: "8 hodin"
 price: 4999
-place_id: 1
+place_id: 2
 capacity: "10 lidí"
 
 # 2-3 věty

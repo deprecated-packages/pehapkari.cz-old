@@ -7,7 +7,7 @@ image: "/assets/images/logos/doctrine.png"
 user: 11
 duration: "8 hodin"
 price: 6999
-place_id: 1
+place_id: 2
 capacity: "10 lidí"
 perex: "Jak efektivně propojit entity? Jak dělat s DQL složitější dotazy do databáze? A jak Doctrine dokáže optimalizovat množství dotazů do databáze a naopak, kdy ji musíme pomoci sami? To všem vám ukážu na mém školení."
 ---
