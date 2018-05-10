@@ -145,34 +145,12 @@ final class LectureFile extends AbstractGeneratorFile
         return false;
     }
 
-//    public function getCalendarLocation(): string
-//    {
-//        $this->ensurePlaceIsSet();
-//
-//        return 'Node5,+Radlická+180/50,+150+00+Praha+5-Smíchov,+Czechia';
-//    }
-
     public function getPlaceId(): int
     {
         $this->ensurePlaceIsSet();
 
         return (int) $this->configuration['place_id'];
     }
-//
-//    public function getLocationLink(): string
-//    {
-//        $this->ensurePlaceIsSet();
-//
-//        if (isset($this->configuration['place_id'])) {
-//            return $this->configuration['location_link'];
-//        }
-//
-//        if (isset($this->configuration['location_link'])) {
-//            return $this->configuration['location_link'];
-//        }
-//
-//        return 'https://www.google.com/maps/place/Node5/@50.0663614,14.4005504,17z/data=!3m1!4b1!4m5!3m4!1s0x470b9450c0dcebfb:0x2fad6c1cd982e330!8m2!3d50.066358!4d14.4027444';
-//    }
 
     private function ensurePlaceIsSet(): void
     {
