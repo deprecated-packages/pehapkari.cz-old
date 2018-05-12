@@ -1,12 +1,12 @@
 ---
 id: 1
 title: "Docker bez předchozích znalostí"
-date: '2018-03-29 09:00:00'
+date: '2018-06-27 10:00:00'
 form_link: "https://goo.gl/forms/EpsbC6AmCnTDMKfv2"
 image: "/assets/images/logos/docker.png"
 user: 34
-duration: "4 hodiny"
-price: 2999
+duration: "8 hodin"
+price: 4999
 place_id: 2
 capacity: "10 lidí"
 
@@ -27,3 +27,15 @@ perex: 'Docker je poslední dobou stále oblíbenější. Jak si s ním zjednodu
 - Seznámíme se s Gitlabem - porovnání s Githubem, plusy, mínusy, CI/CD
 - Vytvoříme si pipeliny - build => test a vyzkoušíme si deploy
 - Ukážeme si využití proxy serveru
+
+### Co s sebou?
+- Vlastní notebook + výhodou nainstalovaný a funkční [Docker](https://docs.docker.com/install/) a [Docker Compose](https://docs.docker.com/compose/install/)
+    - Instalace Mac Os: Apka https://docs.docker.com/docker-for-mac/install/ 
+    - Instalace Debian: https://docs.docker.com/install/linux/docker-ce/debian/
+    - Instalace Ubuntu: https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1
+    - Instalace Windows: Toolbox https://docs.docker.com/toolbox/toolbox_install_windows/
+- Mít plná práva pro přístup k Dockeru a zápisu na disk.
+
+### Poznámky
+- Oběd v ceně
+- Kontakt 8machy@seznam.cz / 720 731 963
