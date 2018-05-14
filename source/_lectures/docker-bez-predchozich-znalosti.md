@@ -29,13 +29,9 @@ perex: 'Docker je poslední dobou stále oblíbenější. Jak si s ním zjednodu
 - Ukážeme si využití proxy serveru
 
 ### Co s sebou?
-- Vlastní notebook + výhodou nainstalovaný a funkční [Docker](https://docs.docker.com/install/) a [Docker Compose](https://docs.docker.com/compose/install/)
-    - Instalace Mac Os: Apka https://docs.docker.com/docker-for-mac/install/ 
-    - Instalace Debian: https://docs.docker.com/install/linux/docker-ce/debian/
-    - Instalace Ubuntu: https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1
-    - Instalace Windows: Toolbox https://docs.docker.com/toolbox/toolbox_install_windows/
+- Vlastní notebook + zkus si nainstalovat [Docker](https://docs.docker.com/install/) a [Docker Compose](https://docs.docker.com/compose/install/) podle návodů. V případě komplikací si piš, co ti něšlo. Na začátku školení to společně nastavíme.
+    - [Instalace Mac Os - existuje apka](https://docs.docker.com/docker-for-mac/install/)
+    - [Instalace Debian](https://docs.docker.com/install/linux/docker-ce/debian/)
+    - [Instalace Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1)
+    - [Instalace Windows - je potřeba Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/)
 - Mít plná práva pro přístup k Dockeru a zápisu na disk.
-
-### Poznámky
-- Oběd v ceně
-- Kontakt 8machy@seznam.cz / 720 731 963
