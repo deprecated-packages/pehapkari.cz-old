@@ -22,7 +22,7 @@ Najčastejšie používané formy vkladania závislostí do objektov sú **Const
 
 Nevýhodou je možná neprehľadnosť konštruktora pri vyššom počte závislosti, čo je však skôr otázkou správneho návrhu.
 
-````php
+```php
 final class DependantService
 {
 	/**
@@ -35,13 +35,13 @@ final class DependantService
         $this->service = $service;
     }
 }
-````
+```
 
 **Setter Injection** ako vkladanie závislosti prostredníctvom špecifických setrov zjednodušuje vytvorenie objektu. Setovanie závislosti nie je vyžadované a môže sa volať opakovane.
 
 To je výhodné v prípade, ak je potrebné setovať závislosť až v čase behu aplikácie. Volanie setra nemusí nastať a výsledný objekt sa môže veľmi ľahko ocitnúť v nekonzistentnom stave.
 
-````php
+```php
 final class DependantService
 {
 	/**
@@ -54,7 +54,7 @@ final class DependantService
         $this->service = $service
     }
 }
-````
+```
 
 ## Symfony a DI
 
@@ -64,7 +64,7 @@ Definícia služieb pre DI kontajner v Symfony projekte vykonávame v ``services
 
 Po inštalácií frameworku obsahuje súbor len základné predvolené nastavenia a obecnú registráciu služieb (autodiscovery) zameranú na celú zložku ``src``.
 
-````bash
+```bash
 services:
     _defaults:
         autowire: true
@@ -74,20 +74,18 @@ services:
     App\:
         resource: '../src/*'
         exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
-````
+```
 
 Na ukážke sekcia ``_defaults`` zahŕňa tri predvolené nastavenia, platiace pre všetky zaregistrované služby v ``services.yml``. Každé zo všeobecných nastavení môžeme preťažiť pri definícií konkrétnej služby.
 
-````bash
+```bash
 services:
 	_defaults:
-        autowire: true
-        autoconfigure: true
         public: false
         
 	App\Model\TemplateEngine:
 		public: true
-````
+```
 
 Sekcia ``_defaults`` je platná výhradne v rámci súboru, v ktorom je definovaná. Teda každý ``services.yml`` z bundlu alebo knižnice bude obsahovať vlastnú sadu týchto nastavení.
 
@@ -95,7 +93,7 @@ Sekcia ``_defaults`` je platná výhradne v rámci súboru, v ktorom je definova
 
 Povolenie **autowiring**-u pre všetky služby umožňuje DI kontajneru ich vkladanie primárne prostredníctvom konštruktora do iných služieb, ktoré ich vyžadujú na základe typehintu.
 
-````php
+```php
 final class MailSender
 {
 	/**
@@ -108,29 +106,31 @@ final class MailSender
         $this->logger = $logger;
     }
 }
-````
+```
 
 Vkladanie pracuje na úrovni typu služby alebo interfacu, ktorý služba implementuje.
 
 Ak existujú viaceré služby implementujúce rovnaký interface DI kontajner nebude vedieť, ktorú službu má poskytnúť ako závislosť. K interfacu ako kľúču na úrovni DI kontajneru, priradíme konkrétnu implementáciu služby.
  
-````bash
+```bash
 services:        
     App\Logger\LoggerInterface: '@App\Logger\MailLogger'
-````
+```
 
 Od Symfony 3.4. existuje ekvivalentný zápis v sekcii bind.
 
-````bash
+```bash
 services:
     _defaults:
         bind:        
 			App\Logger\LoggerInterface: '@App\Logger\FileLogger'
-````
+```
+
+Osobne mi tento zápis vyhovuje viac, pretože mám všetky bindy interfacov na jednom mieste v rámci konfigu. 
 
 Nie všetky naše služby vyžadujúce ``App\Logger\LoggerInterface`` musia očakávať nabindovanú inštanciu ``App\Logger\FileLogger``. V tomto prípade môžeme implementáciu prebindovať pri konkrétnej definícií služby.
 
-````bash
+```bash
 services:
     _defaults:
         bind:        
@@ -142,11 +142,13 @@ services:
 	App\Mailer\MailGenerator:
 		bind:
 			App\Logger\LoggerInterface: '@App\Logger\DatabaseLogger'			
-````
+```
 
-Symfony autowiring umožňuje vkladanie závislostí **aj priamo metódam v kontroleri** (action injection). Táto funkčnosť do určitej miery zjednodušuje prácu s kontrolerom, kedy nie je nutné k získaniu závislosti vytvárať konštruktor. 
+### Action Injection
 
-````php
+Symfony autowiring umožňuje vkladanie závislostí **aj priamo metódam v kontroleri**. Táto funkčnosť do určitej miery zjednodušuje prácu s kontrolerom, kedy nie je nutné k získaniu závislosti vytvárať konštruktor. 
+
+```php
 final class MailSendController
 {
 	public function __invoke(MailSenderInterface $mailSender)
@@ -154,7 +156,7 @@ final class MailSendController
 		// ...
 	}
 }		
-````
+```
 
 **Odporúčam používať výhradne konštruktor na vkladanie závislosti za každých okolností**. Kontroler tak jednoznačne priznáva svoje závislosti.
 
@@ -170,6 +172,8 @@ V opačnom prípade sa pokúsi službu nakonfigurovať podľa definície opätov
 
 ![autowiring-exception](/assets/images/posts/2018/symfony-4-dependency-injection/autowire-exception.png)
 
+Špecifický doménový názov ([FQCN](https://en.wikipedia.org/wiki/Fully_qualified_name)) v prípade DI kontajnera predstavuje kompletný názov triedy s celým namespacom, teda napríklad ``App\Logger\FileLogger``.
+
 ## Autokonfigurácia
 
 Povolenie ``autoconfigure``, ako už názov napovedá, povoľuje automatickú konfiguráciu služieb, resp. automatické tagovanie. Tagy sú interné značky kontajnera, ktoré nemajú žiaden význam mimo jeho hraníc.
@@ -178,10 +182,9 @@ Predstavme si službu, ktorá rozširuje šablónovací systém **Twig**. Služb
 
 Bez automatickej konfigurácie ju musíme ručne zaregistrovať v ``services.yml`` a zadefinovať správny tag ``twig.extension`` tak, aby kontajner vedel ako má so službou pracovať.
 
-````bash
+```bash
 services:
     _defaults:
-        autowire: true
         autoconfigure: false
 
     App\Templating\AcmeTwigExtension:
@@ -189,35 +192,35 @@ services:
 		
     App\:
 		resource: '../src/*'
-````
+```
 
 Tento zápis môžeme zjednodušiť definíciou tagu pre interface v sekcii``_instanceof``.
 
-````bash
+```bash
 services:
     _defaults:
-        autowire: true
         autoconfigure: false
 		
     _instanceof:
         Twig_ExtensionInterface:
-            tags: [security.voter]			
+            tags: [twig.extension]			
 	
     App\:
 		resource: '../src/*'
-````
+```
 
 Keďže programátor je tvor lenivý, zapneme ``autoconfigure`` a nemusíme nič explicitne definovať.
 
-````bash
+```bash
 services:
     _defaults:
         autowire: true
         autoconfigure: true
+        public: false
 
     App\:
 		resource: '../src/*'
-````
+```
 
 ## Viditeľnosť služieb
 
@@ -225,26 +228,21 @@ Symfony 4 predvolene nastavuje registrované služby ako privátne. K privátnym
 
 V nutnom prípade môžeme preťažiť parameter ``public`` u konkrétnej definície služby.
 
-````bash
+```bash
 services:
     _defaults:
-        autowire: true
-        autoconfigure: true
         public: false
         
 	App\Logger\MailLogger:
 		public: true
-````
+```
 
 ## Bindovanie parametrov
 
 Častokrát potrebujeme vložiť službám skalárne argumenty, napríklad číslo alebo reťazec. V takomto prípade by sme museli explicitne definovať službu alebo viacero služieb, ak argument vyžadovali.
 
-````bash
+```bash
 services:
-    _defaults:
-        // ...
-
     App\Logger\MailLogger:        
         arguments:
             $logDir: '%kernel.project_dir%/var/log'
@@ -252,24 +250,22 @@ services:
     App\Logger\QueryLogger:        
         arguments:
             $logDir: '%kernel.project_dir%/var/log'
-````
+```
 
 Autowiring skalárnych argumentov môžeme vyriešiť jednoduchšie pomocou tzv. **bindovania** v sekcii ``_defaults``.
 
-````bash
+```bash
 services:
-    _defaults:
-        // ...
-		
+    _defaults:    
         bind:
             $logDir: '%kernel.project_dir%/var/log'
-````
+```
 
 Následne všetky naše služby vyžadujúce skalárny argument ``$logDir`` získajú nabindovaný skalár.
 
 Ak pre niektorú zo služieb potrebujeme určiť inú hodnotu argumentu ``$logDir`` musíme opäť definíciu služby preťažiť:
 
-````bash
+```bash
 services:
     _defaults:
         bind:		
@@ -278,7 +274,7 @@ services:
 	App\Logger\QueryLogger:
 		bind:
             $logDir: '%kernel.project_dir%/var/log/query'
-````
+```
 
 ## Registrácia služieb
 
@@ -288,15 +284,17 @@ Definícia začína určením spoločného doménového názvu ([FQCN](https://e
 
 Prvý argumentom ``resource`` definujeme cestu k zložke, kde sú umiestnené súbory pre registráciu a druhým nepovinným parametrom ``exclude`` môžeme určiť, ktoré zložky alebo súbory sa majú z registrácie vylúčiť. Definícia môže obsahovať aj iné parametre napr. ``arguments``, ``tags`` a podobne.:  
 
-````bash
+```bash
 services:
     _defaults:
-        // ...
+        autowire: true
+        autoconfigure: true
+        public: false
         
     App\:
         resource: '../src/*'
         exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
-````
+```
 
 
 Z ukážky vyššie je zrejmé, že v základnom nastavení sa registrujú všetky služby, ktorých doménový názov začína na ``App``.
@@ -305,15 +303,17 @@ Do parametrov ``resource`` a ``exclude`` nemusíme definovať len presnú cestu,
 
 Predstavme si jednoduchý príklad, kde chceme vylúčiť z načítania všetky súbory, ktorých názov obsahuje reťazec **Command** alebo **Query** a tieto súbory môžu byť zanorené v ľubovoľnej hierarchií zložiek:
  
-````bash
+```bash
 services:
     _defaults:
-        // ...
+        autowire: true
+        autoconfigure: true
+        public: false
         
     App\:
         resource: '../src/*'
         exclude: '../src/**/*{Command,Query}.php'
-````
+```
  
 V zápise ``resource`` sme použili zástupný znak ``*``, ktorý  v tomto prípade zastupuje akýkoľvek názov súboru. Zástupné znaky, môžeme spresňovať prefixom alebo sufixom, ako sme to urobili v zápise argumentu ``exclude``. Za zmienku ešte stojí znak ``**``, ktorý zastupuje rôznu úroveň vnorenie adresárov.
 
@@ -327,19 +327,43 @@ Na takéto správanie som narazil v súvislosti s importom konfiguračného súb
 
 Pre efektívnejšiu prácu a potreby ladenia kontajnera môžeme použiť základné konzolové príkazy ako ``debug:container`` a ``debug:autowiring``.
 
-Príkaz ``debug:container`` nám vypíše zoznam verejných služieb v kontajneri. Pomocou argumentu ``name`` môžeme vyhľadať konkrétne služby, ktoré vyhovujú reťazcu.
+### Príkaz debug:container
+
+Otvoríme konzolu a v koreňovom adresári Symfony projektu zadáme príkaz ```php bin/console debug:container```.
 
 ![debug-container](/assets/images/posts/2018/symfony-4-dependency-injection/debug-container.jpg)
 
+Výsledkom príkazu je zoznam všetkých verejných služieb.
+
 Príkaz má viacero nastavení, z ktorých stojí za zmienku napríklad parameter ``--show-private``. Tento parameter spôsobí, že výpis kontajnera bude obsahovať všetky služby vrátane privátnych, ktoré štandardne výpis neobsahuje.
 
-Príkaz ``debug:autowiring`` vypisuje zoznam všetkých dostupných služieb alebo ich interfacov, ktoré môžu byť vkladané ako závislosti. Modrou farbou sú označené doménové adresy ([FQCN](https://en.wikipedia.org/wiki/Fully_qualified_name)), teda ID kľúče, na základe ktorých sú služby autowirované.
+Skúsme teda do konzole zadať príkaz ```php bin/console debug:container --show-private```. Výstup už bude obsahovať všetky služby, ktorými disponuje kontajner bez ohľadu na to či sú verejné alebo nie.
+
+Keď projekt rastie služieb pribúda a zoznam rastie. Práca s ním sa stáva nepohodlná a práve teraz je vhodný čas na vyhľadávanie služieb v zozname. Skúsme teda zadať príkaz ```php bin/console debug:container RedirectController``` 
+
+![debug-container-search](/assets/images/posts/2018/symfony-4-dependency-injection/debug-container-search.jpg)
+
+Skvelé príkaz vyhľadá v zozname služieb také, ktoré vyhovujú hľadaniu. V prípade, ak podľa reťazca vyhovuje viacero služieb ponúkne nám jednoduchý výber.
+
+### Príkaz debug:autowiring
+
+Kontajner obsahuje množstvo služieb, z ktorých nie všetky môžu byť dostupné pre autowiring.
+
+Skúsme teda do konzoly zadať príkaz ``php bin/console debug:autowiring``.
 
 ![debug-autowiring](/assets/images/posts/2018/symfony-4-dependency-injection/debug-autowiring.jpg)
 
-Nepovinný argument ``search`` vyfiltruje zoznam podľa zadanej hodnoty, nech sa nachádza v ktorejkoľvek časti názvu.
+Skript nám vypíše všetky dostupné služby, ktoré môžu byť vkladané ako závislosti. Modrou farbou sú označené doménové adresy ([FQCN](https://en.wikipedia.org/wiki/Fully_qualified_name)), teda ID kľúče, na základe ktorých sú služby autowirované.
 
-Viac informácií o príkazoch nájdete v nápovede pre konkrétny konzolový skript.
+Ako u predchádzajúceho príkazu aj v tomto zozname môžeme vyhľadávať uvedením prvého argumentu za príkazom, napríklad ``php bin/console debug:autowiring RedirectController``
+
+### Nápoveda k príkazom
+
+Viac informácií o príkazoch nájdete v nápovede pre konkrétny konzolový skript. Skúsme sa dozvedieť viac k príkazu ``debug:autowiring``. Napíšme teda do konzoly príkaz ``php bin/console debug:autowiring -h``.
+
+![debug-autowiring-help](/assets/images/posts/2018/symfony-4-dependency-injection/debug-autowiring-help.jpg)
+
+Príkaz vypíše možné argumenty a parametre príkazu, krátky popis a v lepšom prípade aj možnosti použitia.
  
 ## Záver
 
