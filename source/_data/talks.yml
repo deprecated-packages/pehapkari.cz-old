@@ -1,0 +1,30 @@
+# for php-prague
+parameters:
+    talks:
+        1:
+            time: TBA
+            speaker: "Holger Woltersdorf"
+            speaker_url: "https://hollo.me/index.html"
+            talk: "Total Recall - The application that never forgets"
+            perex: |
+                Building an application upon CQRS and Event Sourcing offers three pretty nice benefits.
+
+                1. Well structured code and business logic, separated by read and write concerns.
+                2. The source of truth - A reliable and recoverable view into the past of your application state.
+                3. The opportunity to answer future questions that you don't know about today.
+
+                This talk explains the good fit of two combined application architecture approaches applied to a well known real world example. It shows how to tackle some pitfalls, gives practical advices on infrastructure and exemplifies the aforementioned benefits.
+            bio: |
+                Holger Woltersdorf, CIO - Head of FORTUNE SOLUTIONS at [Fortuneglobe GmbH](http://www.fortuneglobe.com). About 12 years of developer and team-lead experience in mobile communication and fashion eCommerce industry. PHP developer for more than 17 years, Co-founder and chairman of the PHP USERGROUP DRESDEN e.V., avid meetup and conference speaker, core-developer of the open-source PHP framework "IceHawk", dedicated to multiple other PHP open-source projects.
+
+                You can find my picture here: https://hollo.me/img/hwoltersdorf_blue_500x500.png
+        2:
+            time: TBA
+            speaker: "Arkadiusz Kondas"
+            speaker_url: "https://arkadiuszkondas.com/"
+            talk: "Machine Learning - how to begin to learn the machine in PHP"
+        3:
+            time: TBA
+            speaker: "Tomas Votruba"
+            speaker_url: "https://tomasvotruba.com/"
+            talk: TBA

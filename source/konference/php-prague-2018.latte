@@ -2,6 +2,7 @@
 layout: default
 subpage: true
 outputPath: php-prague/index.html # available on "/php-prague"
+id: conference
 ---
 
 {block content}
@@ -15,9 +16,7 @@ outputPath: php-prague/index.html # available on "/php-prague"
 
             <h2>23. 6. 2018 - 2nd PHP Conference in PHP Prague</h2>
 
-            <h3 class="mb-4">
-                Calling for Papers!
-            </h3>
+            <h3 class="mb-5">Calling for Papers!</h3>
 
             <p>
                 <em class="fa fa-group fa-fw"></em>
@@ -45,12 +44,37 @@ outputPath: php-prague/index.html # available on "/php-prague"
 
     <hr>
 
+    <h2 class="text-center">Already {=count($talks)} Confirmed Talks ↓</h2>
+
+    <h3 class="mb-5 text-center">10:00 - 18:00</h3>
+
+    <table class="table">
+        <tr>
+            <th>Time</th>
+            <th>Speaker</th>
+            <th>Talk</th>
+        </tr>
+        {foreach $talks as $talk}
+            <tr>
+                <td>{$talk['time']}</td>
+                <td>
+                    <a n:ifset="$talk['speaker_url']" href="{$talk['speaker_url']}">
+                        {$talk['speaker']}
+                    </a>
+                </td>
+                <td>{$talk['talk']}</td>
+            </tr>
+        {/foreach}
+    </table>
+
+    <hr>
+
     <div class="row">
         <div class="col-md-12 text-center">
-            <h3 class="mb-4">
+            <h2>
                 <em class="fa fa-heart fa-fw"></em>
                 Thanks to Our Partners
-            </h3>
+            </h2>
 
             <p>
                 Big thanks to our partners, who help us to create lovely day, with fresh drinks, tasty food and helped us to spread love in our community.
