@@ -32,3 +32,7 @@ parameters:
             time: TBA
             speaker: "David Velvethy"
             talk: "MVP: How we fucked-up despite a training in Rocketspace, San Francisco"
+        5:
+            time: TBA
+            speaker: "Matous Czerner"
+            talk: "TBA"
