@@ -64,7 +64,7 @@
                         {php $item = $lecture ?? $post}
                         {capture $githubEditLink}{$item|githubEditPostUrl}{/capture}
                         {elseifset $id}
-                        {capture $githubEditLink}{$github_edit_url_start}{$githubLink =  $id . '.latte'}{/capture}
+                        {capture $githubEditLink}{$github_edit_url_start}{$githubLink = $id . '.latte'}{/capture}
                     {/if}
 
                     {ifset $githubEditLink}

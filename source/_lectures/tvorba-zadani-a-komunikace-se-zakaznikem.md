@@ -7,6 +7,7 @@ form_link: "https://goo.gl/forms/wBb4g05HlyZdQr2X2"
 user: 28
 duration: "4 hodiny"
 price: 2499
+place_id: 2
 capacity: "8 lidí"
 image: "/assets/images/logos/komunikace-150x150.jpg"
 perex: 'Nebuď "typický programátor", ke kterému zákazník potřebuje překladatele. Neboj se "typických zákazníků", kteří nejsou schopni napsat pořádné zadání. Přijď a podělím se s tebou o postupy, které mi už roky fungují.'
