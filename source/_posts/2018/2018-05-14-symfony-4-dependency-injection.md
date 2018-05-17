@@ -18,7 +18,7 @@ Implementácia návrhového vzoru Dependency Injection formou tzv. DI kontajnera
  
 Najčastejšie používané formy vkladania závislostí do objektov sú **Constructor Injection** a **Setter Injection**.
 
-**Constructor Injection** je vkladanie závislosti objektu prostredníctvom konštruktora. Konštruktor ako vstupný bod poskytuje prehľad o všetkých závislostiach objektu na jednom mieste a zabezpečuje jeho konzistenciu, teda objekt nemôže byť inštancovný bez potrebných závislostí.
+**Constructor Injection** je vkladanie závislosti objektu prostredníctvom konštruktora. Konštruktor, ako vstupný bod, poskytuje prehľad o všetkých závislostiach objektu na jednom mieste a zabezpečuje jeho konzistenciu, teda objekt nemôže byť inštancovný bez potrebných závislostí.
 
 Nevýhodou je možná neprehľadnosť konštruktora pri vyššom počte závislosti, čo je však skôr otázkou správneho návrhu.
 
@@ -37,7 +37,7 @@ final class DependantService
 }
 ```
 
-**Setter Injection** ako vkladanie závislosti prostredníctvom špecifických setrov zjednodušuje vytvorenie objektu. Setovanie závislosti nie je vyžadované a môže sa volať opakovane.
+**Setter Injection**, ako vkladanie závislosti prostredníctvom špecifických setrov, zjednodušuje vytvorenie objektu. Setovanie závislosti nie je vyžadované a môže sa volať opakovane.
 
 To je výhodné v prípade, ak je potrebné setovať závislosť až v čase behu aplikácie. Volanie setra nemusí nastať a výsledný objekt sa môže veľmi ľahko ocitnúť v nekonzistentnom stave.
 
@@ -110,7 +110,7 @@ final class MailSender
 
 Vkladanie pracuje na úrovni typu služby alebo interfacu, ktorý služba implementuje.
 
-Ak existujú viaceré služby implementujúce rovnaký interface DI kontajner nebude vedieť, ktorú službu má poskytnúť ako závislosť. K interfacu ako kľúču na úrovni DI kontajneru, priradíme konkrétnu implementáciu služby.
+Ak existujú viaceré služby implementujúce rovnaký interface DI, kontajner nebude vedieť, ktorú službu má poskytnúť ako závislosť. K interfacu ako kľúču na úrovni DI kontajneru, priradíme konkrétnu implementáciu služby.
  
 ```yaml
 services:        
@@ -126,7 +126,7 @@ services:
 			App\Logger\LoggerInterface: '@App\Logger\FileLogger'
 ```
 
-Osobne mi tento zápis vyhovuje viac, pretože mám všetky bindy interfacov na jednom mieste v rámci konfigu. 
+Osobne mi tento zápis vyhovuje viac, pretože mám všetky bindy interfacov na jednom mieste v rámci konfigurácie. 
 
 Nie všetky naše služby vyžadujúce ``App\Logger\LoggerInterface`` musia očakávať nabindovanú inštanciu ``App\Logger\FileLogger``. V tomto prípade môžeme implementáciu prebindovať pri konkrétnej definícií služby.
 
@@ -164,11 +164,11 @@ Viac o problémoch spojených s používaním **action injection** sa môžete d
 
 ### Ako autowiring pracuje?
 
-Autowiring nie je žiadnou mágiou, pretože každá závislosť je explicitne vyžadovaná konštruktorom či metódou kontroleru.
+Autowiring nie je žiadnou mágiou, pretože každá závislosť je explicitne vyžadovaná konštruktorom, či metódou objektu.
 
-Vyžadovanú službu sa kontajner pokúsi vyhľadať medzi existujúcimi službami podľa tzv. ID, teda plne špecifikovaného doménového názvu ([FQCN](https://en.wikipedia.org/wiki/Fully_qualified_name)). Pokiaľ je k dispozícií vloží ju.
+Vyžadovanú službu sa kontajner pokúsi vyhľadať medzi existujúcimi službami podľa tzv. ID, teda plne špecifikovaného doménového názvu ([FQCN](https://en.wikipedia.org/wiki/Fully_qualified_name)). Pokiaľ je k dispozícií, vloží ju.
 
-V opačnom prípade sa pokúsi službu nakonfigurovať podľa definície opätovne na základe zhodnosti ID s doménovým názvom ([FQCN](https://en.wikipedia.org/wiki/Fully_qualified_name)). V prípade neúspechu vyhodí zrozumiteľnú výnimku o chýbajúcej službe.
+V opačnom prípade sa pokúsi službu nakonfigurovať podľa definície opätovne na základe zhodnosti ID s doménovým názvom ([FQCN](https://en.wikipedia.org/wiki/Fully_qualified_name)). V prípade neúspechu, vyhodí zrozumiteľnú výnimku o chýbajúcej službe.
 
 ![autowiring-exception](/assets/images/posts/2018/symfony-4-dependency-injection/autowire-exception.png)
 
@@ -263,7 +263,7 @@ services:
 
 Následne všetky naše služby vyžadujúce skalárny argument ``$logDir`` získajú nabindovaný skalár.
 
-Ak pre niektorú zo služieb potrebujeme určiť inú hodnotu argumentu ``$logDir`` musíme opäť definíciu služby preťažiť:
+Ak pre niektorú zo služieb potrebujeme určiť inú hodnotu argumentu ``$logDir``, musíme opäť definíciu služby preťažiť:
 
 ```yaml
 services:
@@ -315,13 +315,13 @@ services:
         exclude: '../src/**/*{Command,Query}.php'
 ```
  
-V zápise ``resource`` sme použili zástupný znak ``*``, ktorý  v tomto prípade zastupuje akýkoľvek názov súboru. Zástupné znaky, môžeme spresňovať prefixom alebo sufixom, ako sme to urobili v zápise argumentu ``exclude``. Za zmienku ešte stojí znak ``**``, ktorý zastupuje rôznu úroveň vnorenie adresárov.
+V zápise ``resource`` sme použili zástupný znak ``*``, ktorý  v tomto prípade zastupuje akýkoľvek názov súboru. Zástupné znaky môžeme spresňovať prefixom alebo sufixom, ako sme to urobili v zápise argumentu ``exclude``. Za zmienku ešte stojí znak ``**``, ktorý zastupuje rôznu úroveň vnorenie adresárov.
 
 Viac informácií o **glob patterne** nájdete na [wikipédií](https://en.wikipedia.org/wiki/Glob_(programming)).
 
-Definície registrácií odporúčam radiť od obecných po konkrétne. Auto registrácia má vyššiu prioritu ako ručná registrácia a teda neskorší obecný zápis preťaží všetky ručné definície v rámci [FQCN](https://en.wikipedia.org/wiki/Fully_qualified_name).
+Definície registrácií odporúčam radiť od obecných po konkrétne. Autoregistrácia má vyššiu prioritu ako ručná registrácia a teda neskorší obecný zápis preťaží všetky ručné definície v rámci [FQCN](https://en.wikipedia.org/wiki/Fully_qualified_name).
 
-Na takéto správanie som narazil v súvislosti s importom konfiguračného súboru so službami. Import sa vždy spracúva pred sekciou ``services`` a teda všetky moje definície s konkrétnymi zmenami mi auto registrácia odstránila.
+Na takéto správanie som narazil v súvislosti s importom konfiguračného súboru so službami. Import sa vždy spracúva pred sekciou ``services`` a teda všetky moje definície s konkrétnymi zmenami mi autoregistrácia odstránila.
 
 ## Debugovanie
 
@@ -339,11 +339,11 @@ Príkaz má viacero nastavení, z ktorých stojí za zmienku napríklad paramete
 
 Skúsme teda do konzole zadať príkaz ```php bin/console debug:container --show-private```. Výstup už bude obsahovať všetky služby, ktorými disponuje kontajner bez ohľadu na to či sú verejné alebo nie.
 
-Keď projekt rastie služieb pribúda a zoznam rastie. Práca s ním sa stáva nepohodlná a práve teraz je vhodný čas na vyhľadávanie služieb v zozname. Skúsme teda zadať príkaz ```php bin/console debug:container RedirectController``` 
+Keď projekt rastie, služieb pribúda a zoznam rastie. Práca s ním sa stáva nepohodlná a práve teraz je vhodný čas na vyhľadávanie služieb v zozname. Skúsme teda zadať príkaz ```php bin/console debug:container RedirectController``` 
 
 ![debug-container-search](/assets/images/posts/2018/symfony-4-dependency-injection/debug-container-search.jpg)
 
-Skvelé príkaz vyhľadá v zozname služieb také, ktoré vyhovujú hľadaniu. V prípade, ak podľa reťazca vyhovuje viacero služieb ponúkne nám jednoduchý výber.
+Skvelé! Príkaz vyhľadá v zozname služieb také, ktoré vyhovujú hľadaniu. V prípade, ak podľa reťazca vyhovuje viacero služieb, ponúkne nám jednoduchý výber.
 
 ### Príkaz debug:autowiring
 
@@ -355,7 +355,7 @@ Skúsme teda do konzoly zadať príkaz ``php bin/console debug:autowiring``.
 
 Skript nám vypíše všetky dostupné služby, ktoré môžu byť vkladané ako závislosti. Modrou farbou sú označené doménové adresy ([FQCN](https://en.wikipedia.org/wiki/Fully_qualified_name)), teda ID kľúče, na základe ktorých sú služby autowirované.
 
-Ako u predchádzajúceho príkazu aj v tomto zozname môžeme vyhľadávať uvedením prvého argumentu za príkazom, napríklad ``php bin/console debug:autowiring RedirectController``
+Ako u predchádzajúceho príkazu, aj v tomto zozname môžeme vyhľadávať uvedením prvého argumentu za príkazom, napríklad ``php bin/console debug:autowiring RedirectController``
 
 ### Nápoveda k príkazom
 
@@ -367,7 +367,7 @@ Príkaz vypíše možné argumenty a parametre príkazu, krátky popis a v lepš
  
 ## Záver
 
-Depency Injection je skvelá myšlienka, ktorá nám umožňuje vytvárať lepšie a flexibilnejšie aplikácie. Symfony túto myšlienku pomaly ale iste doťahuje k dokonalosti.
+Depency Injection je skvelá myšlienka, ktorá nám umožňuje vytvárať lepšie a flexibilnejšie aplikácie. Symfony túto myšlienku pomaly, ale iste doťahuje k dokonalosti.
 
 Verím, že sa mi podarilo priblížiť Vám základné použitie DI v Symfony 4 a ďalšie rozšírené možnosti môžete nájsť v [oficiálnej dokumentácií](http://symfony.com/doc/current/service_container.html).
 
