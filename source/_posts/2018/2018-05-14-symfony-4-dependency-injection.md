@@ -64,7 +64,7 @@ Definícia služieb pre DI kontajner v Symfony projekte vykonávame v ``services
 
 Po inštalácií frameworku obsahuje súbor len základné predvolené nastavenia a obecnú registráciu služieb (autodiscovery) zameranú na celú zložku ``src``.
 
-```bash
+```yaml
 services:
     _defaults:
         autowire: true
@@ -78,7 +78,7 @@ services:
 
 Na ukážke sekcia ``_defaults`` zahŕňa tri predvolené nastavenia, platiace pre všetky zaregistrované služby v ``services.yml``. Každé zo všeobecných nastavení môžeme preťažiť pri definícií konkrétnej služby.
 
-```bash
+```yaml
 services:
 	_defaults:
         public: false
@@ -112,14 +112,14 @@ Vkladanie pracuje na úrovni typu služby alebo interfacu, ktorý služba implem
 
 Ak existujú viaceré služby implementujúce rovnaký interface DI kontajner nebude vedieť, ktorú službu má poskytnúť ako závislosť. K interfacu ako kľúču na úrovni DI kontajneru, priradíme konkrétnu implementáciu služby.
  
-```bash
+```yaml
 services:        
     App\Logger\LoggerInterface: '@App\Logger\MailLogger'
 ```
 
 Od Symfony 3.4. existuje ekvivalentný zápis v sekcii bind.
 
-```bash
+```yaml
 services:
     _defaults:
         bind:        
@@ -130,7 +130,7 @@ Osobne mi tento zápis vyhovuje viac, pretože mám všetky bindy interfacov na 
 
 Nie všetky naše služby vyžadujúce ``App\Logger\LoggerInterface`` musia očakávať nabindovanú inštanciu ``App\Logger\FileLogger``. V tomto prípade môžeme implementáciu prebindovať pri konkrétnej definícií služby.
 
-```bash
+```yaml
 services:
     _defaults:
         bind:        
@@ -182,7 +182,7 @@ Predstavme si službu, ktorá rozširuje šablónovací systém **Twig**. Služb
 
 Bez automatickej konfigurácie ju musíme ručne zaregistrovať v ``services.yml`` a zadefinovať správny tag ``twig.extension`` tak, aby kontajner vedel ako má so službou pracovať.
 
-```bash
+```yaml
 services:
     _defaults:
         autoconfigure: false
@@ -196,7 +196,7 @@ services:
 
 Tento zápis môžeme zjednodušiť definíciou tagu pre interface v sekcii``_instanceof``.
 
-```bash
+```yaml
 services:
     _defaults:
         autoconfigure: false
@@ -211,7 +211,7 @@ services:
 
 Keďže programátor je tvor lenivý, zapneme ``autoconfigure`` a nemusíme nič explicitne definovať.
 
-```bash
+```yaml
 services:
     _defaults:
         autowire: true
@@ -228,7 +228,7 @@ Symfony 4 predvolene nastavuje registrované služby ako privátne. K privátnym
 
 V nutnom prípade môžeme preťažiť parameter ``public`` u konkrétnej definície služby.
 
-```bash
+```yaml
 services:
     _defaults:
         public: false
@@ -241,7 +241,7 @@ services:
 
 Častokrát potrebujeme vložiť službám skalárne argumenty, napríklad číslo alebo reťazec. V takomto prípade by sme museli explicitne definovať službu alebo viacero služieb, ak argument vyžadovali.
 
-```bash
+```yaml
 services:
     App\Logger\MailLogger:        
         arguments:
@@ -254,7 +254,7 @@ services:
 
 Autowiring skalárnych argumentov môžeme vyriešiť jednoduchšie pomocou tzv. **bindovania** v sekcii ``_defaults``.
 
-```bash
+```yaml
 services:
     _defaults:    
         bind:
@@ -265,7 +265,7 @@ Následne všetky naše služby vyžadujúce skalárny argument ``$logDir`` zís
 
 Ak pre niektorú zo služieb potrebujeme určiť inú hodnotu argumentu ``$logDir`` musíme opäť definíciu služby preťažiť:
 
-```bash
+```yaml
 services:
     _defaults:
         bind:		
@@ -284,7 +284,7 @@ Definícia začína určením spoločného doménového názvu ([FQCN](https://e
 
 Prvý argumentom ``resource`` definujeme cestu k zložke, kde sú umiestnené súbory pre registráciu a druhým nepovinným parametrom ``exclude`` môžeme určiť, ktoré zložky alebo súbory sa majú z registrácie vylúčiť. Definícia môže obsahovať aj iné parametre napr. ``arguments``, ``tags`` a podobne.:  
 
-```bash
+```yaml
 services:
     _defaults:
         autowire: true
@@ -303,7 +303,7 @@ Do parametrov ``resource`` a ``exclude`` nemusíme definovať len presnú cestu,
 
 Predstavme si jednoduchý príklad, kde chceme vylúčiť z načítania všetky súbory, ktorých názov obsahuje reťazec **Command** alebo **Query** a tieto súbory môžu byť zanorené v ľubovoľnej hierarchií zložiek:
  
-```bash
+```yaml
 services:
     _defaults:
         autowire: true
