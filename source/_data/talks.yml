@@ -27,4 +27,12 @@ parameters:
             time: TBA
             speaker: "Tomas Votruba"
             speaker_url: "https://tomasvotruba.com/"
-            talk: TBA
+            talk: "Why Your Company Loses Money By Not-Open-Sourcing"
+        4:
+            time: TBA
+            speaker: "David Velvethy"
+            talk: "MVP: How we fucked-up despite a training in Rocketspace, San Francisco"
+        5:
+            time: TBA
+            speaker: "Matous Czerner"
+            talk: "TBA"

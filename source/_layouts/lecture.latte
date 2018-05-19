@@ -6,11 +6,9 @@
         {include "menu", "id" => "lectures"}
 
         <div class="container">
-            {if $lecture->getImage()}
-                <p class="text-center mt-5 d-none d-sm-block">
-                    <img src="{$lecture->getImage()}" width="150">
-                </p>
-            {/if}
+            <p n:if="$lecture->getImage()" class="text-center mt-5 d-none d-sm-block">
+                <img src="{$lecture->getImage()}" alt="" width="150">
+            </p>
 
             <h1 class="text-center">{$lecture->getTitle()}</h1>
 
@@ -18,8 +16,9 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-4">
-                            <img width="100" src="/assets/images/people/{$users[$lecture->getUserId()]['photo']}" class="img-thumbnail mb-3 rounded-circle pull-left mr-3">
+                            <img width="100" src="/assets/images/people/{$users[$lecture->getUserId()]['photo']}" alt="" class="img-thumbnail mb-3 rounded-circle pull-left mr-3">
                         </div>
+
                         <div class="col-md">
                             <strong>{if $lecture->isInEnglish()}Lector{else}Školí{/if}:</strong>
 
@@ -35,21 +34,19 @@
 
                     <div class="clearfix"></div>
 
-                    {if $lecture->isActive()}
-                        <p>
-                            {if $lecture->isInEnglish()}Next term{else}Příští termín{/if}:
-                            <strong>{$lecture->getHumanDate()}</strong>
+                    <p n:if="$lecture->isActive()">
+                        {if $lecture->isInEnglish()}Next term{else}Příští termín{/if}:
+                        <strong>{$lecture->getHumanDate()}</strong>
 
-                            {if $lecture->showAddToCalendarLink()}
-                                <br>
-                                <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Lecture:+{$lecture->getTitle()}&dates={$lecture->getStartInCalendarFormat()}/{$lecture->getEndInCalendarFormat()}&details=Details:+https://pehapkari.cz/{$lecture->getRelativeUrl()}&ctz=Europe/Prague&location=
+                        {if $lecture->showAddToCalendarLink()}
+                            <br>
+                            <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Lecture:+{$lecture->getTitle()}&dates={$lecture->getStartInCalendarFormat()}/{$lecture->getEndInCalendarFormat()}&details=Details:+https://pehapkari.cz/{$lecture->getRelativeUrl()}&ctz=Europe/Prague&location=
 {$places[$lecture->getPlaceId()]['google_calendar_place']}&sf=true&output=xml">
-                                    <em class="fa fa-fw fa-calendar"></em>
-                                    {if $lecture->isInEnglish()}Add to Calendar{else}Přidat do kalendáře{/if}
-                                </a>
-                            {/if}
-                        </p>
-                    {/if}
+                                <em class="fa fa-fw fa-calendar"></em>
+                                {if $lecture->isInEnglish()}Add to Calendar{else}Přidat do kalendáře{/if}
+                            </a>
+                        {/if}
+                    </p>
 
                     <p>
                         {if $lecture->isInEnglish()}Location{else}Místo{/if}:
@@ -74,15 +71,25 @@
                         <strong>{$lecture->getPrice()|number: 0 , "," , " "} Kč</strong>
                     </p>
 
-                    {if $lecture->isActive()}
-                        <div class="text-center">
-                            <a href="{$lecture->getFormLink()}" class="btn btn-success mt-4 mb-5">
-                                <em class="fa fa-fw fa-handshake-o"></em>
-                                &nbsp;
-                                {if $lecture->isInEnglish()}Sign Up{else}Přihlásit se{/if}
-                            </a>
-                        </div>
-                    {/if}
+                    <p n:ifset="$users[$lecture->getUserId()]['phone']">
+                        <a href="tel:{$users[$lecture->getUserId()]['phone']}">
+                            {$users[$lecture->getUserId()]['phone']}
+                        </a>
+                    </p>
+
+                    <p n:ifset="$users[$lecture->getUserId()]['email']">
+                        <a href="mailto:{$users[$lecture->getUserId()]['email']}">
+                            {$users[$lecture->getUserId()]['email']}
+                        </a>
+                    </p>
+
+                    <div n:if="$lecture->isActive()" class="text-center">
+                        <a href="{$lecture->getFormLink()}" class="btn btn-success mt-4 mb-5">
+                            <em class="fa fa-fw fa-handshake-o"></em>
+                            &nbsp;
+                            {if $lecture->isInEnglish()}Sign Up{else}Přihlásit se{/if}
+                        </a>
+                    </div>
                 </div>
 
                 <div class="col-md-8">
