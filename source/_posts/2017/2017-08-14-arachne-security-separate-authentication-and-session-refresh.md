@@ -25,7 +25,7 @@ A firewall is basically a shield that protects a part of your application. It is
 - `Firewall::getIdentity()` - use instead of `User::isLoggedIn()` and `User::getIdentity()`. Unlike `User::getIdentity()` it will only return a non-expired `IIdentity`.
 
 ```yaml
-arachne.security:
+extensions:
     arachne.serviceCollections: Arachne\ServiceCollections\DI\ServiceCollectionsExtension
     arachne.security: Arachne\Security\DI\SecurityExtension
 
