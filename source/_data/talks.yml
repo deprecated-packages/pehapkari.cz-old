@@ -32,6 +32,10 @@ parameters:
             time: TBA
             speaker: "David Velvethy"
             talk: "MVP: How we fucked-up despite a training in Rocketspace, San Francisco"
+            perex: |
+                Despite all the Silicon Valley know-how, a good investor, detail planning and a decent team, something can still go bloody wrong.
+                How do we generally think about building MVP after all this?
+                What fuckup can be very useful for?
         5:
             time: TBA
             speaker: "Matous Czerner"
