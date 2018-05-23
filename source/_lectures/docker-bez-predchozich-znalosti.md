@@ -1,8 +1,9 @@
 ---
 id: 1
 title: "Docker bez předchozích znalostí"
-date: '2018-06-27 10:00:00'
-form_link: "https://goo.gl/forms/EpsbC6AmCnTDMKfv2"
+start: '2018-06-27 10:00:00'
+end: '2018-06-27 18:00:00'
+form_link: "https://goo.gl/forms/JoL3OcvzPyF7WPor1"
 image: "/assets/images/logos/docker.png"
 user: 34
 duration: "8 hodin"
