@@ -1,15 +1,15 @@
 ---
 id: 9
 title: "Ovládni PhpStorm - od základů po profi tipy"
-start: '2018-05-25 13:00:00'
-end: '2018-05-25 16:00:00'
+start: '2018-06-27 09:00:00'
+end: '2018-06-27 13:00:00'
 form_link: "https://goo.gl/forms/dcIMJJsLWtoAvRkg1"
 image: "/assets/images/logos/phpstorm.png"
 user: 6
-duration: "3 hodiny"
+duration: "4 hodiny"
 price: 2499
 place_id: 2
-capacity: "12 lidí"
+capacity: "10 lidí"
 
 # 2-3 věty
 perex: 'Pro nás vývojáře je IDE hlavní pracovní nástroj, a proto se vyplatí ho perfektně znát. Na školení se naučíte využívat možnosti, které PhpStorm nabízí, a společně si všechno vyzkoušíme.'
