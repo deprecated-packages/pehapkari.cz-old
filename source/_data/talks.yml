@@ -35,4 +35,4 @@ parameters:
         5:
             time: TBA
             speaker: "Matous Czerner"
-            talk: "TBA"
+            talk: "How To Love Git"
