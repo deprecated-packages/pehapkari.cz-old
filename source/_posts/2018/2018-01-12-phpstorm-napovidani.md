@@ -258,6 +258,6 @@ Bohužel je v současnosti možné takto specifikovat jen první parametr volán
 
 ## Závěr
 
-V článku jsme si ukázali různé možnosti, jak napovídat typ proměnné a návratové typy metod. **Zajímá vás, jak dál využívat toho, že PhpStorm vašemu kódu lépe rozumí? Tak si nenechte ujít [školení 25.5.](https://pehapkari.cz/vzdelavej-se/#ovladni-phpstorm-ndash-od-zakladu-po-profi-tipy), kde se dozvíte další užitečné tipy**.
+V článku jsme si ukázali různé možnosti, jak napovídat typ proměnné a návratové typy metod. **Zajímá vás, jak dál využívat toho, že PhpStorm vašemu kódu lépe rozumí? Tak si nenechte ujít [školení 27.6.](https://pehapkari.cz/vzdelavej-se/#ovladni-phpstorm-ndash-od-zakladu-po-profi-tipy), kde se dozvíte další užitečné tipy**.
 
 Napadá vás ještě nějaký další způsob, jak napovídat typy, nebo jsem na něco zapomněl? Napište mi, nebo rovnou pošlete k článku pullrequest.
