@@ -3,6 +3,7 @@ id: 8
 title: Jak na rapidní vývoj a Continuous Delivery
 start: '2018-06-26 10:00:00'
 end: '2018-06-26 18:00:00'
+deadline: '2018-06-21 23:59:59'
 form_link: "https://goo.gl/forms/38dgC7Dy6U7WmfEh2"
 image: "/assets/images/logos/feedback.png"
 user: 30
