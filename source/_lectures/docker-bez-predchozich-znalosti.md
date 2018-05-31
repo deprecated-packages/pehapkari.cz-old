@@ -9,7 +9,7 @@ user: 34
 duration: "8 hodin"
 price: 4999
 place_id: 2
-capacity: "10 lidí"
+capacity: "9 lidí"
 
 # 2-3 věty
 perex: 'Docker je poslední dobou stále oblíbenější. Jak si s ním zjednodušit práci a hlavně překonat těžké začátky? To se dovíte na mém školení.'
