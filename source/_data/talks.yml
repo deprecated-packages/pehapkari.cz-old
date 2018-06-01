@@ -45,8 +45,10 @@ parameters:
             talk: "How To Love Git"
         6:
             time: TBA
-            speaker: "TBA"
-            talk: "TBA"
+            speaker: "Ondrej Mirtes"
+            speaker_url: "https://ondrej.mirtes.cz"
+            speaker_photo: "https://pbs.twimg.com/profile_images/2314351649/j6ydzdrm8r17uz8lkzsy_400x400.jpeg"
+            talk: "What’s new in PHPStan"
         7:
             time: TBA
             speaker: "TBA"
