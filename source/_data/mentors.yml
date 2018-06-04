@@ -154,3 +154,10 @@ parameters:
             intro_message: "ZF Cert. Engineer, ZF2 Cert. Architect; Angular.io"
             link: "https://www.linkedin.com/in/martin-lonsky-91b91a82/"
             remote: true
+        -
+            name: "Tomáš Jacík"
+            location: "Olomouc"
+            email: "tomas&#64;jacik.cz"
+            intro_message: "Rychlostní optimalizace PHP, Nette, PrestaShop, SQL, Linux server"
+            link: "https://tomasjacik.cz/"
+            remote: true
