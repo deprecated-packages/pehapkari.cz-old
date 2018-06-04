@@ -46,6 +46,15 @@
                                 {if $lecture->isInEnglish()}Add to Calendar{else}Přidat do kalendáře{/if}
                             </a>
                         {/if}
+
+                        {if $lecture->getDeadlineDateTime()}
+                            <div class="card border-warning">
+                                <div class="card-body bg-warning">
+                                    Uzavírka přihlášek:
+                                    <strong>{$lecture->getDeadlineDateTime()|date: "j. n."}</strong>
+                                </div>
+                            </div>
+                        {/if}
                     </p>
 
                     <p>
