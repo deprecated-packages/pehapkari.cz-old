@@ -161,7 +161,7 @@ final class LectureFile extends AbstractGeneratorFile
         ));
     }
 
-    private function getOptionAsDateTime(string $name)
+    private function getOptionAsDateTime(string $name): ?DateTimeInterface
     {
         if (isset($this->configuration[$name])) {
             if ($this->configuration[$name] instanceof DateTimeInterface) {
