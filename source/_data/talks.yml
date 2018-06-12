@@ -61,3 +61,9 @@ parameters:
             speaker_url: "https://www.michalspacek.cz/"
             speaker_photo: "https://pbs.twimg.com/profile_images/2486136032/48y4qlw7i7u0wed6q4ju_400x400.jpeg"
             talk: "Everything is User Input"
+        8:
+            time: TBA
+            speaker: "Jan Mikeš"
+            speaker_url: "https://janmikes.cz/"
+            speaker_photo: "https://janmikes.cz/img/jan_mikes.jpg"
+            talk: "The Simplest Gitlab CI Pipeline Ever"
