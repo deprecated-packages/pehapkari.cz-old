@@ -7,6 +7,7 @@ parameters:
             speaker_url: "https://hollo.me/index.html"
             speaker_photo: "https://pbs.twimg.com/profile_images/753279260584976384/KoVhfLKl_400x400.jpg"
             talk: "Total Recall - The application that never forgets"
+            country: "Germany"
             perex: |
                 Building an application upon CQRS and Event Sourcing offers three pretty nice benefits.
 
@@ -25,6 +26,7 @@ parameters:
             speaker_url: "https://arkadiuszkondas.com/"
             speaker_photo: "https://pbs.twimg.com/profile_images/819586686149677056/DOMf3P79_400x400.jpg"
             talk: "Machine Learning - how to begin to learn the machine in PHP"
+            country: "Poland"
         3:
             time: TBA
             speaker: "Tomas Votruba"

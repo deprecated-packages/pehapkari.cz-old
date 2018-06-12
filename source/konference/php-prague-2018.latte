@@ -65,7 +65,7 @@ id: conference
 
                     <a n:tag-ifset="$talk['speaker_url']" href="{$talk['speaker_url']}">
                         {$talk['speaker']}
-                    </a>
+                    </a> {ifset $talk['country']}from {$talk['country']}{/ifset}
                 </div>
                 <img class="card-img-bottom" src="{$talk['speaker_photo']}" alt="{$talk['speaker']}">
             </div>
