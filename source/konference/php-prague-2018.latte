@@ -59,8 +59,6 @@ id: conference
     <div class="card-columns">
         {php shuffle($talks)}
         {foreach $talks as $talk}
-            {continueIf $talk['talk'] === "TBA"}
-
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">{$talk['talk']}</h4>
