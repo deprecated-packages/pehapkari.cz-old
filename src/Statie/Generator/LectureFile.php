@@ -110,15 +110,12 @@ final class LectureFile extends AbstractGeneratorFile
 
     public function getDateTime(): ?DateTimeInterface
     {
-        if (isset($this->configuration['start'])) {
-            if ($this->configuration['start'] instanceof DateTimeInterface) {
-                return $this->configuration['start'];
-            }
+        return $this->getOptionAsDateTime('start');
+    }
 
-            return NetteDateTime::from($this->configuration['start']);
-        }
-
-        return null;
+    public function getDeadlineDateTime(): ?DateTimeInterface
+    {
+        return $this->getOptionAsDateTime('deadline');
     }
 
     public function getHumanDate(): ?string
@@ -162,5 +159,18 @@ final class LectureFile extends AbstractGeneratorFile
             '%s is missing "place_id" value, add it.',
             $this->getFilePath()
         ));
+    }
+
+    private function getOptionAsDateTime(string $name): ?DateTimeInterface
+    {
+        if (isset($this->configuration[$name])) {
+            if ($this->configuration[$name] instanceof DateTimeInterface) {
+                return $this->configuration[$name];
+            }
+
+            return NetteDateTime::from($this->configuration[$name]);
+        }
+
+        return null;
     }
 }

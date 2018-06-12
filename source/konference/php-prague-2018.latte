@@ -16,56 +16,61 @@ id: conference
 
             <h2>23. 6. 2018 - 2nd PHP Conference in PHP Prague</h2>
 
-            <h3 class="mb-5">Calling for Papers!</h3>
+            <h3 class="mb-5">
+                <a href="https://www.smsticket.cz/vstupenky/12880-phpprague-conference-2018">Tickets on SALE! for 200,-</a>
+            </h3>
+
+            <a href="https://www.smsticket.cz/vstupenky/12880-phpprague-conference-2018">
+                <img width="284" src="/assets/images/conferences/prague-2018/ticket-php-prague.png" alt="ticket">
+            </a>
+
+            <br>
+            <br>
+            <br>
 
             <p>
-                <em class="fa fa-group fa-fw"></em>
-                What was 2016 like? <a href="/konference/php-prague-2016-v-paralelnim-polis">See it here</a>
+                <a href="https://www.facebook.com/events/204178450306613/">
+                    <em class="fa fa-facebook fa-fw"></em>
+                    Watch FB Event
+                </a> for News
+                |
+                What was <a href="/konference/php-prague-2016-v-paralelnim-polis">1st PHP Prague like?</a>
             </p>
-
-
-        </div>
-    </div>
-
-    <br>
-    <div class="row">
-        <div class="col-md-6 text-center">
-            <img src="/assets/images/conferences/prague-2016/beer.jpg" style="width: 100%">
-        </div>
-        <div class="col-md-6">
-            <ul class="highlights-list">
-                <li>20 min talk + 10 min questions</li>
-                <li>any topic related to PHP-ecosystem: hard skills, soft skills, leading, how-to, migrations, fuck-ups, package showcase...</li>
-            </ul>
-
-            <p>Do you have something to say? Write us at <a href="mailto:tomas@pehapkari.cz">tomas@pehapkari.cz</a></p>
         </div>
     </div>
 
     <hr>
 
-    <h2 class="text-center">Already {=count($talks)} Confirmed Talks ↓</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="/assets/images/conferences/prague-2016/fun.jpg" style="width: 100%">
+        </div>
+        <div class="col-md-6 text-center">
+            <img src="/assets/images/conferences/prague-2016/beer.jpg" style="width: 100%">
+        </div>
+    </div>
+
+    <hr>
+
+    <h2 class="text-center">Get The Most in {=count($talks)} Talks ↓</h2>
 
     <h3 class="mb-5 text-center">10:00 - 18:00</h3>
 
-    <table class="table">
-        <tr>
-            <th>Time</th>
-            <th>Speaker</th>
-            <th>Talk</th>
-        </tr>
+    <div class="card-columns">
+        {php shuffle($talks)}
         {foreach $talks as $talk}
-            <tr>
-                <td>{$talk['time']}</td>
-                <td>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">{$talk['talk']}</h4>
+
                     <a n:tag-ifset="$talk['speaker_url']" href="{$talk['speaker_url']}">
                         {$talk['speaker']}
-                    </a>
-                </td>
-                <td>{$talk['talk']}</td>
-            </tr>
+                    </a> {ifset $talk['country']}from {$talk['country']}{/ifset}
+                </div>
+                <img class="card-img-bottom" src="{$talk['speaker_photo']}" alt="{$talk['speaker']}">
+            </div>
         {/foreach}
-    </table>
+    </div>
 
     <hr>
 
@@ -75,19 +80,26 @@ id: conference
                 <em class="fa fa-heart fa-fw"></em>
                 Thanks to Our Partners
             </h2>
-
             <p>
                 Big thanks to our partners, who help us to create lovely day, with fresh drinks, tasty food and helped us to spread love in our community.
             </p>
 
-            <br>
 
-            <div class="row">
-                <div class="col-md-3">TBA</div>
-                <div class="col-md-3">TBA</div>
-                <div class="col-md-3">TBA</div>
-                <div class="col-md-3">TBA</div>
-            </div>
+            <h3 style="color: goldenrod">Gold partners</h3>
+            <a href="https://lmc.jobs.cz/"><img src="/assets/images/conferences/prague-2018/partners/lmc.png" alt="LMC"></a>
+
+            <h3 style="color: silver">Silver partners</h3>
+
+            <h3 style="color: #CD7F32">Bronze partners</h3>
+
+            <a href="https://www.simplia.cz/"><img width="150" src="/assets/images/conferences/prague-2018/partners/simplia.png" alt="Simplia"></a>
+
+            <br><br>
+
+            <p>
+                Are You interesting in helping us with conference? Write us <a href="mailto:hello@honzacerny.com">hello@honzacerny.com</a>
+            </p>
+
         </div>
     </div>
 </div>

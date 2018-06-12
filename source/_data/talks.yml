@@ -5,7 +5,9 @@ parameters:
             time: TBA
             speaker: "Holger Woltersdorf"
             speaker_url: "https://hollo.me/index.html"
+            speaker_photo: "https://pbs.twimg.com/profile_images/753279260584976384/KoVhfLKl_400x400.jpg"
             talk: "Total Recall - The application that never forgets"
+            country: "Germany"
             perex: |
                 Building an application upon CQRS and Event Sourcing offers three pretty nice benefits.
 
@@ -22,15 +24,20 @@ parameters:
             time: TBA
             speaker: "Arkadiusz Kondas"
             speaker_url: "https://arkadiuszkondas.com/"
+            speaker_photo: "https://pbs.twimg.com/profile_images/819586686149677056/DOMf3P79_400x400.jpg"
             talk: "Machine Learning - how to begin to learn the machine in PHP"
+            country: "Poland"
         3:
             time: TBA
             speaker: "Tomas Votruba"
             speaker_url: "https://tomasvotruba.com/"
+            speaker_photo: "https://images.naucmese.cz/w300-q100/users/5ktz4jzb9yj-talking-square.jpg"
             talk: "Why Your Company Loses Money By Not-Open-Sourcing"
         4:
             time: TBA
             speaker: "David Velvethy"
+            speaker_url: "https://ae.linkedin.com/in/david-velvethy"
+            speaker_photo: "https://d1qb2nb5cznatu.cloudfront.net/users/6987685-large?1506880302"
             talk: "MVP: How we fucked-up despite a training in Rocketspace, San Francisco"
             perex: |
                 Despite all the Silicon Valley know-how, a good investor, detail planning and a decent team, something can still go bloody wrong.
@@ -39,4 +46,18 @@ parameters:
         5:
             time: TBA
             speaker: "Matous Czerner"
-            talk: "TBA"
+            speaker_url: "https://github.com/MattCzerner"
+            speaker_photo: "https://avatars2.githubusercontent.com/u/16896425?s=400&v=4"
+            talk: "How To Love Git"
+        6:
+            time: TBA
+            speaker: "Ondrej Mirtes"
+            speaker_url: "https://ondrej.mirtes.cz"
+            speaker_photo: "https://pbs.twimg.com/profile_images/2314351649/j6ydzdrm8r17uz8lkzsy_400x400.jpeg"
+            talk: "What’s new in PHPStan"
+        7:
+            time: TBA
+            speaker: "Michal Špaček"
+            speaker_url: "https://www.michalspacek.cz/"
+            speaker_photo: "https://pbs.twimg.com/profile_images/2486136032/48y4qlw7i7u0wed6q4ju_400x400.jpeg"
+            talk: "Everything is User Input"

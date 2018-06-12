@@ -1,15 +1,16 @@
 ---
 id: 8
 title: Jak na rapidní vývoj a Continuous Delivery
-start: '2018-05-22 10:00:00'
-end: '2018-05-22 18:00:00'
+start: '2018-06-26 10:00:00'
+end: '2018-06-26 18:00:00'
+deadline: '2018-06-21 23:59:59'
 form_link: "https://goo.gl/forms/38dgC7Dy6U7WmfEh2"
 image: "/assets/images/logos/feedback.png"
 user: 30
 duration: "8 hodin"
 price: 4999
 place_id: 2
-capacity: "10 lidí"
+capacity: "9 lidí"
 
 # 2-3 věty
 perex: 'Jak tvořit zadání se zadavatelem tak, aby vývoj proběhl hladce a zadavatel obdržel to, co chce? Jak programovat tak, aby nedocházelo k bugům na produkci nebo nefunkční aplikaci?'
