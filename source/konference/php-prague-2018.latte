@@ -56,24 +56,21 @@ id: conference
 
     <h3 class="mb-5 text-center">10:00 - 18:00</h3>
 
-    <table class="table">
-        <tr>
-            <th>Time</th>
-            <th>Speaker</th>
-            <th>Talk</th>
-        </tr>
+    <div class="card-columns">
+        {php shuffle($talks)}
         {foreach $talks as $talk}
-            <tr>
-                <td>{$talk['time']}</td>
-                <td>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">{$talk['talk']}</h4>
+
                     <a n:tag-ifset="$talk['speaker_url']" href="{$talk['speaker_url']}">
                         {$talk['speaker']}
-                    </a>
-                </td>
-                <td>{$talk['talk']}</td>
-            </tr>
+                    </a> {ifset $talk['country']}from {$talk['country']}{/ifset}
+                </div>
+                <img class="card-img-bottom" src="{$talk['speaker_photo']}" alt="{$talk['speaker']}">
+            </div>
         {/foreach}
-    </table>
+    </div>
 
     <hr>
 
