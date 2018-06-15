@@ -67,3 +67,9 @@ parameters:
             speaker_url: "https://janmikes.cz/"
             speaker_photo: "https://janmikes.cz/img/jan_mikes.jpg"
             talk: "The Simplest Gitlab CI Pipeline Ever"
+        9:
+            time: TBA
+            speaker: "Vladimir Kriška"
+            speaker_url: "https://www.ujovlado.com/"
+            speaker_photo: "https://miro.medium.com/fit/c/240/240/1*cWv5kUZBEvLqazoPHcNIpw.jpeg"
+            talk: "Docker for PHP developers - Tips, Tricks & Lessons learned"
