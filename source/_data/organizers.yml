@@ -7,6 +7,10 @@ parameters:
             responsibility: "vedení, komunikace, sponzoři, organizace srazů v Praze"
             url: https://tomasvotruba.cz
         -
+            photo: martina_hynkova.jpg
+            name: "Martina Hynková"
+            responsibility: "organizace školení, koordinace lektorů"
+        -
             photo: honza_cerny.jpg
             name: "Honza Černý"
             responsibility: "PoSobota, Nette Camp, PHP Hory, Nette Občasník a natáčení videí"
