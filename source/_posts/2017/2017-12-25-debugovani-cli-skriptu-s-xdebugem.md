@@ -1,6 +1,5 @@
 ---
 id: 53
-layout: post
 title: "Debugování CLI skriptů s Xdebugem"
 perex: |
     Debugování je každodenním chlebem programátorů. Ukáži vám, jak rychle a jednoduše se dají debugovat konzolové skripty s Xdebugem.

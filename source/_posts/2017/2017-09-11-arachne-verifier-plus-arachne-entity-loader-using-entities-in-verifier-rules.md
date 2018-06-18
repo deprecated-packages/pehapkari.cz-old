@@ -1,6 +1,5 @@
 ---
 id: 40
-layout: post
 title: "Arachne/Verifier + Arachne/EntityLoader - Using Entities in Verifier Rules"
 perex: |
     This article demonstrates that while Arachne components are mostly independent on each other, their potential raises dramatically when you use them together. Push both [Arachne/ParameterValidation](https://github.com/Arachne/ParameterValidation) and [Arachne/SecurityVerification](https://github.com/Arachne/SecurityVerification) to their limits with [Arachne/EntityLoader](https://github.com/Arachne/EntityLoader)!

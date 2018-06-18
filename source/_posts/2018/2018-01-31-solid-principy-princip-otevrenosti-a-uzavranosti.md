@@ -1,6 +1,5 @@
 ---
 id: 58
-layout: post
 title: "SOLID principy: Princip otevřenosti a uzavřenosti"
 perex: |
     Princip říká, že:

@@ -1,6 +1,5 @@
 ---
 id: 74
-layout: post
 title: "Novinky v Symfony 4.1 - Routovanie"
 perex: |
     Symfony framework pokračuje v začatom trende inovácií vo svojej verzií 4.1 a opäť prináša množstvo zaujímavých noviniek. Poďme sa teda spolu pozrieť na novinky v súvislosti s routovaním.

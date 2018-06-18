@@ -1,6 +1,5 @@
 ---
 id: 59
-layout: post
 title: "SOLID principy: Liskovové princip zastoupení"
 perex: |
     Liskovové princip zastupitelnosti je definovám jako tahle na první podhled děsivá rovnice:

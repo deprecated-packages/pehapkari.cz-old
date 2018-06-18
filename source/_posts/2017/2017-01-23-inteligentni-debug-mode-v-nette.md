@@ -1,6 +1,5 @@
 ---
 id: 15
-layout: post
 title: "Inteligentní debug mode v Nette"
 perex: "Jak se poprat se zapínáním debug módu při vývoji a jeho vypnutím na produkci? A co debug mód v konzoli? Pojďme se podívat, jak to řešit lépe."
 author: 12

@@ -1,6 +1,5 @@
 ---
 id: 64
-layout: post
 title: "Symfony 4: Vytváříme chytrý kontroler"
 perex: |
     Co kdyby byl Symfony kontroler schopný automaticky najít správnou šablonu k požadované akci bez nutnosti opakovaně psát její cestu? Co takhle mít možnost zasílat parametry do šablony z více míst a třeba i před renderovací metodou?

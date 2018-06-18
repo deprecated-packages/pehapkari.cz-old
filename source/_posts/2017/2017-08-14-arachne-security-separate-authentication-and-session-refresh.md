@@ -1,6 +1,5 @@
 ---
 id: 36
-layout: post
 title: "Arachne/Security - Separate Authentication and Session Refresh"
 perex: |
     In many cases [Nette/Security](https://github.com/nette/security) lacks the API needed for certain tasks.

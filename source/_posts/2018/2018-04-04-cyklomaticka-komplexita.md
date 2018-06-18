@@ -1,6 +1,5 @@
 ---
 id: 68
-layout: post
 title: "Cyklomatická komplexita"
 perex: |
     Cyklomatická komplexita, neboli podmínková složitost je metrika indikující složitost zdrojového kódu.

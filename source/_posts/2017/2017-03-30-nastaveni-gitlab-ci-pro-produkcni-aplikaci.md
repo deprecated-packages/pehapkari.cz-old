@@ -1,6 +1,5 @@
 ---
 id: 31
-layout: post
 title: "Nastavení GitLab CI pro produkční aplikaci"
 perex: "GitLab CI je dnes moderní. Vychází o něm články s krásnými, jednoduchými příklady, jak jej začít používat. Pak ale člověk narazí. Jak se utkat s překážkami a vyjít z toho jako vítěz?"
 author: 12

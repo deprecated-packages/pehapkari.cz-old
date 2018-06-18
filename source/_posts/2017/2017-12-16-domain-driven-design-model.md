@@ -1,6 +1,5 @@
 ---
 id: 52
-layout: post
 title: "Domain-Driven Design, part 2 - Model"
 perex: |
  All of us model every day.

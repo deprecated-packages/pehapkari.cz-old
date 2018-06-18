@@ -1,6 +1,5 @@
 ---
 id: 54
-layout: post
 title: "Domain-Driven Design, part 3 - Simplify Object Model"
 perex: |
  There are always many ways how to implement the abstract model.

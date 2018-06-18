@@ -1,6 +1,5 @@
 ---
 id: 57
-layout: post
 title: "SOLID principy: Princip jedné odpovědnosti"
 perex: |
     Princip jedné odpovědnosti (Single Responsibility Principle) je první z pěti principů SOLID (právě to S).
