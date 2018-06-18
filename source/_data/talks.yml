@@ -73,3 +73,9 @@ parameters:
             speaker_url: "https://www.ujovlado.com/"
             speaker_photo: "https://miro.medium.com/fit/c/240/240/1*cWv5kUZBEvLqazoPHcNIpw.jpeg"
             talk: "Docker for PHP developers - Tips, Tricks & Lessons learned"
+        10:
+            time: TBA
+            speaker: "Jindřich Kubát"
+            speaker_url: "https://cz.linkedin.com/in/jindrich-kubat"
+            speaker_photo: "https://pbs.twimg.com/profile_images/575292968531202048/4es7qIEp_400x400.jpeg"
+            talk: "Transactions in Distributed System"
