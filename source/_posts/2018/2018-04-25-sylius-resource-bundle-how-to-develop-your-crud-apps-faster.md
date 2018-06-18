@@ -1,6 +1,5 @@
 ---
 id: 71
-layout: post
 title: "SyliusResourceBundle - How to Develop Your CRUD Apps Faster"
 perex: |
  Brief introduction to Sylius ecosystem: SyliusResourceBundle and Rapid CRUD application development.

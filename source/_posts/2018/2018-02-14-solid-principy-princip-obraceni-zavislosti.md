@@ -1,6 +1,5 @@
 ---
 id: 60
-layout: post
 title: "SOLID principy: Princip obrácení zavislostí"
 perex: |
     Definice říká, že:

@@ -1,6 +1,5 @@
 ---
 id: 13
-layout: post
 title: "Jak snadně a rychle upravovat soubory ve vendoru?"
 perex: ""
 author: 11

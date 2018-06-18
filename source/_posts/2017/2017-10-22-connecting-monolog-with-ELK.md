@@ -1,6 +1,5 @@
 ---
 id: 45
-layout: post
 title: "How to connect ELK with Monolog"
 perex: |
     ELK is awesome stack for logging. Monolog is awesome PHP logging library. Let's make them work together.

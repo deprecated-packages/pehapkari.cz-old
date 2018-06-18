@@ -1,6 +1,5 @@
 ---
 id: 66
-layout: post
 title: "Domain-Driven Design, part 8 - Services and Factories"
 perex: |
  This article is a reaction to readers’ confusion about services.

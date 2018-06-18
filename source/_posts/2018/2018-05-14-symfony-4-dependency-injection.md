@@ -1,6 +1,5 @@
 ---
 id: 73
-layout: post
 title: "Symfony 4 - Dependency Injection"
 perex: |
     O Dependency Injection už počul snáď každý programátor. Symfony posúva hranice DI ďalej a v spojení s autokonfiguráciou služieb tvorí predpoklad pre vznik flexibilnejších a prehľadnejších aplikácií.

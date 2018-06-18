@@ -1,6 +1,5 @@
 ---
 id: 2
-layout: post
 title: "Podcast Nejen o PHP #2 - Blíží se hackatony, spojování sil a růst komunity - buď u toho!"
 perex: |
     Na podzim se urodilo pár hackatonů, PHP srazů a po půl roce krystalizuje nápad na spojování a růst komunity. **Kam směřuje PHP dál a jak nám s tím můžeš pomoct?** Poslechni si v dnešním podcastu.

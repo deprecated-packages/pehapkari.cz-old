@@ -1,6 +1,5 @@
 ---
 id: 65
-layout: post
 title: "Domain-Driven Design, part 7 - Alternative Relational Database Mapping"
 perex: |
     Do you think that multilingual text must always be in a separate database table? Than this article is for you!

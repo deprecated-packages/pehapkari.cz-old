@@ -1,6 +1,5 @@
 ---
 id: 37
-layout: post
 title: "Arachne/Security - Simplified Authorizator and Fixed ACL Callbacks"
 perex: |
     Authorization in [Nette/Security](https://github.com/nette/security) has some long-known drawbacks as demonstrated in my 4 years old [RFC](https://forum.nette.org/cs/13458-security-iauthorizator-a-identita) (Czech only).

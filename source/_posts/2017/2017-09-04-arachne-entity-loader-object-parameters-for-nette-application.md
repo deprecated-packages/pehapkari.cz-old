@@ -1,6 +1,5 @@
 ---
 id: 39
-layout: post
 title: "Arachne/EntityLoader - Object Parameters for Nette/Application"
 perex: |
     Ever wanted to get rid of `EntityManager::find($id)` as the first thing in your every presenter action?

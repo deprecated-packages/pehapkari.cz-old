@@ -1,6 +1,5 @@
 ---
 id: 32
-layout: post
 title: "Rozběhnutí Symfony na Wedos multihostingu"
 perex: |
     Spuštění webu postaveném na Symfony na Wedos multihostingu vypadalo na první pohled jako snadná věc. Nakonec jsem se na tom zasekl na 3 dny, než jsem přišel na to, jak hosting správně nastavit.<br>

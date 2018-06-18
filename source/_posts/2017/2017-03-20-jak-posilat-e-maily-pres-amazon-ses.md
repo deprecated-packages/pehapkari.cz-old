@@ -1,6 +1,5 @@
 ---
 id: 28
-layout: post
 title: "Jak posílat e-maily přes Amazon SES"
 perex: "Posílat emaily přes Amazon SES je snadné a levné. Zkuste to taky."
 author: 20

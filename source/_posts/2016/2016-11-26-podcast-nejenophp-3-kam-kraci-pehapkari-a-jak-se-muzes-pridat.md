@@ -1,6 +1,5 @@
 ---
 id: 3
-layout: post
 title: "Podcast Nejen o PHP #3 - Kam kráčí Péhápkaři a jak se můžeš přidat"
 perex: |
     Komunita stojí na vás, na lidech - vytvořili jste logo, web, soutěžíte a přednášíte a mluvíte o tématech. **Jak se můžeš dál zapojit online i offline - to už v dnešním podcastu.**

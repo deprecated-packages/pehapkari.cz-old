@@ -1,6 +1,5 @@
 ---
 id: 26
-layout: post
 title: "How to add HTTPS to GitHub Pages in 6 Steps"
 perex: |
     I always loved GitHub Pages, thanks to open-source and free hosting. Last thing that made me feel too oldschool was the plain "http://" protocol. That is usually the main argument why people move from GitHub Pages elsewhere, i.e. their own VPS. What a pity.

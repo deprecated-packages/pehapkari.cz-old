@@ -1,6 +1,5 @@
 ---
 id: 72
-layout: post
 title: "Jak hromadně spravovat privátní composer balíčky"
 perex: |
  Composer je dobrý sluha, ale zlý pán, pokud nevíte jak s ním pracovat. Podívejte se na naše workflow vývoje, kdy je dána plně modulární aplikace a ta se řídí závislostmi na konkrétních balíčcích.

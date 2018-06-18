@@ -1,6 +1,5 @@
 ---
 id: 29
-layout: post
 title: "Live a file templates v PhpStormu"
 perex: "Jak si usnadnit život používáním live a file templates v PhpStormu"
 author: 15

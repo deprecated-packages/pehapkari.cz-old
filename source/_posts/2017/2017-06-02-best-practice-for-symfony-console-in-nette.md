@@ -1,6 +1,5 @@
 ---
 id: 33
-layout: post
 title: "Best Practice for Symfony Console in Nette"
 perex: |
     If you use Symfony\Console in Nette, you will be probably familiar with `php index.php command` approach.

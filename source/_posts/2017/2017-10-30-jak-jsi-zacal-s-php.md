@@ -1,6 +1,5 @@
 ---
 id: 47
-layout: post
 title: "Jak jsi začal s PHP?"
 perex: |
     Dnes se řeší jaká technologie je nejlepší, kdo má větší kontejner nebo nejnovější smartfoun. Ve víru informací se zapomíná na to, **jak naše PHP cesty vlastně začaly**. Co v nás tu vášeň zažehlo.

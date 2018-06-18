@@ -1,6 +1,5 @@
 ---
 id: 49
-layout: post
 title: "Domain-Driven Design, part 1 - Language"
 perex: |
  Domain-driven design is a software design that focuses on understanding underlying business.

@@ -1,6 +1,5 @@
 ---
 id: 35
-layout: post
 title: "The Bulletproof Event Naming For Symfony Event Dispatcher"
 perex: |
     I wrote <a href="/blog/2016/12/05/symfony-event-dispatcher/">intro to Symfony\EventDispatcher</a> and how to use it with simple event.

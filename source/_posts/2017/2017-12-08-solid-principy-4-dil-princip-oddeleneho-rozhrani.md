@@ -1,6 +1,5 @@
 ---
 id: 50
-layout: post
 title: "SOLID principy: Princip odděleného rozhraní"
 perex: |
     Princip odděleného rozhraní je definované Robertem C. Martinem původně pro Xerox a říká:
