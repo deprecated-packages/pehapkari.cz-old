@@ -6,10 +6,12 @@ parameters:
             name: "Tomáš Votruba"
             responsibility: "vedení, komunikace, sponzoři, organizace srazů v Praze"
             url: https://tomasvotruba.cz
+            work_email: "tomas@pehapkari.cz"
         -
             photo: martina_hynkova.jpg
             name: "Martina Hynková"
-            responsibility: "organizace školení, koordinace lektorů"
+            responsibility: "organizace školení"
+            work_email: "martina@pehapkari.cz"
         -
             photo: honza_cerny.jpg
             name: "Honza Černý"
@@ -18,8 +20,9 @@ parameters:
         -
             photo: jakub_kratina.jpg
             name: "Jakub Kratina"
-            responsibility: "organizace srazů v Praze, livestreamy a moderování"
+            responsibility: "organizace srazů v Praze, livestreamy"
             url: http://jakubkratina.cz/
+            work_email: "jakub@pehapkari.cz"
 
         # Pardubice
         -

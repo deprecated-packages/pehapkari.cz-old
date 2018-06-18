@@ -25,22 +25,6 @@ id: index
         </div>
     </div>
 
-    {*<div class="container section" id="training">*}
-        {*<h2 class="text-center">Mrkni na školení</h2>*}
-        {*{var $featuredTraining = $trainings[(array_rand($trainings))]}*}
-        {*<h3>{$featuredTraining['name']|noescape}</h3>*}
-
-        {*<p>*}
-            {*<img src="/assets/images/people/{$featuredTraining['trainer_photo']}" class="img-thumbnail mb-2" width="100" height="100">*}
-            {*<br>*}
-            {*{$featuredTraining['trainer_name']}*}
-        {*</p>*}
-
-        {*<p>*}
-            {*<a href="/vzdelavej-se">Všechna školení</a>*}
-        {*</p>*}
-    {*</div>*}
-
     {* wip *}
     {*<div class="container" id="videos">*}
         {*<h2 class="text-center">Sleduj díl za dílem</h2>*}
@@ -109,7 +93,15 @@ id: index
                             {$organizer['name']}
                         </a>
                     </h3>
-                    <p>{$organizer['responsibility']|noescape}</p>
+                    <p>
+                        {$organizer['responsibility']|noescape}
+                    </p>
+
+                    {ifset $organizer['work_email']}
+                        <p>
+                            <a href="mailto:{$organizer['work_email']}">{$organizer['work_email']}</a>
+                        </p>
+                    {/ifset}
                 </div>
             {/foreach}
         </div>
