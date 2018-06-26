@@ -79,6 +79,7 @@ parameters:
             speaker_url: "https://tomasvotruba.com/"
             speaker_photo: "https://images.naucmese.cz/w300-q100/users/5ktz4jzb9yj-talking-square.jpg"
             talk: "Why Your Company Loses Money By Not-Open-Sourcing"
+            slides: "https://docs.google.com/presentation/d/1kYpsn_ZAR_Q2A7WYqBIjeVIjdKe67W_d0PTHVgsvMo4/edit?usp=sharing"
         -
             time: '17:40'
             speaker: "Michal Špaček"
