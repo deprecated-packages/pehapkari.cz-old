@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="cs">
-    {include "head"}
+    {include "_snippets/head.latte"}
 
     <body>
-        {include "menu", "id" => "lectures"}
+        {include "_snippets/menu.latte", "id" => "lectures"}
 
         <div class="container">
             <p n:if="$lecture->getImage()" class="text-center mt-5 d-none d-sm-block">
@@ -113,7 +113,7 @@
                             {foreach $lecture_references as $lecture_reference}
                                 {continueIf $lecture_reference['lecture_id'] !== $lecture->getId()}
 
-                                {include "lectureReference",
+                                {include "_snippets/lecture/lectureReference.latte",
                                     "lecture_reference" => $lecture_reference,
                                     "active_lecture" => $lecture,
                                     "is_lecture_detail" => true
@@ -125,10 +125,10 @@
             </div>
         </div>
 
-        {include "footer"}
+        {include "_snippets/footer.latte"}
 
-        {include "googleAnalytics"}
-        {include "facebookPixel"}
+        {include "_snippets/googleAnalytics.latte"}
+        {include "_snippets/facebookPixel.latte"}
     </body>
 </html>
 

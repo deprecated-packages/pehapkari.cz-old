@@ -5,7 +5,7 @@ parameters:
             variable: 'lecture'
             variable_global: 'lectures'
             path: '_lectures'
-            layout: 'lecture'
+            layout: '_layouts/lecture.latte'
             route_prefix: 'kurz'
             object: 'Pehapkari\Website\Statie\Generator\LectureFile'
             object_sorter: 'Pehapkari\Website\Statie\Generator\LectureFileSorter'

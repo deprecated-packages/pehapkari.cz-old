@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="cs">
-    {include "head"}
+    {include "_snippets/head.latte"}
 
     <body>
-        {include "menu"}
-
+        {include "_snippets/menu.latte"}
+        _snippets/menu.latte
         <div id="article">
             <div class="container">
                 <h1 class="h2 text-center">{$post['title']}</h1>
 
                 <div class="row text-center">
                     <div class="col-md-12">
-                        {include "postMetadataLine", "post" => $post}
+                        {include "_snippets/post/postMetadataLine.latte", "post" => $post}
                     </div>
                 </div>
 
@@ -33,7 +33,7 @@
             </div>
 
             <div class="container">
-                {include "disqusComments", 'post' => $post, 'showCommentCount' => true}
+                {include "_snippets/disqusComments.latte", 'post' => $post, 'showCommentCount' => true}
             </div>
 
             <br>
@@ -42,10 +42,10 @@
         <script src="/assets/prism/prism.js"></script>
         <script id="dsq-count-scr" src="https://{$disqus_name}.disqus.com/count.js" async defer></script>
 
-        {include "footer"}
+        {include "_snippets/footer.latte"}
 
-        {include "googleAnalytics"}
-        {include "facebookPixel"}
+        {include "_snippets/googleAnalytics.latte"}
+        {include "_snippets/facebookPixel.latte"}
     </body>
 </html>
 

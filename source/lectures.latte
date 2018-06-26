@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: _layouts/default.latte
 title: "Investuj do sebe a přijď na školení"
 id: lectures
 outputPath: "vzdelavej-se/index.html"
@@ -86,7 +86,7 @@ lecture_references_limit: 4
                     {foreach $lecture_references as $lecture_reference}
                         {continueIf $iterator->counter > $lecture_references_limit}
 
-                        {include "lectureReference",
+                        {include "_snippets/lecture/lectureReference.latte",
                             "lecture_reference" => $lecture_reference,
                             "active_lecture" => $lectures[$lecture_reference['lecture_id']]
                         }

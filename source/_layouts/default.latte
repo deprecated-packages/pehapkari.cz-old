@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="cs">
-    {include "head"}
+    {include "_snippets/head.latte"}
 
     <body>
-        {include "menu"}
+        {include "_snippets/menu.latte"}
 
         {block content}{/block}
-        {include "footer"}
+        {include "_snippets/footer.latte"}
 
         {block additionalJavascript}
         {/block}
 
-        {include "googleAnalytics"}
-        {include "facebookPixel"}
+        {include "_snippets/googleAnalytics.latte"}
+        {include "_snippets/facebookPixel.latte"}
     </body>
 </html>

@@ -1,11 +1,11 @@
 ---
-layout: default
+layout: _layouts/default.latte
 title: "Přečti si komunitní PHP blog"
 id: blog
 ---
 
 {block content}
-    {include "infobar"}
+    {include "_snippets/infobar.latte"}
 
     <hr>
 
@@ -48,7 +48,7 @@ id: blog
 
                 <div class="row">
                     <div class="col-md-12">
-                        {include "postMetadataLine", "post" => $post}
+                        {include "_snippets/post/postMetadataLine.latte", "post" => $post}
                     </div>
                 </div>
 
