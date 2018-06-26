@@ -68,47 +68,49 @@ id: conference
     <table class="table table-responsive table-bordered">
         <thead class="table-inverse">
             <th>Start</th>
-            <th>End</th>
             <th>Program</th>
+            <th>Slides</th>
         </thead>
         <tr class="table-success">
             <th>10:00</th>
-            <th>10:05</th>
-            <th>Welcome Keynote</th>
+            <th colspan="2">Welcome Keynote</th>
         </tr>
         {foreach $talks as $talk}
             <tr>
                 <td>{$talk['time']}</td>
-                <td>{= (\Nette\Utils\DateTime::from($talk['time']))->modify('+ 30 minutes')|date:"H:i"}</td>
                 <td>
                     {$talk['speaker']} - {$talk['talk']}
+                </td>
+                <td>
+                    {ifset $talk['slides']}
+                        <a href="{$talk['slides']}" class="btn btn-warning btn-sm">
+                            <em class="fa fa-slideshare"></em>
+                            See Slides
+                        </a>
+                    {/ifset}
                 </td>
             </tr>
             {if $talk['time'] === '11:30'}
                 <tr class="table-success">
                     <th>12:00</th>
-                    <th>13:00</th>
-                    <th>Lunch Time</th>
+                    <th colspan="2">Lunch Time</th>
                 </tr>
             {/if}
 
             {if $talk['time'] === '15:00'}
                 <tr class="table-success">
                     <th>15:30</th>
-                    <th>16:20</th>
-                    <th>Coffee Break</th>
+                    <th colspan="2">Coffee Break</th>
                 </tr>
             {/if}
         {/foreach}
         <tr class="table-success">
             <th>18:10</th>
-            <th>18:30</th>
-            <th>Talks End</th>
+            <th colspan="2">Talks End</th>
         </tr>
         <tr class="table-warning">
             <th>18:30</th>
-            <th>?</th>
-            <th>After-Party with Beer on the Place</th>
+            <th colspan="2">After-Party with Beer on the Place</th>
         </tr>
     </table>
 
