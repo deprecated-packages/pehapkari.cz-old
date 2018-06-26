@@ -11,12 +11,15 @@ parameters:
                 Despite all the Silicon Valley know-how, a good investor, detail planning and a decent team, something can still go bloody wrong.
                 How do we generally think about building MVP after all this?
                 What fuckup can be very useful for?
+            slides: "https://docs.google.com/presentation/d/10rTcSTNBHEEv_7Dc5vJ8kpdc_iphtgYJQMOTxciQKwA/edit?ts=5b2e59a4"
+
         -
             time: '10:50'
             speaker: "Jindřich Kubát"
             speaker_url: "https://cz.linkedin.com/in/jindrich-kubat"
             speaker_photo: "https://pbs.twimg.com/profile_images/575292968531202048/4es7qIEp_400x400.jpeg"
             talk: "Transactions in Distributed System"
+            slides: "https://www.slideshare.net/JindichKubt/php-conference-transactions-in-distributed-system"
         -
             time: '11:30'
             speaker: "Ondrej Mirtes"
@@ -48,12 +51,14 @@ parameters:
                 Holger Woltersdorf, CIO - Head of FORTUNE SOLUTIONS at [Fortuneglobe GmbH](http://www.fortuneglobe.com). About 12 years of developer and team-lead experience in mobile communication and fashion eCommerce industry. PHP developer for more than 17 years, Co-founder and chairman of the PHP USERGROUP DRESDEN e.V., avid meetup and conference speaker, core-developer of the open-source PHP framework "IceHawk", dedicated to multiple other PHP open-source projects.
 
                 You can find my picture here: https://hollo.me/img/hwoltersdorf_blue_500x500.png
+            slides: "https://speakerdeck.com/hollodotme/total-recall-the-application-that-never-forgets-2"
         -
             time: '14:20'
             speaker: "Jan Mikeš"
             speaker_url: "https://janmikes.cz/"
             speaker_photo: "https://janmikes.cz/img/jan_mikes.jpg"
             talk: "The Simplest Gitlab CI Pipeline Ever"
+            slides: "https://www.slideshare.net/JanMike3/php-prague-2018-the-simplest-gitlab-ci-pipeline-ever"
         -
             time: '15:00'
             speaker: "Vladimir Kriška"
@@ -67,15 +72,18 @@ parameters:
             speaker_photo: "https://pbs.twimg.com/profile_images/819586686149677056/DOMf3P79_400x400.jpg"
             talk: "Machine Learning - how to begin to learn the machine in PHP"
             country: "Poland"
+            slides: "https://slides.com/arkadiuszkondas/shor-story-about-machine-learning-in-php#/"
         -
             time: '17:00'
             speaker: "Tomas Votruba"
             speaker_url: "https://tomasvotruba.com/"
             speaker_photo: "https://images.naucmese.cz/w300-q100/users/5ktz4jzb9yj-talking-square.jpg"
             talk: "Why Your Company Loses Money By Not-Open-Sourcing"
+            slides: "https://docs.google.com/presentation/d/1kYpsn_ZAR_Q2A7WYqBIjeVIjdKe67W_d0PTHVgsvMo4/edit?usp=sharing"
         -
             time: '17:40'
             speaker: "Michal Špaček"
             speaker_url: "https://www.michalspacek.cz/"
             speaker_photo: "https://pbs.twimg.com/profile_images/2486136032/48y4qlw7i7u0wed6q4ju_400x400.jpeg"
             talk: "Everything is User Input"
+            slides: "https://www.michalspacek.com/talks/everything-is-user-input-phpprague"
