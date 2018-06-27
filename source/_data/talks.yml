@@ -65,6 +65,7 @@ parameters:
             speaker_url: "https://www.ujovlado.com/"
             speaker_photo: "https://miro.medium.com/fit/c/240/240/1*cWv5kUZBEvLqazoPHcNIpw.jpeg"
             talk: "Docker for PHP developers - Tips, Tricks & Lessons learned"
+            slides: "https://speakerdeck.com/ujovlado/docker-for-php-developers-tips-tricks-and-lessons-learned"
         -
             time: '16:20'
             speaker: "Arkadiusz Kondas"
