@@ -22,7 +22,7 @@
                     <link>{{ site_url }}/{{ post.relativeUrl }}</link>
                     <description><![CDATA[ {{ post.perex|striptags }} ]]></description>
                     <guid isPermaLink="false">{{ site_url }}/{{ post.relativeUrl }}</guid>
-                    <dc:creator><![CDATA[ {$authors[$post['author']]['name']} ]]></dc:creator>
+                    <dc:creator><![CDATA[ {{ authors[post.author].name }} ]]></dc:creator>
                     <pubDate>{{ post.getDateInFormat('r') }}</pubDate>
                     <comments>{{ site_url }}/{{ post.relativeUrl }}#disqus_thread</comments>
                 </item>
