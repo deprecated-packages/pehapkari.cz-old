@@ -3,7 +3,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.1",
-        "symplify/statie": "dev-master"
+        "symplify/statie": "^4.5"
     },
     "require-dev": {
         "doctrine/annotations": "^1.6",
@@ -13,7 +13,7 @@
         "nette/application": "^2.4",
         "nette/forms": "^2.4",
         "nette/security": "^2.4",
-        "phpstan/phpstan": "^0.9",
+        "phpstan/phpstan": "^0.10",
         "phpunit/phpunit": "^7.0",
         "spatie/http-status-check": "^2.5",
         "symfony/console": "^4.0",
@@ -21,8 +21,8 @@
         "symfony/expression-language": "^4.0",
         "symfony/intl": "^4.0",
         "symfony/validator": "^4.0",
-        "symplify/coding-standard": "^4.1",
-        "symplify/easy-coding-standard": "^4.1",
+        "symplify/coding-standard": "^4.5",
+        "symplify/easy-coding-standard": "^4.5",
         "tomasvotruba/statie-tweet-publisher": "@dev"
     },
     "autoload": {
@@ -42,11 +42,11 @@
             "vendor/bin/ecs check src tests --fix"
         ],
         "phpstan": "vendor/bin/phpstan analyse src tests --level max --configuration phpstan.neon",
-        "check-status": [
-            "vendor/bin/http-status-check scan https://pehapkari.cz --output invalid-links.txt"
-        ]
+        "check-status": "vendor/bin/http-status-check scan https://pehapkari.cz --output invalid-links.txt"
     },
     "config": {
         "sort-packages": true
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
