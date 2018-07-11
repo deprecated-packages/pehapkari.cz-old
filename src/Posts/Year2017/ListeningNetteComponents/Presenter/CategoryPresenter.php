@@ -17,7 +17,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 final class CategoryPresenter extends Presenter
 {
     /**
-     * @var array
+     * @var int[][]|string[][]
      */
     private const PRODUCTS = [
         [

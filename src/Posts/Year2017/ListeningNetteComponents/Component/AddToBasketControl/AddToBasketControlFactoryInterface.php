@@ -5,7 +5,7 @@ namespace Pehapkari\Website\Posts\Year2017\ListeningNetteComponents\Component\Ad
 interface AddToBasketControlFactoryInterface
 {
     /**
-     * @param mixed[][] $product
+     * @param string[]|int[] $product
      */
     public function create(array $product): AddToBasketControl;
 }
