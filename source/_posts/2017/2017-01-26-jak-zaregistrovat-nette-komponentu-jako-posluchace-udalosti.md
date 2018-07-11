@@ -304,7 +304,7 @@ final class AddToBasketControl extends Control
 
     public function render()
     {
-        $this->template->render(__DIR__ . '/templates/default.twig');
+        $this->template->render(__DIR__ . '/templates/default.latte');
     }
 
 }
@@ -349,7 +349,7 @@ final class BasketContentControl extends Control
             'products' => $this->products
         ]);
 
-        $this->template->render(__DIR__ . '/templates/default.twig');
+        $this->template->render(__DIR__ . '/templates/default.latte');
     }
 
 }
@@ -363,7 +363,7 @@ V šabloně presenteru si vykreslíme komponentu `BasketContentControl` a vypí�
 
 
 ```html
-<!-- /templates/Category/default.twig -->
+<!-- /templates/Category/default.latte -->
 
 {control basketContent}
 <table>
@@ -379,7 +379,7 @@ V šabloně presenteru si vykreslíme komponentu `BasketContentControl` a vypí�
 Následuje šablona pro vykreslení odkazu pro přidání produktu do košíku.
 
 ```html
-<!--Component/AddToBasketControl/templates/default.twig -->
+<!--Component/AddToBasketControl/templates/default.latte -->
 
 <a n:href="add!" class="ajax">Přidat do košíku</a>
 ```
@@ -390,7 +390,7 @@ A do třetice je tu šablona pro vykreslení obsahu košíku.
 
 
 ```html
-<!-- Component/BasketContentControl/templates/default.twig -->
+<!-- Component/BasketContentControl/templates/default.latte -->
 
 {snippet content}
     <table>
