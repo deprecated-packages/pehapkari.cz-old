@@ -7,28 +7,28 @@
     <meta name="author" content="https://pehapkari.cz">
     <meta name="robots" content="index, follow">
 
-    {* socials *}
+    {# socials #}
     <meta property="og:image" content="/images/php-square.png">
     <meta property="fb:pages" content="918297778220033" />
-    {block socialTags}
-    {/block}
+    {% block socialTags %}
+    {% endblock %}
 
-    {* mobile *}
+    {# mobile #}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
     <link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
 
-    {* Font Awesome - locally for css classes autocomplete *}
+    {# Font Awesome - locally for css classes autocomplete #}
     <link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-    {* Twitter Bootstrap - locally for css classes autocomplete *}
+    {# Twitter Bootstrap - locally for css classes autocomplete #}
     <link href="/assets/bootstrap/bootstrap.min.css?v=0.9" rel="stylesheet" type="text/css" />
 
-    {* css *}
-    {block additionalCss}
-    {/block}
+    {# css #}
+    {% block additionalCss %}
+    {% endblock %}
     <link href="/assets/css/style.css?v=0.10" rel="stylesheet" type="text/css" />
 
     <link href="/favicon.ico" rel="shortcut icon">

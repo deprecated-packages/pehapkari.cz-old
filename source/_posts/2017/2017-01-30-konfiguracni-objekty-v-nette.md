@@ -50,7 +50,7 @@ final class InvoiceForm extends Control
 
     public function render()
     {
-        $this->getTemplate()->render(__DIR__ . '/InvoiceForm.latte');
+        $this->getTemplate()->render(__DIR__ . '/InvoiceForm.twig');
     }
 }
 ```
@@ -192,7 +192,7 @@ final class InvoiceFormNew extends Control
 
     public function render()
     {
-        $this->getTemplate()->render(__DIR__ . '/InvoiceForm.latte');
+        $this->getTemplate()->render(__DIR__ . '/InvoiceForm.twig');
     }
 }
 ```

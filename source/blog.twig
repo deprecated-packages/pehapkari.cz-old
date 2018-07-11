@@ -1,16 +1,16 @@
 ---
-layout: _layouts/default.latte
+layout: _layouts/default.twig
 title: "Přečti si komunitní PHP blog"
 id: blog
 ---
 
-{block content}
-    {include "_snippets/infobar.latte"}
+{% block content %}
+    {% include "_snippets/infobar.twig" %}
 
     <hr>
 
     <div class="container section" id="blog">
-        <h1 class="text-center">{$title}</h1>
+        <h1 class="text-center">{{ title }}</h1>
 
         <br>
 
@@ -33,30 +33,30 @@ id: blog
 
         <hr>
 
-        {foreach $posts as $post}
+        {% for post in posts %}
             {continueIf $post->getDateInFormat('Y-m-d') > date('Y-m-d') || isset($post['redirect'])}
 
-            {* to see your future-dated article locally, use this address: localhost:8000/blog/<year>/<month>/<day>/<slug> *}
-            {* e.g. 2017-02-06-how-to-rehash-legacy-passwords-in-symfony.md =>
+            {# to see your future-dated article locally, use this address: localhost:8000/blog/<year>/<month>/<day>/<slug> #}
+            {# e.g. 2017-02-06-how-to-rehash-legacy-passwords-in-symfony.md =>
                 localhost:8000/blog/2017/02/06/how-to-rehash-legacy-passwords-in-symfony
-            *}
+            #}
 
             <div class="article">
                 <h3>
-                    <a href="/{$post['relativeUrl']}/">{$post['title']}</a>
+                    <a href="/{{ post.relativeUrl }}/">{{ post.title }}</a>
                 </h3>
 
                 <div class="row">
                     <div class="col-md-12">
-                        {include "_snippets/post/postMetadataLine.latte", "post" => $post}
+                        {% include "_snippets/post/postMetadataLine.twig" with { "post": post } %}
                     </div>
                 </div>
 
-                <p class="perex">{$post['perex']|noescape}</p>
+                <p class="perex">{{ post.perex|raw }}</p>
             </div>
-            {sep}<hr>{/sep}
-        {/foreach}
+            {% if loop.last == false %}<hr>{% endif %}
+        {% endfor %}
 
         <br>
     </div>
-{/block}
+{% endblock %}

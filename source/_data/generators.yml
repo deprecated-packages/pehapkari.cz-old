@@ -1,11 +1,15 @@
 parameters:
     # see https://www.statie.org/docs/generators/
     generators:
+        posts:
+            # which layout to use, a file from "_layouts/<name>.twig"
+            layout: '_layouts/post.twig'
+
         lectures:
             variable: 'lecture'
             variable_global: 'lectures'
             path: '_lectures'
-            layout: '_layouts/lecture.latte'
+            layout: '_layouts/lecture.twig'
             route_prefix: 'kurz'
             object: 'Pehapkari\Website\Statie\Generator\LectureFile'
             object_sorter: 'Pehapkari\Website\Statie\Generator\LectureFileSorter'

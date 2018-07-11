@@ -1,14 +1,14 @@
 ---
-layout: _layouts/default.latte
+layout: _layouts/default.twig
 title: "Posuň se s pomocí mentora"
 id: mentori
 outputPath: "mentori/index.html"
 ---
 
-{block content}
+{% block content %}
     <div class="container">
         <h2 class="text-center">
-            {$title}
+            {{ title }}
         </h2>
 
         <p>
@@ -32,7 +32,15 @@ outputPath: "mentori/index.html"
 
         <br>
 
-        {include mentorTable, "mentors" => $mentors, "remote" => true}
+        {# see: https://stackoverflow.com/a/42666679/1348344 #}
+
+
+        down vote
+        Now, we can use with syntax:
+
+        {% with { "mentors": mentors, "remote": true } %}
+            {{ block('mentorTable') }}
+        {% endwith %}
 
         <br>
 
@@ -43,7 +51,9 @@ outputPath: "mentori/index.html"
 
         <br>
 
-        {include mentorTable, "mentors" => $mentors, "remote" => false}
+        {% with { "mentors": mentors, "remote": false } %}
+            {{ block('mentorTable') }}
+        {% endwith %}
 
         <br>
 
@@ -51,7 +61,7 @@ outputPath: "mentori/index.html"
             Děláš s PHP už nějaký ten pátek?
             <strong>Umíš druhým doplnit potřebné znalosti a správně nasměrovat?</strong>
 
-            <a href="{$github_edit_url_start}_data/mentors.yml" class="btn btn-success text-center mt-5">
+            <a href="{{ github_edit_url_start }}_data/mentors.yml" class="btn btn-success text-center mt-5">
                 <em class="fa fa-plus fa-fw"></em>
                 Staň se taky mentorem
             </a>
@@ -59,10 +69,10 @@ outputPath: "mentori/index.html"
 
 
     </div>
-{/block}
+{% endblock %}
 
 
-{define mentorTable}
+{% block mentorTable %}
     <div class="table-responsive">
         <table class="table table-striped">
             <thead class="thead-inverse">
@@ -72,8 +82,8 @@ outputPath: "mentori/index.html"
                 <th>Kontakt</th>
             </thead>
 
-            {* sort the list of mentors so it's not biased towards those who came first *}
-            {var $sortBy = $remote ? 'name' : 'location'}
+            {# sort the list of mentors so it's not biased towards those who came first #}
+            {% set sortBy = remote ? 'name' : 'location' %}
             {php usort($mentors, function ($a, $b) use ($sortBy) {
                 return strcasecmp(
                     iconv('UTF-8', 'ASCII//TRANSLIT', $a[$sortBy]),
@@ -82,22 +92,26 @@ outputPath: "mentori/index.html"
             })}
 
             <tbody>
-                {foreach $mentors as $mentor}
+                {% for mentor in mentors %}
                     {continueIf ($remote && ! $mentor['remote']) || (!$remote && $mentor['remote'])}
                     <tr>
                         <td>
-                            <nobr><a n:tag-ifset="$mentor['link']" href="{$mentor['link']}">{$mentor['name']}</a></nobr>
+                            <nobr>
+                                {% if mentor.link is defined %}
+                                    <a href="{{ mentor.link }}">{{ mentor.name }}</a>
+                                {% endif %}
+                            </nobr>
                         </td>
                         <td>
-                            <strong>{$mentor['intro_message']}</strong>
+                            <strong>{{ mentor.intro_message }}</strong>
                         </td>
                         <td>
-                            {$mentor['location']}
+                            {{ mentor.location }}
                         </td>
-                        <td><a href="mailto:{$mentor['email']}">{$mentor['email']}</td>
+                        <td><a href="mailto:{{ mentor.email }}">{{ mentor.email }}</td>
                     </tr>
-                {/foreach}
+                {% endfor %}
             </tbody>
         </table>
     </div>
-{/define}
+{% endblock %}

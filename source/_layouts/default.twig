@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="cs">
+    {% include "_snippets/head.twig" %}
+
+    <body>
+        {% include "_snippets/menu.twig" %}
+
+        {% block content %}{% endblock %}
+        {% include "_snippets/footer.twig" %}
+
+        {% block additionalJavascript %}
+        {% endblock %}
+
+        {% include "_snippets/googleAnalytics.twig" %}
+        {% include "_snippets/facebookPixel.twig" %}
+    </body>
+</html>

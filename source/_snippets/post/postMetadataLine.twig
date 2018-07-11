@@ -1,0 +1,34 @@
+<div class="metadataLine">
+    {% if post.tested is defined %}
+        {% set testDirectoryOnGithub %}{{ github_show_url_start }}tests/Posts/Year{{ post.getDateInFormat('Y') }}/{{ post.test_slug }}{% endset %}
+        <p class="success">
+            <strong><em class="fa fa-fw fa-check-square-o"></em>
+                <a href="{{ testDirectoryOnGithub }}">
+                    This post is Tested
+                </a>
+            </strong>
+        </p>
+    {% endif %}
+
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        {{ post.getReadingTimeInMinutes() }} min
+
+        |
+
+        by <strong>{$authors[$post['author']]['name']}</strong>
+
+        &ndash;
+
+        <time datetime="{{ post.getDateInFormat('Y-m-D') }}">
+            {{ post.getDateInFormat('j. n. Y') }}
+        </time>
+
+        {% if showCommentCount is defined %}
+            |
+
+            <em class="fa fa-fw fa-comments"></em>
+            <a href="{{ site_url }}/{{ post.relativeUrl }}/#disqus_thread">X</a> comments
+        {% endif %}
+    </p>
+</div>

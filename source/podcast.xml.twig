@@ -4,10 +4,10 @@
     <channel>
         <feedpress:locale>cs</feedpress:locale>
         <feedpress:newsletterId>nejenophp</feedpress:newsletterId>
-        <atom:link rel="self" href="{$site_url}/rss.xml" />
+        <atom:link rel="self" href="{{ site_url }}/rss.xml" />
 
         <title><![CDATA[Nejen o PHP]]></title>
-        <link><![CDATA[{$site_url}]]></link>
+        <link><![CDATA[{{ site_url }}]]></link>
         <language>cs</language>
         <copyright><![CDATA[© 2016 Péhápkaři.cz]]></copyright>
         <description><![CDATA[Povídání o všem možném kolem PHP, komunit a vzdělání.]]></description>
@@ -19,19 +19,19 @@
         <itunes:category text="Technology"/>
         <itunes:explicit>clean</itunes:explicit>
 
-        {foreach $posts as $post}
+        {% for post in posts %}
             {continueIf ! isset($post['podcast'])}
             <item>
-                <title>Nejen o PHP {$post['podcast']['title']}</title>
-                <guid>{$site_url}/{$post['relativeUrl']}</guid>
-                <pubDate>{$post['podcast']['publish_date']} 11:00:00 +0000</pubDate>
-                <description>{$post['perex']}</description>
+                <title>Nejen o PHP {{ post.podcast['title'] }}</title>
+                <guid>{{ site_url }}/{{ post.relativeUrl }}</guid>
+                <pubDate>{{ post.podcast['publish_date'] }} 11:00:00 +0000</pubDate>
+                <description>{{ post.perex }}</description>
 
-                <itunes:subtitle>{$post['perex']}</itunes:subtitle>
+                <itunes:subtitle>{{ post.perex }}</itunes:subtitle>
                 <itunes:author><![CDATA[https://pehapkari.cz]]></itunes:author>
                 <itunes:image href="https://pehapkari.cz/assets/images/logos/nejenophp_a1400.png" />
-                <itunes:duration>{$post['podcast']['mp3_duration']}</itunes:duration>
+                <itunes:duration>{{ post.podcast['mp3_duration'] }}</itunes:duration>
             </item>
-        {/foreach}
+        {% endfor %}
     </channel>
 </rss>

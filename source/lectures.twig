@@ -1,15 +1,15 @@
 ---
-layout: _layouts/default.latte
+layout: _layouts/default.twig
 title: "Investuj do sebe a přijď na školení"
 id: lectures
 outputPath: "vzdelavej-se/index.html"
 lecture_references_limit: 4
 ---
 
-{block content}
+{% block content %}
     <div id="trainings">
         <div class="section">
-            <h1 class="text-center">{$title}</h1>
+            <h1 class="text-center">{{ title }}</h1>
 
             <p class="text-center subtitle">
                 Rozšiř si své know-how od odborníků v PHP.<br>
@@ -21,24 +21,24 @@ lecture_references_limit: 4
 
         <div class="container">
             <div class="row">
-                {foreach $lectures as $lecture}
+                {% for lecture in lectures %}
                     {continueIf ! $lecture->isActive()}
                     <div class="flex col-md-6">
                         <h2>
-                            <a href="/{$lecture->getRelativeUrl()}/">
-                                <strong>{$lecture->getTitle()|noescape}</strong>
+                            <a href="/{{ lecture.getRelativeUrl() }}/">
+                                <strong>{{ lecture.getTitle()|raw }}</strong>
                             </a>
                         </h2>
 
                         <div class="text-center pt-xl-5 pb-xl-5 border-secondary border mb-3 mt-3">
                             <img width="120" src="/assets/images/people/{$users[$lecture->getUserId()]['photo']}" class="img-thumbnail mr-4 rounded-circle pull-right">
 
-                            <img src="{$lecture->getImage()}" width="150">
+                            <img src="{{ lecture.getImage() }}" width="150">
                         </div>
 
-                        <p n:if="$lecture->getPerex()">{$lecture->getPerex()|noescape}</p>
+                        <p n:if="$lecture->getPerex()">{{ lecture.getPerex()|raw }}</p>
 
-                        <p>Příští termín: <strong>{$lecture->getHumanDate()}</strong></p>
+                        <p>Příští termín: <strong>{{ lecture.getHumanDate() }}</strong></p>
                         <p>
                             Lektor:
                             <strong>
@@ -48,14 +48,14 @@ lecture_references_limit: 4
                             </strong>
                         </p>
 
-                        <a href="{$lecture->getFormLink()}" class="btn btn-success btn-xs-block-only" target="_blank">
+                        <a href="{{ lecture.getFormLink() }}" class="btn btn-success btn-xs-block-only" target="_blank">
                             <em class="fa fa-fw fa-handshake-o"></em>
                             Přihlásit se
                         </a>
 
                         <br>
                     </div>
-                {/foreach}
+                {% endfor %}
             </div>
 
             <br>
@@ -66,10 +66,10 @@ lecture_references_limit: 4
                     Další kurzy, které teď nemají vypsaný termín:
                 </p>
                 <p>
-                    {foreach $lectures as $lecture}
+                    {% for lecture in lectures %}
                         {continueIf $lecture->isActive()}
-                        <a href="/{$lecture->getRelativeUrl()}/">{$lecture->getTitle()|noescape}</a>{sep}, {/sep}
-                    {/foreach}
+                        <a href="/{{ lecture.getRelativeUrl() }}/">{{ lecture.getTitle()|raw }}</a>{% if loop.last == false %}, {% endif %}
+                    {% endfor %}
                 </p>
             </div>
 
@@ -83,14 +83,11 @@ lecture_references_limit: 4
                 <div class="row narrower">
                     {php shuffle($lecture_references)}
 
-                    {foreach $lecture_references as $lecture_reference}
+                    {% for lecture_reference in lecture_references %}
                         {continueIf $iterator->counter > $lecture_references_limit}
 
-                        {include "_snippets/lecture/lectureReference.latte",
-                            "lecture_reference" => $lecture_reference,
-                            "active_lecture" => $lectures[$lecture_reference['lecture_id']]
-                        }
-                    {/foreach}
+                        {% include "_snippets/lecture/lectureReference.twig" with { "lecture_reference": lecture_reference, "active_lecture": lectures[lecture_reference.lecture_id] } %}
+                    {% endfor %}
                 </div>
             </div>
 
@@ -143,7 +140,7 @@ lecture_references_limit: 4
                             V prostorách <strong>karlínského <a href="https://www.footshop.cz/cs/">Footshopu</a></strong>.
                         </p>
 
-                        {* todo <img src="/assets/images/places/footshpo.jpg" width="400" class="img-thumbnail">*}
+                        {# todo <img src="/assets/images/places/footshpo.jpg" width="400" class="img-thumbnail">#}
                     </div>
                     <div class="col-md-6">
                         <p>
@@ -224,4 +221,4 @@ lecture_references_limit: 4
             </p>
         </div>
     </div>
-{/block}
+{% endblock %}

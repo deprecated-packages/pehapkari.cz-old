@@ -163,7 +163,7 @@ h1, h2, .h2, h3 {
     font-size: 1.6em;
 }
 
-/* for slovnicek.latte */
+/* for slovnicek.twig */
 #vocabulary > dd {
     border-bottom: 1px #eee solid;
     margin-bottom: 1em;
@@ -211,7 +211,7 @@ h1, h2, .h2, h3 {
     }
 }
 
-/* for blog.latte, _layout/post.latte */
+/* for blog.twig, _layout/post.twig */
 #blog .perex {
     line-height: 1.5em;
 }

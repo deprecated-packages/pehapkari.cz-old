@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="cs">
+    {% include "_snippets/head.twig" %}
+
+    <body>
+        {% include "_snippets/menu.twig" with { "id": "lectures" } %}
+
+        <div class="container">
+            {% if lecture.getImage() %}
+                <p class="text-center mt-5 d-none d-sm-block">
+                    <img src="{{ lecture.getImage() }}" alt="" width="150">
+                </p>
+            {% endif %}
+
+            <h1 class="text-center">{{ lecture.getTitle() }}</h1>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img width="100" src="/assets/images/people/{$users[$lecture->getUserId()]['photo']}" alt="" class="img-thumbnail mb-3 rounded-circle pull-left mr-3">
+                        </div>
+
+                        <div class="col-md">
+                            <strong>{% if lecture.isInEnglish() %}Lector{% else %}Školí{% endif %}:</strong>
+
+                            {% if users[lecture.getUserId()].url is defined %}
+                                <a href="{{ users[lecture.getUserId()].url }}">{{ users[lecture.getUserId()].name }}</a>
+                            {% endif %}
+
+                            {% if users[lecture.getUserId()].bio is defined %}
+                                <p>„{$users[$lecture.getUserId()]['bio']|raw}“</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    {% if lecture.isActive() %}
+                        <p>
+                            {% if lecture.isInEnglish() %}Next term{% else %}Příští termín{% endif %}:
+                            <strong>{{ lecture.getHumanDate() }}</strong>
+
+                            {% if lecture.showAddToCalendarLink() %}
+                                <br>
+                                <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Lecture:+{{ lecture.getTitle() }}&dates={{ lecture.getStartInCalendarFormat() }}/{{ lecture.getEndInCalendarFormat() }}&details=Details:+https://pehapkari.cz/{{ lecture.getRelativeUrl() }}&ctz=Europe/Prague&location=
+    {{ places[lecture.getPlaceId()].google_calendar_place }}&sf=true&output=xml">
+                                    <em class="fa fa-fw fa-calendar"></em>
+                                    {% if lecture.isInEnglish() %}Add to Calendar{% else %}Přidat do kalendáře{% endif %}
+                                </a>
+                            {% endif %}
+
+                            {% if lecture.getDeadlineDateTime() %}
+                                <div class="card border-warning">
+                                    <div class="card-body bg-warning">
+                                        Uzavírka přihlášek:
+                                        <strong>{{ lecture.getDeadlineDateTime()|date("j. n.") }}</strong>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </p>
+                    {% endif %}
+
+                    <p>
+                        {% if lecture.isInEnglish() %}Location{% else %}Místo{% endif %}:
+                        <strong>
+                            <a href="{{ places[lecture.getPlaceId()].google_maps_link }}">
+                                {{ places[lecture.getPlaceId()].name }}
+                            </a>
+                        </strong>
+                    </p>
+                    <p>
+                        {% if lecture.isInEnglish() %}Duration{% else %}Délka{% endif %}:
+                        <strong>{{ lecture.getDuration() }}</strong>
+                    </p>
+
+                    <p>
+                        {% if lecture.isInEnglish() %}Capacity{% else %}Kapacita{% endif %}:
+                        <strong>{{ lecture.getCapacity() }}</strong>
+                    </p>
+
+                    <p>
+                        {% if lecture.isInEnglish() %}Price{% else %}Cena{% endif %}:
+                        <strong>{$lecture.getPrice()|number: 0 , "," , " "} Kč</strong>
+                    </p>
+
+                    {% if users[lecture.getUserId()].phone is defined %}
+                        <p>
+                            <a href="tel:{{ users[lecture.getUserId()].phone }}">
+                                {{ users[lecture.getUserId()].phone }}
+                            </a>
+                        </p>
+                    {% endif %}
+
+                    {% if users[lecture.getUserId()].email is defined %}
+                        <p>
+                            <a href="mailto:{{ users[lecture.getUserId()].email }}">
+                                {{ users[lecture.getUserId()].email }}
+                            </a>
+                        </p>
+                    {% endif %}
+
+                    {% if lecture.isActive() %}
+                        <div class="text-center">
+                            <a href="{{ lecture.getFormLink() }}" class="btn btn-success mt-4 mb-5">
+                                <em class="fa fa-fw fa-handshake-o"></em>
+                                &nbsp;
+                                {% if lecture.isInEnglish() %}Sign Up{% else %}Přihlásit se{% endif %}
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="col-md-8">
+                    {{ lecture.getContent()|raw }}
+
+                    {% if lecture.isInReferences(lecture_references) %}
+                        <hr>
+
+                        <h3>Co o školení říkají účastníci?</h3>
+
+                        <div class="row">
+                            {% for lecture_reference in lecture_references %}
+                                {% if lecture_reference.lecture_id == lecture.getId() %}
+                                    {% include "_snippets/lecture/lectureReference.twig" with { "lecture_reference": lecture_reference, "active_lecture": lecture, "is_lecture_detail": true } %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        {% include "_snippets/footer.twig" %}
+
+        {% include "_snippets/googleAnalytics.twig" %}
+        {% include "_snippets/facebookPixel.twig" %}
+    </body>
+</html>
+
+{% block socialTags %}
+    {# Facebook sharing #}
+    <meta property="og:type" content="lecture" />
+    <meta property="og:title" content="{{ lecture.getTitle() }}" />
+
+    {# Twitter sharing #}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="{{ lecture.getTitle() }}" />
+{% endblock %}
+
+{% block additionalCss %}
+    <link href="/assets/prism/prism.css?v=0.1" rel="stylesheet" type="text/css" />
+    <link href="/assets/prism/prism-custom.css?v=0.1" rel="stylesheet" type="text/css" />
+{% endblock %}
