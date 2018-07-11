@@ -8,6 +8,7 @@ use Nette\Application\Request;
 use Nette\Application\Responses\TextResponse;
 use Nette\Application\UI\Presenter;
 use Nette\Bridges\ApplicationLatte\Template;
+use Nette\Utils\FileSystem;
 use PHPUnit\Framework\TestCase;
 
 final class ListeningNetteComponentsTest extends TestCase
@@ -99,6 +100,6 @@ final class ListeningNetteComponentsTest extends TestCase
 
     private function loadFileWithUnixLineEndings(string $file): string
     {
-        return str_replace("\r\n", "\n", file_get_contents($file));
+        return str_replace("\r\n", "\n", FileSystem::read($file));
     }
 }
