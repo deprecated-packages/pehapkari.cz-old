@@ -5,7 +5,7 @@ outputPath: php-prague/index.html # available on "/php-prague"
 id: conference
 ---
 
-{block content}
+{% block content %}
 
 <div class="container">
     <div class="row text-center">
@@ -16,17 +16,17 @@ id: conference
 
             <h2>23. 6. 2018 - 2nd PHP Conference in PHP Prague</h2>
 
-            {*<h3 class="mb-5">*}
-                {*<a href="https://www.smsticket.cz/vstupenky/12880-phpprague-conference-2018">Tickets on SALE! for 200,-</a>*}
-            {*</h3>*}
+            {#<h3 class="mb-5">#}
+                {#<a href="https://www.smsticket.cz/vstupenky/12880-phpprague-conference-2018">Tickets on SALE! for 200,-</a>#}
+            {#</h3>#}
 
-            {*<a href="https://www.smsticket.cz/vstupenky/12880-phpprague-conference-2018">*}
-                {*<img width="284" src="/assets/images/conferences/prague-2018/ticket-php-prague.png" alt="ticket">*}
-            {*</a>*}
+            {#<a href="https://www.smsticket.cz/vstupenky/12880-phpprague-conference-2018">#}
+                {#<img width="284" src="/assets/images/conferences/prague-2018/ticket-php-prague.png" alt="ticket">#}
+            {#</a>#}
 
-            {*<br>*}
-            {*<br>*}
-            {*<br>*}
+            {#<br>#}
+            {#<br>#}
+            {#<br>#}
 
             <p>
                 <a href="https://www.facebook.com/events/204178450306613/">
@@ -52,7 +52,7 @@ id: conference
 
     <hr>
 
-    <h2 class="text-center" id="talks">Line Up of {=count($talks)} Talks ↓</h2>
+    <h2 class="text-center" id="talks">Line Up of {{ talks|length }} Talks ↓</h2>
 
     <h3 class="mb-5 text-center">10:00 - 19:00</h3>
 
@@ -75,35 +75,35 @@ id: conference
             <th>10:00</th>
             <th colspan="2">Welcome Keynote</th>
         </tr>
-        {foreach $talks as $talk}
+        {% for talk in talks %}
             <tr>
-                <td>{$talk['time']}</td>
+                <td>{{ talk.time }}</td>
                 <td>
-                    {$talk['speaker']} - {$talk['talk']}
+                    {{ talk.speaker }} - {{ talk.talk }}
                 </td>
                 <td>
-                    {ifset $talk['slides']}
-                        <a href="{$talk['slides']}" class="btn btn-warning btn-sm">
+                    {% if talk.slides is defined %}
+                        <a href="{{ talk.slides }}" class="btn btn-warning btn-sm">
                             <em class="fa fa-slideshare"></em>
                             See Slides
                         </a>
-                    {/ifset}
+                    {% endif %}
                 </td>
             </tr>
-            {if $talk['time'] === '11:30'}
+            {% if talk.time == '11:30' %}
                 <tr class="table-success">
                     <th>12:00</th>
                     <th colspan="2">Lunch Time</th>
                 </tr>
-            {/if}
+            {% endif %}
 
-            {if $talk['time'] === '15:00'}
+            {% if talk.time == '15:00' %}
                 <tr class="table-success">
                     <th>15:30</th>
                     <th colspan="2">Coffee Break</th>
                 </tr>
-            {/if}
-        {/foreach}
+            {% endif %}
+        {% endfor %}
         <tr class="table-success">
             <th>18:10</th>
             <th colspan="2">Talks End</th>
@@ -119,19 +119,20 @@ id: conference
     <h2 class="text-center">Meet the Speakers</h2>
 
     <div class="card-columns">
-        {php shuffle($talks)}
-        {foreach $talks as $talk}
+        {% for talk in talks %}
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">{$talk['talk']}</h4>
+                    <h4 class="card-title">{{ talk.talk }}</h4>
 
-                    <a n:tag-ifset="$talk['speaker_url']" href="{$talk['speaker_url']}">
-                        {$talk['speaker']}
-                    </a> {ifset $talk['country']}from {$talk['country']}{/ifset}
+                    {% if talk.speaker_url is defined %}
+                        <a href="{{ talk.speaker_url }}">
+                            {{ talk.speaker }}
+                        </a>
+                    {% endif %} {% if talk.country is defined %}from {{ talk.country }}{% endif %}
                 </div>
-                <img class="card-img-bottom" src="{$talk['speaker_photo']}" alt="{$talk['speaker']}">
+                <img class="card-img-bottom" src="{{ talk.speaker_photo }}" alt="{{ talk.speaker }}">
             </div>
-        {/foreach}
+        {% endfor %}
     </div>
 
     <hr>
@@ -169,4 +170,4 @@ id: conference
     </div>
 </div>
 
-{/block}
+{% endblock %}

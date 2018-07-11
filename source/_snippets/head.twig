@@ -33,5 +33,5 @@
 
     <link href="/favicon.ico" rel="shortcut icon">
 
-    <title>{= $title ?? $page_title}</title>
+    <title>{% if title is defined %}{{ title }} {% else %}{{ page_title }}{% endif %}</title>
 </head>

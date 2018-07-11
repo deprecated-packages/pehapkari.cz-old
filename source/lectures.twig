@@ -22,39 +22,45 @@ lecture_references_limit: 4
         <div class="container">
             <div class="row">
                 {% for lecture in lectures %}
-                    {continueIf ! $lecture->isActive()}
-                    <div class="flex col-md-6">
-                        <h2>
-                            <a href="/{{ lecture.getRelativeUrl() }}/">
-                                <strong>{{ lecture.getTitle()|raw }}</strong>
-                            </a>
-                        </h2>
-
-                        <div class="text-center pt-xl-5 pb-xl-5 border-secondary border mb-3 mt-3">
-                            <img width="120" src="/assets/images/people/{$users[$lecture->getUserId()]['photo']}" class="img-thumbnail mr-4 rounded-circle pull-right">
-
-                            <img src="{{ lecture.getImage() }}" width="150">
-                        </div>
-
-                        <p n:if="$lecture->getPerex()">{{ lecture.getPerex()|raw }}</p>
-
-                        <p>Příští termín: <strong>{{ lecture.getHumanDate() }}</strong></p>
-                        <p>
-                            Lektor:
-                            <strong>
-                                <a n:tag-ifset="$users[$lecture->getUserId()]['url']" href="{$users[$lecture->getUserId()]['url']}">
-                                {$users[$lecture->getUserId()]['name']}
+                    {% if lecture.isActive() %}
+                        <div class="flex col-md-6">
+                            <h2>
+                                <a href="/{{ lecture.getRelativeUrl() }}/">
+                                    <strong>{{ lecture.getTitle()|raw }}</strong>
                                 </a>
-                            </strong>
-                        </p>
+                            </h2>
 
-                        <a href="{{ lecture.getFormLink() }}" class="btn btn-success btn-xs-block-only" target="_blank">
-                            <em class="fa fa-fw fa-handshake-o"></em>
-                            Přihlásit se
-                        </a>
+                            <div class="text-center pt-xl-5 pb-xl-5 border-secondary border mb-3 mt-3">
+                                <img width="120" src="/assets/images/people/{{ users[lecture.getUserId()].photo }}" class="img-thumbnail mr-4 rounded-circle pull-right">
 
-                        <br>
-                    </div>
+                                <img src="{{ lecture.getImage() }}" width="150">
+                            </div>
+
+                            {% if lecture.getPerex() %}
+                                <p>{{ lecture.getPerex()|raw }}</p>
+                            {% endif %}
+
+                            <p>Příští termín: <strong>{{ lecture.getHumanDate() }}</strong></p>
+                            <p>
+                                Lektor:
+                                <strong>
+                                    {% if users[lecture.getUserId()].url is defined %}
+                                        <a href="{{ users[lecture.getUserId()].url }}">
+                                    {% endif %}
+
+                                    {{ users[lecture.getUserId()].name }}
+                                    </a>
+                                </strong>
+                            </p>
+
+                            <a href="{{ lecture.getFormLink() }}" class="btn btn-success btn-xs-block-only" target="_blank">
+                                <em class="fa fa-fw fa-handshake-o"></em>
+                                Přihlásit se
+                            </a>
+
+                            <br>
+                        </div>
+                    {% endif %}
                 {% endfor %}
             </div>
 
@@ -67,8 +73,9 @@ lecture_references_limit: 4
                 </p>
                 <p>
                     {% for lecture in lectures %}
-                        {continueIf $lecture->isActive()}
-                        <a href="/{{ lecture.getRelativeUrl() }}/">{{ lecture.getTitle()|raw }}</a>{% if loop.last == false %}, {% endif %}
+                        {% if lecture.isActive() %}
+                            <a href="/{{ lecture.getRelativeUrl() }}/">{{ lecture.getTitle()|raw }}</a>{% if loop.last == false %}, {% endif %}
+                        {% endif %}
                     {% endfor %}
                 </p>
             </div>
@@ -81,12 +88,10 @@ lecture_references_limit: 4
                 <h2 class="mb-5">Přes 50 spokojených účastníků</h2>
 
                 <div class="row narrower">
-                    {php shuffle($lecture_references)}
-
                     {% for lecture_reference in lecture_references %}
-                        {continueIf $iterator->counter > $lecture_references_limit}
-
-                        {% include "_snippets/lecture/lectureReference.twig" with { "lecture_reference": lecture_reference, "active_lecture": lectures[lecture_reference.lecture_id] } %}
+                        {% if loop.counter < lecture_references_limit %}
+                            {% include "_snippets/lecture/lectureReference.twig" with { "lecture_reference": lecture_reference, "active_lecture": lectures[lecture_reference.lecture_id] } %}
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>

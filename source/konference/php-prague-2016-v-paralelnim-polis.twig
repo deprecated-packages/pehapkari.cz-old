@@ -48,7 +48,7 @@ items:
         speaker_name: Michal Špaček
         speaker_url: https://twitter.com/spazef0rze
 ---
-{block content}
+{% block content %}
 
 <a name="content"></a>
 
@@ -134,14 +134,14 @@ items:
         <div class="row">
             <div class="col-md-7">
                 <div n:foreach="$items as $item">
-                    <a href="{$youtube['embed_url']}?&start={$item['time_in_seconds'] }&autoplay=true"
+                    <a href="{{ youtube.embed_url }}?&start={{ item.time_in_seconds  }}&autoplay=true"
 
                        target="video" class="btn btn-success">
                         <em class="fa fa-play fa-fw"></em>
-                        {$item['time']}
-                    </a> &nbsp; <strong>{$item['title']}</strong>
+                        {{ item.time }}
+                    </a> &nbsp; <strong>{{ item.title }}</strong>
 
-                    - <a href="{$item['speaker_url']}"><em class="fa fa-twitter fa-fw"></em>{$item['speaker_name']}</a>
+                    - <a href="{{ item.speaker_url }}"><em class="fa fa-twitter fa-fw"></em>{{ item.speaker_name }}</a>
                     <hr>
                 </div>
             </div>
@@ -241,4 +241,4 @@ items:
     </div>
 </div>
 
-{/block}
+{% endblock %}

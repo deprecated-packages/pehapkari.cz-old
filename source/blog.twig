@@ -34,27 +34,27 @@ id: blog
         <hr>
 
         {% for post in posts %}
-            {continueIf $post->getDateInFormat('Y-m-d') > date('Y-m-d') || isset($post['redirect'])}
+            {% if post.getDateInFormat('Y-m-d') <= "now"|date('Y-m-d') and post.redirect is not defined %}
+                {# to see your future-dated article locally, use this address: localhost:8000/blog/<year>/<month>/<day>/<slug> #}
+                {# e.g. 2017-02-06-how-to-rehash-legacy-passwords-in-symfony.md =>
+                    localhost:8000/blog/2017/02/06/how-to-rehash-legacy-passwords-in-symfony
+                #}
 
-            {# to see your future-dated article locally, use this address: localhost:8000/blog/<year>/<month>/<day>/<slug> #}
-            {# e.g. 2017-02-06-how-to-rehash-legacy-passwords-in-symfony.md =>
-                localhost:8000/blog/2017/02/06/how-to-rehash-legacy-passwords-in-symfony
-            #}
+                <div class="article">
+                    <h3>
+                        <a href="/{{ post.relativeUrl }}/">{{ post.title }}</a>
+                    </h3>
 
-            <div class="article">
-                <h3>
-                    <a href="/{{ post.relativeUrl }}/">{{ post.title }}</a>
-                </h3>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        {% include "_snippets/post/postMetadataLine.twig" with { "post": post } %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% include "_snippets/post/postMetadataLine.twig" with { "post": post } %}
+                        </div>
                     </div>
-                </div>
 
-                <p class="perex">{{ post.perex|raw }}</p>
-            </div>
-            {% if loop.last == false %}<hr>{% endif %}
+                    <p class="perex">{{ post.perex|raw }}</p>
+                </div>
+                {% if loop.last == false %}<hr>{% endif %}
+            {% endif %}
         {% endfor %}
 
         <br>

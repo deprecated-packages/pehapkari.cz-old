@@ -33,11 +33,6 @@ outputPath: "mentori/index.html"
         <br>
 
         {# see: https://stackoverflow.com/a/42666679/1348344 #}
-
-
-        down vote
-        Now, we can use with syntax:
-
         {% with { "mentors": mentors, "remote": true } %}
             {{ block('mentorTable') }}
         {% endwith %}
@@ -83,33 +78,34 @@ outputPath: "mentori/index.html"
             </thead>
 
             {# sort the list of mentors so it's not biased towards those who came first #}
-            {% set sortBy = remote ? 'name' : 'location' %}
-            {php usort($mentors, function ($a, $b) use ($sortBy) {
-                return strcasecmp(
-                    iconv('UTF-8', 'ASCII//TRANSLIT', $a[$sortBy]),
-                    iconv('UTF-8', 'ASCII//TRANSLIT', $b[$sortBy])
-                );
-            })}
+            {#{% set sortBy = remote ? 'name' : 'location' %}#}
+            {#{php usort($mentors, function ($a, $b) use ($sortBy) {#}
+                {#return strcasecmp(#}
+                    {#iconv('UTF-8', 'ASCII//TRANSLIT', $a[$sortBy]),#}
+                    {#iconv('UTF-8', 'ASCII//TRANSLIT', $b[$sortBy])#}
+                {#);#}
+            {#})}#}
 
             <tbody>
                 {% for mentor in mentors %}
-                    {continueIf ($remote && ! $mentor['remote']) || (!$remote && $mentor['remote'])}
-                    <tr>
-                        <td>
-                            <nobr>
-                                {% if mentor.link is defined %}
-                                    <a href="{{ mentor.link }}">{{ mentor.name }}</a>
-                                {% endif %}
-                            </nobr>
-                        </td>
-                        <td>
-                            <strong>{{ mentor.intro_message }}</strong>
-                        </td>
-                        <td>
-                            {{ mentor.location }}
-                        </td>
-                        <td><a href="mailto:{{ mentor.email }}">{{ mentor.email }}</td>
-                    </tr>
+                    {% if (remote == false or mentor.remote is defined) and (remote or mentor.remote is not defined) %}
+                        <tr>
+                            <td>
+                                <nobr>
+                                    {% if mentor.link is defined %}
+                                        <a href="{{ mentor.link }}">{{ mentor.name }}</a>
+                                    {% endif %}
+                                </nobr>
+                            </td>
+                            <td>
+                                <strong>{{ mentor.intro_message }}</strong>
+                            </td>
+                            <td>
+                                {{ mentor.location }}
+                            </td>
+                            <td><a href="mailto:{{ mentor.email }}">{{ mentor.email }}</td>
+                        </tr>
+                    {% endif %}
                 {% endfor %}
             </tbody>
         </table>
