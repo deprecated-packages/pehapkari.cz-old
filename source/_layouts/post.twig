@@ -62,13 +62,6 @@
     <meta name="twitter:description" content="{{ post.perex|striptags }}" />
 {% endblock %}
 
-
-{% block additionalCss %}
-    <link href="/assets/prism/prism.css?v=0.1" rel="stylesheet" type="text/css" />
-    <link href="/assets/prism/prism-custom.css?v=0.1" rel="stylesheet" type="text/css" />
-{% endblock %}
-
-
 {% block relatedPosts %}
     {% set relatedPosts = (post|relatedItems) %}
 
