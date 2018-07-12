@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="cs">
+    {% include "_snippets/head.twig" %}
+
+    <body>
+        {% include "_snippets/menu.twig" %}
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">{{ post.title }}</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        {% include "_snippets/post/postMetadataLine.twig" with { "post": post } %}
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">{{ post.perex|raw }}</p>
+
+                    {{ post.content|raw }}
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    {{ block('relatedPosts') }}
+                </div>
+            </div>
+
+            <div class="container">
+                {% include "_snippets/disqusComments.twig" with { 'post': post, 'showCommentCount': true } %}
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://{{ disqus_name }}.disqus.com/count.js" async defer></script>
+
+        {% include "_snippets/footer.twig" %}
+
+        {% include "_snippets/googleAnalytics.twig" %}
+        {% include "_snippets/facebookPixel.twig" %}
+    </body>
+</html>
+
+
+{% block socialTags %}
+    {# Facebook sharing #}
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="{{ post.title }}" />
+    <meta property="og:description" content="{{ post.perex|striptags }}" />
+    <meta property="og:url" content="{{ site_url }}/{{ post.relativeUrl }}/" />
+
+    {# Twitter sharing #}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="{{ post.title }}" />
+    <meta name="twitter:description" content="{{ post.perex|striptags }}" />
+{% endblock %}
+
+{% block relatedPosts %}
+    {% set relatedPosts = (post|relatedItems) %}
+
+    {% if relatedPosts|length %}
+        <h2>You Might Also Like</h2>
+
+        <ul id="related-posts">
+            {% for relatedPost in relatedPosts %}
+                <li>
+                    <a href="/{{ relatedPost.relativeUrl }}">{{ relatedPost.title }} &raquo;</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

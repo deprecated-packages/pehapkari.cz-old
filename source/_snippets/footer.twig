@@ -28,28 +28,28 @@
                 <h3 class="text-light">Pracujeme</h3>
                 <ul>
                     <li><a href="/vzdelavej-se">Školíme</a></li>
-                    {* todo - wip *}
-                    {*<li><a href="/budte-videt">Pro firmy</a></li>*}
-                    {*<li><a href="/zacni-skolit">Pro školitele</a></li>*}
+                    {# todo - wip #}
+                    {#<li><a href="/budte-videt">Pro firmy</a></li>#}
+                    {#<li><a href="/zacni-skolit">Pro školitele</a></li>#}
                 </ul>
             </div>
 
             <div class="col-md-3 col-6 text-left">
                 <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
 
-                <a href="https://www.facebook.com/pehapkari" class="btn btn-primary rounded-circle mb-3 mr-2">
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
                     <em class="fa fa-facebook"></em>
                 </a>
-                <a href="https://twitter.com/pehapkari" class="btn btn-info rounded-circle mb-3 mr-2">
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
                     <em class="fa fa-twitter"></em>
                 </a>
-                <a href="https://github.com/pehapkari" class="btn btn-light rounded-circle mb-3 mr-2">
+                <a href="https://github.com/pehapkari" class="p-3 btn">
                     <em class="fa fa-github"></em>
                 </a>
-                <a href="https://youtube.com/pehapkari/videos" class="btn btn-danger rounded-circle mb-3 mr-2">
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
                     <em class="fa fa-youtube-play"></em>
                 </a>
-                <a href="https://pehapkari.slack.com" class="btn btn-warning rounded-circle mb-3 mr-2">
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
                     <em class="fa fa-slack"></em>
                 </a>
             </div>
@@ -60,17 +60,17 @@
                 <p class="powered-by">
                     Web Péhápkaři.cz pohání <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/Pehapkari/pehapkari.cz">Githubu</a>.
 
-                    {if isset($post) || isset($lecture)}
-                        {php $item = $lecture ?? $post}
-                        {capture $githubEditLink}{$item|githubEditPostUrl}{/capture}
-                        {elseifset $id}
-                        {capture $githubEditLink}{$github_edit_url_start}{$githubLink = $id . '.latte'}{/capture}
-                    {/if}
+                    {% if post is defined or lecture is defined %}
+                        {% set item = lecture ?? post %}
+                        {% set githubEditLink %}{{ item|githubEditPostUrl }}{% endset %}
+                        {% elseif id is defined %}
+                        {% set githubEditLink %}{{ github_edit_url_start }}{githubLink = id . '.twig'}{% endset %}
+                    {% endif %}
 
-                    {ifset $githubEditLink}
+                    {% if githubEditLink is defined %}
                         <br>
-                        <strong>Našel jsi chybu?</strong> <a href="{$githubEditLink}">Oprav nám ji</a> prosím
-                    {/ifset}
+                        <strong>Našel jsi chybu?</strong> <a href="{{ githubEditLink }}">Oprav nám ji</a> prosím
+                    {% endif %}
                 </p>
             </div>
 
@@ -84,3 +84,5 @@
         </div>
     </div>
 </footer>
+
+<script src="/assets/prism/prism.js"></script>

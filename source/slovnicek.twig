@@ -1,10 +1,10 @@
 ---
-layout: _layouts/default.latte
+layout: _layouts/default.twig
 title: "Slo(v)níček"
 id: slovnicek
 ---
 
-{block content}
+{% block content %}
     <div class="container section">
         <div class="row">
             <div class="col-md-12">
@@ -13,7 +13,7 @@ id: slovnicek
                 </h2>
 
                 <dl id="vocabulary" class="dl-horizontal">
-                    {* Please keep alphabetical order *}
+                    {# Please keep alphabetical order #}
 
                     <dt>Agile&nbsp;<sup><a id="agile" href="#agile">&hearts;</a></sup></dt>
                     <dd>
@@ -655,15 +655,4 @@ echo factorial(5); // 120
             </div>
         </div>
     </div>
-{/block}
-
-
-{block additionalJavascript}
-    <script src="/assets/prism/prism.js"></script>
-{/block}
-
-
-{block additionalCss}
-    <link href="/assets/prism/prism.css?v=0.1" rel="stylesheet" type="text/css" />
-    <link href="/assets/prism/prism-custom.css?v=0.1" rel="stylesheet" type="text/css" />
-{/block}
+{% endblock %}

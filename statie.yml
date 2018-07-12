@@ -6,6 +6,9 @@ imports:
     - { resource: 'config/config.local.yml',  ignore_errors: true }
 
 parameters:
+    # generator
+    templating: 'twig'
+
     twitter_name: 'Pehapkari'
     minimal_gap_in_days: 1 # how many days to wait before publishing another Tweet
 

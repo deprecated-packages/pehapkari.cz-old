@@ -1,0 +1,113 @@
+---
+layout: _layouts/default.twig
+title: "Posuň se s pomocí mentora"
+id: mentori
+outputPath: "mentori/index.html"
+---
+
+{% block content %}
+    <div class="container">
+        <h2 class="text-center">
+            {{ title }}
+        </h2>
+
+        <p>
+            Chceš se posunout v PHP dopředu a hledáš zkušeného programátora, který by ti pomohl s těmi největšími překážkami?
+            <br>
+            <strong>Tady najdeš mentory, kteří své know-how chtějí sdílet dál</strong>.
+        </p>
+
+        <blockquote class="blockquote">
+            "I když lidi nepíšou denně, přijde mi fajn být k zastižení a někomu pomoc."
+
+            <p class="blockquote-author">mentor Eda</p>
+        </blockquote>
+
+        <br>
+
+        <h3>
+            <em class="fa fa-wifi fa-fw"></em>
+            Mentoři, kteří ti pomůžou i online
+        </h3>
+
+        <br>
+
+        {# see: https://stackoverflow.com/a/42666679/1348344 #}
+        {% with { "mentors": mentors, "remote": true } %}
+            {{ block('mentorTable') }}
+        {% endwith %}
+
+        <br>
+
+        <h3>
+            <em class="fa fa-coffee fa-fw"></em>
+            Osobní mentoři
+        </h3>
+
+        <br>
+
+        {% with { "mentors": mentors, "remote": false } %}
+            {{ block('mentorTable') }}
+        {% endwith %}
+
+        <br>
+
+        <p class="text-center">
+            Děláš s PHP už nějaký ten pátek?
+            <strong>Umíš druhým doplnit potřebné znalosti a správně nasměrovat?</strong>
+
+            <a href="{{ github_edit_url_start }}_data/mentors.yml" class="btn btn-success text-center mt-5">
+                <em class="fa fa-plus fa-fw"></em>
+                Staň se taky mentorem
+            </a>
+        </p>
+
+
+    </div>
+{% endblock %}
+
+
+{% block mentorTable %}
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-inverse">
+                <th>Kdo</th>
+                <th>Co nejradši mentoruje</th>
+                <th>Kde</th>
+                <th>Kontakt</th>
+            </thead>
+
+            {# sort the list of mentors so it's not biased towards those who came first #}
+            {#{% set sortBy = remote ? 'name' : 'location' %}#}
+            {#{php usort($mentors, function ($a, $b) use ($sortBy) {#}
+                {#return strcasecmp(#}
+                    {#iconv('UTF-8', 'ASCII//TRANSLIT', $a[$sortBy]),#}
+                    {#iconv('UTF-8', 'ASCII//TRANSLIT', $b[$sortBy])#}
+                {#);#}
+            {#})}#}
+
+            <tbody>
+                {% for mentor in mentors %}
+                    {% if (remote == false or mentor.remote is defined) and (remote or mentor.remote is not defined) %}
+                        <tr>
+                            <td>
+                                <nobr>
+                                    {% if mentor.link is defined %}
+                                        <a href="{{ mentor.link }}">{{ mentor.name }}</a>
+                                    {% endif %}
+                                </nobr>
+                            </td>
+                            <td>
+                                <strong>{{ mentor.intro_message }}</strong>
+                            </td>
+                            <td>
+                                {{ mentor.location }}
+                            </td>
+                            <td><a href="mailto:{{ mentor.email }}">{{ mentor.email }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
