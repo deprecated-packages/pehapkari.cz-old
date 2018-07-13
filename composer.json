@@ -23,7 +23,6 @@
         "symfony/validator": "^4.0",
         "symplify/coding-standard": "^4.5",
         "symplify/easy-coding-standard": "^4.5",
-        "symplify/latte-to-twig-converter": "^4.5",
         "tomasvotruba/statie-tweet-publisher": "@dev"
     },
     "autoload": {
@@ -47,7 +46,5 @@
     },
     "config": {
         "sort-packages": true
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }
