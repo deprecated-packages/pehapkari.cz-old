@@ -5,15 +5,11 @@
             <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
 
             <nav class="navbar top-navigation">
-                <a href="/php-prague/" n:class="isset($id) && $id === conference ? active">
-                    <em class="fa fa-walking fa-fw"></em>
-                    PHP Prague Conference
-                </a>
-                <a href="/blog/" n:class="(isset($id) && $id === blog) || (isset($layout) && $layout === post) ? active">
+                <a href="/blog/" class="{% if (id is defined and id == 'blog') or (layout is defined and layout == 'post') %}active{% endif %}">
                     <em class="fa fa-newspaper-o fa-fw"></em>
                     Blog
                 </a>
-                <a href="/vzdelavej-se/" n:class="(isset($id) && $id === 'lectures') ? active">
+                <a href="/vzdelavej-se/" class="{% if id is defined and id == 'lectures' %}active{% endif %}">
                     <em class="fa fa-graduation-cap fa-fw"></em>
                     Školení
                 </a>
@@ -24,17 +20,17 @@
     {# mobile menu #}
     <div id="mobile-menu" class="row text-center hidden-md-up">
         <div class="container">
-            <a href="/" n:class="col-4, col-sm-4, isset($id) && $id === index ? active">
+            <a href="/" class="col-4 col-sm-4 {% if id is defined and id == 'index' %}active{% endif %}">
                 <em class="fa fa-home"></em>
                 <br>
                 Home
             </a>
-            <a href="/blog/" n:class="col-4, col-sm-4, (isset($id) && $id === blog) || (isset($layout) && $layout === post) ? active">
+            <a href="/blog/" class="col-4 col-sm-4 {% if (id is defined and id == 'blog') or (layout is defined and layout == 'post') %}active{% endif %}">
                 <em class="fa fa-book fa-fw"></em>
                 <br>
                 Blog
             </a>
-            <a href="/vzdelavej-se/" n:class="col-4, col-sm-4, (isset($id) && $id === 'lectures') ? active">
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 {% if id is defined and id == 'lectures' %}active{% endif %}">
                 <em class="fa fa-graduation-cap fa-fw"></em>
                 <br>
                 Školení

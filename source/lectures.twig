@@ -73,8 +73,10 @@ lecture_references_limit: 4
                 </p>
                 <p>
                     {% for lecture in lectures %}
-                        {% if lecture.isActive() %}
-                            <a href="/{{ lecture.getRelativeUrl() }}/">{{ lecture.getTitle()|raw }}</a>{% if loop.last == false %}, {% endif %}
+                        {% if lecture.isActive() == false %}
+                            <li>
+                                <a href="/{{ lecture.getRelativeUrl() }}/">{{ lecture.getTitle()|raw }}</a>
+                            </li>
                         {% endif %}
                     {% endfor %}
                 </p>
