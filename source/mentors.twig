@@ -91,7 +91,7 @@ outputPath: "mentori/index.html"
                             <td>
                                 {{ mentor.location }}
                             </td>
-                            <td><a href="mailto:{{ mentor.email }}">{{ mentor.email }}</td>
+                            <td><a href="mailto:{{ mentor.email }}">{{ mentor.email|raw }}</td>
                         </tr>
                     {% endif %}
                 {% endfor %}
