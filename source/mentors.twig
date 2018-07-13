@@ -18,14 +18,13 @@ outputPath: "mentori/index.html"
         </p>
 
         <blockquote class="blockquote">
-            "I když lidi nepíšou denně, přijde mi fajn být k zastižení a někomu pomoc."
-
-            <p class="blockquote-author">mentor Eda</p>
+            <p>"I když lidi nepíšou denně, přijde mi fajn být k zastižení a někomu pomoc."</p>
+            <small class="blockquote-author">mentor Eda</small>
         </blockquote>
 
         <br>
 
-        <h3>
+        <h3 class="text-center">
             <em class="fa fa-wifi fa-fw"></em>
             Mentoři, kteří ti pomůžou i online
         </h3>
@@ -39,7 +38,7 @@ outputPath: "mentori/index.html"
 
         <br>
 
-        <h3>
+        <h3 class="text-center">
             <em class="fa fa-coffee fa-fw"></em>
             Osobní mentoři
         </h3>
@@ -61,8 +60,6 @@ outputPath: "mentori/index.html"
                 Staň se taky mentorem
             </a>
         </p>
-
-
     </div>
 {% endblock %}
 
@@ -77,18 +74,9 @@ outputPath: "mentori/index.html"
                 <th>Kontakt</th>
             </thead>
 
-            {# sort the list of mentors so it's not biased towards those who came first #}
-            {#{% set sortBy = remote ? 'name' : 'location' %}#}
-            {#{php usort($mentors, function ($a, $b) use ($sortBy) {#}
-                {#return strcasecmp(#}
-                    {#iconv('UTF-8', 'ASCII//TRANSLIT', $a[$sortBy]),#}
-                    {#iconv('UTF-8', 'ASCII//TRANSLIT', $b[$sortBy])#}
-                {#);#}
-            {#})}#}
-
             <tbody>
                 {% for mentor in mentors %}
-                    {% if (remote == false or mentor.remote is defined) and (remote or mentor.remote is not defined) %}
+                    {% if (remote == false and mentor.remote == false) or (remote and mentor.remote) %}
                         <tr>
                             <td>
                                 <nobr>
