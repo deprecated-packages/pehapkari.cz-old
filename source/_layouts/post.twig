@@ -27,7 +27,19 @@
 
             <div class="intermezzo">
                 <div class="container">
-                    {{ block('relatedPosts') }}
+                    {% set relatedPosts = (post|relatedItems) %}
+
+                    {% if relatedPosts|length %}
+                        <h2>You Might Also Like</h2>
+
+                        <ul id="related-posts">
+                            {% for relatedPost in relatedPosts %}
+                                <li>
+                                    <a href="/{{ relatedPost.relativeUrl }}">{{ relatedPost.title }} &raquo;</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
                 </div>
             </div>
 
@@ -60,20 +72,4 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="{{ post.title }}" />
     <meta name="twitter:description" content="{{ post.perex|striptags }}" />
-{% endblock %}
-
-{% block relatedPosts %}
-    {% set relatedPosts = (post|relatedItems) %}
-
-    {% if relatedPosts|length %}
-        <h2>You Might Also Like</h2>
-
-        <ul id="related-posts">
-            {% for relatedPost in relatedPosts %}
-                <li>
-                    <a href="/{{ relatedPost.relativeUrl }}">{{ relatedPost.title }} &raquo;</a>
-                </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
 {% endblock %}

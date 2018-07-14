@@ -5,7 +5,7 @@
             <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
 
             <nav class="navbar top-navigation">
-                <a href="/blog/" class="{% if (id is defined and id == 'blog') or (layout is defined and layout == 'post') %}active{% endif %}">
+                <a href="/blog/" class="{% if (id is defined and id == 'blog') or (layout is defined and layout == '_layouts/post.twig') %}active{% endif %}">
                     <em class="fa fa-newspaper-o fa-fw"></em>
                     Blog
                 </a>
@@ -25,7 +25,7 @@
                 <br>
                 Home
             </a>
-            <a href="/blog/" class="col-4 col-sm-4 {% if (id is defined and id == 'blog') or (layout is defined and layout == 'post') %}active{% endif %}">
+            <a href="/blog/" class="col-4 col-sm-4 {% if (id is defined and id == 'blog') or (layout is defined and layout == '_layouts/post.twig') %}active{% endif %}">
                 <em class="fa fa-book fa-fw"></em>
                 <br>
                 Blog
