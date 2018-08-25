@@ -19,6 +19,11 @@ parameters:
             name: "Petr 'PePa' Pavel"
             url: "https://www.naucmese.cz/petr-pepa-pavel"
             photo: "petr_pavel.jpg"
+        29:
+            name: "Svaťa Šimara"
+            url: "http://svatasimara.cz/"
+            photo: "svata_simara.jpg"
+            bio: "Interested in DDD and modeling."
         30:
             name: "Ondřej Mirtes"
             url: "https://ondrej.mirtes.cz/"
