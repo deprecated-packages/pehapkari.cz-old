@@ -40,7 +40,7 @@ a vyházel z něj vše co nebylo nutné (je koncipován spíše na produkci). PH
 * Buildy image lze na Docker Hubu zautomatizovat. Buildí se rovnou z Githubu, např. když vyjde nová verze PHP, a více se o ně nestarám.
 * Hodně se tím vyčistí konfigurace CI.
 
-Výsledek si můžete vyzkoušet použitím image [sunfoxcz/docker-php-build](https://hub.docker.com/r/sunfoxcz/docker-php-build/).
+Výsledek si můžete vyzkoušet použitím image [sunfoxcz/php-build](https://hub.docker.com/r/sunfoxcz/php-build/).
 
 ## Spouštění na různých verzích PHP
 
@@ -61,7 +61,7 @@ stages:
 
 download:
     stage: download
-    image: sunfoxcz/docker-php-build:5.6
+    image: sunfoxcz/php-build:5.6
     script:
         - composer create-project --no-interaction --no-progress --prefer-dist jakub-onderka/php-parallel-lint temp/php-parallel-lint ~0.9
         - composer create-project --no-interaction --no-progress --prefer-dist nette/code-checker temp/code-checker ~2.5.0
@@ -89,15 +89,19 @@ download:
         - vendor/bin/tester -s -p php -c tests/php.ini tests
 
 test:5.6:
-    image: sunfoxcz/docker-php-build:5.6
+    image: sunfoxcz/php-build:5.6
     <<: *test_template
 
 test:7.0:
-    image: sunfoxcz/docker-php-build:7.0
+    image: sunfoxcz/php-build:7.0
     <<: *test_template
 
 test:7.1:
-    image: sunfoxcz/docker-php-build:7.1
+    image: sunfoxcz/php-build:7.1
+    <<: *test_template
+
+test:7.2:
+    image: sunfoxcz/php-build:7.2
     <<: *test_template
 ```
 
@@ -126,7 +130,7 @@ stages:
 deploy to production:
     stage: deploy
     environment: production
-    image: sunfoxcz/docker-php-build:5.6
+    image: sunfoxcz/php-build:5.6
     script:
         - curl -s -X POST https://deployer.domain.tld/deploy/$DEPLOYER_WEBHOOK_KEY
     only:
@@ -163,7 +167,7 @@ stages:
 
 download:
     stage: download
-    image: sunfoxcz/docker-php-build:5.6
+    image: sunfoxcz/php-build:5.6
     script:
         - composer create-project --no-interaction --no-progress --prefer-dist jakub-onderka/php-parallel-lint temp/php-parallel-lint ~0.9
         - composer create-project --no-interaction --no-progress --prefer-dist nette/code-checker temp/code-checker ~2.5.0
@@ -191,21 +195,21 @@ download:
         - vendor/bin/tester -s -p php -c tests/php.ini tests
 
 test:5.6:
-    image: sunfoxcz/docker-php-build:5.6
+    image: sunfoxcz/php-build:5.6
     <<: *test_template
 
 test:7.0:
-    image: sunfoxcz/docker-php-build:7.0
+    image: sunfoxcz/php-build:7.0
     <<: *test_template
 
 test:7.1:
-    image: sunfoxcz/docker-php-build:7.1
+    image: sunfoxcz/php-build:7.1
     <<: *test_template
 
 deploy to production:
     stage: deploy
     environment: production
-    image: sunfoxcz/docker-php-build:5.6
+    image: sunfoxcz/php-build:5.6
     script:
         - curl -s -X POST https://deployer.domain.tld/deploy/$DEPLOYER_WEBHOOK_KEY
     only:
