@@ -51,3 +51,7 @@ parameters:
             photo: "lukasz_chrusciel.jpg"
             # for lectors
             bio: "Trainer, software engineer and API expert at Sylius."
+        35:
+            name: "Tomáš Bek"
+            url: "https://www.linkedin.com/in/tom%C3%A1%C5%A1-bek-a4533169"
+            photo: "tomas_bek.jpg"
