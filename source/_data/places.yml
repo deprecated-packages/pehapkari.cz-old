@@ -9,3 +9,7 @@ parameters:
             name: "Footshop, Prague"
             google_maps_link: "https://www.google.com/maps/place/KARL%%C3%%8DN+GROUP/@50.0951188,14.4520104,17z/data=!3m1!4b1!4m5!3m4!1s0x470b94a145a26d35:0xb4a2f3a802a46a2a!8m2!3d50.0951154!4d14.4542044"
             google_calendar_place: "Pobřežní+667/78,+Prague,+18600,+Czechia"
+        3:
+            name: "Jablotron, Prague"
+            google_maps_link: "https://www.google.cz/maps/place/U+Pergamenky+1145%2F12,+170+00+Praha+7-Hole%C5%A1ovice/@50.1111834,14.4448982,17z/data=!3m1!4b1!4m5!3m4!1s0x470beb4b04ddf77d:0xd732edeb9bb14b22!8m2!3d50.11118!4d14.4470869"
+            google_calendar_place: ""
