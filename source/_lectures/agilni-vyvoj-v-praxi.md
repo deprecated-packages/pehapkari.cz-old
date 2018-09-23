@@ -11,7 +11,7 @@ place_id: 3
 capacity: "9 lidí"
 
 # 2-3 věty
-perex: 'Agilní vývoj je cesta neustálého se zlepšování. Nestačí být jen dobrý programátor, ale mít i vhodný proces práce, který ti pomůže posunout se dále.
+perex: 'Agilní vývoj je cesta neustálého se zlepšování. Nestačí být jen dobrý programátor, ale mít i vhodný proces práce, který ti pomůže posunout se dále.'
 ---
 
 Na školení se dozvíte co jsou agilní metody a jak je využít v praxi při řízení IT. Projdeme si celý proces od (ne)zadání, iterace až po finální předání klientovi a zpětnou vazbu nejen do IT. 
