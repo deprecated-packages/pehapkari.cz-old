@@ -1,15 +1,15 @@
 ---
 id: 8
 title: Jak na rapidní vývoj a Continuous Delivery
-start: '2018-06-26 10:00:00'
-end: '2018-06-26 18:00:00'
-deadline: '2018-06-21 23:59:59'
-form_link: "https://goo.gl/forms/38dgC7Dy6U7WmfEh2"
+start: '2018-10-22 10:00:00'
+end: '2018-10-22 18:00:00'
+deadline: '2018-10-18 23:59:59'
+form_link: "https://goo.gl/forms/b11MTDJHhr6AdxNT2"
 image: "/assets/images/logos/feedback.png"
 user: 30
 duration: "8 hodin"
-price: 4999
-place_id: 2
+price: 5999
+place_id: 3
 capacity: "9 lidí"
 
 # 2-3 věty
