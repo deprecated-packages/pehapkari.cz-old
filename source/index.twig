@@ -44,7 +44,7 @@ id: index
         {#</div>#}
     {#</div>#}
 
-    {{ block('twitchLine') }}
+    {{ block('promoLine') }}
 
     <div class="container" id="meetups">
         <h2 class="text-center">Kdy a kde se potkáváme?</h2>
@@ -128,12 +128,12 @@ id: index
     </div>
 {% endblock %}
 
-{% block twitchLine %}
+{% block promoLine %}
     <div class="intermezzo">
         <div class="container text-center">
-            <em class="fa fa-twitch fa-fw"></em>
-            Sleduj livestreamy <a href="https://twitch.tv/pehapkari" target="_blank">na Twitch.tv</a> -
-            <a href="https://www.facebook.com/pg/pehapkari/events/" target="_blank"><strong>každé 2. úterý od 19 hod.</strong></a>
+            <em class="fa fa-meetup fa-fw"></em>
+            Sleduj meetupy v Praze na <strong>Meetup.com</strong> -
+            <a href="https://www.meetup.com/friends-of-php-prague/" target="_blank"><strong>2. čtvrtek v měsíci od 18 hod.</strong></a>
         </div>
     </div>
 {% endblock %}
