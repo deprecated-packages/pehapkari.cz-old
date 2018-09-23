@@ -1,7 +1,7 @@
 ---
 id: 13
 title: "Agilní vývoj v praxi"
-image: ""
+image: "/assets/images/logos/agile.png"
 start: '2018-10-18 10:00:00'
 end: '2018-10-18 18:00:00'
 deadline: '2018-10-13 23:59:59'
