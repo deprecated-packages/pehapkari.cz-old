@@ -1,10 +1,10 @@
 ---
 id: 9
 title: "Ovládni PhpStorm - od základů po profi tipy"
-start: '2018-06-27 09:00:00'
-end: '2018-06-27 13:00:00'
-deadline: '2018-06-21 23:59:59'
-form_link: "https://goo.gl/forms/dcIMJJsLWtoAvRkg1"
+start: '2018-10-24 09:00:00'
+end: '2018-10-24 13:00:00'
+deadline: '2018-10-19 23:59:59'
+form_link: "https://goo.gl/forms/OYOtDkT6RyAX54yg2"
 image: "/assets/images/logos/phpstorm.png"
 user: 6
 duration: "4 hodiny"
