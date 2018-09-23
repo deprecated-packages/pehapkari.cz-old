@@ -65,6 +65,13 @@ parameters:
             responsibility: "organizace srazů v Ostravě"
             url: https://cz.linkedin.com/in/petr-heinz-45912113b
 
+        # Olomouc
+        -
+            photo: tomas_jacik.jpg
+            name: "Tomáš Jacík"
+            responsibility: "organizace PHP Piva v Olomouci"
+            url: 'https://tomasjacik.cz/en/'
+
         # Brno
         -
             photo: vaclav_cevela.jpg
