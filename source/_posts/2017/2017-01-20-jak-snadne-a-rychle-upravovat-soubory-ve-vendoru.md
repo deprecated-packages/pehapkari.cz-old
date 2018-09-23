@@ -1,7 +1,7 @@
 ---
 id: 13
 title: "Jak snadně a rychle upravovat soubory ve vendoru?"
-perex: ""
+perex: "..."
 author: 11
 redirect: true
 ---
