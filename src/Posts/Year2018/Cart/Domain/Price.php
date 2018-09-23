@@ -2,7 +2,7 @@
 
 namespace Pehapkari\Website\Posts\Year2018\Cart\Domain;
 
-class Price
+final class Price
 {
     /**
      * @var float

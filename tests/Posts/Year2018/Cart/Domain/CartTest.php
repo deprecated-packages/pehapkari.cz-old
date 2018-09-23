@@ -10,7 +10,7 @@ use Pehapkari\Website\Posts\Year2018\Cart\Domain\ProductNotInCartException;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 
-class CartTest extends TestCase
+final class CartTest extends TestCase
 {
     public function testCalculateEmptyCart(): void
     {

@@ -12,7 +12,7 @@ use Pehapkari\Website\Tests\Posts\Year2018\Cart\Utils\ConnectionManager;
 use Pehapkari\Website\Tests\Posts\Year2018\Cart\Utils\EntityManagerFactory;
 use PHPUnit\Framework\Assert;
 
-class DoctrineCartRepositoryTest extends CartRepositoryTest
+final class DoctrineCartRepositoryTest extends CartRepositoryTest
 {
     /**
      * @var EntityManager

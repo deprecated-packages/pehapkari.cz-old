@@ -4,6 +4,6 @@ namespace Pehapkari\Website\Posts\Year2018\Cart\Domain;
 
 use DomainException;
 
-class AmountMustBePositiveException extends DomainException
+final class AmountMustBePositiveException extends DomainException
 {
 }

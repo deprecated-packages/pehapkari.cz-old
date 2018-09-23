@@ -4,7 +4,7 @@
 >
     <!-- tests directories to run -->
     <testsuites>
-        <testsuite>
+        <testsuite name="main">
             <directory>tests</directory>
         </testsuite>
     </testsuites>

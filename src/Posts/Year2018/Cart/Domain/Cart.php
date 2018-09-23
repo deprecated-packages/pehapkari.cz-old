@@ -5,7 +5,7 @@ namespace Pehapkari\Website\Posts\Year2018\Cart\Domain;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
-class Cart
+final class Cart
 {
     /**
      * @var string

@@ -8,7 +8,7 @@ use Doctrine\DBAL\Driver\PDOMySql\Driver as MySqlDriver;
 use Doctrine\DBAL\Driver\PDOPgSql\Driver as PgSqlDriver;
 use Doctrine\DBAL\Driver\PDOSqlite\Driver as SqliteDriver;
 
-class ConnectionManager
+final class ConnectionManager
 {
     /**
      * @var Connection

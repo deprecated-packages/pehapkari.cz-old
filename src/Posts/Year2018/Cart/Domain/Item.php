@@ -2,7 +2,7 @@
 
 namespace Pehapkari\Website\Posts\Year2018\Cart\Domain;
 
-class Item
+final class Item
 {
     /**
      * @var int

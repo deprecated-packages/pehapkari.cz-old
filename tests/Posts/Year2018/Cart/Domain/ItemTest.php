@@ -9,7 +9,7 @@ use Pehapkari\Website\Posts\Year2018\Cart\Domain\Price;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 
-class ItemTest extends TestCase
+final class ItemTest extends TestCase
 {
     public function testToDetail(): void
     {
