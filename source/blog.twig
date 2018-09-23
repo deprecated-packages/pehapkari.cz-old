@@ -15,10 +15,13 @@ id: blog
         <br>
 
         <p class="text-center">
-            <a href="/blog/2016/12/01/chces-psat-o-php-posli-pr/" class="btn btn-success mr-3">
-                <em class="fa fa-fw fa-plus"></em>
-                Taky přidej článek
-            </a>
+            <!-- inspired and taken from: https://github.com/yegor256/blog/blob/master/_layouts/default.html -->
+            <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction" class="col-md-4 pull-left">
+                <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+                <input name="sitesearch" value="pehapkari.cz" type="hidden"/>
+                <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search with Google..." autocomplete="off"/>
+            </form>
+
             <a href="/blog/2018/04/11/how-anyone-can-write-a-post-here/" class="btn btn-success mr-3">
                 <em class="fa fa-fw fa-plus"></em>
                 Add your post
