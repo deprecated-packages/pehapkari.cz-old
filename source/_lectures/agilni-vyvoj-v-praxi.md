@@ -1,9 +1,11 @@
 ---
 id: 13
-form_link: ""
 title: "Agilní vývoj v praxi"
 image: ""
-date: 2018-01-30
+start: '2018-10-18 10:00:00'
+end: '2018-10-18 18:00:00'
+deadline: '2018-10-13 23:59:59'
+form_link: "https://goo.gl/forms/mwgv6HF04Rsc9zSE2"
 user: 35
 duration: "8 hodin"
 price: 4999
