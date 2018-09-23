@@ -3,6 +3,7 @@ id: 10
 title: "Tvorba zadání a komunikace se zákazníkem"
 start: '2018-10-24 14:00:00'
 end: '2018-10-24 18:00:00'
+deadline: '2018-10-19 23:59:59'
 form_link: "https://goo.gl/forms/AfVTKVU6zNByQpkl1"
 user: 28
 duration: "4 hodiny"
