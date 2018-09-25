@@ -37,8 +37,8 @@ Pro všechny, kteří už nechtějí ztrácet čas ručním deployem aplikací -
 ### Co je potřeba před školením?
 
 - Základní znalost yaml/neon formátu
-⁃ Představa o tom, že existuje Docker
+- Představa o tom, že existuje Docker
 - Seznam nástrojů, které používám ručně
-⁃ Připravenou aplikaci, kterou budeme automatizovat
+- Připravenou aplikaci, kterou budeme automatizovat
 
 Pro představu o tom, co po absolvování školení dokážete, se podívejte jak plně zautomatizovat <a href="https://www.facebook.com/pehapkari/videos/vl.271120013524654/472092719945370/?type=1 ">deploy na Google Cloud App Engine během 10 minut</a>.
