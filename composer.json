@@ -3,7 +3,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
-        "symplify/statie": "^5.0"
+        "symplify/statie": "^5.1"
     },
     "require-dev": {
         "doctrine/annotations": "^1.6",
@@ -21,8 +21,8 @@
         "symfony/expression-language": "^4.1",
         "symfony/intl": "^4.1",
         "symfony/validator": "^4.1",
-        "symplify/coding-standard": "^5.0",
-        "symplify/easy-coding-standard": "^5.0",
+        "symplify/coding-standard": "^5.1",
+        "symplify/easy-coding-standard": "^5.1",
         "tomasvotruba/statie-tweet-publisher": "@dev"
     },
     "autoload": {
