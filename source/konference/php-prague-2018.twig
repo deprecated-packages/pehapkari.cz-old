@@ -69,11 +69,12 @@ id: conference
         <thead class="table-inverse">
             <th>Start</th>
             <th>Program</th>
+            <th>Video</th>
             <th>Slides</th>
         </thead>
         <tr class="table-success">
             <th>10:00</th>
-            <th colspan="2">Welcome Keynote</th>
+            <th colspan="3">Welcome Keynote</th>
         </tr>
         {% for talk in talks %}
             <tr>
@@ -82,9 +83,17 @@ id: conference
                     {{ talk.speaker }} - {{ talk.talk }}
                 </td>
                 <td>
+                    {% if talk.video is defined %}
+                        <a href="{{ talk.video }}" class="btn btn-danger btn-sm">
+                            <em class="fa fa-fw fa-youtube"></em>
+                            Watch Video
+                        </a>
+                    {% endif %}
+                </td>
+                <td>
                     {% if talk.slides is defined %}
                         <a href="{{ talk.slides }}" class="btn btn-warning btn-sm">
-                            <em class="fa fa-slideshare"></em>
+                            <em class="fa fa-fw fa-slideshare"></em>
                             See Slides
                         </a>
                     {% endif %}
@@ -93,24 +102,24 @@ id: conference
             {% if talk.time == '11:30' %}
                 <tr class="table-success">
                     <th>12:00</th>
-                    <th colspan="2">Lunch Time</th>
+                    <th colspan="3">Lunch Time</th>
                 </tr>
             {% endif %}
 
             {% if talk.time == '15:00' %}
                 <tr class="table-success">
                     <th>15:30</th>
-                    <th colspan="2">Coffee Break</th>
+                    <th colspan="3">Coffee Break</th>
                 </tr>
             {% endif %}
         {% endfor %}
         <tr class="table-success">
             <th>18:10</th>
-            <th colspan="2">Talks End</th>
+            <th colspan="3">Talks End</th>
         </tr>
         <tr class="table-warning">
             <th>18:30</th>
-            <th colspan="2">After-Party with Beer on the Place</th>
+            <th colspan="3">After-Party with Beer on the Place</th>
         </tr>
     </table>
 

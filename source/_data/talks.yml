@@ -12,6 +12,7 @@ parameters:
                 How do we generally think about building MVP after all this?
                 What fuckup can be very useful for?
             slides: "https://docs.google.com/presentation/d/10rTcSTNBHEEv_7Dc5vJ8kpdc_iphtgYJQMOTxciQKwA/edit?ts=5b2e59a4"
+            video: "https://www.youtube.com/watch?v=l3FY0BENmqs"
 
         -
             time: '10:50'
@@ -20,12 +21,14 @@ parameters:
             speaker_photo: "https://pbs.twimg.com/profile_images/575292968531202048/4es7qIEp_400x400.jpeg"
             talk: "Transactions in Distributed System"
             slides: "https://www.slideshare.net/JindichKubt/php-conference-transactions-in-distributed-system"
+            video: "https://www.youtube.com/watch?v=AIBzp38sAOs"
         -
             time: '11:30'
             speaker: "Ondrej Mirtes"
             speaker_url: "https://ondrej.mirtes.cz"
             speaker_photo: "https://pbs.twimg.com/profile_images/2314351649/j6ydzdrm8r17uz8lkzsy_400x400.jpeg"
             talk: "What’s new in PHPStan"
+            video: "https://www.youtube.com/watch?v=nfq2zsazpZM"
         -
             time: '13:00'
             speaker: "Matous Czerner"
@@ -33,6 +36,7 @@ parameters:
             speaker_photo: "https://avatars2.githubusercontent.com/u/16896425?s=400&v=4"
             talk: "How To Love Git"
             slides: "https://docs.google.com/presentation/d/1sPYeOwIe6CvqHhSSltQCASX4j_gpGTFNEKWttCATmao/edit?ts=5b33af80"
+            video: "https://www.youtube.com/watch?v=EOn_VDZ9ep8"
         -
             time: '13:40'
             speaker: "Holger Woltersdorf"
@@ -41,6 +45,7 @@ parameters:
             talk: "Total Recall - The application that never forgets"
             country: "Germany"
             slides: "https://speakerdeck.com/hollodotme/total-recall-the-application-that-never-forgets-2"
+            video: "https://www.youtube.com/watch?v=lD9oa5huoyA"
         -
             time: '14:20'
             speaker: "Jan Mikeš"
@@ -48,6 +53,7 @@ parameters:
             speaker_photo: "https://janmikes.cz/img/jan_mikes.jpg"
             talk: "The Simplest Gitlab CI Pipeline Ever"
             slides: "https://www.slideshare.net/JanMike3/php-prague-2018-the-simplest-gitlab-ci-pipeline-ever"
+            video: "https://www.youtube.com/watch?v=HG0HgeUDbR8"
         -
             time: '15:00'
             speaker: "Vladimir Kriška"
@@ -55,6 +61,7 @@ parameters:
             speaker_photo: "https://miro.medium.com/fit/c/240/240/1*cWv5kUZBEvLqazoPHcNIpw.jpeg"
             talk: "Docker for PHP developers - Tips, Tricks & Lessons learned"
             slides: "https://speakerdeck.com/ujovlado/docker-for-php-developers-tips-tricks-and-lessons-learned"
+            video: "https://www.youtube.com/watch?v=zk2waYlEY8A"
         -
             time: '16:20'
             speaker: "Arkadiusz Kondas"
@@ -70,6 +77,7 @@ parameters:
             speaker_photo: "https://images.naucmese.cz/w300-q100/users/5ktz4jzb9yj-talking-square.jpg"
             talk: "Why Your Company Loses Money By Not-Open-Sourcing"
             slides: "https://docs.google.com/presentation/d/1kYpsn_ZAR_Q2A7WYqBIjeVIjdKe67W_d0PTHVgsvMo4/edit?usp=sharing"
+            video: "https://www.youtube.com/watch?v=suscn1HeRAc"
         -
             time: '17:40'
             speaker: "Michal Špaček"
