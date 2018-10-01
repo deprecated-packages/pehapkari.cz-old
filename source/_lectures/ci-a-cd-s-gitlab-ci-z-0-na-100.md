@@ -31,7 +31,7 @@ Obsah školení bude přizpůsoben na míru vaším znalostem a dovednostem.
 
 ### Pro koho je školení určeno?
 
-Pro automatizací pomocí CI nepolíbené, začátečníky i mírně pokročilé. 
+Pro automatizací pomocí CI nepolíbené, začátečníky i mírně pokročilé.
 Pro všechny, kteří už nechtějí ztrácet čas ručním deployem aplikací - ať už je to kopírování na FTP, spouštěním git pull na serveru nebo deploy do cloudu.
 
 ### Co je potřeba před školením?
