@@ -25,10 +25,11 @@ perex: 'Docker je poslední dobou stále oblíbenější. Jak si s ním zjednodu
 - Řekneme si o základních příkazech pro práci s kontejnery
 - Krok po kroku vytvoříme první image a spustíme první kontejner
 - Představíme si nástroj Portainer
-- Rozchodíme si Nette / Symfony v Dockeru
-- Seznámíme se s Gitlabem - porovnání s Githubem, plusy, mínusy, CI/CD
-- Vytvoříme si pipeliny - build => test a vyzkoušíme si deploy
+- Rozchodíme Nette v Dockeru
 - Ukážeme si využití proxy serveru
+- Povíme si něco o Gitlabu - porovnání s Githubem, plusy, mínusy, CI/CD
+- Vytvoříme si pipeliny - build => test a vyzkoušíme si deploy
+- Na závěr si představíme nástroje Docker Swarm a Kubernetes
 
 ### Co s sebou?
 - Vlastní notebook + zkus si nainstalovat [Docker](https://docs.docker.com/install/) a [Docker Compose](https://docs.docker.com/compose/install/) podle návodů. V případě komplikací si piš, co ti něšlo. Na začátku školení to společně nastavíme.
