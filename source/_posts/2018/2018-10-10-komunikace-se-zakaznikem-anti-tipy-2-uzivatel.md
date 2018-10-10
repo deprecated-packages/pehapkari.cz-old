@@ -8,29 +8,29 @@ related_items: [46,75]
 tweet: "Urodilo se na blogu: Tipy na potopení projektu: #2 Nebavte se s uživatelem #user #ux"
 ---
 
-Zlaté pravidlo potápěče projektů zní: "Hlavně se moc nevyptávat." Takhle to mám udělat, je jejich vina, že to nedává smysl. Kdo ví, co by mi ještě řekli.
+**Zlaté pravidlo potápěče** projektů zní: **"Hlavně se moc nevyptávat."** Takhle to mám udělat, je jejich vina, že to nedává smysl. Kdo ví, co by mi ještě řekli.
 
 ## Pohádka O kohoutkovi a slepičce
 
-Docházel jsem mentorovat do firmy, kde jsem se studenty párově programoval. Jednou nám do klína spadl export stavu pokladen pro účetní. Na první pohled brnkačka, ale něco mi na zadání nesedělo. 
+Docházel jsem mentorovat do firmy, kde jsem se studenty párově programoval. Jednou nám do klína spadl export stavu pokladen pro účetní. Na první pohled **brnkačka, ale něco mi na zadání nesedělo**. 
 
-Ptali jsme se autora ticketu, který nás odkázal na produktového manažera. Ten nám vysvětlil, že to chce dodělat jeden konkrétní zákazník - ale že vlastně detaily taky neví. Takže náš produkťák zavolal jejich projekťákovi a chvíli spolu moudře hovořili. Když nám pak shrnul výsledek, ukázalo se, že tam pořád ještě něco nehraje. On totiž ani ten projekťák vlastně nevěděl, jak se to bude používat.
+Ptali jsme se **autora ticketu**, který nás odkázal na **produktového manažera**. Ten nám vysvětlil, že to chce dodělat jeden konkrétní zákazník - ale že vlastně detaily taky neví. Takže náš produkťák zavolal jejich **projekťákovi** a chvíli spolu moudře hovořili. Když nám pak shrnul výsledek, ukázalo se, že tam pořád ještě něco nehraje. On totiž **ani ten projekťák vlastně nevěděl**, jak se to bude používat.
 
-"Tak brnkneme jejich uživateli, ne?" prohlásil jsem nevinně a bylo vidět, jak se mezi zúčastněnými šíří panika jako rázová vlna po výbuchu. Viděl jsem zbytek aplikace a tušil jsem, že to jen tak lehce neprojde. Oči všech se mlčky stočily na produktového manažera.
+"Tak **brnkneme jejich uživateli**, ne?" prohlásil jsem nevinně a bylo vidět, jak se mezi zúčastněnými šíří panika jako rázová vlna po výbuchu. Viděl jsem zbytek aplikace a tušil jsem, že to jen tak lehce neprojde. Oči všech se mlčky stočily na produktového manažera.
 
-"...no, to já je zase nechci moc otravovat," ošíval se. "Pojďme to udělat tak, jak psali v zadání. A když to nebude ono, upravíme to podle jejich feedbacku."
+"...no, to já je zase nechci moc otravovat," ošíval se. "Pojďme to **udělat tak, jak psali v zadání**. A když to nebude ono, **upravíme to podle jejich feedbacku**."
 
-Byl jsem v pokušení to nechat být. Byl jsem tu na návštěvě, tenhle oheň mě nepálil. Ani jsem si nebyl jistý, jak přesvědčit dva lidi, kteří jsou v hierarchii nade mnou. Navíc to vlastně dávalo smysl... nebo ne?
+Měl jsem **pokušení to nechat být**. Byl jsem tu na návštěvě, tenhle oheň mě nepálil. Ani jsem si nebyl jistý, jak přesvědčit dva lidi, kteří jsou v hierarchii nade mnou. Navíc to vlastně **dávalo smysl... nebo ne?**
 
-Nakonec jsem se hecnul. Začal jsem popisovat chudáka účetní, jak sedí v nějaké místnosti bez oken, nikdo se o ni nezajímá. Tak trochu jako programátor, že? ;-) A teď si představte, že jí někdo zavolá a bude se upřímně zajímat o to, jakým způsobem používá "tu blbou aplikaci". Získáme spoustu užitečných informací! Napíšeme tu novou fíčuru tak, aby se nedala používat špatně. Ušetříme jí hodiny času a dostaneme instantní karma boost +100. Navíc účetní dokáží myslet strukturovaně, takže to ani nebude bolet.
+Nakonec jsem se **hecnul**. Začal jsem popisovat chudáka účetní, jak sedí v nějaké místnosti bez oken, nikdo se o ni nezajímá. Tak trochu jako programátor, že? ;-) A teď si představte, že jí někdo zavolá a bude se **upřímně zajímat** o to, jakým způsobem používá "tu blbou aplikaci". Získáme **spoustu užitečných informací**! Napíšeme tu novou fíčuru tak, aby se **nedala používat špatně**. Ušetříme jí hodiny času a dostaneme instantní karma boost +100. Navíc účetní dokáží myslet strukturovaně, takže to ani **nebude bolet**.
 
-Produktový manažer se naštěstí nenechal přemlouvat a za pár minut jsme měli jasno. Účetní potřebovala něco trochu jiného, což vyjasnilo všechno to zmatení. Sami bychom na to nikdy nepřišli.
+Produktový manažer se naštěstí nenechal přemlouvat a **za pár minut jsme měli jasno**. Účetní potřebovala něco trochu jiného, což vyjasnilo všechno to zmatení. **Sami bychom na to nikdy nepřišli**.
 
-Se studentem jsme pak už jen napsali dodatek k zadání a citací @produkťáka si ho nechali schválit.
+Se studentem jsme pak už jen **napsali dodatek k zadání** a citací @produkťáka si ho **nechali schválit**.
 
 ## Nekouše
 
-Zadávání projektu často připomíná hru na tichou poštu. Uživatel něco potřebuje a přemluví šéfa. Pak čeká, někdy i měsíce, než jeho zadání probublá řadou prostředníků až k programátorovi. Napsal to dobře? Pochybnosti v něm hlodají. Snad se zeptají, kdyby ne. Představte si tu frustraci, když pak dostane novou verzi - a je nepoužitelná. Má někomu napsat a zase čekat další měsíce? Jak dlouho byste to vydrželi vy?
+Zadávání projektu často připomíná **hru na tichou poštu**. Uživatel něco potřebuje a přemluví šéfa. Pak **čeká, někdy i měsíce**, než jeho zadání probublá řadou prostředníků až k programátorovi. Napsal to dobře? Pochybnosti v něm hlodají. Snad se zeptají, kdyby ne. Představte si tu frustraci, když pak **dostane novou verzi - a je nepoužitelná**. Má někomu napsat a **zase čekat** další měsíce? Jak dlouho byste to vydrželi vy?
 
 ## Takže si to shrneme
 
@@ -41,9 +41,9 @@ Zadávání projektu často připomíná hru na tichou poštu. Uživatel něco p
 
 ## Pro tip
 
-Export do Excelu je "specification smell". Není to totiž konečný produkt, ale vždy polotovar, se kterým uživatel teprve bude něco dělat. Excel je pro hodně lidí horizontem představivosti.
+**Export do Excelu je "specification smell".** Není to totiž konečný produkt, ale vždy **polotovar**, se kterým uživatel teprve bude něco dělat. Excel je pro hodně lidí **horizontem představivosti**.
 
-Bude z něj něco počítat? Kreslit graf? Průběžně archivovat, aby měl historii změn? Pojďme mu poskytnout rovnou to, co ve skutečnosti potřebuje.
+Bude z něj něco počítat? Kreslit graf? Průběžně archivovat, aby měl historii změn? Pojďme mu poskytnout **rovnou to, co ve skutečnosti potřebuje**.
 
 ## Co dál
 
