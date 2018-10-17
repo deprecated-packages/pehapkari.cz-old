@@ -4,6 +4,7 @@ title: "Tipy na potopení projektu: #1 Trvejte na oblíbeném komunikačním kan
 perex: |
  Existuje tisíc a jeden způsobů, jak podělat projekt, a v našem seriálu si některé ukážeme. Dnes bych rád mluvil o **způsobu komunikace**.
 author: 28
+related_items: [46,75]
 tweet: "Urodilo se na blogu: Tipy na potopení projektu: #1 Trvejte na oblíbeném komunikačním kanále #communication"
 ---
 
@@ -33,6 +34,6 @@ Aby bylo jasno: problém nebyl v tom, že by původní programátor blbě chápa
 
 ## Co dál
 
-Příští tip bude o špatném zadání. Výborná zbraň pro zpoždění nebo úplné rozstřelení projektu :-)
+Příští tip bude o fóbii z uživatelů. Vůbec se s nimi nebavte a držte se pevně zadání. Odměnou vám bude jejich teskný nářek.
 
-*O volbě správného komunikačního kanálu i jiných věcech si **přijďte popovídat na [školení Tvorba zadání a komunikace se zákazníkem](https://pehapkari.cz/vzdelavej-se/#tvorba-zadani-a-komunikace-se-zakaznikem)**.*
+*O volbě správného komunikačního kanálu i jiných věcech si **přijďte popovídat na [školení Tvorba zadání a komunikace se zákazníkem](https://pehapkari.cz/kurz/tvorba-zadani-a-komunikace-se-zakaznikem/)**.*
