@@ -30,11 +30,11 @@ lecture_references_limit: 4
                                 </a>
                             </h2>
 
-                            <div class="text-center pt-xl-5 pb-xl-5 border-secondary border mb-3 mt-3">
+                            <a href="/{{ lecture.getRelativeUrl() }}/" class="d-block text-center pt-xl-5 pb-xl-5 border-secondary border mb-3 mt-3">
                                 <img width="120" src="/assets/images/people/{{ users[lecture.getUserId()].photo }}" class="img-thumbnail mr-4 rounded-circle pull-right">
 
                                 <img src="{{ lecture.getImage() }}" width="150">
-                            </div>
+                            </a>
 
                             {% if lecture.getPerex() %}
                                 <p>{{ lecture.getPerex()|raw }}</p>
