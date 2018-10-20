@@ -2,9 +2,9 @@
 id: 14
 title: "Continuous Integration a Continuous Delivery s&nbsp;Gitlab&nbsp;CI&nbsp;z&nbsp;0&nbsp;na&nbsp;100"
 image: "/assets/images/logos/gitlab.png"
-start: '2018-10-23 10:00:00'
-end: '2018-10-23 18:00:00'
-deadline: '2018-10-18 23:59:59'
+start: '2018-11-27 10:00:00'
+end: '2018-11-27 18:00:00'
+deadline: '2018-11-22 23:59:59'
 form_link: "https://goo.gl/forms/qa6ClNIjZLjlaVoD3"
 user: 32
 duration: "8 hodin"
