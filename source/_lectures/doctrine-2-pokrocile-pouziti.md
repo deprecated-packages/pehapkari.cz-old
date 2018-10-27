@@ -1,14 +1,16 @@
 ---
 id: 2
 title: "Doctrine 2 - Pokročilé použití"
-date: '2018-03-27 10:00:00'
-form_link: "https://goo.gl/forms/iNy3Q4QMfIRrwaWm1"
+form_link: "https://goo.gl/forms/WXCTPpyxfAJViC1H2"
 image: "/assets/images/logos/doctrine.png"
+start: '2018-11-26 10:00:00'
+end: '2018-11-26 18:00:00'
+deadline: '2018-11-20 23:59:59'
 user: 11
 duration: "8 hodin"
 price: 6999
-place_id: 2
-capacity: "10 lidí"
+place_id: 3
+capacity: "9 lidí"
 perex: "Jak efektivně propojit entity? Jak dělat s DQL složitější dotazy do databáze? A jak Doctrine dokáže optimalizovat množství dotazů do databáze a naopak, kdy ji musíme pomoci sami? To všem vám ukážu na mém školení."
 ---
 
