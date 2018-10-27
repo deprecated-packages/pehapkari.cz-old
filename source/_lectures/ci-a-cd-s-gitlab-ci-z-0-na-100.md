@@ -4,7 +4,7 @@ title: "Continuous Integration a Continuous Delivery s&nbsp;Gitlab&nbsp;CI&nbsp;
 image: "/assets/images/logos/gitlab.png"
 start: '2018-11-27 10:00:00'
 end: '2018-11-27 18:00:00'
-deadline: '2018-11-22 23:59:59'
+deadline: '2018-11-20 23:59:59'
 form_link: "https://goo.gl/forms/qa6ClNIjZLjlaVoD3"
 user: 32
 duration: "8 hodin"
