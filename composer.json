@@ -23,7 +23,7 @@
         "symfony/validator": "^4.1",
         "symplify/coding-standard": "^5.2",
         "symplify/easy-coding-standard": "^5.2",
-        "tomasvotruba/statie-tweet-publisher": "@dev"
+        "tomasvotruba/statie-tweet-publisher": "^1.7"
     },
     "autoload": {
         "psr-4": {
@@ -46,7 +46,5 @@
     },
     "config": {
         "sort-packages": true
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }
