@@ -10,14 +10,14 @@ final class ItemDetail
     private $productId;
 
     /**
-     * @var Price
-     */
-    private $price;
-
-    /**
      * @var int
      */
     private $amount;
+
+    /**
+     * @var Price
+     */
+    private $price;
 
     public function __construct(string $productId, Price $price, int $amount)
     {

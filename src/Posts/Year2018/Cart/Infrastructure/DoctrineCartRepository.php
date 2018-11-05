@@ -35,11 +35,6 @@ final class DoctrineCartRepository implements CartRepository
         $this->entityManger->remove($cart);
     }
 
-    private function find(string $id): ?Cart
-    {
-        return $this->entityManger->find(Cart::class, $id);
-    }
-
     private function getThrowingException(string $id): Cart
     {
         $cart = $this->find($id);
@@ -48,5 +43,10 @@ final class DoctrineCartRepository implements CartRepository
         }
 
         throw new CartNotFoundException();
+    }
+
+    private function find(string $id): ?Cart
+    {
+        return $this->entityManger->find(Cart::class, $id);
     }
 }
