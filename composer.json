@@ -3,7 +3,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
-        "symplify/statie": "^5.1"
+        "symplify/statie": "^5.2"
     },
     "require-dev": {
         "doctrine/annotations": "^1.6",
@@ -13,16 +13,16 @@
         "nette/application": "^2.4",
         "nette/forms": "^2.4",
         "nette/security": "^2.4",
-        "phpstan/phpstan": "^0.10.3",
-        "phpunit/phpunit": "^7.3",
+        "phpstan/phpstan": "^0.10.5",
+        "phpunit/phpunit": "^7.4",
         "spatie/http-status-check": "^2.5",
         "symfony/console": "^4.1",
         "symfony/event-dispatcher": "^4.1",
         "symfony/expression-language": "^4.1",
         "symfony/intl": "^4.1",
         "symfony/validator": "^4.1",
-        "symplify/coding-standard": "^5.1",
-        "symplify/easy-coding-standard": "^5.1",
+        "symplify/coding-standard": "^5.2",
+        "symplify/easy-coding-standard": "^5.2",
         "tomasvotruba/statie-tweet-publisher": "@dev"
     },
     "autoload": {
