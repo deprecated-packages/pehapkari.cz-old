@@ -88,10 +88,10 @@ require __DIR__ . '/vendor/autoload.php';
 
 use Symfony\Component\DomCrawler\Crawler;
 
-// crawling: 'https://www.meetup.com/topics/php/si/'
+// crawling Slovenia here: 'https://www.meetup.com/topics/php/si/'
 $code = 'si';
 
-$crawlUrl = sprintf('https://www.meetup.com/topics/%s/%s/', 'php', $code);
+$crawlUrl = 'https://www.meetup.com/topics/php/' . $code;
 $crawler = new Crawler(file_get_contents($crawlUrl));
 
 $meetupNames = [];
@@ -121,13 +121,42 @@ Events are stored with their location and rendered to Open Street Maps with amaz
 
 ## How much Does it Cost to Travel to abroad Meetup?
 
-There is [plenty of reasons not-to-go](https://www.tomasvotruba.cz/blog/2018/07/23/5-signs-should-never-have-a-talk-abroad/) visit PHP meetup abroad, but the one I hear the most **are money**:
+There is [plenty of reasons not-to-go](https://www.tomasvotruba.cz/blog/2018/07/23/5-signs-should-never-have-a-talk-abroad/) visit PHP meetup abroad, but the one I hear the most **are money**.
 
 To give you an idea, here **are costs of my trips from Prague** to cities nearby:
 
-- **Dresden** - 2 hours by train, 20 € return ticket
-- **Vienna** - 5 hours, 30 € ticket, sleep over at friend from meetup or AirBnb for 30 $
-- **Berlin** - 5 hours, 50 € ticket, sleep over at friend from meetup or AirBnb for 40 $
+<table class="table table-responsive table-bordered">
+    <thead class="table-inverse">
+        <tr>
+            <th class="text-center">City</th>
+            <th class="text-center">Travel Time</th>
+            <th class="text-center">Travel $</th>
+            <th class="text-center">Stay $</th>
+            <th class="text-center">Total $</th>
+        </tr>
+    </thead>
+    <tr>
+        <td><a href="https://www.meetup.com/PHP-USERGROUP-DRESDEN/">Dresden</a></td>
+        <td>2 hours</td>
+        <td>20 € </td>
+        <td>~ <span class="text-muted">(go home the same day)</span></td>
+        <td class="text-right"><strong>20 €</strong></td>
+    </tr>
+    <tr>
+        <td><a href="https://www.meetup.com/viennaphp/">Vienna</a></td>
+        <td>5 hours</td>
+        <td>30 € </td>
+        <td>30 € AirBnb / 0 $ friend from meetup</td>
+        <td class="text-right"><strong>30-60 €</strong></td>
+    </tr>
+    <tr>
+        <td><a href="https://www.meetup.com/Berlin-PHP-Usergroup/">Berlin</a></td>
+        <td>5 hours</td>
+        <td>50 €</td>
+        <td>40 € AirBnb / 0 $ friend from meetup</td>
+        <td class="text-right"><strong>40-90 €</strong></td>
+    </tr>
+</table>
 
 In the start, I had to pay Airbnb. But when you go to meetups more than once, you'll remember people, they'll remember you and they're very helpful with your following visits. **Just ask to stay over for one night on the floor**.
 
