@@ -276,7 +276,7 @@ h3 {
 
 #article blockquote {
     margin: 2em 1em;
-    font-size: 1em;
+    font-size: 1.3em;
 }
 
 .intermezzo {
@@ -516,4 +516,13 @@ footer #posobota-logo, footer #pehapkari-logo {
 .text-smaller {
     color: #555;
     font-size: 0.9em;
+}
+
+/* @see https://stackoverflow.com/a/50174132/1348344 */
+.container li {
+    margin-bottom: .6em;
+}
+
+.container li:last-child {
+    margin-bottom: 0;
 }
