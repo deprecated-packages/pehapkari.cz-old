@@ -304,8 +304,7 @@ Ale jinak je to bolest.
  * mock-builder se zase volá z&nbsp;kontextu – `$this->getMockBuilder(...)`,
  * mocky defaultně nezakrývají metody, takže když zapomenu metodu nadefinovat, zavolá se původní.
 * Samotný framework je hrozně složitý – když potřebuji zdebugovat nějaké divné chování, utápím se v&nbsp;tom.
-* Neumí paralelizaci out-of-the-box. Doporučuji podívat se na [tento článek](http://engineering.wayfair.com/2015/02/sweet-parallel-phpunit/).
-
+* Neumí paralelizaci out-of-the-box. Doporučuji podívat se na [tento článek](https://tech.wayfair.com/2015/02/sweet-parallel-phpunit/).
 
 ## Když musím používat PHPUnit
 

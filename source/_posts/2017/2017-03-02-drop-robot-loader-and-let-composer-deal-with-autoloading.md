@@ -51,9 +51,7 @@ And this is the place where **RobotLoader** (or any custom ultimate loader) **fa
 
 ## How to move to Composer in a Nette application?
 
-If you prefer reading commits, here is one [applying this](https://github.com/TomasVotruba/igloonet-se-skoli/pull/8/commits/10f389738ca1fef559ba9fd9509b36151cdaf400) on Nette sandbox.
-
-And if not, there are 2 levels of how to achieve this.
+There are 2 levels of how to achieve this.
 
 ### Level 1: Change your Composer
 
