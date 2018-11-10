@@ -44,7 +44,7 @@ Po pokecu s [Davidem Grudlem](https://twitter.com/geekovo) bude i **[Nette 3.0](
 
 [Ondra Mirtes](https://ondrej.mirtes.cz/) po letech testování v praxi open-sourcoval [PHPStan](https://github.com/phpstan/phpstan). **K dnešnímu dni má skoro 1400 hvězdiček na Githubu**.
 
-Sám ho už pár měsíců spokojeně používám a **[doporučuju nasadit aspoň do CI](/blog/2017/01/28/why-I-switched-scrutinizer-for-phpstan-and-you-should-too/)**.
+Sám ho už pár měsíců spokojeně používám a **[doporučuju nasadit aspoň do CI](https://www.tomasvotruba.cz/blog/2017/01/28/why-I-switched-scrutinizer-for-phpstan-and-you-should-too/)**.
 
 [Neon](https://ne-on.org/) už je známý formát a v příštím balíčku ho už použiju s klidem.
 
@@ -77,19 +77,16 @@ Každý týden [vyjde na blogu](https://pehapkari.cz/blog/) aspoň jeden článe
 
 ## Firmy si začínají uvědomovat, že je vzdělávání užitečné
 
-Chci zmínit 3 firmy, které různou formou podporují rozvoj PHP komunity a ještě tu sehrají velkou roli:
+Chci zmínit 2 firmy, které různou formou podporují rozvoj PHP komunity a ještě tu sehrají velkou roli:
 
-- **[OLAP](http://olap.cz/)** - firma tohoto typu tu už léta chyběla. HR se vzděláváním. Win-win-win pro všechny strany-  **díky Aničko za zapojení.**
 - **[ShopSys](https://www.shopsys.cz)** - **firma, která nás podporuje od samotného začátku. Za to jim patří velké díky - díky Petře**. A jedna z mála firem, kam bych doporučil jít. Ještě to minimálně půl roku potrvá, ale [ShopSys Framework](http://www.shopsys-framework.com/) bude další velký výkop ČR do světa.
-- Poslední **díky patří [Lmc](https://www.lmc.eu/)**, kde se zajímají nejen o práci, ale i o vzdělávání. Už jsme dlouho v kontaktu a myslím, že časem něco rozjedeme. **Díky Kubo za podnětné diskuse**.
+- Velké **díky patří [Lmc](https://www.lmc.eu/)**, kde se zajímají nejen o práci, ale i o vzdělávání. Už jsme dlouho v kontaktu a myslím, že časem něco rozjedeme. **Díky Kubo za podnětné diskuse**.
 
 
 
 ## Připravujeme komunitní školení
 
-Věřím, že je u nás **spousta šikovných školitelů**, kteří zatím spíše programují. Poslední rok jsem se s pár z nich bavil a plánoval školení v oblastech, kde jsou experti. **Témata jsou jasná, prostory také, už zbývá jen spustit přihlašování**...
-
-To je v plánu **hned po tom, jak vyhlásíme [výsledky psací soutěže](https://pehapkari.cz/napis-clanek-vem-si-darek/)**. Ať v tom máme pěkně pořádek :).
+Věřím, že je u nás **spousta šikovných školitelů**, kteří zatím spíše programují. Poslední rok jsem se s pár z nich bavil a plánoval školení v oblastech, kde jsou experti. **Témata jsou jasná, prostory také, už zbývá jen spustit přihlašování**.
 
 Zatím prozradím, že se můžete těšit na [Ondru Mirtese](https://ondrej.mirtes.cz/), [Tomáše Fejfara](https://www.tomasfejfar.cz/) nebo [Václava Makeše](https://www.makes.cz/).
 

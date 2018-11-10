@@ -44,7 +44,7 @@ Training will be done in English.
 
 - Installed min. PHP 7.1
 - Installed [PHPStorm](https://www.jetbrains.com/phpstorm/download/)
-- Working [Sylius-Standard edition](http://docs.sylius.com/en/latest/book/installation/index.html) installation (Vagrant\Docker\Native)
+- Working [Sylius-Standard edition](https://docs.sylius.com/en/latest/book/installation/index.html) installation (Vagrant\Docker\Native)
 - Basic Symfony knowledge
 
 ### Agenda

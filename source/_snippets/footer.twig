@@ -66,8 +66,8 @@
                     {% if post is defined or lecture is defined %}
                         {% set item = lecture ?? post %}
                         {% set githubEditLink %}{{ item|githubEditPostUrl }}{% endset %}
-                        {% elseif id is defined %}
-                        {% set githubEditLink %}{{ github_edit_url_start }}{{ githubLink = id . '.twig' }}{% endset %}
+                    {% elseif id is defined %}
+                        {% set githubEditLink %}{{ github_edit_url_start }}{{ id }}.twig{% endset %}
                     {% endif %}
 
                     {% if githubEditLink is defined %}
