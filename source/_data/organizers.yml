@@ -2,7 +2,7 @@ parameters:
     organizers:
         # Prague
         -
-            photo: tomas_votruba.jpg
+            photo: "https://avatars2.githubusercontent.com/u/924196?s=460&v=4"
             name: "Tomáš Votruba"
             responsibility: "vedení, komunikace, sponzoři, organizace srazů v Praze"
             url: https://tomasvotruba.cz

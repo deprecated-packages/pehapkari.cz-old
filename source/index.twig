@@ -86,11 +86,13 @@ id: index
         <div class="row" id="organizers">
             {% for organizer in organizers %}
                 <div class="col-lg-3 col-md-4 col-sm-4 col-6 mb-5">
-                    <img src="/assets/images/people/{{ organizer.photo }}" class="rounded-circle" width="150" height="150">
+                    {% set photoUrl %}{% if organizer.photo matches "#http#" %}{{ organizer.photo }}{% else %}/assets/images/people/{{ organizer.photo }}{% endif %}{% endset %}
+
+                    <img src="{{ photoUrl }}" class="rounded-circle" width="150" height="150">
                     <h3>
-                        <a n:tag-ifset="$organizer['url']" href="{{ organizer.url }}">
+                        {% if organizer.url is defined %}<a href="{{ organizer.url }}">{% endif %}
                             {{ organizer.name }}
-                        </a>
+                        {% if organizer.url is defined %}</a>{% endif %}
                     </h3>
                     <p>
                         {{ organizer.responsibility|raw }}
