@@ -51,7 +51,7 @@ parameters:
             photo: "https://avatars1.githubusercontent.com/u/313014?s=460&v=4"
             name: "Martin Hlaváč"
             responsibility: "organizace srazů v Českých Budějovicích"
-            url: http://hlavacm.net/
+            url: "https://www.hlavacm.net/"
 
         # Ostrava
         -
