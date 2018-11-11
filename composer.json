@@ -41,7 +41,7 @@
             "sh ./bin/clear_post_trailing_whitespaces.sh",
             "vendor/bin/ecs check src tests --fix"
         ],
-        "phpstan": "vendor/bin/phpstan analyse src tests --level max --configuration phpstan.neon",
+        "phpstan": "vendor/bin/phpstan analyse src tests --level max",
         "check-status": "vendor/bin/http-status-check scan https://pehapkari.cz --output invalid-links.txt"
     },
     "config": {
