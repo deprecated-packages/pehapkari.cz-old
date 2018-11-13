@@ -4,6 +4,6 @@ services:
     build:
       context: .docker
     volumes:
-      - .:/src
+      - .:/src:cached
     ports:
       - 8000:8000
