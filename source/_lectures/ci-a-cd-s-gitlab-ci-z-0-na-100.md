@@ -9,7 +9,7 @@ form_link: "https://goo.gl/forms/qa6ClNIjZLjlaVoD3"
 user: 32
 duration: "8 hodin"
 price: 5999
-place_id: 2
+place_id: 3
 capacity: "11 lidí"
 full: true
 
