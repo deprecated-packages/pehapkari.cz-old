@@ -149,13 +149,13 @@ final class LectureFile extends AbstractGeneratorFile
         return (int) $this->configuration['place_id'];
     }
 
-	public function isFull(): bool
-	{
-		if (isset($this->configuration['full'])) {
-			return (bool) $this->configuration['full'];
-		}
+    public function isFull(): bool
+    {
+        if (isset($this->configuration['full'])) {
+            return (bool) $this->configuration['full'];
+        }
 
-		return false;
+        return false;
     }
 
     private function getOptionAsDateTime(string $name): ?DateTimeInterface
