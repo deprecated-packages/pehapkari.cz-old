@@ -50,7 +50,7 @@
                                 </a>
                             {% endif %}
 
-                            {% if lecture.getDeadlineDateTime() %}
+                            {% if lecture.getDeadlineDateTime() and not lecture.isFull() %}
                                 <div class="card border-warning">
                                     <div class="card-body bg-warning">
                                         Uzavírka přihlášek:
@@ -100,12 +100,24 @@
                         </p>
                     {% endif %}
 
+                    {% if lecture.isFull() %}
+                        <div class="card text-white bg-danger text-center">
+                            <div class="card-body font-weight-bold">
+                                {% if lecture.isInEnglish() %}Term full{% else %}Termín zaplněn{% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+
                     {% if lecture.isActive() %}
                         <div class="text-center">
                             <a href="{{ lecture.getFormLink() }}" class="btn btn-success mt-4 mb-5">
                                 <em class="fa fa-fw fa-handshake-o"></em>
                                 &nbsp;
-                                {% if lecture.isInEnglish() %}Sign Up{% else %}Přihlásit se{% endif %}
+                                {% if lecture.isFull() %}
+                                    {% if lecture.isInEnglish() %}Sign Up For Next{% else %}Přihlásit se na další{% endif %}
+                                {% else %}
+                                    {% if lecture.isInEnglish() %}Sign Up{% else %}Přihlásit se{% endif %}
+                                {% endif %}
                             </a>
                         </div>
                     {% endif %}
