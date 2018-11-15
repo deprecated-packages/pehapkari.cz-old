@@ -76,7 +76,7 @@ lecture_references_limit: 4
                 </p>
                 <p>
                     {% for lecture in lectures %}
-                        {% if lecture.isActive() == false %}
+                        {% if lecture.isActive() == false and lecture.id != 7 %} {# id 7 is just a demo #}
                             <li>
                                 <a href="/{{ lecture.getRelativeUrl() }}/">{{ lecture.getTitle()|raw }}</a>
                             </li>
