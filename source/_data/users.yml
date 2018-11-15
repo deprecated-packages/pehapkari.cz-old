@@ -22,7 +22,7 @@ parameters:
         30:
             name: "Ondřej Mirtes"
             url: "https://ondrej.mirtes.cz/"
-            photo: "ondrej_mirtes.jpg"
+            photo: "https://avatars1.githubusercontent.com/u/104888?s=460&v=4"
         31:
             name: "Martin Hujer"
             url: "https://martinhujer.cz"
