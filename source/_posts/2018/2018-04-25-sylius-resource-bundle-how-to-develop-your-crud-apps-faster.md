@@ -242,7 +242,7 @@ php bin/console debug:router | grep product_bundle
 
 ![debug router output](/assets/images/posts/2018/sylius-resource-bundle/debug-router.png)
 
-> **Note**: You can now use your newly created API to manage your resource, but first you need to authenticate with OAuth2 according to Sylius documentation: http://docs.sylius.com/en/1.1/api/authorization.html and run the server app.
+> **Note**: You can now use your newly created API to manage your resource, but first you need to authenticate with OAuth2 according to Sylius documentation: https://docs.sylius.com/en/1.1/api/authorization.html and run the server app.
 
 As you can imagine, HTML-based management panel is also straightforward to set up.
 
@@ -253,9 +253,9 @@ As with every Symfony Bundle, you can reuse this logic in any Symfony app you wa
 
 If you would like to read a little bit more about ResourceBundle itself you can visit following links:
  
- * http://docs.sylius.com/en/1.1/components_and_bundles/components/Resource/index.html
- * http://docs.sylius.com/en/1.1/book/architecture/resource_layer.html
- * http://docs.sylius.com/en/1.1/components_and_bundles/bundles/SyliusResourceBundle/index.html
+ * https://docs.sylius.com/en/1.1/components_and_bundles/components/Resource/index.html
+ * https://docs.sylius.com/en/1.1/book/architecture/resource_layer.html
+ * https://docs.sylius.com/en/1.1/components_and_bundles/bundles/SyliusResourceBundle/index.html
 
 Furthermore, you can join me on May 11th in Prague for 8-hour training.
 I will show you how easy it is to add custom logic to Sylius based on a class we have just created.

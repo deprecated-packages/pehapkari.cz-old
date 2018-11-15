@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="cs">
-    {% include "_snippets/head.twig" %}
+    <head>
+        {% include "_snippets/head.twig" %}
+        {% include "_snippets/post/postSocialTags.twig" %}
+    </head>
 
     <body>
         {% include "_snippets/menu.twig" %}
@@ -58,17 +61,3 @@
         {% include "_snippets/googleAnalytics.twig" %}
     </body>
 </html>
-
-
-{% block socialTags %}
-    {# Facebook sharing #}
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="{{ post.title }}" />
-    <meta property="og:description" content="{{ post.perex|striptags }}" />
-    <meta property="og:url" content="{{ site_url }}/{{ post.relativeUrl }}/" />
-
-    {# Twitter sharing #}
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="{{ post.title }}" />
-    <meta name="twitter:description" content="{{ post.perex|striptags }}" />
-{% endblock %}

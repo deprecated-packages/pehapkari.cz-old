@@ -2,10 +2,10 @@
 id: 13
 title: "Agilní vývoj v praxi"
 image: "/assets/images/logos/agiledevelopment.png"
-start: '2018-10-18 10:00:00'
-end: '2018-10-18 18:00:00'
-deadline: '2018-10-13 23:59:59'
-form_link: "https://goo.gl/forms/mwgv6HF04Rsc9zSE2"
+start: '2018-11-29 10:00:00'
+end: '2018-11-29 18:00:00'
+deadline: '2018-11-20 23:59:59'
+form_link: "https://goo.gl/forms/87bNQyaGJl0qjXTH2"
 user: 35
 duration: "8 hodin"
 price: 4999

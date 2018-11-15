@@ -149,16 +149,13 @@ final class LectureFile extends AbstractGeneratorFile
         return (int) $this->configuration['place_id'];
     }
 
-    private function ensurePlaceIsSet(): void
+    public function isFull(): bool
     {
-        if (isset($this->configuration['place_id'])) {
-            return;
+        if (isset($this->configuration['full'])) {
+            return (bool) $this->configuration['full'];
         }
 
-        throw new LectureConfigurationException(sprintf(
-            '%s is missing "place_id" value, add it.',
-            $this->getFilePath()
-        ));
+        return false;
     }
 
     private function getOptionAsDateTime(string $name): ?DateTimeInterface
@@ -172,5 +169,17 @@ final class LectureFile extends AbstractGeneratorFile
         }
 
         return null;
+    }
+
+    private function ensurePlaceIsSet(): void
+    {
+        if (isset($this->configuration['place_id'])) {
+            return;
+        }
+
+        throw new LectureConfigurationException(sprintf(
+            '%s is missing "place_id" value, add it.',
+            $this->getFilePath()
+        ));
     }
 }

@@ -1,49 +1,47 @@
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <meta name="description" content="Oficiální stránky PHP komunity">
-    <meta name="keywords" content="PHP, komunita, programování">
-    <meta name="author" content="https://pehapkari.cz">
-    <meta name="robots" content="index, follow">
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
 
-    {# socials #}
-    <meta property="og:image" content="/images/php-square.png">
-    <meta property="fb:pages" content="918297778220033" />
-    {% block socialTags %}
-    {% endblock %}
+{# socials #}
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+{% block socialTags %}
+{% endblock %}
 
-    {# mobile #}
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+{# mobile #}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
 
-    <link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
 
-    {# Font Awesome - locally for css classes autocomplete #}
-    <link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+{# Font Awesome - locally for css classes autocomplete #}
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-    {# Twitter Bootstrap - locally for css classes autocomplete #}
-    <link href="/assets/bootstrap/bootstrap.min.css?v={{ random() }}" rel="stylesheet" type="text/css" />
+{# Twitter Bootstrap - locally for css classes autocomplete #}
+<link href="/assets/bootstrap/bootstrap.min.css?v={{ random() }}" rel="stylesheet" type="text/css" />
 
-    {# css #}
-    <link href="/assets/prism/prism.css?v={{ random() }}" rel="stylesheet" type="text/css" />
-    <link href="/assets/prism/prism-custom.css?v={{ random() }}" rel="stylesheet" type="text/css" />
+{# css #}
+<link href="/assets/prism/prism.css?v={{ random() }}" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v={{ random() }}" rel="stylesheet" type="text/css" />
 
-    <link href="/assets/css/style.css?v={{ random() }}" rel="stylesheet" type="text/css" />
+<link href="/assets/css/style.css?v={{ random() }}" rel="stylesheet" type="text/css" />
 
-    <link href="/favicon.ico" rel="shortcut icon">
+<link href="/favicon.ico" rel="shortcut icon">
 
-    <title>{% if title is defined %}{{ title }} {% else %}{{ page_title }}{% endif %}</title>
-    <!-- Hotjar Tracking Code for pehapkari.cz -->
+<title>{% if title is defined %}{{ title|raw }} {% else %}{{ page_title }}{% endif %}</title>
+<!-- Hotjar Tracking Code for pehapkari.cz -->
 <script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:1048031,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-    </script>
-</head>
+(function(h,o,t,j,a,r){
+    h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+    h._hjSettings={hjid:1048031,hjsv:6};
+    a=o.getElementsByTagName('head')[0];
+    r=o.createElement('script');r.async=1;
+    r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+    a.appendChild(r);
+})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
