@@ -4,15 +4,15 @@ parameters:
         1:
             name: "Tomáš Votruba"
             url: "https://tomasvotruba.com"
-            photo: "tomas_votruba.jpg"
+            photo: "https://avatars2.githubusercontent.com/u/924196?s=460&v=4"
         6:
             name: "Tomáš Fejfar"
             url: "https://www.tomasfejfar.cz/"
-            photo: "tomas_fejfar.jpg"
+            photo: "https://avatars1.githubusercontent.com/u/642928?s=460&v=4"
         11:
             name: "Tomáš Pilař"
             url: "https://www.tomaspilar.cz/"
-            photo: "tomas_pilar.jpg"
+            photo: "https://avatars0.githubusercontent.com/u/8326937?s=460&v=4"
             # for lectors
             bio: "Již třetím rokem se jako senior programátor podílím na vývoji první internetové lékárny <a href='https://www.lekarna.cz'>Lekarna.cz</a>"
         28:

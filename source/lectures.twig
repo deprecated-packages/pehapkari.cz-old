@@ -31,7 +31,10 @@ lecture_references_limit: 4
                             </h2>
 
                             <div class="text-center pt-xl-5 pb-xl-5 border-secondary border mb-3 mt-3">
-                                <img width="120" src="/assets/images/people/{{ users[lecture.getUserId()].photo }}" class="img-thumbnail mr-4 rounded-circle pull-right">
+                                {% set rawUsePhoto = users[lecture.getUserId()].photo %}
+                                {% set photoUrl %}{% if rawUsePhoto matches "#http#" %}{{ rawUsePhoto }}{% else %}/assets/images/people/{{ rawUsePhoto }}{% endif %}{% endset %}
+
+                                <img width="120" src="{{ photoUrl }}" class="img-thumbnail mr-4 rounded-circle pull-right">
 
                                 <img src="{{ lecture.getImage() }}" width="150">
                             </div>
