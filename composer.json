@@ -42,7 +42,8 @@
             "vendor/bin/ecs check src tests --fix"
         ],
         "phpstan": "vendor/bin/phpstan analyse src tests --level max",
-        "check-status": "vendor/bin/http-status-check scan https://pehapkari.cz --output invalid-links.txt"
+        "check-status": "vendor/bin/http-status-check scan https://pehapkari.cz --output invalid-links.txt",
+        "build-assets": "bin/build_assets.sh"
     },
     "config": {
         "sort-packages": true
