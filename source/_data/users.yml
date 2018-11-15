@@ -38,7 +38,7 @@ parameters:
         34:
             name: "Vladimír Macháček"
             url: "https://machy8.com/"
-            photo: "vladimir_machacek.jpg"
+            photo: "https://machy8.com/assets/front/images/vladimir-machacek-500x500.jpg?v1"
             email: "8machy@seznam.cz"
             phone: "720 731 963"
         99:
