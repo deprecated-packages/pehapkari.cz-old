@@ -2,8 +2,7 @@
 
 # get from repository, clone, download and build paths
 
-# 1. clone design
-git clone https://github.com/pehapkari/web new-design --depth 1
+# 1. move to new design
 cd new-design
 
 # 2. install dependencies
@@ -16,14 +15,11 @@ npm run production
 
 cd ..
 
-# 4. update paths ("src/images" => "assets/images")
-sed -i -e 's/src\/images/assets\/images/g' new-design/dist/app.css
-
-# 5. copy assets
+# 4. copy assets
 cp new-design/dist/app.css source/assets/css/app.css
 cp new-design/dist/app.js source/assets/js/app.js
 cp -rf new-design/src/icons source/assets
 cp -rf new-design/src/images source/assets
 
-# 6. cleanup
-rm -rf new-design
+# 5. update paths ("src/images" => "assets/images")
+sed -i -e 's/src\/images/assets\/images/g' source/assets/css/app.css
