@@ -5,3 +5,16 @@
 composer.lock
 package-lock.json
 /config/config.local.yml
+
+# generated
+source/assets/css/app.css
+source/assets/js/app.js
+source/assets/images/background
+source/assets/images/homepage
+source/assets/images/sponsor
+source/assets/images/courses
+source/assets/images/livestreams
+source/assets/icons
+new-design/dist/app.css
+new-design/dist/app.js
+new-design/node_modules
