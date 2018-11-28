@@ -3,21 +3,26 @@ language: php
 matrix:
     include:
         - php: 7.2
-          env: ECS=1 TWEET=1
-        - php: 7.2
-          env: PHPSTAN=1
+          env: STATIC_ANAL=true TWEET=true
         - php: 7.2
           env: PHPUNIT_FLAGS="--coverage-clover coverage.xml"
+        - php: 7.2
+          env: FRONT_END=true
+        - php: 7.3
+          env: COMPOSER_FLAGS="--ignore-platform-reqs"
 
 install:
-    - composer install
+    - composer install $COMPOSER_FLAGS
 
 script:
     # run tests for tested posts (with "tested: true" in header configuration)
     - vendor/bin/phpunit $PHPUNIT_FLAGS
     # check code standard (defined in composer.json "scripts" section)
-    - if [[ $ECS = 1 ]]; then composer check-cs; fi
-    - if [[ $PHPSTAN = 1 ]]; then composer phpstan; fi
+    - |
+        if [[ $STATIC_ANAL == true ]]; then
+            composer check-cs
+            composer phpstan
+        fi
     # test that website is generated
     - vendor/bin/statie generate source
 
