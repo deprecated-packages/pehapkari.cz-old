@@ -18,7 +18,10 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-4">
-                            <img width="100" src="/assets/images/people/{{ users[lecture.getUserId()].photo }}" alt="" class="img-thumbnail mb-3 rounded-circle pull-left mr-3">
+                            {% set rawUsePhoto = users[lecture.getUserId()].photo %}
+                            {% set photoUrl %}{% if rawUsePhoto matches "#http#" %}{{ rawUsePhoto }}{% else %}/assets/images/people/{{ rawUsePhoto }}{% endif %}{% endset %}
+
+                            <img width="100" src="{{  photoUrl }}" alt="" class="img-thumbnail mb-3 rounded-circle pull-left mr-3">
                         </div>
 
                         <div class="col-md">

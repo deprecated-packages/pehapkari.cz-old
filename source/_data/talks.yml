@@ -50,7 +50,7 @@ parameters:
             time: '14:20'
             speaker: "Jan Mikeš"
             speaker_url: "https://janmikes.cz/"
-            speaker_photo: "https://janmikes.cz/img/jan_mikes.jpg"
+            speaker_photo: "https://avatars1.githubusercontent.com/u/3995003?s=460&v=4"
             talk: "The Simplest Gitlab CI Pipeline Ever"
             slides: "https://www.slideshare.net/JanMike3/php-prague-2018-the-simplest-gitlab-ci-pipeline-ever"
             video: "https://www.youtube.com/watch?v=HG0HgeUDbR8"
@@ -74,7 +74,7 @@ parameters:
             time: '17:00'
             speaker: "Tomas Votruba"
             speaker_url: "https://tomasvotruba.com/"
-            speaker_photo: "https://images.naucmese.cz/w300-q100/users/5ktz4jzb9yj-talking-square.jpg"
+            speaker_photo: "https://avatars2.githubusercontent.com/u/924196?s=460&v=4"
             talk: "Why Your Company Loses Money By Not-Open-Sourcing"
             slides: "https://docs.google.com/presentation/d/1kYpsn_ZAR_Q2A7WYqBIjeVIjdKe67W_d0PTHVgsvMo4/edit?usp=sharing"
             video: "https://www.youtube.com/watch?v=suscn1HeRAc"
@@ -82,6 +82,6 @@ parameters:
             time: '17:40'
             speaker: "Michal Špaček"
             speaker_url: "https://www.michalspacek.cz/"
-            speaker_photo: "https://pbs.twimg.com/profile_images/2486136032/48y4qlw7i7u0wed6q4ju_400x400.jpeg"
+            speaker_photo: "https://avatars2.githubusercontent.com/u/1966648?s=460&v=4"
             talk: "Everything is User Input"
             slides: "https://www.michalspacek.com/talks/everything-is-user-input-phpprague"

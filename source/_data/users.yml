@@ -4,15 +4,15 @@ parameters:
         1:
             name: "Tomáš Votruba"
             url: "https://tomasvotruba.com"
-            photo: "tomas_votruba.jpg"
+            photo: "https://avatars2.githubusercontent.com/u/924196?s=460&v=4"
         6:
             name: "Tomáš Fejfar"
             url: "https://www.tomasfejfar.cz/"
-            photo: "tomas_fejfar.jpg"
+            photo: "https://avatars1.githubusercontent.com/u/642928?s=460&v=4"
         11:
             name: "Tomáš Pilař"
             url: "https://www.tomaspilar.cz/"
-            photo: "tomas_pilar.jpg"
+            photo: "https://avatars0.githubusercontent.com/u/8326937?s=460&v=4"
             # for lectors
             bio: "Již třetím rokem se jako senior programátor podílím na vývoji první internetové lékárny <a href='https://www.lekarna.cz'>Lekarna.cz</a>"
         28:
@@ -22,7 +22,7 @@ parameters:
         30:
             name: "Ondřej Mirtes"
             url: "https://ondrej.mirtes.cz/"
-            photo: "ondrej_mirtes.jpg"
+            photo: "https://avatars1.githubusercontent.com/u/104888?s=460&v=4"
         31:
             name: "Martin Hujer"
             url: "https://martinhujer.cz"
@@ -38,7 +38,7 @@ parameters:
         34:
             name: "Vladimír Macháček"
             url: "https://machy8.com/"
-            photo: "vladimir_machacek.jpg"
+            photo: "https://machy8.com/assets/front/images/vladimir-machacek-500x500.jpg?v1"
             email: "8machy@seznam.cz"
             phone: "720 731 963"
         99:
