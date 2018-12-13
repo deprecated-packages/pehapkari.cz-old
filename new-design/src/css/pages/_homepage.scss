@@ -1,0 +1,281 @@
+.homepage {
+  .ph-heading__background {
+    height: 400px;
+    margin-top: 46px;
+    background-image: url(/src/images/homepage/1@2x.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .ph-heading {
+    .ph-heading__title {
+      margin-bottom: 45px;
+    }
+
+    .ph-heading__subtitle {
+      max-width: 350px;
+    }
+
+    .ph-button {
+      display: none;
+    }
+  }
+
+  .ph-first-col {
+    margin-bottom: 45px;
+
+    .ph-button-secondary {
+      display: none;
+    }
+  }
+
+  .ph-bg-banner {
+    background-image: url(/src/images/background/slacks@2x.jpg);
+    background-repeat: no-repeat;
+    background-size: 700px 312px;
+    background-position-y: 356px;
+  }
+
+  .ph-icon-social {
+    display: flex;
+    height: 60px;
+    background-color: $grey;
+
+    img {
+      max-width: 25px;
+      max-height: 25px;
+      width: 100%;
+      margin: auto;
+    }
+  }
+
+  .ph-flex-column {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+
+    .ph-button-secondary {
+      margin-top: auto;
+    }
+  }
+
+  .ph-button-secondary {
+    margin-top: 80px;
+  }
+
+  .ph-counter-col {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 350px;
+    margin-top: 55px;
+
+    @media (min-width: 460px) {
+      height: 410px;
+    }
+
+    .ph-counter {
+      width: 100%;
+
+      &:first-of-type {
+        padding-bottom: 18px;
+      }
+      &:nth-of-type(2nd) {
+        padding-top: 18px;
+      }
+    }
+  }
+
+  .ph-reverse-section {
+    .ph-second-col {
+      .ph-button-secondary {
+        margin-top: 160px;
+      }
+    }
+  }
+
+  .ph-column {
+    margin-bottom: 210px;
+    position: initial;
+    margin-top: 40px;
+
+    @media (min-width: 800px) {
+      margin-bottom: 0;
+    }
+
+
+    .ph-column__wrapper {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      min-width: 350px;
+
+      @media (min-width: 800px) {
+        position: relative;
+      }
+    }
+  }
+
+  .card-livestream {
+    width: 100%;
+
+    .ph-card__body {
+      width: 100%;
+    }
+
+    .ph-card__body-main {
+      max-width: 65%;
+      width: 100%;
+    }
+
+    .ph-card__body-link {
+      display: none;
+    }
+  }
+
+  .ph-icon-row {
+    margin-top: 75px;
+    .ph-icon-col {
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-bottom: 30px;
+    }
+  }
+}
+
+@include media-breakpoint-up(sm)  {
+
+  .homepage {
+    .ph-heading__background {
+      background-size: cover;
+    }
+
+    .ph-icon-social {
+      display: flex;
+      height: 136px;
+
+      img {
+        max-width: 50px;
+        max-height: 50px;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+
+}
+
+@include media-breakpoint-up(lg) {
+
+  .homepage {
+    .ph-heading {
+
+      .ph-button {
+        display: block;
+        margin-top: auto;
+      }
+
+      .ph-heading_col {
+        height: 588px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .ph-heading__title {
+        max-width: 760px;
+        margin: 55px 0 35px 0;
+        letter-spacing: 1px;
+      }
+    }
+
+    .ph-flex-column {
+      height: 360px;
+      margin-bottom: 0;
+    }
+
+    .ph-first-col {
+      margin-bottom: 0;
+    }
+
+    .ph-counter-col {
+      height: auto;
+      margin-top: 0;
+
+      .ph-counter {
+        width: 50%;
+      }
+    }
+
+    .ph-bg-banner {
+      background-image: url(/src/images/background/slacks@2x.jpg);
+      background-repeat: no-repeat;
+      background-position: left;
+      background-size: 749px 311px;
+    }
+
+    .card-livestream {
+      position: relative;
+      padding: 40px;
+      height: 250px;
+
+      .ph-card__body {
+        height: 160px;
+
+        .ph-card__body-main {
+          padding: 0;
+        }
+
+        .ph-card__body-link {
+          display: block;
+        }
+        .ph-card__body-date-col {
+          max-width: 125px;
+        }
+      }
+    }
+    .ph-column {
+      margin-bottom: 0;
+
+      .ph-column__wrapper {
+        position: relative;
+        width: 100%;
+        left: 0;
+        padding: 0;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(xl) {
+
+  .homepage {
+
+    .ph-heading__background {
+      position: absolute;
+      height: 588px;
+      right: 0;
+      background-image: url(/src/images/homepage/1@2x.jpg);
+      max-height: initial;
+      width: 705px;
+      background-position: 50% 50%;
+      background-size: cover;
+      margin-top: 0;
+      top: 190px;
+      z-index: -1;
+
+      @media (min-width: 1400px){
+        width: 882px;
+      }
+    }
+
+    .ph-icon-row {
+      margin-top: 60px;
+      .ph-icon-col {
+        padding-right: 20px;
+        padding-left: 20px;
+        margin-bottom: 0;
+      }
+    }
+  }
+}

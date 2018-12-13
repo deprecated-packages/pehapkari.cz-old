@@ -1,0 +1,13 @@
+.meetups {
+  .ph-scroll__row {
+    margin-top: 70px;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .meetups {
+    .ph-calendar-row {
+      margin-top: 150px;
+    }
+  }
+}

@@ -1,0 +1,118 @@
+.ph-card {
+  box-shadow: 0 8px 32px 0 rgba(16, 14, 28, 0.1);
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-clip: border-box;
+  border: none;
+  border-radius: 0;
+}
+
+.ph-card__body-date {
+  height: 64px;
+  width: 64px;
+  line-height: 21px;
+  padding: 10px 0;
+  box-shadow: 0 8px 32px 0 rgba(16, 14, 28, 0.1);
+  background-color: $white;
+  text-align: center;
+  color: $black;
+
+  .ph-card__body-date-day {
+    font-family: $font-family-secondary;
+    font-size: 28px;
+    text-align: center;
+    display: block;
+  }
+
+  .ph-card__body-date-month {
+    opacity: 0.9;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 1px;
+    line-height: 30px;
+    display: block;
+  }
+}
+
+.card-calendar {
+  .card-calendar__img-top {
+    height: 200px;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .card-calendar__body {
+    padding: 24px 30px;
+
+    .ph-card__body-date {
+      position: absolute;
+      top: 168px;
+      right: 15px;
+    }
+  }
+
+  .card-calendar__body-title {
+    font-family: $font-family-secondary;
+    width: 100%;
+    color: $black!important;
+
+    &:hover {
+      text-decoration-color: black;
+    }
+  }
+
+  .card-calendar__body-address {
+    display: block;
+    font-size: $font-size-s;
+    opacity: $font-opacity-high;
+    line-height: 24px;
+    cursor: pointer;
+    margin-top: 45px;
+    color: $black;
+    word-wrap: break-word;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    img {
+      float: right;
+    }
+  }
+}
+
+.card-livestream {
+  padding: 40px;
+
+  .ph-card__body {
+    .ph-card__body-main {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ph-card__body-date-col {
+      max-width: 85px;
+      width: 100%;
+    }
+
+    .ph-card__body-title {
+      line-height: 32px;
+    }
+
+    .ph-card__body-link {
+      text-transform: uppercase;
+      margin-top: auto;
+      color: $facebook;
+      font-size: $font-size-s;
+      font-weight: 600;
+      line-height: 20px;
+      letter-spacing: 1px;
+    }
+  }
+}

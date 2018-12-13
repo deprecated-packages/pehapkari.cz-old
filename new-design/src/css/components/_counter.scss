@@ -1,0 +1,18 @@
+.ph-counter {
+  .ph-counter__number {
+    line-height: 40px;
+  }
+
+  .ph-counter__body {
+    font-weight: 500;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .ph-counter {
+    .ph-counter__number {
+      line-height: 48px;
+    }
+  }
+
+}

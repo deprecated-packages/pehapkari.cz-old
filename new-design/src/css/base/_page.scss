@@ -1,0 +1,43 @@
+.ph-section {
+  padding: 87px 0;
+}
+
+.ph-section-first {
+  padding: 150px 0 87px 0;
+}
+
+.ph-section-footer {
+  padding-top: 113px;
+  padding-bottom: 0;
+}
+
+.ph-justify-flex-end {
+  justify-content: flex-end;
+}
+
+.container {
+  padding-left: 52px;
+  padding-right: 52px;
+}
+
+@include media-breakpoint-up(lg) {
+
+  .ph-section {
+    padding: 140px 0;
+  }
+
+  .ph-section-first {
+    padding: 190px 0 140px 0;
+  }
+
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .ph-section-footer {
+    padding-top: 180px;
+    padding-bottom: 0;
+  }
+
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="15px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>twitch_White</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="element/footer" transform="translate(-1092.000000, -121.000000)" fill="#FFFFFF">
+            <g id="content">
+                <g>
+                    <g id="socials" transform="translate(955.000000, 120.000000)">
+                        <g id="twitch" transform="translate(137.000000, 1.000000)">
+                            <path d="M1.43509615,0.461538462 L0.461538462,2.91733639 L0.461538462,12.9540758 L3.92307692,12.9540758 L3.92307692,14.7692308 L5.87019231,14.7692308 L7.70913462,12.9540758 L10.5216346,12.9540758 L14.3076923,9.21699196 L14.3076923,0.461538462 L1.43509615,0.461538462 Z M12.9230769,8.5727342 L10.8076923,10.6747906 L7.42307692,10.6747906 L5.625,12.4615385 L5.625,10.6747906 L2.76923077,10.6747906 L2.76923077,1.84615385 L12.9230769,1.84615385 L12.9230769,8.5727342 Z M11.0769231,4.15384615 L11.0769231,7.84615385 L9.69230769,7.84615385 L9.69230769,4.15384615 L11.0769231,4.15384615 Z M7.38461538,4.15384615 L7.38461538,7.84615385 L6,7.84615385 L6,4.15384615 L7.38461538,4.15384615 Z" id="Combined-Shape"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

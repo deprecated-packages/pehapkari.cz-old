@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="49px" height="34px" viewBox="0 0 49 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>elephant</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="34.807%" y1="37.5992453%" x2="89.864%" y2="49.8669796%" id="linearGradient-1">
+            <stop stop-color="#90D261" offset="0%"></stop>
+            <stop stop-color="#4A81D7" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="11.6639105%" y1="33.7195648%" x2="96.5636259%" y2="45.3011359%" id="linearGradient-2">
+            <stop stop-color="#90D261" offset="0%"></stop>
+            <stop stop-color="#4A81D7" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="0%" x2="60.6651066%" y2="96.7368762%" id="linearGradient-3">
+            <stop stop-color="#90D261" offset="0%"></stop>
+            <stop stop-color="#4A81D7" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0.167%" y1="78.5936895%" x2="87.723%" y2="18.6523077%" id="linearGradient-4">
+            <stop stop-color="#90D261" offset="0%"></stop>
+            <stop stop-color="#4A81D7" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="7.811%" y1="34.3199025%" x2="116.903%" y2="50.2672795%" id="linearGradient-5">
+            <stop stop-color="#90D261" offset="0%"></stop>
+            <stop stop-color="#4A81D7" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="100%" x2="78.2324724%" y2="36.7846194%" id="linearGradient-6">
+            <stop stop-color="#90D261" offset="0%"></stop>
+            <stop stop-color="#4A81D7" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="30.546%" y1="40.7423007%" x2="85.479%" y2="52.6931489%" id="linearGradient-7">
+            <stop stop-color="#90D261" offset="0%"></stop>
+            <stop stop-color="#4A81D7" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="24.945%" y1="82.473172%" x2="88.75%" y2="23.3332355%" id="linearGradient-8">
+            <stop stop-color="#90D261" offset="0%"></stop>
+            <stop stop-color="#4A81D7" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="element/footer" transform="translate(-53.000000, -70.000000)" fill-rule="nonzero">
+            <g id="content">
+                <g>
+                    <g id="menu/light" transform="translate(53.000000, 70.000000)">
+                        <g id="logo">
+                            <g id="elephant">
+                                <g id="Group">
+                                    <polygon id="Shape" fill="url(#linearGradient-1)" points="48.9687441 15.1119904 41.5286866 33.761236 33.5387503 33.761236 21.03004 10.0608347 27.0547041 0.220208668"></polygon>
+                                    <polygon id="Shape" fill="url(#linearGradient-2)" points="16.1901124 17.6797271 20.4567091 33.7792456 27.0516692 33.7792456 33.5870337 20.7282665 26.3765293 10.7572071"></polygon>
+                                    <path d="M0.0734752183,15.6528234 L3.33961824,25.4235897 L0.437234067,25.597671 C0.437234067,25.597671 0.0081387934,15.8174649 0.0734752183,15.6528234 Z" id="Shape" fill="url(#linearGradient-3)"></path>
+                                    <polygon id="Shape" fill="url(#linearGradient-4)" points="8.74150187 10.3394382 8.22693883 23.7519743 15.5066954 23.7519743 27.0315281 0.212295345 12.7385393 4.53651685"></polygon>
+                                    <polygon id="Shape" fill="url(#linearGradient-5)" points="0.423238452 25.6047833 7.76921223 24.8309149 6.98067541 32.476549 2.35153933 30.0089567"></polygon>
+                                    <polygon id="Shape" fill="url(#linearGradient-6)" points="12.436975 23.8245586 8.69625343 10.4278491 6.99336704 32.5049278"></polygon>
+                                    <polygon id="Shape" fill="url(#linearGradient-7)" points="27.0326317 0.172182986 33.4730849 2.24301766 33.4730849 11.0303531 16.9780974 20.7187159"></polygon>
+                                    <polygon id="Shape" fill="url(#linearGradient-8)" points="41.5846954 33.761236 48.9797803 15.1054414 33.4730849 33.761236"></polygon>
+                                    <path d="M12.2566798,16.1149928 C12.2566798,16.5586367 12.7339647,16.9239269 13.3171197,16.9239269 L15.4645356,16.9239269 L15.4645356,14.4711869 C15.4645356,14.0797788 14.9873422,13.6622528 14.4306319,13.6622528 L12.2566798,13.6622528 L12.2566798,16.1149928 Z M12.0711097,22.5599874 L12.6543562,25.8476893 C12.7604093,26.526124 12.7869455,28.3786929 11.302293,28.7440732 C11.8325587,29.1615091 12.4953222,29.2920085 12.9725156,29.2920085 C14.9873422,29.2920085 15.4645356,27.752494 15.4645356,25.508517 L15.4645356,23.5515666 C15.4645356,22.8731318 14.9608061,22.5599874 14.3245787,22.5599874 L12.9459794,22.5599874 L12.0711097,22.5599874 Z" id="Shape" fill="#100E1C"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
