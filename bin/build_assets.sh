@@ -8,7 +8,8 @@ cd new-design
 # 2. install dependencies
 # might be needed: "apt-get install libpng-dev"
 sudo apt-get install libpng-dev
-npm install
+
+npm install --no-optional # due to bug on Xubuntu: https://stackoverflow.com/a/37645484/1348344
 
 # 3. generate app.css + app.js files
 npm run production
