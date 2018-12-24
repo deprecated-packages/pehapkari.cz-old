@@ -18,3 +18,8 @@ source/assets/icons
 new-design/dist/app.css
 new-design/dist/app.js
 new-design/node_modules
+
+.idea
+npm-debug.log
+new-design/npm-debug.log
+
