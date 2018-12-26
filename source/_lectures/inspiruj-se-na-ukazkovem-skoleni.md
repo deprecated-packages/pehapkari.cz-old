@@ -1,6 +1,10 @@
 ---
 id: 7
-title: "Jak vytvořit první školení jako seniorní školitel"
+title: "(Test) Jak vytvořit první školení jako seniorní školitel"
+
+start: '2019-11-26 10:00:00'
+end: '2019-11-26 18:00:00'
+deadline: '2019-11-20 23:59:59'
 
 # číslo uživatele v users.yml
 user: 99
