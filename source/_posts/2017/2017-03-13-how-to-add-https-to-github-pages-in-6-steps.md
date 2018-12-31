@@ -11,6 +11,8 @@ related_items: [18]
 tweet: "Post from Community Blog: How to add #HTTPS to #GitHub Pages in 6 Steps #cloudflare"
 ---
 
+## WARNING: This post is now DEPRECATED, custom domains on GitHub pages support HTTPS directly since May 2018. Check [this GitHub blog for more information](https://blog.github.com/2018-05-01-github-pages-custom-domains-https/).
+
 This site now runs on HTTPS, see: [https://pehapkari.cz/](https://pehapkari.cz) thanks to [Michal Špaček](https://www.michalspacek.com) who added [a simple how-to manual](https://github.com/pehapkari/pehapkari.cz/issues/162#issuecomment-272590505) to the GitHub issue. I will try to expand it here.
 
 <h3>HTTPS is <strike>Hard</strike> Easy!</h3>
