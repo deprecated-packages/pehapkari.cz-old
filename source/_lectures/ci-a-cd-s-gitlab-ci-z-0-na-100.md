@@ -2,15 +2,15 @@
 id: 14
 title: "Continuous Integration a Continuous Delivery s&nbsp;Gitlab&nbsp;CI&nbsp;z&nbsp;0&nbsp;na&nbsp;100"
 image: "/assets/images/logos/gitlab.png"
-start: '2018-11-27 10:00:00'
-end: '2018-11-27 18:00:00'
-deadline: '2018-11-20 23:59:59'
-form_link: "https://goo.gl/forms/qa6ClNIjZLjlaVoD3"
+start: '2019-02-05 10:00:00'
+end: '2019-02-05 18:00:00'
+deadline: '2019-01-31 23:59:59'
+form_link: "https://goo.gl/forms/zXtR20WQB2IZpiTk1"
 user: 32
 duration: "8 hodin"
 price: 5999
 place_id: 3
-capacity: "11 lidí"
+capacity: "9 lidí"
 full: true
 
 # 2-3 věty
