@@ -1,14 +1,16 @@
 ---
 id: 5
-form_link: "https://goo.gl/forms/Lhjj0p6dEJAaegfi2"
+form_link: "https://goo.gl/forms/vdxGTTcVijgmBl4p1"
 title: "Elasticsearch - Začínáme vyhledávat"
 image: "/assets/images/logos/elasticsearch.svg"
-date: 2018-01-30
+start: '2019-02-04 10:00:00'
+end: '2019-02-04 18:00:00'
+deadline: '2019-01-31 23:59:59'
 user: 11
 duration: "8 hodin"
-price: 4999
+price: 5999
 place_id: 2
-capacity: "10 lidí"
+capacity: "9 lidí"
 
 # 2-3 věty
 perex: 'Naučte se používat <a href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a> od samotné instalace, přes plnění daty až po vlastní fulltextové vyhledávání. Odhalíme problematiku vyhledávání a řekneme si, proč použít právě Elasticsearch.'
