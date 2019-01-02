@@ -11,7 +11,6 @@ duration: "8 hodin"
 price: 5999
 place_id: 3
 capacity: "9 lidí"
-full: true
 
 # 2-3 věty
 perex: 'Stále děláš deploye ručně? Na školení se naučíme jak si nechat kód automaticky testovat, například pomocí PHPStanu nebo Code Snifferu a plně zautomatizujeme deploy - vytvoříme společně “Build → Test → Deploy” pipeline, to vše pomocí Gitlab CI.  Šetřete díky CI a CD čas a tím zvyšte efektivitu i svou cenu!'
