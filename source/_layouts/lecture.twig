@@ -103,13 +103,13 @@
                         </p>
                     {% endif %}
 
-                    {% if lecture.isFull() %}
+                    {*{% if lecture.isFull() %}
                         <div class="card text-white bg-danger text-center">
                             <div class="card-body font-weight-bold">
                                 {% if lecture.isInEnglish() %}Term full{% else %}Termín zaplněn{% endif %}
                             </div>
                         </div>
-                    {% endif %}
+                    {% endif %}*}
 
                     {% if lecture.isActive() %}
                         <div class="text-center">
