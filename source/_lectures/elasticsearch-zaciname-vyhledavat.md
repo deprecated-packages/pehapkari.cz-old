@@ -9,7 +9,7 @@ deadline: '2019-01-31 23:59:59'
 user: 11
 duration: "8 hodin"
 price: 5999
-place_id: 2
+place_id: 3
 capacity: "9 lidí"
 
 # 2-3 věty
