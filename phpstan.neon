@@ -5,3 +5,6 @@ parameters:
         # known value
         - '#Cannot call method render\(\) on Nette\\Application\\UI\\ITemplate\|stdClass#'
         - '#Method Pehapkari\\Website\\Posts\\Year2018\\Cart\\Infrastructure\\DoctrineCartRepository::find\(\) should  Pehapkari\\Website\\Posts\\Year2018\\Cart\\Domain\\Cart|null but returns object|null#'
+
+        # not sure about this
+        - '#Return type \(array<array<string>>\) of method Pehapkari\\Website\\Posts\\Year2017\\SymfonyValidatorConditionalConstraints\\Client::getGroupSequence\(\) should be compatible with return type \(array<string>\|Symfony\\Component\\Validator\\Constraints\\GroupSequence\) of method Symfony\\Component\\Validator\\GroupSequenceProviderInterface::getGroupSequence\(\)#'
