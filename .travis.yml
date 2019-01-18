@@ -27,7 +27,7 @@ script:
     - vendor/bin/statie generate source
 
     # tweets posts
-    - if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" && $TWEET != "" ]]; then vendor/bin/publish-new-tweet; fi
+    - if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" && $TWEET != "" ]]; then vendor/bin/statie tweet-post; fi
 
 after_script:
     - |
