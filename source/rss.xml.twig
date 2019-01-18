@@ -16,7 +16,7 @@
                 <lastBuildDate>{{ post.getDateInFormat('r') }}</lastBuildDate>
             {% endif %}
 
-            {% if post.getDateInFormat('Y-m-d') < "now"|date('Y-m-d') and post.redirect is not defined %}
+            {% if post.getDateInFormat('Y-m-d') < "now"|date('Y-m-d') %}
                 <item>
                     <title><![CDATA[ {{ post.title }} ]]></title>
                     <link>{{ site_url }}/{{ post.relativeUrl }}</link>

@@ -1,14 +1,10 @@
 imports:
     - { resource: 'source/_data/*.yml' }
     - { resource: 'source/_data/lecture_references/*.yml' }
-    - { resource: 'vendor/tomasvotruba/statie-tweet-publisher/src/config/config.yml' }
     # enabled on localhost only
     - { resource: 'config/config.local.yml',  ignore_errors: true }
 
 parameters:
-    # generator
-    templating: 'twig'
-
     twitter_name: 'Pehapkari'
     minimal_gap_in_days: 1 # how many days to wait before publishing another Tweet
 
@@ -24,4 +20,8 @@ parameters:
 
     # Statie configuration
     github_repository_source_directory: "https://github.com/pehapkari/pehapkari.cz/tree/master/source"
-    markdown_headline_anchors: true
+    post_headline_linker_enabled: true
+
+    redirects:
+        # old → new
+        /blog/2017/01/20/jak-snadne-a-rychle-upravovat-soubory-ve-vendoru: '/blog/2017/01/20/jak-snadno-a-rychle-upravovat-soubory-ve-vendoru'

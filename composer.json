@@ -22,8 +22,7 @@
         "symfony/intl": "^4.2",
         "symfony/validator": "^4.2",
         "symplify/coding-standard": "^5.3",
-        "symplify/easy-coding-standard": "^5.3",
-        "tomasvotruba/statie-tweet-publisher": "^1.7"
+        "symplify/easy-coding-standard": "^5.3"
     },
     "autoload": {
         "psr-4": {
