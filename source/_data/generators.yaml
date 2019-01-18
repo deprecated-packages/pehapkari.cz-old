@@ -1,10 +1,6 @@
 parameters:
     # see https://www.statie.org/docs/generators/
     generators:
-        posts:
-            # which layout to use, a file from "_layouts/<name>.twig"
-            layout: '_layouts/post.twig'
-
         lectures:
             variable: 'lecture'
             variable_global: 'lectures'
