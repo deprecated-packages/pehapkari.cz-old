@@ -28,7 +28,7 @@ final class Cart
         try {
             $item = $this->find($productId);
             $item->add($amount);
-        } catch (ProductNotInCartException $e) {
+        } catch (ProductNotInCartException $productNotInCartException) {
             $this->items->add(new Item($productId, $unitPrice, $amount));
         }
     }
