@@ -2,7 +2,7 @@
     "name": "pehapkari/website",
     "license": "MIT",
     "require": {
-        "php": "^7.2",
+        "php": "^7.3",
         "symplify/statie": "^5.4"
     },
     "require-dev": {
