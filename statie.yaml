@@ -19,7 +19,6 @@ parameters:
 
     # Statie configuration
     github_repository_source_directory: "https://github.com/pehapkari/pehapkari.cz/tree/master/source"
-    post_headline_linker_enabled: true
 
     redirects:
         # old → new
