@@ -2,7 +2,7 @@
 <html lang="cs">
     <head>
         {% include "_snippets/head.twig" %}
-        {% include "_snippets/post/postSocialTags.twig" %}
+        {% include "_snippets/post/post_social_tags.twig" %}
     </head>
 
     <body>
@@ -13,7 +13,7 @@
 
                 <div class="row text-center">
                     <div class="col-md-12">
-                        {% include "_snippets/post/postMetadataLine.twig" with { "post": post } %}
+                        {% include "_snippets/post/post_metadata_line.twig" with { "post": post } %}
                     </div>
                 </div>
 
@@ -47,7 +47,7 @@
             </div>
 
             <div class="container">
-                {% include "_snippets/disqusComments.twig" with { 'post': post, 'showCommentCount': true } %}
+                {% include "_snippets/disqus_comments.twig" with { 'post': post, 'showCommentCount': true } %}
             </div>
 
             <br>
@@ -58,6 +58,6 @@
 
         {% include "_snippets/footer.twig" %}
 
-        {% include "_snippets/googleAnalytics.twig" %}
+        {% include "_snippets/google_analytics.twig" %}
     </body>
 </html>

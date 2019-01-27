@@ -94,7 +94,7 @@ lecture_references_limit: 4
             <div class="row narrower">
                 {% for lecture_reference in lecture_references %}
                     {% if loop.index <= lecture_references_limit %}
-                        {% include "_snippets/lecture/lectureReference.twig" with { "lecture_reference": lecture_reference, "active_lecture": lectures[lecture_reference.lecture_id] } %}
+                        {% include "_snippets/lecture/lecture_reference.twig" with { "lecture_reference": lecture_reference, "active_lecture": lectures[lecture_reference.lecture_id] } %}
                     {% endif %}
                 {% endfor %}
             </div>
