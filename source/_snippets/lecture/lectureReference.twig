@@ -1,7 +1,7 @@
 <div class="col-md-6 text-left mb-4">
-    {% if lecture_reference.url %}
-        <a href="{{ lecture_reference.url }}">{% if lecture_reference.name is defined %}{{ lecture_reference.name }}{% else %}účastník{% endif %}</a>
-    {% endif %}
+    {% if lecture_reference.url is defined %}<a href="{{ lecture_reference.url }}">{% endif %}
+    {% if lecture_reference.name is defined %}{{ lecture_reference.name }}{% else %}účastník{% endif %}
+    {% if lecture_reference.url is defined %}</a>{% endif %}
 
     {% if is_lecture_detail is defined %}{% else %}na školení <a href="/{{ active_lecture.getRelativeUrl() }}">{{ active_lecture.getTitle() }}</a>:{% endif %}
 

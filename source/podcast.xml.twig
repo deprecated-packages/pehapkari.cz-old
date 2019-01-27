@@ -20,7 +20,7 @@
         <itunes:explicit>clean</itunes:explicit>
 
         {% for post in posts %}
-            {% if post.podcast is not defined %}
+            {% if post.podcast is defined %}
                 <item>
                     <title>Nejen o PHP {{ post.podcast['title'] }}</title>
                     <guid>{{ site_url }}/{{ post.relativeUrl }}</guid>
