@@ -24,20 +24,19 @@ parameters:
         Symplify\CodingStandard\Fixer\LineLength\LineLengthFixer:
             - 'src/Posts/Year2018/Cart/Domain/Cart.php'
 
-    exclude_checkers:
         # from symplify.yml set
-        - 'Symplify\CodingStandard\Fixer\Naming\PropertyNameMatchingTypeFixer'
-        - 'Symplify\CodingStandard\Sniffs\Naming\InterfaceNameSniff'
-        - 'Symplify\CodingStandard\Sniffs\Naming\AbstractClassNameSniff'
-        - 'Symplify\CodingStandard\Sniffs\Property\DynamicPropertySniff'
-        - 'Symplify\CodingStandard\Sniffs\DependencyInjection\NoClassInstantiationSniff'
-        - 'Symplify\CodingStandard\Sniffs\CleanCode\ForbiddenStaticFunctionSniff'
+        Symplify\CodingStandard\Fixer\Naming\PropertyNameMatchingTypeFixer: ~
+        Symplify\CodingStandard\Sniffs\Naming\InterfaceNameSniff: ~
+        Symplify\CodingStandard\Sniffs\Naming\AbstractClassNameSniff: ~
+        Symplify\CodingStandard\Sniffs\Property\DynamicPropertySniff: ~
+        Symplify\CodingStandard\Sniffs\DependencyInjection\NoClassInstantiationSniff: ~
+        Symplify\CodingStandard\Sniffs\CleanCode\ForbiddenStaticFunctionSniff: ~
 
         # from symfony.yml set
-        - 'PhpCsFixer\Fixer\PhpTag\BlankLineAfterOpeningTagFixer'
-        - 'PhpCsFixer\Fixer\Operator\NewWithBracesFixer'
-        - 'PhpCsFixer\Fixer\Operator\UnaryOperatorSpacesFixer'
-        - 'PhpCsFixer\Fixer\Phpdoc\PhpdocAlignFixer'
-        - 'PhpCsFixer\Fixer\ClassNotation\ProtectedToPrivateFixer'
-        - 'PhpCsFixer\Fixer\ControlStructure\YodaStyleFixer'
-        - 'PhpCsFixer\Fixer\Phpdoc\PhpdocSeparationFixer'
+        PhpCsFixer\Fixer\PhpTag\BlankLineAfterOpeningTagFixer: ~
+        PhpCsFixer\Fixer\Operator\NewWithBracesFixer: ~
+        PhpCsFixer\Fixer\Operator\UnaryOperatorSpacesFixer: ~
+        PhpCsFixer\Fixer\Phpdoc\PhpdocAlignFixer: ~
+        PhpCsFixer\Fixer\ClassNotation\ProtectedToPrivateFixer: ~
+        PhpCsFixer\Fixer\ControlStructure\YodaStyleFixer: ~
+        PhpCsFixer\Fixer\Phpdoc\PhpdocSeparationFixer: ~

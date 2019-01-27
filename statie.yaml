@@ -6,7 +6,8 @@ imports:
 
 parameters:
     twitter_name: 'Pehapkari'
-    minimal_gap_in_days: 1 # how many days to wait before publishing another Tweet
+
+    generator: []
 
     page_title: "Děláš v PHP? Jsi jedním z nás"
     site_url: "https://pehapkari.cz"
