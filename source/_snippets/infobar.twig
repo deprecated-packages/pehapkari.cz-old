@@ -6,7 +6,7 @@
             <strong>Nejnovější články</strong>:<br>
             {% for post in posts %}
                 {% if (post.getDateInFormat('Y-m-d') <= "now"|date('Y-m-d')) and (displayedPostCount < 3) %}
-                    <a href="/{{ post.relativeUrl }}">{{ post.title }}</a>{% if loop.last == false %}<br>{% endif %}
+                    <a href="/{{ post|link }}">{{ post.title }}</a>{% if loop.last == false %}<br>{% endif %}
 
                     {% set displayedPostCount = displayedPostCount + 1 %}
                 {% endif %}

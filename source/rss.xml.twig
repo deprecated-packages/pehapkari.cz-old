@@ -19,12 +19,12 @@
             {% if post.getDateInFormat('Y-m-d') < "now"|date('Y-m-d') %}
                 <item>
                     <title><![CDATA[ {{ post.title }} ]]></title>
-                    <link>{{ site_url }}/{{ post.relativeUrl }}</link>
+                    <link>{{ site_url }}/{{ post|link }}</link>
                     <description><![CDATA[ {{ post.perex|striptags }} ]]></description>
-                    <guid isPermaLink="false">{{ site_url }}/{{ post.relativeUrl }}</guid>
+                    <guid isPermaLink="false">{{ site_url }}/{{ post|link }}</guid>
                     <dc:creator><![CDATA[ {{ authors[post.author].name }} ]]></dc:creator>
                     <pubDate>{{ post.getDateInFormat('r') }}</pubDate>
-                    <comments>{{ site_url }}/{{ post.relativeUrl }}#disqus_thread</comments>
+                    <comments>{{ site_url }}/{{ post|link }}#disqus_thread</comments>
                 </item>
             {% endif %}
         {% endfor %}
