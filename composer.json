@@ -2,8 +2,8 @@
     "name": "pehapkari/website",
     "license": "MIT",
     "require": {
-        "php": "^7.2",
-        "symplify/statie": "dev-master"
+        "php": "^7.3",
+        "symplify/statie": "^5.4"
     },
     "require-dev": {
         "doctrine/annotations": "^1.6",
@@ -21,8 +21,9 @@
         "symfony/expression-language": "^4.2",
         "symfony/intl": "^4.2",
         "symfony/validator": "^4.2",
-        "symplify/coding-standard": "^5.3",
-        "symplify/easy-coding-standard": "^5.3"
+        "symplify/coding-standard": "^5.4",
+        "symplify/easy-coding-standard": "^5.4",
+        "symplify/phpstan-extensions": "^5.4"
     },
     "autoload": {
         "psr-4": {
@@ -40,12 +41,10 @@
             "sh ./bin/clear_post_trailing_whitespaces.sh",
             "vendor/bin/ecs check src tests --fix"
         ],
-        "phpstan": "vendor/bin/phpstan analyse src tests --level max",
+        "phpstan": "vendor/bin/phpstan analyse src tests --error-format symplify",
         "check-status": "vendor/bin/http-status-check scan https://pehapkari.cz --output invalid-links.txt"
     },
     "config": {
         "sort-packages": true
-    },
-    "prefer-stable": true,
-    "minimum-stability": "dev"
+    }
 }

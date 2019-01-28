@@ -137,7 +137,7 @@
                         <div class="row">
                             {% for lecture_reference in lecture_references %}
                                 {% if lecture_reference.lecture_id == lecture.getId() %}
-                                    {% include "_snippets/lecture/lectureReference.twig" with { "lecture_reference": lecture_reference, "active_lecture": lecture, "is_lecture_detail": true } %}
+                                    {% include "_snippets/lecture/lecture_reference.twig" with { "lecture_reference": lecture_reference, "active_lecture": lecture, "is_lecture_detail": true } %}
                                 {% endif %}
                             {% endfor %}
                         </div>
@@ -148,7 +148,7 @@
 
         {% include "_snippets/footer.twig" %}
 
-        {% include "_snippets/googleAnalytics.twig" %}
+        {% include "_snippets/google_analytics.twig" %}
     </body>
 </html>
 

@@ -1,4 +1,10 @@
+# phpstan.neon
+includes:
+    - 'vendor/symplify/phpstan-extensions/config/config.neon'
+
 parameters:
+    level: max
+
     ignoreErrors:
         - '#^[a-zA-Z0-9\\]++::__construct\(\) does not call parent constructor from (?:Nette\\ComponentModel\\Component|Nette\\Application\\UI\\Presenter)#'
 

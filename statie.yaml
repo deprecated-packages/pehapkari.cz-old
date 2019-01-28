@@ -6,7 +6,7 @@ imports:
 
 parameters:
     twitter_name: 'Pehapkari'
-    minimal_gap_in_days: 1 # how many days to wait before publishing another Tweet
+    twitter_maximal_days_in_past: 30 # tweet max. 1 month old posts
 
     page_title: "Děláš v PHP? Jsi jedním z nás"
     site_url: "https://pehapkari.cz"
@@ -15,12 +15,10 @@ parameters:
 
     # services ID
     google_analytics_tracking_id: "UA-89860072-1"
-    fb_tracking_jd: "201338863559186"
     disqus_name: "pehapkari"
 
     # Statie configuration
     github_repository_source_directory: "https://github.com/pehapkari/pehapkari.cz/tree/master/source"
-    post_headline_linker_enabled: true
 
     redirects:
         # old → new

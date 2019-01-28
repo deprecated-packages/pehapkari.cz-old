@@ -1,40 +1,28 @@
 language: php
 
-matrix:
-    include:
-        - php: 7.2
-          env: STATIC_ANAL=true
-        - php: 7.2
-          env: PHPUNIT_FLAGS="--coverage-clover coverage.xml"
-        - php: 7.2
-          env: FRONT_END=true
-        - php: 7.3
-          env: COMPOSER_FLAGS="--ignore-platform-reqs"
+php: 7.3
 
 install:
     - composer install $COMPOSER_FLAGS
 
 script:
     # run tests for tested posts (with "tested: true" in header configuration)
-    - vendor/bin/phpunit $PHPUNIT_FLAGS
+    - vendor/bin/phpunit --coverage-clover coverage.xml
+
     # check code standard (defined in composer.json "scripts" section)
-    - |
-        if [[ $STATIC_ANAL == true ]]; then
-            composer check-cs
-            composer phpstan
-        fi
+    - composer check-cs
+    - composer phpstan
+
     # test that website is generated
     - vendor/bin/statie generate source
 
     # tweets posts
-    - if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" && $TWEET != "" ]]; then vendor/bin/statie tweet-post; fi
+    - if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]]; then vendor/bin/statie tweet-post; fi
 
 after_script:
-    - |
-        if [ "$PHPUNIT_FLAGS" != "" ]; then
-            wget https://github.com/satooshi/php-coveralls/releases/download/v1.0.1/coveralls.phar
-            php coveralls.phar --verbose --config tests/.coveralls.yml
-        fi
+    # upload coverage
+    - wget https://github.com/satooshi/php-coveralls/releases/download/v1.0.1/coveralls.phar
+    - php coveralls.phar --verbose --config tests/.coveralls.yml
 
 # see https://www.statie.org/docs/github-pages/
 deploy:

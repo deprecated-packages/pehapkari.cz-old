@@ -1,7 +1,6 @@
 /node_modules
 /output
 /vendor
-/node_modules
 composer.lock
 package-lock.json
 *.local.yaml
@@ -18,5 +17,3 @@ source/assets/icons
 new-design/dist/app.css
 new-design/dist/app.js
 new-design/node_modules
-
-*.local.yaml

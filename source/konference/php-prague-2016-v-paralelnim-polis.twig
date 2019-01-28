@@ -1,6 +1,5 @@
 ---
 layout: _layouts/default.twig
-subpage: true
 youtube:
     embed_url: https://www.youtube.com/embed/r3dr_DnaTG4
 
@@ -133,17 +132,19 @@ items:
 
         <div class="row">
             <div class="col-md-7">
-                <div n:foreach="$items as $item">
-                    <a href="{{ youtube.embed_url }}?&start={{ item.time_in_seconds  }}&autoplay=true"
+                {% for item in items %}
+                    <div>
+                        <a href="{{ youtube.embed_url }}?&start={{ item.time_in_seconds  }}&autoplay=true"
 
-                       target="video" class="btn btn-success">
-                        <em class="fa fa-play fa-fw"></em>
-                        {{ item.time }}
-                    </a> &nbsp; <strong>{{ item.title }}</strong>
+                           target="video" class="btn btn-success">
+                            <em class="fa fa-play fa-fw"></em>
+                            {{ item.time }}
+                        </a> &nbsp; <strong>{{ item.title }}</strong>
 
-                    - <a href="{{ item.speaker_url }}"><em class="fa fa-twitter fa-fw"></em>{{ item.speaker_name }}</a>
-                    <hr>
-                </div>
+                        - <a href="{{ item.speaker_url }}"><em class="fa fa-twitter fa-fw"></em>{{ item.speaker_name }}</a>
+                        <hr>
+                    </div>
+                {% endfor %}
             </div>
             <div class="col-md-5">
                 <iframe width="100%" src="https://www.youtube.com/embed/r3dr_DnaTG4" frameborder="0" allowfullscreen name="video"></iframe>
