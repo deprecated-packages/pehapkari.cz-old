@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=496950238" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=393215536" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=739696902" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=1662589866" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>ORM... WTF??? </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="ORM... WTF???" />
+<meta property="og:description" content="We will take a look at what is the object-relational mapping and what it is not.
+We will show why it is difficult, when to use it and when it&#039;s better to avoid it." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2018/04/18/orm-wtf/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="ORM... WTF???" />
+<meta name="twitter:description" content="We will take a look at what is the object-relational mapping and what it is not.
+We will show why it is difficult, when to use it and when it&#039;s better to avoid it." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">ORM... WTF???</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        3 min
+
+        |
+
+        by <strong>Svaťa Šimara</strong>
+
+        &ndash;
+
+        <time datetime="2018-04-Wed">
+            18. 4. 2018
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">We will take a look at what is the object-relational mapping and what it is not.
+We will show why it is difficult, when to use it and when it's better to avoid it.</p>
+
+                    <h2 id="terms"><a href="#terms">Terms</a></h2>
+<p>Let's repeat basic terms so we are on the same page.</p>
+<h3 id="relational-model"><a href="#relational-model">Relational Model</a></h3>
+<p>The relational model focuses on data and their representation.
+Data are organized in rows and tables.
+This is a low-level model for databases.</p>
+<p><img src="/assets/images/posts/2018/orm-wtf/relational_model.png" alt="relational model - tables connected by arrows" /></p>
+<p>When we model data, we often think of the entity-relational model and it is fine.
+ER model is an abstraction based on the relational model and still focuses on data.</p>
+<h3 id="object-model"><a href="#object-model">Object Model</a></h3>
+<p>Object model focuses on in-memory objects associated with references.
+Class model especially aims at object encapsulation by behavior.</p>
+<p><img src="/assets/images/posts/2018/orm-wtf/object_model.png" alt="object model - entities connected by references" /></p>
+<h3 id="relational-database"><a href="#relational-database">Relational Database</a></h3>
+<p>A relational database is a database based on relational model usually managed by SQL.
+We use it when we need transactional consistency, data integrity and when we need to join data relationally.</p>
+<h2 id="object-relational-mapping"><a href="#object-relational-mapping">Object-relational mapping</a></h2>
+<p>ORM is a technique that maps objects to relational data and back.</p>
+<p>ORM is not about mapping fields, that would be easy.
+It is about mapping the object model to the relational model, and that is a difficult task.
+We have to fully understand both models and then we can start finding ways to map them.
+We usually find mapping problems that force us to do trade-offs in both models.</p>
+<p><img src="/assets/images/posts/2018/orm-wtf/mapping.png" alt="object model mapped to relational model" /></p>
+<p>And that is the object-relational mapping - no more, no less.
+Mapping is pretty difficult, and maintain two models plus maintain the mapping is also a challenge.
+ORM library usually cannot do everything we imagine, it is just a fact we have to face.</p>
+<h3 id="requirements"><a href="#requirements">Requirements</a></h3>
+<p>We must have an object model first.
+If we don't have object model and object implementation, we can avoid difficult mapping and use the relational model only.</p>
+<p>We must need a relational database.
+If we don't need the relational database, we don't have to map objects and our work is much easier.</p>
+<h2 id="common-misuses"><a href="#common-misuses">Common misuses</a></h2>
+<p>When not use the ORM.</p>
+<h3 id="orm-not-responsibility"><a href="#orm-not-responsibility">ORM not-Responsibility</a></h3>
+<p>ORM isn't responsible for effective database queries.
+It shouldn't produce queries at all.
+If it produces queries and they aren't effective, we have to use custom queries and don't blame the ORM.</p>
+<p>ORM shouldn't be used for reading.
+It isn't meant to be reading effective and it isn't its responsibility.
+If we need to read information fast, we have to use fast reading techniques, not ORM.</p>
+<h3 id="no-object-model"><a href="#no-object-model">No Object Model</a></h3>
+<p>It may happen that we don't have an object model.
+It may have more reasons, but it just happens.
+Then we must not create artificial objects just because we can.
+The same situation is when we think in relations.</p>
+<p>If we try objects anyway, we end up with an anemic model.
+ORM becomes a stone that pulls us underwater.
+Everything becomes horribly slow and ORM will only make problems.</p>
+<p>We can live without the ORM.
+We can have only one relational model in the database.
+We can query it, work with data.
+We don't need to bother with objects and difficult mapping.</p>
+<h3 id="no-need-for-relational-database"><a href="#no-need-for-relational-database">No Need for Relational Database</a></h3>
+<p>It may happen that we have a nice object model and we need just to store objects as they are.
+There may be no need for inter-aggregate consistency, transactions or joining data.</p>
+<p>Then we don't have to bother with relation model and mapping.
+We can store objects as they are in a NoSQL database.
+Choosing the database can take time but it pays itself.</p>
+<h2 id="tl-dr"><a href="#tl-dr">TL;DR</a></h2>
+<p><img src="/assets/images/posts/2018/orm-wtf/decision_table.png" alt="decision table" /></p>
+<p>Use ORM only if we need to.
+Handling two models and mapping is difficult.</p>
+<h2 id="references"><a href="#references">References</a></h2>
+<p>FOOTE, Keith D.
+A Review of Different Database Types: Relational versus Non-Relational.
+<em>DATAVERSITY</em> [online].
+2016 [2018-01-23].
+Available: <a href="http://www.dataversity.net/review-pros-cons-different-databases-relational-versus-non-relational/">http://www.dataversity.net/review-pros-cons-different-databases-relational-versus-non-relational/</a>.</p>
+<p>Wikipedia contributors.
+Class-based programming.
+<em>Wikipedia, The Free Encyclopedia</em> [online].
+2018 [2018-01-23].
+Available: <a href="https://en.wikipedia.org/wiki/Class-based_programming">https://en.wikipedia.org/wiki/Class-based_programming</a>.</p>
+<p>Wikipedia contributors.
+Object-oriented programming.
+<em>Wikipedia, The Free Encyclopedia</em> [online].
+2018 [2018-01-23].
+Available: <a href="https://en.wikipedia.org/wiki/Object-oriented_programming">https://en.wikipedia.org/wiki/Object-oriented_programming</a>.</p>
+<p>Wikipedia contributors.
+Relational database.
+<em>Wikipedia, The Free Encyclopedia</em> [online].
+2018 [2018-01-23].
+Available: <a href="https://en.wikipedia.org/wiki/Relational_database">https://en.wikipedia.org/wiki/Relational_database</a>.</p>
+<p>Wikipedia contributors.
+Relational model.
+<em>Wikipedia, The Free Encyclopedia</em> [online].
+2018 [2018-01-23].
+Available: <a href="https://en.wikipedia.org/wiki/Relational_model">https://en.wikipedia.org/wiki/Relational_model</a>.</p>
+<h2 id="contact"><a href="#contact">Contact</a></h2>
+<p>Are you designing architecture and like DDD approach? Hire me, I can help you - <a href="http://svatasimara.cz/">svatasimara.cz</a></p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                            <h2 id="you-might-also-like"><a href="#you-might-also-like">You Might Also Like</a></h2>
+
+                        <ul id="related-posts">
+                                                            <li>
+                                    <a href="/blog/2018/03/07/domain-driven-design-doctrine-repository">Domain-Driven Design, part 6 - Doctrine Repository &raquo;</a>
+                                </li>
+                                                    </ul>
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2018/2018-04-18-orm-wtf.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

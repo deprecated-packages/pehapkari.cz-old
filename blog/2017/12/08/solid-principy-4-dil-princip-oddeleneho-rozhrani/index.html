@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=531529289" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=1022698846" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=613040022" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=2109568706" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>SOLID principy: Princip odděleného rozhraní </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="SOLID principy: Princip odděleného rozhraní" />
+<meta property="og:description" content="Princip odděleného rozhraní je definované Robertem C. Martinem původně pro Xerox a říká:
+
+Více specifických rozhraní je lepší než jedno obecné rozhraní.
+
+Při jeho dodržování se kód stává více znovupoužitelný a užitečný. Pokud je více tříd nuceno implementovat rozhraní s metodami, které nepotřebují, je vhodné najít logický průnik (v čem se shodují) a rozhraní oddělit." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2017/12/08/solid-principy-4-dil-princip-oddeleneho-rozhrani/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="SOLID principy: Princip odděleného rozhraní" />
+<meta name="twitter:description" content="Princip odděleného rozhraní je definované Robertem C. Martinem původně pro Xerox a říká:
+
+Více specifických rozhraní je lepší než jedno obecné rozhraní.
+
+Při jeho dodržování se kód stává více znovupoužitelný a užitečný. Pokud je více tříd nuceno implementovat rozhraní s metodami, které nepotřebují, je vhodné najít logický průnik (v čem se shodují) a rozhraní oddělit." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">SOLID principy: Princip odděleného rozhraní</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        4 min
+
+        |
+
+        by <strong>Michal Katuščák</strong>
+
+        &ndash;
+
+        <time datetime="2017-12-Fri">
+            8. 12. 2017
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">Princip odděleného rozhraní je definované Robertem C. Martinem původně pro Xerox a říká:</p>
+<blockquote>
+<p>Více specifických rozhraní je lepší než jedno obecné rozhraní.</p>
+</blockquote>
+<p>Při jeho dodržování se kód stává více znovupoužitelný a užitečný. Pokud je více tříd nuceno implementovat rozhraní s metodami, které nepotřebují, je vhodné najít logický průnik (v čem se shodují) a rozhraní oddělit.</p>
+
+                    <p>Video (1:29)</p>
+<p><a href="http://www.youtube.com/watch?v=RkTMid_ccDo"><img src="/assets/images/posts/2017/solid-4/solid-youtube.jpg?version2" alt="Video na Youtube" /></a></p>
+<p>Na ukázku zde mám rozhraní <code>IBag</code>, třídu <code>Bag</code>, která jej implementuje a třídu <code>Renderer</code>:</p>
+<pre><code class="language-php">&lt;?php
+
+interface IBag {
+    public function setContent(string $content);
+    public function appendContent(string $content);
+    public function prependContent(string $content);
+    public function getContent(string $content);
+    public function loadFromFile(string $file);
+    public function saveToFile(string $file);
+    public function render(): string;
+}
+
+class Bag implements IBag
+{
+    private $content;
+
+    public function setContent(string $content)
+    {
+        $this-&gt;content = $content;
+    }
+
+    public function appendContent(string $content)
+    {
+        $this-&gt;content = $this-&gt;content . $content;
+    }
+
+    public function prependContent(string $content)
+    {
+        $this-&gt;content = $content . $this-&gt;content;
+    }
+
+    public function getContent(string $content)
+    {
+        return $content;
+    }
+
+    public function loadFromFile(string $file)
+    {
+        if (!file_exists($file)) {
+            throw new InvalidArgumentException("File from argument not exists.");
+        }
+
+        $this-&gt;content = file_get_contents($file);
+    }
+
+    public function saveToFile(string $file)
+    {
+        if (!file_exists($file)) {
+            throw new InvalidArgumentException("File from argument not exists.");
+        }
+
+        return file_put_contents($file, $this-&gt;content);
+    }
+
+    public function render(): string
+    {
+        return "Content: " . $this-&gt;content;
+    }
+}
+
+class Renderer
+{
+    public function render(IBag $bag)
+    {
+        echo $bag-&gt;render();
+    }
+}</code></pre>
+<p>Větší interface <code>IBag</code> mohu rozdělit na tři logické rozhraní: Contentable, Fileable, Renderable.</p>
+<p>Třída <code>Renderer</code> tak už není nucena záviset na <code>IBag</code>, ale postačí <code>Renderable</code>. Třída <code>Bag</code> implementuje všechny tři rozhraní, ale další třídě může stačit už jenom třeba jedno.</p>
+<pre><code class="language-php">&lt;?php
+
+interface Renderable {
+    public function render(): string;
+}
+
+interface Contentable
+{
+    public function setContent(string $content);
+    public function appendContent(string $content);
+    public function prependContent(string $content);
+    public function getContent(string $content);
+}
+
+interface Fileable
+{
+    public function loadFromFile(string $file);
+    public function saveToFile(string $file);
+}
+
+class Bag implements Renderable, Contentable, Fileable
+{
+    private $content;
+
+    public function setContent(string $content)
+    {
+        $this-&gt;content = $content;
+    }
+
+    public function appendContent(string $content)
+    {
+        $this-&gt;content = $this-&gt;content . $content;
+    }
+
+    public function prependContent(string $content)
+    {
+        $this-&gt;content = $content . $this-&gt;content;
+    }
+
+    public function getContent(string $content)
+    {
+        return $content;
+    }
+
+    public function loadFromFile(string $file)
+    {
+        if (!file_exists($file)) {
+            throw new InvalidArgumentException("File from argument not exists.");
+        }
+
+        $this-&gt;content = file_get_contents($file);
+    }
+
+    public function saveToFile(string $file)
+    {
+        if (!file_exists($file)) {
+            throw new InvalidArgumentException("File from argument not exists.");
+        }
+
+        return file_put_contents($file, $this-&gt;content);
+    }
+
+    public function render(): string
+    {
+        return "Content: " . $this-&gt;content;
+    }
+}
+
+class Renderer
+{
+    public function render(Renderable $bag)
+    {
+        echo $bag-&gt;render();
+    }
+}</code></pre>
+<p>Jako u všech zásad je potřeba dbát na to, aby to nebylo přehnané. Aby nás pak nestrašily třídy se stovkou rozhraní. :)</p>
+<h2 id="zdroje"><a href="#zdroje">Zdroje:</a></h2>
+<p><a href="https://web.archive.org/web/20150906155800/http://www.objectmentor.com/resources/articles/Principles_and_Patterns.pdf">https://web.archive.org/web/20150906155800/http://www.objectmentor.com/resources/articles/Principles_and_Patterns.pdf</a></p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2017/2017-12-08-solid-principy-4-dil-princip-oddeleneho-rozhrani.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

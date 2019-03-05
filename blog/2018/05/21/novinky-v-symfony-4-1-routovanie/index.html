@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=399178685" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=932049170" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=1816578577" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=1506658072" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Novinky v Symfony 4.1 - Routovanie </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Novinky v Symfony 4.1 - Routovanie" />
+<meta property="og:description" content="Symfony framework pokračuje v začatom trende inovácií vo svojej verzií 4.1 a opäť prináša množstvo zaujímavých noviniek. Poďme sa teda spolu pozrieť na novinky v súvislosti s routovaním." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2018/05/21/novinky-v-symfony-4-1-routovanie/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Novinky v Symfony 4.1 - Routovanie" />
+<meta name="twitter:description" content="Symfony framework pokračuje v začatom trende inovácií vo svojej verzií 4.1 a opäť prináša množstvo zaujímavých noviniek. Poďme sa teda spolu pozrieť na novinky v súvislosti s routovaním." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Novinky v Symfony 4.1 - Routovanie</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        3 min
+
+        |
+
+        by <strong>Eduard Barnáš</strong>
+
+        &ndash;
+
+        <time datetime="2018-05-Mon">
+            21. 5. 2018
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">Symfony framework pokračuje v začatom trende inovácií vo svojej verzií 4.1 a opäť prináša množstvo zaujímavých noviniek. Poďme sa teda spolu pozrieť na novinky v súvislosti s routovaním.</p>
+
+                    <p>Predtým ako sa vrhneme na novinky, upresníme si termín vydania verzie 4.1. Podľa roadmapy uverejenej na <a href="https://symfony.com/roadmap?version=4.1#checker">oficiálnej stránke</a> je release stable verzie naplánovaný na <strong>máj 2018</strong>. Hurá, už tento mesiac. :)</p>
+<h2 id="novy-rychlejsi-router"><a href="#novy-rychlejsi-router">Nový rýchlejší router</a></h2>
+<p><a href="https://symfony.com/components/Routing">Router</a> vo webovej aplikácií plní dve základné úlohy, a to <strong>generovanie URL</strong> adries z parametrov a <strong>mapovanie URL</strong> adries na interné zdroje aplikácie.</p>
+<h3 id="ako-je-to-teraz"><a href="#ako-je-to-teraz">Ako je to teraz?</a></h3>
+<p>Aktuálny router z dôvodu optimalizácie výkonu generuje v čase kompilácie našej aplikácie novú triedu, ktorá obsahuje všetky optimalizované definície rout. Pre každú URL adresu teda existuje v tejto triede definícia regulérneho výrazu.</p>
+<p>Po zavolaní metódy <code>match()</code> s príslušným reťacom, hľadá router vyhovujúcu definíciu skúšaním, čiže dochádza k opakovanému volaniu metódy <code>preg_match()</code>.</p>
+<h3 id="ako-to-bude-po-novom"><a href="#ako-to-bude-po-novom">Ako to bude po novom?</a></h3>
+<p>Základnou myšlienkou refaktoringu routovacej komponenty bolo obísť opakované volanie metódy <code>preg_match()</code> a to spojením viacerých regulárnych výrazov v jeden.</p>
+<p>S touto myšlienkou v minulosti prišiel <a href="http://nikic.github.io/aboutMe.html">Nikita Popov</a> vo svojom <a href="http://nikic.github.io/2014/02/18/Fast-request-routing-using-regular-expressions.html">článku</a> zo zákulisia svojej knižnice <a href="https://github.com/nikic/FastRoute">FastRoute</a>.</p>
+<p>K technickým detailom komponenty napísal <a href="https://medium.com/@nicolas.grekas">Nicolas Grekas</a> dva články:</p>
+<ul>
+<li><a href="https://medium.com/@nicolas.grekas/making-symfonys-router-77-7x-faster-1-2-958e3754f0e1">https://medium.com/@nicolas.grekas/making-symfonys-router-77-7x-faster-1-2-958e3754f0e1</a></li>
+<li><a href="https://medium.com/@nicolas.grekas/making-symfony-router-lightning-fast-2-2-19281dcd245b">https://medium.com/@nicolas.grekas/making-symfony-router-lightning-fast-2-2-19281dcd245b</a></li>
+</ul>
+<p>Podľa jeho meraní je nová komponenta <strong>15x rýchlejšia ako FastRoute</strong>!</p>
+<h3 id="ako-novy-router-pouzit"><a href="#ako-novy-router-pouzit">Ako nový router použiť?</a></h3>
+<p>Najprv musíte všetky Vaše doterajšie routy zmazať a ...</p>
+<p><strong>Ufff, to by bol veľmi zlý scénar. Nič také nerobte, nie je potrebné!</strong> </p>
+<p>Stači jednoducho po vydaní stable verzie Symfony 4.1 ak povýšime závislosť v <code>composer.json</code>.</p>
+<pre><code class="language-yaml">"require": {
+    // ...
+    "symfony/framework-bundle": "^4.1",
+    // ...
+},</code></pre>
+<p>Následne zavoláme príkaz na aktualizáciu závislostí.</p>
+<pre><code class="language-bash">composer update</code></pre>
+<p>Nový router <strong>funguje</strong>! Úžasné, že? :)</p>
+<p>Pri povýšení frameworku (<code>framework-bundle</code>) môže dojsť aj k povýšeniu ostatných dodatočných balíčkov, ako napríklad <code>security-bundle</code>, <code>twig-bundle</code>, <code>orm-pack</code> a podobne. To je v poriadku, pokiaľ ste na ich povýšenie pripravený.</p>
+<p>Zmeny verzií odporúčam, pre poriadok, zaniesť do <code>composer.json</code>.</p>
+<h2 id="internacionalizacia-rout"><a href="#internacionalizacia-rout">Internacionalizácia rout</a></h2>
+<p>Doteraz, ak sme potrebovali pracovať s viacjazyčnými URL adresami, museli sme použiť bundle tretej strany, napríklad <a href="https://github.com/schmittjoh/JMSI18nRoutingBundle">JMSI18nRoutingBundle</a>, pretože router takúto možnosť priamo nepodporoval.</p>
+<p>To je už minulosťou, <strong>Symfony router od verzie 4.1 podporuje internacionalizáciu rout</strong>.</p>
+<h3 id="co-to-presne-znamena"><a href="#co-to-presne-znamena">Čo to presne znamená?</a></h3>
+<p>Internacionalizácia URL adries je integrovaná priamo do komponenty. Umožňuje nám definovať samostatné adresy pre každý jazyk v časti <code>path</code> v konfiguračnom súbore <code>routes.yml</code>.</p>
+<pre><code class="language-yaml">admin-dashboard:
+    controller: App\Controller\Admin\DashboardController
+    path:
+        sk: /nastenka
+        en: /en/dashboard</code></pre>
+<p>Pokiaľ preferujeme inline definíciu v kontroleroch, zápis by mohol vyzerať takto.</p>
+<pre><code class="language-php">use Symfony\Component\Routing\Annotation\Route;
+
+class DashboardController extends Controller
+{
+    /**
+     * @Route({
+     *     "sk": "/nastenka",
+     *     "en": "/en/dashboard"
+     * }, name="admin-dashboard")
+     */
+    public function __invoke()    
+    // ...
+}</code></pre>
+<p>Router vytvorí pre každú adresu z <code>path</code> samostatnú routu s identifikátorom, ktorý je napríklad <code>dashboard</code> pre slovenský jazyk, či <code>dashboard.en</code> pre anglický jazyk.</p>
+<h3 id="generovanie-rout"><a href="#generovanie-rout">Generovanie rout</a></h3>
+<p>Generovanie rout generátorom <code>UrlGeneratorInterface</code> alebo funkciou <code>path()</code> v šablóne ostalo nezmenené.</p>
+<pre><code class="language-php">// Zápis bez parametru local, použije sa hodnota z requestu
+$url = $urlGenerator-&gt;generate('dashboard');
+
+// Klasický zápis s parametrom
+$url = $urlGenerator-&gt;generate('contact', ['_locale' =&gt; 'en']);
+
+// Ekvivalentný zápis podľa označenia routy
+$url = $urlGenerator-&gt;generate('dashboard.en');</code></pre>
+<h2 id="inline-definicia-parametrov"><a href="#inline-definicia-parametrov">Inline definícia parametrov</a></h2>
+<p>Ak potrebujeme v URL adrese prenášať parametre, musíme k definícií routy pridať dodatočné argumenty ako <code>requirements</code> a prípadne <code>defaults</code>, ak má parameter preddefinovanú hodnotu.</p>
+<pre><code class="language-yaml">admin-articles:
+    path: /admin/articles/{page}
+    controller: App\Controller\Admin\ArticleController
+    defaults:
+        page: '1'
+    requirements:
+        page: '\d+'</code></pre>
+<p>Takýto zápis sa zdal súdruhom zo SensioLabs ukecaný a preto navrhli jeho inlinový ekvivalent.</p>
+<pre><code class="language-yaml">admin-articles:
+    path: /admin/articles/{page&lt;\d+&gt;?1}
+    controller: App\Controller\Admin\ArticleController</code></pre>
+<p>Viacerí si pri pohľade na tento zápis spomeniete na <a href="https://doc.nette.org/cs/2.4/routing#toc-validacni-vyrazy">Nette</a>, kde sa niečo podobné už používa.</p>
+<p>Skratený zápis môžeme použit vo všetkých formátoch, napríklad aj v kontrolery.</p>
+<pre><code class="language-php">use Symfony\Component\Routing\Annotation\Route;
+
+class ArticlesController extends Controller
+{
+    /**
+     * Klasický zápis s requirements a defaults
+     * @Route("/admin/articles/{page}", name="admin-articles", requirements={"page"="\d+"}, defaults={"page"="1"})
+     */
+    public function __invoke(int $page)
+    // ...
+
+    /**
+     * Nový inline zápis
+     * @Route("/admin/articles/{page&lt;\d+&gt;?1}", name="admin-articles")
+     */
+    public function __invoke(int $page)
+    // ...
+}
+</code></pre>
+<h2 id="zaver"><a href="#zaver">Záver</a></h2>
+<p>Vydanie stable verzie <strong>Symfony 4.1</strong> je na spadnutie. Ostáva ešte veľa noviniek, ktoré zo sebou prináša nová verzia, o tom snáď niekedy nabudúce. :)</p>
+<p>Ak ste nedočkaví odporúčam sledovať <a href="https://symfony.com/blog/">oficiálny blog</a> Symfony frameworku.</p>
+<h2 id="zdroje"><a href="#zdroje">Zdroje</a></h2>
+<ul>
+<li><a href="https://symfony.com/roadmap?version=4.1#checker">https://symfony.com/roadmap?version=4.1#checker</a></li>
+<li><a href="https://symfony.com/blog/new-in-symfony-4-1-fastest-php-router">https://symfony.com/blog/new-in-symfony-4-1-fastest-php-router</a></li>
+<li><a href="https://symfony.com/blog/new-in-symfony-4-1-internationalized-routing">https://symfony.com/blog/new-in-symfony-4-1-internationalized-routing</a></li>
+<li><a href="https://symfony.com/blog/new-in-symfony-4-1-inlined-routing-configuration">https://symfony.com/blog/new-in-symfony-4-1-inlined-routing-configuration</a></li>
+</ul>
+<h2 id="kontakt"><a href="#kontakt">Kontakt</a></h2>
+<p>Chcete Symfony naučiť alebo zvažujete jeho použitie na svojich projektoch? Oslovte ma - <a href="https://www.neoweb.sk">neoweb.sk</a></p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2018/2018-05-21-novinky-v-symfony-4-1-routovanie.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

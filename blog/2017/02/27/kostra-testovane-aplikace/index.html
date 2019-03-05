@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=946060039" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=1080405918" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=1148525705" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=1862352054" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Kostra testované aplikace </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Kostra testované aplikace" />
+<meta property="og:description" content="Stále tápete, jak vytvořit základní kostru aplikace, kde je Composer vč. autoloaderu a máte i testy? Podíváme se na to, že to je velmi jednoduché." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2017/02/27/kostra-testovane-aplikace/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Kostra testované aplikace" />
+<meta name="twitter:description" content="Stále tápete, jak vytvořit základní kostru aplikace, kde je Composer vč. autoloaderu a máte i testy? Podíváme se na to, že to je velmi jednoduché." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Kostra testované aplikace</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        5 min
+
+        |
+
+        by <strong>Jaroslav Hranička</strong>
+
+        &ndash;
+
+        <time datetime="2017-02-Mon">
+            27. 2. 2017
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">Stále tápete, jak vytvořit základní kostru aplikace, kde je Composer vč. autoloaderu a máte i testy? Podíváme se na to, že to je velmi jednoduché.</p>
+
+                    <h2 id="co-budeme-delat"><a href="#co-budeme-delat">Co budeme dělat?</a></h2>
+<p>Vytvoříme se primitivní kalkulačku (která umí pouze sčítat celá čísla). A k tomu si napíšeme test, jestli sčítá správně.</p>
+<p>Povedu Vás krok po kroku. Článek je určen <strong>pro začátečníky</strong> na Windows. Předpokládám ale, že:</p>
+<ul>
+<li>máte nainstalované <a href="http://php.net/">PHP 7</a> (třeba s <a href="https://www.apachefriends.org/download.html">XAMPP</a>), <a href="https://getcomposer.org/">Composer</a>, nějaké IDE (třeba <a href="https://www.jetbrains.com/phpstorm/">PhpStorm</a>), <a href="https://git-scm.com/">Git</a> a umíte to vše, alespoň trochu, použít.</li>
+</ul>
+<p>Pokud s něčím budete mít problémy, podělte se v diskuzi dole pod článkem. Rádi poradíme.</p>
+<h2 id="prvni-krucky-zalozeni-projektu"><a href="#prvni-krucky-zalozeni-projektu">První krůčky - založení projektu</a></h2>
+<p>Začnu od píky. A provedu Vás po bodech.</p>
+<ol>
+<li>
+<p>Spusťte si Git Bash a vytvořte adresář pro web:</p>
+<pre><code class="language-bash">cd C:\xampp\htdocs
+mkdir test-project
+cd test-project</code></pre>
+</li>
+<li>
+<p>Uvnitř nového adresáře inicializujte Git:</p>
+<pre><code class="language-bash">git init</code></pre>
+</li>
+<li>
+<p>Otevřete si adresář ve svém oblíbeném IDE.</p>
+</li>
+<li>
+<p>Vytvořte si nový <code>.gitignore</code> soubor a zakažte verzování <code>vendor</code> (právě ten adresář si bude spravovat Composer)</p>
+<pre><code class="language-bash">vendor</code></pre>
+<p>Jestliže zastáváte názor, že se i vendor verzuje, klidně si jej zaverzujte. V tom případě tenhle krok zkrátka ignorujte.</p>
+</li>
+<li>
+<p>Přidejte si <code>composer.json</code> a vyžádejte si <a href="https://phpunit.de/">PHPUnit</a>, abyste mohli psát testy a nastavte si autoloader tak, aby se načítaly používané třídy:</p>
+<pre><code class="language-json">{
+    "name": "example/test-project",
+    "description": "Test Project",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "author's name",
+            "email": "email@example.com"
+        }
+    ],
+    "require": {
+        "php": "&gt;=7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src"
+        }
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>Nainstalujte si závislosti spuštěním <code>composer install</code>.</p>
+</li>
+<li>
+<p>Nakonec si vytvořte adresář <code>src</code> a v něm soubor <code>Calculator.php</code>. Jeho obsah bude zatím následující:</p>
+<pre><code class="language-php">&lt;?php
+
+namespace App;
+
+class Calculator
+{
+
+    public function sum(int $a, int $b): int
+    {
+
+    }
+
+}
+</code></pre>
+</li>
+<li>
+<p>Vše si commitněte:</p>
+<pre><code class="language-bash">git add -A
+git commit -m "Initial commit"</code></pre>
+</li>
+</ol>
+<p>Tímto máte základní aplikaci. Zatím žádné testy. Jen naprosté minimum.</p>
+<h2 id="pridame-tam-testy"><a href="#pridame-tam-testy">Přidáme tam testy</a></h2>
+<p>V projektu již máme připravený testovací framework (PHPUnit) a kostru třídy, kterou máme implementovat (Calculator). Nyní tomu přidáme testy a naimplementujme funkci.</p>
+<ol>
+<li>
+<p>Vytvořte si adresář <code>tests</code> a do něj předejte zaváděcí soubor, který zajistí autoloading. Pojmenujte jej <code>bootstrap.php</code> a jeho obsah bude:</p>
+<pre><code class="language-php">&lt;?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+</code></pre>
+<p>Do tohoto souboru můžete později přidat další kód který by Vaše testovaná aplikace vyžadovala (třeba vypnutí cache apod.).</p>
+</li>
+<li>
+<p>V rootu aplikace si vytvořte soubor <code>phpunit.xml</code>. To je konfigurační soubor pro testovací framework. Zde nadefinujeme cestu k testům a našemu bootstrapu:</p>
+<pre><code class="language-xml">&lt;?xml version="1.0"?&gt;
+&lt;phpunit
+        bootstrap="tests/bootstrap.php"
+        verbose="true"
+&gt;
+    &lt;!-- tests directories to run --&gt;
+    &lt;testsuites&gt;
+        &lt;testsuite&gt;
+            &lt;directory suffix="Test.php"&gt;tests&lt;/directory&gt;
+        &lt;/testsuite&gt;
+    &lt;/testsuites&gt;
+&lt;/phpunit&gt;
+</code></pre>
+</li>
+<li>
+<p>Pak si vytvořte uvnitř složky <code>tests</code> soubor <code>CalculatorTest.php</code>. To bude právě test naší kalkulačky. Jednoduchý testovací případ může vypadat takto:</p>
+<pre><code class="language-php">&lt;?php
+
+namespace Tests\App;
+
+use PHPUnit\Framework\TestCase;
+
+class CalculatorTest extends TestCase
+{
+
+    public function testSum()
+    {
+        $calculator = new Calculator();
+        $this-&gt;assertSame(0, $calculator-&gt;sum(0, 0));
+        $this-&gt;assertSame(99, $calculator-&gt;sum(50, 49));
+        $this-&gt;assertSame(-99, $calculator-&gt;sum(-100, 1));
+    }
+
+}
+</code></pre>
+<p>Do této složky můžete psát další a další testy. Podmínkou je pouze to, aby názvy souborů končily na <code>Test.php</code> - jak jsme si nastavili v konfiguračním souboru.</p>
+</li>
+<li>
+<p>Spusťte si testy. Lze to udělat <a href="https://www.jetbrains.com/help/phpstorm/2016.3/phpunit.html">jednoduše v IDE</a> nebo přes příkazový řádek:</p>
+<pre><code class="language-bash">php vendor/bin/phpunit</code></pre>
+<p>Není nutné nic více nastavovat, jelikož si PHPUnit sám načte konfiguraci definovanou uvnitř <code>phpunit.xml</code> v rootu aplikace.</p>
+<p>Testy skončí chybou, jelikož funkce ještě není naimplementována.</p>
+</li>
+<li>
+<p>Naimplementujte kalkulačku. Soubor <code>src/Calculator.php</code> může vypadat takto:</p>
+<pre><code class="language-php">&lt;?php
+
+namespace App;
+
+class Calculator
+{
+
+    public function sum(int $a, int $b): int
+    {
+        return $a + $b;
+    }
+
+}
+</code></pre>
+</li>
+</ol>
+<h2 id="commit"><a href="#commit">Commit</a></h2>
+<p>A je to hotovo. Mám vytvořenou kostru aplikace, kde mám Composer a prostředí pro testy.</p>
+<p>To je vše co jsem chtěl ukázat. Nyní byste již neměli mít problém založit nový projekt a rovnou u něj psát testy.</p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2017/2017-02-27-kostra-testovane-aplikace.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

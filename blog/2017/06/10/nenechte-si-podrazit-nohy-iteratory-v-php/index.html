@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=1972771229" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=78768113" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=256538437" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=825763587" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Nenechte si podrazit nohy iterátory v PHP </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Nenechte si podrazit nohy iterátory v PHP" />
+<meta property="og:description" content="Iterátory v PHP jsou občas zrádné. V některých kolekcích se chovají neintuitivně. Zjistěte proč a vyhnete se tím hodinám zbytečného hledání chyb." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2017/06/10/nenechte-si-podrazit-nohy-iteratory-v-php/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Nenechte si podrazit nohy iterátory v PHP" />
+<meta name="twitter:description" content="Iterátory v PHP jsou občas zrádné. V některých kolekcích se chovají neintuitivně. Zjistěte proč a vyhnete se tím hodinám zbytečného hledání chyb." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Nenechte si podrazit nohy iterátory v PHP</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+                    <p class="success">
+            <strong><em class="fa fa-fw fa-check-square-o"></em>
+                <a href="https://github.com/pehapkari/pehapkari.cz/tree/master/tests/Posts/Year2017/Iterators">
+                    This post is Tested
+                </a>
+            </strong>
+        </p>
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        5 min
+
+        |
+
+        by <strong>Honza Kuchař</strong>
+
+        &ndash;
+
+        <time datetime="2017-06-Sat">
+            10. 6. 2017
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">Iterátory v PHP jsou občas zrádné. V některých kolekcích se chovají neintuitivně. Zjistěte proč a vyhnete se tím hodinám zbytečného hledání chyb.</p>
+
+                    <p>Při programování a používání kolekcí v doménovém modelu jsem narazil na velmi podivné chování <code>SplObjectStorage</code> (2. příklad) při vnořeném iterování. V jednom příkladu dokonce XDebug mění chování kódu (3. příklad). Nenechejte se napálit a pochopte sémantiku iterátorů v PHP.</p>
+<pre><code class="language-php">$a = [];
+$a[0] = 'first-value';
+$a[1] = 'second-value';
+
+$accumulator = [];
+
+// Act
+foreach($a as $key1 =&gt; $val1) {
+    foreach($a as $key2 =&gt; $val2) {
+        $accumulator[] = [$val1, $val2];
+    }
+}</code></pre>
+<p>Kolik prvků bude v <code>$accumulator</code>?</p>
+<p>Dva vnořené cykly do sebe by měly vytvořit <strong>kartézský součin</strong>. Tedy 4 řádky. ...a ono se tak opravdu stane! Nic překvapivého.</p>
+<p>Nyní nahradím obyčejné pole za <a href="https://secure.php.net/manual/en/class.splfixedarray.php"><code>SplFixedArray</code></a>. Kolik bude prvků v <code>$accumulator</code> teď?</p>
+<pre><code class="language-php">$a = new SplFixedArray(2);
+$a[0] = 'first-value';
+$a[1] = 'second-value';
+
+$accumulator = [];
+
+// Act
+foreach($a as $key1 =&gt; $val1) {
+    foreach($a as $key2 =&gt; $val2) {
+        $accumulator[] = [$val1, $val2];
+    }
+}</code></pre>
+<p>Kolik jste čekali? Čtyři? Budou tam <strong>dva</strong>!</p>
+<p>Teď si asi říkáte, k čemu je dobré iterovat dvakrát ten samý objekt v sobě. Vnořené iterování se umí občas pěkně schovat. Koukněme na další příklad:</p>
+<pre><code class="language-php">$object = new class(2) extends SplFixedArray {
+    public function __debugInfo()
+    {
+        $ret = [];
+        foreach($this as $key =&gt; $val) {
+            $ret[(string) $key] = (string) $val;
+        }
+        return $ret;
+    }
+
+};
+
+$object[0] = 'first-value';
+$object[1] = 'second-value';
+
+$accumulator = [];
+
+foreach($object as $key1 =&gt; $val1) {
+    $accumulator[] = $val1;                // (1)
+}</code></pre>
+<p>Takovýto kód napíšete běžně. Pojďme jej spusit... V <code>$accumulator</code> budou položky <strong>dvě</strong>. Jak byste čekali.</p>
+<p>Nyní si zkuste dát breakpoint na řádek <code>(1)</code> a jakmile se program zastaví, deje pokračovat v běhu. Kolik je položek v <code>$accumulator</code>?</p>
+<p><strong>Jeden?!</strong> Co se stalo? XDebug se pokusil vypsat obsah lokálních proměnných a zavolal metodu <code>__debugInfo()</code>. Abychom však rozkryli, v čem je ten zakopaný pes, koukněme na kousek teorie.</p>
+<h2 id="co-je-to-code-foreach-code"><a href="#co-je-to-code-foreach-code">Co je to <code>foreach</code>?</a></h2>
+<pre><code class="language-php">$arr = ["one", "two", "three"];
+foreach($arr as $key =&gt; $value) {
+    echo "Key: $key; Value: $value\n";
+}</code></pre>
+<p>je naprosto identické tomuto kódu: (<a href="https://secure.php.net/manual/en/control-structures.foreach.php">zdroj</a>)</p>
+<pre><code class="language-php">$arr = ["one", "two", "three"];
+reset($arr);
+while(list($key, $value) = each($arr)) {
+    echo "Key: $key; Value: $value\n";
+}</code></pre>
+<p>Aha! <code>foreach</code> tedy nastaví vždy na začátku pozici iterátoru na začátek a projde iterátorem až do konce. Pokud mám jeden iterator a dva foreach v sobě stane se toto:</p>
+<ol>
+<li>vnější foreach nastaví ukazatel na začátek</li>
+<li>vnější foreach přečte první prvek (a posune se na další)</li>
+<li>vnitřní foreach nastaví ukazatel na začátek</li>
+<li>vnitřní foreach přečtě první prvek (a posune se na daší)</li>
+<li>vnitřní foreach přečtě druhý prvek (a posune se na daší)</li>
+<li>vnitřní foreach zjistí, že již v iterátoru nic není, končí</li>
+<li>vnější foreach zjistí, že v iterátoru již nic není, končí</li>
+</ol>
+<p>A tak jsme došli ke <strong>dvěma prvkům</strong> místo čtyřem.</p>
+<h2 id="rychla-oprava"><a href="#rychla-oprava">Rychlá oprava</a></h2>
+<p>Takže PHP má objekty rozbité a iterování nad datovými strukturami pořádně nepodporuje? Na php.net o tom nic moc nepíší.</p>
+<p>Vrátím se tedy k příkladu s <code>SplFixedArray</code>. <code>foreach</code> mění interní pozici iterátoru a protože dva <code>foreach</code>e prochází jen <strong>jeden</strong> iterátor, dostaneme jen dva prvky na výstupu. Potřebujeme tedy uchovávat pozici pro každý <code>foreach</code> zvlášť. Co zkusit objekt klonovat?</p>
+<pre><code class="language-php">// Arrange
+$a = new SplFixedArray(2);
+$a[0] = 'first-value';
+$a[1] = 'second-value';
+
+$accumulator = [];
+
+// Act
+foreach(clone $a as $key1 =&gt; $val1) {
+    foreach(clone $a as $key2 =&gt; $val2) {
+        $accumulator[] = [$val1, $val2];
+    }
+}</code></pre>
+<p>Nyní dostaneme prvky <strong>čtyři</strong>. Hurá!</p>
+<p>Tímto však kopírujeme celý objekt i s jeho hodnotami, což může být pomalé. Navíc ne všechny objekty počítají s tím, že budou klonovány.</p>
+<p>Pokud objekt podporuje <code>clone</code>, jako rychlé řešení je tento přístup použitelný. Tento přístup však jen obchází příčinu chyby, neřeší ji.</p>
+<h2 id="cesta-k-a-href-https-cs-wikipedia-org-wiki-j-c3-a1dro-pudla-jadru-pudla-a"><a href="#cesta-k-a-href-https-cs-wikipedia-org-wiki-j-c3-a1dro-pudla-jadru-pudla-a">Cesta k <a href="https://cs.wikipedia.org/wiki/J%C3%A1dro_pudla">jádru pudla</a></a></h2>
+<p>Nyní jsem nahradil v původním příkladu s <code>SplFixedArray</code> náš objekt za <a href="https://secure.php.net/manual/en/class.arrayobject.php"><code>ArrayObject</code></a>. Kolik bude teď prvků v <code>$accumulator</code>?</p>
+<pre><code class="language-php">$a = new ArrayObject();
+$a[0] = 'first-value';
+$a[1] = 'second-value';
+
+$accumulator = [];
+
+// Act
+foreach($a as $key1 =&gt; $val1) {
+    foreach($a as $key2 =&gt; $val2) {
+        $accumulator[] = [$val1, $val2];
+    }
+}</code></pre>
+<p>Tentokrát budou <strong>čtyři</strong>! Proč? Magie?</p>
+<p>Příčina neleží v tom, jestli je iterovaný předmět <em>objekt</em> nebo <em>pole</em>.</p>
+<ul>
+<li><code>SplFixedArray</code> implementuje interface <a href="https://secure.php.net/manual/en/class.iterator.php"><code>Iterator</code></a></li>
+<li><code>ArrayObject</code> implementuje <a href="https://secure.php.net/manual/en/class.iteratoraggregate.php"><code>IteratorAggregate</code></a></li>
+</ul>
+<p>Pojďme se těmto interface kouknout na zoubek.</p>
+<pre><code class="language-php">interface Iterator extends Traversable {
+    function current();
+    function key();
+    function next(): void;
+    function rewind(): void;
+    function valid(): bool;
+}</code></pre>
+<ul>
+<li>mluví vždy o instanci sama sebe</li>
+<li>zná pozici v procházení</li>
+<li>jeho metody <strong>závisející na aktuálním stavu</strong> (na aktuální pozici)</li>
+</ul>
+<pre><code class="language-php">interface IteratorAggregate extends Traversable {
+    function getIterator(): Traversable;
+}</code></pre>
+<ul>
+<li><code>getIterator()</code> je továrna
+<ul>
+<li><strong>při každém zavolání musí vracet novou instanci <code>Traversable</code></strong></li>
+</ul></li>
+<li>objekt implementující rozhraní neuchovává žádný stav související s iterací
+<ul>
+<li>uchování stavu deleguje do vráceného <code>Traversable</code> (což může být třeba <code>Iterator</code>)</li>
+</ul></li>
+</ul>
+<h2 id="semantika-code-iterator-code-a-code-iteratoraggregate-code"><a href="#semantika-code-iterator-code-a-code-iteratoraggregate-code">Sémantika <code>Iterator</code> a <code>IteratorAggregate</code></a></h2>
+<p><code>Iterator</code> je <strong>pohled na data</strong>. Například přes <a href="https://secure.php.net/manual/en/class.directoryiterator.php"><code>DirectoryIterator</code></a> je možné procházet obsah složky. Stejně tak můžete procházet obsah pole přes <a href="https://secure.php.net/manual/en/class.arrayiterator.php"><code>ArrayIterator</code></a> nebo obsah kolekce přes vlastní iterátory. Z pohledu uživatele iterátoru v tom není rozdíl.</p>
+<p><code>IteratorAggregate</code> říká, že objekt implementující toto rozhraní, je možné <strong>procházet pomocí iterátoru</strong>, který je dostupný <strong>přes metodu <code>getIterator()</code></strong>.</p>
+<h3 id="iterator-jako-pohled-na-data"><a href="#iterator-jako-pohled-na-data">Iterátor jako pohled na data</a></h3>
+<p>Iterátory je možné skládat do sebe. Kdy každý iterátor může pohled na data upravit a vychází u toho z pohledu na data iterátoru předchozího. Například:</p>
+<pre><code class="language-php">$iterator = new CallbackFilterIterator(
+    $collection-&gt;getIterator(),
+    function($value, $key) { return rand(0,100) &lt; 50; }
+);
+foreach($iterator as $key =&gt; $value) { /* ... */ }</code></pre>
+<p>Tu jsme vyšli z výchozího pohledu dostupného přes <code>-&gt;getIterator()</code>, <code>CallbackFilterIterator</code> poté přefiltroval obsah. <code>foreach</code> tedy projde jen ty položky, kde <code>closure</code> vrátí <code>TRUE</code>.</p>
+<p>Kolekci nemusím procházet přes její výchozí pohled dostupný přes <code>-&gt;getIterator()</code> jako výše. Mohu vytvořit úplně vlastní pohled. Třeba takto:</p>
+<pre><code class="language-php">$iterator = new MyAwesomeIterator($collection);
+foreach($iterator as $key =&gt; $value) { /* ... */ }</code></pre>
+<p>Všimněte si, že <code>MyAwesomeIterator</code> (implementuje <code>Iterator</code>) bere jako parametr přímo kolekci = zprostředkovává pohled na kolekci.</p>
+<h2 id="a-proc-je-tedy-mozne-code-foreach-code-s-code-iteratoraggregate-code-prochazet-zanorene"><a href="#a-proc-je-tedy-mozne-code-foreach-code-s-code-iteratoraggregate-code-prochazet-zanorene">A proč je tedy možné <code>foreach</code> s <code>IteratorAggregate</code> procházet zanořeně?</a></h2>
+<p><code>foreach</code> v PHP je chytrý. Pokud procházený objekt implementuje rozhraní <code>IteratorAggregate</code>, vždy před začátkem procházení vytáhne &quot;nový pohled&quot; (zavolá <code>-&gt;getIterator()</code>).</p>
+<p>Když <code>foreach</code> procházející <code>IteratorAggregate</code> přepíšu jako <code>while</code>, vypadá to takto:</p>
+<pre><code class="language-php">$collection = /* implementuje IteratorAggregate */;
+
+foreach($collection as $key =&gt; $value) { /* ... */ }
+
+// je funkčně stejný jako:
+
+$iterator = $collection-&gt;getIterator();
+$iterator-&gt;rewind();
+while($iterator-&gt;valid()) {
+    $key = $iterator-&gt;key();
+    $value = $iterator-&gt;current();
+
+    /* ... */
+
+    $iterator-&gt;next();
+}
+</code></pre>
+<p>Budou-li tedy <strong>dva <code>foreach</code>e v sobě</strong>, každý bude <strong>mít svoji instanci iterátoru</strong> a kód <strong>bude fungovat</strong> podle očekávání.</p>
+<h2 id="co-si-z-toho-odnest-tl-dr"><a href="#co-si-z-toho-odnest-tl-dr">Co si z toho odnést? (TL;DR)</a></h2>
+<ul>
+<li>Nikdy <strong>neprocházejte jednu instanci <code>Iterator</code> zanořeně</strong></li>
+<li>Pokud implementujete <strong>kolekci</strong> (objekt, který drží nějaká data), vždy implementujte rozhraní <code>IteratorAggregate</code>.</li>
+<li>Pokud implementujete <strong>pohled na data</strong>, implementujte rozhraní <code>Iterator</code>.</li>
+<li>pokud chcete, aby se struktura, kterou dostanete na vstupu chovala <strong>stejně jako pole</strong>, vyžadujte rozhraní <code>IteratorAggregate</code>.</li>
+<li>Ke kolekci může existovat více <code>Iterator</code>ů - tedy <strong>více pohledů</strong>, na ta <strong>stejná data</strong>.</li>
+<li>Kolekce by neměla implementovat <code>Iterator</code> přímo, protože...
+<ul>
+<li>tím říká, že na ni v <strong>jednu chvíli</strong> existuje jen <strong>jeden pohled</strong>.</li>
+<li>má poté <strong>dvě zodpovědnosti</strong> - uchování dat a zprostředkování pohledu na data v ní uložené.</li>
+</ul></li>
+<li>Dejte si pozor na <code>SplFixedArray</code>, <code>SplObjectStorage</code> a další kolekce, které implementují <code>Iterator</code>.</li>
+<li>Použijte raději <a href="https://secure.php.net/manual/en/book.ds.php">phpds</a>, kde jsou datové struktury implementovány správně.</li>
+<li>Pokud kolekce, kterou používáte implementuje přímo rozhraní <code>Iterator</code>, podporuje klonování a nemůžete použít jinou kolekci, která implementuje <code>IteratorAggregate</code>, můžete zkusit <code>foreach(clone $collection as $key =&gt; $value) { /* .. */ }</code>.
+<ul>
+<li>Mějte však na paměti, že je to pomalé.</li>
+<li>A všude kde iterujete kolekci budete muset navíc ještě psát i <code>clone</code>.</li>
+</ul></li>
+</ul>
+<h3 id="bonusovy-ukol"><a href="#bonusovy-ukol">Bonusový úkol</a></h3>
+<p>Koukněte na tento kód:</p>
+<pre><code class="language-php">$object = new SplFixedArray(2); // implements Iterator
+$object[0] = 'first-value';
+$object[1] = 'second-value';
+
+foreach ($object as $key1 =&gt; $val1) {
+    foreach ($object as $key2 =&gt; $val2) {
+        break;
+    }
+}</code></pre>
+<p>Co se stane, když tento kód spustíte?</p>
+<p><strong><a href="https://3v4l.org/LDQ6i">Spustit!</a></strong> Proč se to děje? Přepište <code>foreach</code> na <code>while</code> (viz výše) a zjistěte, co se stalo.</p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2017/2017-06-10-nenechte-si-podrazit-nohy-iteratory-v-php.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

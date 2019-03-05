@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=222855032" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=1731756039" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=1705695692" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=1094955267" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Symfony 4 - Dependency Injection </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Symfony 4 - Dependency Injection" />
+<meta property="og:description" content="O Dependency Injection už počul snáď každý programátor. Symfony posúva hranice DI ďalej a v spojení s autokonfiguráciou služieb tvorí predpoklad pre vznik flexibilnejších a prehľadnejších aplikácií." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2018/05/14/symfony-4-dependency-injection/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Symfony 4 - Dependency Injection" />
+<meta name="twitter:description" content="O Dependency Injection už počul snáď každý programátor. Symfony posúva hranice DI ďalej a v spojení s autokonfiguráciou služieb tvorí predpoklad pre vznik flexibilnejších a prehľadnejších aplikácií." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Symfony 4 - Dependency Injection</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        8 min
+
+        |
+
+        by <strong>Eduard Barnáš</strong>
+
+        &ndash;
+
+        <time datetime="2018-05-Mon">
+            14. 5. 2018
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">O Dependency Injection už počul snáď každý programátor. Symfony posúva hranice DI ďalej a v spojení s autokonfiguráciou služieb tvorí predpoklad pre vznik flexibilnejších a prehľadnejších aplikácií.</p>
+
+                    <h2 id="trochu-teorie"><a href="#trochu-teorie">Trochu teórie</a></h2>
+<p>Implementácia návrhového vzoru Dependency Injection formou tzv. DI kontajnera, nasleduje myšlienku vkladania závislostí objektom z vonkajšieho prostredia. V praxi DI kontajner znižuje závislosť medzi jednotlivými objektmi a odoberá im zodpovednosť za získavanie svojich závislostí.</p>
+<blockquote>
+<p><em>The basic idea of the Dependency Injection is to have a separate object, an assembler, that populates a field in a class with an appropriate implementation for the interface.</em></p>
+<p>--Martin Fowler</p>
+</blockquote>
+<p>Najčastejšie používané formy vkladania závislostí do objektov sú <strong>Constructor Injection</strong> a <strong>Setter Injection</strong>.</p>
+<p><strong>Constructor Injection</strong> je vkladanie závislosti objektu prostredníctvom konštruktora. Konštruktor, ako vstupný bod, poskytuje prehľad o všetkých závislostiach objektu na jednom mieste a zabezpečuje jeho konzistenciu, teda objekt nemôže byť inštancovný bez potrebných závislostí.</p>
+<p>Nevýhodou je možná neprehľadnosť konštruktora pri vyššom počte závislosti, čo je však skôr otázkou správneho návrhu.</p>
+<pre><code class="language-php">final class DependantService
+{
+    /**
+     * @var DependencyService
+     */
+    private $service;
+
+    public function __construct(DependencyService $service)
+    {
+        $this-&gt;service = $service;
+    }
+}</code></pre>
+<p><strong>Setter Injection</strong>, ako vkladanie závislosti prostredníctvom špecifických setrov, zjednodušuje vytvorenie objektu. Setovanie závislosti nie je vyžadované a môže sa volať opakovane.</p>
+<p>To je výhodné v prípade, ak je potrebné setovať závislosť až v čase behu aplikácie. Volanie setra nemusí nastať a výsledný objekt sa môže veľmi ľahko ocitnúť v nekonzistentnom stave.</p>
+<pre><code class="language-php">final class DependantService
+{
+    /**
+     * @var DependencyService|null
+     */
+    private $service;
+
+    public function setDependencyService(DependencyService $service)
+    {
+        $this-&gt;service = $service
+    }
+}</code></pre>
+<h2 id="symfony-a-di"><a href="#symfony-a-di">Symfony a DI</a></h2>
+<p>Symfony 4 prináša pokročilé vlastnosti DI kontajnera, ktoré sú od verzie 3.4 predvolene aktivované.</p>
+<p>Definícia služieb pre DI kontajner v Symfony projekte vykonávame v <code>services.yml</code>, ktorý nájdeme v zložke <code>config</code>.</p>
+<p>Po inštalácií frameworku obsahuje súbor len základné predvolené nastavenia a obecnú registráciu služieb (autodiscovery) zameranú na celú zložku <code>src</code>.</p>
+<pre><code class="language-yaml">services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'</code></pre>
+<p>Na ukážke sekcia <code>_defaults</code> zahŕňa tri predvolené nastavenia, platiace pre všetky zaregistrované služby v <code>services.yml</code>. Každé zo všeobecných nastavení môžeme preťažiť pri definícií konkrétnej služby.</p>
+<pre><code class="language-yaml">services:
+    _defaults:
+        public: false
+
+    App\Model\TemplateEngine:
+        public: true</code></pre>
+<p>Sekcia <code>_defaults</code> je platná výhradne v rámci súboru, v ktorom je definovaná. Teda každý <code>services.yml</code> z bundlu alebo knižnice bude obsahovať vlastnú sadu týchto nastavení.</p>
+<h2 id="autowiring"><a href="#autowiring">Autowiring</a></h2>
+<p>Povolenie <strong>autowiring</strong>-u pre všetky služby umožňuje DI kontajneru ich vkladanie primárne prostredníctvom konštruktora do iných služieb, ktoré ich vyžadujú na základe typehintu.</p>
+<pre><code class="language-php">final class MailSender
+{
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
+    public function __construct(LoggerInterface $logger)
+    {
+        $this-&gt;logger = $logger;
+    }
+}</code></pre>
+<p>Vkladanie pracuje na úrovni typu služby alebo interfacu, ktorý služba implementuje.</p>
+<p>Ak existujú viaceré služby implementujúce rovnaký interface DI, kontajner nebude vedieť, ktorú službu má poskytnúť ako závislosť. K interfacu ako kľúču na úrovni DI kontajneru, priradíme konkrétnu implementáciu služby.</p>
+<pre><code class="language-yaml">services:        
+    App\Logger\LoggerInterface: '@App\Logger\MailLogger'</code></pre>
+<p>Od Symfony 3.4. existuje ekvivalentný zápis v sekcii bind.</p>
+<pre><code class="language-yaml">services:
+    _defaults:
+        bind:        
+            App\Logger\LoggerInterface: '@App\Logger\FileLogger'</code></pre>
+<p>Osobne mi tento zápis vyhovuje viac, pretože mám všetky bindy interfacov na jednom mieste v rámci konfigurácie. </p>
+<p>Nie všetky naše služby vyžadujúce <code>App\Logger\LoggerInterface</code> musia očakávať nabindovanú inštanciu <code>App\Logger\FileLogger</code>. V tomto prípade môžeme implementáciu prebindovať pri konkrétnej definícií služby.</p>
+<pre><code class="language-yaml">services:
+    _defaults:
+        bind:        
+            App\Logger\LoggerInterface: '@App\Logger\FileLogger'
+
+    App\Logger\:
+        resource: '../src/Logger/*'
+
+    App\Mailer\MailGenerator:
+        bind:
+            App\Logger\LoggerInterface: '@App\Logger\DatabaseLogger'            </code></pre>
+<h3 id="action-injection"><a href="#action-injection">Action Injection</a></h3>
+<p>Symfony autowiring umožňuje vkladanie závislostí <strong>aj priamo metódam v kontroleri</strong>. Táto funkčnosť do určitej miery zjednodušuje prácu s kontrolerom, kedy nie je nutné k získaniu závislosti vytvárať konštruktor. </p>
+<pre><code class="language-php">final class MailSendController
+{
+    public function __invoke(MailSenderInterface $mailSender)
+    {
+        // ...
+    }
+}       </code></pre>
+<p><strong>Odporúčam používať výhradne konštruktor na vkladanie závislosti za každých okolností</strong>. Kontroler tak jednoznačne priznáva svoje závislosti.</p>
+<p>Viac o problémoch spojených s používaním <strong>action injection</strong> sa môžete dočítať v článku od <a href="https://www.tomasvotruba.cz/blog/2018/04/23/how-to-slowly-turn-your-symfony-project-to-legacy-with-action-injection/">Tomáša Votrubu</a>.  </p>
+<h3 id="ako-autowiring-pracuje"><a href="#ako-autowiring-pracuje">Ako autowiring pracuje?</a></h3>
+<p>Autowiring nie je žiadnou mágiou, pretože každá závislosť je explicitne vyžadovaná konštruktorom, či metódou objektu.</p>
+<p>Vyžadovanú službu sa kontajner pokúsi vyhľadať medzi existujúcimi službami podľa tzv. ID, teda plne špecifikovaného doménového názvu (<a href="https://en.wikipedia.org/wiki/Fully_qualified_name">FQCN</a>). Pokiaľ je k dispozícií, vloží ju.</p>
+<p>V opačnom prípade sa pokúsi službu nakonfigurovať podľa definície opätovne na základe zhodnosti ID s doménovým názvom (<a href="https://en.wikipedia.org/wiki/Fully_qualified_name">FQCN</a>). V prípade neúspechu, vyhodí zrozumiteľnú výnimku o chýbajúcej službe.</p>
+<p><img src="/assets/images/posts/2018/symfony-4-dependency-injection/autowire-exception.png" alt="autowiring-exception" /></p>
+<p>Špecifický doménový názov (<a href="https://en.wikipedia.org/wiki/Fully_qualified_name">FQCN</a>) v prípade DI kontajnera predstavuje kompletný názov triedy s celým namespacom, teda napríklad <code>App\Logger\FileLogger</code>.</p>
+<h2 id="autokonfiguracia"><a href="#autokonfiguracia">Autokonfigurácia</a></h2>
+<p>Povolenie <code>autoconfigure</code>, ako už názov napovedá, povoľuje automatickú konfiguráciu služieb, resp. automatické tagovanie. Tagy sú interné značky kontajnera, ktoré nemajú žiaden význam mimo jeho hraníc.</p>
+<p>Predstavme si službu, ktorá rozširuje šablónovací systém <strong>Twig</strong>. Služba musí implementovať rozhranie <code>Twig_ExtensionInterface</code>.</p>
+<p>Bez automatickej konfigurácie ju musíme ručne zaregistrovať v <code>services.yml</code> a zadefinovať správny tag <code>twig.extension</code> tak, aby kontajner vedel ako má so službou pracovať.</p>
+<pre><code class="language-yaml">services:
+    _defaults:
+        autoconfigure: false
+
+    App\Templating\AcmeTwigExtension:
+        tags: [twig.extension]
+
+    App\:
+        resource: '../src/*'</code></pre>
+<p>Tento zápis môžeme zjednodušiť definíciou tagu pre interface v sekcii<code>_instanceof</code>.</p>
+<pre><code class="language-yaml">services:
+    _defaults:
+        autoconfigure: false
+
+    _instanceof:
+        Twig_ExtensionInterface:
+            tags: [twig.extension]          
+
+    App\:
+        resource: '../src/*'</code></pre>
+<p>Keďže programátor je tvor lenivý, zapneme <code>autoconfigure</code> a nemusíme nič explicitne definovať.</p>
+<pre><code class="language-yaml">services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    App\:
+        resource: '../src/*'</code></pre>
+<h2 id="viditelnost-sluzieb"><a href="#viditelnost-sluzieb">Viditeľnosť služieb</a></h2>
+<p>Symfony 4 predvolene nastavuje registrované služby ako privátne. K privátnym službám nie je možné pristupovať cez kontajner známym <code>$container-&gt;get()</code>. <strong>Odporúčam ponechať toto nastavenie a obmedziť tak prístup k službám cez kontajner</strong>.</p>
+<p>V nutnom prípade môžeme preťažiť parameter <code>public</code> u konkrétnej definície služby.</p>
+<pre><code class="language-yaml">services:
+    _defaults:
+        public: false
+
+    App\Logger\MailLogger:
+        public: true</code></pre>
+<h2 id="bindovanie-parametrov"><a href="#bindovanie-parametrov">Bindovanie parametrov</a></h2>
+<p>Častokrát potrebujeme vložiť službám skalárne argumenty, napríklad číslo alebo reťazec. V takomto prípade by sme museli explicitne definovať službu alebo viacero služieb, ak argument vyžadovali.</p>
+<pre><code class="language-yaml">services:
+    App\Logger\MailLogger:        
+        arguments:
+            $logDir: '%kernel.project_dir%/var/log'
+
+    App\Logger\QueryLogger:        
+        arguments:
+            $logDir: '%kernel.project_dir%/var/log'</code></pre>
+<p>Autowiring skalárnych argumentov môžeme vyriešiť jednoduchšie pomocou tzv. <strong>bindovania</strong> v sekcii <code>_defaults</code>.</p>
+<pre><code class="language-yaml">services:
+    _defaults:    
+        bind:
+            $logDir: '%kernel.project_dir%/var/log'</code></pre>
+<p>Následne všetky naše služby vyžadujúce skalárny argument <code>$logDir</code> získajú nabindovaný skalár.</p>
+<p>Ak pre niektorú zo služieb potrebujeme určiť inú hodnotu argumentu <code>$logDir</code>, musíme opäť definíciu služby preťažiť:</p>
+<pre><code class="language-yaml">services:
+    _defaults:
+        bind:       
+            $logDir: '%kernel.project_dir%/var/log'
+
+    App\Logger\QueryLogger:
+        bind:
+            $logDir: '%kernel.project_dir%/var/log/query'</code></pre>
+<h2 id="registracia-sluzieb"><a href="#registracia-sluzieb">Registrácia služieb</a></h2>
+<p>Hromadná registrácia služieb (autodiscovery) prostredníctvom špecifického doménového názvu (<a href="https://en.wikipedia.org/wiki/Fully_qualified_name">FQCN</a>) odtieňuje vývojára od zdĺhavej definície každej služby, sprehľadňuje konfiguračný súbor <code>services.yml</code> a v neposlednom rade značne zvyšuje efektivitu práce tým, že definície služieb vytvára automaticky.</p>
+<p>Definícia začína určením spoločného doménového názvu (<a href="https://en.wikipedia.org/wiki/Fully_qualified_name">FQCN</a>), ktorý musí byť ukončený spätným lomítkom.</p>
+<p>Prvý argumentom <code>resource</code> definujeme cestu k zložke, kde sú umiestnené súbory pre registráciu a druhým nepovinným parametrom <code>exclude</code> môžeme určiť, ktoré zložky alebo súbory sa majú z registrácie vylúčiť. Definícia môže obsahovať aj iné parametre napr. <code>arguments</code>, <code>tags</code> a podobne.:  </p>
+<pre><code class="language-yaml">services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'</code></pre>
+<p>Z ukážky vyššie je zrejmé, že v základnom nastavení sa registrujú všetky služby, ktorých doménový názov začína na <code>App</code>.</p>
+<p>Do parametrov <code>resource</code> a <code>exclude</code> nemusíme definovať len presnú cestu, umožňujú aj valídny zápis cesty so zástupnými znakmi v <a href="https://en.wikipedia.org/wiki/Glob_(programming)">glob patterne</a>. </p>
+<p>Predstavme si jednoduchý príklad, kde chceme vylúčiť z načítania všetky súbory, ktorých názov obsahuje reťazec <strong>Command</strong> alebo <strong>Query</strong> a tieto súbory môžu byť zanorené v ľubovoľnej hierarchií zložiek:</p>
+<pre><code class="language-yaml">services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    App\:
+        resource: '../src/*'
+        exclude: '../src/**/*{Command,Query}.php'</code></pre>
+<p>V zápise <code>resource</code> sme použili zástupný znak <code>*</code>, ktorý  v tomto prípade zastupuje akýkoľvek názov súboru. Zástupné znaky môžeme spresňovať prefixom alebo sufixom, ako sme to urobili v zápise argumentu <code>exclude</code>. Za zmienku ešte stojí znak <code>**</code>, ktorý zastupuje rôznu úroveň vnorenie adresárov.</p>
+<p>Viac informácií o <strong>glob patterne</strong> nájdete na <a href="https://en.wikipedia.org/wiki/Glob_(programming)">wikipédií</a>.</p>
+<p>Definície registrácií odporúčam radiť od obecných po konkrétne. Autoregistrácia má vyššiu prioritu ako ručná registrácia a teda neskorší obecný zápis preťaží všetky ručné definície v rámci <a href="https://en.wikipedia.org/wiki/Fully_qualified_name">FQCN</a>.</p>
+<p>Na takéto správanie som narazil v súvislosti s importom konfiguračného súboru so službami. Import sa vždy spracúva pred sekciou <code>services</code> a teda všetky moje definície s konkrétnymi zmenami mi autoregistrácia odstránila.</p>
+<h2 id="debugovanie"><a href="#debugovanie">Debugovanie</a></h2>
+<p>Pre efektívnejšiu prácu a potreby ladenia kontajnera môžeme použiť základné konzolové príkazy ako <code>debug:container</code> a <code>debug:autowiring</code>.</p>
+<h3 id="prikaz-debug-container"><a href="#prikaz-debug-container">Príkaz debug:container</a></h3>
+<p>Otvoríme konzolu a v koreňovom adresári Symfony projektu zadáme príkaz <code>php bin/console debug:container</code>.</p>
+<p><img src="/assets/images/posts/2018/symfony-4-dependency-injection/debug-container.jpg" alt="debug-container" /></p>
+<p>Výsledkom príkazu je zoznam všetkých verejných služieb.</p>
+<p>Príkaz má viacero nastavení, z ktorých stojí za zmienku napríklad parameter <code>--show-private</code>. Tento parameter spôsobí, že výpis kontajnera bude obsahovať všetky služby vrátane privátnych, ktoré štandardne výpis neobsahuje.</p>
+<p>Skúsme teda do konzole zadať príkaz <code>php bin/console debug:container --show-private</code>. Výstup už bude obsahovať všetky služby, ktorými disponuje kontajner bez ohľadu na to či sú verejné alebo nie.</p>
+<p>Keď projekt rastie, služieb pribúda a zoznam rastie. Práca s ním sa stáva nepohodlná a práve teraz je vhodný čas na vyhľadávanie služieb v zozname. Skúsme teda zadať príkaz <code>php bin/console debug:container RedirectController</code> </p>
+<p><img src="/assets/images/posts/2018/symfony-4-dependency-injection/debug-container-search.jpg" alt="debug-container-search" /></p>
+<p>Skvelé! Príkaz vyhľadá v zozname služieb také, ktoré vyhovujú hľadaniu. V prípade, ak podľa reťazca vyhovuje viacero služieb, ponúkne nám jednoduchý výber.</p>
+<h3 id="prikaz-debug-autowiring"><a href="#prikaz-debug-autowiring">Príkaz debug:autowiring</a></h3>
+<p>Kontajner obsahuje množstvo služieb, z ktorých nie všetky môžu byť dostupné pre autowiring.</p>
+<p>Skúsme teda do konzoly zadať príkaz <code>php bin/console debug:autowiring</code>.</p>
+<p><img src="/assets/images/posts/2018/symfony-4-dependency-injection/debug-autowiring.jpg" alt="debug-autowiring" /></p>
+<p>Skript nám vypíše všetky dostupné služby, ktoré môžu byť vkladané ako závislosti. Modrou farbou sú označené doménové adresy (<a href="https://en.wikipedia.org/wiki/Fully_qualified_name">FQCN</a>), teda ID kľúče, na základe ktorých sú služby autowirované.</p>
+<p>Ako u predchádzajúceho príkazu, aj v tomto zozname môžeme vyhľadávať uvedením prvého argumentu za príkazom, napríklad <code>php bin/console debug:autowiring RedirectController</code></p>
+<h3 id="napoveda-k-prikazom"><a href="#napoveda-k-prikazom">Nápoveda k príkazom</a></h3>
+<p>Viac informácií o príkazoch nájdete v nápovede pre konkrétny konzolový skript. Skúsme sa dozvedieť viac k príkazu <code>debug:autowiring</code>. Napíšme teda do konzoly príkaz <code>php bin/console debug:autowiring -h</code>.</p>
+<p><img src="/assets/images/posts/2018/symfony-4-dependency-injection/debug-autowiring-help.jpg" alt="debug-autowiring-help" /></p>
+<p>Príkaz vypíše možné argumenty a parametre príkazu, krátky popis a v lepšom prípade aj možnosti použitia.</p>
+<h2 id="zaver"><a href="#zaver">Záver</a></h2>
+<p>Depency Injection je skvelá myšlienka, ktorá nám umožňuje vytvárať lepšie a flexibilnejšie aplikácie. Symfony túto myšlienku pomaly, ale iste doťahuje k dokonalosti.</p>
+<p>Verím, že sa mi podarilo priblížiť Vám základné použitie DI v Symfony 4 a ďalšie rozšírené možnosti môžete nájsť v <a href="http://symfony.com/doc/current/service_container.html">oficiálnej dokumentácií</a>.</p>
+<p>Teším sa na vecné komentáre, ktoré môžu mňa a moju prácu posunúť opäť o kúsok ďalej.</p>
+<h2 id="zdroje"><a href="#zdroje">Zdroje</a></h2>
+<ul>
+<li><a href="https://symfony.com/doc/current/service_container.html">https://symfony.com/doc/current/service_container.html</a></li>
+<li><a href="https://symfony.com/doc/current/service_container/3.3-di-changes.html">https://symfony.com/doc/current/service_container/3.3-di-changes.html</a></li>
+<li><a href="https://symfony.com/blog/new-in-symfony-3-3-simpler-service-configuration">https://symfony.com/blog/new-in-symfony-3-3-simpler-service-configuration</a></li>
+<li><a href="https://symfony.com/blog/new-in-symfony-3-3-service-autoconfiguration">https://symfony.com/blog/new-in-symfony-3-3-service-autoconfiguration</a></li>
+<li><a href="https://symfony.com/blog/new-in-symfony-4-1-simpler-service-testing">https://symfony.com/blog/new-in-symfony-4-1-simpler-service-testing</a></li>
+<li><a href="https://symfony.com/blog/new-in-symfony-3-4-local-service-binding">https://symfony.com/blog/new-in-symfony-3-4-local-service-binding</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Glob_(programming">https://en.wikipedia.org/wiki/Glob_(programming</a>)</li>
+<li><a href="https://en.wikipedia.org/wiki/Fully_qualified_name">https://en.wikipedia.org/wiki/Fully_qualified_name</a></li>
+<li><a href="https://www.tomasvotruba.cz/blog/2018/04/23/how-to-slowly-turn-your-symfony-project-to-legacy-with-action-injection/">https://www.tomasvotruba.cz/blog/2018/04/23/how-to-slowly-turn-your-symfony-project-to-legacy-with-action-injection/</a></li>
+</ul>
+<h2 id="kontakt"><a href="#kontakt">Kontakt</a></h2>
+<p>Zvažujete použitie Symfony 4 na svojich projektoch? Oslovte ma - <a href="https://www.neoweb.sk">neoweb.sk</a></p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2018/2018-05-14-symfony-4-dependency-injection.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

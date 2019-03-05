@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=1754830126" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=1978914008" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=1070291160" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=604877759" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Tipy na potopení projektu: #2 Nebavte se s uživatelem </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Tipy na potopení projektu: #2 Nebavte se s uživatelem" />
+<meta property="og:description" content="Existuje tisíc a jeden způsobů, jak podělat projekt, a v našem seriálu si některé ukážeme. Dnes bych rád mluvil o jednom zvláštním živočichovi. Hodně programátorů o něm slyšelo, ale jen málokdo ho viděl. Přivítejte na scénu uživatele." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2018/10/10/komunikace-se-zakaznikem-anti-tipy-2-uzivatel/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Tipy na potopení projektu: #2 Nebavte se s uživatelem" />
+<meta name="twitter:description" content="Existuje tisíc a jeden způsobů, jak podělat projekt, a v našem seriálu si některé ukážeme. Dnes bych rád mluvil o jednom zvláštním živočichovi. Hodně programátorů o něm slyšelo, ale jen málokdo ho viděl. Přivítejte na scénu uživatele." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Tipy na potopení projektu: #2 Nebavte se s uživatelem</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        3 min
+
+        |
+
+        by <strong>Petr &#039;PePa&#039; Pavel</strong>
+
+        &ndash;
+
+        <time datetime="2018-10-Wed">
+            10. 10. 2018
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">Existuje tisíc a jeden způsobů, jak podělat projekt, a v našem seriálu si některé ukážeme. Dnes bych rád mluvil o jednom zvláštním živočichovi. Hodně programátorů o něm slyšelo, ale jen málokdo ho viděl. Přivítejte na scénu <strong>uživatele</strong>.</p>
+
+                    <p><strong>Zlaté pravidlo potápěče</strong> projektů zní: <strong>&quot;Hlavně se moc nevyptávat.&quot;</strong> Takhle to mám udělat, je jejich vina, že to nedává smysl. Kdo ví, co by mi ještě řekli.</p>
+<h2 id="pohadka-o-kohoutkovi-a-slepicce"><a href="#pohadka-o-kohoutkovi-a-slepicce">Pohádka O kohoutkovi a slepičce</a></h2>
+<p>Docházel jsem mentorovat do firmy, kde jsem se studenty párově programoval. Jednou nám do klína spadl export stavu pokladen pro účetní. Na první pohled <strong>brnkačka, ale něco mi na zadání nesedělo</strong>. </p>
+<p>Ptali jsme se <strong>autora ticketu</strong>, který nás odkázal na <strong>produktového manažera</strong>. Ten nám vysvětlil, že to chce dodělat jeden konkrétní zákazník - ale že vlastně detaily taky neví. Takže náš produkťák zavolal jejich <strong>projekťákovi</strong> a chvíli spolu moudře hovořili. Když nám pak shrnul výsledek, ukázalo se, že tam pořád ještě něco nehraje. On totiž <strong>ani ten projekťák vlastně nevěděl</strong>, jak se to bude používat.</p>
+<p>&quot;Tak <strong>brnkneme jejich uživateli</strong>, ne?&quot; prohlásil jsem nevinně a bylo vidět, jak se mezi zúčastněnými šíří panika jako rázová vlna po výbuchu. Viděl jsem zbytek aplikace a tušil jsem, že to jen tak lehce neprojde. Oči všech se mlčky stočily na produktového manažera.</p>
+<p>&quot;...no, to já je zase nechci moc otravovat,&quot; ošíval se. &quot;Pojďme to <strong>udělat tak, jak psali v zadání</strong>. A když to nebude ono, <strong>upravíme to podle jejich feedbacku</strong>.&quot;</p>
+<p>Měl jsem <strong>pokušení to nechat být</strong>. Byl jsem tu na návštěvě, tenhle oheň mě nepálil. Ani jsem si nebyl jistý, jak přesvědčit dva lidi, kteří jsou v hierarchii nade mnou. Navíc to vlastně <strong>dávalo smysl... nebo ne?</strong></p>
+<p>Nakonec jsem se <strong>hecnul</strong>. Začal jsem popisovat chudáka účetní, jak sedí v nějaké místnosti bez oken, nikdo se o ni nezajímá. Tak trochu jako programátor, že? ;-) A teď si představte, že jí někdo zavolá a bude se <strong>upřímně zajímat</strong> o to, jakým způsobem používá &quot;tu blbou aplikaci&quot;. Získáme <strong>spoustu užitečných informací</strong>! Napíšeme tu novou fíčuru tak, aby se <strong>nedala používat špatně</strong>. Ušetříme jí hodiny času a dostaneme instantní karma boost +100. Navíc účetní dokáží myslet strukturovaně, takže to ani <strong>nebude bolet</strong>.</p>
+<p>Produktový manažer se naštěstí nenechal přemlouvat a <strong>za pár minut jsme měli jasno</strong>. Účetní potřebovala něco trochu jiného, což vyjasnilo všechno to zmatení. <strong>Sami bychom na to nikdy nepřišli</strong>.</p>
+<p>Se studentem jsme pak už jen <strong>napsali dodatek k zadání</strong> a citací @produkťáka si ho <strong>nechali schválit</strong>.</p>
+<h2 id="nekouse"><a href="#nekouse">Nekouše</a></h2>
+<p>Zadávání projektu často připomíná <strong>hru na tichou poštu</strong>. Uživatel něco potřebuje a přemluví šéfa. Pak <strong>čeká, někdy i měsíce</strong>, než jeho zadání probublá řadou prostředníků až k programátorovi. Napsal to dobře? Pochybnosti v něm hlodají. Snad se zeptají, kdyby ne. Představte si tu frustraci, když pak <strong>dostane novou verzi - a je nepoužitelná</strong>. Má někomu napsat a <strong>zase čekat</strong> další měsíce? Jak dlouho byste to vydrželi vy?</p>
+<h2 id="takze-si-to-shrneme"><a href="#takze-si-to-shrneme">Takže si to shrneme</a></h2>
+<ol>
+<li>
+<p>Uživatel ví. Je zbytečné plýtvat časem a penězi zadavatele na slepé cesty založené na dohadech.</p>
+</li>
+<li>
+<p><a href="https://pehapkari.cz/blog/2017/10/24/komunikace-se-zakaznikem-anti-tipy-1-komunikacni-kanal/">Mluvme spolu</a>. Když jsou nejasnosti, jeden telefonát vydá za deset e-mailů a dlouhé dny frustrací.</p>
+</li>
+<li>
+<p>Při zadávání rovnou přiložte kontakt na uživatele. Vyšlete tím signál.</p>
+</li>
+</ol>
+<h2 id="pro-tip"><a href="#pro-tip">Pro tip</a></h2>
+<p><strong>Export do Excelu je &quot;specification smell&quot;.</strong> Není to totiž konečný produkt, ale vždy <strong>polotovar</strong>, se kterým uživatel teprve bude něco dělat. Excel je pro hodně lidí <strong>horizontem představivosti</strong>.</p>
+<p>Bude z něj něco počítat? Kreslit graf? Průběžně archivovat, aby měl historii změn? Pojďme mu poskytnout <strong>rovnou to, co ve skutečnosti potřebuje</strong>.</p>
+<h2 id="co-dal"><a href="#co-dal">Co dál</a></h2>
+<p>Příští tip bude o špatném zadání. Výborná zbraň pro zpoždění nebo úplné rozstřelení projektu :-)</p>
+<p><em>O volbě správného komunikačního kanálu i jiných věcech si <strong>přijďte popovídat na <a href="https://pehapkari.cz/kurz/tvorba-zadani-a-komunikace-se-zakaznikem/">školení Tvorba zadání a komunikace se zákazníkem</a></strong>.</em></p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                            <h2 id="you-might-also-like"><a href="#you-might-also-like">You Might Also Like</a></h2>
+
+                        <ul id="related-posts">
+                                                            <li>
+                                    <a href="/blog/2018/10/10/komunikace-se-zakaznikem-anti-tipy-2-uzivatel">Tipy na potopení projektu: #2 Nebavte se s uživatelem &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2017/10/24/komunikace-se-zakaznikem-anti-tipy-1-komunikacni-kanal">Tipy na potopení projektu: #1 Trvejte na oblíbeném komunikačním kanále &raquo;</a>
+                                </li>
+                                                    </ul>
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2018/2018-10-10-komunikace-se-zakaznikem-anti-tipy-2-uzivatel.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

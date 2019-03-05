@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=1603515117" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=1260957520" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=203982638" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=165827362" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Debugování CLI skriptů s Xdebugem </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Debugování CLI skriptů s Xdebugem" />
+<meta property="og:description" content="Debugování je každodenním chlebem programátorů. Ukáži vám, jak rychle a jednoduše se dají debugovat konzolové skripty s Xdebugem.
+Už žádné print() a echo v konzolových commandech pro zjištění hodnoty proměnné  :-)." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2017/12/25/debugovani-cli-skriptu-s-xdebugem/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Debugování CLI skriptů s Xdebugem" />
+<meta name="twitter:description" content="Debugování je každodenním chlebem programátorů. Ukáži vám, jak rychle a jednoduše se dají debugovat konzolové skripty s Xdebugem.
+Už žádné print() a echo v konzolových commandech pro zjištění hodnoty proměnné  :-)." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Debugování CLI skriptů s Xdebugem</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        2 min
+
+        |
+
+        by <strong>Jan Mikeš</strong>
+
+        &ndash;
+
+        <time datetime="2017-12-Mon">
+            25. 12. 2017
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">Debugování je každodenním chlebem programátorů. Ukáži vám, jak rychle a jednoduše se dají debugovat konzolové skripty s Xdebugem.</p>
+<p>Už žádné <code>print()</code> a <code>echo</code> v konzolových commandech pro zjištění hodnoty proměnné  :-).</p>
+
+                    <p>Nezáleží na tom, jestli používáš <code>Symfony\Console</code> nebo pouštíš běžný PHP skript, většinou to děláš nějak takto:</p>
+<pre><code class="language-bash">php script.php
+# nebo
+bin/console myCommand</code></pre>
+<p>Znáš to, ve tvém kódu se něco rozbilo, děje se tam černá magie a ty potřebuješ ověřit, jaká je hodnota proměnné, kolik iterací se provede atd.. Není nic jednoduššího, než si vypsat potřebné informace a pak ukončit běh programu.</p>
+<p>Představ si situaci s následujícím kódem, kdy potřebuješ zjistit, jaká je hodnota <code>$c</code> a že to doopravdy je <code>9765625</code>.</p>
+<pre><code class="language-php">$a = 5;
+$b = 10;
+$c = $a ** $b;</code></pre>
+<div class="text-center">
+    <img src="/assets/images/posts/2017/xdebug-cli-scripts/debug-cli-script-without-xdebug.gif"></div>
+<p><code>echo $variable; die();</code> je něco co vídám velice často, je to rychlé a splní to účel.</p>
+<p>Ale co když chci vypsat více proměnných a v kódu se chci posouvat nebo jej zastavit na více místech? Jak to dělat lépe?</p>
+<h2 id="xdebug-na-pomoc"><a href="#xdebug-na-pomoc">Xdebug na pomoc</a></h2>
+<p><small><em>Následující řádky předpokládají nainstalovanou a <a href="https://stackoverflow.com/a/14046603">aktivní xdebug extension</a> pro vaše PHP. Nejrychlejší kontrola je přes příkaz <code>php -v|grep 'Xdebug'</code>.</em></small></p>
+<p>Postup je opět velice jednoduchý:</p>
+<ol>
+<li>Zapnu naslouchání IDE pro příchozí spojení <code>Run → Listen for debug connections</code></li>
+<li>Umístím <strong>breakpoint</strong> na místo, kde chci běh skriptu zastavit</li>
+<li>Spustím skript se zapnutým xdebugem &amp; Profit</li>
+</ol>
+<p>Skript s xdebugem pustíme takto:</p>
+<pre><code class="language-bash">php -d xdebug.remote_autostart=on -d xdebug.remote_enable=1 script.php myCommand
+# nebo
+php -d xdebug.remote_autostart=on -d xdebug.remote_enable=1 bin/console myCommand</code></pre>
+<div class="text-center">
+    <img src="/assets/images/posts/2017/xdebug-cli-scripts/debug-cli-script-with-xdebug.gif"></div>
+<h2 id="alias-jako-prijemny-bonus"><a href="#alias-jako-prijemny-bonus">Alias jako příjemný bonus</a></h2>
+<p>Super, ale komu se chce stále dokola psát <code>php -d xdebug.remote_autostart=on -d xdebug.remote_enable=1</code> a hlavně, kdo si to má pamatovat?</p>
+<p>Zde přichází na pomoc <strong>alias</strong>, mě osobně vyhovuje <code>phpx</code>, ale fantazii se meze nekladou:</p>
+<pre><code>alias phpx='php -d xdebug.remote_autostart=on -d xdebug.remote_enable=1'</code></pre>
+<p>S touto parádou je použití následující:</p>
+<pre><code class="language-bash">phpx script.php
+# nebo
+phpx bin/console myCommand</code></pre>
+<p>Aby byla změna permanentní, je potřeba řádek s aliasem přidat do <a href="https://www.quora.com/What-is-bash_profile-and-what-is-its-use">bash_profile</a>, cesta k souboru se liší dle OS a příkazové řádky, nejčastěji se jedná o <code>~/.bash_profile</code>, <code>~/.bashrc</code>  nebo <code>~/.zshrc</code>.</p>
+<p><em>Přeji šťastné a veselé debugování CLI skriptů!</em></p>
+<h2 id="chci-se-dozvedet-vice"><a href="#chci-se-dozvedet-vice">Chci se dozvědět více!</a></h2>
+<p>Přihlaš se na školení <a href="/kurz/zacnete-debugovat-jako-profici-s-xdebugem/">Začněte debugovat jako profíci s xdebugem</a>, kde probereme téma více do hloubky a ukážeme si pokročilé tipy!</p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2017/2017-12-25-debugovani-cli-skriptu-s-xdebugem.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

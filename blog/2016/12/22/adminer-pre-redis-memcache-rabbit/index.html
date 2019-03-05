@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=214728906" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=1386443549" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=765004533" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=157261842" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Adminer pre Redis, Memcache, RabbitMQ </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Adminer pre Redis, Memcache, RabbitMQ" />
+<meta property="og:description" content="Pred nejakým časom som potreboval vyhľadávať a zoraďovať dáta v Redise. Takže som si k tomu napísal jednoduchý PHP skript. A keď už som ho mal napísaný, chcel som pomôcť aj dalším ľuďom, ktorí by riešili podobný problém ako ja." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2016/12/22/adminer-pre-redis-memcache-rabbit/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Adminer pre Redis, Memcache, RabbitMQ" />
+<meta name="twitter:description" content="Pred nejakým časom som potreboval vyhľadávať a zoraďovať dáta v Redise. Takže som si k tomu napísal jednoduchý PHP skript. A keď už som ho mal napísaný, chcel som pomôcť aj dalším ľuďom, ktorí by riešili podobný problém ako ja." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Adminer pre Redis, Memcache, RabbitMQ</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        2 min
+
+        |
+
+        by <strong>Michal Lulčo</strong>
+
+        &ndash;
+
+        <time datetime="2016-12-Thu">
+            22. 12. 2016
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">Pred nejakým časom som potreboval vyhľadávať a zoraďovať dáta v Redise. Takže som si k tomu napísal jednoduchý PHP skript. A keď už som ho mal napísaný, chcel som pomôcť aj dalším ľuďom, ktorí by riešili podobný problém ako ja.</p>
+
+                    <p>Rozhodol som sa preto, že napíšem rozšírenie do <a href="https://www.adminer.org">Adminera</a>.</p>
+<p>Nevyhovoval mi však úplne štýl, akým je Adminer napísaný. Hlavne <strong>spôsob pridávania nových rozšírení v podobe nových typov systémov je až príliš orientovaný na SQL</strong>. Napr. pri zmene typu systému sa nezmení ani prihlasovací formulár (vždy sú tam len políčka server, username, password a database).</p>
+<p>Rozhodol som sa, že skúsim vytvoriť aplikáciu, <strong>v ktorej by sa na takéto možnosti rozšírenia myslelo hneď od začiatku</strong> (na kopec iných vecí sa určite nemyslelo :) ale tak to chodí).</p>
+<p>A tak vznikla aplikácia, ktorej názov je UniMan (původně <em>Adminer Next Generation</em>, skrátene <em>Adminer NG</em>).</p>
+<h2 id="v-com-je-napisany-a-co-podporuje"><a href="#v-com-je-napisany-a-co-podporuje">V čom je napísaný a čo podporuje</a></h2>
+<p><a href="https://github.com/lulco/uniman">UniMan</a> je napísaná ako jednoduchá <a href="https://nette.org">Nette aplikácia</a> s využitím <a href="http://getbootstrap.com">Twitter Bootstrapu</a>.</p>
+<h3 id="v-sucasnosti-umoznuje-pripojenie-k"><a href="#v-sucasnosti-umoznuje-pripojenie-k">V súčasnosti umožňuje pripojenie k</a></h3>
+<ul>
+<li><a href="https://redis.io">Redis</a></li>
+<li><a href="http://php.net/manual/en/book.memcache.php">Memcache</a></li>
+<li><a href="https://www.rabbitmq.com">RabbitMQ</a></li>
+<li><a href="https://www.mysql.com">MySQL</a></li>
+</ul>
+<p>Pracuje sa na možnosti pripojenia k <a href="https://www.elastic.co/products/elasticsearch">Elasticsearch-u</a> a <a href="https://www.postgresql.org">PostgreSQL</a>.</p>
+<h2 id="ako-vyzera"><a href="#ako-vyzera">Ako vyzerá</a></h2>
+<p>Všetky typy pripojení majú vlastný prihlasovací formulár:</p>
+<div class="text-center">
+    <img src="http://midatech.sk/adminerng/screenshots/login.png" alt="Adminer NG Login"><br><em>Login screen</em>
+</div>
+<p><br></p>
+<p>A vlastné spracovanie požiadaviek. Aktuálna verzia slúži len na vypisovanie, filtrovanie a zoraďovanie dát z jednotlivých systémov:</p>
+<div class="text-center">
+    <img src="http://midatech.sk/adminerng/screenshots/redis_lists.png" alt="Adminer NG Redis lists"><br><em>Výpis položiek pre Redis databázu</em>
+</div>
+<p><br></p>
+<div class="text-center">
+    <img src="http://midatech.sk/adminerng/screenshots/redis_hash_filter.png" alt="Adminer NG Redis hash with filter"><br><em>Filtrovanie kľúčov v Redis Hash-i</em>
+</div>
+<h3 id="v-redise-si-takto-mozete-prezerat"><a href="#v-redise-si-takto-mozete-prezerat">V Redise si takto môžete prezerať</a></h3>
+<ul>
+<li>databázy</li>
+<li>kľúče</li>
+<li>hash-e</li>
+<li>set-y</li>
+</ul>
+<h3 id="pre-memcache-su-to"><a href="#pre-memcache-su-to">Pre memcache sú to</a></h3>
+<ul>
+<li>kľúče a hodnoty</li>
+</ul>
+<h3 id="v-rabbitmq-su-k-dispozicii"><a href="#v-rabbitmq-su-k-dispozicii">V RabbitMQ sú k dispozícii</a></h3>
+<ul>
+<li>virtual hosty</li>
+<li>fronty</li>
+<li>jednotlivé správy v nich</li>
+</ul>
+<h3 id="a-pre-mysql"><a href="#a-pre-mysql">A pre MySQL</a></h3>
+<ul>
+<li>databázy</li>
+<li>tabuľky</li>
+<li>view-y</li>
+<li>jednotlivé záznamy</li>
+</ul>
+<p>Samozrejme, pracuje sa aj na editácii a vytváraní záznamov / tabuliek / databáz atď.</p>
+<h2 id="chces-si-ho-vyskusat"><a href="#chces-si-ho-vyskusat">Chceš si ho vyskúšať?</a></h2>
+<p>Môžete si <strong>stiahnuť aktuálnu verziu</strong> z <a href="https://github.com/lulco/uniman">GitHubu</a> a spustiť <code>sh scripts/init.sh</code>, ktorý za vás spustí <code>composer install</code> a vytvorí priečinky <code>/log</code> a <code>/temp</code> v roote aplikácie.</p>
+<p>Pokiaľ vám niečo bude chýbať (čo je v tejto fáze vývoja viac ako isté), môžete <a href="https://github.com/lulco/uniman/issues">spraviť issue</a> alebo ideálne rovno pull request. Vopred za všetky ďakujem :)</p>
+<p>Ak sa chcete čokoľvek opýtať alebo konštruktívne skritizovať, napíšte do diskusie :)</p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2016/2016-12-22-adminer-pre-redis-memcache-rabbit.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

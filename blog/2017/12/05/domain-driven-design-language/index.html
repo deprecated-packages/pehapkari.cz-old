@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=2087341370" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=2122185797" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=947708858" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=2086271149" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Domain-Driven Design, part 1 - Language </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Domain-Driven Design, part 1 - Language" />
+<meta property="og:description" content="Domain-driven design is a software design that focuses on understanding underlying business.
+It is useful for long-term projects because it leads to high-quality software that serves users.
+It helps when dealing with difficult problems, keeps track of core problems and prevents us from getting lost in the code." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2017/12/05/domain-driven-design-language/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Domain-Driven Design, part 1 - Language" />
+<meta name="twitter:description" content="Domain-driven design is a software design that focuses on understanding underlying business.
+It is useful for long-term projects because it leads to high-quality software that serves users.
+It helps when dealing with difficult problems, keeps track of core problems and prevents us from getting lost in the code." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Domain-Driven Design, part 1 - Language</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        5 min
+
+        |
+
+        by <strong>Svaťa Šimara</strong>
+
+        &ndash;
+
+        <time datetime="2017-12-Tue">
+            5. 12. 2017
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">Domain-driven design is a software design that focuses on understanding underlying business.
+It is useful for long-term projects because it leads to high-quality software that serves users.
+It helps when dealing with difficult problems, keeps track of core problems and prevents us from getting lost in the code.</p>
+
+                    <h3 id="personal-motivation"><a href="#personal-motivation">Personal Motivation</a></h3>
+<p>Before I started to apply domain design ideas, I struggled with software development.
+I knew how to make user interface, how to deal with API, how to work with templates, how to use design patterns.
+But the most important code was hidden in services that were connected to a database.
+Although I had useful tools, I had a really big problem with testing these services, the tests were slow and not maintainable.</p>
+<p>Thanks to the domain design I started to learn how to think in object oriented programming.
+I know there is still much to learn, but at least I know in which way to progress.
+DDD has a huge positive impact on my architectural, modeling and testing skills.</p>
+<p>This is just a side effect because domain-driven design is not about objects, domain-driven design is about the domain.</p>
+<h2 id="domain"><a href="#domain">Domain</a></h2>
+<p>Domain is an area that project covers, it has its own terminology, requirements, problems to solve.
+A concrete domain is its own small world. It can be e-shop, hockey statistics, content management, our new project.
+Domain has its natural boundaries too, it does not cover everything.</p>
+<h2 id="domain-language"><a href="#domain-language">Domain Language</a></h2>
+<p>Every domain has its own terminology, its own language.
+A term in a domain means something completely different in another domain.</p>
+<h3 id="account"><a href="#account">Account</a></h3>
+<p>A bank account allows us to send and receive money and has its unique number.
+Anytime we tell about an account in a bank, an account is always a bank account.
+In the other hand, an account in an information system is used to authorize a user.
+We have the term &quot;account&quot; meaning something absolutely different in two different domains.
+Domain has an impact on what we imagine when someone says a concrete term.
+So we have to learn and specify domain terms first.</p>
+<h3 id="price"><a href="#price">Price</a></h3>
+<p>Let's speak about e-shop domain. What is a price?
+For us, as customers, it is how much we pay.
+A manager can think about price as an amount that his company pays to the supplier.
+For an accountant, a price is just a number.
+And e-shop programmer is now confused.</p>
+<p>Language is crucial because customers and experts are telling their stories in their language.
+But it is also natural language, inaccurate, ambiguous, context-aware.
+And as we can see, language can be tricky even within one domain.</p>
+<h2 id="ubiquitous-language"><a href="#ubiquitous-language">Ubiquitous Language</a></h2>
+<p>To reduce natural language ambiguity, we can introduce accurate language.</p>
+<p>Is price that we are selling for always a selling price?
+Do users use often term selling price instead of price?
+Great, maybe experts agree that we use only the term selling price because it is definitive.
+When we discuss with users, we always use term selling price, the user interface communicate selling price, we find selling price in the documentation.
+What is written in code - variables, classes, methods? The selling price. Always.</p>
+<p>The strict term became part of everyday users' life, communication between experts and programmers, programmers' work.
+The term is everywhere, it became ubiquitous.</p>
+<p>Ubiquitous language connects users, domain experts, programmers, so it creates project backbone.
+It may not be a bad idea to document key terms, especially if terms have conditions of use.
+The documentation may help new programmers, as well as users, to get into the project.</p>
+<p>Be careful, ubiquitous language, this definitive, specific language must always come from domain experts or users, their stories and their conversations.
+We must not invent our terms, our language. Never.</p>
+<h2 id="impact-on-model"><a href="#impact-on-model">Impact on Model</a></h2>
+<h3 id="vip-price"><a href="#vip-price">VIP Price</a></h3>
+<p>Let's talk about the e-shop for a while.
+Our client wants to have better prices for regular customers, so they keep buying products.
+Client starts calling these prices as VIP prices since they are only for VIP customers.
+This is a reasonable story.</p>
+<p>We can think about clients use-case - we need another price.
+Well, what will happen when he asks for yet another price?
+We will have to rewrite our software again.
+What if we generalize this task?
+We can offer an unlimited amount of prices by introducing price lists.
+A product can have a price in multiple price lists.
+Sounds good, right? A cool feature - price lists.</p>
+<h3 id="mental-model"><a href="#mental-model">Mental Model</a></h3>
+<p>What client has in mind are two prices for the same product</p>
+<p><img src="/assets/images/posts/2017/ddd-language/user-product-prices.png" alt="product with exactly two prices" /></p>
+<p>We think about product, price lists, and prices</p>
+<p><img src="/assets/images/posts/2017/ddd-language/programmer-product-prices.png" alt="one product, two price lists and two prices that connect product and price lists" /></p>
+<p>When the client tells us his stories, we have to map his language to our language and our model.
+When he is using software, he has to map his model to language in the user interface.
+We ended with two different languages and with models that diverged.</p>
+<p>And now imagine that a client wants to lower the VIP price.
+For him it is straightforward - he wants to change a number that is called VIP price.
+What is it for a programmer?
+We have to find a VIP price list, find a price for a given product in the price list and finally change the value.
+What would happen if the price list is not found?
+If the price in price list is not found?
+Now we have use cases that do not exist in client's domain.
+The client can't explain what should happen because it does not make sense for him.</p>
+<p>The model does not fit user use cases, the model language is messed up.
+If we would invent our language, we would speak with users in terms they do not understand, and they would be using their language anyway because it is their domain language.
+The user interface will not communicate with them in their language and using the software will cause frustration.</p>
+<p>The domain way to solve diverged model and language is to refactor software, so user and programmer will use the same ubiquitous language.</p>
+<h2 id="domain-evolution"><a href="#domain-evolution">Domain Evolution</a></h2>
+<p>The domain may evolve, nothing is permanent.
+Important thing is that the ubiquitous language is evolving with the domain and so is the software.
+When the ubiquitous language is changed, the mental model is changed and the software is refactored by this new model.</p>
+<h2 id="tl-dr"><a href="#tl-dr">TL;DR</a></h2>
+<p>The building block of domain-driven design is the ubiquitous language.
+The ubiquitous language connects people in the project, so everyone can understand each other.
+We have to keep using the language that comes from the domain and never invent our own.</p>
+<p>So simple, yet so powerful.</p>
+<p>Next time we'll take a look at modeling.</p>
+<h2 id="references"><a href="#references">References</a></h2>
+<p>EVANS, Eric. <em>Domain-driven design: tackling complexity in the heart of software</em>. Boston: Addison-Wesley, 2004. ISBN 0-321-12521-5.</p>
+<p>FOWLER, Martin. UbiquitousLanguage. <em>MartinFowler.com</em> [online]. 2006 [2017-11-28]. Available: <a href="https://martinfowler.com/bliki/UbiquitousLanguage.html">https://martinfowler.com/bliki/UbiquitousLanguage.html</a></p>
+<h2 id="contact"><a href="#contact">Contact</a></h2>
+<p>Are you designing architecture and like DDD approach? Hire me, I can help you - <a href="http://svatasimara.cz/">svatasimara.cz</a></p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                            <h2 id="you-might-also-like"><a href="#you-might-also-like">You Might Also Like</a></h2>
+
+                        <ul id="related-posts">
+                                                            <li>
+                                    <a href="/blog/2018/02/28/domain-driven-design-repository">Domain-Driven Design, part 5 - Repository &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2018/03/07/domain-driven-design-doctrine-repository">Domain-Driven Design, part 6 - Doctrine Repository &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2018/03/28/domain-driven-design-services-factories">Domain-Driven Design, part 8 - Services and Factories &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2018/01/06/domain-driven-design-simplify-object-model">Domain-Driven Design, part 3 - Simplify Object Model &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2018/03/21/domain-driven-design-alternative-mapping">Domain-Driven Design, part 7 - Alternative Relational Database Mapping &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2018/02/21/domain-driven-design-implementation">Domain-Driven Design, part 4 - Implementation &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2017/12/16/domain-driven-design-model">Domain-Driven Design, part 2 - Model &raquo;</a>
+                                </li>
+                                                    </ul>
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2017/2017-12-05-domain-driven-design-language.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=1319626269" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=1214101166" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=230149308" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=700057658" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Nastavení GitLab CI pro produkční aplikaci </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Nastavení GitLab CI pro produkční aplikaci" />
+<meta property="og:description" content="GitLab CI je dnes moderní. Vychází o něm články s krásnými, jednoduchými příklady, jak jej začít používat. Pak ale člověk narazí. Jak se utkat s překážkami a vyjít z toho jako vítěz?" />
+<meta property="og:url" content="https://pehapkari.cz/blog/2017/03/30/nastaveni-gitlab-ci-pro-produkcni-aplikaci/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Nastavení GitLab CI pro produkční aplikaci" />
+<meta name="twitter:description" content="GitLab CI je dnes moderní. Vychází o něm články s krásnými, jednoduchými příklady, jak jej začít používat. Pak ale člověk narazí. Jak se utkat s překážkami a vyjít z toho jako vítěz?" />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Nastavení GitLab CI pro produkční aplikaci</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        7 min
+
+        |
+
+        by <strong>Tomáš Jacík</strong>
+
+        &ndash;
+
+        <time datetime="2017-03-Thu">
+            30. 3. 2017
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">GitLab CI je dnes moderní. Vychází o něm články s krásnými, jednoduchými příklady, jak jej začít používat. Pak ale člověk narazí. Jak se utkat s překážkami a vyjít z toho jako vítěz?</p>
+
+                    <p>Už delší dobu jsem uvažoval, že vyzkouším GitLab a jeho <a href="https://cs.wikipedia.org/wiki/Pr%C5%AFb%C4%9B%C5%BEn%C3%A1_integrace">CI</a>
+jako alternativu k Bitbucketu. Prozatím jsem jako CI používal <a href="https://www.phptesting.org/">PHPCI</a>, který sice nebyl špatný,
+ale spokojený jsem s ním zrovna také nebyl. Nakonec mě přesvědčil až <a href="https://www.zdrojak.cz/clanky/gitlab-jako-continuous-integration-nejen-pro-php/">článek Martina Hujera na Zdrojáku</a>,
+který nastavení popisoval velice jednoduše. Tak jednoduché jsem to bohužel neměl. Nakonec jsem se tím ale prokousal a zde je výsledek.
+Před pokračováním doporučuji si článek přečíst, můj článek na něj reaguje.</p>
+<h2 id="jen-pro-poradek"><a href="#jen-pro-poradek">Jen pro pořádek</a></h2>
+<ul>
+<li>Používám hostovanou verzi GitLabu. Rozcházet jej u sebe se mi zatím nechtělo a vzhledem k &quot;ceně&quot; to pro mě asi ani nemá smysl.</li>
+<li>Používání skriptů v Composeru mi příliš nevyhovuje. Při testování na CI používám jiný sled příkazů než na lokále.</li>
+<li>Pro GitLab jsem použil vlastní Runner. Některé věci tedy mohou platit pouze pro tento use-case.</li>
+</ul>
+<h2 id="dodatecna-php-rozsireni"><a href="#dodatecna-php-rozsireni">Dodatečná PHP rozšíření</a></h2>
+<p>V odkazovaném článku je zmíněn Docker image <code>geertw/docker-php-ci</code>. Většina lidí asi sáhne buď po něm, nebo po čistém PHP image.
+Po chvíli jsem ale zjistil, že mi v něm spousta rozšíření chybí. Musel jsem tedy řešit jak je doinstalovat. Originální image
+kompiluje PHP ze zdrojáků a tak když chci rozšíření doinstalovat, musím ty standardní instalovat přes <code>docker-php-ext-install</code>
+a ty nestandardní přes <code>pecl install</code>. Některé je navíc potřeba nastavit přes <code>docker-php-ext-configure</code> a abych nezapomněl,
+musím mít nainstalovány potřebné dev knihovny. Občas byl oříšek přijít na to, co dané rozšíření chce. Co je horší, samotný
+update APT a instalace rozšíření trvá zbytečně dlouho.</p>
+<p>Nakonec jsem se tedy rozhodl udělat si image vlastní. Vyšel jsem z <a href="https://github.com/phusion/baseimage-docker">phusion/baseimage-docker</a>
+a vyházel z něj vše co nebylo nutné (je koncipován spíše na produkci). PHP jsem do něj nainstaloval z mého oblíbeného
+<a href="https://launchpad.net/~ondrej/+archive/ubuntu/php">PPA od Ondřeje Surého</a>. Jaké to má výhody?</p>
+<ul>
+<li>Balíčky se nainstalují jen jednou, při buildu image a samotný běh testů na CI je pak velmi rychlý.</li>
+<li>Jsem zvyklý více na Ubuntu než Debian a baseimage-docker vychází z Ubuntu.</li>
+<li>PPA od Ondřeje Surého obsahuje všechny rozšíření, na které si jen vzpomenu. Nemusím tedy řešit závislosti rošíření a nechat je kompilovat, vše si nainstaluje APT.</li>
+<li>Rozšíření v image instaluji jednotným zůsobem, nemusím řešit co je z PECLu a co ne.</li>
+<li>Mohu si v něm rovnou přes Composer globálně nainstalovat balíčky jako <a href="https://github.com/hirak/prestissimo">hirak/prestissimo</a> a zrychlit tím instalaci závislostí. Do konfigurace <code>cache</code> v <code>.gitlab-ci.yml</code> lze totiž zapsat jen věci uvnitř build složky, tedy ne <code>~/.composer</code></li>
+<li>Buildy image lze na Docker Hubu zautomatizovat. Buildí se rovnou z Githubu, např. když vyjde nová verze PHP, a více se o ně nestarám.</li>
+<li>Hodně se tím vyčistí konfigurace CI.</li>
+</ul>
+<p>Výsledek si můžete vyzkoušet použitím image <a href="https://hub.docker.com/r/sunfoxcz/php-build/">sunfoxcz/php-build</a>.</p>
+<h2 id="spousteni-na-ruznych-verzich-php"><a href="#spousteni-na-ruznych-verzich-php">Spouštění na různých verzích PHP</a></h2>
+<p>Věcí, které se stahovaly, instalovaly a spouštěly, bylo hodně. Build pak běžel zbytečně dlouho. Chvíli mi trvalo přijít na to, jak to správně sestavit.</p>
+<ul>
+<li>Je potřeba nedefinovat si <code>stages</code>, aby CI vědělo, jak má po sobě joby pouštět. Jinak je bude pouštět klidně paralelně. Jindy zase paralelní spouštění chceme.</li>
+<li>U jobů, které mají pouze připravit nějaká data dalším jobům, je pak potřeba nastavit <code>artifacts</code>, aby data byla zachována.</li>
+<li><del>Artefaktům je zase potřeba nastavit <code>expire_in</code>, aby se neuchovávaly věčně.</del> (v <a href="https://about.gitlab.com/2017/03/22/gitlab-9-0-released/">GitLab &gt; 9.0 automaticky</a>)</li>
+<li>I tak je to hodně řádků. Hodilo by se to něčím zjednodušit. Jen náhodou jsem narazil na <a href="https://docs.gitlab.com/ce/ci/yaml/#special-yaml-features">šablony</a>, když jsem hledal v dokumentaci něco úplně jiného :-)</li>
+<li>Každý job by měl mít definován nějaký image, jinak používá image defaultní, definovaný na CI runneru. Lze ovšem definovat i globálně pro všechny joby v rootu konfigurace.</li>
+</ul>
+<p>Takto vypadá výsledek:</p>
+<pre><code class="language-yaml">stages:
+    - download
+    - test
+
+download:
+    stage: download
+    image: sunfoxcz/php-build:5.6
+    script:
+        - composer create-project --no-interaction --no-progress --prefer-dist jakub-onderka/php-parallel-lint temp/php-parallel-lint ~0.9
+        - composer create-project --no-interaction --no-progress --prefer-dist nette/code-checker temp/code-checker ~2.5.0
+    artifacts:
+        paths:
+            - temp/php-parallel-lint
+            - temp/code-checker
+        expire_in: 1 hour
+
+.test_template: &amp;test_template
+    stage: test
+    services:
+        - mongo:latest
+        - mysql:latest
+    before_script:
+        - composer install --no-interaction --no-progress --no-suggest --optimize-autoloader
+        - cp app/Config/config.test.neon app/Config/config.local.neon
+        - "mysql -h mysql $MYSQL_DATABASE -p$MYSQL_ROOT_PASSWORD &lt; sql/000_structure.sql"
+        - "mysql -h mysql $MYSQL_DATABASE -p$MYSQL_ROOT_PASSWORD &lt; tests/data/testdata.sql"
+        - vendor/bin/phinx migrate -e production
+    script:
+        - php temp/php-parallel-lint/parallel-lint.php -e php,phpt -j $(nproc) app tests
+        - php temp/code-checker/src/code-checker.php --short-arrays -d app
+        - php temp/code-checker/src/code-checker.php --short-arrays -d tests
+        - vendor/bin/tester -s -p php -c tests/php.ini tests
+
+test:5.6:
+    image: sunfoxcz/php-build:5.6
+    &lt;&lt;: *test_template
+
+test:7.0:
+    image: sunfoxcz/php-build:7.0
+    &lt;&lt;: *test_template
+
+test:7.1:
+    image: sunfoxcz/php-build:7.1
+    &lt;&lt;: *test_template
+
+test:7.2:
+    image: sunfoxcz/php-build:7.2
+    &lt;&lt;: *test_template</code></pre>
+<h2 id="dalsi-sluzby"><a href="#dalsi-sluzby">Další služby</a></h2>
+<p>Když přidám <code>services</code>, jejich hostname je vždy jejich jméno. Tohle mi chvíli trvalo dohledat. Co mě dost překvapilo,
+že služby nejde mezi joby sdílet. Ani když jejich definici dám globálně. Nechal jsem je proto jen v šabloně pro testy,
+aby ostatní joby zbytečně nespouštěly jejich instance. Přitom by to bylo super, udělat si job, který nakrmí databázi a
+ostatním jobům tak ušetří spoustu práce. Dokonce je na to založená issue, ale implementace zatím bohužel není.</p>
+<h2 id="volani-externich-zdroju"><a href="#volani-externich-zdroju">Volání externích zdrojů</a></h2>
+<p>Po skončení buildu jsem chtěl poslat notifikaci na Slack. Moje staré CI na to mělo přímo plugin. Tady jsem musel opět
+hledat. Nakonec jsem našel, že se notifikace do Slacku dají nastavit ve webovém rozhraní GitLabu, a to pro více věcí než
+jen build, tak jsem to nastavil tam a neřešil, jak to nastavit v konfiguraci buildu.</p>
+<p>Po úspěšném buildu jsem ale chtěl také zavolat <a href="https://github.com/REBELinBLUE/deployer">Deployer</a>, přes který aktuálně
+nasazuji na server. Tam už jsem to nakonec řešit musel. Po nějakém tom zkoumání vypadal výsledek takto:</p>
+<pre><code class="language-yaml">stages:
+    - download
+    - test
+    - deploy
+
+deploy to production:
+    stage: deploy
+    environment: production
+    image: sunfoxcz/php-build:5.6
+    script:
+        - curl -s -X POST https://deployer.domain.tld/deploy/$DEPLOYER_WEBHOOK_KEY
+    only:
+        - master@skupina/repozitar</code></pre>
+<ul>
+<li>Přidal jsem další položku do <code>stages</code>, aby se deploy spouštěl až na konec.</li>
+<li>Při prvním nasazení se <code>environment</code> objeví v rozhraní GitLabu. Poté je tam vidět, co je nasazeno. Snadno se pak přidá např. staging prostředí.</li>
+<li>Nasazovat do produkce chci jen z masteru. Je také dobré napsat do <code>only</code> celý název repozitáře, aby se job nespouštěl i ve forku.</li>
+<li>Super je, že k nasazení nedojde, ať už skončí špatně testy v jakékoliv verzi PHP.</li>
+<li>Ve webovém rozhraní se dají nastavit tzv. &quot;Secret Variables&quot;, aby se nemusely api klíče a hesla psát přímo do configu. Příkladem je proměnná <code>$DEPLOYER_WEBHOOK_KEY</code>.</li>
+<li>Pokud se necítíte na úplně automatické nasazení, použijte <code>when: manual</code>. Tato volba <a href="https://docs.gitlab.com/ce/ci/yaml/#when">přidá do GitLabu tlačítko</a>, kterým nasadíte.</li>
+</ul>
+<h2 id="vlastni-runner"><a href="#vlastni-runner">Vlastní runner</a></h2>
+<p>I když se mi podařilo čas buildu stáhnout na slušnou úroveň, na free instancích GitLabu mi to stále přišlo dost dlouho.
+Cvičně jsem si tedy na <a href="https://www.digitalocean.com/">Digital Ocean</a> vytvořil z šablony 2GB VPS s Dockerem. Instalace
+runneru je pak na pár minut. Rozdíl v rychlosti je velký a jede to skvěle i při 4 konkurenčních buildech.
+Za ty prachy to rozhodně stojí.</p>
+<p>Pro ukázku uvedu ještě kompletní <code>.gitlab-ci.yml</code>:</p>
+<pre><code class="language-yaml">variables:
+    GIT_DEPTH: "1"
+    # Configure mysql environment variables (https://hub.docker.com/r/_/mysql/)
+    MYSQL_DATABASE: test_db
+    MYSQL_ROOT_PASSWORD: xxx
+
+stages:
+    - download
+    - test
+    - deploy
+
+download:
+    stage: download
+    image: sunfoxcz/php-build:5.6
+    script:
+        - composer create-project --no-interaction --no-progress --prefer-dist jakub-onderka/php-parallel-lint temp/php-parallel-lint ~0.9
+        - composer create-project --no-interaction --no-progress --prefer-dist nette/code-checker temp/code-checker ~2.5.0
+    artifacts:
+        paths:
+            - temp/php-parallel-lint
+            - temp/code-checker
+        expire_in: 1 hour
+
+.test_template: &amp;test_template
+    stage: test
+    services:
+        - mongo:latest
+        - mysql:latest
+    before_script:
+        - composer install --no-interaction --no-progress --no-suggest --optimize-autoloader
+        - cp app/Config/config.test.neon app/Config/config.local.neon
+        - "mysql -h mysql $MYSQL_DATABASE -p$MYSQL_ROOT_PASSWORD &lt; sql/000_structure.sql"
+        - "mysql -h mysql $MYSQL_DATABASE -p$MYSQL_ROOT_PASSWORD &lt; tests/data/testdata.sql"
+        - vendor/bin/phinx migrate -e production
+    script:
+        - php temp/php-parallel-lint/parallel-lint.php -e php,phpt -j $(nproc) app tests
+        - php temp/code-checker/src/code-checker.php --short-arrays -d app
+        - php temp/code-checker/src/code-checker.php --short-arrays -d tests
+        - vendor/bin/tester -s -p php -c tests/php.ini tests
+
+test:5.6:
+    image: sunfoxcz/php-build:5.6
+    &lt;&lt;: *test_template
+
+test:7.0:
+    image: sunfoxcz/php-build:7.0
+    &lt;&lt;: *test_template
+
+test:7.1:
+    image: sunfoxcz/php-build:7.1
+    &lt;&lt;: *test_template
+
+deploy to production:
+    stage: deploy
+    environment: production
+    image: sunfoxcz/php-build:5.6
+    script:
+        - curl -s -X POST https://deployer.domain.tld/deploy/$DEPLOYER_WEBHOOK_KEY
+    only:
+        - master
+
+cache:
+    paths:
+        - vendor</code></pre>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                            <h2 id="you-might-also-like"><a href="#you-might-also-like">You Might Also Like</a></h2>
+
+                        <ul id="related-posts">
+                                                            <li>
+                                    <a href="/blog/2017/03/08/jak-snadne-je-pouzivat-ci">Jak snadné je používat CI &raquo;</a>
+                                </li>
+                                                    </ul>
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2017/2017-03-30-nastaveni-gitlab-ci-pro-produkcni-aplikaci.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

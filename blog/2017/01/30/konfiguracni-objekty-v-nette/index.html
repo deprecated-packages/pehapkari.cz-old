@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=1961894741" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=544540771" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=621177824" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=25966589" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Konfigurační objekty v Nette </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Konfigurační objekty v Nette" />
+<meta property="og:description" content="Jak se poprat s předáním konfigurace službě z config.neon? A jak k tomu využít Nette DI?" />
+<meta property="og:url" content="https://pehapkari.cz/blog/2017/01/30/konfiguracni-objekty-v-nette/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Konfigurační objekty v Nette" />
+<meta name="twitter:description" content="Jak se poprat s předáním konfigurace službě z config.neon? A jak k tomu využít Nette DI?" />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Konfigurační objekty v Nette</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+                    <p class="success">
+            <strong><em class="fa fa-fw fa-check-square-o"></em>
+                <a href="https://github.com/pehapkari/pehapkari.cz/tree/master/tests/Posts/Year2017/NetteConfigObjects">
+                    This post is Tested
+                </a>
+            </strong>
+        </p>
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        4 min
+
+        |
+
+        by <strong>Tomáš Jacík</strong>
+
+        &ndash;
+
+        <time datetime="2017-01-Mon">
+            30. 1. 2017
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">Jak se poprat s předáním konfigurace službě z config.neon? A jak k tomu využít Nette DI?</p>
+
+                    <h2 id="jak-se-to-bezne-delava"><a href="#jak-se-to-bezne-delava">Jak se to běžně dělává?</a></h2>
+<p>Mějme hypotetickou třídu <code>InvoiceForm</code>. Formulář má vlastní šablonu, nemůžeme
+tedy napsat pouhou továrnu, potřebujeme komponentu. A k ní továrnu. Navíc ale
+chceme formuláři předat z <code>config.neon</code> nějaké výchozí hodnoty. Jak by takový
+kód vypadal?</p>
+<p><strong>Formulář</strong></p>
+<pre><code class="language-php">declare(strict_types = 1);
+
+namespace App\Forms;
+
+use Nette\Application\UI\Control;
+use Nette\Application\UI\Form;
+
+final class InvoiceForm extends Control
+{
+    /**
+     * @var array
+     */
+    private $config;
+
+    public function __construct(array $config)
+    {
+        $this-&gt;config = $config;
+    }
+
+    protected function createComponentInvoiceForm(): Form
+    {
+        $form = new Form;
+
+        $form-&gt;addText('maturity', 'Splatnost')
+            -&gt;setDefaultValue($this-&gt;config['defaultMaturity']);
+
+        return $form;
+    }
+
+    public function render()
+    {
+        $this-&gt;getTemplate()-&gt;render(__DIR__ . '/InvoiceForm.latte');
+    }
+}</code></pre>
+<p><strong>Továrna</strong></p>
+<pre><code class="language-php">declare(strict_types = 1);
+
+namespace App\Forms;
+
+final class InvoiceFormFactory
+{
+    /**
+     * @var array
+     */
+    private $config;
+
+    public function __construct(array $config)
+    {
+        $this-&gt;config = $config;
+    }
+
+    public function create(): InvoiceForm
+    {
+        return new InvoiceForm($this-&gt;config);
+    }
+}</code></pre>
+<p><strong>Šablona</strong></p>
+<pre><code class="language-smarty">&lt;form n:name="invoiceForm"&gt;
+    {* naše vlastní vykreslení formuláře *}
+&lt;/form&gt;</code></pre>
+<p>V <code>config.neon</code> pak musíme továrnu formuláře zaregistrovat a předat jí potřebné parametry.</p>
+<pre><code class="language-yaml">parameters:
+    invoicing:
+        defaultMaturity: 7
+        pdfDirectory: %appDir%/../invoices
+
+services:
+    - App\Forms\InvoiceFormFactory( %invoicing% )</code></pre>
+<h2 id="jak-to-udelat-lepe"><a href="#jak-to-udelat-lepe">Jak to udělat lépe?</a></h2>
+<p>Místo běžného pole si na konfiguraci vytvoříme objekt, který bude konfiguraci
+našemu formuláři zprostředkovávat.</p>
+<pre><code class="language-php">declare(strict_types = 1);
+
+namespace App\Config;
+
+use Nette\Utils\ArrayHash;
+
+abstract class AbstractConfig extends ArrayHash
+{
+    public function __construct(array $arr)
+    {
+        foreach ($arr as $key =&gt; $value) {
+            if (is_array($value)) {
+                $this-&gt;$key = ArrayHash::from($value, TRUE);
+            } else {
+                $this-&gt;$key = $value;
+            }
+        }
+    }
+}</code></pre>
+<p>Z tohoto objektu pak podědíme konfiguraci pro náš formulář. Můžeme také do třídy
+přidat metody, které budou s naší konfigurací pracovat. Např. metodu <code>getPdfPath()</code>,
+kterou později využijeme v třídě na generování PDF. Konfigurační třída tedy není
+jen jednorázová, předáme její pomocí fakturační konfiguraci více službám.</p>
+<pre><code class="language-php">declare(strict_types = 1);
+
+namespace App\Config;
+
+/**
+ * @property int    $defaultMaturity
+ * @property string $pdfDirectory
+ */
+final class InvoicingConfig extends AbstractConfig
+{
+    public function getPdfPath(int $invoiceId): string
+    {
+        return vsprintf('%s/%s.pdf', [$this-&gt;pdfDirectory, $invoiceId]);
+    }
+}</code></pre>
+<p>Nyní můžeme třídu <code>InvoiceForm</code> upravit, aby nového konfiguračního objektu
+využila. Všimněte si také metody <code>setDefaultValue()</code>. Díky <code>ArrayHash</code> nyní
+můžeme ke konfiguraci přistupovat jako k objektu.</p>
+<pre><code class="language-php">declare(strict_types = 1);
+
+namespace App\Forms;
+
+use App\Config\InvoicingConfig;
+use Nette\Application\UI\Control;
+use Nette\Application\UI\Form;
+
+final class InvoiceFormNew extends Control
+{
+    /**
+     * @var InvoicingConfig
+     */
+    private $config;
+
+    public function __construct(InvoicingConfig $config)
+    {
+        $this-&gt;config = $config;
+    }
+
+    protected function createComponentInvoiceForm(): Form
+    {
+        $form = new Form;
+
+        $form-&gt;addText('maturity', 'Splatnost')
+            -&gt;setDefaultValue($this-&gt;config-&gt;defaultMaturity);
+
+        return $form;
+    }
+
+    public function render()
+    {
+        $this-&gt;getTemplate()-&gt;render(__DIR__ . '/InvoiceForm.latte');
+    }
+}</code></pre>
+<p>Můžeme se také zbavit vlastní implementace továrny a nahradit ji interfacem.
+Nette nám pak továrnu vygeneruje samo.</p>
+<pre><code class="language-php">declare(strict_types = 1);
+
+namespace App\Forms;
+
+interface InvoiceFormFactoryInterface
+{
+    public function create(): InvoiceForm;
+}</code></pre>
+<p>Nakonec vše zaregistrujeme v <code>config.neon</code>. Všimněte si také absence sekce <code>parameters</code>.</p>
+<pre><code class="language-yaml">services:
+    - App\Config\InvoicingConfig({
+        defaultMaturity: 7
+        pdfDirectory: %appDir%/../invoices
+    })
+    - App\Forms\InvoiceFormFactoryInterface</code></pre>
+<p>Co na závěr? Tohle jistě není definitivní řešení. Dalo by se lecjak rozšířit.
+Např. dodělat validace hodnot vstupujících do konfiguračních objektů. Tím by
+však byl článek již moc složitý. Jeho pointou je ukázat alternativní přístup
+předávání konfigurace službám. A jak to ve svých aplikacích děláte vy?</p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2017/2017-01-30-konfiguracni-objekty-v-nette.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

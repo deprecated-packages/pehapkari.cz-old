@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=5911667" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=1025870337" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=172123028" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=919023085" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Jak na rapidní vývoj a Continuous Delivery </title>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="active">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 active">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+                            <p class="text-center mt-5 d-none d-sm-block">
+                    <img src="/assets/images/logos/feedback.png" alt="" width="150">
+                </p>
+            
+            <h1 class="text-center">Jak na rapidní vývoj a Continuous Delivery</h1>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-4">
+                                                        
+                            <img width="100" src="https://avatars1.githubusercontent.com/u/104888?s=460&amp;v=4" alt="" class="img-thumbnail mb-3 rounded-circle pull-left mr-3">
+                        </div>
+
+                        <div class="col-md">
+                            <strong>Školí:</strong>
+
+                                                            <a href="https://ondrej.mirtes.cz/">Ondřej Mirtes</a>
+                            
+                                                    </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    
+                    <p>
+                        Místo:
+                        <strong>
+                            <a href="https://www.google.cz/maps/place/U+Pergamenky+1145%2F12,+170+00+Praha+7-Hole%C5%A1ovice/@50.1111834,14.4448982,17z/data=!3m1!4b1!4m5!3m4!1s0x470beb4b04ddf77d:0xd732edeb9bb14b22!8m2!3d50.11118!4d14.4470869">
+                                Jablotron, Prague
+                            </a>
+                        </strong>
+                    </p>
+                    <p>
+                        Délka:
+                        <strong>8 hodin</strong>
+                    </p>
+
+                    <p>
+                        Kapacita:
+                        <strong>9 lidí</strong>
+                    </p>
+
+                    <p>
+                        Cena:
+                        <strong>5 999 Kč</strong>
+                    </p>
+
+                    
+                    
+                    
+                                    </div>
+
+                <div class="col-md-8">
+                    <p>Zkracování <a href="https://ondrej.mirtes.cz/zkracovani-feedback-loop">feedback loop</a>.</p>
+<h3 id="co-si-ze-skoleni-odneses"><a href="#co-si-ze-skoleni-odneses">Co si ze školení odneseš?</a></h3>
+<ul>
+<li>Jak tvořit zadání se zadavatelem tak, aby vývoj proběhl hladce a zadavatel obdržel to, co chce?</li>
+<li>Jak zorganizovat práci v týmu a programovat tak, aby nedocházelo ke všemožným problémům, bugům na produkci nebo nefunkční aplikaci?</li>
+<li>Continuous Integration - vytvoření build skriptu, rozběhání CI serveru, doporučení k problematice</li>
+<li>Přerod zastaralé aplikace v novou bez kompletního přepisu - strangler pattern, jak na refaktoring</li>
+<li>Bezvýpadkové databázové migrace, bezvýpadkové a časté nasazování nových verzí aplikace</li>
+</ul>
+<h3 id="co-potrebujes-pred-skolenim"><a href="#co-potrebujes-pred-skolenim">Co potřebuješ před školením?</a></h3>
+<p>Mít připravené odpovědi na tyto otázky:</p>
+<ul>
+<li>Na jakém projektu (projektech) pracujete a v jak velkém týmu?</li>
+<li>Jaké typické problémy při vývoji vás potkávají a co vás pálí nejvíc? (bugy, dlouhá doba vývoje nové funkcionality, nespokojenost klienta, technický dluh, merge konflikty, dlouho žijící větve atd.)</li>
+<li>Jak často releasujete nové verze?</li>
+<li>Co doufáte, že si z kurzu odnesete?</li>
+</ul>
+
+                                            <hr>
+
+                        <h3 id="co-o-skoleni-rikaji-ucastnici"><a href="#co-o-skoleni-rikaji-ucastnici">Co o školení říkají účastníci?</a></h3>
+
+                        <div class="row">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <div class="col-md-6 text-left mb-4">
+    <a href="https://entrydo.com/">    Jan Mikeš, CTO &amp; Co-founder of Entrydo    </a>
+    
+    <p class="mt-3">
+        <em>„Školení bylo velmi přínosné a inspirativní. Získané dovednosti jsem hned aplikovat v praxi. <strong>Teď již žádný feedback loop není příliš dlouhý :)</strong>.“</em>
+    </p>
+</div>
+                                                                                                                                <div class="col-md-6 text-left mb-4">
+    <a href="https://www.neoweb.sk">    Ing. Eduard Barnáš    </a>
+    
+    <p class="mt-3">
+        <em>„Príjemné prostredie, výborna téma a <strong>skvelý prednášajúci Ondrej Mirtes</strong>. <strong>Teória sa prepája s praxou</strong>. Po tomto kurze bude Continuous Delivery hračkou. Vrelo odporúčam!“</em>
+    </p>
+</div>
+                                                                                                                                <div class="col-md-6 text-left mb-4">
+        Michal Dobrovolný    
+    
+    <p class="mt-3">
+        <em>„Ondra měl jasno v tom co chce předat obecenstvu. <strong>Jeho školení nám pomohlo vylepšit systém našeho deploymentu</strong> a firemní procesy. Díky!“</em>
+    </p>
+</div>
+                                                                                                                                                                                                                                                                        </div>
+                                    </div>
+            </div>
+        </div>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_lectures/jak-na-rapidni-vyvoj-a-continuous-delivery.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>
+
+        <meta property="og:type" content="lecture" />
+    <meta property="og:title" content="Jak na rapidní vývoj a Continuous Delivery" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Jak na rapidní vývoj a Continuous Delivery" />

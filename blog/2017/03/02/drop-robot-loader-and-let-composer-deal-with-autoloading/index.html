@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=1070560199" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=1184963115" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=803948118" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=1498843788" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Drop RobotLoader and let Composer Deal with Autoloading </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Drop RobotLoader and let Composer Deal with Autoloading" />
+<meta property="og:description" content="Using 2 tools for one thing, in this case 2 packages to autoload classes, are sign of an architecture smell. Many applications I see contain RobotLoader for historical reasons. I will borrow this from psychology: pathological behavioral patterns tear us down in the present, but were useful in past.
+
+The best way to deal with them is acknowledge their purpose and then, let them go and enjoy the gift of present." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2017/03/02/drop-robot-loader-and-let-composer-deal-with-autoloading/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Drop RobotLoader and let Composer Deal with Autoloading" />
+<meta name="twitter:description" content="Using 2 tools for one thing, in this case 2 packages to autoload classes, are sign of an architecture smell. Many applications I see contain RobotLoader for historical reasons. I will borrow this from psychology: pathological behavioral patterns tear us down in the present, but were useful in past.
+
+The best way to deal with them is acknowledge their purpose and then, let them go and enjoy the gift of present." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Drop RobotLoader and let Composer Deal with Autoloading</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        4 min
+
+        |
+
+        by <strong>Tomáš Votruba</strong>
+
+        &ndash;
+
+        <time datetime="2017-03-Thu">
+            2. 3. 2017
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">Using 2 tools for one thing, in this case 2 packages to autoload classes, are sign of an architecture smell. Many applications I see contain RobotLoader for historical reasons. I will borrow this from psychology: pathological behavioral patterns tear us down in the present, but were useful in past.
+<br><br>
+The best way to deal with them is acknowledge their purpose and then, let them go and enjoy the gift of present.</p>
+
+                    <p><em>Martin Zlámal already <a href="https://zlml.cz/psr-4-autoloader-aplikace">wrote about this</a> (Czech) a year ago and I think this needs to be promoted even more.</em></p>
+<h2 id="where-is-robotloader-useful"><a href="#where-is-robotloader-useful">Where is RobotLoader Useful</a></h2>
+<p><a href="https://doc.nette.org/en/auto-loading#toc-nette-loaders-robotloader">RobotLoader</a> is a Nette Component that is used to autoload classes. Its killer feature is simple: <strong>in whatever file it is and whatever the class name is, I will load it</strong>. You can have 20 classes in 1 file or classes located in various locations, they won't hide.</p>
+<h3 id="before-composer-appeared-it-was-the-best"><a href="#before-composer-appeared-it-was-the-best">Before Composer appeared, it was The Best</a></h3>
+<p>RobotLoader was a very useful tool in times before Composer, because <strong>there were not so many efficient tools for loading classes</strong>.</p>
+<p>Also, when people could not agree upon where to put their classes, how to name them, whether use or don't use namespace and how many classes to put in one file, we can say <strong>this tool saved a lot of argument-hours</strong>.</p>
+<p>After many discussions, followed by the first standard, <a href="http://www.php-fig.org/psr/psr-0/">PSR-0</a>, people agreed upon <a href="http://www.php-fig.org/psr/psr-4/">PSR-4</a>, a more mature replacement of PSR-0.</p>
+<h3 id="why-it-s-not-anymore"><a href="#why-it-s-not-anymore">Why it's not Anymore</a></h3>
+<p>Have your heard about PSR-4? It is a <em>PHP Standard Recommendation</em> about naming and location of the classes. This says you completely nothing, but in the simplest form it means:</p>
+<p><strong>1 class</strong> (or interface/trait) = <strong>1 file</strong></p>
+<p><strong>class name</strong> = <strong>file name</strong>.php</p>
+<p><strong>namespace\class name</strong> = <strong>directory/file name</strong>.php</p>
+<pre><code class="language-bash"># class =&gt; file
+MyClass =&gt; MyClass.php
+App\MyClass =&gt; App/MyClass.php
+App\Presenter\MyClass =&gt; App/Presenter/MyClass.php</code></pre>
+<p>I know I can rely on this in 99% of places when <code>composer.json</code> is used.</p>
+<p>When I see <code>App\Presenter\MyClass</code> I  it's located in <code>App/Presenter/MyClass.php</code> file.</p>
+<p>And this is the place where <strong>RobotLoader</strong> (or any custom ultimate loader) <strong>fails</strong>. I came around many applications where classes are located at random. And I had to use my brain to find them. But I don't want to focus my mental activity on thinking about their location, <strong>I want to develop my application</strong>.</p>
+<h2 id="how-to-move-to-composer-in-a-nette-application"><a href="#how-to-move-to-composer-in-a-nette-application">How to move to Composer in a Nette application?</a></h2>
+<p>There are 2 levels of how to achieve this.</p>
+<h3 id="level-1-change-your-composer"><a href="#level-1-change-your-composer">Level 1: Change your Composer</a></h3>
+<p>The first level requires 3 small steps.</p>
+<h4 id="1-tune-code-composer-json-code-autoloading"><a href="#1-tune-code-composer-json-code-autoloading">1. Tune <code>composer.json</code> Autoloading</a></h4>
+<pre><code class="language-javascript">{
+    "require": {
+        "..."
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\Forms\\": "app/forms",
+            "App\\Model\\": "app/model",
+            "App\\Presenters\\": "app/presenters",
+            "App\\Router\\": "app/router"
+        }
+    }
+}</code></pre>
+<p>This means, all classes residing in <code>App\\Forms</code> namespace have to be located in <code>app/forms</code> directory.</p>
+<p>One important rule - it works in <strong>case-sensitive</strong> manner.</p>
+<p>So this will work:</p>
+<pre><code class="language-bash">App\Presenters\HomepagePresenter =&gt; app/presenters/HomepagePresenter.php</code></pre>
+<p>But this will not:</p>
+<pre><code class="language-bash">App\Presenters\HomepagePresenter =&gt; app/presenters/homepagePresenter.php</code></pre>
+<h4 id="2-disable-robotloader"><a href="#2-disable-robotloader">2. Disable RobotLoader</a></h4>
+<p>Now you can clean up your <code>app/bootstrap.php</code>:</p>
+<pre><code class="language-php">// $configurator-&gt;createRobotLoader()
+//      -&gt;addDirectory(__DIR__)
+//      -&gt;register();</code></pre>
+<p>But RobotLoader is still silently enabled for presenters. We don't want that either now:</p>
+<pre><code class="language-yaml"># app/config/config.neon
+application:
+    scanDirs: false</code></pre>
+<h4 id="3-refresh-composer-autoloading"><a href="#3-refresh-composer-autoloading">3. Refresh Composer Autoloading</a></h4>
+<p>And tell Composer, to regenerate its autoloader:</p>
+<pre><code class="language-bash">composer dump-autoload</code></pre>
+<p>Note: This command is run by default after <code>composer update</code>, <code>composer require ...</code> and similar commands. Since we'd manually changed our <code>autoload</code> section, we had to run it manually.</p>
+<p>Now try our application and it should run.</p>
+<p><strong>You are finished and all your classes are loaded by Composer.</strong> Congratulations!</p>
+<h3 id="level-2-rename-directories-to-capital-case-to-respect-psr-4"><a href="#level-2-rename-directories-to-capital-case-to-respect-psr-4">Level 2: Rename Directories to capital case, to Respect PSR-4</a></h3>
+<p>There is one more level I do with my applications, so my <code>composer.json</code> is nice and clear. But this is optional. Do it only if you'd like to write better code with lower WTF factor!</p>
+<p>Turn this:</p>
+<pre><code class="language-bash">/app
+    /forms
+    /model
+    /presenters
+    /routing
+    /...</code></pre>
+<p>Into this:</p>
+<pre><code class="language-bash">/app
+    /Forms
+    /Model
+    /Presenters
+    /Routing
+    /...</code></pre>
+<p>After these steps, you can simplify your <code>autoload</code> section as such:</p>
+<pre><code class="language-json">{
+    "autoload": {
+        "psr-4": {
+            "App\\": "app"
+        }
+    }
+}</code></pre>
+<p>Don't forget to run:</p>
+<pre><code class="language-bash">composer dump-autoload</code></pre>
+<p>And you've unlocked Level 2.</p>
+<p>That's it!</p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2017/2017-03-02-drop-robot-loader-and-let-composer-deal-with-autoloading.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

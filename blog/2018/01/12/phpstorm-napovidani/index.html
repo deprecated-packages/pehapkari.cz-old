@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=1258602724" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=2008376227" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=2024952271" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=1297105329" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Jak naučit PhpStorm chápat kód </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Jak naučit PhpStorm chápat kód" />
+<meta property="og:description" content="Fungující napovídání syntaxe vašeho kódu je naprosto základním předpokladem pro dobré fungování pokročilých nástrojů, které vám PhpStorm nabízí. Existuje několik možností, jak PhpStormu pomoci váš kód pochopit. Začneme těmi základními a postupně se dostaneme až k pokročilým." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2018/01/12/phpstorm-napovidani/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Jak naučit PhpStorm chápat kód" />
+<meta name="twitter:description" content="Fungující napovídání syntaxe vašeho kódu je naprosto základním předpokladem pro dobré fungování pokročilých nástrojů, které vám PhpStorm nabízí. Existuje několik možností, jak PhpStormu pomoci váš kód pochopit. Začneme těmi základními a postupně se dostaneme až k pokročilým." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Jak naučit PhpStorm chápat kód</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        6 min
+
+        |
+
+        by <strong>Tomáš Fejfar</strong>
+
+        &ndash;
+
+        <time datetime="2018-01-Fri">
+            12. 1. 2018
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">Fungující napovídání syntaxe vašeho kódu je naprosto základním předpokladem pro dobré fungování pokročilých nástrojů, které vám PhpStorm nabízí. Existuje několik možností, jak PhpStormu pomoci váš kód pochopit. Začneme těmi základními a postupně se dostaneme až k pokročilým.</p>
+
+                    <p><strong>Update:</strong> Udělal jsem <a href="#update-1">phpstorm meta file pro PhpUnit</a>.</p>
+<p>Nástroje jako refaktoring a inspekce kódu jsou plně závislé na tom, jak dobře dokáže PhpStorm váš kód pochopit. Ale protože je PHP dynamicky typovaný jazyk, tak je to mnohem složitější úkol, než třeba ve staticky typované Javě.</p>
+<p>Pokusím se to přiblížit na následujícím kusu kódu. PhpStorm bude mít problém pochopit, co ten kód vrátí a nebude vám schopný dál nic napovídat, ani za vás nic pohlídat.</p>
+<pre><code class="language-php">&lt;?php
+function getUser() {
+    return $this-&gt;service-&gt;getUser();
+}</code></pre>
+<p>Co myslíte, že to vrátí? Instanci <code>User</code>? Nějaké ID? Uživatelské jméno? Co když to vrátí <code>false</code> pro nepřihlášeného uživatele? <em>Těžko říct.</em></p>
+<p>A co takhle?</p>
+<pre><code class="language-diff">+/**
++ * @return string|bool username of currently logged in user, false if anonymous
++ */
+function getUser() {
+    return $this-&gt;service-&gt;getUser();
+}</code></pre>
+<p>Lepší, co? Takhle tomu PhpStorm porozumí a ví, že se z metody vrací <code>string</code> nebo <code>boolean</code>. Jak vidíte, tak <strong>lepším popisováním kódu pomůžete nejen PhpStormu, ale i ostatním vývojářům</strong>.</p>
+<p>Ať se nám to líbí nebo ne, tak spousta existujícího PHP kódu vypadá podobně jako ta ukázka nahoře. Ne každý má to štěstí, že může pracovat s kódem napsaným letos pro PHP 7.2 podle <a href="/blog/2017/12/05/domain-driven-design-language/">DDD</a>, naprosto striktně dodržujícím <a href="/slovnicek/#solid">SRP</a> a používajícím <a href="/blog/2017/01/15/jak-funguje-dependency-injection-v-symfony-a-v-nette/">dependency injection</a>. Velmi pravděpodobně se naopak setkáte s kódem, který by mohl běžet i na PHP 5.3, není moc otestovaný a pochopit ho vám dá dost práce.</p>
+<p>PhpStorm vám může velmi pomoct právě při správě takového legacy kódu. Může ale pracovat jen s tím, co mu dáte. A teď si ukážeme, jak mu dát těch informací co nejvíc.</p>
+<h2 id="popisovani-parametru-volani-a-navratovych-hodnot"><a href="#popisovani-parametru-volani-a-navratovych-hodnot">Popisování parametrů volání a návratových hodnot</a></h2>
+<h3 id="docblocky"><a href="#docblocky">Docblocky</a></h3>
+<p>Docblocky jsou dokumentační komentáře. Nejsou přímo parsovány při zpracování souboru, ale lze k nim přistoupit z kódu aplikace pomocí reflexe nebo pomocí externích nástrojů (jako třeba IDE). Běžný docblock vypadá nějak takto:</p>
+<pre><code class="language-php">&lt;?php
+/**
+ * @param string $name
+ * @param int $age
+ * @param Address|null $address
+ * @return User
+ */
+public function createUser($name, $age, $address)
+{
+    return $this-&gt;service-&gt;createUser($name, $age, $address);
+}</code></pre>
+<p>Blok výše říká IDE, že parametr <code>$name</code> je <code>string</code>, <code>$age</code> je <code>integer</code> a <code>$address</code> je buď instance <code>Address</code> nebo <code>null</code>. Také tím říkáme, že metoda vrací instanci <code>User</code>.</p>
+<p>Všimněte si, že v případě adresy povolujeme jak <code>Address</code> tak <code>null</code>, což definujeme pomocí svislítka (<code>|</code>). Je důležité popisovat všechny existující možnosti. V tomto případě nás díky tomu PhpStorm upozorní, že máme <em>zkontrolovat, jestli není adresa <code>null</code></em>, kdykoli voláme něco jako <code>$address-&gt;getZipCode()</code>. Přitom stále funguje napovídání metod třídy <code>Address</code>.</p>
+<p>Docblocky jsou skvělý nástroj pro starší verze PHP. Pro moderní verze PHP však existuje nástroj ještě lepší.</p>
+<h3 id="deklarace-typu"><a href="#deklarace-typu">Deklarace typů</a></h3>
+<p>Od PHP 7.1 (pokud se obejdete bez nullable, tak již od 7.0) je možné výše zmíněný kus kódu přepsat do následující podoby:</p>
+<pre><code class="language-diff">+declare(strict_types=1);
+// ...
+-/**
+- * @param string $name
+- * @param int $age
+- * @param Address|null $address
+- * @return User
+- */
+-public function createUser($name, $age, $address)
++public function createUser(string $name, int $age, ?Address $address): User
+{
+    return $this-&gt;service-&gt;createUser($name, $age, $address);
+}</code></pre>
+<p>Zmizel velký komentář a přibylo jen pár znaků. Tato konstrukce má úplně ten samý význam, ale místo komentářů využívá přímo konstrukce jazyka. <strong>Díky tomu jsou typy vynuceny, když funkci použijeme:</strong></p>
+<pre><code class="language-php">&lt;?php
+$this-&gt;createUser('Tom', 'tohle měl být integer');
+/*
+PHP Warning:  Uncaught TypeError: Argument 2 passed to createUser() must be of the type integer, string given, called in php shell code on line 1 and defined in php shell code:1
+Stack trace:
+#0 php shell code(1): createUser('tom', 'old')
+#1 {main}
+  thrown in php shell code on line 1
+*/</code></pre>
+<p>Dejte si ale pozor, že máte v souboru <a href="http://php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration.strict">přidanou  <code>strict_types</code> deklaraci</a>, která vypne přetypovávání. V opačném případě vám PHP s klidem převede <code>"11 horses"</code> na <code>11</code> <a href="https://3v4l.org/QlLOV">jako normálně</a> (pro porovnání chování se <a href="https://3v4l.org/bUAEr">strict types</a>).</p>
+<p>Použití typů místo docblocků si můžete nechat i automaticky zkontrolovat <a href="https://github.com/Symplify/CodingStandard#block-comment-should-only-contain-useful-information-about-types-wrench">Symplify</a> resp. <a href="https://github.com/slevomat/coding-standard#slevomatcodingstandardtypehintstypehintdeclaration-">Slevomat</a> coding standardem.</p>
+<h2 id="union-typy-a-pole"><a href="#union-typy-a-pole">Union typy a pole</a></h2>
+<p>Union typ je typ, který se skládá z více dalších typů (více ve <a href="https://medium.com/@ondrejmirtes/union-types-vs-intersection-types-fd44a8eacbb">článku od Ondry Mirtese</a>). Představme si například třídu, která pracuje s datem a v konstruktoru přijímá všechny možné formáty (<code>string</code>, unix timestamp nebo instanci <code>DateTime</code>)</p>
+<pre><code class="language-php">&lt;?php
+function __construct($date) { /* ... */ }</code></pre>
+<p>V tomhle případě nemůžete uvést jako datový typ proměnné <code>$date</code> takhle:</p>
+<pre><code class="language-php">&lt;?php
+function __construct(DateTimeInterface|string|int $date) { /* ... */ }</code></pre>
+<p><a href="https://wiki.php.net/rfc/union_types">Alespoň zatím ne</a>. Je potřeba se vrátit zpět k docblockům:</p>
+<pre><code class="language-diff">+/**
++ * @param DateTimeInterface|string|int $date
++ */
+function __construct($date) { /* ... */ }</code></pre>
+<p>Dalším případem, kde je třeba návrat k docblockům, jsou generika a pole objektů. Databázový dotaz může například vrátit kolekci uživatelů (třeba <code>MyApp\Entity\Collection</code>). Pomocí typové deklarace můžeme napsat</p>
+<pre><code class="language-php">&lt;?php
+function getUsers(): Collection {}</code></pre>
+<p>Ale to nepostihne informaci o tom, že uvnitř kolekce jsou uživatelé. Takže nebude fungovat doplňování pro <code>$collection-&gt;first()-&gt;???</code>. Opět se musíme vrátit k docblockům.</p>
+<pre><code class="language-diff">+/**
++ * @return User[]|Collection
++ */
+function getUsers(): Collection {}</code></pre>
+<p>Tímto způsobem získáme doplňování jak pro <code>$collection-&gt;count()</code>, tak pro <code>$collection-&gt;first()-&gt;getUsername()</code>.</p>
+<h2 id="co-kdyz-je-navratovy-typ-dynamicky"><a href="#co-kdyz-je-navratovy-typ-dynamicky">Co když je návratový typ dynamický?</a></h2>
+<p>Továrny a service lokátory vrací různé typy podle toho, s jakým parametrem je zavoláme. Podívejme se na následující kód:</p>
+<pre><code class="language-php">&lt;?php
+// není jasné, jakého bude $logger typu
+$logger = $container-&gt;get('LoggerInterface');
+$logger-&gt;???</code></pre>
+<p>Můžeme však napovědět přímo v kódu dokumentačním komentářem.</p>
+<pre><code class="language-diff">+/** @var LoggerInterface $logger */
+$logger = $container-&gt;get('LoggerInterface');
+$logger-&gt;log(/* code completion */);</code></pre>
+<p>Tento způsob je široce podporovaný a mnoho nástrojů ho dokáže využívat. Ale nezapomeňte, že se stále jedna o přístup založený na komentářích a je tedy snadno možné, že <em>se při refaktoringu rozuteče oproti kódu a už ho nikdy nikdo neupraví</em>.</p>
+<h2 id="a-co-magicke-metody"><a href="#a-co-magicke-metody">A co magické metody?</a></h2>
+<pre><code class="language-php">&lt;?php
+/**
+ * @property-read $username
+ * @property $name
+ * @property-write $password
+ * @method void reset()
+ * @method static Config factory()
+ */
+class Config {
+    private $config = [
+        'username' =&gt; 'john',
+        'name' =&gt; 'John Doe',
+        'password' =&gt; '123456'
+    ];
+
+    public function __get($property){
+        if ($property === 'password') {
+            return null; // you can't read password
+        }
+        return $this-&gt;config[$property];
+    }
+
+    public function __set($property, $value){
+        if ($property === 'username') {
+            return null; // you can't set username
+        }
+        return $this-&gt;config[$property];
+    }
+
+    public function __call($method, $arguments){
+        if ($method === 'reset') {
+            $this-&gt;config = [];
+        }
+    }
+
+    public static function __callStatic($method, $arguments){
+        if ($method === 'factory') {
+            return new self();
+        }
+    }
+}</code></pre>
+<p>U třídy výše (přiznávám, je to extrémní hovnokód) můžete vidět jednotlivé možnosti, jak se vypořádat s magickými metodami.</p>
+<ul>
+<li><code>@property-read</code> - znamená, že existuje veřejný atribut, který lze číst. Napovídání pro <code>$username = $config-&gt;username;</code> bude fungovat, ale pokud zkusíte do proměnné zapsat, PhpStorm vám to označí jako chybu.</li>
+<li><code>@property-write</code> - znamená, že existuje veřejný atribut, do kterého lze zapisovat. Napovídání <code>$config-&gt;password = 'dummy';</code> bude fungovat, ale pokud se pokusíte atribut přečíst, PhpStorm to označí jako chybu.</li>
+<li><code>@property</code> - kombinuje výše zmíněné (čtení a zápis)</li>
+<li><code>@method</code> - znamená, že existuje veřejná metoda a specifikuje její návratový typ. V tomto případě vám PhpStorm napoví <code>$config-&gt;reset()</code>.</li>
+<li><code>@method static</code> - znamená, že existuje veřejná statická metoda. V tomto případě <code>Config::factory()</code>. Tím pádem bude následně fungovat například napovídání v případě <code>Config::factory()-&gt;reset()</code>.</li>
+</ul>
+<h2 id="phpstorm-meta-file"><a href="#phpstorm-meta-file">PhpStorm meta file</a></h2>
+<p>Na konec jsem si nechal takovou specialitku - <a href="https://confluence.jetbrains.com/display/PhpStorm/PhpStorm+Advanced+Metadata">soubor <code>.phpstorm.meta.php</code></a>.</p>
+<pre><code class="language-php">
+&lt;?php
+// in .phpstorm.meta.php\myframework.meta.php
+namespace PHPSTORM_META {
+  override(\ServiceLocator::get(0),
+    map([
+      'foo' =&gt; \FooInterface::class, // když zavolám get('foo'), dostanu FooInterface
+      \ToTownInterface::class =&gt; \User::class, // když zavolám get(\ToTownInterface::class), dostanu User
+      // když zavolám get('AnythingElse'), dostanu AnythingElse (výchozí chování)
+    ])
+  );
+
+  override(\IteratorGenerator::get(0),
+    map([
+      // "@" je nahrazen čímkoli, co pošlete jako parametr
+      '' =&gt; '@Iterator|\Iterator' // když zavolám get('User'), dostanu UserIterator|Iterator
+    ])
+  );
+}</code></pre>
+<p>Bohužel je v současnosti možné takto specifikovat jen první parametr volání. Je to čistě omezení současné implementace v PhpStormu. Nicméně <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/meta/.phpstorm.meta.php">z definice</a> je vidět, že samotný formát je na to připraven a implementaci je možné do budoucna rozšířit.</p>
+<p><span id="update-1"><strong>Update:</strong> Připravil jsem <a href="https://github.com/tomasfejfar/phpunit-phpstorm-meta">phpstorm meta file pro PhpUnit</a>, který správně napovídá když zavoláte <code>createMock</code> nebo <code>getMockForAbstractClass</code> (zkusil jsem to nejdřív <a href="https://github.com/sebastianbergmann/phpunit/pull/2961">navrhnout přímo</a>). Pokud používáte PHPStan, tak ten si nejspíš bude stěžovat taky a <a href="https://github.com/phpstan/phpstan-phpunit">budete mu muset přidat plugin</a>.</p>
+<h2 id="zaver"><a href="#zaver">Závěr</a></h2>
+<p>V článku jsme si ukázali různé možnosti, jak napovídat typ proměnné a návratové typy metod. <strong>Zajímá vás, jak dál využívat toho, že PhpStorm vašemu kódu lépe rozumí? Tak si nenechte ujít <a href="https://pehapkari.cz/vzdelavej-se/#ovladni-phpstorm-ndash-od-zakladu-po-profi-tipy">školení 27.6.</a>, kde se dozvíte další užitečné tipy</strong>.</p>
+<p>Napadá vás ještě nějaký další způsob, jak napovídat typy, nebo jsem na něco zapomněl? Napište mi, nebo rovnou pošlete k článku pullrequest.</p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2018/2018-01-12-phpstorm-napovidani.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=1076853361" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=679103024" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=1657828785" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=453622033" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Domain-Driven Design, part 5 - Repository </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Domain-Driven Design, part 5 - Repository" />
+<meta property="og:description" content="We will discuss how to store and read domain objects while pretending we have an in-memory system.
+Simply, we will show how to implement and test repository." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2018/02/28/domain-driven-design-repository/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Domain-Driven Design, part 5 - Repository" />
+<meta name="twitter:description" content="We will discuss how to store and read domain objects while pretending we have an in-memory system.
+Simply, we will show how to implement and test repository." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Domain-Driven Design, part 5 - Repository</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+                    <p class="success">
+            <strong><em class="fa fa-fw fa-check-square-o"></em>
+                <a href="https://github.com/pehapkari/pehapkari.cz/tree/master/tests/Posts/Year2018/Cart/Infrastructure/MemoryCartRepositoryTest.php">
+                    This post is Tested
+                </a>
+            </strong>
+        </p>
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        6 min
+
+        |
+
+        by <strong>Svaťa Šimara</strong>
+
+        &ndash;
+
+        <time datetime="2018-02-Wed">
+            28. 2. 2018
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">We will discuss how to store and read domain objects while pretending we have an in-memory system.
+Simply, we will show how to implement and test repository.</p>
+
+                    <h2 id="collections-and-reality"><a href="#collections-and-reality">Collections and Reality</a></h2>
+<p>Let´s imagine that we have a system which runs continually, has enough memory and which is for a single user only.
+With this kind of system, we can have all objects in memory collections and everything is shiny.
+Memory collections are enough - they allow us to store, receive and remove objects.</p>
+<p>But real world is different.
+We usually build web applications with request-process-response-die life.</p>
+<p><img src="/assets/images/posts/2018/ddd-repository/server-life.png" alt="server receive request, create process, send request and kill process" /></p>
+<p>We have to load objects out of persistent memory like a database, work with them and persist them again while the process is done.
+This does not reflect the reality where everything run continually, this approach is not domain friendly.</p>
+<h2 id="repository"><a href="#repository">Repository</a></h2>
+<p>Whole idea is about that we keep pretending that we have collections.
+Clever and persistent collections, so-called repositories.
+The domain layer would seem to live continually.</p>
+<p>Repository, same as a collection, have responsibility to add an object, get objects by identifier or complex criteria and eventually to remove an object.
+There are also use cases that require aggregations like <em>How many objects are in the system</em>, <em>Total amount of all products in the warehouse</em>.
+For these use cases, the repository can provide direct aggregation methods so we don't have to inefficiently fetch loads of objects.</p>
+<p>Repositories are created for aggregates only because aggregates are our building blocks, our units.
+They also always work with the whole aggregate, not with an internal part alone, not with a partial aggregate, always with the whole aggregate.</p>
+<p>The repository is implemented in the domain layer, because it works with domain objects.
+But in the domain layer we should have no idea about any database nor any storage, so the repository is just an interface.</p>
+<pre><code class="language-php">// CartRepository.php
+
+namespace Simara\Cart\Domain;
+
+interface CartRepository
+{
+    public function add(Cart $cart): void;
+
+    /**
+     * @throws CartNotFoundException
+     */
+    public function get(string $id): Cart;
+
+    /**
+     * @throws CartNotFoundException
+     */
+    public function remove(string $id): void;
+}</code></pre>
+<h3 id="persistence-responsibility"><a href="#persistence-responsibility">Persistence Responsibility</a></h3>
+<p>The repository can be responsible for persisting objects.
+It would make some sense to have a saving method that instantly persists an object.</p>
+<p>But there is no such use case with memory collections so we would have to bring infrastructure requirements into the domain.
+If there was a persist operation, we'd have problems with transactions - one object is persisted and second causes an exception while persisting, so what now?</p>
+<p>The solution is simple.
+Object persistence is not the repository's responsibility.
+Someone else is responsible for the persistence.
+We can wrap domain use cases into a layer which is responsible for the persistence.</p>
+<p>When we use an advanced persistence tool, it usually deals with persistence by flushing an object manager.
+But it's still possible to keep references to objects we used and flush them into a storage after the domain use case is done.
+This system also allows us to use transactions if the persistence system supports them.</p>
+<p><img src="/assets/images/posts/2018/ddd-repository/persistence.png" alt="command is processed by wrapping layer that calls handler and flushes object manager" /></p>
+<h2 id="concrete-implementation"><a href="#concrete-implementation">Concrete Implementation</a></h2>
+<p>We can store domain objects in a relational database, in a document database, in an external system connected by API or in anything else we can imagine.
+All these systems are infrastructure for the domain so the repository implementation is in the infrastructure layer.</p>
+<h3 id="inversion-of-dependency"><a href="#inversion-of-dependency">Inversion of Dependency</a></h3>
+<p>In an active record persistence pattern and similar patterns, the domain depends on the infrastructure.
+But we have created a domain repository interface and the implementation is the infrastructure.
+The domain layer is still independent.
+For those who like SOLID, everything smoothly fit together.</p>
+<h3 id="memory-implementation"><a href="#memory-implementation">Memory Implementation</a></h3>
+<p>The easiest and the most instructive is a memory implementation.
+An implementation which just keeps objects during a life and does not persist them at all.</p>
+<p>The memory implementation is useful for complex component or module tests.
+We integrate more system parts together but we do not use the real repository implementation.
+Since everything is in the memory, tests are quick and we still test the whole component or module.</p>
+<pre><code class="language-php">// MemoryCartRepository.php
+
+namespace Simara\Cart\Infrastructure;
+
+use Simara\Cart\Domain\Cart;
+use Simara\Cart\Domain\CartNotFoundException;
+use Simara\Cart\Domain\CartRepository;
+
+class MemoryCartRepository implements CartRepository
+{
+    /**
+     * @var Cart[]
+     */
+    private $carts = [];
+
+    public function add(Cart $cart): void
+    {
+        $this-&gt;carts[$cart-&gt;getId()] = $cart;
+    }
+
+    public function get(string $id): Cart
+    {
+        $this-&gt;checkExistence($id);
+        return $this-&gt;carts[$id];
+    }
+
+    private function checkExistence(string $id): void
+    {
+        if (!isset($this-&gt;carts[$id])) {
+            throw new CartNotFoundException();
+        }
+    }
+
+    public function remove(string $id): void
+    {
+        $this-&gt;checkExistence($id);
+        unset($this-&gt;carts[$id]);
+    }
+}</code></pre>
+<h2 id="interface-test"><a href="#interface-test">Interface Test</a></h2>
+<p>We can write tests for the memory implementation and when we integrate a database storage, we can write tests for the database integration.
+But these tests can be pretty similar, so we can think of testing the repository interface only.</p>
+<p>Basic idea is that the test expects interface implementation.
+The test responsibility is not to create the tested object.
+Because the test is not responsible for the object creation, it can become simpler.</p>
+<p>The furthest I get is that the test is an abstract class and the implementation test extends the abstract test.
+I would prefer to have one test with several implementation providers but I didn't find a way to implement this style.
+If you have a better idea, please share a comment.</p>
+<pre><code class="language-php">// CartRepositoryTest
+
+namespace Simara\Cart\Infrastructure;
+
+use PHPUnit\Framework\Assert;
+use PHPUnit\Framework\TestCase;
+use Simara\Cart\Domain\Cart;
+use Simara\Cart\Domain\CartDetail;
+use Simara\Cart\Domain\CartRepository;
+use Simara\Cart\Domain\Price;
+
+abstract class CartRepositoryTest extends TestCase
+{
+    /**
+     * @var CartRepository
+     */
+    private $repository;
+
+    abstract protected function createRepository(): CartRepository;
+
+    protected function setUp()
+    {
+        $this-&gt;repository = $this-&gt;createRepository();
+    }
+
+    protected function flush()
+    {
+    }
+
+    public function testAddAndGetSuccessfully()
+    {
+        $cart = new Cart($id);
+        $this-&gt;repository-&gt;add($cart);
+        $this-&gt;flush();
+
+        $foundCart = $this-&gt;repository-&gt;get('1');
+        $expected = new CartDetail([], new Price(0));
+        Assert::assertEquals($expected, $foundCart-&gt;calculate());
+    }
+
+    // more tests
+}</code></pre>
+<p>The flush method supplements the persistence and start of a new process life.
+The memory implementation doesn't use it and it is prepared for a real persistent repository.</p>
+<pre><code class="language-php">// MemoryCartRepositoryTest
+
+namespace Simara\Cart\Infrastructure;
+
+use Simara\Cart\Domain\CartRepository;
+
+class MemoryCartRepositoryTest extends CartRepositoryTest
+{
+    protected function createRepository(): CartRepository
+    {
+        return new MemoryCartRepository();
+    }
+}</code></pre>
+<h2 id="tl-dr"><a href="#tl-dr">TL;DR</a></h2>
+<p>Repositories are persistent collections and allow us to pretend that the system is in-memory.
+The repository works with complete aggregate and is an interface in the domain layer.
+The concrete implementation is done by infrastructure which we use.
+Tests can be written for the repository interface.</p>
+<p>Next time we'll implement a database repository using the Doctrine.</p>
+<h2 id="references"><a href="#references">References</a></h2>
+<p>CLEMSON, Toby.
+<em>Testing Strategies in a Microservice Architecture</em> [online].
+2014 [2018-01-11].
+Available: <a href="https://martinfowler.com/articles/microservice-testing/">https://martinfowler.com/articles/microservice-testing/</a></p>
+<p>EVANS, Eric.
+<em>Domain-driven design: tackling complexity in the heart of software</em>.
+Boston: Addison-Wesley, 2004.
+ISBN 0-321-12521-5.</p>
+<p>VERNON, Vaughn.
+<em>Implementing domain-driven design.</em> Upper Saddle River, NJ: Addision-Wesley, 2013.
+ISBN 978-0-321-83457-7.</p>
+<h2 id="complete-code"><a href="#complete-code">Complete code</a></h2>
+<ul>
+<li><a href="https://github.com/simara-svatopluk/cart/tree/memory-repository">https://github.com/simara-svatopluk/cart/tree/memory-repository</a> <strong>memory-repository</strong> tag only</li>
+</ul>
+<h2 id="contact"><a href="#contact">Contact</a></h2>
+<p>Are you designing architecture and like DDD approach? Hire me, I can help you - <a href="http://svatasimara.cz/">svatasimara.cz</a></p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                            <h2 id="you-might-also-like"><a href="#you-might-also-like">You Might Also Like</a></h2>
+
+                        <ul id="related-posts">
+                                                            <li>
+                                    <a href="/blog/2018/03/07/domain-driven-design-doctrine-repository">Domain-Driven Design, part 6 - Doctrine Repository &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2018/03/28/domain-driven-design-services-factories">Domain-Driven Design, part 8 - Services and Factories &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2018/01/06/domain-driven-design-simplify-object-model">Domain-Driven Design, part 3 - Simplify Object Model &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2018/03/21/domain-driven-design-alternative-mapping">Domain-Driven Design, part 7 - Alternative Relational Database Mapping &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2018/02/21/domain-driven-design-implementation">Domain-Driven Design, part 4 - Implementation &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2017/12/16/domain-driven-design-model">Domain-Driven Design, part 2 - Model &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2017/12/05/domain-driven-design-language">Domain-Driven Design, part 1 - Language &raquo;</a>
+                                </li>
+                                                    </ul>
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2018/2018-02-28-domain-driven-design-repository.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

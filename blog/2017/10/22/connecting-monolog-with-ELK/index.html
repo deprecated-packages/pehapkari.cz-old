@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=1103241355" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=2001036605" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=603594212" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=680709306" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>How to connect ELK with Monolog </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="How to connect ELK with Monolog" />
+<meta property="og:description" content="ELK is awesome stack for logging. Monolog is awesome PHP logging library. Let&#039;s make them work together." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2017/10/22/connecting-monolog-with-ELK/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How to connect ELK with Monolog" />
+<meta name="twitter:description" content="ELK is awesome stack for logging. Monolog is awesome PHP logging library. Let&#039;s make them work together." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">How to connect ELK with Monolog</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        9 min
+
+        |
+
+        by <strong>Matěj Račinský</strong>
+
+        &ndash;
+
+        <time datetime="2017-10-Sun">
+            22. 10. 2017
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">ELK is awesome stack for logging. Monolog is awesome PHP logging library. Let's make them work together.</p>
+
+                    <h2 id="what-is-monolog"><a href="#what-is-monolog">What is Monolog</a></h2>
+<p>Monolog is awesome PHP library for managing logs. <a href="https://github.com/Seldaek/monolog">Check it on github</a>.
+You can install it with composer, simply by <code>composer require monolog/monolog</code>.</p>
+<p>In a nutshell, Monolog offers you a logger, where you send your logs.
+This logger has multiple handlers, which send these logs wherever you need them.
+Monolog has many handlers, which enable you to to simply send logs to many destinations, e.g. files, e-mails, slack, logstash, and many more.</p>
+<p>Full list of handlers is <a href="https://github.com/Seldaek/monolog/blob/master/doc/02-handlers-formatters-processors.md#handlers">in Monolog documentation</a>.
+You can use Monolog as is, but there are integrations of Monolog to many frameworks, which simplify things a lot.</p>
+<p>For Nette, there is <a href="https://github.com/Kdyby/Monolog">Kdyby package</a> providing Monolog integration.</p>
+<p>Symfony uses Monolog <a href="https://symfony.com/doc/current/logging.html">out of the box</a>.</p>
+<h2 id="what-is-elk-stack"><a href="#what-is-elk-stack">What is ELK Stack</a></h2>
+<p>ELK stack (now known as Elastic stack) stands for <a href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a>,
+<a href="https://www.elastic.co/products/logstash">Logstash</a>, <a href="https://www.elastic.co/products/kibana">Kibana</a> stack.</p>
+<p>I <a href="https://pehapkari.cz/blog/2017/10/15/how-to-use-ELK-stack/">wrote an article about ELK installation</a>, check it out if you're not familiar with ELK.</p>
+<h2 id="integrating-monolog-with-elk-stack"><a href="#integrating-monolog-with-elk-stack">Integrating Monolog with ELK Stack</a></h2>
+<p>As I mentioned, Monolog has many handler which can output logs.
+And Logstash has many inputs, so there is not only one way to connect them, but we can choose from multiple options.</p>
+<h3 id="direct-output-of-logs-to-elasticseach"><a href="#direct-output-of-logs-to-elasticseach">Direct Output of Logs to Elasticseach.</a></h3>
+<p>The most straightforward option is to bypass the Logstash and output logs directly to Elasticsearch by using <a href="https://github.com/Seldaek/monolog/blob/master/src/Monolog/Handler/ElasticSearchHandler.php">ElasticSearchHandler</a>.
+This most simple approach is very easy to setup, but has some drawbacks when your infrastructure gets more complex.
+If your application runs in other server than your elasticsearch instance, you need to deal with authentication and security of Elasticsearch.</p>
+<p>And obviously, you can't utilize the Logstash, but that is not so big problem since one of basic features of Logstash is logs formatting and preprocessing,
+and Monolog can do all of this too, but in PHP, which is more comfortable than Logstash config.</p>
+<h3 id="gelf"><a href="#gelf">Gelf</a></h3>
+<p>Other option is using the <a href="http://docs.graylog.org/en/2.3/pages/gelf.html">Gelf</a>.
+Gelf sends logs over UDP protocol, which is super fast, but quite hard to debug, when your logs don't arrive to their destination.
+Also using UDP has the obvious drawback, cause it does not guarantee that your logs arrived which can be unpleasant.</p>
+<p>Monolog provides <a href="https://github.com/Seldaek/monolog/blob/master/src/Monolog/Handler/GelfHandler.php">GelfHandler</a>.
+The probably biggest advantage of using Gelf is the <a href="https://github.com/Seldaek/monolog/blob/master/src/Monolog/Formatter/GelfMessageFormatter.php">GelfMessageFormatter</a>
+which adds many useful information to your logs.</p>
+<p>Unfortunately, you can not use this formatted directly with other Handlers, becauses it outputs <code>Gelf\Message</code> object.</p>
+<p>This is how to use it in Monolog in vanilla PHP when testing it in localhost:</p>
+<pre><code class="language-php">$host = '127.0.0.1';
+$port = 12201;
+$handler = new \Monolog\Handler\GelfHandler(new \Gelf\Publisher(new \Gelf\Transport\UdpTransport($host, $port)));</code></pre>
+<p>In symfony, you can specify it in <code>config.yml</code> instead:</p>
+<pre><code class="language-yaml">monolog:
+    logstash:
+        type: gelf
+        publisher:
+            hostname: 127.0.0.1
+            port: 12201
+        formatter: monolog.formatter.gelf_message</code></pre>
+<p>Now we configure logstash to accept logs from GelfHandler.
+We simply add gelf config to input <code>logstash.conf</code>, so it looks like this:</p>
+<pre><code>input {
+    gelf {
+        port =&gt; 12201
+        codec =&gt; "json"
+    }
+}</code></pre>
+<p>When playing with Logstash, it's useful to configure it to output to standard output,
+so we can see all logs in immediately.</p>
+<pre><code>output {
+    stdout {
+        codec =&gt; rubydebug
+    }
+}</code></pre>
+<p>Now we have to restart ELK, so the Logstash loads this new configuration.</p>
+<p>Now we can test whether Logstash receives logs from outside in the way we need.</p>
+<pre><code class="language-bash">echo '{"version": "1.1","host":"example.org","short_message":"A short message that helps you identify what is going on","full_message":"Backtrace here\n\nmore stuff","level":1,"_user_id":9001,"_some_info":"foo","_some_env_var":"bar"}' | gzip | nc -u -w 1 127.0.0.1 12201</code></pre>
+<p>This bash script sends json message over UDP protocol to 127.0.0.1 to 12201 port.
+If we see this message in the logstash output, it works correctly.</p>
+<p>Now we can test whether our PHP application sends logs to Logstash by simply sending some log to our Monolog logger.</p>
+<pre><code class="language-php">$logger = new \Monolog\Logger('main', [$handler]);
+$logger-&gt;log(\Monolog\Logger::INFO, 'short message');</code></pre>
+<p>If we see <code>short message</code> in the output of Logstash, everthings works.</p>
+<p>When you use <a href="https://github.com/symfony/console">symfony/console</a> in your project, you can have command to send some logs.
+I use this command for testing whether logs are sent:</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+namespace AppBundle\Command;
+
+use Psr\Log\LoggerInterface;
+use Symfony\Bridge\Monolog\Logger;
+use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+
+class GenerateLogsCommand extends ContainerAwareCommand {
+    /** @var LoggerInterface */
+    private $logger;
+
+    public function __construct(LoggerInterface $logger, ?string $name = null) {
+        parent::__construct($name);
+        $this-&gt;logger = $logger;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function configure(): void {
+        $this
+            -&gt;setName('app:generate:logs')
+            -&gt;setDescription('Just generates some logs to see whether monolog works')
+            -&gt;addArgument('level', InputArgument::REQUIRED, 'Level')
+            -&gt;addArgument('repeat', InputArgument::OPTIONAL, 'number of repeats', 1);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function execute(InputInterface $input, OutputInterface $output): void {
+        $level = $input-&gt;getArgument('level');
+        $levels = [
+            'debug' =&gt; Logger::DEBUG,
+            'info' =&gt; Logger::INFO,
+            'warning' =&gt; Logger::WARNING,
+            'error' =&gt; Logger::ERROR,
+        ];
+        $repeat = $input-&gt;getArgument('repeat');
+        for ($i = 0; $i &lt; $repeat; $i++) {
+            $this-&gt;logger-&gt;log($levels[$level], 'This is generated log.');
+        }
+
+        $output-&gt;writeln("Just wrote $repeat log messages.");
+    }
+}</code></pre>
+<p>and then I generate some logs, e. g., <code>php bin/console app:generate:logs info 10</code> sends 10 info messages.</p>
+<p>When installing ELK myself, I spent many hours by resolving why my app does not send logs by Gelf.
+I set <code>localhost</code> as host for Logstash instead of <code>127.0.0.1</code>, so my advice is to use ip address instead of domain name when we can,
+because it saves you lots of hours debugging.</p>
+<p>Some notes for debugging this:
+we can simply send some message by UDP from bash to Logstash, so we can easily see, whether the message arrives.</p>
+<p>But testing whether our applications send message by UDP to outside world is little bit trickier.</p>
+<p>On linux, you can use tcpdump for this:</p>
+<pre><code class="language-bash">tcpdump -i lo udp port 12201 -vv -X</code></pre>
+<p>will capture packets your application sends, so you can see if it works.</p>
+<p>For windows, you can download RawCap from <a href="http://www.netresec.com/?page=RawCap">here</a>
+and then use it by running</p>
+<pre><code class="language-bash">RawCap.exe 127.0.0.1 localhost_capture.pcap</code></pre>
+<h3 id="using-the-rabbitmq"><a href="#using-the-rabbitmq">Using the RabbitMQ</a></h3>
+<p><a href="https://www.rabbitmq.com/">RabbitMQ</a> is the most widely known implementation of <a href="https://en.wikipedia.org/wiki/Advanced_Message_Queuing_Protocol">AMQP</a>.</p>
+<p>Basically, it consumes messages on one side and outputs them on the other side. RabbitMQ is very powerful,
+but we'll use only its basic features.</p>
+<p>Logs are basically just messages, so we can use RabbitMQ as middleware between Monolog and Logstash.</p>
+<p>This setup has advantage because RabbitMQ instance can run on same machine as our web application.
+That means Monolog sends logs only to localhost and our app is not delayed by the network.
+Then, RabbitMQ sends logs to Logstash.</p>
+<p>In RabbitMQ, there are two important terms, exchanges and queues. Exchange is like entrypoint for messages.</p>
+<p>Queue is (surprisingly) a queue, it holds our logs until they are processed by some consumer.
+We can bind one or more queues to one exchange.
+As I said, we need only basic setup, so we'll have one exchange and one queue.</p>
+<p>For simplicity, we can use RabbitMQ in docker. We can use official <code>rabbitmq:3-management</code> image.
+All <code>*-management</code> images contain web management interface of RabbitMQ, where you can play with RabbitMQ configuration.
+But the mainstream way to configure out rabbits is config file, surprisingly.
+When using <code>docker-compose</code>, we can run RabbitMQ as follows:</p>
+<pre><code class="language-yaml">version: "3"
+services:
+    rabbitmq:
+        image: rabbitmq:3-management
+        ports:
+            - '5672:5672'
+            - '15672:15672'
+        volumes:
+            - ./rabbitmq-data:/var/lib/rabbitmq/mnesia
+            - ./rabbitmq.config /etc/rabbitmq/rabbitmq.config
+            - ./rabbit.json /etc/rabbitmq/rabbit.json</code></pre>
+<p>Port 5672 is used for the RabbitMQ itself, port 15672 is used for the web interface.</p>
+<p><code>/var/lib/rabbitmq/mnesia</code> is where data is stored.</p>
+<p><code>/etc/rabbitmq/rabbitmq.config</code> is config file.</p>
+<p><code>/etc/rabbitmq/rabbit.json</code> specifies our exchanges and queues setup.</p>
+<p><code>/etc/rabbitmq/rabbitmq.config</code> should look like this:</p>
+<pre><code class="language-smartyconfig">[
+  {
+    rabbit,
+      [
+        { loopback_users, [] }
+      ]
+  },
+  {
+    rabbitmq_management,
+      [
+        { load_definitions, "/etc/rabbitmq/rabbit.json" }
+      ]
+  }
+]</code></pre>
+<p>In the <code>rabbitmq_management</code> we specify where is stored our queues definitions file.</p>
+<p><code>/etc/rabbitmq/rabbitmq.config</code> should look like:</p>
+<pre><code class="language-json">{
+    "rabbit_version": "3.6.12",
+    "users": [
+        {
+            "name": "guest",
+            "password_hash": "iG25ELqd4wB2c3pmqBwdI4nH9czcb8JKRZSEVSuyuhOienVF",
+            "hashing_algorithm": "rabbit_password_hashing_sha256",
+            "tags": "administrator"
+        }
+    ],
+    "vhosts": [
+        {
+            "name": "/"
+        }
+    ],
+    "permissions": [
+        {
+            "user": "guest",
+            "vhost": "/",
+            "configure": ".*",
+            "write": ".*",
+            "read": ".*"
+        }
+    ],
+    "parameters": [],
+    "global_parameters": [
+        {
+            "name": "cluster_name",
+            "value": "rabbit@5a81d356219a"
+        }
+    ],
+    "policies": [],
+    "queues": [
+        {
+            "name": "logs",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {}
+        }
+    ],
+    "exchanges": [
+        {
+            "name": "logs",
+            "vhost": "/",
+            "type": "fanout",
+            "durable": true,
+            "auto_delete": false,
+            "internal": false,
+            "arguments": {}
+        }
+    ],
+    "bindings": [
+        {
+            "source": "logs",
+            "vhost": "/",
+            "destination": "logs",
+            "destination_type": "queue",
+            "routing_key": "",
+            "arguments": {}
+        }
+    ]
+}</code></pre>
+<p>Now we have configured RabbitMQ instance which is prepared to be connected to the Monolog and Logstash.</p>
+<p>We'll modify our <code>logstash.conf</code> and configure the input:</p>
+<pre><code>input {
+    rabbitmq {
+        host =&gt; [my host ip]
+        port =&gt; 5672
+        queue =&gt; "logs"
+        durable =&gt; true
+        passive =&gt; true
+        exchange =&gt; "logs"
+        user =&gt; "guest"
+        password =&gt; "guest"
+    }
+}</code></pre>
+<p>The guest:guest is the default user in the RabbitMQ, be sure to change it in production.</p>
+<p>For Monolog, there is a little lenghty setup involved.</p>
+<ol>
+<li>We install the <code>amqp</code> library by <code>composer install php-amqplib/php-amqplib</code>.</li>
+<li>
+<p>This step is different for usage in Symfony and usage in vanilla PHP:</p>
+<ul>
+<li>
+<p>For symfony:
+We register the necessary services in <code>services.yml</code>:</p>
+<pre><code class="language-yaml">PhpAmqpLib\Channel\AMQPSocketConnection:
+    arguments:
+        $connection: '@PhpAmqpLib\Connection\AMQPSocketConnection'
+PhpAmqpLib\Connection\AMQPConnection:
+    arguments:
+        $host: localhost
+        $port: 5672
+        $user: guest
+        $password: guest</code></pre>
+<p>Then, we add the <a href="https://github.com/Seldaek/monolog/blob/master/src/Monolog/Handler/AmqpHandler.php">AmqpHandler</a> in the <code>config.yml</code>:</p>
+<pre><code class="language-yaml">monolog:
+    handlers:
+        main:
+            type: amqp
+            exchange: 'PhpAmqpLib\Channel\AMQPChannel'
+            exchange_name: 'logs'
+            formatter: 'AppBundle\Monolog\MyFormatter'
+            level: debug</code></pre>
+</li>
+<li>
+<p>In vanilla PHP:</p>
+<pre><code class="language-php">$host = 'localhost';
+$port = 5672;
+$user = 'guest';
+$password = 'guest';
+$connection = new \PhpAmqpLib\Connection\AMQPSocketConnection($host, $port, $user, $password);
+$channel = new \PhpAmqpLib\Channel\AMQPChannel($connection);
+$handler = new \Monolog\Handler\AmqpHandler($channel, 'logs');</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<p>And now we are done and we can happily send logs from Monolog to ELK stack.</p>
+<h4 id="note"><a href="#note">Note</a></h4>
+<p>There are multiple possibilites of AMQP connection.
+When condidering speed, <a href="https://github.com/mente/php-amqp-benchmark">this benchmark</a> shows that <code>AMQPSocketConnection</code> is much faster than <code>AMQPStreamConnection</code>,
+which is the reason why I used it in this tutorial.</p>
+<h2 id="the-end"><a href="#the-end">The End</a></h2>
+<p>Now our application sends logs to ELK and finally we can fully utilize information from logs, becaus the look much better in nice charts than in files.</p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                            <h2 id="you-might-also-like"><a href="#you-might-also-like">You Might Also Like</a></h2>
+
+                        <ul id="related-posts">
+                                                            <li>
+                                    <a href="/blog/2017/10/15/how-to-use-ELK-stack">How to use ELK stack &raquo;</a>
+                                </li>
+                                                    </ul>
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2017/2017-10-22-connecting-monolog-with-ELK.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

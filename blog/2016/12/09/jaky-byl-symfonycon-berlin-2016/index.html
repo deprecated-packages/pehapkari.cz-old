@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=537905042" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=1472962279" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=942505661" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=139410135" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Jaký byl SymfonyCon Berlín 2016 </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Jaký byl SymfonyCon Berlín 2016" />
+<meta property="og:description" content="Největší událost v Symfony světě je za námi. Představeny byly služby SensioCloud, nový balíčkovací systém Symfony Flex a mnoho dalšího." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2016/12/09/jaky-byl-symfonycon-berlin-2016/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Jaký byl SymfonyCon Berlín 2016" />
+<meta name="twitter:description" content="Největší událost v Symfony světě je za námi. Představeny byly služby SensioCloud, nový balíčkovací systém Symfony Flex a mnoho dalšího." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Jaký byl SymfonyCon Berlín 2016</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        2 min
+
+        |
+
+        by <strong>Pavel Rozehnal</strong>
+
+        &ndash;
+
+        <time datetime="2016-12-Fri">
+            9. 12. 2016
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">Největší událost v Symfony světě je za námi. Představeny byly služby <strong>SensioCloud</strong>, nový balíčkovací systém <strong>Symfony Flex</strong> a mnoho dalšího.</p>
+
+                    <p><a href="http://berlincon2016.symfony.com/">SymfonyCon</a> největší Symfony konference, která se koná každoročně na začátku prosince. Do Berlína dorazilo <strong>přes 1200 účastníků</strong> na 2 dny konference a jeden hackday.</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2016/symfonycon/our-group.jpg"><br><em>
+        <a href="https://twitter.com/MichalOktabec/status/804690615023890432">Z Čech a Slovenska nás dorazilo rekordních 16</a>
+    </em>
+</div>
+<p><br></p>
+<h2 id="sensiocloud"><a href="#sensiocloud">SensioCloud</a></h2>
+<p>V úvodní keynote <a href="https://github.com/fabpot">Fabien Potencier</a> představil službu <a href="https://sensio.cloud/">SensioCloud</a> - <a href="https://en.wikipedia.org/wiki/Platform_as_a_service">PaaS</a> optimalizovaný pro Symfony.</p>
+<p>Jde o nadstavbu nad <a href="https://www.heroku.com">Heroku</a>. Celá platforma má být velmi jednodušše použitelná, s dobrou podporou škálování a optimalizací na vývoj: možnost branchování (testovací prostředí, staging...) nebo synchronizace DB mezi nimi.</p>
+<p><em>Termín spuštění?</em>
+Začátek roku 2017.</p>
+<h3 id="readonly-filesystem-je-ready"><a href="#readonly-filesystem-je-ready">Readonly FileSystem je ready</a></h3>
+<p>Důležitou součástí bylo <strong>dokončení podpory readonly filesystému</strong> (dostupné od verze <a href="https://github.com/symfony/symfony/blob/3.4/CHANGELOG-3.2.md">Symfony 3.2</a>). Právě to umožní <strong>deploying aplikací pomocí artefaktů</strong>.</p>
+<p>Problém byl v komponěntě Cache, která kvůli absolutním cestám znemožňovala deploy Symfony aplikace na úložiště bez možnosti zápisu. <strong>Cache lze od verze 3.2 zahřát na build serveru a vytvořit tak funkční artefakt, který již žádný zápis nevyžaduje</strong>.</p>
+<h2 id="symfony-flex"><a href="#symfony-flex">Symfony Flex</a></h2>
+<p>V další přednášce Fabien popsal nedostatky v Symfony distribučním systému. Jako řešení představil <strong>Symfony Flex</strong>. Tím chce nahradit dosavadní balíčky jako <a href="https://github.com/symfony/symfony-demo">Symfony Demo Application</a>, <a href="https://github.com/symfony/symfony-standard">Symfony Standard Edition</a> nebo  <a href="http://cmf.symfony.com/">Symfony CMF</a>.</p>
+<p>Řešením je použití kompozice místo dědičnosti a <strong>rozpadení konfiguračních souborů/úkonů do samostatných souborů</strong>, aby bylo možné &quot;balíčky&quot; jednoduše odebírat či přidávat.</p>
+<p><em>Termín spuštění?</em>
+Konec ledna 2017.</p>
+<h2 id="don-t-kill-the-chef-keep-php-alive-between-requests"><a href="#don-t-kill-the-chef-keep-php-alive-between-requests">Don't kill the chef - Keep PHP Alive Between Requests</a></h2>
+<p><a href="https://twitter.com/AndrewCarterUK">Andrew Carter</a> nám představil možnosti, jak je možné udžet Symfony aplikaci &quot;živou&quot; napříč více requestů a tak <a href="http://andrew.carterlunn.co.uk/slides/soup-up-symfony/#/49">zvýšit výkon výsledné aplikace</a>.</p>
+<p>Upozornil také na nedostatky PHP při běhu v tomto režimu - memory leaky či MySQL timeouty.</p>
+<p><strong><a href="http://andrew.carterlunn.co.uk/slides/soup-up-symfony/">Mrkni na slajdy</a></strong></p>
+<div class="text-center">
+    <img src="/assets/images/posts/2016/symfonycon/dont-kill-chef.jpg"><br><em>
+        Restaurace jako webový server
+    </em>
+</div>
+<p><br></p>
+<h2 id="cache-komponenta-od-symfony-3-1"><a href="#cache-komponenta-od-symfony-3-1">Cache komponenta (od Symfony 3.1)</a></h2>
+<p><a href="https://github.com/nicolas-grekas">Nicolas Grekas</a> povídal o Cache komponentně, která odpovídá <a href="http://www.php-fig.org/psr/psr-6/">PSR-6: Caching Interface</a> standardu.</p>
+<p>Krom funkcionality se zaměřil na perfomance testy, kde si komponenta vede obstojně. <strong>Nejlépe v bulk operacích při použití Redis Adaptéru</strong>. Nejlepším konkurentem byla <a href="https://github.com/doctrine/cache">Doctrine\Cache</a>.</p>
+<p><strong><a href="https://speakerdeck.com/nicolasgrekas/psr-6-and-symfony-cache-fast-by-standards-1">Mrkni na slajdy</a></strong></p>
+<h2 id="knowing-your-state-machines"><a href="#knowing-your-state-machines">Knowing your state machines</a></h2>
+<p><a href="https://github.com/Nyholm">Tobias Nyholm</a> nás uvedl do nové <a href="https://github.com/symfony/workflow">Workflow komponenty</a>, představil principy a ukázky použití. Workflow komponenta by mohla být velmi užitečná v nejedné business aplikaci - <strong>pro stavy uživatelů nebo řízení stavů objednávky</strong>.</p>
+<p><strong><a href="https://www.slideshare.net/TobiasNyholm/knowing-your-state-machines">Mrkni na slajdy</a></strong></p>
+<h2 id="a-year-of-symfony"><a href="#a-year-of-symfony">A Year of Symfony</a></h2>
+<p><a href="https://github.com/saro0h">Sarah Khalil</a> nám <strong>stručně představila významé novinky posledního roku</strong>.</p>
+<p>Co mě zaujalo?</p>
+<ul>
+<li><a href="https://speakerdeck.com/saro0h/symfonycon-berlin-a-year-of-symfony?slide=60">zjednodušený přístup k proměnným prostředí (ENV)</a></li>
+<li><a href="https://speakerdeck.com/saro0h/symfonycon-berlin-a-year-of-symfony?slide=54">zjednodušení práce s Compiler Pass</a></li>
+<li>nebo  <a href="https://speakerdeck.com/saro0h/symfonycon-berlin-a-year-of-symfony?slide=57">Tagged Cache</a></li>
+</ul>
+<p><strong><a href="https://speakerdeck.com/saro0h/symfonycon-berlin-a-year-of-symfony">Mrkni na slajdy</a></strong></p>
+<h3 id="a-co-dalsi-slajdy"><a href="#a-co-dalsi-slajdy">A co další slajdy?</a></h3>
+<p><strong>Všechny zveřejněné slajdy najdeš na <a href="https://joind.in/event/symfonycon-berlin-2016">joind.in</a>.</strong> Z nich bych
+ještě rád vypíchnnul:</p>
+<ul>
+<li><a href="https://qafoo.com/resources/presentations/symfonycon_berlin_2016/when_to_abstract.html">When To Abstract</a></li>
+<li><a href="https://speakerdeck.com/sgrodzicki/profiling-php-at-symfonycon-berlin-2016">Profiling PHP</a></li>
+<li><a href="https://slidr.io/derrabus/modernizing-with-symfony#1">Modernizing with Symfony</a></li>
+</ul>
+<div class="text-center">
+    <img src="/assets/images/posts/2016/symfonycon/elaphants.jpg"><br><em>
+        Tak zase za rok
+    </em>
+</div>
+<p><br></p>
+<h3 id="pro-tip-na-konec"><a href="#pro-tip-na-konec">Pro tip na konec</a></h3>
+<p>Early-bird lístky na příští SymfonyCon se vyplatí sledovat - prvních <strong>200 bývá za míň jak poloviční cenu</strong>!</p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2016/2016-12-09-jaky-byl-symfonycon-berlin-2016.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

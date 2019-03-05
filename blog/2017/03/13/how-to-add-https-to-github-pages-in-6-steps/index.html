@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=524625056" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=1561400219" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=1491779146" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=1852148476" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>How to add HTTPS to GitHub Pages in 6 Steps </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="How to add HTTPS to GitHub Pages in 6 Steps" />
+<meta property="og:description" content="I always loved GitHub Pages, thanks to open-source and free hosting. Last thing that made me feel too oldschool was the plain &amp;quot;http://&amp;quot; protocol. That is usually the main argument why people move from GitHub Pages elsewhere, i.e. their own VPS. What a pity.
+
+Fortunately, thanks for Michal Špaček&#039;s ability to explain complex stuff in a simple way, we solved this over a single weekend." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2017/03/13/how-to-add-https-to-github-pages-in-6-steps/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How to add HTTPS to GitHub Pages in 6 Steps" />
+<meta name="twitter:description" content="I always loved GitHub Pages, thanks to open-source and free hosting. Last thing that made me feel too oldschool was the plain &amp;quot;http://&amp;quot; protocol. That is usually the main argument why people move from GitHub Pages elsewhere, i.e. their own VPS. What a pity.
+
+Fortunately, thanks for Michal Špaček&#039;s ability to explain complex stuff in a simple way, we solved this over a single weekend." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">How to add HTTPS to GitHub Pages in 6 Steps</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        3 min
+
+        |
+
+        by <strong>Tomáš Votruba</strong>
+
+        &ndash;
+
+        <time datetime="2017-03-Mon">
+            13. 3. 2017
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">I always loved GitHub Pages, thanks to open-source and free hosting. Last thing that made me feel too oldschool was the plain &quot;http://&quot; protocol. That is usually the main argument why people move from GitHub Pages elsewhere, i.e. their own VPS. What a pity.
+<br>
+Fortunately, thanks for Michal Špaček's ability to explain complex stuff in a simple way, we solved this over a single weekend.</p>
+
+                    <h2 id="warning-this-post-is-now-deprecated-custom-domains-on-github-pages-support-https-directly-since-may-2018-check-a-href-https-blog-github-com-2018-05-01-github-pages-custom-domains-https-this-github-blog-for-more-information-a"><a href="#warning-this-post-is-now-deprecated-custom-domains-on-github-pages-support-https-directly-since-may-2018-check-a-href-https-blog-github-com-2018-05-01-github-pages-custom-domains-https-this-github-blog-for-more-information-a">WARNING: This post is now DEPRECATED, custom domains on GitHub pages support HTTPS directly since May 2018. Check <a href="https://blog.github.com/2018-05-01-github-pages-custom-domains-https/">this GitHub blog for more information</a>.</a></h2>
+<p>This site now runs on HTTPS, see: <a href="https://pehapkari.cz">https://pehapkari.cz/</a> thanks to <a href="https://www.michalspacek.com">Michal Špaček</a> who added <a href="https://github.com/pehapkari/pehapkari.cz/issues/162#issuecomment-272590505">a simple how-to manual</a> to the GitHub issue. I will try to expand it here.</p>
+<h3 id="https-is-strike-hard-strike-easy"><a href="#https-is-strike-hard-strike-easy">HTTPS is <strike>Hard</strike> Easy!</a></h3>
+<p>I thought setting up HTTPS is a very difficult process that requires at least owning a VPS, extensive work via SSH and buying, paying and setting up the certificate. This is practically impossible to do with just GitHub Pages.</p>
+<p>But is it really?</p>
+<h2 id="how-to-enable-https-in-3-steps"><a href="#how-to-enable-https-in-3-steps">How to Enable HTTPS in 3 Steps</a></h2>
+<h3 id="1-a-href-https-www-cloudflare-com-a-sign-up-register-on-cloudflare-a"><a href="#1-a-href-https-www-cloudflare-com-a-sign-up-register-on-cloudflare-a">1. <a href="https://www.cloudflare.com/a/sign-up">Register on Cloudflare</a></a></h3>
+<h3 id="2-a-href-https-www-cloudflare-com-a-add-site-add-your-site-a"><a href="#2-a-href-https-www-cloudflare-com-a-add-site-add-your-site-a">2. <a href="https://www.cloudflare.com/a/add-site">Add Your Site</a></a></h3>
+<p>Cloudflare will pre-fill the DNS records by scanning your current records. Continue.</p>
+<p>Pick free plan.</p>
+<h3 id="3-change-name-servers"><a href="#3-change-name-servers">3. Change Name Servers</a></h3>
+<p>Go to your domain administration (look for &quot;change DNS servers&quot; or similar) and change current name servers to those provided by Cloudflare. You can either create a new NSSET or change the current one, if your registry supports NSSETs.</p>
+<img src="/assets/images/posts/2017/https/change-nameservers.png">
+<p>Keep in mind that <strong>the servers may be different for each domain you add to Cloudflare</strong>.</p>
+<h2 id="what-will-happen-now"><a href="#what-will-happen-now">What will happen now?</a></h2>
+<p>The site will be served via Cloudflare once the browsers notice the change, that is when the DNS changes are propagated world-wide. That could take some time, from minutes to even days, depending on the expiration of these records in the DNS. Don't worry though, there's no downtime, the site should be accessible either via Cloudflare or not, the change we made doesn'ẗ affect the origin servers – GitHub's in this case – those are still up and running.</p>
+<p><strong>The changes could be verified in the browser or using the command-line interface</strong>. Look for the <code>Server</code> response header, it should contain <code>cloudflare-nginx</code>.</p>
+<pre><code class="language-bash">curl -I http://pehapkari.cz | grep Server
+Server: cloudflare-nginx</code></pre>
+<p>Now try <a href="https://pehapkari.cz">https://pehapkari.cz</a>, if there's no error, we have HTTPS enabled!</p>
+<p>Note that it can <a href="https://support.cloudflare.com/hc/en-us/articles/203045244-How-long-does-it-take-for-CloudFlare-s-SSL-to-activate-">take up to 24 hours</a> for HTTPS to enable.</p>
+<p><strong>Not quite there yet</strong></p>
+<p>Now we have a website running over HTTPS. But it is also accessible without HTTPS, through <a href="http://pehapkari.cz">http://pehapkari.cz</a>, so we need to redirect all HTTP requests to the HTTPS ones. This is especially important due to security, but also to avoid duplicate content (that would hurt SEO).</p>
+<h2 id="how-to-redirect-quot-http-quot-urls-to-quot-https-quot-in-3-steps"><a href="#how-to-redirect-quot-http-quot-urls-to-quot-https-quot-in-3-steps">How to Redirect &quot;HTTP&quot; urls to &quot;HTTPS&quot; in 3 Steps</a></h2>
+<h3 id="1-a-href-https-www-cloudflare-com-a-crypto-go-to-crypto-a"><a href="#1-a-href-https-www-cloudflare-com-a-crypto-go-to-crypto-a">1. <a href="https://www.cloudflare.com/a/crypto/">Go to Crypto</a></a></h3>
+<p>Scroll down a bit, roughly to the middle of the page.</p>
+<h3 id="2-enable-quot-always-use-https-quot"><a href="#2-enable-quot-always-use-https-quot">2. Enable &quot;Always use HTTPS&quot;</a></h3>
+<p>This will redirect both</p>
+<ul>
+<li><a href="http://pehapkari.cz">http://pehapkari.cz</a> and</li>
+<li><a href="http://www.pehapkari.cz">http://www.pehapkari.cz</a></li>
+</ul>
+<p>to their <code>https://</code> versions.</p>
+<p>If you need more or different redirections you can use <a href="https://www.cloudflare.com/a/page-rules/">Page Rules</a>.</p>
+<h3 id="3-verify-it-works"><a href="#3-verify-it-works">3. Verify it Works</a></h3>
+<p>Now run this diagnostics using your command-line interface:</p>
+<pre><code class="language-bash">curl -I http://pehapkari.cz | grep -i Location
+curl -I http://www.pehapkari.cz | grep -i Location
+curl -I https://www.pehapkari.cz | grep -i Location</code></pre>
+<p>These commands should show:</p>
+<pre><code class="language-bash">Location: https://pehapkari.cz/
+Location: https://www.pehapkari.cz/
+Location: https://pehapkari.cz/</code></pre>
+<p>If they do, you're done! If not, <strong>leave us a comment below</strong> and we'll try to help you and also improve this tutorial.</p>
+<p>If you ever get to <strong>any security troubles</strong>, <strong>call <a href="https://www.michalspacek.com">Michal</a></strong> to the rescue. Thank you!</p>
+<img src="/assets/images/posts/2017/https/thank-you.png">
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                            <h2 id="you-might-also-like"><a href="#you-might-also-like">You Might Also Like</a></h2>
+
+                        <ul id="related-posts">
+                                                            <li>
+                                    <a href="/blog/2017/02/06/how-to-rehash-legacy-passwords-in-symfony">How to rehash legacy passwords in Symfony &raquo;</a>
+                                </li>
+                                                    </ul>
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2017/2017-03-13-how-to-add-https-to-github-pages-in-6-steps.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

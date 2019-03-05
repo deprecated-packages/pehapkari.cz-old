@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=279621511" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=645491740" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=802932794" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=791961697" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Symfony 4 - Ako v praxi funguje Flex </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Symfony 4 - Ako v praxi funguje Flex" />
+<meta property="og:description" content="Ako titulka napovedá, pozrieme sa spoločne na jednu z mnohých skvelých noviniek, ktorú priniesol framework Symfony vo svojej štvrtej verzii. Pokúsim sa Vám priblížiť, čo Symfony Flex vlastne je a ako pracuje." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2018/03/21/symfony-4-ako-v-praxi-funguje-flex/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Symfony 4 - Ako v praxi funguje Flex" />
+<meta name="twitter:description" content="Ako titulka napovedá, pozrieme sa spoločne na jednu z mnohých skvelých noviniek, ktorú priniesol framework Symfony vo svojej štvrtej verzii. Pokúsim sa Vám priblížiť, čo Symfony Flex vlastne je a ako pracuje." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Symfony 4 - Ako v praxi funguje Flex</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        6 min
+
+        |
+
+        by <strong>Eduard Barnáš</strong>
+
+        &ndash;
+
+        <time datetime="2018-03-Wed">
+            21. 3. 2018
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">Ako titulka napovedá, pozrieme sa spoločne na jednu z mnohých skvelých noviniek, ktorú priniesol framework Symfony vo svojej štvrtej verzii. Pokúsim sa Vám priblížiť, čo Symfony Flex vlastne je a ako pracuje.</p>
+
+                    <p><strong>Symfony Flex</strong> je nástroj umožňujúci vývojárom automatizovať správu balíčkov pre ich Symfony projekt. Inštalácia balíčku sa stáva veľmi jednoduchou a intuitívnou, kedy ako plugin do obľúbeného Composera vykoná všetky potrebné akcie k registrácií a konfigurácií balíčka do projektu.</p>
+<h2 id="novinky-na-uvod"><a href="#novinky-na-uvod">Novinky na úvod</a></h2>
+<p>Vydanie Symfony verzie 4 prinieslo so sebou viacero noviniek, medzi nimi aj <strong>Symfony Flex</strong>. Kým sa vrhneme na jeho použitie, pozrieme sa spoločne na pár noviniek, ktoré môžu byť nápomocné pre rýchlejšie pochopenie ako Symfony Flex reálne pracuje.</p>
+<h3 id="framework"><a href="#framework">Framework</a></h3>
+<p><strong>Symfony 4 je miroframework</strong>. Predchádzajúce verzie si spravidla niesli zo sebou množstvo komponentov, ktoré nie vždy boli reálne potrebné. Framework prešiel výraznou odtučňovacou kúrou a teraz má v základe iba 5 závislosti, čo je v porovnaní s verziou 3.4 o polovicu menej.</p>
+<p>Náhľad do <code>composer.json</code> Symfony verzie 4:</p>
+<pre><code class="language-bash">"symfony/console": "^4.0",
+"symfony/flex": "^1.0",
+"symfony/framework-bundle": "^4.0",
+"symfony/lts": "^4@dev",
+"symfony/yaml": "^4.0"</code></pre>
+<p>Po inštalácií obsahuje vendor zložka 21 knižníc, ktoré sú nutné pre beh frameworku. Neobsahuje žiadne závislosti na šablónovací systém, ORM, debugovacie nástroje, logovacie nástroje, ktoré je nutné v prípade potreby doinštalovať.</p>
+<p>Pre porovnanie náhľad do <code>composer.json</code> Symfony verzie 3.4:</p>
+<pre><code class="language-bash">"doctrine/doctrine-bundle": "^1.6",
+"doctrine/orm": "^2.5",
+"incenteev/composer-parameter-handler": "^2.0",
+"sensio/distribution-bundle": "^5.0.19",
+"sensio/framework-extra-bundle": "^5.0.0",
+"symfony/monolog-bundle": "^3.1.0",
+"symfony/polyfill-apcu": "^1.0",
+"symfony/swiftmailer-bundle": "^2.6.4",
+"symfony/symfony": "3.4.*",
+"twig/twig": "^1.0||^2.0"</code></pre>
+<p>Veľkosť samotného frameworku sa zmenšila o neuveriteľných 70%. To je skvelá správa z pohľadu výkonu, ktorý sa pri jednoduchej &quot;Hello World&quot; aplikácií pod PHP 7.2 <a href="http://fabien.potencier.org/symfony4-performance.html">zdvojnásobil</a> v porovnaní s verziou 3.4.</p>
+<h3 id="konfiguracia"><a href="#konfiguracia">Konfigurácia</a></h3>
+<p>V rámci <strong>konfigurácie</strong> bol odstránený súbor <code>parameters.yml</code> a nahrádzajú ho tzv. premenné prostedia, ktoré sa definujú v súbore <code>.env</code> umiestnenom v koreňovom adresári. Tento súbor sa neverzuje a je vždy viazaný na konkrétne behové prostredie. Ukážka jednoduchého <code>.env</code> súboru s konfiguráciou frameworku a doctríny: </p>
+<pre><code class="language-bash">###&gt; symfony/framework-bundle ###
+APP_ENV=dev
+APP_SECRET=29f90564f9e472955211be8c5e05ee0a
+#TRUSTED_PROXIES=127.0.0.1,127.0.0.2
+#TRUSTED_HOSTS=localhost,example.com
+###&lt; symfony/framework-bundle ###
+
+###&gt; doctrine/doctrine-bundle ###
+DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
+###&lt; doctrine/doctrine-bundle ###</code></pre>
+<p>Použitie premenných prostredia má viacero výhod:</p>
+<ul>
+<li>sú štandardným spôsobom správy konfigurácie pre rôzne prostredia,</li>
+<li>môžu byť čítané samostatne inými aplikáciami,</li>
+<li>sú oddelené od zdrojového kódu,</li>
+<li>hodnoty môžu byť zmenené bez nutnosti znovu deployovať,</li>
+<li>sú podporované existujúcimi vývojovými nástrojmi.</li>
+</ul>
+<h3 id="autowiring-a-dependency-injection"><a href="#autowiring-a-dependency-injection">Autowiring a Dependency Injection</a></h3>
+<p>Viacerých vylepšení sa dočkal <strong>DI kontajner</strong> už vo verzií <a href="https://symfony.com/doc/current/service_container/3.3-di-changes.html">Symfony 3.3</a>, ktorých cieľom bolo zjednodušiť registráciu a konfiguráciu služieb. Symfony 4 zachováva všetky zlepšenia s tým rozdielom, že ich definuje ako predvolené.</p>
+<pre><code class="language-json">services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false</code></pre>
+<h3 id="adresarova-struktura"><a href="#adresarova-struktura">Adresárová štruktúra</a></h3>
+<p>Zmenami prešla aj adresárová štruktúra z dôvodu podpory Flexu a tiež pre zosúladenie s <a href="http://fabien.potencier.org/symfony4-directory-structure.html">unixovým štandardom</a>:</p>
+<pre><code class="language-bash">symfony4-project/
+├── bin/
+│   └── console
+├── config/
+│   ├── bundles.php
+│   ├── packages/
+│   ├── routes.yaml
+│   └── services.yaml
+├── public/
+│   └── index.php
+├── src/
+│   ├── ...
+│   └── Kernel.php
+├── var/
+└── vendor/</code></pre>
+<p>Adresár <code>app</code>, ako ho možno poznáte napríklad z Nette, bol rozdelený medzi adresáre <code>config</code> a <code>src</code> nachádzajúce sa priamo v koreni.</p>
+<p>Adresár <code>config</code> zahŕňa konfiguračné súbory jak frameworku, tak jednotlivých knižníc, zanorených v adresári <code>packages</code>. Pre rôzne prostredia môžu byť definované rôzne konfiguračné súbory a ich správne použitie zabezpečí zatriedenie do príslušného adresára (dev, test, prod).</p>
+<p>Okrem konfiguračných súborov zahŕňa adresár <code>config</code> aj súbor <code>bundles.php</code>, ktorého úlohou je definovať všetky aktuálne registrované balíčky v rámci Symfony projektu. Obsahom súboru je pole tvorené z cesty k tzv. <strong>bundle súboru</strong> ako kľúča a hodnota je opäť pole, ktoré určuje jedno alebo viac prostredí, pre ktoré bude balíček dostupný. Triedenie balíčkov podľa potreby vývojového, testovacieho, či produkčného prostredia nebolo nikdy jednoduchšie. Príklad súboru <code>bundles.php</code>:</p>
+<pre><code class="language-php">return [
+    Symfony\Bundle\FrameworkBundle\FrameworkBundle::class =&gt; ['all' =&gt; true],
+    Symfony\Bundle\SecurityBundle\SecurityBundle::class =&gt; ['all' =&gt; true],
+    Doctrine\Bundle\DoctrineBundle\DoctrineBundle::class =&gt; ['all' =&gt; true],
+    Symfony\Bundle\MonologBundle\MonologBundle::class =&gt; ['dev' =&gt; true],
+    ...
+];</code></pre>
+<p>Pre všetkú biznis logiku je pripravený adresár <code>src</code> , v ktorom je taktiež  aj bootstrap súbor frameworku <code>Kernel.php</code>. PHP súbory z adresára sú načítavané autoloadingom štandardu <a href="https://www.php-fig.org/psr/psr-4/">PSR-4</a>, kde namespace začína priamo na <code>App\</code>. Začiatok namespacu určuje následujúca direktíva v <code>composer.json</code>:</p>
+<pre><code class="language-json">"autoload": {
+    "psr-4": {
+        "App\\": "src/"
+    }
+},</code></pre>
+<p>Pôvodne adresár <code>web</code> (alebo <code>www</code> v Nette) bol premenovaný na public a obsahuje <code>index.php</code>. Vznikol mergnutím dvoch php súborov <code>app.php</code> a <code>app_dev.php</code> z minulých verzií, kde každý z týchto súborov slúžil pre iné prostredie. Tento dvojaký prístup k aplikácií už nie je potrebný, keďže typ prostredia určuje premenná definovaná v konfiguračnom súbore <code>.env</code>:</p>
+<pre><code class="language-bash">###&gt; symfony/framework-bundle ###
+APP_ENV=dev
+###&lt; symfony/framework-bundle ###</code></pre>
+<p>Adresár <code>public</code> je vhodným miestom pre assety (css-ka, javascriptové knižnice), obrázky, dokumenty a podobne.</p>
+<p>Adresár <code>var</code> obsahuje cache a logy.</p>
+<p>Posledný <code>bin</code> klasicky obsahuje binárky.</p>
+<h2 id="vytvarame-prvu-symfony-aplikaciu"><a href="#vytvarame-prvu-symfony-aplikaciu">Vytvárame prvú Symfony aplikáciu</a></h2>
+<p>Symfony 4 je možné nainštalovať výhradne prostredníctvom nástroja <a href="https://getcomposer.org/">Composer</a>, následujúcou direktívou:</p>
+<pre><code class="language-bash">$ composer create-project symfony/skeleton symfony4-project</code></pre>
+<p>Na základe príkazu Composer stiahne repozitár <a href="https://github.com/symfony/skeleton">symfony/skeleton</a>, ktorý obsahuje iba súbor <code>composer.json</code>, definujúci závislosti frameworku, ktoré nainštaluje. </p>
+<p>Všimnite si, že v novovzniknutom projekte máte okrem adresárovej štruktúry aj inicializovaný git repozitár, čo je ďalšia z mnohých vecí, ktorú framework vyrieši za Vás.</p>
+<h3 id="ako-pridat-twig"><a href="#ako-pridat-twig">Ako pridať Twig?</a></h3>
+<p>Predpokladajme, že si na začiatok chceme navrhnúť jednoduchú webstránku. Na prípravu šablón môžeme samozrejme použiť čisté PHP, no my sa chceme niečo naučiť a preto si zvolíme šablónovací systém <a href="https://twig.symfony.com/">Twig</a>.</p>
+<p>Samozrejme použijeme Symfony Flex a zadefinujeme novú závislosť: </p>
+<pre><code class="language-bash">$ composer require twig</code></pre>
+<p>Po ukončení inštalácie si všimnime zmeny, ktoré nastali v projekte. Ako prvé nás zaujme nový adresár <code>templates</code> v koreni projetku, kde tento adresár bude slúžiť ako úložisko pre všetky šablóny v rámci projektu.</p>
+<p>Ak nazrieme do súboru <code>bundles.php</code> zistíme, že Flex zaregistroval balíček do zoznamu pre všetky prostredia. Vznikli taktiež potrebné konfiguračné súbory v zložke <code>packages</code> s predvolenými nastaveniami.</p>
+<pre><code class="language-php">return [
+    ...
+    Symfony\Bundle\TwigBundle\TwigBundle::class =&gt; ['all' =&gt; true],
+    ...
+];</code></pre>
+<p>Od tejto chvíle môžeme balíček okamžite používať bez potreby ďalšej konfigurácie.</p>
+<h3 id="co-sa-vlastne-stalo"><a href="#co-sa-vlastne-stalo">Čo sa vlastne stalo?</a></h3>
+<p>Symfony Flex sa pokúsi vyhľadať balíček podľa názvu alebo aliasu v oficiálnom repozitári. Pokiaľ ho nenájde, Composer pokračuje štandardným spôsobom a nainštaluje závislosť.</p>
+<p>Situácia bude iná, pokiaľ sa k požadovanej závislosti nájde recept pre Symfony Flex. Inštalácia závislosti prebehne štandardným spôsobom, no v jej závere zapracuje Symfony Flex a na základe <a href="https://github.com/symfony/recipes/blob/master/symfony/twig-bundle/3.3/manifest.json">receptu</a> zaregistruje a nakonfiguruje balíček v rámci projektu.</p>
+<p>Ako teda taký recept môže vyzerať sa pozrieme do súboru <a href="https://github.com/symfony/recipes/blob/master/symfony/twig-bundle/3.3/manifest.json">manifest.json</a>:</p>
+<pre><code class="language-json">{
+    "bundles": {
+        "Symfony\\Bundle\\TwigBundle\\TwigBundle": ["all"]
+    },
+    "copy-from-recipe": {
+        "config/": "%CONFIG_DIR%/",
+        "templates/": "templates/"
+    },
+    "aliases": ["twig", "template", "templates"]
+}</code></pre>
+<p>O spracovaných receptoch v rámci procesu informuje výpis v konzole:</p>
+<pre><code class="language-bash">Package operations: 3 installs, 0 updates, 0 removals
+  - Installing twig/twig (v2.4.7): Loading from cache
+  - Installing symfony/twig-bridge (v4.0.6): Loading from cache
+  - Installing symfony/twig-bundle (v4.0.6): Loading from cache
+
+Symfony operations: 1 recipe (66e53f29c335c61bdbf961f6f963b888)
+  - Configuring symfony/twig-bundle (&gt;=3.3): From github.com/symfony/recipes:master</code></pre>
+<p>Tento <a href="https://github.com/symfony/recipes/tree/master/symfony/twig-bundle">recept</a> je skutočne jednoduchý, kde celá registrácia a konfigurácia twigu do projektu pozostáva z dvoch krokov:</p>
+<ol>
+<li>mergnutie poľa bundles s aktuálnym poľom vo Vašom súbore <code>config/bundles.php</code>,</li>
+<li>nakopírovanie nových zložiek aj s obsahom do Vášho projektu.</li>
+</ol>
+<p>Pole <code>aliases</code> definuje skrátené formy oficiálneho názvu balíčka, čím značne zvyšuje efektivitu pri práci s týmto nástrojom.</p>
+<p>Symfony Flex si vytvára alebo aktualizuje súbor <code>symfony.lock</code>, v ktorom zachytáva vykonané zmeny. Tento súbor sa odporúča verzovať s projektom.</p>
+<h3 id="balicek-sem-balicek-tam"><a href="#balicek-sem-balicek-tam">Balíček sem, balíček tam</a></h3>
+<p>Väčšina všeobecne obľúbených oficiálnych alebo komunitných balíčkov publikuje svoj recept na <a href="https://symfony.sh/">oficiálnom portáli</a>.</p>
+<p>Skús niektoré zo svojich obľúbených vyhľadať a hneď nainštalovať:</p>
+<ul>
+<li>symfony/orm-pack alias doctrine</li>
+<li>symfony/security-bundle alias security</li>
+<li>symfony/form alias form</li>
+<li>symfony/monolog-bundle alias logs</li>
+<li>symfony/phpunit-bridge alias phpunit</li>
+<li>symfony/profiler-pack alias profiler</li>
+<li>...</li>
+</ul>
+<h2 id="zaver"><a href="#zaver">Záver</a></h2>
+<p>Symfony vo svojej už štvrtej verzii vyrástlo a práca s ním je zo dňa na deň efektívnejšia, príjemnejšia a v neposlednom rade zaujímavejšia. Myslím, že sa Symfony uberá správnym smerom a my sa v budúcnosti máme na čo tešiť.</p>
+<p>O novinkách v pripravovanej verzii 4.1 si dáme ďalší článok :) a nedočkavcom, ktorí sa chcú dozvedieť viac už teraz, odporúčam navštíviť <a href="https://pehapkari.cz/kurz/zacni-so-symfony-4/">naplánované školenie o Symfony 4</a> koncom marca 2018. :)</p>
+<p>Ďakujem za konštruktívne komentáre, ktoré mňa a moju budúcu publikačnú činnosť posunú tým správnym smerom.</p>
+<h2 id="zdroje"><a href="#zdroje">Zdroje</a></h2>
+<ul>
+<li><a href="https://symfony.com/blog/hello-symfony-4">https://symfony.com/blog/hello-symfony-4</a></li>
+<li><a href="https://symfony.com/doc/current/service_container/3.3-di-changes.html">https://symfony.com/doc/current/service_container/3.3-di-changes.html</a></li>
+<li><a href="http://fabien.potencier.org/symfony4-performance.html">http://fabien.potencier.org/symfony4-performance.html</a> </li>
+<li><a href="http://fabien.potencier.org/symfony4-best-practices.html">http://fabien.potencier.org/symfony4-best-practices.html</a></li>
+<li><a href="https://www.etondigital.com/need-know-symfony-4/">https://www.etondigital.com/need-know-symfony-4/</a></li>
+<li><a href="https://medium.com/@zawadzki.jerzy/symfony-4-new-hope-dbf99dde91d8">https://medium.com/@zawadzki.jerzy/symfony-4-new-hope-dbf99dde91d8</a></li>
+</ul>
+<h2 id="kontakt"><a href="#kontakt">Kontakt</a></h2>
+<p>Zvažujete použitie Symfony 4 na svojich projektoch? Navštívte moje <a href="https://pehapkari.cz/kurz/zacni-so-symfony-4/">najbližšie školenie</a> alebo ma oslovte - <a href="https://www.neoweb.sk">neoweb.sk</a></p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2018/2018-03-21-symfony-4-ako-v-praxi-funguje-flex.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

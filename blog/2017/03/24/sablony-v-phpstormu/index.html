@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=1078911750" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=1764293369" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=572325538" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=687914991" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Live a file templates v PhpStormu </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Live a file templates v PhpStormu" />
+<meta property="og:description" content="Jak si usnadnit život používáním live a file templates v PhpStormu" />
+<meta property="og:url" content="https://pehapkari.cz/blog/2017/03/24/sablony-v-phpstormu/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Live a file templates v PhpStormu" />
+<meta name="twitter:description" content="Jak si usnadnit život používáním live a file templates v PhpStormu" />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Live a file templates v PhpStormu</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        6 min
+
+        |
+
+        by <strong>Matěj Račinský</strong>
+
+        &ndash;
+
+        <time datetime="2017-03-Fri">
+            24. 3. 2017
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">Jak si usnadnit život používáním live a file templates v PhpStormu</p>
+
+                    <h3 id="proc-sablony"><a href="#proc-sablony">Proč šablony</a></h3>
+<p>Kód můžeme psát buď v IDE nebo v textovém editoru. IDE mají velkou výhodu v tom, že pomáhají s analýzou a kompletací kódu,
+takže programátor nemusí psát všechno, ale může si tvořit vlastní zkratky či využívat zkratky stávající.
+Zde budu rozebírat live a file templaty pro IDE PhpStorm. PhpStorm je sice placený, což může být pro některé čtenáře problém, ale je možnost, jak jej používat zdarma.
+Studenti mohou získat licenci zdarma za ISIC, ostatní mohou využít možnost <a href="https://confluence.jetbrains.com/display/PhpStorm/PhpStorm+Early+Access+Program">early access program</a>.</p>
+<h3 id="druhy-sablon"><a href="#druhy-sablon">Druhy šablon</a></h3>
+<p>V PhpStormu jsou dva druhy šablon. <a href="https://www.jetbrains.com/help/phpstorm/2016.3/live-templates-2.html">Live templates</a>
+umožňují definovat zkratku (pár písmen), a k ní odpovídající kód.
+Po napsání zkratky a stisknutí <code>TAB</code> se místo zkratky vloží k ní patřící kód (tj. expanduje live template).</p>
+<p>Druhým typem šablon jsou <a href="https://www.jetbrains.com/help/phpstorm/2016.3/file-and-code-templates.html">file templates</a>,
+což jsou soubory s nějakým předem daným obsahem.
+Hned od začátku máme k dispozici například tyto file templates: <em>HTML File</em>, <em>XHTML File</em>, <em>PHP File</em>, <em>PHP Class</em>.</p>
+<h2 id="live-templates"><a href="#live-templates">Live templates</a></h2>
+<p>Live templates lze spravovat v <strong>File | Settings | Editor | Live templates</strong>. Zajímavé na live templatech je to,
+že jsou context aware, tedy že se aktivují se pouze v určitém kontextu, a ne jinde, jak je vidět na následujícím obrázku:</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2017/phpstorm/contexts.png"><br><em>
+        Kontexty pro live template
+    </em>
+</div>
+<p><br></p>
+<p>Možné kontexty jsou například Javascript, HTML, PHP, SQL, a další. V rámci PHP pak můžeme mít zvlášť live templates pro
+komentáře, class members apod.
+Tlačítko, kterým expandujeme zkratku do definovaného kusu kódu, lze v tomto nastavení změnit z výchozího <code>TAB</code> na nějaké jiné.
+Live templates lze také vyvolat zkratkou <code>CTRL+J</code>, která ukáže všechny dostupné live templates.</p>
+<p>Jednoduchý příklad live template může vypadat takto:
+Abbreviation: <code>tra</code>
+Template text:</p>
+<pre><code class="language-php">$this-&gt;translator-&gt;translate($WHAT$)$END$</code></pre>
+<p>Výše uvedený template zajistí obalení vybraného výrazu překladovou metodou, jak můžeme vidět v animaci:</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2017/phpstorm/live-template.gif"><br><em>
+        Použití live template pro překlad
+    </em>
+</div>
+<p><br></p>
+<p>Speciální druh <strong>live templates</strong> jsou <strong>surround templates</strong>, ty slouží k obalení vybraného kusu kódu nějakým live templatem.
+Používají se tak, že označím kus kódu, nebo mám kurzor na nějakém řádku (to se pak chová jako označení celého řádku),
+a stisknu <code>CTRL+ALT+T</code>. To mi zobrazí dostupné surround templates, z nichž si vyberu příslušný template, který pak vybranou část obalí.
+To je dobré například pro obalování nějakým upraveným try-catchem, překladem apod.</p>
+<p>V template textu (kde je kód, který se má po expandování zkratky objevit) můžeme používat proměnné.
+Předdefinované proměnné jsou $END$ a $SELECTION$.
+Proměnná $END$ určuje, kde se objeví kurzor poté, co vyplníme všechny proměnné.
+$SELECTION$ se uplatní pouze u surround templates a říká, kde se má po expanzi live templatu objevit vybraný text.
+Zároveň slouží k označení surround templates, protože každý live template, ve kterém je proměnná $SELECTION$,
+je automaticky považovaný i za surround template.</p>
+<p>To si můžeme ukázat na překladovém template. Ten lze použít i jako surround template, pokud proměnnou $WHAT$ zaměníme za $SELECTION$.</p>
+<pre><code class="language-php">$this-&gt;translator-&gt;translate($SELECTION$)$END$</code></pre>
+<p>Použití pak vypadá následovně:</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2017/phpstorm/surround-template.gif"><br><em>
+        Použití surround template pro překlad
+    </em>
+</div>
+<p><br></p>
+<p>Dále si můžeme definovat vlastní proměnné. Ty můžeme použít například k tomu, abychom napsali jednu věc na více míst najednou.
+Po expanzi templatu nám IDE nabídne vyplnit obsah jednotlivých proměnných.
+Pro pohyb k dalším proměnným stačí stisknout <code>ENTER</code> nebo <code>TAB</code>.
+Teď si ukážeme live template na tvorbu fluent setteru. To je setter, který vypadá například takto:</p>
+<pre><code class="language-php">    /**
+     * @param $bar
+     * @return $this
+     */
+    public function setBar($bar) {
+        $this-&gt;bar = $bar;
+        return $this;
+    }</code></pre>
+<p>U takového setteru například pro proměnnou <code>$bar</code>chceme, aby v názvu metody bylo setBar, s velkým B,
+ale jinde aby byl název proměnné malými písmeny. Toho dosáhneme přes funkce pro live templates.
+Když klikneme na <code>Edit variables</code>, je nám nabídnuto proměnným přiřadit funkce závisející na jiných proměnných.
+Nastavení takového live templatu můžeme vidět na následujícím obrázku:</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2017/phpstorm/live-template.png"><br><em>
+        Live template s kapitalizací
+    </em>
+</div>
+<p><br></p>
+<p>Tedy po napsání <code>fset</code> a stisku <code>TAB</code> můžeme vyplnit název property, pro kterou má setter být.
+Například když napíšeme <code>bar</code>, tak ji to doplní do všech výskytů proměnné <code>$Name$</code> a v názvu metody bude <code>setBar</code>.
+O to se nám stará funkce capitalize(Name), která používá obsah proměnné <code>$Name$</code>.
+Je-li zaškrtnuté <code>Skip if defined</code>, znamená to, že nám PhpStorm nenabídne vyplnit hodnotu <code>$Cap$</code>, pokud je k ní přiřazena nějaká funkce.
+Když chceme v live templatech používat znak <code>$</code> těsně před názvem proměnné, musíme ho escapovat zdvojením, takto: <code>$$</code>.</p>
+<p>U víceřádkových live templates (zvláště u surround templates) se občas může rozházet formátování,
+to ošetříme zaškrtnutím &quot;Reformat according to style&quot; v editaci live templatu.</p>
+<h2 id="file-templates"><a href="#file-templates">File templates</a></h2>
+<p>File templates lze spravovat ve <strong>File | Settings | Editor | File and code templates</strong>.
+Tam můžete buď přidávat vlastní šablony nebo upravovat stávající. Pro tvorbu šablon se zde používá jazyk <a href="http://velocity.apache.org/">velocity</a>.
+Bohužel nelze využívat všech vlastností tohoto jazyka v kombinaci s vyplňováním proměnných při tvorbě nového souboru (např. cykly).</p>
+<p>Ve file templates se také dají používat proměnné. Jejich hodnoty můžeme vyplnit ve chvíli vytváření nového souboru ze šablony.</p>
+<p>Nyní si ukážeme jednoduchý příklad pro Nette class:</p>
+<pre><code class="language-php">&lt;?php
+
+#parse("PHP File Header.php")
+
+#if (${Namespace} != "")
+namespace ${Namespace};
+#else
+namespace App;
+#end
+
+use Nette;
+
+class ${NAME}
+{
+    use Nette\SmartObject;
+
+    public function __construct()
+    {
+
+    }
+
+}</code></pre>
+<p>A takto pak vyplníme proměnné při tvorbě nové třídy:</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2017/phpstorm/nette-class.png"><br><em>
+        Formulář pro tvorbu třídy
+    </em>
+</div>
+<p><br></p>
+<p>V prvním řádku je include PhpDocu. Direktiva <code>#parse</code> je vlastně jenom velocity alternativa php konstruktu <code>include</code>.</p>
+<p>Díky větvení můžeme specifikovat namespace pro novou třídu, a pokud namespace nevyplníme, použije se defaultní, tedy <code>App</code>.
+Proměnná <code>${NAME}</code> má stejnou hodnotu jako File name.
+Při vytváření souboru ze šablony se objeví možnost vyplnit obsah proměnných, jak je vidět na obrázku.
+Proměnná File name je povinná, ale ostatní proměnné můžeme ponechat prázdné.</p>
+<p>A nyní se podíváme na další příklad, kde si vyzkoušíme složitější konstrukty jazyka velocity.</p>
+<p>Takto by mohl vypadat file template pro Nette presenter:</p>
+<pre><code class="language-php">&lt;?php
+
+#parse("PHP File Header.php")
+
+#if (${Module} != "")
+namespace App\\${Module}Module\Presenters;
+#elseif (${Namespace} != "")
+namespace ${Namespace};
+#else
+namespace App;
+#end
+
+use Nette;
+#if (${NAME} == 'BasePresenter')
+use Nette\Application\UI;
+
+class ${NAME} extends UI\Presenter
+#else
+
+class ${NAME} extends BasePresenter
+#end
+{
+
+#if (${Action} != "")
+    public function action${Action}()
+    {
+
+    }
+
+#end
+#if (${NAME} != 'BasePresenter')
+    public function renderDefault()
+    {
+
+    }
+
+#end
+#if (${Render} != "")
+
+## Na následucíjím řádku kapitalizujeme obsah proměnné $Render. Tento řádek je pouze komentář.
+#set ($Capitalized = $Render.substring(0,1).toUpperCase() + $Render.substring(1))
+    public function render${Capitalized}()
+    {
+
+    }
+
+#end
+}
+</code></pre>
+<p>Při vytváření souboru ze šablony se pak objeví možnost vyplnit obsah proměnných.
+Ten lze samozřejmě ponechat i prázdný, není potřeba vyplňovat vždy vše.</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2017/phpstorm/presenter.png"><br><em>
+        Formulář pro tvorbu presenteru
+    </em>
+</div>
+<p><br></p>
+<p>Tento template umožní specifikovat modul, a pokud ten je prázdný, použije se namespace.
+Stejně tak je tam již zakotvena logika pro dědění u BasePresenteru.
+Také je možné presenter rovnou vygenerovat s nějakou z action, render nebo handle metod, abychom je nemuseli psát ručně.
+Nicméně pokud pole zůstanou prázdná, presenter se vygeneruje bez nich.</p>
+<p>Jazyk velocity má pro PHP jednu drobnou nevýhodu. Znak <code>$</code> totiž interpretuje jako začátek proměnné,
+a proto jej musíme escapovat jako <code>${DS}</code>. Pokud to neuděláme, tak se nám <code>$id</code> objeví ve formuláři při tvorbě souboru jako proměnná.
+Pokud tedy chceme použít například ve file templatu nějakého objektu toto: <code>private $id;</code>, musíme to napsat následovně:
+<code>private ${DS}id;</code>.</p>
+<p>Zajímavé je, že ve file templatech lze používat javovské operace pro práci se stringy.
+Tyto operace lze však používat jen uvnitř direktivy <code>#set</code>, což můžeme vidět ve výše uvedeném příkladu.
+<code>#set</code> je v jazyce velocity deklarace proměnné. Proměnné se uvnitř používají bez <code>{}</code>.
+Jakmile proměnnou deklarujeme, dále ji opět používáme obalenou <code>{}</code>.</p>
+<p>Jak je vidět, proměnná <code>$Capitalized</code> má v sobě stejný obsah jako proměnná <code>$Render</code>, ale první písmeno má velké.
+Pomocí práce se stringy takto můžeme do file templatů zakotvit různé drobnosti, které bychom jinak museli upravovat ručně,
+což stojí čas.
+Takto můžeme dokonce uvnitř templatů vykonávat <a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206816669-How-to-use-Live-Templates-functions-in-File-Templates-">nahrazování pomocí regulárních výrazů</a>.
+Věci, které ve file templatech nejsou na první pohled zřejmé, můžeme okomentovat.
+<code>##</code> totiž v jazyce velocity značí začátek komentáře a tento komentář se pak do textu nového souboru nepropíše.</p>
+<p>Někdy je užitečné upravovat již existující file templates. Pokud používáme PHP 7,
+můžeme si například do <code>PHP File Header</code> přidat řádek <code>declare(strict_types=1);</code>.</p>
+<p>Drobná poznámka na konec:
+U editace file templates narazíte mimo jiné na <code>Enable Live Templates</code>. Toto pouze povolí využívání proměnných tak,
+že budeme moct jejich hodnoty vyplnit po vygenerování (a pohybovat se na další rychle pomocí <code>TAB</code>).
+Tyto nemají s live templaty jakožto kompletací kódu pod zkratkami nic společného, což je na první pohled matoucí.</p>
+<p>Jak využíváte šablony vy? Máte pro ně nějaký zajímavý use case?</p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2017/2017-03-24-sablony-v-phpstormu.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

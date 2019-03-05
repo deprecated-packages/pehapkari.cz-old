@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=1324484828" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=571646502" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=92456638" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=1962650689" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Arachne/EntityLoader - Object Parameters for Nette/Application </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Arachne/EntityLoader - Object Parameters for Nette/Application" />
+<meta property="og:description" content="Ever wanted to get rid of EntityManager::find($id) as the first thing in your every presenter action?
+With Arachne/EntityLoader you can.
+Of course it is not limited to Doctrine, you can easily use it with a different ORM library." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2017/09/04/arachne-entity-loader-object-parameters-for-nette-application/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Arachne/EntityLoader - Object Parameters for Nette/Application" />
+<meta name="twitter:description" content="Ever wanted to get rid of EntityManager::find($id) as the first thing in your every presenter action?
+With Arachne/EntityLoader you can.
+Of course it is not limited to Doctrine, you can easily use it with a different ORM library." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Arachne/EntityLoader - Object Parameters for Nette/Application</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        2 min
+
+        |
+
+        by <strong>Jáchym Toušek</strong>
+
+        &ndash;
+
+        <time datetime="2017-09-Mon">
+            4. 9. 2017
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">Ever wanted to get rid of <code>EntityManager::find($id)</code> as the first thing in your every presenter action?
+With <a href="https://github.com/Arachne/EntityLoader">Arachne/EntityLoader</a> you can.
+Of course it is not limited to Doctrine, you can easily use it with a different ORM library.</p>
+
+                    <h2 id="the-basics"><a href="#the-basics">The basics</a></h2>
+<p>Normally most of your presenters would look like this.</p>
+<pre><code class="language-php">use App\Entity\Product;
+use Nette\Application\UI\Presenter;
+
+class ProductPresenter extends Presenter
+{
+    public function actionDetail(int $id): void
+    {
+        $product = $this-&gt;entityManager-&gt;getRepository(Product::class)-&gt;find($id);
+        if (!$product) {
+            $this-&gt;error();
+        }
+
+        // Do stuff with $product.
+    }
+}</code></pre>
+<p>With Arachne/EntityLoader it is much easier.</p>
+<pre><code class="language-php">use App\Entity\Product;
+use Arachne\EntityLoader\Application\EntityLoaderPresenterTrait;
+use Nette\Application\UI\Presenter;
+
+class ProductPresenter extends Presenter
+{
+    use EntityLoaderPresenterTrait;
+
+    public function actionDetail(Product $product): void
+    {
+        // ...
+    }
+}</code></pre>
+<p>Now how would you make a link to a action that needs object? Of course you can use the object if you have it. But if you have a case where you don't need the actual entities for anything and only have their IDs it will work as well.</p>
+<pre><code>{* All of these are fine. *}
+&lt;a n:href="Product:detail, product =&gt; $product"&gt;Product detail&lt;/a&gt;
+&lt;a n:href="Product:detail, product =&gt; $product-&gt;getId()"&gt;Product detail&lt;/a&gt;
+&lt;a n:href="Product:detail, product =&gt; $productId"&gt;Product detail&lt;/a&gt;</code></pre>
+<h2 id="it-works-everywhere"><a href="#it-works-everywhere">It works everywhere</a></h2>
+<p>It doesn't work just for actions but for signals as well.</p>
+<pre><code class="language-php">    public function handleDelete(Product $product): void
+    {
+        // ...
+    }</code></pre>
+<p>Persistent parameters are no problem either.</p>
+<pre><code class="language-php">    /**
+     * @var Product
+     * @persistent
+     */
+    public $product;</code></pre>
+<p><strong>And all of it works in components as well.</strong></p>
+<h2 id="request-object-with-entities"><a href="#request-object-with-entities">Request Object with Entities</a></h2>
+<p>Unlike older solutions like <a href="https://github.com/DeprecatedPackages/DoctrineMethodsHydrator">Zenify/DoctrineMethodsHydrator</a> EntityLoader will put the entities into your <code>Nette\Application\Request</code> object as well. This will make them available in more places than just your actions and signals. Like if you need to pass the product to a component.</p>
+<pre><code class="language-php">class ProductPresenter extends Presenter
+{
+    public function createComponentForm(): ProductForm
+    {
+        /** @var Product $product */
+        $product = $this-&gt;getRequest()-&gt;getParameter('product');
+
+        return $this-&gt;productFormFactory-&gt;create($product);
+    }
+}</code></pre>
+<h2 id="scalar-types"><a href="#scalar-types">Scalar Types</a></h2>
+<p>For consistency it actually converts scalar types like integers as well. This is not too important as newer versions of Nette do that too but with EntityLoader they will be converted in the Request as well.</p>
+<h2 id="conclusion"><a href="#conclusion">Conclusion</a></h2>
+<p>Having objects in <code>Nette\Application\Request</code> may not look like a killer feature at first. The point is that having entities in Request also unleashes the full power of both <a href="https://github.com/Arachne/ParameterValidation">Arachne/ParameterValidation</a> and <a href="https://github.com/Arachne/SecurityVerification">Arachne/SecurityVerification</a>. I'll go into details in the next article.</p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                            <h2 id="you-might-also-like"><a href="#you-might-also-like">You Might Also Like</a></h2>
+
+                        <ul id="related-posts">
+                                                            <li>
+                                    <a href="/blog/2017/08/28/arachne-verifier-request-validator-for-nette-application">Arachne/Verifier - Request Validator for Nette/Application &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2017/08/21/arachne-security-simplified-authorizator-and-fixed-acl-callbacks">Arachne/Security - Simplified Authorizator and Fixed ACL Callbacks &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2017/08/14/arachne-security-separate-authentication-and-session-refresh">Arachne/Security - Separate Authentication and Session Refresh &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2017/09/11/arachne-verifier-plus-arachne-entity-loader-using-entities-in-verifier-rules">Arachne/Verifier + Arachne/EntityLoader - Using Entities in Verifier Rules &raquo;</a>
+                                </li>
+                                                    </ul>
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2017/2017-09-04-arachne-entity-loader-object-parameters-for-nette-application.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

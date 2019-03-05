@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=420715090" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=498430792" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=1208784135" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=1567560785" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Arachne/Verifier + Arachne/EntityLoader - Using Entities in Verifier Rules </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Arachne/Verifier + Arachne/EntityLoader - Using Entities in Verifier Rules" />
+<meta property="og:description" content="This article demonstrates that while Arachne components are mostly independent on each other, their potential raises dramatically when you use them together. Push both Arachne/ParameterValidation and Arachne/SecurityVerification to their limits with Arachne/EntityLoader!" />
+<meta property="og:url" content="https://pehapkari.cz/blog/2017/09/11/arachne-verifier-plus-arachne-entity-loader-using-entities-in-verifier-rules/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Arachne/Verifier + Arachne/EntityLoader - Using Entities in Verifier Rules" />
+<meta name="twitter:description" content="This article demonstrates that while Arachne components are mostly independent on each other, their potential raises dramatically when you use them together. Push both Arachne/ParameterValidation and Arachne/SecurityVerification to their limits with Arachne/EntityLoader!" />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Arachne/Verifier + Arachne/EntityLoader - Using Entities in Verifier Rules</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        4 min
+
+        |
+
+        by <strong>Jáchym Toušek</strong>
+
+        &ndash;
+
+        <time datetime="2017-09-Mon">
+            11. 9. 2017
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">This article demonstrates that while Arachne components are mostly independent on each other, their potential raises dramatically when you use them together. Push both <a href="https://github.com/Arachne/ParameterValidation">Arachne/ParameterValidation</a> and <a href="https://github.com/Arachne/SecurityVerification">Arachne/SecurityVerification</a> to their limits with <a href="https://github.com/Arachne/EntityLoader">Arachne/EntityLoader</a>!</p>
+
+                    <h2 id="wait-a-second"><a href="#wait-a-second">Wait a Second</a></h2>
+<p>This article is about advanced features which are available when you use several Arachne components. Make sure to read all of the previous articles about Arachne before reading further:</p>
+<ul>
+<li><a href="/blog/2017/08/14/arachne-security-separate-authentication-and-session-refresh">Arachne/Security - Separate Authentication and Session Refresh</a></li>
+<li><a href="/blog/2017/08/21/arachne-security-simplified-authorizator-and-fixed-acl-callbacks">Arachne/Security - Simplified Authorizator and Fixed ACL Callbacks</a></li>
+<li><a href="/blog/2017/08/28/arachne-verifier-request-validator-for-nette-application">Arachne/Verifier - Request Validator for Nette/Application</a></li>
+<li><a href="/blog/2017/09/04/arachne-entity-loader-object-parameters-for-nette-application">Arachne/EntityLoader - Object Parameters for Nette/Application</a></li>
+</ul>
+<p>Now how exactly can EntityLoader make Verifier rules better? It's simple. <strong>All Verifier rules work with <code>Nette\Application\Request</code>. And since EntityLoader loads entities into it, Verifier rules can now use these entities to do more powerful validations.</strong></p>
+<h2 id="improving-code-validate-code-rule-from-parametervalidation"><a href="#improving-code-validate-code-rule-from-parametervalidation">Improving <code>@Validate</code> rule from ParameterValidation</a></h2>
+<p>With EntityLoader the capabilities of this rule increase dramatically - you can easily verify that the entity is in a state required for that action.</p>
+<pre><code class="language-php">use Arachne\SecurityVerification\Rules\Privilege;
+use Symfony\Component\Validator\Constraints\IsTrue;
+
+/**
+ * Product page is only visible if the product is marked as public.
+ *
+ * @Validate(parameter="product.public", constraints=@IsTrue()),
+ */
+public function actionShow(Product $product): void
+{
+    // ...
+}</code></pre>
+<p>The <code>product.public</code> part in the annotation is a syntax from <a href="https://symfony.com/doc/current/components/property_access.html">Symfony/PropertyAccess</a> which is used internally here.</p>
+<p>With all the <a href="https://symfony.com/doc/current/reference/constraints.html">Symfony/Validator constraints</a> you can make sure the entity meets all the requirements needed to perform the action. <strong>This is especially useful for entities with complex live process when you want to make sure that the user does not skip any step by accident.</strong></p>
+<p>On a side note if you're interested in some commonly unknown Symfony/Validator tricks read <a href="/blog/2017/02/11/symfony-validator-comparison-constraints/">my</a> <a href="/blog/2017/02/18/symfony-validator-conditional-constraints/">previous</a> <a href="/blog/2017/02/24/symfony-validator-dynamic-constraints/">articles</a>.</p>
+<h2 id="improving-code-privilege-code-rule-from-securityverification"><a href="#improving-code-privilege-code-rule-from-securityverification">Improving <code>@Privilege</code> rule from SecurityVerification</a></h2>
+<p>The magic here is that instead of <code>@Privilege(authorizator="admin", resource="Article", privilege="edit")</code> you can use <code>@Privilege(authorizator="admin", resource="$article", privilege="edit")</code> (note the little change in resource) to reference a parameter from request. If this parameter is an entity implementing the <code>Nette\Security\IResource</code> interface, you can use it as the resource to <strong>solve complex cases like ownership-based rules</strong> using the improved ACL callbacks from <a href="https://github.com/Arachne/Security">Arachne/Security</a>.</p>
+<p>First an entity implementing IResource:</p>
+<pre><code class="language-php">namespace App\Entity;
+
+use Nette\Security\IResource;
+
+class Article implements IResource
+{
+    // ...
+
+    /**
+     * @var User
+     */
+    private $author;
+
+    public function getAuthor(): User
+    {
+        return $this-&gt;author;
+    }
+}</code></pre>
+<p>Next ACL-based authorizator with an ownership rule.</p>
+<pre><code class="language-php">namespace App\Module\AdminModule\Security;
+
+use App\Module\AdminModule\Security\AdminFirewall;
+use Arachne\Security\Authentication\FirewallInterface;
+use Arachne\Security\Authorization\AuthorizatorInterface;
+use Arachne\Security\Authorization\Permission;
+use Arachne\Security\Authorization\PermissionAuthorizator;
+
+class AuthorizatorFactory
+{
+    /**
+     * @var AdminFirewall
+     */
+    private $firewall;
+
+    public function __construct(AdminFirewall $firewall)
+    {
+        $this-&gt;firewall = $firewall;
+    }
+
+    public function create(): AuthorizatorInterface
+    {
+        $permission = new Permission();
+
+        // Setup $permission using addRole, addResource and allow methods.
+
+        // Redactor can only edit his own articles.
+        $permission-&gt;allow(
+            'Redactor',
+            Article::class,
+            'edit',
+            function (IIdentity $identity, IResource $article) {
+                return $identity-&gt;getId() === $article-&gt;getAuthor()-&gt;getId();
+            }
+        );
+
+        return new PermissionAuthorizator($this-&gt;firewall, $permission);
+    }
+}</code></pre>
+<p>And finally the rule declaration in the presenter.</p>
+<pre><code class="language-php">use App\Entity\Article;
+use Arachne\SecurityVerification\Rules\Privilege;
+use Nette\Application\UI\Presenter;
+
+class ArticlePresenter extends Presenter
+{
+    /**
+     * @Privilege(authorizator="admin", resource="$article", privilege="edit")
+     */
+    public function actionEdit(Article $article): void
+    {
+        // ...
+    }
+}</code></pre>
+<p><strong>This will also affect links with the <code>n:ifLinkVerified</code> macro. You can just iterate over the articles normally in your grid and the edit button will only appear for the articles owned by the user.</strong></p>
+<h2 id="final-words"><a href="#final-words">Final Words</a></h2>
+<p>Thanks for reading though all five articles to get down here. I'll be happy to read your feedback here in the comments or on GitHub.</p>
+<p>This is the end of the series for now but I want to write an article about <a href="https://github.com/Arachne/ServiceCollections">Arachne/ServiceCollections</a> later which is sort of Arachne internals but could find some usage in your libraries as well.</p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                            <h2 id="you-might-also-like"><a href="#you-might-also-like">You Might Also Like</a></h2>
+
+                        <ul id="related-posts">
+                                                            <li>
+                                    <a href="/blog/2017/08/28/arachne-verifier-request-validator-for-nette-application">Arachne/Verifier - Request Validator for Nette/Application &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2017/09/04/arachne-entity-loader-object-parameters-for-nette-application">Arachne/EntityLoader - Object Parameters for Nette/Application &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2017/08/21/arachne-security-simplified-authorizator-and-fixed-acl-callbacks">Arachne/Security - Simplified Authorizator and Fixed ACL Callbacks &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2017/08/14/arachne-security-separate-authentication-and-session-refresh">Arachne/Security - Separate Authentication and Session Refresh &raquo;</a>
+                                </li>
+                                                    </ul>
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2017/2017-09-11-arachne-verifier-plus-arachne-entity-loader-using-entities-in-verifier-rules.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

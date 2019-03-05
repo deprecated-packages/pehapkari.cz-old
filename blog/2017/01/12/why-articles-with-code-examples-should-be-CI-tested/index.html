@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=1780707070" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=888680760" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=582081209" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=1176515505" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Why articles with code examples should be CI tested </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Why articles with code examples should be CI tested" />
+<meta property="og:description" content="I know many great articles that go right to the point. I use their code examples and they work. But when I recommend these articles to people I mentor, I realize the articles are already 2 years old and their code samples probably do not work any more. From hero to zero. Today I will show you how to keep them alive lot longer with a minimal effort." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2017/01/12/why-articles-with-code-examples-should-be-CI-tested/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Why articles with code examples should be CI tested" />
+<meta name="twitter:description" content="I know many great articles that go right to the point. I use their code examples and they work. But when I recommend these articles to people I mentor, I realize the articles are already 2 years old and their code samples probably do not work any more. From hero to zero. Today I will show you how to keep them alive lot longer with a minimal effort." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Why articles with code examples should be CI tested</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        4 min
+
+        |
+
+        by <strong>Tomáš Votruba</strong>
+
+        &ndash;
+
+        <time datetime="2017-01-Thu">
+            12. 1. 2017
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">I know many great articles that go right to the point. I use their code examples and they work. But when I recommend these articles to people I mentor, I realize the articles are already 2 years old and their code samples probably do not work any more. From hero to zero. Today I will show you how to keep them alive lot longer with a minimal effort.</p>
+
+                    <p>Do you know <a href="https://github.com/sindresorhus/awesome/">Awesome lists</a>? If not, go to check them. They collect best sources about a certain topic. When I try to learn something new, I usually start on Github looking for &quot;awesome <technology>&quot;. I recommend at least briefly to check them.</p>
+<p>The idea behind Awesome list is to have resources that:</p>
+<ul>
+<li><strong>are up-to-date with modern technologies</strong></li>
+<li><strong>are the best in the field</strong></li>
+<li><strong>are easy to learn by beginners</strong></li>
+</ul>
+<h2 id="how-quot-awesome-doctrine-quot-was-born"><a href="#how-quot-awesome-doctrine-quot-was-born">How &quot;Awesome Doctrine&quot; was Born</a></h2>
+<p>When I was working with Nette, I met <strong>Doctrine ORM</strong> thanks to <a href="https://filip-prochazka.com/">Filip Procházka</a> and his great <a href="https://github.com/Kdyby">Kdyby</a> open-source boom.</p>
+<p>One day I decided to learn more about Doctrine. Documentation looked like a manual for experts rather than something I could learn from. I was also curious <strong>how people use Doctrine in real applications, how to overcome performance issues, some cool features and pro tips</strong>.</p>
+<p>I was already familiar with <a href="https://github.com/ziadoz/awesome-php">Awesome PHP</a> by <a href="https://github.com/ziadoz">ziadoz</a>, so I looked for &quot;Awesome Doctrine&quot;.</p>
+<p>0 results. Really? Why nobody made this? It's so obvious this would be useful.</p>
+<p>Ah, it's my job then. And the joyful hell started.</p>
+<h3 id="many-sources-on-many-versions"><a href="#many-sources-on-many-versions">Many Sources on Many Versions</a></h3>
+<p>I was lucky to find many articles about Doctrine. One about Filters, others about Events or Criteria. But when I tried to use the code, it often didn't work. After digging I found out there was version 1.0, which was completely different.</p>
+<blockquote>
+<p>Tip: When you write a post about software, mention the version you're referring to – even if it only has one at the moment.</p>
+</blockquote>
+<p>So I liked the concept in article and wanted to use it, but I didn't know what is different in version 2.4. I closed it.</p>
+<p>I also read <a href="https://www.zdrojak.cz/clanky/doctrine-2-uvod-do-systemu/">Czech series on Zdroják</a> written by <a href="http://www.jantichy.cz/">Jan Tichý</a>. It could give me great insights, but it was about Doctrine 2-beta. I closed it.</p>
+<h3 id="what-to-put-in-the-list"><a href="#what-to-put-in-the-list">What to put in the list?</a></h3>
+<p>I've decided to focus on sources released in that year. When articles and Doctrine version are the same - Doctrine 2.4 - it will be great source to learn from.</p>
+<p>Idea was good, <a href="https://github.com/TomasVotruba/awesome-doctrine">List</a> was done. I was happy until...</p>
+<h3 id="doctrine-2-5-was-out"><a href="#doctrine-2-5-was-out">...Doctrine 2.5 was out!</a></h3>
+<p>So now each of the 20 sources on the list got a bit deprecated.</p>
+<p>Oh, so that's why nobody made it in the first place :).</p>
+<p>Now I also understand why many programmers hate new versions of software and want to stick with version they already know. It makes sense in such conditions.</p>
+<h2 id="quot-awesome-symfony-quot"><a href="#quot-awesome-symfony-quot">&quot;Awesome Symfony&quot;</a></h2>
+<p>Before I realized it makes no sense to make a list of sources, because next year I could drop most of them, I make <a href="https://github.com/Pehapkari/awesome-symfony-education">Awesome list for Symfony</a>.</p>
+<p>New Symfony version is released every single year, so the list is even more outdated than Doctrine.</p>
+<p><strong>So what this leads to?</strong></p>
+<h2 id="running-in-circles"><a href="#running-in-circles">Running in Circles</a></h2>
+<p>If I get back to the <strong>useful source</strong> idea from the beginning.</p>
+<ul>
+<li><strong>are up-to-date with modern technology</strong></li>
+<li><strong>are the best in the field</strong></li>
+<li><strong>are easy to learn by beginners</strong></li>
+</ul>
+<p>To make this happen, I would have to create &quot;Awesome * List&quot; every year.
+To make that happen, each article would have to be checked for compatibility with each new version and updated if needed.</p>
+<p>That would mean around 50 articles on Doctrine every year. <strong>And all this work just to keep status quo</strong>. In big communities like Symfony and Laravel, this happens, but I still consider it too much wasted work (constructive ideas coming bellow).</p>
+<p>So sources are useful upon their release but become more and more outdated every year. Writing article in such environment would be as useless as writing 100% test coverage for Christmas campaign microsite.</p>
+<p>Thus, motivation to write software article is getting low, even when software is being released. - I call this <em>Know How Sharing Lag</em>.</p>
+<h2 id="this-sounds-like-legacy-code"><a href="#this-sounds-like-legacy-code">This Sounds like Legacy Code</a></h2>
+<p>Let's say we have application with legacy code. It brings me money and I want to keep it alive and growing as long as possible.</p>
+<p>...</p>
+<p>Mm, I should write tests and start refactoring?</p>
+<p>Could this be possible to integrate into a blog or website?</p>
+<h3 id="dream-big"><a href="#dream-big">Dream Big</a></h3>
+<p>It would have to be:</p>
+<ul>
+<li><strong>integrated in blog</strong>, because another external source would deprecate - thanks Statie</li>
+<li><strong>composer supported</strong> - thanks Github Pages and Travis</li>
+<li><strong>open-source hosted</strong>, so the author won't burn out on yearly fixes - thanks Github Pages</li>
+<li><strong>CI supported</strong> - thanks Travis</li>
+<li><strong>tested daily</strong> - thanks Travis Cron Jobs (Beta)</li>
+</ul>
+<p>This idea was created in late 2015 with no solution ahead. I want to thank <a href="https://twitter.com/enumag">Jáchym Toušek</a> for consulting this idea and making <a href="https://github.com/enumag/enumag.cz/commit/3efc82717b9965bb19a2609e4caddc0c5467552d">the first prototype</a>.</p>
+<p>And that's why and how <em>tested articles</em> were born.</p>
+<h3 id="on-this-blog-by-default"><a href="#on-this-blog-by-default">On this Blog by Default!</a></h3>
+<p>As you can see, there are a few tested articles already:</p>
+<img src="/assets/images/posts/2017/tested-article/covered.png">
+<p>This is what a tested article looks like in <a href="https://github.com/pehapkari/pehapkari.cz/commit/85b69950b32c39b9e972582720a23a18a1adc4be">single commit</a>. It will last for years, will work on Symfony 4 and maybe further.</p>
+<p><strong>Feel free to send one.</strong> We'll make sure it will make it into 2018 and beyond.</p>
+<p>P.S.: If you need more detailed tutorial, how to do it, let me know in the comments.</p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                            <h2 id="you-might-also-like"><a href="#you-might-also-like">You Might Also Like</a></h2>
+
+                        <ul id="related-posts">
+                                                            <li>
+                                    <a href="/blog/2018/04/11/how-anyone-can-write-a-post-here">How Anyone Can Write a Post Here &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2016/12/01/chces-psat-o-php-posli-pr">Chceš psát o PHP? Pošli Pull Request! &raquo;</a>
+                                </li>
+                                                    </ul>
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2017/2017-01-12-why-articles-with-code-examples-should-be-CI-tested.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=1442672054" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=757720589" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=829147099" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=178360221" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Doctrine 2 – Dědičnost entit </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Doctrine 2 – Dědičnost entit" />
+<meta property="og:description" content="Entity v ORM (objektově relační mapování) zachycují objekty z reálného světa a transformují je do tříd v programovacím jazyku. V reálném světě má vždy skupina objektů stejné vlastnosti a liší v některých detailech. Všichni lidé mají jméno, datum narození, pohlaví, ale liší se v barvě očí, pleti, dovednostech apod.
+
+Při čistém návrhu entit by se nám tedy hodila dědičnost. Umí ji Doctrine zpracovat, a jak s takovou entitou pracuje?" />
+<meta property="og:url" content="https://pehapkari.cz/blog/2017/11/30/doctrine-2-dedicnost-entit/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Doctrine 2 – Dědičnost entit" />
+<meta name="twitter:description" content="Entity v ORM (objektově relační mapování) zachycují objekty z reálného světa a transformují je do tříd v programovacím jazyku. V reálném světě má vždy skupina objektů stejné vlastnosti a liší v některých detailech. Všichni lidé mají jméno, datum narození, pohlaví, ale liší se v barvě očí, pleti, dovednostech apod.
+
+Při čistém návrhu entit by se nám tedy hodila dědičnost. Umí ji Doctrine zpracovat, a jak s takovou entitou pracuje?" />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Doctrine 2 – Dědičnost entit</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        4 min
+
+        |
+
+        by <strong>Tomáš Pilař</strong>
+
+        &ndash;
+
+        <time datetime="2017-11-Thu">
+            30. 11. 2017
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">Entity v ORM (objektově relační mapování) zachycují objekty z reálného světa a transformují je do tříd v programovacím jazyku. V reálném světě má vždy skupina objektů stejné vlastnosti a liší v některých detailech. Všichni lidé mají jméno, datum narození, pohlaví, ale liší se v barvě očí, pleti, dovednostech apod.
+<br><br>
+Při čistém návrhu entit by se nám tedy hodila dědičnost. Umí ji Doctrine zpracovat, a jak s takovou entitou pracuje?</p>
+
+                    <h2 id="entita-a-jeji-rodic"><a href="#entita-a-jeji-rodic">Entita a její rodič</a></h2>
+<p>Ideální bude, když si problematiku rozebereme na konkrétním příkladu. Představme si, že jsme programátor, který programuje blog. Na blogu budou vycházet článku, ale i krátké novinky. Pro jednoduchost ukázek budeme chtít u článku ukládat pouze název, úvodní text (perex), obsah a autora. U novinky budeme chtít ukládat její název, obsah, štítek a autora. Jak budou vypadat Doctrine entity?</p>
+<pre><code class="language-php">&lt;?php
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="article")
+ */
+class Article
+{
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string")
+     * @var string
+     */
+    private $header;
+
+    /**
+     * @ORM\Column(type="text")
+     * @var string
+     */
+    private $perex;
+
+    /**
+     * @ORM\Column(type="text")
+     * @var string
+     */
+    private $content;
+
+    /**
+     * @ORM\Column(type="string")
+     * @var string
+     */
+    private $author;
+
+    // getters + setters
+
+}</code></pre>
+<pre><code class="language-php">&lt;?php
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="news")
+ */
+class News
+{
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string")
+     * @var string
+     */
+    private $header;
+
+    /**
+     * @ORM\Column(type="text")
+     * @var string
+     */
+    private $content;
+
+    /**
+     * @ORM\Column(type="string")
+     * @var string
+     */
+    private $tag;
+
+    /**
+     * @ORM\Column(type="string")
+     * @var string
+     */
+    private $author;
+
+    // getters + setters
+
+}</code></pre>
+<p>Jak je vidět na první pohled entita <code>News</code> obsahuje stejné vlastnosti jako <code>Article</code> a liší se pouze ve štítku. V tento moment se nám může zdát jako zbytečné přemýšlet o nějaké dědičnosti. Možná…</p>
+<p>Blogger, pro kterého blog programuje, se rozhodne, že by chtěl u článků a novinek přidat možnost ukládat datum publikace. Takže si jako programátor otevřeme entitu <code>Article</code> a přidáme novou vlastnost <code>$publishedAt</code> a implementujeme getter + setter. V tento moment bude následovat copy&amp;paste nových věci i do entity <code>News</code> a jakožto zkušení programátoři, kteří píší čistý kód, prostě ten Ctrl+C nezmáčkneme. Rozhodneme se to implementovat pořádně tak, jak se sluší od zkušeného programátora.</p>
+<h2 id="pocatecni-refaktoring"><a href="#pocatecni-refaktoring">Počáteční refaktoring</a></h2>
+<p>Zprvu musíme vydefinovat společné vlastnosti, které přeneseme do společného předka a od něj pak budou entity <code>Article</code> a <code>News</code> dědit.</p>
+<p>Když se na entity podíváme, tak je jasné, že se bude jednat o vlastnosti název, obsah a autor. Entita <code>Article</code> má oproti entitě <code>News</code> navíc perex a <code>News</code> zase štítek. Nyní začíná veškerá sranda. :)</p>
+<p>Vytvoříme tedy abstraktní třídu <code>AbstractText</code>, do které přesuneme vydefinované proměnné.</p>
+<pre><code class="language-php">&lt;?php
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use DateTime;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="text")
+ */
+abstract class AbstractText
+{
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string")
+     * @var string
+     */
+    private $header;
+
+    /**
+     * @ORM\Column(type="text")
+     * @var string
+     */
+    private $content;
+
+    /**
+     * @ORM\Column(type="string")
+     * @var string
+     */
+    private $author;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @var DateTime
+     */
+    private $publishedAt;
+
+    // getters + setters
+
+}</code></pre>
+<p>Následně entitu <code>Article</code> podědíme od <code>AbstractText</code></p>
+<pre><code class="language-php">&lt;?php
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="article")
+ */
+class Article extends AbstractText
+{
+
+    /**
+     * @ORM\Column(type="text")
+     * @var string
+     */
+    private $perex;
+
+    // getter + setter
+
+}</code></pre>
+<p>a nakonec podědíme od <code>AbstractText</code> i entitu <code>News</code>.</p>
+<pre><code class="language-php">&lt;?php
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="news")
+ */
+class News extends AbstractText
+{
+
+    /**
+     * @ORM\Column(type="string")
+     * @var string
+     */
+    private $tag;
+
+    // getter + setter
+
+}</code></pre>
+<h2 id="propojeni-pres-komentarove-anotace"><a href="#propojeni-pres-komentarove-anotace">Propojení přes komentářové anotace</a></h2>
+<p>V tento moment, ještě Doctrine nedokáže pochopit, že chceme použít dědičnost u entit a je potřeba jí to oznámit přes speciální komentářovou anotaci. Otevřeme si tedy <code>AbstractText</code> a přidáme anotaci <code>InheritanceType</code>, <code>DiscriminatorColumn</code> a <code>DiscriminatorMap</code>.</p>
+<pre><code class="language-php">&lt;?php
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="text")
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="discriminator", type="text")
+ * @ORM\DiscriminatorMap({
+ *      "article" = "Article",
+ *      "news" = "News"
+ * })
+ */
+abstract class AbstractText
+{
+    // zůstává stejné
+}</code></pre>
+<p>V tento moment již Doctrine zná vše potřebné a můžeme si nechat vygenerovat nové schéma pro databázi.</p>
+<h2 id="databazove-schema"><a href="#databazove-schema">Databázové schéma</a></h2>
+<p>Pro implementaci dědičnosti v relační databázi využívá Doctrine propojení přes primární klíč. Když si dáme vypsat SQL aktuálního databázového schématu, tak bude vypadat následovně.</p>
+<pre><code class="language-sql">// generováno pro PostgreSQL 9.6
+
+CREATE TABLE text (id SERIAL NOT NULL, header VARCHAR(255) NOT NULL, content TEXT NOT NULL, author VARCHAR(255) NOT NULL, published_At TIMESTAMP NOT NULL, discriminator TEXT NOT NULL, PRIMARY KEY(id));
+CREATE TABLE article (id INT NOT NULL, perex TEXT NOT NULL, PRIMARY KEY(id));
+CREATE TABLE news (id INT NOT NULL, tag VARCHAR(255) NOT NULL, PRIMARY KEY(id));
+
+ALTER TABLE article ADD CONSTRAINT FK_23A0E66BF396750 FOREIGN KEY (id) REFERENCES text (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE;
+ALTER TABLE news ADD CONSTRAINT FK_1DD39950BF396750 FOREIGN KEY (id) REFERENCES text (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE;</code></pre>
+<p>Jak je vidět, tak tabulky <code>text</code>, <code>article</code> a <code>news</code> sdílí hodnotu primárního klíče. V tabulce text je navíc sloupec <code>discriminator</code>, do kterého si Doctrine ukládá informaci o tom, která tabulka se je potomkem rodiče. Doctrine zde dbá na maximální výkon a tak při získávání dat z databáze rovnou propojí potřebné tabulky a načte všechna data v jediném SQL dotazu. Takto bude vypadat dotaz pro načtení všech článků.</p>
+<pre><code class="language-SQL">// generováno pro PostgreSQL 9.6
+
+SELECT t1.id AS id_2, t1.header AS header_3, t1.content AS content_4, t1.author AS author_5, t1.publishedAt as published_at_6, t0.perex AS perex_7, t1.discriminator
+FROM article t0
+INNER JOIN text t1 ON t0.id = t1.id;</code></pre>
+<h2 id="zaver"><a href="#zaver">Závěr</a></h2>
+<p>Doctrine nám umožňuje používat dědičnost i na úrovni databáze bez zbytečných hacků a magie. Díky této vlastnosti můžeme navrhovat čisté entity a nemusíme duplikovat stejné vlastnosti v entitách.</p>
+<h2 id="chci-se-dozvedet-vice"><a href="#chci-se-dozvedet-vice">Chci se dozvědět více!</a></h2>
+<p>Zajímá tě dědičnost entit více do hloubky nebo se chceš přiučit jiným cool věcem? Přihlaš se na má <a href="https://pehapkari.cz/vzdelavej-se/">školení Doctrine 2</a> právě teď! První školení s názvem &quot;Doctrine 2 - Začínáme používat ORM&quot; proběhne již příští středu a máme ještě pár míst! :)</p>
+<p>Zde jsou materiály, které ti pomohou pochopit, jak to v Doctrine funguje hlouběji.</p>
+<ul>
+<li><a href="http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/inheritance-mapping.html">http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/inheritance-mapping.html</a></li>
+<li><a href="http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/annotations-reference.html#annref-discriminatormap">http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/annotations-reference.html#annref-discriminatormap</a></li>
+</ul>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2017/2017-11-30-doctrine-2-dedicnost-entit.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

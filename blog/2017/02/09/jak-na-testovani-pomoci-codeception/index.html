@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=1612798421" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=972420334" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=1465069100" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=583801570" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Jak na akceptační testovaní pomocí Codeception </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Jak na akceptační testovaní pomocí Codeception" />
+<meta property="og:description" content="Jak automaticky testovat celé stránky a simulovat chování uživatele na webu pomocí Codeception" />
+<meta property="og:url" content="https://pehapkari.cz/blog/2017/02/09/jak-na-testovani-pomoci-codeception/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Jak na akceptační testovaní pomocí Codeception" />
+<meta name="twitter:description" content="Jak automaticky testovat celé stránky a simulovat chování uživatele na webu pomocí Codeception" />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Jak na akceptační testovaní pomocí Codeception</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        4 min
+
+        |
+
+        by <strong>Matěj Račinský</strong>
+
+        &ndash;
+
+        <time datetime="2017-02-Thu">
+            9. 2. 2017
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">Jak automaticky testovat celé stránky a simulovat chování uživatele na webu pomocí Codeception</p>
+
+                    <h2 id="co-je-to-codeception-a-proc-jej-pouzivat"><a href="#co-je-to-codeception-a-proc-jej-pouzivat">Co je to Codeception a proč jej používat?</a></h2>
+<p>Codeception je PHP knihovna umožňující testovat webové aplikace přímo v prohlížeči. Testuje tak z pohledu uživatele, jestli funguje celý web, jak backend, tak frontend, neomezuje se jen na testování jednotlivých tříd. Díky Codeception můžete snadno a rychle proklikat velkou část webu a otestovat celé uživatelské scénáře
+(například registraci, přihlášení, objednávku v eshopu apod.).</p>
+<p>Dokumentace Codeception je k přečtení <a href="http://codeception.com/quickstart">zde</a>.</p>
+<p>Codeception má v sobě několik knihoven, které jde pro testy používat.</p>
+<ul>
+<li>
+<p>Buď můžete na testování stránek používat
+<a href="http://codeception.com/docs-2.0/04-AcceptanceTests#PHP-Browser">PhpBrowser</a>, který <strong>umožňuje proklikávat stránky a
+vyplňovat formuláře, ale neumožní spouštění javascriptu</strong>.</p>
+</li>
+<li>
+<p>Pokud chcete plnohodnotný prohlížeč, <strong>Codeception nám umožňuje testovat v reálném prohlížeči</strong> pomocí
+<a href="http://codeception.com/docs-2.0/04-AcceptanceTests#Selenium-WebDriver">Selenium Webdriveru</a>. Na jeho zprovoznění budeme potřebovat Selenium Server, jehož instalaci popisuji v dalším kroku. Jeho výhoda je mimo jiné v tom, že při selhání testu udělá printscreen a uloží html kód stránky, na které test selhal.</p>
+</li>
+</ul>
+<h2 id="jak-zacit-co-potrebuji"><a href="#jak-zacit-co-potrebuji">Jak začít, co potřebuji?</a></h2>
+<p>Nejdříve si k projektu nainstalujeme přes composer Codeception:</p>
+<pre><code class="language-bash">composer require codeception/codeception --dev</code></pre>
+<h3 id="instalujeme-selenium"><a href="#instalujeme-selenium">Instalujeme Selenium</a></h3>
+<p>A nyní si stáhneme a zprovozníme Selenium Server.</p>
+<ul>
+<li>Nejdříve musíme mít nainstalovanou <a href="https://java.com/en/download/">Javu</a>.</li>
+<li>Stáhnout Selenium Server lze na <a href="http://docs.seleniumhq.org/download/">této stránce</a> v sekci &quot;Selenium Standalone Server&quot;. Přímý link na stažení je <a href="https://goo.gl/Lyo36k">zde</a>.</li>
+<li>Stažený <code>.jar</code> soubor umístíme kamkoli, kde na něj nezapomeneme.</li>
+<li>Selenium WebDriver umožňuje používat různé prohlížece, my nyní budeme používat google chrome.</li>
+<li>Stahneme si chromedriver <a href="https://sites.google.com/a/chromium.org/chromedriver/downloads">zde</a>.</li>
+<li>Stahneme si archiv pro náš konkrétní počítač.</li>
+<li>Archiv extrahujeme na stejné místo, kde máme Selenium Server.</li>
+<li>Vytvoříme si soubor <code>selenium.sh</code> s obsahem</li>
+</ul>
+<pre><code class="language-bash">java -jar -Dwebdriver.chrome.driver=chromedriver selenium-server-standalone-3.0.1.jar</code></pre>
+<ul>
+<li>přidáme jej do PATH, abychom jej měli odkudkoli snadno dostupný.</li>
+</ul>
+<p>Pokud používáme Windows, vytvoříme místo toho analogicky <code>selenium.bat</code> s obsahem</p>
+<pre><code class="language-bash">java -jar -Dwebdriver.chrome.driver=chromedriver.exe selenium-server-standalone-3.0.1.jar</code></pre>
+<p>Tento soubor spustíme. Nyní by měl nastartovat Selenium Server.</p>
+<p>Všechno v Codeceptionu se řídí přes CLI. Od inicializace, přes vytváření testů (generování kódu pro skelet testů),
+až po spouštění.</p>
+<p>Nejdříve Codeception inicializujeme:</p>
+<pre><code class="language-bash">codecept bootstrap</code></pre>
+<p>Pokud systém nenašel příkaz codecept, pak použijeme variantu s cestou (předpokládám, že jsme v rootu našeho projektu)</p>
+<ul>
+<li>
+<p>pro Linux: <code>vendor/bin/codecept bootstrap</code></p>
+</li>
+<li>
+<p>pro Windows: <code>vendor\bin\codecept bootstrap</code></p>
+</li>
+</ul>
+<p>Tohle ve složce <code>tests</code> vytvoří složky pro různé druhy testů a konfigurační soubory se základním nastavením.</p>
+<h2 id="prvni-test"><a href="#prvni-test">První test</a></h2>
+<p>Pro ukázku budeme testovat různé stránky na serveru seznam.cz. Díky tomu vidíme, že narozdíl od unit testů není
+na akceptační testování zapotřebí mít přístup ke zdrojákům, stačí běžící aplikace.</p>
+<p>Nyní si nakonfigurujeme Codeception, aby používal URL adresu aplikace, kterou chceme testovat, a aby používal Selenium
+jako prohlížeč. To uděláme tak, že upravíme soubor <code>acceptance.suite.yml</code> a jeho obsah upravíme na</p>
+<pre><code class="language-yaml"># acceptance.suite.yml
+
+class_name: AcceptanceTester
+modules:
+    enabled:
+        - WebDriver:
+            url: https://www.seznam.cz
+            browser: chrome
+        - \Helper\Acceptance</code></pre>
+<p>Pokud chceme testovat naši vlastní aplikaci, použijeme stejnou adresu, jako používáme při ručném proklikávání.
+Řádek, kde je <code>- WebDriver:</code> říká, jaký prohlížeč chceme použít. Základní je PhpBrowser, ten sice neumožní testovat
+javascript, ale zato je o poznání rychlejší.</p>
+<p>Nyní máme všechno připravené a můžeme se pustit do prvního testu.</p>
+<p>Takže první test si vytvoříme:</p>
+<pre><code class="language-bash">codecept generate:cept acceptance Homepage</code></pre>
+<p>a jako u inicializace, pokud nemáme soubor codecept v cestě, použijeme variantu</p>
+<pre><code class="language-bash">vendor/bin/codecept generate:cept acceptance Homepage</code></pre>
+<p>(a jako výše, pro Windows se zpětnými lomítky)</p>
+<p>Tento příkaz nám vytvořil soubor <code>tests\acceptance\HomepageCept.php</code>
+Otevřeme si ho a rovnou můžeme psát jednotlivé testy. Otestujeme načtení hlavní stránky a
+zda obsahuje všechny důležité prvky.
+Testujeme tedy <a href="https://www.seznam.cz">homepage seznam.cz</a>.
+Testovat přítomnost prvků můžeme jak testováním, zda je na stránce nějaký text, tak CSS selectory nebo XPath selectory.</p>
+<pre><code class="language-php">// tests/acceptance/HomepageCept.php
+
+$I = new AcceptanceTester($scenario);
+$I-&gt;wantTo('Test homepage');    //nic nevykonává, ale slouží pro nás. Když test neprojde, vypíše se mimo jiné tento string
+$I-&gt;amOnPage('/');              //kontrola, že jsem na homepage
+$I-&gt;seeElement("form input[id=\"fulltext-field\"]");    //testuji, zda vidím vyhledávací okno
+$I-&gt;seeElement("span.gadget__calendar");                //kontrola, že se vypisuje den
+$I-&gt;seeElement("div.gadget--novinky");                  //je zobrazený rámeček s novinkami
+$I-&gt;see("Novinky", "div.gadget--novinky");              //a v rámečku je napsán text "Novinky"</code></pre>
+<p>Test spustíme následovně:</p>
+<pre><code class="language-bash">codecept run</code></pre>
+<p>Také můžeme pouštět pouze konkrétní testovací soubory:</p>
+<pre><code class="language-bash">codecept run acceptance HomepageCept</code></pre>
+<h2 id="formulare-a-prechod-na-jine-stranky"><a href="#formulare-a-prechod-na-jine-stranky">Formuláře a přechod na jiné stránky</a></h2>
+<p>Nyní si zkusíme otestovat vyhledávání a pár prokliků z něj.</p>
+<pre><code class="language-php">// tests/acceptance/HomepageCept.php
+
+$I = new AcceptanceTester($scenario);
+$I-&gt;amOnPage('/');
+$I-&gt;fillField("form input[id=\"fulltext-field\"]", "php");  //do vyhledávacího políčka se zadá php
+$I-&gt;click("form button.button--submit");
+$I-&gt;waitForElement("div.searchpage", 3);                //počkáme, než se stránka s výsledky načte, ale max. 3 sekundy
+$I-&gt;seeNumberOfElements("div.results &gt; div", 13);       //13 výsledků yhledávání
+$I-&gt;see("1 filipínské peso", "div.results &gt; div");      //ve výsledcích je kurz filipínského pesa
+$I-&gt;click("#navGoods");                                 //překliknu na záložku zboží
+$I-&gt;waitForElement("main header", 3);                   //počkám na načtení
+$I-&gt;see("Informatika a výpočetní technika", "main header &gt; h1");    //zjistím, že  php spadá pod výpočetní techniku
+$I-&gt;click("Zobrazit podrobnosti", "main article");                  //prokliknu se na detail prvního zboží
+$I-&gt;seeInCurrentUrl("vyrobek/php-nejen-pro-zacatecniky-cd");        //zkontroluji slug v url</code></pre>
+<p>Přehled všech použitelných metod je dostupný v <a href="http://codeception.com/docs/modules/WebDriver">dokumentaci Codeceptionu</a></p>
+<h2 id="cest-tridy-a-oop-psani-testu"><a href="#cest-tridy-a-oop-psani-testu">Cest třídy a OOP psaní testů</a></h2>
+<p>Pokud nechceme jen procedurální testy, ale chceme je lépe členit, je možné psát testy i objektově, pomocí Cest tříd.
+Ty vygenerujeme takto</p>
+<pre><code class="language-bash">codecept generate:cest acceptance Homepage</code></pre>
+<p>a vidíme, že máme vytvořenou třídu <code>HomepageCest</code> v souboru <code>tests/acceptance/HomepageCest.php</code>.</p>
+<p>Testy můžeme psát do jakýchkoli public metod, kromě metod začínajících podrtžítkem. Ty mají specifický význam:</p>
+<ul>
+<li>metoda <code>_before</code> je zavolána před každým testem</li>
+<li>metoda <code>_after</code> je zavolána po každém testu</li>
+<li>v cest testech je navíc metoda <code>_failed</code>, která se zavolá těsně poté, co nějaký test neprojde</li>
+</ul>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2017/2017-02-09-jak-na-testovani-pomoci-codeception.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

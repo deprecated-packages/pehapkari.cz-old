@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=1481111624" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=35343744" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=663222405" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=2033304054" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Symfony 4: Vytváříme chytrý kontroler </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Symfony 4: Vytváříme chytrý kontroler" />
+<meta property="og:description" content="Co kdyby byl Symfony kontroler schopný automaticky najít správnou šablonu k požadované akci bez nutnosti opakovaně psát její cestu? Co takhle mít možnost zasílat parametry do šablony z více míst a třeba i před renderovací metodou?
+Symfony 4 je skvělý framework ale po chvíli práce s ním mi začaly chybět některé fičury, na které jsem byl zvyklý z jiných frameworků, jako je například Nette Framework.
+Rozhodl jsem se, že si je do Symfony musím dodělat. V tomto článku vám ukážu, jak jsem toho docílil." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2018/03/14/symfony-4-vytvarime-chytry-kontroler/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Symfony 4: Vytváříme chytrý kontroler" />
+<meta name="twitter:description" content="Co kdyby byl Symfony kontroler schopný automaticky najít správnou šablonu k požadované akci bez nutnosti opakovaně psát její cestu? Co takhle mít možnost zasílat parametry do šablony z více míst a třeba i před renderovací metodou?
+Symfony 4 je skvělý framework ale po chvíli práce s ním mi začaly chybět některé fičury, na které jsem byl zvyklý z jiných frameworků, jako je například Nette Framework.
+Rozhodl jsem se, že si je do Symfony musím dodělat. V tomto článku vám ukážu, jak jsem toho docílil." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Symfony 4: Vytváříme chytrý kontroler</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        5 min
+
+        |
+
+        by <strong>Vladimír Macháček</strong>
+
+        &ndash;
+
+        <time datetime="2018-03-Wed">
+            14. 3. 2018
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">Co kdyby byl Symfony kontroler schopný automaticky najít správnou šablonu k požadované akci bez nutnosti opakovaně psát její cestu? Co takhle mít možnost zasílat parametry do šablony z více míst a třeba i před renderovací metodou?
+Symfony 4 je skvělý framework ale po chvíli práce s ním mi začaly chybět některé fičury, na které jsem byl zvyklý z jiných frameworků, jako je například <a href="https://nette.org/cs/">Nette Framework</a>.
+Rozhodl jsem se, že si je do Symfony musím dodělat. V tomto článku vám ukážu, jak jsem toho docílil.</p>
+
+                    <p>Řekněme, že máme nějaký <code>HomepageController</code> s <code>renderDefault()</code> metodou umístěný ve složce <code>src/controller</code></p>
+<pre><code class="language-PHP">namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+final class HomepageController extends Controller
+{
+
+    /**
+     * @Route("/", name="homepage")
+     */
+    public function renderDefault(): Response
+    {
+        $number = mt_rand(0, 100);
+        return $this-&gt;render('default.twig', [
+            'number' =&gt; $number,
+        ]);
+    }
+
+}</code></pre>
+<p>a default.twig šablonu pro renderDefault akci ve složce templates.</p>
+<pre><code class="language-twig">Number: {{ number }}</code></pre>
+<p>Všechno funguje a vypadá v pořádku. No jo, jenomže co když budu náhodou potřebovat vložit parametr odjinud
+než z <code>renderDefault()</code> metody? To je v tuto chvíli nemožné..., ledaže bychom si vytvořili <code>AbstractController</code>, který nám to umožní.</p>
+<pre><code class="language-PHP">namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
+
+abstract class AbstractController extends Controller
+{
+
+    /**
+     * @var array
+     */
+    private $templateParameters = [];
+
+    protected function setTemplateParameters(array $parameters): void
+    {
+        $this-&gt;templateParameters = array_merge($this-&gt;templateParameters, $parameters);
+    }
+
+    protected function renderTemplate(string $template, array $parameters = [], Response $response = null): Response
+    {
+        $this-&gt;setTemplateParameters($parameters);
+        return $this-&gt;render(
+            $template, $this-&gt;templateParameters, $response
+        );
+    }
+
+}</code></pre>
+<p>Zbývá už jen <code>AbstractController</code> podědit v <code>HomepageController</code>, vytvořit setter metodu a zavolat ji v <code>renderDefault()</code> metodě.</p>
+<pre><code class="language-PHP">namespace App\Controller;
+
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+final class HomepageController extends AbstractController
+{
+
+    /**
+     * @Route("/", name="homepage")
+     */
+    public function renderDefault(): Response
+    {
+        $this-&gt;setRandomNumberIntoTemplate();
+        return $this-&gt;renderTemplate('default.twig');
+    }
+
+    private function setRandomNumberIntoTemplate(): void
+    {
+        $number = mt_rand(0, 100);
+        $this-&gt;setTemplateParameters([
+            'number' =&gt; $number
+        ]);
+    }
+
+}</code></pre>
+<p>Takto vytvořená metoda pro předávání parametrů do šablony je sice pěkná, ale kdybychom chtěli dané číslo vkládat
+do každé šablony automaticky, je potřeba ji neustále a dokola volat v každé render metodě. V tuhle chvíli
+by se hodila <code>beforeRender()</code> metoda, tak si ji pojďme přidat do <code>AbstractControlleru</code>.</p>
+<pre><code class="language-PHP">// ...
+protected function beforeRender(): void {}
+// ...
+
+protected function renderTemplate(string $template, array $parameters = [], Response $response = null): Response
+{
+    $this-&gt;beforeRender();
+    $this-&gt;setTemplateParameters($parameters);
+
+    return $this-&gt;render(
+         $template, $this-&gt;templateParameters, $response
+    );
+}</code></pre>
+<p>Nyní jen stačí tuto metodu použít v <code>HomepageController</code>.</p>
+<pre><code class="language-PHP">// ...
+public function beforeRender(): void
+{
+    $this-&gt;setRandomNumberIntoTemplate();
+}
+
+// ...
+/**
+ * @Route("/", name="homepage")
+ */
+public function renderDefault(): Response
+{
+    return $this-&gt;renderTemplate('default.twig');
+}</code></pre>
+<p>V <code>HomepageController</code> je ale stále potřeba zapisovat cestu k šabloně. Většinou preferuji modulární strukturu aplikace
+s šablonami umístěnými ve složce pojmenované po kontroleru zanořené v templates složce, která je ve stejné složce jako kontrolery.
+Zní to trošku divně, takže uvedu jednoduchý příklad:</p>
+<ul>
+<li><code>HomepageController</code> =&gt; <code>src/Modules/HomepageModule/Controller/HomepageController.php</code></li>
+<li>Šablona =&gt; <code>src/Modules/HomepageModule/Controller/templates/Homepage/default.twig</code></li>
+</ul>
+<p>Povětšinou ještě modul dělím na admin a front ale pro tento článek je tato struktura dostačující. V dalším kroku je tedy potřeba
+přesunout Homepage modul a jeho šablony do zmiňované adresářové struktury, a stejně tak přesunout <code>AbstractController</code>. Ten však bude
+například ve složce CoreModule <code>src/Modules/CoreModule/Controller/AbstractController.php</code>.</p>
+<p>Abychom to všechno zprovoznili, je potřeba provést několik úprav. Nejdříve upravíme <code>AbstractController</code>,
+protože zde nastává největší změna.</p>
+<pre><code class="language-PHP">namespace App\Modules\CoreModule\Controller;
+
+// ...
+
+abstract class AbstractController extends Controller
+{
+
+    // ...
+    protected function renderTemplate(array $parameters = [], Response $response = null): Response
+    {
+        preg_match(
+            '/\:\:render(?&lt;template&gt;\S+)/',
+            $this-&gt;get('request_stack')-&gt;getCurrentRequest()-&gt;attributes-&gt;get('_controller'),
+            $matches
+          );
+
+        // ...
+        return $this-&gt;render(
+           $this-&gt;getTemplatePath(strtolower($matches['template'])),
+           // ...
+        );
+    }
+
+    public function getTemplatePath(string $view): string
+    {
+        $reflector = new \ReflectionClass(get_called_class());
+        $templatesDirectoryName = str_replace(
+            'Controller',
+            '',
+            basename($reflector-&gt;getFileName(), '.php')
+        );
+
+        $moduleTemplatesDirectoryPath = str_replace (
+            $this-&gt;getParameter('kernel.root_dir') . '/',
+            '',
+            dirname($reflector-&gt;getFileName())
+        ). '/templates/' . $templatesDirectoryName;
+
+        return $moduleTemplatesDirectoryPath . '/' . $view . '.twig';
+    }
+
+}</code></pre>
+<p>Přibylo volání <code>preg_match</code> funkce v <code>renderTemplate()</code> metodě, a byla přidána metoda <code>getTemplatePath()</code>.
+Tato metoda roztokenuje jméno aktuálního kontroleru a render metody, a následně vrátí cestu k šabloně.</p>
+<p>Za další je potřeba upravit <code>HomepageController</code>. Zde již není cesta k šabloně, protože ji nepotřebujeme.</p>
+<pre><code class="language-PHP">/**
+ * @Route("/", name="homepage")
+ */
+public function renderDefault(): Response
+{
+    return $this-&gt;renderTemplate();
+}</code></pre>
+<p>Nesmíme zapomenout nakonfigurovat Twig a anotace.</p>
+<pre><code class="language-YAML">// twig.yml
+twig:
+    paths: ['%kernel.project_dir%/src']
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+
+// annotations.yml
+controllers:
+    resource: ../../src/Modules/
+    type: annotation</code></pre>
+<p>Poslední co je potřeba upravit je cesta pro mapování kontrolerů.</p>
+<pre><code class="language-YAML">App\Modules\:
+    resource: '../src/Modules'
+    tags: ['controller.service_arguments']</code></pre>
+<p>Hotovo! Nyní už nemusíme psát cestu k šabloně, můžeme předávat parametry do šablon z více míst
+a popřípadě je vkládat automaticky v <code>beforeRender()</code> metodě.</p>
+<p>Nevýhodou toho všeho je, že je potřeba dodržovat adresářovou strukturu, která je nastavena
+v <code>getTemplatePath()</code> metodě ve třídě <code>AbstractController</code>.</p>
+<p>Budu rád za jakýkoliv váš feedback (klidně i negativní)!</p>
+<p><em>Originálně publikováno na <a href="https://machy8.com/blog/symfony-4-creating-smart-controller">https://machy8.com/blog/symfony-4-creating-smart-controller</a></em></p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2018/2018-03-14-symfony-4-vytvarime-chytry-kontroler.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

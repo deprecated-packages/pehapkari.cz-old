@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=1286108918" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=119854066" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=173678728" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=1488025441" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Jak hromadně spravovat privátní composer balíčky </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Jak hromadně spravovat privátní composer balíčky" />
+<meta property="og:description" content="Composer je dobrý sluha, ale zlý pán, pokud nevíte jak s ním pracovat. Podívejte se na naše workflow vývoje, kdy je dána plně modulární aplikace a ta se řídí závislostmi na konkrétních balíčcích." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2017/10/02/jak-hromadne-spravovat-privatni-composer-balicky/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Jak hromadně spravovat privátní composer balíčky" />
+<meta name="twitter:description" content="Composer je dobrý sluha, ale zlý pán, pokud nevíte jak s ním pracovat. Podívejte se na naše workflow vývoje, kdy je dána plně modulární aplikace a ta se řídí závislostmi na konkrétních balíčcích." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Jak hromadně spravovat privátní composer balíčky</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        4 min
+
+        |
+
+        by <strong>Martin Knor</strong>
+
+        &ndash;
+
+        <time datetime="2017-10-Mon">
+            2. 10. 2017
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">Composer je dobrý sluha, ale zlý pán, pokud nevíte jak s ním pracovat. Podívejte se na naše workflow vývoje, kdy je dána plně modulární aplikace a ta se řídí závislostmi na konkrétních balíčcích.</p>
+
+                    <p>Při vývoji člověk dojde do určité fáze, kdy je potřeba projekt nějakým způsobem rozšiřovat dál, nabídnout více klientům. Tady se pak dostáváme do situace, kdy má sice funkční aplikaci, ale naráží na různé problémy. Jedním z nich může být když chce klient nějakou modifikaci. Nebo se najde nějaká chyba. To vše vede k tomu že se musí upravovat kód u každého klienta zvlášť. Řešení je jednoduché. Rozdělit kód do balíčků a ty verzovat. Klientům lze pak poskytovat konkrétní verze.</p>
+<h2 id="podivejme-se-na-to-jak-to-resime-u-nas"><a href="#podivejme-se-na-to-jak-to-resime-u-nas">Podívejme se na to, jak to řešíme u nás</a></h2>
+<p>Nejdříve je potřeba si rozdělit aplikaci na logické celky tak, aby to dávalo smysl. Mějme např. klienta „klient“ a ten bude mít závislosti v composer.json.</p>
+<pre><code class="language-json">{
+  "name": "clear01/klient",
+  "require": {
+    "clear01/comgate": "^v1.1",
+    "clear01/pohoda": "^v1.1.6",
+    "clear01/component": "^v1.0.0",
+    "clear01/ecommerce": "^v1.3.14",
+    "clear01/zasilkovna": "^v1.0.1",
+    "clear01/html-meta": "^v1.0.2"
+  }
+}</code></pre>
+<p>Každý jednotlivý balíček obsahuje svůj vlastní <code>composer.json</code> s případnými dalšími závislostmi. Jakmile máme balíček hotový, můžeme ho nahrát do svého privátního repozitáře (bitbucket, github). Další možností je využít nějakého <a href="https://getcomposer.org/doc/articles/handling-private-packages-with-satis.md">package managera</a> (<a href="https://packagist.com/">packagist</a> – placený pro privátní balíčky, <a href="https://github.com/composer/satis">satis</a> – open source pro vlastní hostování). Rozhodování je jednoduché. Pokud vám nevadí placená verze, je pohodlnější packagist. Satis je sice zdarma, ale musíte si ho nainstalovat sami a řešit zabezpečení apod.</p>
+<p>Aby vám composer načítal privátní balíčky, je potřeba přidat repozitáře / managera do configu, aby o něm composer věděl. To provedete pomocí <code>composer config -e</code> (případně přidáte <code>-g</code> pro globální config).</p>
+<h3 id="pridani-lokalniho-repozitare"><a href="#pridani-lokalniho-repozitare">Přidání lokálního repozitáře</a></h3>
+<p>Můžete přidat balíček z lokálního disku. Tady jen pozor, composer pak neumí pracovat s tagy, udělá to, že vytvoří symlink do vendoru, což je obzvláště výhodné při vývoji, protože není potřeba při každé změně volat <code>composer update</code>.</p>
+<pre><code class="language-json">{
+  "repositories": [
+    { "type": "path", "url": "/var/www/clear01/ecommerce" }
+  ]
+}</code></pre>
+<h3 id="pridani-privatniho-repozitare"><a href="#pridani-privatniho-repozitare">Přidání privátního repozitáře</a></h3>
+<p>Tady je potřeba mít nastavený správný přístup ke git (bitbucket,...) repozitářům, zejména autentizaci tak, aby si composer správně načetl balíčky z privátních repozitářů.</p>
+<pre><code class="language-json">{
+  "repositories": [
+    {"type": "vcs", "url": "git@github.com:clear01/comgate.git" }
+  ]
+}</code></pre>
+<h3 id="pridani-managera-balicku"><a href="#pridani-managera-balicku">Přidání managera balíčků</a></h3>
+<p>Lze přidat např. satis, což je obdoba packagist pro privátní balíčky. Ten dělá balíčky konkrétních verzí, příp. načítá automaticky nové z repozitářů a následně je servíruje klientům, což je výhodné, protože nemusíte pak na všechny klienty přidávat jednotlivé repozitáře. Jen přidáte managera a máte vystaráno.</p>
+<pre><code class="language-json">{
+  "repositories": [
+    { "type": "composer", "url": "https://satis.example.com" }
+  ]
+}</code></pre>
+<p>U vlastního managera je potřeba obvykle ještě nastavit příp. <a href="https://getcomposer.org/doc/articles/handling-private-packages-with-satis.md#authentication">autentizaci</a>, která je ale lepší řešit např. v <code>auth.json</code> (http-auth, apod.)</p>
+<p>Pokud máme správně nastaveny přístupy k privátním balíčkům, musíme si ještě nastavit vývojové prostředí:</p>
+<h2 id="phpstorm"><a href="#phpstorm">PhpStorm</a></h2>
+<p>Takto připravenou aplikaci jednoduše přidáme jako projekt v PhpStormu. Ten se nás v aktuální verzi zeptá, zda chceme nastavit vývojové prostředí z <code>composer.json</code>, což nám ulehčuje práci. Toto nastaví verzi php (pokud je v <code>composer.json</code>), cesty a příp. přidá vendor knihovny do external libraries.</p>
+<p>Při zavolání <code>composer install</code> by se nám již měly nainstalovat správné verze našich balíčků. Takto máme připravenu aplikaci pro jednoho klienta. No jo, řeknete si, ale co když potřebuju upravit jeden balíček, který je závislý na druhém? Běžně by jste museli stáhnout a upravit každý balíček zvlášť, commitnout, přidat tag, pushnout a spustit composer update. To je docela zdlouhavé, pokud upravujete třeba 4 balíčky které jsou na sobě závislé.</p>
+<h3 id="jak-na-to-chytre"><a href="#jak-na-to-chytre">Jak na to chytře?</a></h3>
+<p>Nejdříve si načtete aplikaci pomocí <code>composer install –-prefer-source</code>, což vám <strong>načte balíčky včetně git repozitářů</strong>, takže nad nimi můžete pracovat, přepínat větve, přidávat tagy atd. Pokud chcete upravovat jen konkrétní balíčky, <strong>je lepší zavolat <code>composer update namespace/package --prefer-source</code> nad konkrétním balíčkem</strong>, protože jinak se stahují všechny balíčky z composer včetně git meta dat a tato akce může nějakou dobu trvat, obzvláště pokud máte hodně závislostí.</p>
+<p>Poté jednoduše přidáte v phpstormu repozitáře do jeho správy.</p>
+<div class="text-center">
+     <img src="/assets/images/posts/2017/composer/git.png"></div>
+<p><br/></p>
+<p>Tím se dostáváme k tomu <strong>největšímu usnadnění</strong>. Teď již můžeme dělat změny ve všech balíčcích v jednom projektu. Pro usnadnění je dobré ještě v nastavení phpstormu zaškrtnout volbu <strong>control repositories synchronously</strong>, která vám umožní pracovat s větvemi jako by to byla jedna. <strong>Tzn. pokud vytvoříte jednu větev test, vytvoří se ve všech repozitářích a udělá se checkout.</strong></p>
+<div class="text-center">
+      <img src="/assets/images/posts/2017/composer/synchro.png"></div>
+<p><br/></p>
+<p><strong>PhpStorm tedy umí pracovat s několika git repozitáři současně.</strong> Pro práci doporučuji vytvořit novou větev, což lze udělat jednoduše a phpstorm už se postará o zbytek. Dole na obrázku vidíte že se mi automaticky všechny repozitáře přeply do větve test. Commit a push probíha obdobně.</p>
+<div class="text-center">
+     <img src="/assets/images/posts/2017/composer/branch.png"></div>
+<p><br/></p>
+<p>Pak už jen stačí vytvořit tag a profit.</p>
+<p><em>Tip na závěr:</em> pro hromadný update repozitářů z remote doporučuji plugin <strong><a href="https://plugins.jetbrains.com/plugin/7835-git-extender">git extender</a></strong></p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2017/2017-10-02-jak-hromadne-spravovat-privatni-composer-balicky.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

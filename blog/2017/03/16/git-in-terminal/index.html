@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=923610690" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=89530324" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=563448422" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=846961151" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Git - proč se jej učit v příkazové řádce </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Git - proč se jej učit v příkazové řádce" />
+<meta property="og:description" content="Tento článek je určen pro začátečníky, kteří se chystají začít učit verzovací systém Git. Popisuje proč se vyplatí používat Git v příkazové řádce namísto v grafickém prostředí externích SW či IDE." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2017/03/16/git-in-terminal/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Git - proč se jej učit v příkazové řádce" />
+<meta name="twitter:description" content="Tento článek je určen pro začátečníky, kteří se chystají začít učit verzovací systém Git. Popisuje proč se vyplatí používat Git v příkazové řádce namísto v grafickém prostředí externích SW či IDE." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Git - proč se jej učit v příkazové řádce</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        4 min
+
+        |
+
+        by <strong>Václav Makeš</strong>
+
+        &ndash;
+
+        <time datetime="2017-03-Thu">
+            16. 3. 2017
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">Tento článek je určen pro začátečníky, kteří se chystají začít učit verzovací systém Git. Popisuje proč se vyplatí používat Git v příkazové řádce namísto v grafickém prostředí externích SW či IDE.</p>
+
+                    <p>Ještě před tím, než se programátor začne učit s Gitem, vybírá či nechává náhodě volbu jak s Gitem bude pracovat. To, jak začne, může ovlivnit dále jeho práci. Chci vám ukázat, že se vyplatí používat Git v příkazové řádce namísto všech ostatních GUI aplikací. Důvody jsem rozdělil do několika bodů seřazených podle důležitosti pro začátečníky.</p>
+<h2 id="dokumentace-i-navody-jsou-psane-pro-prikazovou-radku"><a href="#dokumentace-i-navody-jsou-psane-pro-prikazovou-radku">Dokumentace i návody jsou psané pro příkazovou řádku</a></h2>
+<p>Co se týče <a href="https://git-scm.com/doc">dokumentace</a> samotné, lze už z principu předpokládat, že je psána v základní podobě, jíž Git nabízí, tedy v příkazech pro CLI. Návody a články na internetu jsou převážně psány stejně. Učením se z příkazové řádky tedy odstraníte mezikroky, které by tvořily pokusy o aplikování příkazů v rámci vašeho GUI.</p>
+<h2 id="vyhledatelnost-reseni"><a href="#vyhledatelnost-reseni">Vyhledatelnost řešení</a></h2>
+<p>Pokud hledám řešení nějakého problému, tak jej na <a href="http://stackoverflow.com/">Stack Overflow</a> velmi často dostanu. Ovšem většina těchto řešení je zapsána v příkazech. Pokud používám denně CLI, tak není problém příkaz nejen použít, ale zároveň se z něj i něco naučit.</p>
+<h3 id="ukazme-si-priklad"><a href="#ukazme-si-priklad">Ukažme si příklad</a></h3>
+<p>Při práci na pracovní stanici (přenastavoval jsem Ansible) se mi omylem povedlo v projektovém adresáři změnit práva k souborům. Jelikož jsem měl nezaverzované úpravy na projektu, chtěl jsem resetovat pouze nastavení práv do původního nastavení. Změny v souborech, tedy moji rozdělanou práci, jsem chtěl ponechat. Jak toto udělat v GUI? Popravdě vůbec netuším, odhaduji, že to rychlou cestou nelze provést. Na Stack Overflow jsem <a href="http://stackoverflow.com/questions/2517339/how-to-recover-the-file-permissions-to-what-git-thinks-the-file-should-be">řešení</a> našel ihned, bylo napsáno formou příkazu:</p>
+<pre><code class="language-bash">git diff -p -R --no-color \
+    | grep -E "^(diff|(old|new) mode)" --color=never  \
+    | git apply</code></pre>
+<h2 id="ohromeni-okoli"><a href="#ohromeni-okoli">Ohromení okolí</a></h2>
+<p>Čím dál více lidí nějakou část pracovní doby s počítačem pracuje. Tudíž jsou na programy s GUI poměrně zvyklí. Ovšem práce s příkazovým řádkem bývá obdivována jako magie znalých vývojářů. Neplatí to vždy jen pro běžné lidi mimo IT. Stává se mi, že se diví i vývojáři programující řadu let.</p>
+<h2 id="rozsiritelnost-a-prenositelnost"><a href="#rozsiritelnost-a-prenositelnost">Rozšiřitelnost a přenositelnost</a></h2>
+<p>Podívejme se na Git ve dvou různých pohledech.</p>
+<p>Prvním z nich je spolupráce s dalšími nástroji. Může jimi být například CI server, privátní repositář hostovaný na vlastním serveru a podobně. Ke konfiguraci se hodí umět pracovat s příkazy Gitu. Například vytvoření prázdného repositáře při nastavování <a href="https://www.zdrojak.cz/clanky/deploy-aplikace-pres-git/">pro deploy</a> může vypadat takto:</p>
+<pre><code class="language-bash">cd /var/projects/
+mkdir project-name
+cd project-name
+git init --bare</code></pre>
+<p>Druhým pohledem je používání Gitu s ostatními nástroji příkazové řádky. Například: jak rychle zjistit, kolik commitů řeší fixování chyb? Předpokládejme, že commit opravující chybu má v názvu &quot;fix&quot;. Využijeme příkazu <a href="https://cs.wikipedia.org/wiki/Wc_(Unix)">wc</a>, jenž umí spočítat počet řádků.</p>
+<pre><code class="language-bash">git log --oneline | wc -l  # počet všech commitů
+git log --oneline | grep -i "fix" | wc -l  # počet commitů řešících opravy chyb</code></pre>
+<h2 id="funkcionalita"><a href="#funkcionalita">Funkcionalita</a></h2>
+<p>CLI podporuje naprosto všechnu funkcionalitu Gitu. Oproti tomu funkcionalitu v GUI bychom mohli zjednoduše shrnout tak, že obsahuje jen to, k čemu vývojáři GUI softwaru udělali &quot;tlačítko&quot;. Tudíž nejsem limitován funkcionalitou a vše co přečtu v článcích o Gitu mohu použít.</p>
+<h2 id="reprodukovatelnost"><a href="#reprodukovatelnost">Reprodukovatelnost</a></h2>
+<p>Velmi často se hodí opakovat sekvenci kroků. Může jít o to, že posíláte své řešení problému kolegovi či skriptujete na serveru. Příkazy můžete zapsat v textové podobě například do spustitelného souboru a ten poslat kolegovi do Slacku, všem programátorům do Stack Overflow či třeba zaverzovat u projektu a používat na produkci.</p>
+<h2 id="univerzalnost"><a href="#univerzalnost">Univerzálnost</a></h2>
+<p>Práce v CLI je stejná v každém OS, ale i v každé technologii. Je jedno jestli právě programujete aplikační kód v PhpStormu, řešíte PL/pgSQL procedury v DataGripu nebo si připravujete diplomovou práci v LaTeXu. Zaverzujete cokoliv je potřeba.</p>
+<h2 id="kde-bych-gui-pouzil"><a href="#kde-bych-gui-pouzil">Kde bych GUI použil?</a></h2>
+<p>A abyste si nemysleli, že jsem na GUI úplně zanevřel, existuje use-case, kde mi dává GUI smysl. Jsou jím diffy. Zkoumání rozdílů v GUI, minimálně pro začátek, je o mnoho přehlednější.</p>
+<p>Nejčastěji používáným GUI právě pro zkoumání rozdílů jsou služby typu GitHub, BitBucket a GitLab. Jejich výhodou je jejich webové rozhraní a tudíž možné rychlé vyzkoušení. Podívejte se na <a href="https://github.com/pehapkari/pehapkari.cz/commit/3ff82cc7eabe4e96bb54a92858e21d0f1af9f8fb?diff=split">ukázku</a> z webu pehapkari.cz.</p>
+<h2 id="zapory-pouziti-prikazove-radky"><a href="#zapory-pouziti-prikazove-radky">Zápory použití příkazové řádky</a></h2>
+<p>Abych byl spravedlivý, musím zmínit zápor práce s Gitem v příkazové řádce. Je jím určitá složitost a nekonzistence CLI rozhraní. To způsobuje minimálně ze začátku nepříjemné stavy, kdy člověk používá jeden a ten samý příkaz na několik různých činností. Například použití příkazů <code>checkout</code> a <code>reset</code>.</p>
+<h3 id="priklad-slozitejsiho-rozhrani"><a href="#priklad-slozitejsiho-rozhrani">Příklad složitějšího rozhraní</a></h3>
+<p>Nekonzistence rozhraní je kupříkladu vidět při mazání větví oproti smazání sledovaných repositářů (například vzdálené repositáře na GitHubu). Podívejte se na ukázku:</p>
+<pre><code class="language-bash">git branch -d nazev-vetve  # odstraní lokální začleněnou větev
+git branch -D nazev-vetve  # odstraní lokální jakoukoliv větev
+git remote remove origin   # odstraní sledování repositáře</code></pre>
+<p>Kladných důvodů bylo uvedeno mnoho. Napadá vás další? Nebo máte přesvědčivé argumenty pro nepoužívání Gitu v CLI? Napište do diskuze pod článkem!</p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2017/2017-03-16-git-in-terminal.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

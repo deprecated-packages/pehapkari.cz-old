@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=1146975722" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=1530197840" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=1304043829" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=1049994224" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Domain-Driven Design, part 3 - Simplify Object Model </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Domain-Driven Design, part 3 - Simplify Object Model" />
+<meta property="og:description" content="There are always many ways how to implement the abstract model.
+The implementation can be made in smooth and simple or in overcomplicated way.
+It is surprisingly easy to end up with a complicated solution.
+But we will take the effort and introduce strategies and concepts that will help us simplify the model." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2018/01/06/domain-driven-design-simplify-object-model/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Domain-Driven Design, part 3 - Simplify Object Model" />
+<meta name="twitter:description" content="There are always many ways how to implement the abstract model.
+The implementation can be made in smooth and simple or in overcomplicated way.
+It is surprisingly easy to end up with a complicated solution.
+But we will take the effort and introduce strategies and concepts that will help us simplify the model." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Domain-Driven Design, part 3 - Simplify Object Model</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        6 min
+
+        |
+
+        by <strong>Svaťa Šimara</strong>
+
+        &ndash;
+
+        <time datetime="2018-01-Sat">
+            6. 1. 2018
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">There are always many ways how to implement the abstract model.
+The implementation can be made in smooth and simple or in overcomplicated way.
+It is surprisingly easy to end up with a complicated solution.</p>
+<p>But we will take the effort and introduce strategies and concepts that will help us simplify the model.</p>
+
+                    <h2 id="model"><a href="#model">Model</a></h2>
+<p>It doesn't make sense to explain modeling on <em>Foo, Bar, etc...</em>, the Domain-driven design is about the domain.
+Let's use an e-shop cart model from the <a href="/blog/2017/12/16/domain-driven-design-model/">previous article</a>.</p>
+<p><img src="/assets/images/posts/2018/ddd-simplify-model/abstract_model.png" alt="cart is related to item, item is related to product and price" /></p>
+<h2 id="concrete-associations"><a href="#concrete-associations">Concrete Associations</a></h2>
+<p>Associations between objects are naturally two-ways.
+But it's really difficult to think, work and program with two-ways associations.
+We try to simplify them if it's possible.</p>
+<p>A product is something that our customers buy.
+Does the product know about an item in cart? No way, the product has no idea about the cart at all.
+This association can be one-way, hooray!</p>
+<p>We can imagine the price as a sticker on the product.
+The sticker is on the product and of course, the product is labeled with the sticker.
+But does the price sticker care where is it stuck? No, price doesn't care where it is, so this association can be also one-way.</p>
+<p>And now the associations between cart and item.
+The cart can hold more items, so this association is the first that allow multiplicity.
+Does item care where it is? In which cart? No, so the last association can be one-way too.</p>
+<p><img src="/assets/images/posts/2018/ddd-simplify-model/simplified_associations.png" alt="cart is one-way associated with item, item is one-way associated with product and price" /></p>
+<p>The cart example is pretty straightforward, but in our future work, we can find associations which are two-ways.
+Two-way association is difficult to maintain and we should use it only where it is absolutely necessary.</p>
+<h2 id="entities"><a href="#entities">Entities</a></h2>
+<p>Who am I? I'm a unique person.
+I can cut my hair, change a name if I marry, or have an accident and my body shape might change.
+My look might change, people might call me differently, but it is still me.
+It is my identity what identifies me, nothing else.</p>
+<p>Entities have the same story.
+They are unique in the system and if their properties changes, they are still the same entities.</p>
+<h3 id="identity"><a href="#identity">Identity</a></h3>
+<p>An entity is identified by an identity.
+This has some practical consequences.
+A unique entity must be only one in the system, stored as one piece of memory.
+When we compare entities, we have to compare only their identities.
+If the identity is same, the entity is same.</p>
+<h3 id="cart-entities"><a href="#cart-entities">Cart Entities</a></h3>
+<p>A cart - if we add a product, is it still the same cart? It is.
+Entity.</p>
+<p>A product - let's assume, a product is an entity, and keep focus on the cart.</p>
+<p>A price - if we change the price value, is it the same price? No, it becomes a different price.
+So the price is not an entity.</p>
+<p>An item - item holds information about a product amount.
+If we change the amount, does it represent the same cart item? Maybe yes, maybe no.
+Now we should discuss with a domain expert to deepen our domain knowledge.
+If the answer is not clear we have to choose by ourselves and maybe change this decision later.
+For now, we decide that an item is an entity identified by product.</p>
+<p><img src="/assets/images/posts/2018/ddd-simplify-model/entity.png" alt="cart is one-way associated with item, item is one-way associated with product and price, entities are labeled" /></p>
+<h2 id="value-objects"><a href="#value-objects">Value Objects</a></h2>
+<p>We have to paint a room, what do we need? A paint of a given color.
+While we are painting we do not care which drop of paint is where, as long as we have enough paint we are able to finish the job.
+And if we spill a can, we can replace it with a new one without noticing a difference.</p>
+<p>Value objects represent objects without identity.</p>
+<p>As well as paint is identified by its color, a value object is identified by all of its properties.
+If two value objects have the same properties, we are not able to distinguish them, they are identical for us.
+Thanks to this property we do not care which instance we are using unless it has the right properties.</p>
+<p>Value objects are immutable, side-effect free and easier to understand than entities.
+We are not able to change value object properties, instead of that we have to create always a new one.
+Immutability allows us also to share value objects over the whole system and save memory if necessary.</p>
+<h3 id="identity-and-identifier"><a href="#identity-and-identifier">Identity and identifier</a></h3>
+<p>Entities are identified by an identity.
+How do we select an entity from a collection? We need a tool which also identifies entity, and that tool can be an identifier.</p>
+<p>An identifier can be a practical implementation of an identity.
+Identifier as a value object really fit - if any property of an identifier is different, the identifier is different.
+If all attributes of the identifier are the same, it is the same identifier.</p>
+<h3 id="cart-value-objects"><a href="#cart-value-objects">Cart Value Objects</a></h3>
+<p>The price is a typical value object in a cart model.
+It represents how much does the item cost and is identified by its value.</p>
+<p><img src="/assets/images/posts/2018/ddd-simplify-model/value_object.png" alt="cart is one-way associated with item, item is one-way associated with product and price, entities and value objects are labeled" /></p>
+<h2 id="aggregates"><a href="#aggregates">Aggregates</a></h2>
+<p>An aggregate is a group of objects that live and die together.
+Aggregate parts do not make sense without each other, they make sense only if they are all together.</p>
+<p>We cannot access inner objects of an aggregate from outside, we have to use the main object always, so-called aggregate root.
+Aggregate is an encapsulated single unit (OOP starts to make sense!).
+Thanks to the encapsulation, it is easy to understand the aggregate and it is also easy to refactor the internal structure of aggregate.</p>
+<h3 id="cart-aggregates"><a href="#cart-aggregates">Cart Aggregates</a></h3>
+<p>A product is a thing  in which are our customers interested in.
+We would just say it is an aggregate.</p>
+<p>Can the item live without a cart? Nope, because logic is in both of them, in the cart itself and also in items.</p>
+<p>What about the price? Does price make sense without the item? Well maybe yes.
+And does the item make sense without the price? No, the item must have its price.</p>
+<p>The cart, items and the price are the aggregate.
+The cart is also a natural entry point, the aggregate root.
+This helps us to encapsulate item concept for cart user, so the cart is easier to be understood.
+Encapsulation also strengthens the association between cart and item.
+It can be a composition now because cart owns items.</p>
+<p><img src="/assets/images/posts/2018/ddd-simplify-model/aggreages.png" alt="cart aggregate with details is one-way associated with product aggregate" /></p>
+<h2 id="separated-aggregates"><a href="#separated-aggregates">Separated aggregates</a></h2>
+<p>Aggregates must be understood whole or not be understood at all, must be created wholly or not be created at all, must be persisted whole or not be persisted at all, must be received from a repository (database or any storage) whole or not be received at all.</p>
+<p>Right now we have a problem with a cart and a product.
+We cannot work with a cart without associated products.</p>
+<p>What is an item responsibility? It holds the product amount, the price and is identified by the product.
+What does it need from the product? Only the product identifier.
+Why does it have to know about the whole product? It doesn't.
+Great, we just separated aggregates!</p>
+<p><img src="/assets/images/posts/2018/ddd-simplify-model/separated_aggregates.png" alt="cart aggregate with details is separated from product aggregate" /></p>
+<h3 id="benefits"><a href="#benefits">Benefits</a></h3>
+<ul>
+<li>Easy to understand</li>
+<li>Easy to test</li>
+<li>Easy to persist</li>
+</ul>
+<h3 id="problems"><a href="#problems">Problems</a></h3>
+<p>What about the data integrity? What happens if we delete a product? It doesn't have to be a problem - we don't have a delete use case, so in this system, it cannot happen.</p>
+<p>But anyway, whose responsibility is the data integrity? Should the product deal with it? Should the cart deal with it? No way, the product is something that people buy and the cart is a box.</p>
+<p>We can create a domain service that looks for carts that contain a given product identifier.
+If it finds at least one, it doesn't allow to delete a product.</p>
+<p>We can deal with these use cases in an infrastructure - we can define foreign keys in a database.
+But this solution has also some issues.
+It is difficult to test, it relies on infrastructure and nobody says that product and cart are in the same database.</p>
+<h2 id="tl-dr"><a href="#tl-dr">TL;DR</a></h2>
+<p>The model can be simplified by concreting associations, identifying entities, value objects, and aggregates.
+Aggregates can be separated to be easy to understand, implement and test.</p>
+<p>Next time we'll implement the cart model.</p>
+<h2 id="references"><a href="#references">References</a></h2>
+<p>EVANS, Eric.
+<em>Domain-driven design: tackling complexity in the heart of software</em>.
+Boston: Addison-Wesley, 2004.
+ISBN 0-321-12521-5.</p>
+<p>БУГАЕ́НКО, Его́р.
+Objects Should Be Immutable.
+<em>Yegor's Blog About Computers</em> [online].
+2014 [2017-12-13].
+Available: <a href="http://www.yegor256.com/2014/06/09/objects-should-be-immutable.html">http://www.yegor256.com/2014/06/09/objects-should-be-immutable.html</a></p>
+<p>VERNON, Vaughn.
+<em>Implementing domain-driven design.</em> Upper Saddle River, NJ: Addision-Wesley, 2013.
+ISBN 978-0-321-83457-7.</p>
+<h2 id="contact"><a href="#contact">Contact</a></h2>
+<p>Are you designing architecture and like DDD approach? Hire me, I can help you - <a href="http://svatasimara.cz/">svatasimara.cz</a></p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                            <h2 id="you-might-also-like"><a href="#you-might-also-like">You Might Also Like</a></h2>
+
+                        <ul id="related-posts">
+                                                            <li>
+                                    <a href="/blog/2018/02/28/domain-driven-design-repository">Domain-Driven Design, part 5 - Repository &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2018/03/07/domain-driven-design-doctrine-repository">Domain-Driven Design, part 6 - Doctrine Repository &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2018/03/28/domain-driven-design-services-factories">Domain-Driven Design, part 8 - Services and Factories &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2018/03/21/domain-driven-design-alternative-mapping">Domain-Driven Design, part 7 - Alternative Relational Database Mapping &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2018/02/21/domain-driven-design-implementation">Domain-Driven Design, part 4 - Implementation &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2017/12/16/domain-driven-design-model">Domain-Driven Design, part 2 - Model &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2017/12/05/domain-driven-design-language">Domain-Driven Design, part 1 - Language &raquo;</a>
+                                </li>
+                                                    </ul>
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2018/2018-01-06-domain-driven-design-simplify-object-model.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

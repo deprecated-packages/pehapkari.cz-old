@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=972728848" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=1882527431" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=1653129030" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=1804536372" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Jak posílat e-maily přes Amazon SES </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Jak posílat e-maily přes Amazon SES" />
+<meta property="og:description" content="Posílat emaily přes Amazon SES je snadné a levné. Zkuste to taky." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2017/03/20/jak-posilat-e-maily-pres-amazon-ses/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Jak posílat e-maily přes Amazon SES" />
+<meta name="twitter:description" content="Posílat emaily přes Amazon SES je snadné a levné. Zkuste to taky." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Jak posílat e-maily přes Amazon SES</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        6 min
+
+        |
+
+        by <strong>Petr Jirásek</strong>
+
+        &ndash;
+
+        <time datetime="2017-03-Mon">
+            20. 3. 2017
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">Posílat emaily přes Amazon SES je snadné a levné. Zkuste to taky.</p>
+
+                    <h2 id="cloudove-sluzby-amazonu"><a href="#cloudove-sluzby-amazonu">Cloudové služby Amazonu</a></h2>
+<p>Amazon Web Services (AWS) je soubor cloudových služeb a stává se čím dál populárnějším řešením jako základ pro infrastrukturu, kterou může využívat vaše aplikace. AWS používá dnes už tolik služeb/webů, že je snad prakticky nemožné používat aspoň jednu službu, která by nebyla se službami Amazonu alespoň nějak propojená.</p>
+<p>V tomto článku bych rád ukázal, <strong>jak snadno posílat e-maily</strong> s využitím Amazon SES (Simple Email Service) a jak získat informace o tom, pokud e-mail příjemci není doručen (bounces) nebo je označen jako spam (complaints).</p>
+<h2 id="prerekvizity"><a href="#prerekvizity">Prerekvizity</a></h2>
+<p>K tomu, abyste mohli používat služby Amazonu, musíte mít založený účet. Poté už můžete začít nastavovat a používat služby Amazonu.</p>
+<p>Jakmile aktivujete Amazon SES, je samozřejmě ještě před prvními testy nutné si verifikovat doménu, z které budete chtít e-maily posílat, poté ideálně nastavit <a href="https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail">DKIM</a>, <a href="https://en.wikipedia.org/wiki/Sender_Policy_Framework">SPF</a> záznamy apod.</p>
+<p>Více o tom naleznete <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/setting-up-email.html">zde</a>. V případě, že byste chtěli SES použít a nebyli si jisti, jak nastavit na straně Amazonu, klidně mi napište.</p>
+<h2 id="jak-posilat-e-maily"><a href="#jak-posilat-e-maily">Jak posílat e-maily</a></h2>
+<p>A teď už k posílání e-mailů. Emaily můžete posílat dvěma způsoby. Buď s využitím SMTP serveru nebo skrze AWS SDK.</p>
+<h3 id="smtp"><a href="#smtp">SMTP</a></h3>
+<p>Posílat e-maily přes SMTP je ta nejsnažší varianta. V zásadě vám stačí získat přístupy k SMTP. V <strong>Nette</strong> pak konfigurace může vypadat takto:</p>
+<pre><code class="language-php">$options = [
+    'host' =&gt; 'email-smtp.eu-west-1.amazonaws.com', // například tento, záleží podle regionu
+    'username' =&gt; 'xxx',
+    'password' =&gt; 'yyy',
+    'secure' =&gt; 'ssl'
+    'persistent' =&gt; true,
+];
+
+$message = new \Nette\Mail\Message();
+$message-&gt;setFrom('odesilatel@example.com', 'Název odesilatele')
+    -&gt;addTo('prijemce@example.com')
+    -&gt;setSubject('PHP Předmět')
+    -&gt;setHtmlBody('Máme rádi PHP!');
+
+$smtpMailer = new \Nette\Mail\SmtpMailer($options);
+$smtpMailer-&gt;send($message);</code></pre>
+<p>Obdobně byste nastavili odesílání e-mailů i kdybyste odesílali e-maily přes SparkPost, Mailgun a další služby. V zásadě všechny tyto služby vám dají přístupy k SMTP serveru a ty jen nastavíte.</p>
+<p>Tohle řešení je pohodlné hlavně proto, že prakticky <strong>nemusíte řešit rozdílnost API</strong> jednotlivých poskytovatelů a přepnout je mezi sebou, když by bylo potřeba, není žádná překážka.</p>
+<h3 id="aws-sdk-pro-php"><a href="#aws-sdk-pro-php">AWS SDK pro PHP</a></h3>
+<p>Místo posílání e-mailů s využitím SMTP můžete použít i SDK od Amazonu a posílat e-maily přes API. Toto řešení má minimálně dvě výhody - propustnost při odesílání e-mailů je větší než v případě využití SMTP a ke každému e-mailu vám API vrátí navíc identifikátor přiřazený k dané zprávě.</p>
+<p>Instalaci AWS SDK můžete provést přes Composer takto:</p>
+<pre><code class="language-bash">composer require aws/aws-sdk-php</code></pre>
+<p>V AWS si pak vytvoříte uživatele, který bude mít oprávnění pracovat se službami SES skrze API a vygenerujete tak přístupové údaje, které se pak použijí při konfiguraci.</p>
+<pre><code class="language-php">$options = [
+   'region' =&gt; 'eu-west-1', // závisí na vybraném regionu
+   'version' =&gt; 'latest', // verze API
+   'credentials' =&gt; [
+       'key' =&gt; 'xxx', // vygeneruje se v IAM
+       'secret' =&gt; 'yyy' // vygeneruje se v IAM
+]];
+
+$sesClient = new \Aws\Ses\SesClient($options);
+
+$request = [];
+$request['Source'] = 'odesilatel@example.com';
+$request['Destination']['ToAddresses'] = ['prijemce@example.com'];
+$request['Message']['Subject']['Data'] = 'PHP Předmět';
+$request['Message']['Body']['Html']['Data'] = 'Máme rádi PHP!';
+$request['Message']['Body']['Text']['Data'] = 'Máme rádi PHP textově!';
+
+try {
+    $result = $sesClient-&gt;sendEmail($request);
+    $messageId = $result-&gt;get('MessageId'); // vrátí id e-mailu
+} catch (\Aws\Ses\Exception\SesException $e) {
+    // když se nepodaří e-mail odeslat
+}</code></pre>
+<p>Podle mých testů <strong>propustnost posílání e-mailů přes API je větší než přes SMTP</strong>, proto pokud vám jde o to zvládnout v co nejkratším čase poslat co nejvíce e-mailů, může vám použití API pomoci.</p>
+<p>Jako další výhodu vidím, že dostanete ke každé zprávě přiřazený unikátní identifikátor, který lze pak použít, pokud chcete sledovat, zda byl e-mail doručen, zda se jednalo o bounce apod.</p>
+<h2 id="jak-ziskat-feedback"><a href="#jak-ziskat-feedback">Jak získat feedback</a></h2>
+<p>Abyste byli schopni udržet dobrou reputaci vaší databáze, je potřeba <strong>odhlašovat kontakty</strong>, kterým kupříkladu nelze doručit e-mail, jejich e-mailová adresa je falešná nebo vás příjemce označí jako spam (tj. mimo jiné o vaše e-maily nemá pravděpodobně dále zájem) apod.</p>
+<p>Proto je vhodné propojit SES s SNS (Simple Notification Service) a SQS (Simple Queue Service). Odkaz, jak nastavit, najdete na konci článku ve zdrojích. Každopádně jde o to, že zprávy o bounces a complaints budou končit ve frontách v SQS, odkud si je budete, třeba cronem, pravidelně stahovat a zpracovávat.</p>
+<p>Níže je ukázka kódu, kde z fronty <strong>queue-bounces</strong>, kterou jsem si vytvořil a nastavil, aby tam Amazon posílal bounces, stahuji záznamy. Zpravidla budete na záznamy reagovat tím, že uživatele odhlásíte, tj. vypnete mu příjem e-mailů, smažete jej z listu příjemců apod.</p>
+<pre><code class="language-php">// 1. inicializace SQS klienta
+$options = [
+   'region' =&gt; 'eu-west-1', // závisí na vybraném regionu
+   'version' =&gt; 'latest', // verze API
+   'credentials' =&gt; [
+       'key' =&gt; 'xxx', // vygeneruje se v IAM
+       'secret' =&gt; 'yyy' // vygeneruje se v IAM
+]];
+
+$sqsClient = new \Aws\Sqs\SqsClient($options);
+
+// 2. získat URL fronty
+$urlResult = $sqsClient-&gt;getQueueUrl(['QueueName' =&gt; 'queue-bounces']);
+$queueUrl = $urlResult-&gt;get('QueueUrl');
+
+// 3. vrátí zprávy z fronty
+$queueResult = $sqsClient-&gt;receiveMessage([
+    'QueueUrl' =&gt; $queueUrl,
+    'MaxNumberOfMessages' =&gt; 10
+]);
+
+if ($queueResult['Messages'] == null) {
+    return;
+}
+
+// 4.
+foreach ($queueResult['Messages'] as $message) {
+    $receiptHandle = $message['ReceiptHandle'];
+    $body = \Nette\Utils\Json::decode($message['Body']);
+    $messageContent = \Nette\Utils\Json::decode($body-&gt;Message);
+
+    if (isset($messageContent-&gt;mail)) {
+        foreach ($messageContent-&gt;mail-&gt;destination as $email) {
+            // 5. zde se odhlásí uživatel
+        }
+    }
+
+    // 6. zprávu jsme zpracovali a odstraníme z fronty
+    $sqsClient-&gt;deleteMessage([
+        'QueueUrl' =&gt; $queueUrl,
+        'ReceiptHandle' =&gt; $receiptHandle
+    ]);
+}</code></pre>
+<p>Postup je jednoduchý:</p>
+<ol>
+<li>Inicializujete SQS klienta.</li>
+<li>Získáte URL fronty.</li>
+<li>Zavoláte frontu, abyste z ní získali položky ke zpracování.</li>
+<li>Projdete jednotlivé zprávy, kde <strong>ReceiptHandle</strong> je ID položky ve frontě a v těle položky najdete samotnou zprávu. Příklad zprávy je uveden níže v JSON.</li>
+<li>Zareagujete na událost - můžete třeba odhlásit uživatele podle e-mailu nebo podle messageId, pokud evidujete.</li>
+<li>Položku jsme zpracovali a z fronty smažeme.</li>
+</ol>
+<p>Příklad reálné zprávy (všimněte si, že k dispozici je <strong>messageId</strong>, které také vrací API při odeslání e-mailu):</p>
+<pre><code class="language-javascript">{
+   "notificationType":"Bounce",
+   "bounce":{
+      "bounceType":"Permanent",
+      "bounceSubType":"General",
+      "bouncedRecipients":[
+         {
+            "emailAddress":"nejakyEmailNaSeznamu@seznam.cz",
+            "action":"failed",
+            "status":"5.1.1",
+            "diagnosticCode":"smtp; 550 5.1.1 Sorry, no mailbox here by that name."
+         }
+      ],
+      "timestamp":"2017-02-24T15:15:06.373Z",
+      "feedbackId":"0102015a759b6f37-33adac0e-1d47-4a7a-a053-607e21a660fa-000000",
+      "remoteMtaIp":"77.75.76.42",
+      "reportingMTA":"dsn; a3-5.smtp-out.eu-west-1.amazonses.com"
+   },
+   "mail":{
+      "timestamp":"2017-02-25T14:10:02.000Z",
+      "source":"odesilatel@example.com",
+      "sourceArn":"arn:aws:ses:eu-west-1:798010509261:identity/example.com",
+      "sendingAccountId":"123456789",
+      "messageId":"0102015a759b62be-d7e7e1b4-1cdc-4e89-8357-4873cb19f246-000000",
+      "destination":[
+         "nejakyEmailNaSeznamu@seznam.cz"
+      ]
+   }
+}</code></pre>
+<p>A to je celá věda. Zpravidla se používají dvě fronty, jedna pro bounces, druhá pro complaints.</p>
+<h2 id="zkusenosti"><a href="#zkusenosti">Zkušenosti</a></h2>
+<p>Posílání e-mailů přes Amazon je <strong>jednoduché a levné</strong> v porovnání s jinými službami podobného typu. Ty sice často nabízí nějaký pokročilejší logging, ale to často stejně málokdo využije (aspoň co jsem viděl u pár firem).</p>
+<p>Na produkci mám zkušenost s AWS SES třeba u <a href="https://www.tipli.cz/">Tipli.cz</a>, kde s tím není žádný problém. Navíc používáme oba způsoby odesílání e-mailů, jak přes SMTP, tak přes SDK. Pro notifikace se používá SMTP, pro newslettery, kde je důležitá rychlost odeslání velkého počtu e-mailů v krátkém časovém okně, se používá SDK.</p>
+<p>Pokud vás cokoliv zajímá nebo zvažujete použití SES (a jeho reálné náklady), rád případně zodpovím. Ve článku jsem moc nechtěl probírat nastavení v Amazonu, protože si myslím, že to není tak složité. Kdyby bylo, stačí mi napsat, rád pomůžu, případně se podívejte na odkazy níže, kde jsem se snažil vybrat ty, které vám pomohou doplnit tyto informace.</p>
+<h2 id="odkazy"><a href="#odkazy">Odkazy</a></h2>
+<p>Zde uvádím ještě pár odkazů relevantních k problematice výše.</p>
+<ul>
+<li><a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html">Amazon SES</a> - SES pro developery a kompletní kuchařka.</li>
+<li><a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-email.html">Jak posílat e-maily s odkazy na nastavení</a> - jak posílat e-maily, jaké jsou možnosti.</li>
+<li><a href="https://github.com/aws/aws-sdk-php">AWS SDK pro PHP</a> - AWS SDK pro PHP na Githubu.</li>
+<li><a href="https://www.youtube.com/watch?v=9I5EkSNsKnk">Video: Jak nastavit Amazon SES</a> - video o tom, jak nastavit SES na Amazonu.</li>
+<li><a href="https://aws.amazon.com/blogs/ses/handling-bounces-and-complaints/">Propojení SES, SNS a SQS</a> - jak nastavit sbírání bounces a complaints, jak propojit SES, SNS a SQS.</li>
+</ul>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2017/2017-03-20-jak-posilat-e-maily-pres-amazon-ses.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

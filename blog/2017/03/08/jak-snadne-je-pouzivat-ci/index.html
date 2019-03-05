@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=2030224080" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=869665039" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=2019363839" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=1263888462" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Jak snadné je používat CI </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Jak snadné je používat CI" />
+<meta property="og:description" content="Nejspíš jste zkratku CI již někde viděli, možná tušíte, co Continuous Integration znamená. Chcete vědět, jak snadno CI používat na vašich projektech? Pak čtěte dále." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2017/03/08/jak-snadne-je-pouzivat-ci/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Jak snadné je používat CI" />
+<meta name="twitter:description" content="Nejspíš jste zkratku CI již někde viděli, možná tušíte, co Continuous Integration znamená. Chcete vědět, jak snadno CI používat na vašich projektech? Pak čtěte dále." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Jak snadné je používat CI</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        5 min
+
+        |
+
+        by <strong>Jaroslav Hranička</strong>
+
+        &ndash;
+
+        <time datetime="2017-03-Wed">
+            8. 3. 2017
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">Nejspíš jste zkratku CI již někde viděli, možná tušíte, co Continuous Integration znamená. Chcete vědět, jak snadno CI používat na vašich projektech? Pak čtěte dále.</p>
+
+                    <h2 id="co-je-to-ci"><a href="#co-je-to-ci">Co je to CI</a></h2>
+<p>Viděli jste už náš <a href="https://pehapkari.cz/slovnicek/#ci">slovníček</a>?</p>
+<p>Pokud (nejen) zde nebudete nějakému pojmu rozumět, zkuste se tam podívat. Jestliže ani tam nenaleznete odpověď, napište do diskuze a třeba jej někdo přidá. :-)</p>
+<p>Tenhle post je určen <strong>především začátečníkům</strong> a lidem, kteří s CI ještě nemají žádné zkušenosti nebo mají pouze minimální.</p>
+<p>Článek navazuje na jiný článek: <a href="https://pehapkari.cz/blog/2017/02/27/kostra-testovane-aplikace/">Kostra testované aplikace</a>.</p>
+<h2 id="cesta-casem"><a href="#cesta-casem">Cesta časem</a></h2>
+<p>První web jsem si zkusil napsat na střední škole, řekněme 10 let zpátky. Chtěl jsem si udělat seznam filmů a mít ho vždy s sebou. Našel jsem si nějaké informace jak na to, dostal jsem se k PHP a nějak jsem to &quot;nabastlil&quot;. S trochou štěstí to (většinou) fungovalo. Nevěděl jsem příliš proč, ale fungovalo. Více jsem to neřešil.</p>
+<p>Zkusil jsem si taky udělat několik webů pro různé známé. Způsob práce byl ale vždy podobný. Nějak jsem to neřešil, byl jsem s tím spokojený a dělal to tak skoro každý. Pamatujete?</p>
+<p>Pak jsem se začal živit tvorbou webů profesionálně. A přesvědčil se, že ten punkový vývoj není vážně vůbec nic neobvyklého. Po desítkách probdělých nocí hledáním chybějících středníků jsem se dostal k tomu, že se dá ten kód také nějak testovat.</p>
+<p>Teď je rok 2017 a nástrojů, jak držet kvalitu kódu na uzdě, je velké množství. A jejich použití je tak snadné, že není rozumné se jim dále vyhýbat.</p>
+<h2 id="co-budeme-delat"><a href="#co-budeme-delat">Co budeme dělat?</a></h2>
+<p>Vezmeme si jednoduchý projekt, který jsme vytvořili nedávno: <a href="https://pehapkari.cz/blog/2017/02/27/kostra-testovane-aplikace/">Kostra testované aplikace</a>.</p>
+<p>Projekt si ale nahrajeme na <a href="https://gitlab.com/">GitLab.com</a> - bezplatnou hostovací službu pro Git repozitáře.</p>
+<p>A ukážeme si, jak velice snadno využít integrované CI GitLabu a spouštět tak testy zcela automatizovaně.</p>
+<p>Povedu Vás krok po kroku. Předpokládám ale, že:</p>
+<ul>
+<li>jste zaregistrovaní a přihlášeni na <a href="https://gitlab.com/">gitlab.com</a>,</li>
+<li>jste prošli článek <a href="https://pehapkari.cz/blog/2017/02/27/kostra-testovane-aplikace/">Kostra testované aplikace</a>, rozumíte mu a výsledný kód máte po ruce.</li>
+</ul>
+<h2 id="prvni-krucky-nahrani-projektu-na-gitlab"><a href="#prvni-krucky-nahrani-projektu-na-gitlab">První krůčky - nahrání projektu na GitLab</a></h2>
+<p>Nejdříve si nahrajeme již rozpracovaný Git repozitář na GitLab.com</p>
+<ol>
+<li>
+<p><a href="https://gitlab.com/projects/new">Vytvořte si repozitář</a> na GitLabu. Pojmenujte jej třeba <code>test-ci</code>.</p>
+</li>
+<li>
+<p>Otevřete si adresář <a href="https://pehapkari.cz/blog/2017/02/27/kostra-testovane-aplikace/">s rozpracovaným projektem</a>:</p>
+<pre><code class="language-bash">cd C:\xampp\htdocs\test-project</code></pre>
+</li>
+<li>
+<p>Teď si nastavte cestu k <em>remote</em> repozitáři. To bude &quot;kopie&quot; na GitLab.com. A rovnou <em>pushnětě</em> (nahrajte) kód:</p>
+<pre><code class="language-bash">git remote add origin git@gitlab.com:example/test-ci.git
+git push --set-upstream origin master
+</code></pre>
+<p>Vaší cestu k repozitáři uvidíte na stránce po vytvoření projektu na GitLab.com.</p>
+</li>
+</ol>
+<p>Nyní byste měli mít nahraný repozitář na GitLab.com. Zatím ale nic jiného, žádné CI.</p>
+<p>Můžete se ujistit, zda-li tomu tak opravdu je.</p>
+<h2 id="na-radu-prichazi-ci"><a href="#na-radu-prichazi-ci">Na řadu přichází CI</a></h2>
+<p>Když máte kód, k němu testy, jak moc je tedy složité spouštět testy automatizovaně?</p>
+<p>V případě hostování na GitLabu se přímo vybízí využít <a href="https://about.gitlab.com/gitlab-ci/">integrované CI</a>.</p>
+<p>Do projektu přidejte soubor <code>.gitlab-ci.yml</code> který CI řekne, co se má dít.</p>
+<pre><code class="language-yaml">build:
+  image: phpdocker/phpdocker:7.0
+  script:
+    - composer install
+    - php vendor/bin/phpunit
+</code></pre>
+<p>Co to všechno znamená?</p>
+<ol>
+<li>
+<p><code>build:</code> říká, jak se jmenuje aktuální úloha. Může jich být více. My máme na ukázku jednu.</p>
+</li>
+<li>
+<p><code>image: phpdocker/phpdocker:7.0</code> říká, že se má test spustit v <a href="https://www.docker.com/what-docker">Docker</a> image <a href="https://hub.docker.com/r/phpdocker/phpdocker/">phpdocker/phpdocker</a>. Abyste mohli používat CI, vystačíte si s informací, že je to jakýsi obraz Linuxu, ve kterém se budou spouštět skripty. Konkrétně tenhle obraz obsahuje většinu toho, co je potřeba pro běžné PHP aplikace.</p>
+</li>
+<li>
+<p><code>script:</code> sekce obsahující jednotlivé příkazy, které se budou spouštět. Co řádek, to jeden příkaz. Jsou to vlastně stejné příkazy, které spouštíte v příkazové řádce. Jsou povědomé, že? Oba jste totiž používali.</p>
+</li>
+<li>
+<p><code>composer install</code> říká, že se mají nainstalovat Composer závislosti.</p>
+</li>
+<li>
+<p><code>php vendor/bin/phpunit</code> konečně spustí naše testy.</p>
+</li>
+</ol>
+<p>Jen commitnu a pushnu. GitLab sám spustí CI. <strong>To je vážně vše!</strong></p>
+<p>Výsledky buildů uvidíte pak u commitů i v pull-requestech. Ty je možné nastavit tak, aby nešly mergnout, pokud nemají úspěšný build (procházející testy).</p>
+<h2 id="jde-to-jeste-vylepsit"><a href="#jde-to-jeste-vylepsit">Jde to ještě vylepšit?</a></h2>
+<h3 id="composer"><a href="#composer">Composer</a></h3>
+<p>Můžeme trošku zrychlit instalaci Composeru a vyhnout se případným dotazům na uživatelský vstup:</p>
+<pre><code class="language-bash">composer install --no-interaction --prefer-dist</code></pre>
+<h3 id="code-coverage"><a href="#code-coverage">Code Coverage</a></h3>
+<p>Také můžeme nechat generovat Code Coverage report.</p>
+<p>V rootu aplikace již máme vytvořený konfigurační souboru <code>phpunit.xml</code>. Stačí v něm nastavit, které složky se mají procházet pro generování code coverage reportu.</p>
+<p>Obsah <code>phpunit.xml</code> by měl vypadat následovně:</p>
+<pre><code class="language-xml">&lt;?xml version="1.0"?&gt;
+&lt;phpunit
+        bootstrap="tests/bootstrap.php"
+        verbose="true"
+&gt;
+    &lt;!-- tests directories to run --&gt;
+    &lt;testsuites&gt;
+        &lt;testsuite&gt;
+            &lt;directory suffix="Test.php"&gt;tests&lt;/directory&gt;
+        &lt;/testsuite&gt;
+    &lt;/testsuites&gt;
+    &lt;!-- source to check coverage for --&gt;
+    &lt;filter&gt;
+        &lt;whitelist&gt;
+            &lt;directory suffix=".php"&gt;src&lt;/directory&gt;
+        &lt;/whitelist&gt;
+    &lt;/filter&gt;
+&lt;/phpunit&gt;
+</code></pre>
+<p>Pro generování code coverage reportu je vyžadována extenze <code>XDebug</code>.</p>
+<p>Při spouštění v CI a použití image <code>phpdocker/phpdocker</code> (viz. obsah <code>.gitlab-ci.yml</code>) je potřeba XDebug explicitně povolit, takto:</p>
+<pre><code class="language-bash">php -d$XDEBUG_EXT vendor/bin/phpunit --coverage-text</code></pre>
+<p>Pokrytí kódu testy umí zobrazovat přímo GitLab, jen je potřeba u projektu nastavit pod možnostmi <code>CI/CD Pipelines</code> část <code>Test coverage parsing</code> na <code>^\s*Lines:\s*\d+.\d+\%</code> (pro PHPUnit - více vzorů naleznete přímo ve formuláři).</p>
+<h2 id="hotovy-kod-ke-stazeni"><a href="#hotovy-kod-ke-stazeni">Hotový kód ke stažení</a></h2>
+<p>Pokud byste se chtěli podívat, jestli jste postupovali správně, zde je optimální výsledek:
+<a href="https://gitlab.com/hranicka/pehapkari-test-ci">https://gitlab.com/hranicka/pehapkari-test-ci</a></p>
+<h2 id="co-lze-jeste-delat-s-ci"><a href="#co-lze-jeste-delat-s-ci">Co lze ještě dělat s CI?</a></h2>
+<p>My jsme CI použili jen pro spuštění PHPUnit testů.</p>
+<p>Lze ale spouštět vše, co se dá spuštět přes příkazový řádek. Pokud bych narážel na možnosti využívaného Docker image, můžu si vytvořit libovolný vlastní. Možnosti jsou tak (skoro) neomezené.</p>
+<p>Často v CI probíhá celá řada úloh, jako:</p>
+<ul>
+<li>sestavení aplikace (Composer, Bower, Grunt/Gulp, ...),</li>
+<li>kontrola code style (PHP CodeSniffer),</li>
+<li>statická analýza (PHPStan),</li>
+<li>test databázových migrací,</li>
+<li>samotný test kódu (PHPUnit),</li>
+<li>deploy aplikace,</li>
+<li>a další...</li>
+</ul>
+<h2 id="existuje-i-neco-jineho-nez-gitlab-ci"><a href="#existuje-i-neco-jineho-nez-gitlab-ci">Existuje i něco jiného než GitLab CI?</a></h2>
+<p>Ano. A alternativ je spousta. Například:</p>
+<ul>
+<li><a href="https://travis-ci.org/">Travis CI</a> - běžně se používá u open-source projetků na github.com; podporuje pouze GitHub.</li>
+<li><a href="https://app.shippable.com/">Shippable</a> - podporuje GitHub, BitBucket i GitLab. Omezení v bezplatné verzi je jeden souběžný build a jeden Docker container.</li>
+<li><a href="http://codeship.com/">Codeship</a> - podporuje GitHub, BitBucket i GitLab. Zdarma umožňuje 100 builů/měsíc a jeden souběžný build.</li>
+<li><a href="http://circleci.com/">Circle CI</a> - podporuje GitHub a BitBucket. V bezplatné verzi je možný pouze jeden souběžný build a jeden Docker container. Navíc je omezení 1500 build minut/měsíc.</li>
+</ul>
+<p>Vybral jsem si GitLab pro ilustraci z toho důvodu, že je nativní součástí hostovací služby pro repozitáře a není tak potřeba nic explicitně nastavovat.</p>
+<p>Vedle toho, GitLab nefunguje pouze na gitlab.com, ale existuje také očesaná open-source verze (GitLab CE), která je bezplatná a self-hosted. Pro náročné uživatele a velké firmy pak ještě placená self-hosted (GitLab EE), která by měla být shodná s tou provozovanou bezplatně na gitlab.com.</p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                            <h2 id="you-might-also-like"><a href="#you-might-also-like">You Might Also Like</a></h2>
+
+                        <ul id="related-posts">
+                                                            <li>
+                                    <a href="/blog/2017/03/30/nastaveni-gitlab-ci-pro-produkcni-aplikaci">Nastavení GitLab CI pro produkční aplikaci &raquo;</a>
+                                </li>
+                                                    </ul>
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2017/2017-03-08-jak-snadne-je-pouzivat-ci.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

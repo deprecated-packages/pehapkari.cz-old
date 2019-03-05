@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=1901839821" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=229384944" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=310759307" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=1886156905" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Best Practice for Symfony Console in Nette </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Best Practice for Symfony Console in Nette" />
+<meta property="og:description" content="If you use Symfony\Console in Nette, you will be probably familiar with php index.php command approach.
+It has been obsolete since Nette 2.3, and we should all migrate to its successor.
+This blog post will show you why and how." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2017/06/02/best-practice-for-symfony-console-in-nette/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Best Practice for Symfony Console in Nette" />
+<meta name="twitter:description" content="If you use Symfony\Console in Nette, you will be probably familiar with php index.php command approach.
+It has been obsolete since Nette 2.3, and we should all migrate to its successor.
+This blog post will show you why and how." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Best Practice for Symfony Console in Nette</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        4 min
+
+        |
+
+        by <strong>Filip Procházka</strong>
+
+        &ndash;
+
+        <time datetime="2017-06-Fri">
+            2. 6. 2017
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">If you use Symfony\Console in Nette, you will be probably familiar with <code>php index.php command</code> approach.
+It has been obsolete since Nette 2.3, and we should all migrate to its successor.
+This blog post will show you why and how.</p>
+
+                    <p>Running console through the <code>www/index.php</code> was introduced in <a href="https://github.com/Kdyby/Console/">Kdyby\Console</a> by <a href="https://filip-prochazka.com/">me (Filip Procházka)</a> and <a href="https://github.com/Kdyby/Console/commit/db9c3304f0998bc82724665d3b43d3b6e3eb40ce">the practice is now deprecated</a>. This article shows why it was introduced, why it is deprecated and how to use <a href="https://github.com/symfony/console">Symfony\Console</a> more elegantly.</p>
+<h2 id="why-was-running-through-index-php-introduced"><a href="#why-was-running-through-index-php-introduced">Why was running through index.php introduced</a></h2>
+<p>For example, you might have a mailer service that handles rendering of a template for the email and then sending it. And a regular email probably has some links in it. That is what the <code>LinkGenerator</code> is for, <a href="https://github.com/nette/application/commit/e0305285cebc65426073061b261e084daef4933e">which was introduced in Nette 2.3</a>.</p>
+<p>Before Nette 2.3 the simplest way to solve this was to fetch the current instance of <code>UI\presenter</code> from <code>Nette\Application\Application</code>, pass it to the template you're trying to render and only then the URL generating was working. And to have the <code>UI\presenter</code> in <code>cli</code>, you had to execute <code>Nette\Application\Application</code> that would create the presenter so you can generate the URL.</p>
+<p>In short, every time you call <code>php www/index.php command</code>, Kdyby\Console is</p>
+<ol>
+<li>taking over the Nette routing with <code>CliRoute</code></li>
+<li><code>CliRoute</code> creates an application request for <code>KdybyModule\CliPresenter</code></li>
+<li><code>CliPresenter</code> calls Symfony Application and passes your command name and arguments</li>
+</ol>
+<p>This guarantees you'll always have an <code>UI\Presenter</code> in <code>Nette\Application\Application</code> that can be used for generating URLs.</p>
+<h2 id="missing-http-url-problem"><a href="#missing-http-url-problem">Missing Http\Url problem</a></h2>
+<p>Having the <code>LinkGenerator</code> (or <code>UI\Presenter</code> in the past) available is not enough for generating URLs. It requires an <code>Http\Url</code> instance that is by default fetched from the <code>Http\IRequest</code> service. This is solved by Kdyby too. You can just configure an URL and Kdyby will rewrite the <code>Http\IRequest</code> service and provide a fake instance with the URL configured.</p>
+<pre><code class="language-yaml">console:
+    url: https://pehapkari.cz/</code></pre>
+<h2 id="simplifying-the-execution"><a href="#simplifying-the-execution">Simplifying the execution</a></h2>
+<p>Executing the console through <code>Nette\Application\Application</code> is no longer necessary since we have the <code>LinkGenerator</code>. So how can we make this more elegant? Since we're integrating <a href="https://github.com/symfony/console">Symfony\Console</a>, a logical approach is to look what Symfony thinks is the best practice.</p>
+<p>Symfony has a <code>bin/console</code> script with contents similar to the following snippet which is sufficient for Nette</p>
+<pre><code class="language-php">#!/usr/bin/env php
+&lt;?php declare(strict_types=1);
+
+/** @var \Nette\DI\Container $container */
+$container = require __DIR__ . '/../app/bootstrap.php';
+
+/** @var \Symfony\Component\Console\Application $consoleApplication */
+$console = $container-&gt;getByType(Symfony\Component\Console\Application::class);
+exit($console-&gt;run());</code></pre>
+<p>that we can execute by typing</p>
+<pre><code class="language-bash">php bin/console help</code></pre>
+<p>And if we make it executable with</p>
+<pre><code class="language-bash">chmod +x bin/console</code></pre>
+<p>we can even drop the <code>php</code> when executing it</p>
+<pre><code class="language-bash">bin/console help</code></pre>
+<p>This removes the extra layers of abstractions that are no longer needed thanks to the <code>LinkGenerator</code>. But, having the <code>console.url</code> option is still necessary to correctly generate URLs.</p>
+<h2 id="utilizing-decorator-extension"><a href="#utilizing-decorator-extension">Utilizing decorator extension</a></h2>
+<p><a href="https://github.com/nette/di/commit/28fdac304b967ae43a90936069d94316ee2daca4">With Nette 2.3</a> a new <code>DecoratorExtension</code> was introduced that greatly simplifies command registration. We can use it, to find all services that have a given type and give them all a tag or some common setup calls.</p>
+<p>With the extension this config</p>
+<pre><code class="language-yaml"># app/config/config.neon
+
+services:
+    -
+        class: App\Console\FirstCommand
+        tags: [kdyby.console.command]
+    -
+        class: App\Console\SecondCommand
+        tags: [kdyby.console.command]
+    -
+        class: App\Console\ThirdCommand
+        tags: [kdyby.console.command]</code></pre>
+<p>can be simplified to</p>
+<pre><code class="language-yaml"># app/config/config.neon
+
+services:
+    - App\Console\FirstCommand
+    - App\Console\SecondCommand
+    - App\Console\ThirdCommand
+
+decorator:
+    Symfony\Component\Console\Command\Command:
+        tags: [kdyby.console.command]</code></pre>
+<p>Nette extensions allow to search for a given type in compile-time, and therefore Kdyby\Console (and any other extension) could just work without tags, but tags are a predictable solution to marking services for special processing. If you want to just tag everything for processing, it's better if you do it explicitly yourself using the <code>DecoratorExtension</code>.</p>
+<h2 id="auto-complete-support"><a href="#auto-complete-support">Auto-complete support</a></h2>
+<p>Another added benefit of switching to <code>bin/console</code> is automatic support of Symfony Console by <code>zsh</code>. The <a href="https://github.com/robbyrussell/oh-my-zsh/blob/291e96dcd034750fbe7473482508c08833b168e3/plugins/symfony2/symfony2.plugin.zsh">default zsh Symfony Console integration</a> is invoked when you execute <code>bin/console</code> in your terminal and auto-completes the commands and options. Thanks <a href="https://twitter.com/kerlebac">Klára</a>, for pointing this out!</p>
+<h2 id="example-of-the-refactoring"><a href="#example-of-the-refactoring">Example of the refactoring</a></h2>
+<p>If you'd like to see a real-life code, <a href="https://github.com/eventigo/eventigo-web/pull/19/files">Tomáš Votruba made PR on Github</a> to <a href="https://eventigo.cz/">Eventigo.cz</a> recently.</p>
+<h2 id="conclusion"><a href="#conclusion">Conclusion</a></h2>
+<p>This article was mainly about <a href="https://github.com/Kdyby/Console/">Kdyby\Console</a> and its history, but to be fair, I have to mention <a href="https://github.com/contributte/console">Contributte\Console</a> by <a href="https://f3l1x.io">Milan Felix Šulc</a> that actually prompted the update in Kdyby\Console documentation.</p>
+<p>Also, a side-note to whoever is using <a href="https://github.com/Kdyby/Doctrine">Kdyby\Doctrine</a> - it is planned to <a href="https://github.com/Kdyby/Doctrine/issues/190">make Kdyby\Console optional</a> which will remove the vendor lock-in for Kdyby\Console, so you can choose what integration to use. This will allow you not to use Symfony\Console at all, or replace Kdyby\Console with <a href="https://github.com/contributte/console">Contributte\Console</a> if you decide to do so.</p>
+<p>There is always a better way to approach things. Please, share with us how you're using Symfony\Console in the comments.</p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                            <h2 id="you-might-also-like"><a href="#you-might-also-like">You Might Also Like</a></h2>
+
+                        <ul id="related-posts">
+                                                            <li>
+                                    <a href="/blog/2017/01/05/symfony-console-from-scratch">Symfony Console from the Scratch &raquo;</a>
+                                </li>
+                                                    </ul>
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2017/2017-06-02-best-practice-for-symfony-console-in-nette.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

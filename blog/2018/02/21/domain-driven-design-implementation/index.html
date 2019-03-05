@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=1925401815" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=129958982" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=136653555" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=1535101334" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Domain-Driven Design, part 4 - Implementation </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Domain-Driven Design, part 4 - Implementation" />
+<meta property="og:description" content="It is great to model something and now we have reached the point where we turn the model into the code.
+We will implement the model, no persistence, no input, only the most important part - the domain model.
+The implementation will be supported by tests and we will see how easy it is to test domain objects.
+We will also discuss the connection to the ubiquitous language and model and practical aspect of object encapsulation." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2018/02/21/domain-driven-design-implementation/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Domain-Driven Design, part 4 - Implementation" />
+<meta name="twitter:description" content="It is great to model something and now we have reached the point where we turn the model into the code.
+We will implement the model, no persistence, no input, only the most important part - the domain model.
+The implementation will be supported by tests and we will see how easy it is to test domain objects.
+We will also discuss the connection to the ubiquitous language and model and practical aspect of object encapsulation." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Domain-Driven Design, part 4 - Implementation</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+                    <p class="success">
+            <strong><em class="fa fa-fw fa-check-square-o"></em>
+                <a href="https://github.com/pehapkari/pehapkari.cz/tree/master/tests/Posts/Year2018/Cart/Domain">
+                    This post is Tested
+                </a>
+            </strong>
+        </p>
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        4 min
+
+        |
+
+        by <strong>Svaťa Šimara</strong>
+
+        &ndash;
+
+        <time datetime="2018-02-Wed">
+            21. 2. 2018
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">It is great to model something and now we have reached the point where we turn the model into the code.
+We will implement the model, no persistence, no input, only the most important part - the domain model.
+The implementation will be supported by tests and we will see how easy it is to test domain objects.
+We will also discuss the connection to the ubiquitous language and model and practical aspect of object encapsulation.</p>
+
+                    <h2 id="model"><a href="#model">Model</a></h2>
+<p>It doesn't make sense to explain implementation on <em>Foo, Bar, etc...</em>, the Domain-driven design is about the domain.
+Let's use the e-shop cart model from <a href="/blog/2017/12/16/domain-driven-design-model/">previous</a> <a href="/blog/2018/01/06/domain-driven-design-simplify-object-model/">articles</a>.</p>
+<p><img src="/assets/images/posts/2018/ddd-implementation/cart_aggregate.png" alt="cart aggregate" /></p>
+<h2 id="implementing-the-domain-model"><a href="#implementing-the-domain-model">Implementing the Domain Model</a></h2>
+<p>Now we have the domain model and all terms come from the ubiquitous language.
+We have to use the ubiquitous language in the code too, so the whole project uses the same language.
+When we find something we cannot name, we have to deepen the domain knowledge so the term comes from domain again.</p>
+<p>During the implementation, we might think of generalizing or coding for the future.
+We should resist these ideas, these thoughts, and implement only the model which we know.
+Implementing only the known behavior also makes the development quicker and the testing easier.</p>
+<p>We should implement the model as accurate as possible.
+But sometimes we can find a problem which is difficult or impossible to implement in the programming language we use.
+Then we have to do decisions that also changes the model and these decisions should be spread over the team so everyone understands the changed model.</p>
+<h2 id="read-information-from-object"><a href="#read-information-from-object">Read Information from Object</a></h2>
+<p>A common requirement is to read an information from an object.
+It doesn't have to be necessary reading the internal state, we just need to get some information.</p>
+<p>We have two reading use cases in the cart story.
+It is <em>showing the cart detail</em> and <em>calculating the cart total price</em>.
+When we show the cart to the user, we also show the total price and when we show the total price, we usually show the detail or information extracted from the detail.
+So we can join these two use cases into one - <em>calculate the cart detail</em>.
+This decision may be changed in the future as we consider what is more practical.</p>
+<h3 id="getters-intermezzo"><a href="#getters-intermezzo">Getters Intermezzo</a></h3>
+<p>I think that the object-oriented programming is about encapsulating objects by behavior.
+I think this is the reason for the whole OOP.
+Getters are not a behavior for me, getters just break encapsulation according to my opinion.
+So I try to do my best to avoid getters.
+But as we can see in the code, I'm still not able to avoid all ot them.</p>
+<p>Instead of tones of getters, I try to use immutable structures to pass information through the system.
+These structures are based on use cases needs.</p>
+<h3 id="data-transfer-object-over-array"><a href="#data-transfer-object-over-array">Data Transfer Object over Array</a></h3>
+<p>Since we are programming in the PHP, arrays are the first choice how to pass multiple information.
+But there are issues with arrays.
+The structure cannot be thrust, we can read a certain key but it doesn't have to be there.
+The data types are not thrust, is it an integer, a string or another array? IDE can not help us by suggesting keys and types.
+Arrays are mutable so we don't know if the information wasn't unintentionally changed.</p>
+<p>Data transfer objects avoid these problems.
+It takes some time to write them but once we have them, it is comfortable to use them.
+Data transfer objects are not classic objects, we do not expect behavior, they supplement immutable structures that are missing in the PHP.</p>
+<h2 id="the-implementation"><a href="#the-implementation">The Implementation</a></h2>
+<p>The article would be enormous if it contained all the code and the code would be difficult to navigate through.
+So please find the code on the GitHub:
+<a href="https://github.com/pehapkari/pehapkari.cz/tree/master/src/Posts/Year2018/Cart/Domain">https://github.com/pehapkari/pehapkari.cz/tree/master/src/Posts/Year2018/Cart/Domain</a></p>
+<p>But comment it here, the code is a part of this article.</p>
+<h2 id="testing"><a href="#testing">Testing</a></h2>
+<p>Domain has nothing to do with an infrastructure like a database or a data source like a UI form or an API.
+Domain objects are absolutely independent, so they are quite easy to test.
+Tests should come from use cases and they should also test edge cases.</p>
+<p>We should focus on testing aggregates.
+Internal structure of aggregates may change, but their behavior is less likely to change.
+We can consider aggregate tests as unit tests because an aggregate is definitely a unit.
+But we can test whatever we want to, if there is an interesting internal class, it is a great idea to test it too.</p>
+<p>Please find tests on the GitHub:
+<a href="https://github.com/pehapkari/pehapkari.cz/tree/master/tests/Posts/Year2018/Cart/Domain">https://github.com/pehapkari/pehapkari.cz/tree/master/tests/Posts/Year2018/Cart/Domain</a></p>
+<h2 id="test-driven-development"><a href="#test-driven-development">Test-Driven Development</a></h2>
+<p>Test-driven development is popular and this approach is pretty fine.
+But how can be development driven by two different paradigms? Test-driven development tells us to write tests first.
+Domain-driven design tells us to focus on the domain.
+How do these styles interfere with each other? Well, they actually don't.</p>
+<p>Write tests first is great because we write tests by use cases so we know what do we expect.
+It may happen that we don't know the answer to the test question.
+This situation leads us to deepen the domain knowledge before writing a single line of code.</p>
+<p>And by the way, DDD is about the design while TDD is about the development process.</p>
+<p>The cart implementation was written using TDD.
+Test first, then implementation and some refactoring:
+<a href="https://github.com/simara-svatopluk/cart/commits/TDD">https://github.com/simara-svatopluk/cart/commits/TDD</a></p>
+<h2 id="tl-dr"><a href="#tl-dr">TL;DR</a></h2>
+<p>Keep ubiquitous language terms in the code, avoid getters and use data transfer objects.
+Testing pure domain object is easy, so test at least aggregates.</p>
+<h2 id="complete-code"><a href="#complete-code">Complete Code</a></h2>
+<ul>
+<li><a href="https://github.com/simara-svatopluk/cart/tree/domain-logic">https://github.com/simara-svatopluk/cart/tree/domain-logic</a> <strong>domain-logic</strong> tag only</li>
+<li><a href="https://github.com/simara-svatopluk/cart/commits/TDD">https://github.com/simara-svatopluk/cart/commits/TDD</a></li>
+</ul>
+<h2 id="contact"><a href="#contact">Contact</a></h2>
+<p>Are you designing architecture and like DDD approach? Hire me, I can help you - <a href="http://svatasimara.cz/">svatasimara.cz</a></p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                            <h2 id="you-might-also-like"><a href="#you-might-also-like">You Might Also Like</a></h2>
+
+                        <ul id="related-posts">
+                                                            <li>
+                                    <a href="/blog/2018/02/28/domain-driven-design-repository">Domain-Driven Design, part 5 - Repository &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2018/03/07/domain-driven-design-doctrine-repository">Domain-Driven Design, part 6 - Doctrine Repository &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2018/03/28/domain-driven-design-services-factories">Domain-Driven Design, part 8 - Services and Factories &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2018/01/06/domain-driven-design-simplify-object-model">Domain-Driven Design, part 3 - Simplify Object Model &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2018/03/21/domain-driven-design-alternative-mapping">Domain-Driven Design, part 7 - Alternative Relational Database Mapping &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2017/12/16/domain-driven-design-model">Domain-Driven Design, part 2 - Model &raquo;</a>
+                                </li>
+                                                            <li>
+                                    <a href="/blog/2017/12/05/domain-driven-design-language">Domain-Driven Design, part 1 - Language &raquo;</a>
+                                </li>
+                                                    </ul>
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2018/2018-02-21-domain-driven-design-implementation.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

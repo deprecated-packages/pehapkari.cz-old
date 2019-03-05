@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=958939191" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=1327692609" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=1841345854" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=369346227" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>Multiple PHP versions, the easy way </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="Multiple PHP versions, the easy way" />
+<meta property="og:description" content="Always wanted to try or run your application with a different PHP version without breaking everything else? Why not, there is a way to run multiple versions in parallel!" />
+<meta property="og:url" content="https://pehapkari.cz/blog/2017/03/27/multiple-php-versions-the-easy-way/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Multiple PHP versions, the easy way" />
+<meta name="twitter:description" content="Always wanted to try or run your application with a different PHP version without breaking everything else? Why not, there is a way to run multiple versions in parallel!" />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">Multiple PHP versions, the easy way</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        5 min
+
+        |
+
+        by <strong>Michael Moravec</strong>
+
+        &ndash;
+
+        <time datetime="2017-03-Mon">
+            27. 3. 2017
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">Always wanted to try or run your application with a different PHP version without breaking everything else? Why not, there is a way to run multiple versions in parallel!</p>
+
+                    <h2 id="basics"><a href="#basics">Basics</a></h2>
+<p>There's a lot of use cases when one would need multiple PHP versions side by side.
+As an example, assume we have one legacy application and one modern application.
+The legacy one runs only on PHP 5.x whereas the modern one runs only on PHP 7.x.
+Virtually impossible and disjunctive setup you'd say, right?
+Before you start thinking about setting up second server with new PHP, consider the option of having two PHP versions side by side and letting your application <em>choose</em> one.</p>
+<h2 id="what-do-we-need"><a href="#what-do-we-need">What do we need</a></h2>
+<h4 id="debian-stretch"><a href="#debian-stretch">Debian Stretch</a></h4>
+<p>We'll use Debian Stretch for this purpose.
+Yes, at the time of writing, it's still an unreleased version, already in freeze though.
+But it's going to have native support for co-installable PHP versions, so we'll use it for convenience.
+You'll see later that it'd be eventually also possible to achieve this even with currently stable Jessie, although not with the native PHP package it distributes (<code>php5</code>).
+Or you can use Ubuntu as well, it's based on Debian after all. :-)</p>
+<h4 id="nginx"><a href="#nginx">NGINX</a></h4>
+<p>Of course, we can suffer with the old friend Apache, but why would we?
+NGINX performs much better and is way easier to configure with PHP FPM.
+Also considering other features, i.e. HTTP/2, multi-certificate setup etc., there's really no show-stopper.</p>
+<h4 id="php-with-co-installability-support"><a href="#php-with-co-installability-support">PHP with co-installability support</a></h4>
+<p>This is probably the trickier part.
+Luckily for us, starting with Debian Stretch there will be a new infrastructure for PHP packages that handles versioning natively.
+No need to mess with the source code or modifying Debian packages themselves!</p>
+<h2 id="putting-it-all-together"><a href="#putting-it-all-together">Putting it all together</a></h2>
+<h4 id="install-nginx"><a href="#install-nginx">Install NGINX</a></h4>
+<p>Installing NGINX is as simple as running this command:</p>
+<pre><code>$ apt-get install nginx</code></pre>
+<p>This will install NGINX with default modules and configuration.</p>
+<h4 id="installing-php-7-0"><a href="#installing-php-7-0">Installing PHP 7.0</a></h4>
+<p>Install PHP 7.0 from Debian archive.
+This will be (sadly) the default version in Stretch, 7.1 came out too late to squeeze into Stretch's timeline.
+Do this using the following command:</p>
+<pre><code>$ apt-get install php7.0-cli php7.0-fpm</code></pre>
+<p>Notice the different pattern of the package name.
+Older Debian installations used simply <code>php5</code> whereas newer infrastructure uses <code>phpX.Y</code>.
+This is the obvious part that efficiently allows us to use multiple PHPs in parallel.
+With this structure, you can install each of the minor versions next to each other.</p>
+<h4 id="installing-php-5-6"><a href="#installing-php-5-6">Installing PHP 5.6</a></h4>
+<p>Here's the catch.
+Debian only offers a single PHP version in the official repository.
+Fortunately there are packages directly from a maintainer of Debian's PHP packages, Ondřej Surý.
+Visit <a href="https://deb.sury.org/">his page</a> about packaging to learn more.
+(There is also a PPA repository in case you'd rather use Ubuntu instead of Debian.)</p>
+<p>We'll now add his repository (as well as enable HTTPS for APT and register the APT key):</p>
+<pre><code>$ apt-get install apt-transport-https
+$ curl https://packages.sury.org/php/apt.gpg | apt-key add -
+$ echo 'deb https://packages.sury.org/php/ stretch main' &gt; /etc/apt/sources.list.d/deb.sury.org.list
+$ apt-get update</code></pre>
+<p>Now that we have the repository added, we can install the packages from there:</p>
+<pre><code>$ apt-get install php5.6-cli php5.6-fpm</code></pre>
+<p>This will install PHP 5.6 in parallel to PHP 7.0 installed earlier.
+We can check this is true by simply running:</p>
+<pre><code>$ php7.0 -v
+PHP 7.0.15-1 (cli)
+$ php5.6 -v
+PHP 5.6.30-5+0~20170223133422.27+stretch~1.gbp1ee0cb (cli)</code></pre>
+<p>Note that for conviniency there is also a <code>php</code> command provided by <em>alternatives</em> (which defaults to the newest version):</p>
+<pre><code>$ php -v
+PHP 7.0.15-1 (cli)</code></pre>
+<p>You can switch the default version using update-alternatives, just run the following command and pick the version you prefer:</p>
+<pre><code>$ update-alternatives --config php</code></pre>
+<h4 id="configuring-php"><a href="#configuring-php">Configuring PHP</a></h4>
+<p>Configuration is stored in versioned locations as well.
+Additionally the configuration is separate for each SAPI.
+Same applies to PHP modules so you don't have to worry about incompatible modules between versions.</p>
+<p>We are looking for FPM configuration.
+PHP 7.0 FPM configuration is stored in <code>/etc/php/7.0/fpm</code> and PHP 5.6 in <code>/etc/php/5.6/fpm</code>.
+Each FPM instance consists of multiple pools.
+Ideally each site/project should have its separate pool, but that's out of scope of this article, so we'll just use the default pool called <em>www</em>.
+Open <code>/etc/php/7.0/fpm/pool.d/www.conf</code> and look for the <code>listen</code> option.
+It should equal <code>/run/php/php7.0-fpm.sock</code> or similar.
+Now do the same for 5.6, it should contain the same with just 5.6 instead of 7.0.
+Note that it could also be a bind address, i.e. IP address with port (which is performance-wise more suitable for production than sockets).</p>
+<h4 id="configuring-nginx"><a href="#configuring-nginx">Configuring NGINX</a></h4>
+<p>NGINX configuration is stored inside <code>/etc/nginx</code>.
+There are multiple files and directories, here's what we will need to know:</p>
+<ul>
+<li>By convention, all available virtual hosts are stored inside <em>sites-available</em> directory.</li>
+<li>All production sites are then just symbolic links from <em>sites-enabled</em> to those files.</li>
+<li>Any code intended for reuse across multiple virtual hosts is stored inside <em>snippets</em> folder.</li>
+<li>The <code>fastcgi.conf</code> file contains all FastCGI-specific variables that are passed to PHP.</li>
+<li>The <code>snippets/fastcgi-php.conf</code> is just a helper file to do all necessary before passing the request to PHP.</li>
+</ul>
+<p>Finally remove anything in <code>/etc/nginx/sites-enabled</code>, we don't want any default configuration to clutter with our setup.</p>
+<h2 id="example-setup"><a href="#example-setup">Example setup</a></h2>
+<p>Now that we have everything ready, let's create two virtual hosts.
+For simplicity we'll just run them on a different port so we don't have to worry with setting up the hostnames.</p>
+<h4 id="site-with-php-7-0"><a href="#site-with-php-7-0">Site with PHP 7.0</a></h4>
+<p>First, create folder for our new site and just add a <code>phpinfo()</code> there:</p>
+<pre><code>$ mkdir /var/www/site-with-php7.0
+$ echo -e '&lt;?php\nphpinfo();' &gt; /var/www/site-with-php7.0/index.php</code></pre>
+<p>Now create a simple virtual host with this content.
+Put the following into <code>/etc/nginx/sites-available/site-with-php7.0</code>:</p>
+<pre><code>server {
+    listen 8870 default_server;
+    listen [::]:8870 default_server;
+    server_name _;
+    root /var/www/site-with-php7.0;
+    index index.php;
+    location / {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php7.0-fpm.sock; # adjust for the listen setting discussed above
+    }
+}</code></pre>
+<h4 id="site-with-php-5-6"><a href="#site-with-php-5-6">Site with PHP 5.6</a></h4>
+<p>We'll do just the same for 5.6, except we'll change the port, root directory and FastCGI backend:</p>
+<pre><code>mkdir /var/www/site-with-php5.6
+echo -e '&lt;?php\nphpinfo();' &gt; /var/www/site-with-php5.6/index.php</code></pre>
+<p>Put the following into <code>/etc/nginx/sites-available/site-with-php5.6</code>:</p>
+<pre><code>server {
+    listen 8856 default_server;
+    listen [::]:8856 default_server;
+    server_name _;
+    root /var/www/site-with-php5.6;
+    index index.php;
+    location / {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php5.6-fpm.sock; # adjust for the listen setting discussed above
+    }
+}</code></pre>
+<p>Enable these sites:</p>
+<pre><code>$ ln -s ../sites-available/site-with-php5.6 /etc/nginx/sites-enabled
+$ ln -s ../sites-available/site-with-php7.0 /etc/nginx/sites-enabled</code></pre>
+<p>Reload NGINX and we're done:</p>
+<pre><code>$ systemctl reload nginx.service</code></pre>
+<h2 id="testing-everything-out"><a href="#testing-everything-out">Testing everything out</a></h2>
+<p>We should now test that our setup works, shouldn't we?</p>
+<h4 id="testing-site-with-7-0"><a href="#testing-site-with-7-0">Testing site with 7.0</a></h4>
+<p>Head over to your browser and open <code>http://localhost:8870/</code>.
+You should see the output of <code>phpinfo()</code> telling you that you are running PHP 7.0.</p>
+<h4 id="testing-site-with-5-6"><a href="#testing-site-with-5-6">Testing site with 5.6</a></h4>
+<p>Now do the same for 5.6 and open <code>http://localhost:8856/</code>.
+You should be seeing PHP 5.6.</p>
+<h2 id="conclusion"><a href="#conclusion">Conclusion</a></h2>
+<p>The article should shed some of the myths about the needs and (im)possibility of running multiple PHP versions.
+You now know how simple and straightforward such setup is and can deploy it right away.
+It's of course also possible to install PHP 7.1 or 5.5, both are available in the aforementioned repository, configuration would be equivalent.
+You can also use this setup on Ubuntu systems, everything is same except that you'll just do it the Ubuntu-way and use the mentioned PPA repository.</p>
+<h3 id="complete-example-with-docker"><a href="#complete-example-with-docker">Complete example with Docker</a></h3>
+<p>You can also find this example in the following <a href="https://gist.github.com/Majkl578/08bb58780344603ad253a9e3b0552eb0">GitHub Gist</a>.
+If you would like to try it yourself, simply clone the Gist, build the image and run it locally:</p>
+<pre><code>$ git clone https://gist.github.com/08bb58780344603ad253a9e3b0552eb0.git /tmp/multiphp
+$ docker build -t multiphp /tmp/multiphp
+$ docker run --rm -P multiphp</code></pre>
+<p>Now just visit <a href="http://localhost:8870/">http://localhost:8870/</a> and <a href="http://localhost:8856/">http://localhost:8856/</a> respectively to see the result!</p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2017/2017-03-27-multiple-php-versions-the-easy-way.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>

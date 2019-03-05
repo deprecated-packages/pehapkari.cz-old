@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="Oficiální stránky PHP komunity">
+<meta name="keywords" content="PHP, komunita, programování">
+<meta name="author" content="https://pehapkari.cz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:image" content="/images/php-square.png">
+<meta property="fb:pages" content="918297778220033" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="alternate" type="application/rss+xml" title="Péhápkaři.cz Blog RSS" href="/rss.xml">
+
+<link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/bootstrap/bootstrap.min.css?v=899756211" rel="stylesheet" type="text/css" />
+
+<link href="/assets/prism/prism.css?v=1158792510" rel="stylesheet" type="text/css" />
+<link href="/assets/prism/prism-custom.css?v=305751494" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/style.css?v=304055478" rel="stylesheet" type="text/css" />
+
+<link href="/favicon.ico" rel="shortcut icon">
+
+<title>SyliusResourceBundle - How to Develop Your CRUD Apps Faster </title>
+        <meta property="og:type" content="article" />
+<meta property="og:title" content="SyliusResourceBundle - How to Develop Your CRUD Apps Faster" />
+<meta property="og:description" content="Brief introduction to Sylius ecosystem: SyliusResourceBundle and Rapid CRUD application development." />
+<meta property="og:url" content="https://pehapkari.cz/blog/2018/04/25/sylius-resource-bundle-how-to-develop-your-crud-apps-faster/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="SyliusResourceBundle - How to Develop Your CRUD Apps Faster" />
+<meta name="twitter:description" content="Brief introduction to Sylius ecosystem: SyliusResourceBundle and Rapid CRUD application development." />
+    </head>
+
+    <body>
+        <header>
+        <div class="hidden-sm-down">
+        <div class="container-fluid">
+            <a href="/"><img src="/assets/images/logo-header.svg?ver" alt="" height="50"></a>
+
+            <nav class="navbar top-navigation">
+                <a href="/blog/" class="">
+                    <em class="fa fa-newspaper-o fa-fw"></em>
+                    Blog
+                </a>
+                <a href="/vzdelavej-se/" class="">
+                    <em class="fa fa-graduation-cap fa-fw"></em>
+                    Školení
+                </a>
+            </nav>
+        </div>
+    </div>
+
+        <div id="mobile-menu" class="row text-center hidden-md-up">
+        <div class="container">
+            <a href="/" class="col-4 col-sm-4 ">
+                <em class="fa fa-home"></em>
+                <br>
+                Home
+            </a>
+            <a href="/blog/" class="col-4 col-sm-4 ">
+                <em class="fa fa-book fa-fw"></em>
+                <br>
+                Blog
+            </a>
+            <a href="/vzdelavej-se/" class="col-4 col-sm-4 ">
+                <em class="fa fa-graduation-cap fa-fw"></em>
+                <br>
+                Školení
+            </a>
+        </div>
+    </div>
+</header>
+        <div id="article">
+            <div class="container">
+                <h1 class="h2 text-center">SyliusResourceBundle - How to Develop Your CRUD Apps Faster</h1>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div class="metadataLine">
+    
+    <p>
+        <em class="fa fa-clock-o fa-fw"></em>
+        7 min
+
+        |
+
+        by <strong>Łukasz Chruściel</strong>
+
+        &ndash;
+
+        <time datetime="2018-04-Wed">
+            25. 4. 2018
+        </time>
+
+            </p>
+</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div id="article-content">
+                    <p class="perex">Brief introduction to Sylius ecosystem: SyliusResourceBundle and Rapid CRUD application development.</p>
+
+                    <p>Have you heard about Sylius? If not, you need to know that it is an e-commerce solution built on top of Symfony framework full stack.
+One of the main advantages of Sylius from the software engineer perspective is that it is developer oriented.
+High productivity and fast iteration loops are essential for us.
+That being said, SOLID and DRY are fundamental principles at our work.</p>
+<h2 id="tl-dr"><a href="#tl-dr">TL;DR</a></h2>
+<p>SyliusResourceBundle can boost you CRUD develepment, you should try it out.
+You can also join the <a href="https://pehapkari.cz/kurz/getting-started-with-sylius/">Getting started with Sylius training</a> in Prague and see it in action live.</p>
+<h2 id="ok-but-what-does-it-mean-regarding-an-e-commerce-framework"><a href="#ok-but-what-does-it-mean-regarding-an-e-commerce-framework">Ok, but what does it mean regarding an e-commerce framework?</a></h2>
+<p>Let’s take a look at administrator panel of a typical e-commerce website.
+We can find there several usual CRUD-based resources.
+Tax rates or shipping categories are not complicated entities.
+However, you need a whole stack of classes to handle each of them properly.
+In order to perform all required actions, you need to have a controller, repository, factory and some form type.</p>
+<blockquote>
+<p><strong>Disclaimer</strong>: Not every problem should be resolved in a CRUDish way. More complex or crucial parts of your software should be solved by different structural and architectural patterns.</p>
+</blockquote>
+<p>Our main aim was to provide a standard Symfony workflow without writing all of the classes manually or generating them.
+The second goal was to provide a simple solution, which will bootstrap feature implementation at the beginning, but will be easy to customise in the further phase of development.
+And now the SyliusResourceBundle comes to play, all in white!</p>
+<h2 id="what-is-syliusresourcebundle"><a href="#what-is-syliusresourcebundle">What is SyliusResourceBundle?</a></h2>
+<p>It is a generic, CRUD-based implementation of the most common services required for rapid application development.
+Once you declare some entity as a resource, you will have access to several services such as factory, controller (with the show, index, create, update and delete actions), repository and form type.
+And all of them have just a default implementation, which can be overridden when required.</p>
+<h2 id="let-me-see-the-code"><a href="#let-me-see-the-code">Let me see the code!</a></h2>
+<blockquote>
+<p><strong>Note</strong>: Example below has been crafted for Sylius v1.1 and Symfony v3.4. A <a href="https://getcomposer.org/download/">composer</a> is required as well for project bootstrap.</p>
+</blockquote>
+<p>That’s a lot of bragging, but how does it work? Let’s create a sample Sylius project so that we can save some time on setup:</p>
+<pre><code class="language-bash">php composer.phar create-project sylius/sylius-standard Acme</code></pre>
+<p><img src="/assets/images/posts/2018/sylius-resource-bundle/create-project.png" alt="composer create project output" /></p>
+<p>Go to the project directory:</p>
+<pre><code class="language-bash">cd Acme</code></pre>
+<p>And install Sylius project with default data. During this installation a new database will be created and some sample data will be loaded into it.</p>
+<pre><code class="language-bash">php bin/console sylius:install</code></pre>
+<p><img src="/assets/images/posts/2018/sylius-resource-bundle/sylius-install.png" alt="sylius install output" /></p>
+<p>Once we created our project, it is high time to write a little bit of code.
+We will start easy and create a new entity class, which will become our resource in the later stage of coding.
+What I would like to do is a new CRUD anemic model <code>ProductBundle</code>. This class will contain a name, code and id, just as an identifiers.
+During the workshop we will add a relation to product and add possibility to buy whole bundle at once, so it will be something like a product pack.
+First of all, we need to create an <code>Entity</code> folder under <code>src/AppBundle</code>.
+Inside of this folder, we need to create a new <code>ProductBundle</code> class and declare three simple properties inside:</p>
+<pre><code class="language-php">// src/AppBundle/Entity/ProductBundle.php
+&lt;?php
+
+declare(strict_types=1);
+
+namespace AppBundle\Entity;
+
+use Sylius\Component\Resource\Model\ResourceInterface;
+
+class ProductBundle implements ResourceInterface
+{
+    /** @var int */
+    private $id;
+
+    /** @var string|null */
+    private $name;
+
+    /** @var string|null */
+    private $code;
+
+    public function getId() // Missing return type due to ResourceInterface restrictions
+    {
+        return $this-&gt;id;
+    }
+
+    public function getName(): ?string
+    {
+        return $this-&gt;name;
+    }
+
+   public function setName(?string $name): void
+    {
+        $this-&gt;name = $name;
+    }
+
+    public function getCode(): ?string
+    {
+        return $this-&gt;code;
+    }
+
+    public function setCode(?string $code): void
+    {
+        $this-&gt;code = $code;
+    }
+}</code></pre>
+<p>The <code>ProductBundle</code> class is a simple data structure with the code, name and id properties and related getters and setter.
+My recommendation is to use strict types declaration and scalar/interface type hints wherever possible, as can be spotted in the code above.
+What is more, there is one more unusual concept declared in this class.
+It has to implement <code>ResourceInterface</code> from the <code>Sylius\Component\Resource\Model\ResourceInterface</code> namespace.</p>
+<blockquote>
+<p><strong>Disclaimer</strong>: Anemic models and mutable data structures can be considered as an antipattern. Not every problem should be resolved based on them.</p>
+</blockquote>
+<p>Now it is time to define an ORM mapping for this class.
+First of all, we need to create a new folder structure inside of <code>src/AppBundle</code>.
+Let’s create <code>Resources/config/doctrine</code> folders and inside of a <code>doctrine</code> one, let’s create a <code>ProductBundle.orm.xml</code> file:</p>
+<pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!-- src/AppBundle/Resources/config/doctrine/ProductBundle.orm.xml --&gt;
+&lt;doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"&gt;
+
+    &lt;entity name="AppBundle\Entity\ProductBundle" table="app_product_bundle"&gt;
+        &lt;id name="id" column="id" type="integer"&gt;
+            &lt;generator strategy="AUTO" /&gt;
+        &lt;/id&gt;
+
+        &lt;field name="code" column="code" type="string" unique="true" /&gt;
+        &lt;field name="name" column="name" type="string" /&gt;
+    &lt;/entity&gt;
+
+&lt;/doctrine-mapping&gt;</code></pre>
+<p>The file and folder structure is predefined by Doctrine library and should be known for all who are familiar with Doctrine project itself.
+The file contains information about basic class mapping to SQL database.
+We have declared that the class has three fields, where one is an auto-incremented integer, and there are two other string fields: code and name.
+When the new entity is defined, we can generate a doctrine migration (which is a recommended way of handling database changes):</p>
+<pre><code class="language-bash">php bin/console doctrine:migrations:diff</code></pre>
+<p><img src="/assets/images/posts/2018/sylius-resource-bundle/migration-diff.png" alt="migration diff output" /></p>
+<p>You can check a newly created migration file in <code>app/migrations/</code> folder.
+The file will be prefixed with the <code>Version</code> word and suffixed with the current timestamp.
+The migration can be executed with the following command:</p>
+<pre><code class="language-bash">php bin/console doctrine:migrations:migrate</code></pre>
+<p><img src="/assets/images/posts/2018/sylius-resource-bundle/migration-migrate.png" alt="migration migrate output" /></p>
+<p>Of course, we need to confirm our intention of data migration.
+We have created a new entity and mapped it to the database.
+But can we do anything with it?
+Not yet.
+We need to interact with it somehow.
+One of the possibilities is to code controllers and some routing for it.
+On the other hand, we can use a SyliusResourceBundle.
+But how? It is enough to add the following configuration in <code>app/config/config.yml</code> file:</p>
+<pre><code class="language-yml"># app/config/config.yml
+sylius_resource:
+    resources:
+        app.product_bundle:
+            classes:
+                model: AppBundle\Entity\ProductBundle</code></pre>
+<p>This configuration will inform Sylius that a <code>ProductBundle</code> class should be considered as a resource.
+Therefore, Sylius will provide a default implementation of basic services for you.
+You don’t believe me?
+Try this line:</p>
+<pre><code class="language-bash">php bin/console sylius:debug:resource app.product_bundle</code></pre>
+<p>As a result, you should see the following table:</p>
+<pre><code>|--------------------|------------------------------------------------------------|
+| name               | product_bundle                                             |
+| application        | app                                                        |
+| driver             | doctrine/orm                                               |
+| classes.model      | AppBundle\Entity\ProductBundle                             |
+| classes.controller | Sylius\Bundle\ResourceBundle\Controller\ResourceController |
+| classes.factory    | Sylius\Component\Resource\Factory\Factory                  |
+| classes.form       | Sylius\Bundle\ResourceBundle\Form\Type\DefaultResourceType |
+|--------------------|------------------------------------------------------------|</code></pre>
+<p>Another way to check what ResourceBundle generated is to call Symfony debug container command:</p>
+<pre><code class="language-bash">php bin/console debug:container --show-private | grep product_bundle</code></pre>
+<p><img src="/assets/images/posts/2018/sylius-resource-bundle/debug-container.png" alt="debug container output" /></p>
+<p>All services with the <code>app</code> prefix are newly created.</p>
+<h2 id="but-why-should-i-care"><a href="#but-why-should-i-care">But why should I care?</a></h2>
+<p>There are two main reasons for that.</p>
+<p>Firstly, it is just an entry point to the features of ResourceBundle. For example, if we add the following snippet to <code>app/config/routing.yml</code>:</p>
+<pre><code class="language-yml"># app/config/routing.yml
+app_bundle:
+    prefix: api/
+    resource: |
+        alias: app.product_bundle
+    type: sylius.resource_api</code></pre>
+<p>...we will provide full API-based CRUD for the newly created resource. Check it out calling:</p>
+<pre><code class="language-bash">php bin/console debug:router | grep product_bundle</code></pre>
+<p><img src="/assets/images/posts/2018/sylius-resource-bundle/debug-router.png" alt="debug router output" /></p>
+<blockquote>
+<p><strong>Note</strong>: You can now use your newly created API to manage your resource, but first you need to authenticate with OAuth2 according to Sylius documentation: <a href="https://docs.sylius.com/en/1.1/api/authorization.html">https://docs.sylius.com/en/1.1/api/authorization.html</a> and run the server app.</p>
+</blockquote>
+<p>As you can imagine, HTML-based management panel is also straightforward to set up.</p>
+<p>What is probably even more important, the whole logic is not coupled to Sylius at all.
+As with every Symfony Bundle, you can reuse this logic in any Symfony app you want.</p>
+<h2 id="want-to-see-more"><a href="#want-to-see-more">Want to see more?</a></h2>
+<p>If you would like to read a little bit more about ResourceBundle itself you can visit following links:</p>
+<ul>
+<li><a href="https://docs.sylius.com/en/1.1/components_and_bundles/components/Resource/index.html">https://docs.sylius.com/en/1.1/components_and_bundles/components/Resource/index.html</a></li>
+<li><a href="https://docs.sylius.com/en/1.1/book/architecture/resource_layer.html">https://docs.sylius.com/en/1.1/book/architecture/resource_layer.html</a></li>
+<li><a href="https://docs.sylius.com/en/1.1/components_and_bundles/bundles/SyliusResourceBundle/index.html">https://docs.sylius.com/en/1.1/components_and_bundles/bundles/SyliusResourceBundle/index.html</a></li>
+</ul>
+<p>Furthermore, you can join me on May 11th in Prague for 8-hour training.
+I will show you how easy it is to add custom logic to Sylius based on a class we have just created.
+If you are interested, you can read more about the training itself <a href="https://pehapkari.cz/kurz/getting-started-with-sylius/">here</a>.</p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="intermezzo">
+                <div class="container">
+                    
+                                    </div>
+            </div>
+
+            <div class="container">
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//pehapkari.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <br>
+        </div>
+
+        <script src="/assets/prism/prism.js"></script>
+        <script id="dsq-count-scr" src="https://pehapkari.disqus.com/count.js" async defer></script>
+
+        <footer>
+    <div class="container-fluid pt-3 pb-3">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pro tebe</h3>
+
+                <ul>
+                    <li><a href="/press">Média ke stažení</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Přidej se</h3>
+                <ul>
+                    <li>
+                        <a href="http://bit.ly/pehapkari-newsletter">Newsletter</a>
+                        (<a href="http://us8.campaign-archive.com/home/?u=dcf4beafc191796bf6c47321f&id=c4f7564a7b">všechny</a>)
+                    </li>
+                    <li><a href="https://www.fio.cz/ib2/transparent?a=2301196632">Transparentní účet</a></li>
+                    <li><a href="mailto:tomas@pehapkari.cz">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h3 class="text-light">Pracujeme</h3>
+                <ul>
+                    <li><a href="/vzdelavej-se">Školíme</a></li>
+                    <li><a href="https://phpprague.cz">PHP Prague 2018</a></li>
+                                                        </ul>
+            </div>
+
+            <div class="col-md-3 col-6 text-left">
+                <h3 class="text-light mb-4">Sleduj nás na sítích</h3>
+
+                <a href="https://www.meetup.com/friends-of-php-prague/" class="p-3 btn">
+                    <em class="fa fa-2x fa-meetup"></em>
+                </a>
+                <a href="https://www.facebook.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-facebook"></em>
+                </a>
+                <a href="https://twitter.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-twitter"></em>
+                </a>
+                <a href="https://github.com/pehapkari" class="p-3 btn">
+                    <em class="fa fa-2x fa-github"></em>
+                </a>
+                <a href="https://youtube.com/pehapkari/videos" class="p-3 btn">
+                    <em class="fa fa-2x fa-youtube-play"></em>
+                </a>
+                <a href="https://pehapkari.slack.com" class="p-3 btn">
+                    <em class="fa fa-2x fa-slack"></em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-left pt-3">
+            <div class="col-md-7 col-sm-6">
+                <p class="powered-by">
+                    Tento web jede na <a href="https://statie.org">Statie</a> a najdeš ho na <a href="https://github.com/pehapkari/pehapkari.cz">Githubu</a>.
+
+                                                                                        
+                                            <br>
+                        <strong>Našel jsi chybu?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/edit/master/source/_posts/2018/2018-04-25-sylius-resource-bundle-how-to-develop-your-crud-apps-faster.md">Oprav nám ji</a> prosím
+                                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/prism/prism.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89860072-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89860072-1');
+</script>
+    </body>
+</html>
