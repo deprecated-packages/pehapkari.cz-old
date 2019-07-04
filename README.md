@@ -1,4 +1,4 @@
-# [Pehapkari.cz](https://pehapkari.cz) - Web of Czech and Slovak PHP Community
+# Replaced by new Symfony app - https://github.com/pehapkari/pehapkari.cz
 
 [![Build Status](https://img.shields.io/travis/pehapkari/pehapkari.cz/master.svg?style=flat-square)](https://travis-ci.org/pehapkari/pehapkari.cz)
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/pehapkari/pehapkari.cz.svg?style=flat-square)](https://scrutinizer-ci.com/g/pehapkari/pehapkari.cz)
